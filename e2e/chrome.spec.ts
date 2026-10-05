@@ -69,7 +69,7 @@ test('the content container is 1240 px from 1101 and the slim bar and header row
       const pad = (el: Element) => parseFloat(getComputedStyle(el).paddingLeft);
       const footerRow = document.querySelector('footer > .container-site')!;
       const header = document.querySelector('header > div')!;
-      const slim = document.querySelector('div[role="region"].bg-navy > div')!;
+      const slim = document.querySelector('div[role="region"].bg-night > div')!;
       return {
         viewport: document.documentElement.clientWidth,
         gutter: pad(footerRow),
@@ -181,11 +181,11 @@ test('the secondary CTA and the slim-bar contact links hide below their breakpoi
   await page.goto('/');
   // role+name, scoped to the header — never the copy's package id (W119 review note).
   const secondaryCta = page.getByRole('banner').getByRole('link', { name: 'İş Ortağı Olun' });
-  // `.bg-navy` is the slim bar's own root (the footer's equivalent background sits on a
+  // `.bg-night` (the design's #0a1428 since the parity pass) is the slim bar's own root (the footer's equivalent background sits on a
   // `<footer>`, not a `div` — the slim bar is a `role="region"` landmark since M1/§8 F, but this
   // scopes by class regardless, so it never depends on that): `a[href^="tel:"]` finds its phone
   // link by HREF, never the bundle's `phoneDisplay` text (M4) — a copy change cannot break this.
-  const phoneLink = page.locator('.bg-navy a[href^="tel:"]').first();
+  const phoneLink = page.locator('div[role="region"].bg-night a[href^="tel:"]').first();
 
   await page.setViewportSize({ width: 1100, height: 900 });
   await expect(secondaryCta).not.toBeVisible();
@@ -214,10 +214,15 @@ test('the W155 colours render at 1440: header CTA ink, blue-safe on hover; slim-
   await expect(cta).toHaveCSS('background-color', 'rgb(16, 115, 168)'); // blue-safe
   // The slim bar's two pills — /verify (accent) and the external CRM login — found by href inside the
   // bar's own root, never by copy.
-  for (const href of ['/temsilci-dogrulama', 'https://portal.jobsadmire.com/auth/login']) {
-    await expect(page.locator(`div[role="region"].bg-navy a[href="${href}"]`)).toHaveCSS(
+  // Parity pass (SHARED 1.2): the verify pill is the design's mint "verified" face, the portal
+  // pill sky.
+  for (const [href, colour] of [
+    ['/temsilci-dogrulama', 'rgb(93, 223, 176)'], // mint #5ddfb0
+    ['https://portal.jobsadmire.com/auth/login', 'rgb(127, 208, 245)'], // sky
+  ] as const) {
+    await expect(page.locator(`div[role="region"].bg-night a[href="${href}"]`)).toHaveCSS(
       'color',
-      'rgb(127, 208, 245)', // sky
+      colour,
     );
   }
   // The footer renders its columns twice (desktop columns + the mobile accordion): the visible one.
@@ -227,4 +232,33 @@ test('the W155 colours render at 1440: header CTA ink, blue-safe on hover; slim-
       .locator('a[href^="https://play.google.com/"]')
       .filter({ visible: true }),
   ).toHaveCSS('color', 'rgb(255, 255, 255)');
+});
+
+// Parity pass (SHARED 1, 2): the design's chrome order — About first in the desktop row, the
+// hamburger before the CTA below 901 px, the compact `EN | TR` pill in the slim bar there.
+test('the desktop nav starts with About; phones read logo · hamburger · CTA and get the slim-bar EN | TR pill', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const first = page.getByRole('navigation', { name: 'Ana menü' }).getByRole('link').first();
+  await expect(first).toHaveAttribute('href', '/hakkimizda');
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const order = await page.evaluate(() => {
+    const banner = document.querySelector('header')!;
+    const menu = banner.querySelector('button[aria-controls]')!;
+    const cta = [...banner.querySelectorAll('a')].find(
+      (a) => a.getAttribute('href') === '/#proposal',
+    )!;
+    return menu.compareDocumentPosition(cta) & Node.DOCUMENT_POSITION_FOLLOWING;
+  });
+  expect(order).toBeTruthy();
+  const slimLang = page.locator('div[role="region"].bg-night [role="group"]');
+  await expect(slimLang).toBeVisible();
+  await expect(slimLang.getByRole('link')).toHaveText(['EN', 'TR']);
+  await expect(slimLang.getByRole('link', { name: 'Türkçe' })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
 });

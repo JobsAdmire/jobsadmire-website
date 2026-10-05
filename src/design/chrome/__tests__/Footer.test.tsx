@@ -22,7 +22,9 @@ type Entry = Record<string, unknown>;
 // jsdom applies no CSS, so both copies are in the tree. Only the accordion's own headers are
 // exposed while it is collapsed: its panels carry `hidden`, which role queries skip — so a
 // link query sees ONE anchor per entry until a panel is opened (W52).
-const COLUMNS = ['home.189', 'home.190', 'home.191', 'home.194'];
+// parity pass (SHARED 3.2): the app column's heading is the package's "Get Our App" (about.131);
+// home.194 is the app tile's subtitle under it
+const COLUMNS = ['home.189', 'home.190', 'home.191', 'about.131'];
 
 beforeEach(() => {
   (window as unknown as { dataLayer: Entry[] }).dataLayer = [];
@@ -267,7 +269,8 @@ describe('Footer', () => {
     });
     expect(badges.length).toBeGreaterThan(0);
     for (const badge of badges) {
-      expect(badge).toHaveClass('text-white', 'hover:text-sky');
+      // the design's translucent two-line footer badge (StoreBadges tone="footer")
+      expect(badge).toHaveClass('text-white', 'hover:bg-white/15');
       expect(badge).not.toHaveClass('text-white/60');
     }
   });
@@ -290,7 +293,7 @@ describe('Footer', () => {
     expect(legalRow).toHaveClass('container-site');
     expect(legalRow).not.toHaveClass('border-t', 'py-5');
     const inner = legalRow.firstElementChild as HTMLElement;
-    expect(inner).toHaveClass('border-t', 'border-white/15', 'py-5', 'flex');
+    expect(inner).toHaveClass('border-t', 'border-white/15', 'pt-5', 'flex', 'lg:flex-nowrap');
     expect(inner).toContainElement(screen.getByRole('navigation', { name: tr.sys.nav.legal }));
   });
 
@@ -318,7 +321,9 @@ describe('Footer', () => {
       'object-contain',
       'xl:max-w-none',
     );
-    expect(container.querySelector('footer img[src*="ja-mark"]')).toBeNull();
+    // the mark appears only inside the app column's decorative phone tile (SHARED 3.2)
+    for (const mark of container.querySelectorAll('footer img[src*="ja-mark"]'))
+      expect(mark.closest('[aria-hidden="true"]')).not.toBeNull();
   });
 
   // W180 follow-through (D19): inside the 960 px box the design's footer still sets its five

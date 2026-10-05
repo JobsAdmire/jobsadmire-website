@@ -22,4 +22,14 @@ describe('LogoMarquee', () => {
     expect(screen.getAllByRole('img')).toHaveLength(2);
     expect(screen.getByRole('button', { name: 'Duraklat' })).toBeInTheDocument();
   });
+
+  it('renders labelled sample slots with a stat column when no logo is consented (SHARED 13.3)', () => {
+    const { container } = renderWithIntl(
+      <LogoMarquee logos={[]} slots={['Müşteri logosu 1', 'Müşteri logosu 2']} stat={<b>22+</b>} />,
+    );
+    expect(screen.getByText('22+')).toBeInTheDocument();
+    const slot = container.querySelector('[data-placeholder="logo-1"]');
+    expect(slot).toHaveTextContent('Müşteri logosu 1');
+    expect(slot).toHaveClass('ja-hover-logo', 'border-dashed');
+  });
 });

@@ -7,6 +7,7 @@ import { BRAND } from '@/design/assets/brand';
 // By module path, not the barrel (W147): a server component's barrel import makes every
 // 'use client' primitive the barrel re-exports a client reference of the route.
 import { Accordion } from '@/design/primitives/Accordion';
+import { StoreBadges } from '@/design/blocks/StoreBadges';
 import { liquidSizes } from '@/design/zoom';
 import { mailLink, telLink, waLink } from '@/lib/contact';
 import type { Locale } from '@/i18n/routing';
@@ -52,7 +53,9 @@ const FLINK_BASE =
   'inline-flex min-h-[34px] items-center gap-2 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
 const FLINK = `${FLINK_BASE} text-white/60 hover:text-sky`;
 const OFFICE_LABEL = 'm-0 text-[11.5px] font-extrabold uppercase tracking-[1px] text-sky';
-const STORE = `${FLINK_BASE} rounded-md border border-white/20 bg-white/5 px-4 text-white hover:text-sky`;
+/** The app column's heading id: the package's own "Get Our App" (about.131 — every page footer
+ *  carries one, `t.footApp*`; the Homepage hard-codes it, so the chrome reads About's, R15). */
+const APP_HEADING_ID = 'about.131';
 
 export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
   const t = makeT(bundle);
@@ -86,7 +89,6 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
       </span>
     );
   };
-  const storeLink = (item: ChromeNavItem) => <NavLink item={item} className={STORE} />;
 
   // One body per column, rendered twice: as a static grid column from `lg` up and inside the
   // mobile accordion below it. The hidden copy is `display:none`, so it is out of the
@@ -119,12 +121,14 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
           </ContactLink>
           {office('antalya', t('home.196'), t('home.198'), settings.maps.antalya)}
           {office('karachi', t('home.197'), t('home.199'), settings.maps.karachi)}
+          {/* SHARED 3.6: the design's compact blue button (`.ja-foot-wa`: r10, its own width,
+              #1385bd on hover), hidden on phones where the mobile bar carries WhatsApp. */}
           <ContactLink
             href={waHref}
             placement="footer"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-md bg-blue-safe px-5 font-extrabold text-white no-underline hover:bg-sky hover:text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
+            className="ja-hover-lift mt-3 inline-flex min-h-[44px] items-center justify-center self-start rounded-[10px] bg-blue-safe px-[22px] font-extrabold text-white no-underline hover:bg-blue-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky max-lg:hidden"
           >
             {t('home.193')}
           </ContactLink>
@@ -133,27 +137,53 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
     },
     {
       id: 'app',
-      heading: t('home.194'),
+      // SHARED 3.2: the design's "Get Our App" heading, then the app tile (a 32 × 52 phone with the
+      // mark, "JobsAdmire" over the home.194 line), home.195 and the two-line store badges.
+      heading: t(APP_HEADING_ID),
       body: (
         <>
-          <p className="m-0 mb-3.5 text-white/55">{t('home.195')}</p>
-          <div className="flex flex-col items-start gap-2">
-            {settings.storeLinks.android &&
-              storeLink({
-                href: settings.storeLinks.android,
-                label: t('hire.240'),
-                external: true,
-              })}
-            {settings.storeLinks.ios &&
-              storeLink({ href: settings.storeLinks.ios, label: t('hire.241'), external: true })}
+          <div className="mb-3 flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="relative flex h-[52px] w-8 shrink-0 items-center justify-center rounded-[9px] border-2 border-ink bg-white shadow-[0_5px_14px_rgba(22,60,90,0.16)]"
+            >
+              <span className="absolute top-[3.5px] left-1/2 h-[2.5px] w-[9px] -translate-x-1/2 rounded-pill bg-ink" />
+              <Image
+                src={BRAND.mark.src}
+                alt=""
+                width={22}
+                height={22}
+                className="block h-[22px] w-[22px] object-contain"
+              />
+              <span className="absolute bottom-[3px] left-1/2 h-[2px] w-[10px] -translate-x-1/2 rounded-pill bg-[#c6d4de]" />
+            </span>
+            <span className="min-w-0">
+              <span className="block text-[14.5px] leading-[1.2] font-extrabold text-white xl:text-[11px]">
+                JobsAdmire
+              </span>
+              <span className="mt-0.5 block text-[12px] font-semibold text-white/55 xl:text-[11px]">
+                {t('home.194')}
+              </span>
+            </span>
           </div>
+          <p className="m-0 mb-3.5 text-[12.5px] leading-[1.55] text-white/55 xl:text-[11px]">
+            {t('home.195')}
+          </p>
+          <StoreBadges
+            bundle={bundle}
+            locale={locale}
+            android={settings.storeLinks.android}
+            ios={settings.storeLinks.ios}
+            tone="footer"
+            className="flex-col items-start"
+          />
         </>
       ),
     },
   ];
 
   return (
-    <footer className="border-t-[3px] border-blue bg-navy text-body-sm">
+    <footer className="border-t-[3px] border-blue bg-night text-body-sm">
       {/* W180 (D19): from 1101 the design's `minmax(200px, 1fr)` and `gap: 40px 36px` × 0.75, so
           its five columns stay in one row of the 1240 px box (W228). Tailwind's preflight caps
           every img at its column width and object-fit defaults to stretch, so the wordmark carries
@@ -205,8 +235,10 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
           </div>
         ))}
 
+        {/* SHARED 3.8: the design's phone accordions — uppercase 800 headings with a ⌄ */}
         <div className="text-white/80 lg:hidden">
           <Accordion
+            variant="footer"
             headingLevel={2}
             singleOpen={false}
             items={columns.map((c) => ({ id: c.id, title: c.heading, body: c.body }))}
@@ -217,9 +249,11 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
       {/* Final pass A6 (T1b M7): the divider spans the content box, gutters included — on an
           inner div, so the container's own padding never shortens the line. */}
       <div className="container-site">
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
-          <p className="m-0 text-white/50">{t('home.228')}</p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+        {/* SHARED 3.7: one line from lg — the legal text wraps inside its own half instead of
+            pushing the links onto a second row. */}
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 pt-5 pb-[26px] lg:flex-nowrap">
+          <p className="m-0 text-white/50 lg:min-w-0 lg:flex-1">{t('home.228')}</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1 lg:shrink-0">
             {/* W11: Privacy/Terms in the legal row — all four legal pages exist since T13
               (`(minimal)/privacy`, `/terms`, `/kvkk`, `/cookie-policy`); the row wraps (LEGAL-04). */}
             <nav aria-label={sys('nav.legal')} className="flex flex-wrap items-center gap-x-4">

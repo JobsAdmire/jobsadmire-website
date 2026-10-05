@@ -3,7 +3,14 @@ import { ContactLink } from '@/analytics/ContactLink';
 import { contactKindOf } from '@/analytics/contact-kind';
 // By module path, not the barrel (W147): StickyCtaBar, a client module, mounts this block, so
 // whatever it imports is bundled into that client graph.
-import { Button, buttonClassName, type ButtonVariant } from '@/design/primitives/Button';
+import {
+  Button,
+  buttonClassName,
+  withIcons,
+  type ButtonRadius,
+  type ButtonShape,
+  type ButtonVariant,
+} from '@/design/primitives/Button';
 import { Link, type Href } from '@/i18n/navigation';
 
 /** The two page-level placements W12 allows next to the chrome's own. */
@@ -22,6 +29,14 @@ export type ContactCtaProps = {
   prefetch?: boolean;
   className?: string;
   'aria-label'?: string;
+  /** SHARED 5.1: `rect` + `radius` for the design's 9–14 px rectangles; pills by default */
+  shape?: ButtonShape;
+  radius?: ButtonRadius;
+  /** the design's hover lift (default on) */
+  lift?: boolean;
+  /** SHARED 5.3: a decorative glyph before / after the label */
+  icon?: ReactNode;
+  iconEnd?: ReactNode;
   children: ReactNode;
 };
 
@@ -45,17 +60,24 @@ export function ContactCta({
   prefetch,
   className,
   'aria-label': ariaLabel,
+  shape,
+  radius,
+  lift,
+  icon,
+  iconEnd,
   children,
 }: ContactCtaProps) {
+  const look = { shape, radius, lift };
+  const body = withIcons(children, icon, iconEnd);
   if (typeof href !== 'string') {
     return (
       <Link
         href={href}
         prefetch={prefetch}
-        className={buttonClassName(variant, size, className)}
+        className={buttonClassName(variant, size, className, look)}
         aria-label={ariaLabel}
       >
-        {children}
+        {body}
       </Link>
     );
   }
@@ -70,8 +92,11 @@ export function ContactCta({
         prefetch={prefetch}
         className={className}
         aria-label={ariaLabel}
+        shape={shape}
+        radius={radius}
+        lift={lift}
       >
-        {children}
+        {body}
       </Button>
     );
   }
@@ -79,11 +104,11 @@ export function ContactCta({
     <ContactLink
       href={href}
       placement={placement}
-      className={buttonClassName(variant, size, className)}
+      className={buttonClassName(variant, size, className, look)}
       aria-label={ariaLabel}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
     >
-      {children}
+      {body}
     </ContactLink>
   );
 }

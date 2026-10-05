@@ -14,7 +14,9 @@ export function Card({
   const Tag = as;
   const cls = [
     'rounded-xl border border-border-2 bg-white p-6 shadow-card',
-    hover ? 'transition-shadow hover:shadow-card-hover' : null,
+    // the design's card hover (`.ja-card-l` / `.ja-ch`): a 3 px lift, a deeper shadow and the
+    // tint edge — `ja-hover-card` in src/design/motion/motion.css (still under reduced motion)
+    hover ? 'ja-hover-card' : null,
     className,
   ]
     .filter(Boolean)

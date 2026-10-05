@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { SlimBar } from '../SlimBar';
@@ -44,11 +44,12 @@ describe('SlimBar', () => {
   it('no element sets one property twice at one variant; the pills are sky, the links white/70 (W155)', () => {
     const { container } = renderWithIntl(<SlimBar bundle={bundle} />);
     expect(collisionsInTree(container)).toEqual([]);
-    for (const name of [t('home.011'), t('home.012')]) {
-      const pill = screen.getByRole('link', { name });
-      expect(pill).toHaveClass('rounded-pill', 'text-sky', 'hover:text-white');
-      expect(pill).not.toHaveClass('text-white/70');
-    }
+    // parity pass: the verify pill is the design's mint "verified" face, the portal pill sky
+    const verify = screen.getByRole('link', { name: t('home.011') });
+    expect(verify).toHaveClass('rounded-pill', 'text-mint', 'hover:text-white');
+    const portal = screen.getByRole('link', { name: t('home.012') });
+    expect(portal).toHaveClass('rounded-pill', 'text-sky', 'hover:text-white');
+    for (const pill of [verify, portal]) expect(pill).not.toHaveClass('text-white/70');
     expect(screen.getByRole('link', { name: t('home.009') })).toHaveClass(
       'text-white/70',
       'hover:text-white',
@@ -82,5 +83,22 @@ describe('SlimBar', () => {
   it('is a named region, not a set of links sitting outside any landmark (M1)', () => {
     renderWithIntl(<SlimBar bundle={bundle} />);
     expect(screen.getByRole('region', { name: 'İletişim ve lisans şeridi' })).toBeInTheDocument();
+  });
+
+  // Parity pass (SHARED 1.2/1.4): the design's hairline before the pills, the shield and login
+  // glyphs, and the compact EN | TR pill that replaces the right group below 901 px.
+  it('draws the divider and the pill glyphs, and carries the phone EN | TR pill', () => {
+    renderWithIntl(<SlimBar bundle={bundle} locale="tr" />);
+    const verify = screen.getByRole('link', { name: t('home.011') });
+    expect(verify.querySelector('svg')).not.toBeNull();
+    expect(verify.parentElement!.firstElementChild).toHaveClass('w-px', 'bg-white/25');
+    expect(screen.getByRole('link', { name: t('home.012') }).querySelector('svg')).not.toBeNull();
+    const pill = screen.getByRole('group', { name: t('home.016') });
+    expect(pill.parentElement).toHaveClass('lg:hidden');
+    expect(
+      within(pill)
+        .getAllByRole('link')
+        .map((a) => a.textContent),
+    ).toEqual(['EN', 'TR']);
   });
 });

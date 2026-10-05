@@ -17,9 +17,30 @@
   --color-blue: #1899d5;
   --color-blue-safe: #1073a8;
   --color-navy: #0e1a37;
+  /* The design's near-black chrome surface (`.ja-slim`, the footer, the mobile bar: #0a1428). */
+  --color-night: #0a1428;
+  /* The design's indigo (partner network track, success-stories active chips: #253063). */
+  --color-indigo: #253063;
+  /* The design's verified-green on night (`#5ddfb0`, the slim bar's verify pill): 11.6:1. */
+  --color-mint: #5ddfb0;
+  /* The design's field border (#dbe6ee) and the mobile field fill (#f9fcfe). */
+  --color-field-border: #dbe6ee;
+  --color-field-fill: #f9fcfe;
+  /* The design's pale green WhatsApp face (#eafaf1 / #bfe8cf) — `success-soft` buttons. */
+  --color-success-soft: #eafaf1;
+  --color-success-soft-border: #bfe8cf;
+  /* The design's darker green hover (#0f6d33) under the contrast-safe green face. */
+  --color-success-deep: #0f6d33;
+  /* The design's primary hover (#1385bd) and the contrast-safe gradient end (#0d5f8a). */
+  --color-blue-hover: #1385bd;
+  --color-blue-deep: #0d5f8a;
+  /* The design's FAQ/ask-card edge (#d3e6f2) and pale card edge (#e2edf5). */
+  --color-edge: #d3e6f2;
+  --color-edge-soft: #e2edf5;
   --color-sky: #7fd0f5;
   --color-tint: #e8f4fb;
   --color-tint-border: #bfdff0;
+  --color-tint-hover: #d3ecf9;
   --color-pale-1: #f4f9fc;
   --color-pale-2: #f7fbfe;
   --color-pale-3: #fbfdff;
@@ -38,6 +59,9 @@
   --color-warning-text: #b45309;
   --color-warning-surface: #fff7ed;
   --color-warning-border: #fed7aa;
+  /* The design's amber "sample data" pill (#fffbeb / #fde68a, #b45309 text — 4.9:1). */
+  --color-amber-surface: #fffbeb;
+  --color-amber-border: #fde68a;
   --color-danger: #b91c1c;
   --color-danger-surface: #fef2f2;
   --color-danger-border: #fecaca;
@@ -76,8 +100,20 @@
   --text-eyebrow: var(--fs-eyebrow);
   --text-nav: var(--fs-nav);
   --text-h1: var(--fs-h1);
+  /* SHARED 10.1 (parity pass): the design's display faces carry their own leading and tracking —
+     h1 1.02 / −2.2 px, section h2 1.05 / −1.6 px (× 0.75 from 1101) — so a bare `text-h1` /
+     `text-h2` no longer inherits the body's 1.55 and renders as a loose 2–3 line block. An
+     explicit `leading-*` / `tracking-*` on the element still wins (Tailwind's --tw-* fallbacks). */
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: var(--ls-h1);
   --text-h2: var(--fs-h2);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: var(--ls-h2);
   --text-h2-process: var(--fs-h2-process);
+  --text-h2-process--line-height: 1.05;
+  --text-h2-process--letter-spacing: var(--ls-h2);
+  --text-input: var(--fs-input);
+  --text-band: var(--fs-band);
 }
 
 /* Responsive type scale: authored 1:1 up to 1100px, ×0.75 from 1101px (D19). */
@@ -92,6 +128,15 @@
   --fs-h1: clamp(40px, 4.6vw, 66px);
   --fs-h2: clamp(28px, 3.2vw, 42px);
   --fs-h2-process: clamp(30px, 3.4vw, 46px);
+  --ls-h1: -2.2px;
+  --ls-h2: -1.6px;
+  /* Parity pass: the design's form fields — 16 px on phones (the ≤ 900 `.ja-form input` rule, which
+     also keeps iOS from zooming into a focused field), 14.5 px authored from 901, × 0.75 from 1101
+     on the 11 px floor. */
+  --fs-input: 16px;
+  /* Parity pass: the design's dark closing bands and newsletter title (≈ 28 px authored, 21 px at
+     1440 under the 0.75 zoom — Blog/Article `.ja-band h2`), not the 31.5 px section h2. */
+  --fs-band: clamp(22px, 2.4vw, 28px);
   /* W180: the side padding of `.container-site` and the slim bar (the design's `.ja-sec` /
      `.ja-slim`: 20 px from 900 down), the header row's (`.ja-nav`) and the content box's cap.
      Final pass A2 (W184): the header row follows the design's own `.ja-nav` paddings below 901 —
@@ -133,6 +178,7 @@
 @media (min-width: 901px) {
   :root {
     --fs-nav: 12px;
+    --fs-input: 14.5px;
     --gutter: 48px;
     --gutter-nav: 32px;
     --header-h: 157px; /* W232: the nav on two rows (113 px), three on the longest CTAs */
@@ -150,6 +196,10 @@
     --fs-h1: clamp(30px, 3.45vw, 49.5px);
     --fs-h2: clamp(21px, 2.4vw, 31.5px);
     --fs-h2-process: clamp(22.5px, 2.55vw, 34.5px);
+    --fs-input: 11px;
+    --fs-band: clamp(16.5px, 1.8vw, 21px);
+    --ls-h1: -1.65px;
+    --ls-h2: -1.2px;
     /* W180: the design's 48 px / 32 px paddings and its 1280 px wrapper, × 0.75 */
     --gutter: 36px;
     --gutter-nav: 24px;

@@ -48,3 +48,21 @@ describe('Timeline', () => {
     expect(container.querySelectorAll('p')).toHaveLength(0);
   });
 });
+
+describe('Timeline — rail (SHARED 8.7)', () => {
+  it('draws ringed dots on a gradient rail, the last date green', () => {
+    render(
+      <Timeline
+        variant="rail"
+        steps={[
+          { when: '2023', title: 'Kuruluş' },
+          { when: 'Bugün', title: 'Bugün', body: 'x' },
+        ]}
+      />,
+    );
+    const list = screen.getByRole('list');
+    expect(list).toHaveAttribute('data-variant', 'rail');
+    expect(screen.getByText('2023')).toHaveClass('text-blue-safe');
+    expect(screen.getAllByText('Bugün')[0]).toHaveClass('text-success-text');
+  });
+});

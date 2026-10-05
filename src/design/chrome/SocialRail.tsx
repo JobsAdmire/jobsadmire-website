@@ -49,6 +49,9 @@ export function SocialRail({ bundle }: { bundle: Bundle }) {
       aria-label={sys('nav.socialRail')}
       className="fixed left-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-2 xl:flex"
     >
+      {/* SHARED 2.7: the design's 26 px hairlines above and below the tiles (Homepage v4
+          ll. 347/355, #c9d8e4) — decorative. */}
+      <span aria-hidden="true" className="mb-0.5 block h-[26px] w-px bg-[#c9d8e4]" />
       {/* W12: the WhatsApp tile fires whatsapp_click (placement social_rail); the rest are
           plain anchors — `ContactLink` classifies by href. */}
       {socialLinks(bundle.settings, sys('whatsapp.prefill')).map((s) => (
@@ -64,6 +67,7 @@ export function SocialRail({ bundle }: { bundle: Bundle }) {
           {s.icon}
         </ContactLink>
       ))}
+      <span aria-hidden="true" className="mt-0.5 block h-[26px] w-px bg-[#c9d8e4]" />
     </aside>
   );
 }

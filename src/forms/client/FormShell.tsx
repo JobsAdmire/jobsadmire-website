@@ -11,7 +11,13 @@ import {
 } from 'react';
 import { useTranslations } from 'next-intl';
 import type { FormKey } from '@/analytics/forms';
-import { Button } from '@/design/primitives/Button';
+import { ArrowRightIcon } from '@/design/chrome/icons';
+import {
+  Button,
+  type ButtonRadius,
+  type ButtonShape,
+  type ButtonVariant,
+} from '@/design/primitives/Button';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { isFormErrorCode } from '../errors';
@@ -56,19 +62,63 @@ export type FormShellProps = {
   /** the level of `title` and of the fallback panel's heading — match the surrounding outline
    *  (axe `heading-order`); default 3 */
   headingLevel?: 2 | 3 | 4;
+  /** SHARED 4.3 — the submit's face per form: `primary` (default), `success-solid` (Hire's
+   *  green WhatsApp-style submit), `gradient`, … any `Button` variant */
+  submitVariant?: ButtonVariant;
+  /** `pill` (default: Home, Hire, Contact) or `rect` with `submitRadius` (Available r11,
+   *  Partner r10) */
+  submitShape?: ButtonShape;
+  submitRadius?: ButtonRadius;
+  /** a leading glyph (Hire's WhatsApp mark) */
+  submitIcon?: ReactNode;
+  /** the trailing → (default on; skipped when the label already ends with an arrow) */
+  submitArrow?: boolean;
+  /** full width (default, the design's `grid-column: 1 / -1`) or the button's own width */
+  submitFullWidth?: boolean;
+  /** Hire places its submit ABOVE the consent line (SHARED 4.3); default after it */
+  submitPlacement?: 'after-consent' | 'before-consent';
+  /** SHARED 4.4 — `line` (default): the compact 17 px box + 12.5 px grey copy; `box`: Contact's
+   *  pale card (#f4f9fc, 1 px #e2edf5, r12) around it */
+  consentStyle?: 'line' | 'box';
+  /** `stack` (default) or `inline`: the fields and the submit share one row from `sm` (the
+   *  Newsletter band's e-mail + "Abone olun →" row), consent below */
+  layout?: 'stack' | 'inline';
 };
 
 /** D20: never `disabled` while pending — that drops the visitor's focus to `<body>`. The button
  *  stays focusable and announces itself as unavailable; the shell ignores a second submit. */
-function SubmitButton({ label, pending }: { label: string; pending: boolean }) {
+function SubmitButton({
+  label,
+  pending,
+  variant = 'primary',
+  shape = 'pill',
+  radius,
+  icon,
+  arrow = true,
+  fullWidth = true,
+}: {
+  label: string;
+  pending: boolean;
+  variant?: ButtonVariant;
+  shape?: ButtonShape;
+  radius?: ButtonRadius;
+  icon?: ReactNode;
+  arrow?: boolean;
+  fullWidth?: boolean;
+}) {
   const sys = useTranslations('sys');
+  const hasArrow = /[→›]\s*$/.test(label);
   return (
     <Button
-      variant="primary"
+      variant={variant}
       size="lg"
       type="submit"
+      shape={shape}
+      radius={radius}
+      icon={icon}
+      iconEnd={arrow && !hasArrow && !pending ? <ArrowRightIcon /> : undefined}
       aria-disabled={pending || undefined}
-      className="aria-disabled:cursor-progress aria-disabled:opacity-60"
+      className={`aria-disabled:cursor-progress aria-disabled:opacity-60${fullWidth ? ' w-full' : ''}`}
     >
       {pending ? sys('form.submit.sending') : label}
     </Button>
@@ -134,10 +184,12 @@ function ConsentRow({
   mode,
   href,
   id,
+  look = 'line',
 }: {
   mode: 'checkbox' | 'notice';
   href: '/privacy';
   id: string;
+  look?: 'line' | 'box';
 }) {
   const sys = useTranslations('sys');
   const error = useFieldError(CONSENT_FIELD);
@@ -147,16 +199,21 @@ function ConsentRow({
       {chunks}
     </Link>
   );
+  // SHARED 4.4: the design's compact consent line — 12.5 px grey copy (11 px from 1101) beside a
+  // 17 px box; `box` wraps it in Contact's pale card.
+  const shell =
+    look === 'box' ? 'rounded-xs border border-edge-soft bg-pale-1 px-3.5 py-3' : undefined;
+  const copy = 'text-[12.5px] leading-[1.55] text-text-tertiary xl:text-[11px]';
   if (mode === 'notice')
     return (
-      <p className="m-0 text-body-sm text-text-secondary">
+      <p className={['m-0', copy, shell].filter(Boolean).join(' ')}>
         {sys.rich('form.consent.notice', { link })}
       </p>
     );
   return (
-    <div className="flex flex-col gap-1">
+    <div className={['flex flex-col gap-1', shell].filter(Boolean).join(' ')}>
       <ConsentCheckboxRegistration />
-      <label htmlFor={id} className="flex cursor-pointer items-start gap-3 text-body-sm">
+      <label htmlFor={id} className={`flex cursor-pointer items-start gap-2.5 ${copy}`}>
         <input
           id={id}
           name={CONSENT_FIELD}
@@ -166,7 +223,7 @@ function ConsentRow({
           aria-required="true"
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? `${id}-error` : undefined}
-          className="mt-1 h-5 w-5 shrink-0 accent-blue-safe"
+          className="mt-px h-[17px] w-[17px] shrink-0 accent-blue-safe"
         />
         <span>{sys.rich('form.consent.label', { link })}</span>
       </label>
@@ -206,6 +263,15 @@ export function FormShell({
   initialState,
   idScope,
   headingLevel = 3,
+  submitVariant,
+  submitShape,
+  submitRadius,
+  submitIcon,
+  submitArrow,
+  submitFullWidth,
+  submitPlacement = 'after-consent',
+  consentStyle = 'line',
+  layout = 'stack',
 }: FormShellProps) {
   const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
   const scope = idScope ?? formKey;
@@ -247,6 +313,29 @@ export function FormShell({
       ? Object.entries(state.errors).filter(([name]) => name === '_form' || !shown.has(name))
       : [];
   const honeypotId = `f-${scope}-${HONEYPOT_FIELD}`;
+  const inline = layout === 'inline';
+  const submit = (
+    <div className={inline ? 'sm:shrink-0' : undefined}>
+      <SubmitButton
+        label={submitLabel ?? sys('form.submit.default')}
+        pending={pending}
+        variant={submitVariant}
+        shape={submitShape}
+        radius={submitRadius}
+        icon={submitIcon}
+        arrow={submitArrow}
+        fullWidth={inline ? false : (submitFullWidth ?? true)}
+      />
+    </div>
+  );
+  const consentRow = (
+    <ConsentRow
+      mode={consent}
+      href={consentLinkHref}
+      id={`f-${scope}-${CONSENT_FIELD}`}
+      look={consentStyle}
+    />
+  );
   return (
     <FormErrorsContext.Provider value={ctx}>
       <form
@@ -258,10 +347,17 @@ export function FormShell({
         noValidate
         data-testid={testId}
         data-form-key={formKey}
-        className={['flex flex-col gap-4', className].filter(Boolean).join(' ')}
+        className={['flex flex-col gap-3', className].filter(Boolean).join(' ')}
       >
         {title ? <Heading className="m-0 text-card-title font-extrabold">{title}</Heading> : null}
-        {children}
+        {inline ? (
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
+            <div className="min-w-0 flex-1">{children}</div>
+            {submit}
+          </div>
+        ) : (
+          children
+        )}
         {/* The honeypot: outside the accessibility tree and the tab order, visible to bots only.
             The door reads the literal `honeypot` key and answers 200/SPAM when it is filled. */}
         <div
@@ -285,11 +381,10 @@ export function FormShell({
             locale={locale}
           />
         ) : null}
-        <ConsentRow mode={consent} href={consentLinkHref} id={`f-${scope}-${CONSENT_FIELD}`} />
+        {inline || submitPlacement === 'after-consent' ? consentRow : null}
         {unshown.length ? <FormLevelErrors errors={unshown} /> : null}
-        <div>
-          <SubmitButton label={submitLabel ?? sys('form.submit.default')} pending={pending} />
-        </div>
+        {inline ? null : submit}
+        {!inline && submitPlacement === 'before-consent' ? consentRow : null}
         {state.status === 'error' ? (
           <FallbackPanel
             key={state.result.kind}

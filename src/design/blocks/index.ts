@@ -10,6 +10,7 @@ export { NewsletterBand } from './NewsletterBand';
 export { OfficeCard } from './OfficeCard';
 export { PostCard } from './PostCard';
 export { ProcessSteps, type ProcessStep } from './ProcessSteps';
+export { SampleTag } from './SampleTag';
 export { StoreBadges } from './StoreBadges';
 // Row types come from T0b — one definition (`src/content/collections.ts`), re-exported here
 // so a page that composes blocks needs one import.

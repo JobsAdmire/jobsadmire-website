@@ -199,7 +199,7 @@
   "home.194": "İş gücünüzü her yerden yönetin",
   "home.195": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
   "home.196": "Antalya · Merkez ofis",
-  "home.197": "Karaçi · Tedarik ofisi",
+  "home.197": "Karaçi · Teknoloji ofisi",
   "home.198": "Pzt–Cum 09:00–18:00",
   "home.199": "Pzt–Cmt 10:00–19:00 PKT",
   "home.200": "Ekibimiz",
@@ -3513,6 +3513,17 @@
   {
    "group": "desktopNav",
    "order": 0,
+   "labelId": "home.001",
+   "href": "/about",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 1,
    "labelId": "home.002",
    "href": "/hire-workers",
    "external": false,
@@ -3523,7 +3534,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 1,
+   "order": 2,
    "labelId": "home.003",
    "href": "/available-workers",
    "external": false,
@@ -3534,7 +3545,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 2,
+   "order": 3,
    "labelId": "home.004",
    "href": "/work-permit",
    "external": false,
@@ -3545,20 +3556,9 @@
   },
   {
    "group": "desktopNav",
-   "order": 3,
+   "order": 4,
    "labelId": "home.005",
    "href": "/hiring-cost-calculator",
-   "external": false,
-   "visibleOn": [
-    "desktop",
-    "mobile"
-   ]
-  },
-  {
-   "group": "desktopNav",
-   "order": 4,
-   "labelId": "home.001",
-   "href": "/about",
    "external": false,
    "visibleOn": [
     "desktop",
@@ -3634,6 +3634,17 @@
   {
    "group": "hamburger",
    "order": 0,
+   "labelId": "home.001",
+   "href": "/about",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 1,
    "labelId": "home.002",
    "href": "/hire-workers",
    "external": false,
@@ -3644,7 +3655,7 @@
   },
   {
    "group": "hamburger",
-   "order": 1,
+   "order": 2,
    "labelId": "home.003",
    "href": "/available-workers",
    "external": false,
@@ -3655,7 +3666,7 @@
   },
   {
    "group": "hamburger",
-   "order": 2,
+   "order": 3,
    "labelId": "home.004",
    "href": "/work-permit",
    "external": false,
@@ -3666,20 +3677,9 @@
   },
   {
    "group": "hamburger",
-   "order": 3,
+   "order": 4,
    "labelId": "home.005",
    "href": "/hiring-cost-calculator",
-   "external": false,
-   "visibleOn": [
-    "desktop",
-    "mobile"
-   ]
-  },
-  {
-   "group": "hamburger",
-   "order": 4,
-   "labelId": "home.001",
-   "href": "/about",
    "external": false,
    "visibleOn": [
     "desktop",
@@ -5624,10 +5624,10 @@
   ],
   "founder": [
    {
-    "name": "Kurucunun Adı",
+    "name": "Haris Jiva",
     "titleId": "about.047",
-    "photoSrc": null,
-    "published": false
+    "photoSrc": "/team/haris-jiva.jpg",
+    "published": true
    }
   ]
  },

@@ -138,3 +138,37 @@ describe('RadioChips', () => {
     expect(skilled).toHaveFocus();
   });
 });
+
+describe('RadioChips — design faces (SHARED 14.2)', () => {
+  it('solid / navy checked faces, compact chips, an inline legend and a scrolling phone row', () => {
+    const { unmount } = render(
+      <RadioChips
+        name="t"
+        options={options}
+        value="skilled"
+        onChange={() => {}}
+        legend="Tür"
+        face="solid"
+        compact
+        inlineLegend
+        scroll
+      />,
+    );
+    const chip = screen.getByLabelText('Skilled').nextElementSibling!;
+    expect(chip).toHaveClass('bg-blue-safe', 'text-white', 'rounded-[9px]', 'min-h-9');
+    expect(screen.getByText('Tür')).toHaveClass('float-left');
+    expect(chip.parentElement!.parentElement).toHaveClass('max-md:overflow-x-auto');
+    unmount();
+    render(
+      <RadioChips
+        name="t"
+        options={options}
+        value="general"
+        onChange={() => {}}
+        legend="Tür"
+        face="navy"
+      />,
+    );
+    expect(screen.getByLabelText('General').nextElementSibling).toHaveClass('bg-indigo');
+  });
+});

@@ -30,7 +30,30 @@ describe('StoreBadges', () => {
       />,
     );
     expect(screen.getAllByRole('link')).toHaveLength(2);
+    // Google Play first by default; the design's two-line face: the kicker over the store name
+    expect(screen.getAllByRole('link').map((a) => a.getAttribute('aria-label'))).toEqual([
+      'Get it on Google Play',
+      'Download on the App Store',
+    ]);
+    expect(screen.getByText('GET IT ON')).toBeInTheDocument();
+    expect(screen.getByText('App Store')).toBeInTheDocument();
     rerender(<StoreBadges bundle={bundle} locale="tr" android={null} />);
     expect(container).toBeEmptyDOMElement();
+  });
+
+  it('puts the App Store first on request (Partner, SHARED 11.2)', () => {
+    render(
+      <StoreBadges
+        bundle={bundle}
+        locale="tr"
+        android="https://play.google.com/x"
+        ios="https://apps.apple.com/x"
+        appleFirst
+      />,
+    );
+    expect(screen.getAllByRole('link').map((a) => a.getAttribute('aria-label'))).toEqual([
+      'Download on the App Store',
+      'Get it on Google Play',
+    ]);
   });
 });

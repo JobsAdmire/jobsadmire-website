@@ -681,6 +681,109 @@
 
 /* ---------- Hover ---------- */
 
+/* The design's hover vocabulary (`.ja-btn-l`, `.ja-card-l`, `.ja-role-row`, the logo marquee, the
+   ask-card rows), one class each. Only `transform`, `box-shadow`, colours and `filter` move; under
+   reduced motion nothing translates (the block at the end). Unlayered on purpose: these rules
+   carry the whole `transition` list so a Tailwind `transition-colors` on the same element never
+   drops the transform from it. */
+
+/* A button lifts 2 px under the pointer and presses on :active (Button, ContactCta). */
+.ja-hover-lift {
+  transition:
+    transform 0.18s var(--ja-ease),
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    color 0.18s ease;
+}
+@media (hover: hover) {
+  .ja-hover-lift:hover {
+    transform: translateY(-2px);
+  }
+}
+.ja-hover-lift:active {
+  transform: translateY(0) scale(0.97);
+  filter: brightness(0.92);
+}
+
+/* A whole-card link lifts 3 px with a deeper shadow and the tint edge (`.ja-ch` / `.ja-card-l`:
+   posts, permit types, story cards, office cards). `-lg` is the 5 px lift of the process cards. */
+.ja-hover-card {
+  transition:
+    transform 0.22s var(--ja-ease),
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+@media (hover: hover) {
+  .ja-hover-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(22, 60, 90, 0.1);
+    border-color: var(--color-tint-border);
+  }
+  .ja-hover-card-lg:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(22, 60, 90, 0.12);
+  }
+}
+
+/* A list row slides 6 px right on a tint face, its trailing arrow fading in (`.ja-role-row`:
+   Home roles, Join openings). */
+.ja-hover-row {
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s var(--ja-ease);
+}
+.ja-hover-row .ja-hover-arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+@media (hover: hover) {
+  .ja-hover-row:hover {
+    background-color: var(--color-tint);
+    border-color: var(--color-tint-border);
+    transform: translateX(6px);
+  }
+  .ja-hover-row:hover .ja-hover-arrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+.ja-hover-row:focus-visible .ja-hover-arrow {
+  opacity: 1;
+  transform: none;
+}
+
+/* A contact row nudges 3 px right (the FAQ ask card's WhatsApp / e-mail rows). */
+.ja-hover-nudge {
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+@media (hover: hover) {
+  .ja-hover-nudge:hover {
+    transform: translateX(3px);
+  }
+}
+
+/* A client / partner logo slot: greyscale at .62 opacity, full colour under the pointer
+   (Hire Workers `logoSlots`, Partner `partnerLogoSlots`). */
+.ja-hover-logo {
+  filter: grayscale(1);
+  opacity: 0.62;
+  transition:
+    filter 0.25s ease,
+    opacity 0.25s ease;
+}
+.ja-hover-logo:hover,
+.ja-hover-logo:focus-within {
+  filter: none;
+  opacity: 1;
+}
+
 /* An industry row's number bounces when the row is hovered (Hire Workers). */
 .ja-row:hover .ja-num {
   animation: jaNumBounce 0.45s var(--ja-spring);
@@ -832,7 +935,13 @@
     transition: none;
   }
   .ja-quote-btn:hover,
-  .ja-reveal-on .ja-step:hover {
+  .ja-reveal-on .ja-step:hover,
+  .ja-hover-lift:hover,
+  .ja-hover-lift:active,
+  .ja-hover-card:hover,
+  .ja-hover-row:hover,
+  .ja-hover-row .ja-hover-arrow,
+  .ja-hover-nudge:hover {
     transform: none;
   }
 }

@@ -11,20 +11,85 @@ const copy = tr.sys.form;
 afterEach(() => vi.restoreAllMocks());
 
 describe('Field', () => {
-  it('reads label, placeholder and hint from sys.form.* by name', () => {
+  // SHARED 4.1 (parity pass): the placeholder-only face is the default — the label stays (visually
+  // hidden, still the accessible name), its words become the placeholder, and the catalogue hint
+  // stays for assistive tech only (sr-only, still in aria-describedby).
+  it('placeholder-only by default: hidden label, label words as placeholder, hint for AT only', () => {
     renderWithIntl(<Field name="phone" type="tel" required />);
     const input = screen.getByLabelText(`${copy.labels.phone} *`);
-    expect(input).toHaveAttribute('placeholder', copy.placeholders.phone);
+    expect(input).toHaveAttribute('placeholder', copy.labels.phone);
     expect(input).toHaveAttribute('id', 'f-phone');
-    expect(screen.getByText(copy.hints.phone)).toBeInTheDocument();
+    expect(input).toHaveAttribute('aria-required', 'true');
+    expect(document.querySelector('label[for="f-phone"]')).toHaveClass('sr-only');
+    const hint = screen.getByText(copy.hints.phone);
+    expect(hint).toHaveClass('sr-only');
+    expect(input.getAttribute('aria-describedby')).toContain(hint.id);
   });
 
-  it('marks a non-required field "optional" unless a hint is passed, and hint="" silences it', () => {
+  it('labelMode="visible" keeps the catalogue placeholder and shows the hint on request', () => {
+    renderWithIntl(<Field name="phone" type="tel" required labelMode="visible" showHint />);
+    const input = screen.getByLabelText(`${copy.labels.phone} *`);
+    expect(input).toHaveAttribute('placeholder', copy.placeholders.phone);
+    expect(document.querySelector('label[for="f-phone"]')).not.toHaveClass('sr-only');
+    expect(screen.getByText(copy.hints.phone)).not.toHaveClass('sr-only');
+  });
+
+  it('labelMode="small" draws the grey caption without an asterisk (Contact, SHARED 4.8)', () => {
+    renderWithIntl(<Field name="email" type="email" required labelMode="small" />);
+    const label = document.querySelector('label[for="f-email"]');
+    expect(label).toHaveTextContent(copy.labels.email);
+    expect(label).not.toHaveTextContent('*');
+    expect(label).toHaveClass('text-text-tertiary');
+  });
+
+  it('an empty placeholder never leaves a placeholder-only field without visible words', () => {
+    renderWithIntl(<Field name="phone" type="tel" placeholder="" hint="" />);
+    expect(screen.getByLabelText(copy.labels.phone)).toHaveAttribute(
+      'placeholder',
+      copy.labels.phone,
+    );
+  });
+
+  it('shows an explicit hint; keeps "optional" for AT only, and hint="" silences it', () => {
     const { unmount } = renderWithIntl(<Field name="company" />);
-    expect(screen.getByText(copy.hints.optional)).toBeInTheDocument();
+    expect(screen.getByText(copy.hints.optional)).toHaveClass('sr-only');
     unmount();
+    const second = renderWithIntl(<Field name="city" hint="Şehir veya ilçe" />);
+    expect(screen.getByText('Şehir veya ilçe')).not.toHaveClass('sr-only');
+    second.unmount();
     renderWithIntl(<Field name="city" hint="" />);
     expect(screen.queryByText(copy.hints.optional)).toBeNull();
+  });
+
+  it('renders the dial select beside a phone field as its own labelled, echoed field (SHARED 4.5)', () => {
+    renderWithIntl(
+      <FormErrorsContext.Provider
+        value={{ errors: { dial: 'required' }, values: { dial: 'PK', phone: '3001234567' } }}
+      >
+        <Field
+          name="phone"
+          type="tel"
+          required
+          dial={{
+            name: 'dial',
+            label: 'Ülke kodu',
+            required: true,
+            defaultValue: 'TR',
+            options: [
+              { value: 'PK', label: '🇵🇰 +92' },
+              { value: 'TR', label: '🇹🇷 +90' },
+            ],
+          }}
+        />
+      </FormErrorsContext.Provider>,
+    );
+    const dial = screen.getByLabelText('Ülke kodu *') as HTMLSelectElement;
+    expect(dial.tagName).toBe('SELECT');
+    expect(dial).toHaveAttribute('name', 'dial');
+    expect(dial).toHaveValue('PK');
+    expect(dial).toHaveAttribute('aria-invalid', 'true');
+    expect(dial.getAttribute('aria-describedby')).toContain(`${dial.id}-error`);
+    expect(screen.getByLabelText(`${copy.labels.phone} *`)).toHaveValue('3001234567');
   });
 
   it('W30: a name without a sys.form.labels entry must pass label — throws outside production', () => {
@@ -100,8 +165,9 @@ describe('Field', () => {
     const select = screen.getByLabelText(copy.labels.iAm);
     expect(select.tagName).toBe('SELECT');
     expect(select).toHaveValue('hr_agency');
+    // the placeholder-only face names the field in its empty option (the design's "Sektör")
     expect(screen.getAllByRole('option').map((o) => o.textContent)).toEqual([
-      copy.placeholders.select,
+      copy.labels.iAm,
       'Employer',
       'HR agency',
     ]);

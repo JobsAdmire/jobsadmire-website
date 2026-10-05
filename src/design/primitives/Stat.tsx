@@ -26,6 +26,9 @@ export function Stat({
   label,
   locale,
   tone = 'light',
+  className,
+  figureClassName,
+  labelClassName,
 }: {
   value?: number;
   text?: string;
@@ -34,6 +37,11 @@ export function Stat({
   label: string;
   locale: Locale;
   tone?: 'light' | 'dark';
+  /** classes on the root (MetricStrip's inline pill / centred cell layouts) */
+  className?: string;
+  /** replaces the figure's / label's default classes (MetricStrip variants) */
+  figureClassName?: string;
+  labelClassName?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   // `null` until the count-up actually runs, so a changed `value` is shown immediately when
@@ -76,13 +84,15 @@ export function Stat({
   if (text === undefined && value === undefined) return null;
 
   const labelCls =
-    tone === 'dark' ? 'text-body-sm text-white/55' : 'text-body-sm text-text-secondary';
+    labelClassName ??
+    (tone === 'dark' ? 'text-body-sm text-white/55' : 'text-body-sm text-text-secondary');
   const figureCls =
-    tone === 'dark' ? 'text-stat font-extrabold text-white' : 'text-stat font-extrabold';
+    figureClassName ??
+    (tone === 'dark' ? 'text-stat font-extrabold text-white' : 'text-stat font-extrabold');
 
   if (text !== undefined) {
     return (
-      <div ref={ref}>
+      <div ref={ref} className={className}>
         <p className={figureCls}>
           <span>
             {prefix}
@@ -96,7 +106,7 @@ export function Stat({
   }
   const number = formatInt(value as number, locale);
   return (
-    <div ref={ref}>
+    <div ref={ref} className={className}>
       <p className={figureCls}>
         <span aria-hidden="true">
           {prefix}

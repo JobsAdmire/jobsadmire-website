@@ -385,7 +385,7 @@ describe('scanSource — evaluating class strings statically (W155)', () => {
       ),
     ).toEqual([
       'background-color — bg-blue-safe vs bg-ink',
-      'hover: background-color — hover:bg-ink vs hover:bg-blue-safe',
+      'hover: background-color — hover:bg-blue-deep vs hover:bg-blue-safe',
     ]);
     expect(scan('const x = <Button variant="primary" className="bg-ink">Go</Button>;')).toEqual([
       'background-color — bg-blue-safe vs bg-ink',

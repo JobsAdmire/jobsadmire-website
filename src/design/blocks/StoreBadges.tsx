@@ -2,10 +2,24 @@ import { makeTf } from '@/content/pure';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 
+/** The badge faces. `dark` is the design's ink two-line badge (#16202e, r11, black on hover —
+ *  Homepage v4 ll. 897–910, Hire/Partner/About portal panels); `footer` the translucent two-line
+ *  badge of the footer's app column (white/8 face, white/22 edge, r9 — ll. 1200–1213); `light`
+ *  the white outline badge on dark-free cards. */
 const BADGE = {
-  dark: 'bg-ink text-white hover:bg-black',
-  light: 'border border-border-1 bg-white text-ink hover:bg-pale-1',
+  dark: 'rounded-[11px] bg-ink text-white hover:bg-black',
+  footer: 'rounded-[9px] border border-white/20 bg-white/[0.08] text-white hover:bg-white/15',
+  light: 'rounded-[11px] border border-border-1 bg-white text-ink hover:bg-pale-1',
 } as const;
+
+/** The small first line's colour per face (#b9c4cf on ink / night: ≥ 8:1). */
+const KICKER = {
+  dark: 'text-[#b9c4cf]',
+  footer: 'text-[#b9c4cf]',
+  light: 'text-text-tertiary',
+} as const;
+
+export type StoreBadgeTone = keyof typeof BADGE;
 
 function PlayIcon() {
   // The design's inline Play glyph — local, never the hot-linked store image (W14).
@@ -33,40 +47,83 @@ function AppleIcon() {
   );
 }
 
-/** App-store badges from `settings.storeLinks`: Google Play (hire.240) whenever the Android
- *  link exists; App Store (hire.241) whenever `ios` is a URL (set since W227; a `null` link
- *  renders no badge rather than a generic store page, W8). Labels are the
- *  package's own, kept English on TR by the importer's override table (W7/W51). */
+/** App-store badges from `settings.storeLinks`: Google Play whenever the Android link exists;
+ *  App Store whenever `ios` is a URL (set since W227; a `null` link renders no badge rather
+ *  than a generic store page, W8). The design's two-line face (SHARED 11.1): a small kicker
+ *  ("GET IT ON" contact.143 / "DOWNLOAD ON THE" contact.144) over the store's name — the
+ *  store-badge micro-copy stays English on TR by the importer's override table (W7/W51), and
+ *  the accessible name is the full sentence (hire.240 / hire.241). `appleFirst` puts the App
+ *  Store badge first (Partner With Us, partner.162/163 — SHARED 11.2); `stretch` makes the two
+ *  badges equal halves of one row on phones (min-h 48, SHARED 11.2). */
 export function StoreBadges({
   bundle,
   locale,
   android,
   ios = null,
   tone = 'dark',
+  appleFirst = false,
+  stretch = false,
+  className,
 }: {
   bundle: Bundle;
   locale: Locale;
   android: string | null;
   ios?: string | null;
-  tone?: keyof typeof BADGE;
+  tone?: StoreBadgeTone;
+  appleFirst?: boolean;
+  stretch?: boolean;
+  className?: string;
 }) {
   if (!android && !ios) return null;
   const t = makeTf(bundle, locale);
-  const cls = `inline-flex min-h-[44px] items-center gap-2 rounded-input px-4 text-body-sm font-extrabold no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe ${BADGE[tone]}`;
+  const cls = [
+    'ja-hover-lift inline-flex min-h-[44px] items-center gap-[9px] py-2 pr-[15px] pl-3 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe',
+    BADGE[tone],
+    stretch ? 'max-md:min-h-12 max-md:flex-1 max-md:justify-center' : null,
+  ]
+    .filter(Boolean)
+    .join(' ');
+  const two = (kicker: string, name: string) => (
+    <span aria-hidden="true" className="flex flex-col text-left leading-[1.15]">
+      <span className={`text-[9px] font-semibold tracking-[0.3px] uppercase ${KICKER[tone]}`}>
+        {kicker}
+      </span>
+      <span className="text-[13px] font-bold xl:text-[11px]">{name}</span>
+    </span>
+  );
+  const play = android ? (
+    <a
+      key="play"
+      href={android}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={t('hire.240')}
+      className={cls}
+    >
+      <PlayIcon />
+      {two(t('contact.143'), 'Google Play')}
+    </a>
+  ) : null;
+  const apple = ios ? (
+    <a
+      key="apple"
+      href={ios}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={t('hire.241')}
+      className={cls}
+    >
+      <AppleIcon />
+      {two(t('contact.144'), 'App Store')}
+    </a>
+  ) : null;
   return (
-    <div className="flex flex-wrap gap-2">
-      {android && (
-        <a href={android} target="_blank" rel="noopener noreferrer" className={cls}>
-          <PlayIcon />
-          {t('hire.240')}
-        </a>
-      )}
-      {ios && (
-        <a href={ios} target="_blank" rel="noopener noreferrer" className={cls}>
-          <AppleIcon />
-          {t('hire.241')}
-        </a>
-      )}
+    <div
+      className={['flex flex-wrap gap-2.5', stretch ? 'max-md:flex-nowrap' : null, className]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      {appleFirst ? [apple, play] : [play, apple]}
     </div>
   );
 }

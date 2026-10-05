@@ -64,4 +64,23 @@ describe('LanguageSwitcher', () => {
     // focus, and assistive tech must not see the element replaced, when the tag arrives.
     expect(screen.getByRole('link', { name: 'English' })).toBe(before);
   });
+
+  // SHARED 2.2 / 3.5 (parity pass): English first everywhere; the header and slim-bar pills show
+  // the two-letter codes with the endonym as the accessible name; the footer shows endonyms.
+  it('compact pills show EN | TR codes, English first, the endonym as the name', () => {
+    renderWithIntl(<LanguageSwitcher locale="tr" label="Dil" />);
+    const links = screen.getAllByRole('link');
+    expect(links.map((a) => a.textContent)).toEqual(['EN', 'TR']);
+    expect(links.map((a) => a.getAttribute('aria-label'))).toEqual(['English', 'Türkçe']);
+    expect(screen.getByRole('link', { name: 'Türkçe' })).toHaveClass('bg-ink', 'text-white');
+  });
+
+  it('the footer (dark) and panel (block) variants spell the endonyms out, English first', () => {
+    const { unmount } = renderWithIntl(<LanguageSwitcher locale="tr" label="Dil" variant="dark" />);
+    expect(screen.getAllByRole('link').map((a) => a.textContent)).toEqual(['English', 'Türkçe']);
+    expect(screen.getByRole('link', { name: 'Türkçe' })).toHaveClass('bg-blue-safe');
+    unmount();
+    renderWithIntl(<LanguageSwitcher locale="en" label="Language" variant="slim" />);
+    expect(screen.getByRole('link', { name: 'English' })).toHaveClass('bg-white', 'text-night');
+  });
 });

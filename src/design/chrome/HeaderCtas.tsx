@@ -12,13 +12,19 @@ import { ctasFor, type CtaTable, type ResolvedCta } from './ctas';
  *  different properties, so nothing collides with the base `whitespace-nowrap` (W122). */
 export const PHONE_CTA =
   'whitespace-nowrap max-xs:max-w-[185px] max-xs:flex-auto max-xs:whitespace-normal max-xs:px-2.5';
-const PRIMARY = buttonClassName('nav', 'md', PHONE_CTA);
+/** Below 901 the design's `.ja-nav-cta` turns into the brand gradient with a blue shadow, 14 px /
+ *  800 (Homepage v4 CSS l. 98 — SHARED 2.5): here the contrast-safe gradient (#1073a8 → #0d5f8a,
+ *  D20) as `background-image` over the ink `background-color`, so no property is set twice. */
+export const PHONE_GRADIENT =
+  'max-lg:min-h-[46px] max-lg:bg-gradient-to-br max-lg:from-blue-safe max-lg:to-blue-deep max-lg:text-[14px] max-lg:shadow-[0_8px_20px_rgba(24,153,213,0.32)]';
+const PRIMARY = buttonClassName('nav', 'md', `${PHONE_CTA} ${PHONE_GRADIENT}`);
 const DANGER = buttonClassName('danger', 'md', PHONE_CTA);
 // `xl`-only, like the design's `.ja-nav-cta-secondary` (hidden ≤1100) — `max-xl:hidden` sorts
 // after `buttonClassName`'s base `inline-flex`, so the media variant wins the cascade; a bare
 // `hidden` (as WP1's <Button> used) loses to that same base class and never hides anything
-// (W119; `src/design/chrome/__tests__/visibility.test.tsx` guards this element).
-const SECONDARY = buttonClassName('secondary', 'md', 'max-xl:hidden whitespace-nowrap');
+// (W119; `src/design/chrome/__tests__/visibility.test.tsx` guards this element). SHARED 2.3: the
+// design's tinted face (#e8f4fb / #bfdff0 / #1073a8), the `tint` variant.
+const SECONDARY = buttonClassName('tint', 'md', 'max-xl:hidden whitespace-nowrap');
 
 function Primary({ cta }: { cta: ResolvedCta }) {
   return (

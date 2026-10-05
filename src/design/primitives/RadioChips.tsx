@@ -15,6 +15,12 @@ export const CHIPS_STRETCH = {
   chip: 'max-md:w-full max-md:justify-center max-md:px-2',
 } as const;
 
+const CHECKED = {
+  tint: 'border-tint-border bg-tint text-blue-safe',
+  solid: 'border-blue-safe bg-blue-safe text-white',
+  navy: 'border-indigo bg-indigo text-white',
+} as const;
+
 /** Single-select chips (calculator role, blog category, form option sets). Native radios in a
  *  `role="radiogroup"` fieldset: arrow keys, focus and form submission under `name` come for
  *  free, and a FormShell form posts the chosen value like any other field. The chip face is
@@ -37,6 +43,10 @@ export function RadioChips({
   legendHidden = false,
   className,
   stretch = false,
+  face = 'tint',
+  compact = false,
+  inlineLegend = false,
+  scroll = false,
 }: {
   name: string;
   options: RadioChipOption[];
@@ -47,6 +57,16 @@ export function RadioChips({
   className?: string;
   /** ≤ 700 px: equal-column grid of full-width chips (B4, `CHIPS_STRETCH`). */
   stretch?: boolean;
+  /** SHARED 14.2 — the checked chip's face: `tint` (pale, default), `solid` (the design's solid
+   *  blue with white text — here the contrast-safe blue, D20: calculator, join, home calculator),
+   *  `navy` (#253063, Success Stories) */
+  face?: 'tint' | 'solid' | 'navy';
+  /** the design's compact chips: r9, 36 px, 13 px (the 24 px target minimum holds) */
+  compact?: boolean;
+  /** the legend as a small inline label before the chips (Contact "Bana şuradan yanıt verin") */
+  inlineLegend?: boolean;
+  /** ≤ 700 px: one horizontally scrolling chip row (Success M3, Join M6/M7, Available M1) */
+  scroll?: boolean;
 }) {
   const base = useId();
   const legendId = `${base}-legend`;
@@ -63,13 +83,23 @@ export function RadioChips({
         className={
           legendHidden
             ? 'sr-only'
-            : 'mb-2 text-eyebrow font-extrabold uppercase tracking-[1.6px] text-blue-safe'
+            : inlineLegend
+              ? 'float-left mr-3 py-2 text-[12.5px] font-bold text-text-tertiary xl:text-[11px]'
+              : 'mb-2 text-eyebrow font-extrabold uppercase tracking-[1.6px] text-blue-safe'
         }
       >
         {legend}
       </legend>
       <div
-        className={['flex flex-wrap gap-2', stretch && CHIPS_STRETCH.row].filter(Boolean).join(' ')}
+        className={[
+          'flex gap-2',
+          scroll
+            ? 'flex-wrap max-md:-mx-1 max-md:flex-nowrap max-md:overflow-x-auto max-md:px-1 max-md:pb-1 max-md:[scrollbar-width:none]'
+            : 'flex-wrap',
+          stretch && CHIPS_STRETCH.row,
+        ]
+          .filter(Boolean)
+          .join(' ')}
       >
         {options.map((o) => {
           const id = `${base}-${o.value}`;
@@ -78,7 +108,11 @@ export function RadioChips({
             <label
               key={o.value}
               htmlFor={id}
-              className={['relative inline-flex', stretch && CHIPS_STRETCH.label]
+              className={[
+                'relative inline-flex',
+                scroll ? 'max-md:shrink-0' : null,
+                stretch && CHIPS_STRETCH.label,
+              ]
                 .filter(Boolean)
                 .join(' ')}
             >
@@ -96,9 +130,13 @@ export function RadioChips({
               />
               <span
                 className={[
-                  'inline-flex min-h-[44px] cursor-pointer items-center rounded-pill border px-4 text-body-sm font-bold transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-safe',
+                  'inline-flex cursor-pointer items-center border font-bold transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-safe',
+                  scroll ? 'max-md:whitespace-nowrap' : null,
+                  compact
+                    ? 'min-h-9 rounded-[9px] px-3 text-[13px] xl:text-[11px]'
+                    : 'min-h-[44px] rounded-pill px-4 text-body-sm',
                   checked
-                    ? 'border-tint-border bg-tint text-blue-safe'
+                    ? CHECKED[face]
                     : 'border-border-1 bg-white text-text-secondary hover:bg-pale-1',
                   stretch && CHIPS_STRETCH.chip,
                 ]

@@ -48,4 +48,66 @@ describe('ProcessSteps', () => {
     expect(screen.getByRole('list')).toHaveAttribute('data-variant', 'plain');
     expect(screen.getAllByRole('heading', { level: 4 })).toHaveLength(3);
   });
+
+  it('timeline variant: phase pills, check nodes and connectors between steps (SHARED 8.1)', () => {
+    const { container } = render(
+      <ProcessSteps bundle={bundle} locale="tr" steps={steps} variant="timeline" />,
+    );
+    expect(container.querySelector('ol')).toHaveAttribute('data-variant', 'timeline');
+    expect(screen.getByText('Başlangıç')).toHaveClass('bg-ink', 'text-white');
+    const rows = screen.getAllByRole('listitem');
+    // the last node is green and draws no connector below it
+    expect(rows[2].querySelector('.bg-success')).not.toBeNull();
+    expect(rows[2].querySelectorAll('.bg-gradient-to-b')).toHaveLength(0);
+    expect(rows[0].querySelectorAll('.bg-gradient-to-b')).toHaveLength(1);
+  });
+
+  it('numbered variant: gradient number dots and a card per step, last green (SHARED 8.2)', () => {
+    render(<ProcessSteps bundle={bundle} locale="tr" steps={steps} variant="numbered" whenIcon />);
+    const rows = screen.getAllByRole('listitem');
+    expect(rows[0].querySelector('[aria-hidden="true"]')).toHaveTextContent('1');
+    expect(rows[0].querySelector('.ja-hover-card')).not.toBeNull();
+    expect(rows[2].querySelector('[aria-hidden="true"]')).toHaveClass('from-success-text');
+    expect(screen.getByText('Başlangıç').querySelector('svg')).not.toBeNull();
+  });
+
+  it('row variant: four-up cards over a connector, icons top-right, caps when-pill (SHARED 8.3/8.4)', () => {
+    const { container } = render(
+      <ProcessSteps
+        bundle={bundle}
+        locale="tr"
+        steps={steps.map((s) => ({ ...s, icon: <svg data-testid={`i${s.n}`} /> }))}
+        variant="row"
+        motion="steps"
+      />,
+    );
+    const root = container.firstElementChild as HTMLElement;
+    expect(root).toHaveAttribute('data-variant', 'row');
+    expect(root.querySelector('.ja-journey-line')).not.toBeNull();
+    expect(screen.getAllByRole('listitem')[0]).toHaveClass('ja-step');
+    expect(screen.getByTestId('i1').parentElement).toHaveClass('max-md:hidden');
+    expect(screen.getByText('Başlangıç')).toHaveClass('uppercase');
+  });
+
+  it('icon marker puts the step icon in the dot instead of the number (SHARED 8.4)', () => {
+    render(
+      <ProcessSteps
+        bundle={bundle}
+        locale="tr"
+        steps={steps.map((s) => ({ ...s, icon: <svg data-testid={`i${s.n}`} /> }))}
+        variant="numbered"
+        marker="icon"
+      />,
+    );
+    expect(screen.getByTestId('i1').parentElement).not.toHaveTextContent('1');
+  });
+
+  it('tint variant: pale dots with a blue digit, the last one green (SHARED 8.5)', () => {
+    render(<ProcessSteps bundle={bundle} locale="tr" steps={steps} variant="tint" />);
+    const dots = screen
+      .getAllByRole('listitem')
+      .map((li) => li.querySelector('[aria-hidden="true"]')!);
+    expect(dots[0]).toHaveClass('bg-tint', 'text-blue-safe');
+    expect(dots[2]).toHaveClass('bg-success-soft', 'text-success-text');
+  });
 });

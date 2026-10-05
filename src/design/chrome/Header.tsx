@@ -6,12 +6,12 @@ import { liquidSizes } from '@/design/zoom';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
+import { ActiveNavLinks } from './ActiveNavLink';
 import { resolveCtas } from './ctas';
 import { HeaderCtas } from './HeaderCtas';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileNav } from './MobileNav';
 import { navGroup } from './nav';
-import { NavLink } from './NavLink';
 
 /** The design promotes these out of the desktop row — three into the slim bar and
  *  `/partner-with-us` into the secondary CTA. All four stay in the hamburger, which reads its
@@ -38,9 +38,11 @@ const LOGO_SIZES = liquidSizes(130, `(min-resolution: 2.5dppx) 128px, ${LOGO_W}p
 const LOGO = 'block h-[30px] w-auto object-contain lg:h-[34px] xl:h-[25.5px]';
 const LOGO_RATIO = { aspectRatio: `${BRAND.logo.width} / ${BRAND.logo.height}` };
 
-// `text-nav` is `--fs-nav`: 12px between 901 and 1100, the 11px floor from 1101 (W11).
+// `text-nav` is `--fs-nav`: 12px between 901 and 1100, the 11px floor from 1101 (W11). The current
+// page's row wears the design's active state (SHARED 2.4): the contrast-safe blue (D20) and a
+// 2.5 px brand-blue underline.
 const NAV_LINK =
-  'inline-flex min-h-[44px] items-center whitespace-nowrap text-nav font-semibold text-ink no-underline hover:text-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
+  'inline-flex min-h-[44px] items-center whitespace-nowrap text-nav font-semibold text-ink no-underline transition-colors hover:text-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe aria-[current=page]:text-blue-safe aria-[current=page]:underline aria-[current=page]:decoration-blue aria-[current=page]:decoration-[2.5px] aria-[current=page]:underline-offset-[7px]';
 
 export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
   const t = makeT(bundle);
@@ -77,20 +79,15 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
             sweep at 901/1100 is the proof. Below 901 the hamburger carries the same items. */}
         <nav
           aria-label={sys('nav.main')}
-          className="hidden min-w-0 flex-1 flex-wrap items-center justify-center gap-x-3 gap-y-0 lg:flex xl:gap-x-4"
+          className="hidden min-w-0 flex-1 flex-wrap items-center justify-center gap-x-3 gap-y-0 lg:flex xl:gap-x-[13px]"
         >
-          {desktop.map((item) => (
-            <NavLink key={item.href} item={item} className={NAV_LINK} />
-          ))}
+          <ActiveNavLinks items={desktop} className={NAV_LINK} />
         </nav>
         {/* ≤ 460 the design's `.ja-nav-actions` flexes to the row's end so the capped CTA can take
             the width the fixed logo leaves (W210 b); from 461 the block keeps its own width. */}
-        <div className="flex flex-none items-center gap-2 max-xs:min-w-0 max-xs:flex-auto max-xs:justify-end">
-          {/* the hamburger panel carries the same switcher below lg */}
-          <div className="hidden lg:block">
-            <LanguageSwitcher locale={locale} label={languageLabel} />
-          </div>
-          <HeaderCtas table={resolveCtas(t, locale)} />
+        {/* The design's `.ja-nav-actions` order (Homepage v4 ll. 298–308): hamburger · language
+            pill · secondary · primary — so below 901 the row reads logo · hamburger · CTA. */}
+        <div className="flex flex-none items-center gap-[9px] max-xs:min-w-0 max-xs:flex-auto max-xs:justify-end">
           <MobileNav
             items={hamburger}
             locale={locale}
@@ -98,6 +95,11 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
             closeLabel={sys('nav.close')}
             languageLabel={languageLabel}
           />
+          {/* the slim bar and the hamburger panel carry the switcher below lg */}
+          <div className="hidden lg:block">
+            <LanguageSwitcher locale={locale} label={languageLabel} />
+          </div>
+          <HeaderCtas table={resolveCtas(t, locale)} />
         </div>
       </div>
     </header>

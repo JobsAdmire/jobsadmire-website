@@ -52,13 +52,15 @@ describe('import-design-package — strings', () => {
 });
 
 describe('import-design-package — W7 overrides', () => {
-  it('applies the 64-id override table and logs every locale value it changed', () => {
+  it('applies the 63-id override table and logs every locale value it changed', () => {
     // 25 + calc.131 (T3 review A2, W190) + availworkers.025, verify.042/043/016 and calc.483
     // (QA W220 W-01 / V-02 / V-03 / calc-01) + the QA round-2 set (W221 E/A + conventions, W222 (4)):
     // 34 ids / 49 values — hire.201/203/215/221, 17 wording fixes, the brand / UK-English /
     // SEO-length conventions and the two capitalised leading tails
-    expect(Object.keys(overrides)).toHaveLength(64);
-    expect(report.overrides).toHaveLength(84);
+    // parity pass (owner 2026-10-05): the home.197 override is gone — the footer's Karachi label
+    // is the package's "Teknoloji ofisi" again (one id, two values)
+    expect(Object.keys(overrides)).toHaveLength(63);
+    expect(report.overrides).toHaveLength(82);
     for (const row of report.overrides) expect(row.before).not.toBe(row.after);
   });
   it('fixes the three TR package defects', () => {
@@ -111,10 +113,14 @@ describe('import-design-package — W7 overrides', () => {
     expect(tr.strings['hire.241']).toBe('Download on the App Store');
   });
   it('makes Karachi the sourcing office (label ids + home.134 body)', () => {
-    for (const id of ['home.197', 'hire.231', 'about.126', 'contact.137']) {
+    for (const id of ['hire.231', 'about.126', 'contact.137']) {
       expect(en.strings[id]).toBe('Karachi · Sourcing office');
       expect(tr.strings[id]).toBe('Karaçi · Tedarik ofisi');
     }
+    // Owner 2026-10-05 (parity pass): the footer's canonical Karachi label is the design's own
+    // "Teknoloji ofisi" again — the W7 override for home.197 is gone.
+    expect(en.strings['home.197']).toBe('Karachi · Tech office');
+    expect(tr.strings['home.197']).toBe('Karaçi · Teknoloji ofisi');
     expect(en.strings['home.134']).toMatch(/^Our sourcing team/);
     expect(tr.strings['home.134']).toMatch(/^Tedarik ekibimiz/);
   });
@@ -490,13 +496,15 @@ describe('import-design-package — collections', () => {
       guide.body,
     );
   });
-  it('emits the one founder row from the About page strings, unpublished (W86)', () => {
-    expect(tr.collections.founder).toEqual([
-      { name: tr.strings['about.144'], titleId: 'about.047', photoSrc: null, published: false },
-    ]);
-    expect(en.collections.founder).toEqual([
-      { name: 'Founder Name', titleId: 'about.047', photoSrc: null, published: false },
-    ]);
+  it('emits the one founder row, published with the owner photo (W86 closed 2026-10-05)', () => {
+    const row = {
+      name: 'Haris Jiva',
+      titleId: 'about.047',
+      photoSrc: '/team/haris-jiva.jpg',
+      published: true,
+    };
+    expect(tr.collections.founder).toEqual([row]);
+    expect(en.collections.founder).toEqual([row]);
     expect(en.strings['about.047']).toBe('Founder & CEO, JobsAdmire');
   });
   it('resolves every *Id field of every row to a catalogue id', () => {
@@ -514,12 +522,13 @@ describe('import-design-package — nav and pages', () => {
     // owner 2026-10-05: the portal row is the external partner-portal login (new tab); the
     // /portal-login chooser page is retired
     const portal = 'https://portal.jobsadmire.com/auth/login';
+    // the design's order (Homepage v4 ll. 289–297 / 315–327): About first
     expect(hrefs('desktopNav')).toEqual([
+      '/about',
       '/hire-workers',
       '/available-workers',
       '/work-permit',
       '/hiring-cost-calculator',
-      '/about',
       '/success-stories',
       '/blog',
       '/verify',

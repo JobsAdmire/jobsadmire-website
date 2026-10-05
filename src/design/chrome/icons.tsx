@@ -148,3 +148,65 @@ export function LinkIcon(props: IconProps) {
     </svg>
   );
 }
+
+/** The slim bar's "Verify a representative" shield with a tick (Homepage v4 l. 278). */
+export function ShieldCheckIcon(props: IconProps) {
+  return (
+    <svg {...base({ size: 12, ...props })} fill="currentColor">
+      <path d="M12 2l7.5 3.2v5.3c0 4.7-3.1 9-7.5 10.5-4.4-1.5-7.5-5.8-7.5-10.5V5.2L12 2zm-1 12.4l5-5-1.4-1.4-3.6 3.6-1.9-1.9L7.7 11l3.3 3.4z" />
+    </svg>
+  );
+}
+
+/** The slim bar's portal-login arrow into a door (Homepage v4 l. 279). */
+export function LoginIcon(props: IconProps) {
+  return (
+    <svg
+      {...base({ size: 12, ...props })}
+      {...stroke}
+      strokeWidth={2.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+      <path d="M10 17l5-5-5-5" />
+      <path d="M15 12H3" />
+    </svg>
+  );
+}
+
+/** The design's ⌄ chevron (footer accordions, FAQ cards, collapsible sections). */
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <svg {...base({ size: 16, ...props })} {...stroke} strokeWidth={2.4} strokeLinecap="round">
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+/** A trailing → for CTAs that carry no arrow in their copy (form submits, closing bands). */
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <svg
+      {...base({ size: 16, ...props })}
+      {...stroke}
+      strokeWidth={2.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12h14" />
+      <path d="m13 6 6 6-6 6" />
+    </svg>
+  );
+}
+
+/** The calculator's "Print" button glyph. */
+export function PrinterIcon(props: IconProps) {
+  return (
+    <svg {...base(props)} {...stroke} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 9V2h12v7" />
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+      <rect x="6" y="14" width="12" height="8" />
+    </svg>
+  );
+}

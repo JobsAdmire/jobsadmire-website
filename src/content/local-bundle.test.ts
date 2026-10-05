@@ -31,9 +31,14 @@ describe('generated LOCAL bundles through the typed accessors', () => {
       expect(getCollection(bundle, 'offices')).toHaveLength(2);
       expect(getCollection(bundle, 'sectors')).toHaveLength(7);
       expect(getCollection(bundle, 'blog')).toHaveLength(22);
-      // W86: one founder row, hidden until §10 row 3 publishes it
+      // W86 closed (owner 2026-10-05): one founder row, published with the owner's photo
       expect(getCollection(bundle, 'founder')).toEqual([
-        expect.objectContaining({ titleId: 'about.047', photoSrc: null, published: false }),
+        expect.objectContaining({
+          name: 'Haris Jiva',
+          titleId: 'about.047',
+          photoSrc: '/team/haris-jiva.jpg',
+          published: true,
+        }),
       ]);
       expect(getRateConfig(bundle).legalMinGross).toBe(33030);
     }

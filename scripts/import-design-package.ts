@@ -149,13 +149,16 @@ type NavRow = { href: string; labelId: string; external?: boolean; blog?: boolea
  *  `redirects/rules.json`). Built from `SETTINGS.portal` so the host lives in one place. */
 const PORTAL_LOGIN_URL = `${SETTINGS.portal.host}${SETTINGS.portal.loginPath}`;
 const PORTAL_ROW: NavRow = { href: PORTAL_LOGIN_URL, labelId: 'home.012', external: true };
-// desktop nav in README order; labels are the Homepage nav ids (home.001..011)
+// Desktop nav + hamburger in the design's order (Homepage v4 ll. 289–297 / 315–327, parity pass
+// 2026-10-05): About first, then Hire · Candidates · Permits · Calculator · Stories; the header
+// promotes Blog/Verify/Partner/Join out of the desktop row, so it reads About … Stories · Contact
+// and the hamburger lists all eleven plus the portal row. Labels are the Homepage nav ids.
 const DESKTOP: NavRow[] = [
+  { href: '/about', labelId: 'home.001' },
   { href: '/hire-workers', labelId: 'home.002' },
   { href: '/available-workers', labelId: 'home.003' },
   { href: '/work-permit', labelId: 'home.004' },
   { href: '/hiring-cost-calculator', labelId: 'home.005' },
-  { href: '/about', labelId: 'home.001' },
   { href: '/success-stories', labelId: 'home.006' },
   { href: '/blog', labelId: 'home.010', blog: true },
   { href: '/verify', labelId: 'home.011' },
@@ -380,15 +383,17 @@ const SECTORS: Sector[] = [
   { key: 'other', labelId: 'hire.082', subtitleId: null, icon: 'other' },
 ];
 
-/** W86: the About page's founder strip (About Us.dc.html 667–676): the name is the design's
- *  `founderName` default (about.144, "Founder Name" — a placeholder, so it stays per locale
- *  until the owner supplies the real name, §10 row 3), the title line about.047, no photo.
- *  `published: false` keeps every reader (About, Verify, Homepage team) empty until then. */
-const founderRow = (strings: Record<string, string>): Founder => ({
-  name: strings['about.144'],
+/** W86 (closed by the owner 2026-10-05, parity pass): the founder strip (About Us.dc.html
+ *  667–676, Verify, Homepage team) — the name the design's verify strings carry ("Haris Jiva";
+ *  a proper name, identical in both locales, so the about.144 placeholder no longer feeds it),
+ *  the title line about.047 and the owner's photo (`public/team/haris-jiva.jpg`, a 900 × 900
+ *  square crop; `haris-jiva-wide.jpg` 1600 × 900 serves landscape slots). Published, so every
+ *  reader (About, Verify, Homepage team) renders it. */
+const founderRow = (): Founder => ({
+  name: 'Haris Jiva',
   titleId: 'about.047',
-  photoSrc: null,
-  published: false,
+  photoSrc: '/team/haris-jiva.jpg',
+  published: true,
 });
 
 /** blog-posts.js categories → stable keys + the homepage's category label ids. */
@@ -1028,7 +1033,7 @@ export function buildBundles() {
       offices: OFFICES,
       sectors: SECTORS,
       blog,
-      founder: [founderRow(strings[locale])],
+      founder: [founderRow()],
     };
     for (const key of Object.keys(c) as CollectionKey[]) {
       const schema: z.ZodTypeAny = CollectionSchemas[key];

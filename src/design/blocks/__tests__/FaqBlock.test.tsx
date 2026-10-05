@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { FaqBlock } from '../FaqBlock';
 import { buttonClassName } from '@/design/primitives';
@@ -151,7 +152,7 @@ describe('FaqBlock', () => {
     // WhatsApp: the `success` variant and nothing appended (Tailwind orders rules by name, not
     // by position in the class string, so an appended colour class is a coin toss — W122).
     expect(whatsapp).toHaveClass(
-      'border-success-border',
+      'border-success-soft-border',
       'text-success-text',
       'hover:bg-success-surface',
     );
@@ -161,8 +162,89 @@ describe('FaqBlock', () => {
     expect(mail.className).toBe(buttonClassName('secondary'));
     for (const el of [whatsapp, call, mail]) expect(tokens(el)).not.toContain('text-blue-safe');
     for (const el of [call, mail]) {
-      expect(tokens(el)).not.toContain('border-success-border');
+      expect(tokens(el)).not.toContain('border-success-soft-border');
       expect(tokens(el)).not.toContain('hover:bg-success-surface');
     }
+  });
+
+  it('cards variant: one white card per pair with the + circle, ja-panel answers (SHARED 6.1)', async () => {
+    renderWithIntl(
+      <FaqBlock bundle={bundle} locale="tr" items={items} headingId="x.title" variant="cards" />,
+    );
+    const list = document.querySelector('[data-variant="cards"] [data-variant="cards"]')!;
+    expect(list).toHaveClass('flex', 'flex-col', 'gap-3');
+    const trigger = screen.getAllByRole('button')[0];
+    const card = trigger.closest('h3')!.parentElement!;
+    expect(card).toHaveClass('rounded-sm', 'border-border-4', 'bg-white');
+    expect(trigger.querySelector('span[aria-hidden="true"]')).toHaveTextContent('+');
+    await userEvent.click(trigger);
+    expect(trigger.querySelector('span[aria-hidden="true"]')).toHaveTextContent('−');
+    const panel = document.getElementById(trigger.getAttribute('aria-controls')!)!;
+    expect(panel).toHaveClass('ja-panel');
+  });
+
+  it('rows ask card: icon tile, grey label and bold value per door, tracked (SHARED 6.2)', () => {
+    renderWithIntl(
+      <FaqBlock
+        bundle={bundle}
+        locale="tr"
+        items={items}
+        headingId="x.title"
+        variant="cards"
+        askCard={{
+          titleId: 'x.askT',
+          bodyId: 'x.askB',
+          whatsappNumber: '905011240340',
+          whatsappText: 'Merhaba',
+          whatsappLabelId: 'x.wa',
+          whatsappDisplay: '+90 501 124 03 40',
+          email: 'info@jobsadmire.com',
+          emailLabelId: 'x.mail',
+          layout: 'rows',
+        }}
+      />,
+    );
+    const wa = screen.getByRole('link', { name: /\+90 501 124 03 40/ });
+    expect(wa).toHaveAttribute('href', expect.stringContaining('https://wa.me/905011240340'));
+    expect(wa).toHaveClass('ja-hover-nudge');
+    const mail = screen.getByRole('link', { name: /info@jobsadmire\.com/ });
+    expect(mail).toHaveAttribute('href', expect.stringContaining('mailto:info@jobsadmire.com'));
+  });
+
+  it('centered layout and phone-only ask placements (SHARED 6.3/6.4)', () => {
+    const { container, unmount } = renderWithIntl(
+      <FaqBlock
+        bundle={bundle}
+        locale="tr"
+        items={items}
+        eyebrowId="x.eyebrow"
+        headingId="x.title"
+        layout="centered"
+        variant="cards"
+      />,
+    );
+    expect(container.firstElementChild).toHaveClass('mx-auto', 'max-w-[900px]');
+    expect(screen.getByRole('heading', { level: 2 })).toHaveClass('text-center');
+    unmount();
+    renderWithIntl(
+      <FaqBlock
+        bundle={bundle}
+        locale="tr"
+        items={items}
+        headingId="x.title"
+        mobileAsk="whatsapp-after"
+        askCard={{
+          titleId: 'x.askT',
+          bodyId: 'x.askB',
+          whatsappNumber: '905011240340',
+          whatsappText: 'Merhaba',
+          whatsappLabelId: 'x.wa',
+        }}
+      />,
+    );
+    const was = screen.getAllByRole('link', { name: "WhatsApp'tan sorun" });
+    expect(was).toHaveLength(2);
+    expect(was[1]).toHaveClass('lg:hidden', 'w-full');
+    expect(was[0].closest('.max-lg\\:hidden')).not.toBeNull();
   });
 });

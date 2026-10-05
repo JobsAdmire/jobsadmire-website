@@ -26,3 +26,20 @@ describe('Tabs', () => {
     expect(screen.getByRole('tabpanel')).toHaveTextContent('pb');
   });
 });
+
+describe('Tabs — variants (SHARED 14.1)', () => {
+  it('underline and segmented faces keep the tablist semantics', () => {
+    const tabs = [
+      { id: 'a', label: 'A', panel: 'pa' },
+      { id: 'b', label: 'B', panel: 'pb' },
+    ];
+    const { unmount } = render(<Tabs tabs={tabs} defaultId="a" variant="underline" />);
+    expect(screen.getByRole('tablist')).toHaveAttribute('data-variant', 'underline');
+    expect(screen.getByRole('tab', { name: 'A' })).toHaveClass('bg-white', 'text-blue-safe');
+    expect(screen.getByRole('tab', { name: 'B' })).toHaveAttribute('tabindex', '-1');
+    unmount();
+    render(<Tabs tabs={tabs} defaultId="b" variant="segmented" />);
+    expect(screen.getByRole('tab', { name: 'B' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByRole('tab', { name: 'B' })).toHaveClass('bg-white', 'text-ink');
+  });
+});

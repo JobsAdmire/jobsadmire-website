@@ -26,6 +26,9 @@ export const BLOCK_STRINGS: Record<string, string> = {
   'home.221': "WhatsApp'tan yazın",
   'hire.240': 'Get it on Google Play',
   'hire.241': 'Download on the App Store',
+  // the two-line badges' kickers (SHARED 11.1; English on TR by the override table, W51)
+  'contact.143': 'GET IT ON',
+  'contact.144': 'DOWNLOAD ON THE',
   'blog.034': 'ÖNE ÇIKAN',
   'blog.077': "Türkçe'de de var",
   'blog.081': "İngilizce'de de var",

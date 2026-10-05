@@ -310,7 +310,8 @@ describe('no shared block pairs a bare `hidden` with an unprefixed display utili
     // the green band's inverse-dark face.
     const classes = classNamesOf(container).map((c) => c.split(/\s+/));
     expect(container.querySelector('[data-testid="sticky-cta"]')).not.toBeNull();
-    expect(classes.some((c) => c.includes('from-ink'))).toBe(true);
+    // the gradient band's 115° ink → indigo surface (SHARED 9.2)
+    expect(classes.some((c) => c.some((k) => k.includes('--color-indigo')))).toBe(true);
     expect(container.querySelector('[role="status"].bg-pale-1')).not.toBeNull();
     expect(container.querySelector('img[alt="Foto"]')).not.toBeNull();
     expect(classes.some((c) => c.includes('bg-black/15'))).toBe(true);

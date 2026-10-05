@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { MetricStrip } from '../MetricStrip';
+import { NextIntlClientProvider } from 'next-intl';
+import tr from '@/messages/tr.json';
 import { testBundle } from '@/test/bundle';
 
 // Rows satisfy T0b's `MetricSchema` exactly (`src/content/collections.ts`: every field
@@ -88,5 +90,50 @@ describe('MetricStrip', () => {
   it('dark tone reaches the Stat', () => {
     render(<MetricStrip bundle={bundle} locale="en" metrics={['countries']} tone="dark" />);
     expect(screen.getByText('ülke')).toHaveClass('text-white/55');
+  });
+
+  it('pill variant: translucent pills with the figure and label inline, coloured figures (SHARED 12.2)', () => {
+    render(
+      <MetricStrip bundle={bundle} locale="tr" metrics={['placed', 'countries']} variant="pill" />,
+    );
+    const items = screen.getAllByRole('listitem');
+    expect(items[0]).toHaveClass('rounded-pill', 'bg-white/[0.08]');
+    expect(items[0].firstElementChild).toHaveClass('flex', 'items-baseline');
+    expect(items[0].querySelector('p')).toHaveClass('text-sky');
+    expect(items[1].querySelector('p')).toHaveClass('text-[#4ade80]');
+  });
+
+  it('centered-divided variant appends a static sample cell with the SampleTag (SHARED 12.3)', () => {
+    const { container } = render(
+      <NextIntlClientProvider locale="tr" messages={tr}>
+        <MetricStrip
+          bundle={bundle}
+          locale="tr"
+          metrics={['placed']}
+          variant="centered-divided"
+          extra={[{ figure: '%98', label: 'Müşteri bağlılığı', sample: true }]}
+        />
+      </NextIntlClientProvider>,
+    );
+    const items = screen.getAllByRole('listitem');
+    expect(items).toHaveLength(2);
+    expect(items[0]).toHaveClass('text-center');
+    expect(items[1]).toHaveTextContent('%98');
+    expect(container.querySelector('[data-sample-tag]')).not.toBeNull();
+  });
+
+  it('hero variant folds the third cell inline and hides a fourth at ≤ 460 (SHARED 12.1)', () => {
+    render(
+      <MetricStrip
+        bundle={bundle}
+        locale="tr"
+        metrics={['placed', 'countries', 'firstDayWeeks']}
+        tone="dark"
+        variant="hero"
+      />,
+    );
+    const third = screen.getAllByRole('listitem')[2];
+    expect(third).toHaveClass('max-xs:col-span-2');
+    expect(third.firstElementChild).toHaveClass('max-xs:flex', 'max-xs:items-baseline');
   });
 });

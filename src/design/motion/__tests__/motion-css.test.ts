@@ -137,7 +137,9 @@ describe('motion.css', () => {
     }
   });
 
-  it('transitions only opacity, transform, box-shadow and background colour', () => {
+  // Parity pass: the hover vocabulary (`ja-hover-*`) also fades colours, edges and the logo
+  // greyscale — paint-only properties, never layout (CLS stays 0).
+  it('transitions only opacity, transform, box-shadow and paint-only colours/filters', () => {
     const transitioned = rules(TOP)
       .map((b) => b.body.match(/transition:([^;]*)/)?.[1] ?? '')
       .filter(Boolean)
@@ -146,7 +148,16 @@ describe('motion.css', () => {
     expect(transitioned.length).toBeGreaterThan(0);
     expect(
       transitioned.filter(
-        (p) => !['opacity', 'transform', 'box-shadow', 'background-color'].includes(p),
+        (p) =>
+          ![
+            'opacity',
+            'transform',
+            'box-shadow',
+            'background-color',
+            'border-color',
+            'color',
+            'filter',
+          ].includes(p),
       ),
     ).toEqual([]);
   });

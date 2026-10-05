@@ -186,4 +186,30 @@ describe('StickyCtaBar CTA routing (W81, W82)', () => {
       '/isci-talebi#request-form',
     );
   });
+
+  it('light tone: the white bar with r10 rectangles and named glyphs (SHARED 7.1)', () => {
+    renderWithIntl(
+      <StickyCtaBar
+        message="m"
+        tone="light"
+        ctas={[
+          { label: 'Arayın', href: 'tel:+905011240340', variant: 'outline-blue', icon: 'phone' },
+          { label: 'Talep', href: '/hire-workers', iconEnd: 'arrow' },
+        ]}
+      />,
+    );
+    setScroll(800);
+    const bar = screen.getByTestId('sticky-cta');
+    expect(bar).toHaveAttribute('data-tone', 'light');
+    expect(bar).toHaveClass('bg-white/95', 'border-edge');
+    const call = screen.getByRole('link', { name: 'Arayın' });
+    expect(call).toHaveClass('rounded-[10px]', 'text-blue-safe');
+    expect(call.querySelector('svg')).not.toBeNull();
+    expect(screen.getByRole('link', { name: 'Talep' }).lastElementChild?.tagName).toBe('svg');
+  });
+
+  it('hides while the hideWhileInViewId section is on screen, returns once it is past (SHARED 7.2)', () => {
+    expect(isBarVisible(800, 700, null, 900, { top: 100, bottom: 600 })).toBe(false);
+    expect(isBarVisible(800, 700, null, 900, { top: -700, bottom: -10 })).toBe(true);
+  });
 });

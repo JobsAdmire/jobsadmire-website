@@ -112,14 +112,16 @@ describe('ClosingCtaBand', () => {
       expect(icon).toHaveClass('text-white');
       expect(icon).not.toHaveClass('text-success');
     });
+    // SHARED 9.4: the design's r12 rectangles; the primary is the white face with green text
+    const rect = { shape: 'rect', radius: 12 } as const;
     expect(screen.getByRole('link', { name: 'WhatsApp' }).className).toBe(
-      buttonClassName('inverse-dark'),
+      buttonClassName('inverse-dark', 'md', undefined, rect),
     );
     expect(screen.getByRole('link', { name: 'Ofisi arayın' }).className).toBe(
-      buttonClassName('inverse-dark'),
+      buttonClassName('inverse-dark', 'md', undefined, rect),
     );
     expect(screen.getByRole('link', { name: 'İşçi talep edin' }).className).toBe(
-      buttonClassName('primary'),
+      buttonClassName('white-green', 'md', undefined, rect),
     );
   });
 
@@ -135,12 +137,64 @@ describe('ClosingCtaBand', () => {
       ticks.querySelectorAll('svg').forEach((icon) => {
         expect(icon).toHaveClass('text-success');
       });
+      // navy keeps its pills; the gradient band wears the design's r12 rectangles (SHARED 9.2)
+      const look = tone === 'gradient' ? ({ shape: 'rect', radius: 12 } as const) : {};
       expect(screen.getByRole('link', { name: 'WhatsApp' }).className).toBe(
-        buttonClassName('inverse'),
+        buttonClassName('inverse', 'md', undefined, look),
       );
       expect(screen.getByRole('link', { name: 'Ofisi arayın' }).className).toBe(
-        buttonClassName('inverse'),
+        buttonClassName('inverse', 'md', undefined, look),
       );
     },
   );
+
+  it('light tone: a centred full-bleed band with the solid green primary and a note (SHARED 9.1)', () => {
+    const { container } = renderWithIntl(
+      <ClosingCtaBand
+        bundle={bundle}
+        locale="tr"
+        titleId="x.title"
+        bodyId="x.body"
+        tone="light"
+        note="İŞKUR · 1730"
+        badge="4 iş saati"
+        primary={{ label: 'İşçi talep edin', href: '/hire-workers' }}
+        secondary={{ label: 'Ofisi arayın', href: 'tel:+905011240340' }}
+        fullWidthOnPhone
+      />,
+    );
+    const band = container.firstElementChild as HTMLElement;
+    expect(band).toHaveAttribute('data-tone', 'light');
+    expect(band).toHaveClass('text-center', 'border-t', 'border-edge');
+    expect(band.querySelector('.container-site')).not.toBeNull();
+    const primary = screen.getByRole('link', { name: 'İşçi talep edin' });
+    expect(primary).toHaveClass('bg-success-text', 'text-white', 'rounded-[11px]', 'max-md:w-full');
+    expect(screen.getByRole('link', { name: 'Ofisi arayın' })).toHaveClass(
+      'border-tint-border',
+      'text-blue-safe',
+    );
+    expect(screen.getByText('İŞKUR · 1730')).toBeInTheDocument();
+    expect(screen.getByText('4 iş saati').closest('p')).toHaveClass('md:hidden');
+  });
+
+  it('blue tone splits copy and stacked CTAs and prints the centred link (SHARED 9.3)', () => {
+    renderWithIntl(
+      <ClosingCtaBand
+        bundle={bundle}
+        locale="tr"
+        titleId="x.title"
+        tone="blue"
+        primary={{ label: 'İşçi talep edin', href: '/hire-workers' }}
+        link={{ label: 'Ya da maliyeti hesaplayın →', href: '/hiring-cost-calculator' }}
+      />,
+    );
+    expect(screen.getByRole('link', { name: 'İşçi talep edin' })).toHaveClass(
+      'bg-white',
+      'text-blue-safe',
+    );
+    expect(screen.getByRole('link', { name: 'Ya da maliyeti hesaplayın →' })).toHaveAttribute(
+      'href',
+      '/maliyet-hesaplayici',
+    );
+  });
 });

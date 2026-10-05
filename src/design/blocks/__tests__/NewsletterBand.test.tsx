@@ -28,4 +28,16 @@ describe('NewsletterBand', () => {
     expect(screen.getByTestId('shell')).toBeInTheDocument();
     expect(document.getElementById('newsletter')).not.toBeNull();
   });
+
+  it('prints the proof line under the form when the page passes its id (SHARED 14.6)', () => {
+    const withProof = testBundle({ strings: { ...BLOCK_STRINGS, 'blog.040': '200+ işveren' } });
+    render(
+      <NewsletterBand bundle={withProof} locale="tr" active proofId="blog.040">
+        <form data-testid="shell" />
+      </NewsletterBand>,
+    );
+    const proof = screen.getByText('200+ işveren');
+    expect(proof.previousElementSibling).toBe(screen.getByTestId('shell'));
+    expect(screen.getByRole('heading', { level: 2 })).toHaveClass('text-band');
+  });
 });

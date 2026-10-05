@@ -2,7 +2,7 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from '../Header';
-import { PHONE_CTA } from '../HeaderCtas';
+import { PHONE_CTA, PHONE_GRADIENT } from '../HeaderCtas';
 import { BRAND } from '@/design/assets/brand';
 import { buttonClassName } from '@/design/primitives/Button';
 import { collisionsInTree } from '@/test/class-collisions';
@@ -182,7 +182,8 @@ describe('Header', () => {
     expect(cta).toHaveClass('bg-ink', 'text-white', 'hover:bg-blue-safe', 'whitespace-nowrap');
     expect(cta).not.toHaveClass('bg-blue-safe');
     expect(cta).not.toHaveClass('hover:bg-ink');
-    expect(cta.className).toBe(buttonClassName('nav', 'md', PHONE_CTA)); // W190/W210 b: ≤ 460 face
+    // W190/W210 b: the ≤ 460 face; parity pass (SHARED 2.5): the ≤ 900 gradient face on top
+    expect(cta.className).toBe(buttonClassName('nav', 'md', `${PHONE_CTA} ${PHONE_GRADIENT}`));
     unmount();
 
     // the danger face (the verify page's "Report an Impostor") stays collision-free too
@@ -305,6 +306,33 @@ describe('Header', () => {
     );
     expect(within(banner).getByRole('link', { name: 'English' })).not.toHaveAttribute(
       'aria-current',
+    );
+  });
+
+  // Parity pass (SHARED 2.1/2.4/2.5): About leads the desktop row, the current page's link is
+  // marked (aria-current + the design's underline face), and the hamburger sits before the CTA.
+  it('leads with About, marks the current page and orders hamburger · pill · CTAs', () => {
+    nav.pathname = '/isci-talebi';
+    renderWithIntl(<Header locale="tr" bundle={bundle} />);
+    const row = screen.getByRole('navigation', { name: 'Ana menü' });
+    const links = within(row).getAllByRole('link');
+    expect(links[0]).toHaveAttribute('href', '/hakkimizda');
+    const hire = within(row).getByRole('link', { name: t('home.002') });
+    expect(hire).toHaveAttribute('aria-current', 'page');
+    expect(hire.className).toContain('aria-[current=page]:underline');
+    expect(links.filter((a) => a.hasAttribute('aria-current'))).toHaveLength(1);
+    const menu = screen.getByRole('button', { name: t('hire.239') });
+    const banner = screen.getByRole('banner');
+    const ctas = within(banner)
+      .getAllByRole('link')
+      .filter((a) => a.className.includes('ja-hover-lift'));
+    expect(ctas.length).toBeGreaterThan(0);
+    for (const cta of ctas)
+      expect(menu.compareDocumentPosition(cta) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    // the secondary is the design's tinted face (SHARED 2.3)
+    expect(within(banner).getByRole('link', { name: t('home.008') })).toHaveClass(
+      'bg-tint',
+      'text-blue-safe',
     );
   });
 });
