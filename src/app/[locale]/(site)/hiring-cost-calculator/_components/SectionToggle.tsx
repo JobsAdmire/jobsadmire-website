@@ -1,5 +1,6 @@
 'use client';
 import { useId, useState, type ReactNode } from 'react';
+import { ChevronDownIcon } from './icons';
 
 const TRIGGER =
   'flex min-h-16 w-full cursor-pointer items-center gap-3 rounded-sm border-[1.5px] bg-white px-[15px] py-3.5 text-left md:hidden';
@@ -8,7 +9,7 @@ const TRIGGER_TONE = {
   open: 'border-blue shadow-[0_8px_20px_rgba(22,60,90,0.09)]',
 } as const;
 const CHEVRON =
-  'grid h-[34px] w-[34px] flex-none place-items-center rounded-[11px] border border-sky/30 bg-[linear-gradient(160deg,#253063_0%,#0e1a37_100%)] text-[13px] font-extrabold text-sky transition-transform';
+  'grid h-[34px] w-[34px] flex-none place-items-center rounded-[11px] border border-sky/30 bg-[linear-gradient(160deg,#253063_0%,#0e1a37_100%)] text-sky transition-transform duration-[220ms]';
 
 /**
  * The design's ≤ 700 px per-section accordion (`.ja-cs` / `.ja-cstog`, CSS 292–308) — W10: the
@@ -16,7 +17,7 @@ const CHEVRON =
  * the body always shows. The section's own h2 + subtitle live OUTSIDE this toggle
  * (`_sections/CalcSection.tsx`, `max-md:sr-only`), so the outline is the same at every width. The
  * server renders it closed and the first client render matches (no effect, no hydration
- * mismatch). The chevron is a text glyph (delta 9). The body stays a plain container: islands
+ * mismatch). The chevron is the design's SVG (`.ja-cschev`), rotated when open. The body stays a plain container: islands
  * inside it (`LazyIsland`) see no intersection while it is `display:none`, so a collapsed
  * section loads nothing on phones.
  */
@@ -47,7 +48,7 @@ export function SectionToggle({
           </span>
         </span>
         <span aria-hidden="true" className={open ? `${CHEVRON} rotate-180` : CHEVRON}>
-          ▾
+          <ChevronDownIcon size={14} />
         </span>
       </button>
       <div

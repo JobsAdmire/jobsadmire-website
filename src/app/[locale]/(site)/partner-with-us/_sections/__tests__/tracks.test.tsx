@@ -5,7 +5,6 @@ import { describe, expect, it, vi } from 'vitest';
 import { BundleSchema, type Bundle } from '../../../../../../../contract/website-bundle.v1';
 import { getCollection } from '@/content/collections';
 import { makeTf } from '@/content/pure';
-import tr from '@/messages/tr.json';
 import { renderWithIntl } from '@/test/render';
 import { countryOptions } from '../../_lib/country-options';
 import { HrAgencyForm, InstituteForm, SourcingPartnerForm, type FormDoor } from '../PartnerForms';
@@ -45,13 +44,27 @@ const countries = countryOptions(
   'tr',
 );
 const tokens = (el: Element | null) => (el?.getAttribute('class') ?? '').split(/\s+/);
-/** The visible label of the control with this id, without the required asterisk. */
+/** The label of the control with this id (visually hidden in the placeholder-only face, still
+ *  the accessible name), without the required asterisk. */
 const labelOf = (id: string) =>
   document.querySelector(`label[for="${id}"]`)?.textContent?.replace(/\s*\*$/, '');
+/** SHARED 4.1: every field keeps its package label as the accessible name and shows the same
+ *  words as its placeholder (a select names itself in its empty first option). */
 function expectLabels(scope: string, expected: [string, string][]) {
+  // the visible controls, in DOM order (the honeypot sits in an aria-hidden box)
+  const names = [
+    ...document.querySelectorAll('input:not([type=hidden]):not([type=checkbox]), select, textarea'),
+  ]
+    .filter((el) => !el.closest('[aria-hidden="true"]'))
+    .map((el) => el.getAttribute('name'));
+  expect(names).toEqual(expected.map(([name]) => name));
   for (const [name, text] of expected) {
-    expect(document.querySelector(`[name="${name}"]`)).toHaveAttribute('id', `f-${scope}-${name}`);
+    const el = document.querySelector(`[name="${name}"]`);
+    expect(el).toHaveAttribute('id', `f-${scope}-${name}`);
     expect(labelOf(`f-${scope}-${name}`), name).toBe(text);
+    if (el?.tagName === 'SELECT')
+      expect((el as HTMLSelectElement).options[0].textContent).toBe(text);
+    else expect(el, name).toHaveAttribute('placeholder', text);
   }
 }
 
@@ -212,9 +225,11 @@ describe('the three form shells (W3/W16/W79/W115)', () => {
     expect(form.querySelector('#f-partner-hr-consent')).toHaveAttribute('type', 'checkbox');
     expect(form.querySelector('[name="licenceDeclaration"]')).toBeNull();
     expect(form.querySelector('[name="country"]')).toBeNull(); // TR comes from the mapper (W3)
-    expect(within(form).getByRole('button', { name: tf('partner.092') })).toHaveAttribute(
-      'type',
-      'submit',
+    const submit = within(form).getByRole('button', { name: tf('partner.092') });
+    expect(submit).toHaveAttribute('type', 'submit');
+    // S6.3: full width, r10, the track colour (the contrast-safe blue)
+    expect(tokens(submit)).toEqual(
+      expect.arrayContaining(['w-full', 'rounded-[10px]', 'bg-blue-safe']),
     );
     const card = document.getElementById('apply-hr');
     expect(card).toContainElement(form);
@@ -222,9 +237,13 @@ describe('the three form shells (W3/W16/W79/W115)', () => {
       tf('partner.086'),
     );
     expect(card).toHaveTextContent('4 iş saati');
+    // S6.4: the 135° gradient head
+    expect(tokens(card?.firstElementChild ?? null)).toEqual(
+      expect.arrayContaining(['bg-gradient-to-br', 'from-blue-safe', 'to-blue-deep']),
+    );
   });
 
-  it('sourcing partner: the ISO-2 select (64 rows, source countries first), licence, candidatesPerYear, the declaration beside the consent', () => {
+  it('sourcing partner: the design fields in order — the ISO-2 select (64 rows, source countries first), licence — and the declaration beside the consent', () => {
     renderWithIntl(<SourcingPartnerForm locale="tr" tf={tf} door={door} countries={countries} />);
     const form = screen.getByTestId('partner-form-sourcing');
     expect(form).toHaveAttribute('data-form-key', 'partner');
@@ -235,11 +254,10 @@ describe('the three form shells (W3/W16/W79/W115)', () => {
       ['licence', tf('partner.116')],
       ['email', tf('partner.117')],
       ['phone', tf('partner.097')],
-      ['candidatesPerYear', tr.sys.form.labels.candidatesPerYear],
       ['trades', tf('partner.118')],
     ]);
     const select = form.querySelector('select[name="country"]') as HTMLSelectElement;
-    expect(select.options).toHaveLength(65); // sys.form.placeholders.select + 64 rows (W111)
+    expect(select.options).toHaveLength(65); // the field's own name + 64 rows (W111)
     expect(select.options[0].value).toBe('');
     expect(select.options[1].value).toBe('PK');
     expect(form.querySelector('#f-partner-sourcing-licenceDeclaration')).toHaveAttribute(
@@ -248,28 +266,39 @@ describe('the three form shells (W3/W16/W79/W115)', () => {
     );
     expect(labelOf('f-partner-sourcing-licenceDeclaration')).toBe(tf('partner.114'));
     expect(form.querySelector('#f-partner-sourcing-consent')).toHaveAttribute('type', 'checkbox');
-    expect(form.querySelector('[name="phone"]')).toHaveAttribute('placeholder', '');
+    // the placeholder-only face: the phone shows its own label, never the kernel's +90 example
+    expect(form.querySelector('[name="phone"]')).toHaveAttribute('placeholder', tf('partner.097'));
+    expect(form.querySelector('[name="candidatesPerYear"]')).toBeNull();
+    expect(tokens(within(form).getByRole('button', { name: tf('partner.092') }))).toContain(
+      'bg-success-text',
+    );
     expect(document.getElementById('apply-agent')).toContainElement(form);
   });
 
-  it('institute: its own name label, an optional city beside the country select, no licence and no declaration', () => {
+  it('institute: its own name label, the country select beside the contact person, no licence and no declaration', () => {
     renderWithIntl(<InstituteForm locale="tr" tf={tf} door={door} countries={countries} />);
     const form = screen.getByTestId('partner-form-institute');
     expect(form).toHaveAttribute('data-form-key', 'partner');
     expectLabels('partner-institute', [
       ['company', tf('partner.134')],
       ['name', tf('partner.094')],
-      ['city', tr.sys.form.labels.city],
       ['country', tf('partner.115')],
       ['email', tf('partner.117')],
       ['phone', tf('partner.097')],
-      ['candidatesPerYear', tr.sys.form.labels.candidatesPerYear],
       ['trades', tf('partner.136')],
     ]);
-    expect(form.querySelector('[name="city"]')).not.toBeRequired();
+    expect(form.querySelector('[name="city"]')).toBeNull();
     expect(form.querySelector('[name="licence"]')).toBeNull();
     expect(form.querySelector('[name="licenceDeclaration"]')).toBeNull();
     expect(form.querySelector('#f-partner-institute-consent')).toHaveAttribute('type', 'checkbox');
-    expect(document.getElementById('apply-inst')).toContainElement(form);
+    const card = document.getElementById('apply-inst');
+    expect(card).toContainElement(form);
+    // the indigo submit and ticks reach the kernel's controls from the card body (no variant)
+    expect(tokens(form.parentElement)).toEqual(
+      expect.arrayContaining([
+        '[&_button[type=submit]]:bg-[#35468a]',
+        '[&_input[type=checkbox]]:accent-[#35468a]',
+      ]),
+    );
   });
 });

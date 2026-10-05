@@ -32,9 +32,9 @@ const range = (from: number, to: number) =>
   Array.from({ length: to - from + 1 }, (_, i) => `partner.${String(from + i).padStart(3, '0')}`);
 
 describe('PARTNER_PACKAGE_IDS', () => {
-  it('lists 162 distinct partner ids, first partner.002, last partner.223', () => {
+  it('lists 165 distinct partner ids, first partner.002, last partner.223', () => {
     expect(new Set(PARTNER_PACKAGE_IDS).size).toBe(PARTNER_PACKAGE_IDS.length);
-    expect(PARTNER_PACKAGE_IDS).toHaveLength(162);
+    expect(PARTNER_PACKAGE_IDS).toHaveLength(165);
     for (const id of PARTNER_PACKAGE_IDS) expect(id).toMatch(/^partner\.\d{3}$/);
     expect(PARTNER_PACKAGE_IDS[0]).toBe('partner.002');
     expect(PARTNER_PACKAGE_IDS[PARTNER_PACKAGE_IDS.length - 1]).toBe('partner.223');
@@ -54,21 +54,21 @@ describe('PARTNER_PACKAGE_IDS', () => {
       ...range(9, 15),
       ...range(17, 22), // chrome labels + the CTA_BY_PATHNAME pair 017/018 (R15/W17)
       'partner.034', // hero photo alt — gradient hero (§10 #4)
-      'partner.037',
-      'partner.039',
-      'partner.045', // captions of the unsigned 5+/20+/25+ figures (W1)
       'partner.088',
       'partner.089', // inline success banner → /tesekkurler (D13)
       'partner.090',
       'partner.091', // the KVKK sentence → the kernel consent (W79)
-      'partner.135', // "City, country" → city + the ISO-2 select
+      'partner.135', // "City, country" → the ISO-2 select
       'partner.162',
-      'partner.163', // store micro-copy → StoreBadges reads hire.240 (W7)
+      'partner.163', // store micro-copy → StoreBadges reads contact.143/144 + hire.240/241 (W7)
       ...range(191, 221), // footer chrome (R15)
     ];
-    expect(notRead).toHaveLength(61);
+    expect(notRead).toHaveLength(58);
     for (const id of notRead) expect(PARTNER_PACKAGE_IDS, id).not.toContain(id);
-    // 223 − 61 = 162: every other partner id is read by this page.
+    // 223 − 58 = 165: every other partner id is read by this page — the sample figures' captions
+    // partner.037/039/045 too (owner 2026-10-05).
+    for (const id of ['partner.037', 'partner.039', 'partner.045'])
+      expect(PARTNER_PACKAGE_IDS).toContain(id);
     expect([...notRead, ...PARTNER_PACKAGE_IDS].sort()).toEqual(range(1, 223));
   });
 

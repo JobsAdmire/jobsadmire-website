@@ -11,5 +11,12 @@ import type { Logo } from '@/design/blocks/LogoMarquee';
 export const HERO_SRC: string | null = '/hero/hire-workers.jpg';
 export const HERO_SIZE = { width: 1440, height: 640 } as const;
 
-/** §10 #11: client logos with consent are v1.1 — the band stays empty (W6) until rows exist. */
+/** §10 #11: client logos with consent are v1.1 — no row exists yet (W6). */
 export const CLIENT_LOGOS: readonly Logo[] = [];
+
+/** Owner 2026-10-05 (data-gated sections show the design's sample, tagged): until consented logos
+ *  exist the band shows the design's labelled placeholder slots — `logoSlots` (Hire Workers
+ *  ll. 1923–1926) is 20 slots of `client-logo-1…10` twice, the marquee's loop; ours are the ten
+ *  distinct ones (`PausableMarquee` draws the second copy), each labelled `hire.245` + N
+ *  ("Müşteri logosu N"). A page-local constant, never a fixture (D23). */
+export const CLIENT_LOGO_SLOT_COUNT = 10;

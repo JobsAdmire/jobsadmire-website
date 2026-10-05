@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react';
 import type { Locale } from '@/i18n/routing';
 import { formatInt } from '@/lib/format/money';
+import type { StoryCardData } from './stories';
 
 /** The synthetic "all sectors" filter value (`success.124` "All sectors") — shared by the page
  *  (building the first chip option) and the island (the default filter state and its
@@ -33,4 +35,28 @@ export function wallResultLabels(
     : templates.showingFiltered
         .replace('{shown}', formatInt(shown, locale))
         .replace('{total}', formatInt(total, locale));
+}
+
+/** A card as the island receives it: the resolved labels plus its two document frames, rendered
+ *  on the server (`ApprovalFrame` — `ImageSlot` and the watermark read `sys.*` namespaces that
+ *  stay out of `CLIENT_SYS`, W148) and handed in as React nodes: the grid card's 250 px frame
+ *  and the phone slider's 172 px one. */
+export type WallCard = StoryCardData & { frame: ReactNode; slideFrame: ReactNode };
+
+/** The design's phone wall (≤ 700 px, `.ja-ss-slider` / `.ja-ss-grid` / `.ja-ss-more`): the
+ *  first three approvals of the current filter ride the swipe slider; the compact list below it
+ *  carries the rest — cards 4–7 at first, every card after "Tüm onayları göster". */
+export const PHONE_SLIDES = 3;
+export const PHONE_LIST_FIRST = 7;
+
+/** `.ja-ss-listempty` (≤ 3 cards: the slider holds them all, no list) and `.ja-ss-nomore`
+ *  (≤ 7: no "show all" toggle). */
+export function phoneWall(count: number): { listEmpty: boolean; hasMore: boolean } {
+  return { listEmpty: count <= PHONE_SLIDES, hasMore: count > PHONE_LIST_FIRST };
+}
+
+/** Whether the compact list hides the card at `index` on a phone: the slider's three, and —
+ *  until the visitor opens the list — everything past the seventh. */
+export function phoneHidden(index: number, moreOpen: boolean): boolean {
+  return index < PHONE_SLIDES || (!moreOpen && index >= PHONE_LIST_FIRST);
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { countryName, dialForCode, dialOptions } from '../countries';
+import { countryName, dialForCode } from '../countries';
 
 const rows = [
   { code: 'TR', name: 'Türkiye', dial: '+90' },
@@ -23,16 +23,5 @@ describe('countryName', () => {
   });
   it('throws outside production for a code the collection lacks (never a silent blank label)', () => {
     expect(() => countryName(rows, 'XX')).toThrow(/XX/);
-  });
-});
-
-describe('dialOptions', () => {
-  it('is ISO-2 valued, "<name> <dial>" labelled and sorted by the locale collation (W3)', () => {
-    expect(dialOptions(rows, 'tr')).toEqual([
-      { value: 'DE', label: 'Almanya +49' },
-      { value: 'US', label: 'Amerika Birleşik Devletleri +1' },
-      { value: 'PK', label: 'Pakistan +92' },
-      { value: 'TR', label: 'Türkiye +90' },
-    ]);
   });
 });

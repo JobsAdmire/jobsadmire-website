@@ -1,5 +1,12 @@
 'use client';
-import { buttonClassName, type ButtonVariant } from '@/design/primitives/Button';
+import type { ReactNode } from 'react';
+import {
+  buttonClassName,
+  withIcons,
+  type ButtonRadius,
+  type ButtonShape,
+  type ButtonVariant,
+} from '@/design/primitives/Button';
 import { openQuote, prefetchQuoteSheet } from './quote-store';
 
 /** One of the page's written-quote CTAs (`calc.011`, `calc.036`, `calc.105` — W3). A button, not
@@ -11,12 +18,19 @@ export function QuoteButton({
   size = 'md',
   className,
   testId,
+  shape,
+  radius,
+  icon,
 }: {
   label: string;
   variant?: ButtonVariant;
   size?: 'md' | 'lg';
   className?: string;
   testId?: string;
+  /** the design's r11 rectangles (Calculator S1.7 / S12) and a leading glyph */
+  shape?: ButtonShape;
+  radius?: ButtonRadius;
+  icon?: ReactNode;
 }) {
   return (
     <button
@@ -26,9 +40,9 @@ export function QuoteButton({
       onClick={openQuote}
       onPointerEnter={prefetchQuoteSheet}
       onFocus={prefetchQuoteSheet}
-      className={buttonClassName(variant, size, className)}
+      className={buttonClassName(variant, size, className, { shape, radius })}
     >
-      {label}
+      {withIcons(label, icon)}
     </button>
   );
 }

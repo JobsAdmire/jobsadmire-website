@@ -6,8 +6,10 @@
  * src/design/primitives/RadioChips.tsx so the island's arrival does not move a box — a change to
  * one of those faces is mirrored here. No directive: server fallbacks render these.
  */
+import { ChevronDownIcon } from './icons';
+
 const STEP_BTN =
-  'inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-border-1 bg-white text-body font-extrabold text-ink';
+  'inline-flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] border-[1.5px] border-field-border bg-white text-[19px] font-extrabold leading-none';
 
 /** Final pass B4: the ≤ 700 px classes `Stepper stretch` / `RadioChips stretch` wear — copied, not
  *  imported: those are `'use client'` modules, whose non-component exports reach a server module
@@ -33,12 +35,14 @@ export function StepperLook({ value, stretch = false }: { value: string; stretch
       className={['flex flex-col gap-1', stretch && STEPPER_STRETCH.root].filter(Boolean).join(' ')}
     >
       <div
-        className={['flex items-stretch', stretch && STEPPER_STRETCH.row].filter(Boolean).join(' ')}
+        className={['flex items-center gap-2.5', stretch && STEPPER_STRETCH.row]
+          .filter(Boolean)
+          .join(' ')}
       >
-        <span className={`${btn} rounded-l-input`}>−</span>
+        <span className={`${btn} ${value === '1' ? 'text-[#cbd5e1]' : 'text-blue-safe'}`}>−</span>
         <span
           className={[
-            'grid w-20 place-items-center border-y border-border-1 bg-white text-body font-extrabold tabular-nums',
+            'grid w-[78px] place-items-center rounded-[10px] border-[1.5px] border-field-border bg-white px-2 py-2.5 text-[16px] font-extrabold tabular-nums text-ink',
             stretch && STEPPER_STRETCH.input,
           ]
             .filter(Boolean)
@@ -46,25 +50,31 @@ export function StepperLook({ value, stretch = false }: { value: string; stretch
         >
           {value}
         </span>
-        <span className={`${btn} rounded-r-input`}>+</span>
+        <span className={`${btn} text-blue-safe`}>+</span>
       </div>
     </div>
   );
 }
 
-const CHIP =
-  'inline-flex min-h-[44px] items-center rounded-pill border px-4 text-body-sm font-bold';
-const CHIP_ON = 'border-tint-border bg-tint text-blue-safe';
+/** mirrors RadioChips: `face="solid"` checked, and `compact` (r9, 36 px, 13 px) or the pill */
+const CHIP = {
+  pill: 'inline-flex min-h-[44px] items-center rounded-pill border px-4 text-body-sm font-bold',
+  compact:
+    'inline-flex min-h-9 items-center rounded-[9px] border px-3 text-[13px] font-bold xl:text-[11px]',
+} as const;
+const CHIP_ON = 'border-blue-safe bg-blue-safe text-white';
 const CHIP_OFF = 'border-border-1 bg-white text-text-secondary';
 
 export function ChipsLook({
   options,
   value,
   stretch = false,
+  compact = false,
 }: {
   options: readonly { value: string; label: string }[];
   value: string | null;
   stretch?: boolean;
+  compact?: boolean;
 }) {
   return (
     <div
@@ -83,7 +93,7 @@ export function ChipsLook({
         <span
           key={o.value}
           className={[
-            CHIP,
+            compact ? CHIP.compact : CHIP.pill,
             o.value === value ? CHIP_ON : CHIP_OFF,
             stretch && `${CHIPS_STRETCH.label} ${CHIPS_STRETCH.chip}`,
           ]
@@ -118,12 +128,16 @@ export function SliderLook({
     <div className="flex flex-col gap-2">
       <div className="flex items-baseline justify-between gap-4">
         <span className="text-body-sm font-bold">{label}</span>
-        <span className="text-body font-extrabold tabular-nums">{value}</span>
+        <span className="text-body font-extrabold tabular-nums text-blue-safe">{value}</span>
       </div>
       <div aria-hidden="true" className="relative h-4">
         <span className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 rounded-pill bg-border-1" />
         <span
-          className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-pill bg-blue-safe"
+          className="absolute top-1/2 left-0 h-1 -translate-y-1/2 rounded-pill bg-blue"
+          style={{ width: `${pct}%` }}
+        />
+        <span
+          className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-pill bg-blue"
           style={{ left: `${pct}%` }}
         />
       </div>
@@ -165,7 +179,7 @@ export function SelectLook({ text, className }: { text: string; className?: stri
         .join(' ')}
     >
       <span className="truncate">{text}</span>
-      <span className="text-body-sm text-text-tertiary">▾</span>
+      <ChevronDownIcon size={14} className="shrink-0 text-text-tertiary" />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { BundleSchema } from '../../../../../../contract/website-bundle.v1';
 import {
   readStories,
   readTestimonials,
+  sampleStoryCards,
   storyCards,
   StorySchema,
   type Story,
@@ -35,7 +36,12 @@ const COUNTRIES = [
 const STRINGS = {
   'hire.078': 'Turizm / Konaklama',
   'hire.076': 'Fabrika / Üretim',
+  'hire.082': 'Diğer',
   'success.041': 'çalışma izni',
+  'success.125': 'Otel ve turizm',
+  'success.127': 'Fabrika',
+  'success.150': 'Dosyada onay ·',
+  'success.151': 'işçiyi kapsıyor',
 };
 
 describe('the stories collection can never be served from LOCAL in production (D23)', () => {
@@ -50,7 +56,7 @@ describe('the stories collection can never be served from LOCAL in production (D
     // The same rows from Operations (Phase B) are fine — that is the whole point of the guard.
     expect(() => assertServableInProduction(bundle, 'OPS', 'production')).not.toThrow();
   });
-  it('the committed LOCAL bundles carry no stories (or testimonial) rows, so a production build serves the W6 empty wall', () => {
+  it('the committed LOCAL bundles carry no stories (or testimonial) rows, so a production build serves the page-local sample, never a fixture', () => {
     for (const locale of ['tr', 'en'] as const) {
       // readFileSync, never an import: `**/content/local/*` is import-banned in src/** (the D23
       // ESLint rule); `src/content/local-bundle.test.ts` reads the same files the same way.
@@ -99,8 +105,8 @@ describe('readStories', () => {
   });
 });
 
-describe('storyCards', () => {
-  it('resolves labels for the island: sector label, localized month, country names, headcount', () => {
+describe('storyCards (the real path)', () => {
+  it('resolves labels for the island: the covering wall chip, localized month, country names, headcount, document line', () => {
     const bundle = testBundle({
       strings: STRINGS,
       collections: { stories: [ROW], sectors: SECTORS, countries: COUNTRIES },
@@ -108,18 +114,41 @@ describe('storyCards', () => {
     const [card] = storyCards(bundle, 'tr', readStories(bundle));
     expect(card).toEqual({
       id: 'AP-2026-118',
-      sector: 'tourism',
-      sectorLabel: 'Turizm / Konaklama',
+      // the site's `tourism` files under the design's "Otel ve turizm" chip (WALL_SECTOR_OF)
+      sector: 'hotels',
+      sectorLabel: 'Otel ve turizm',
       roles: 'Kat görevlileri, mutfak yardımcıları',
-      headcountLabel: '12 çalışma izni',
+      headcount: '12',
       monthLabel: 'Haziran 2026',
       place: 'Antalya',
       countries: ['Kırgızistan', 'Pakistan'],
+      docLabel: 'Dosyada onay · 12 işçiyi kapsıyor',
     });
+  });
+  it('keeps a sector no chip covers (`other`) under its own key and site label', () => {
+    const bundle = testBundle({
+      strings: STRINGS,
+      collections: {
+        stories: [{ ...ROW, sector: 'other' }],
+        sectors: [
+          ...SECTORS,
+          { key: 'other', labelId: 'hire.082', subtitleId: null, icon: 'other' },
+        ],
+        countries: COUNTRIES,
+      },
+    });
+    const [card] = storyCards(bundle, 'tr', readStories(bundle));
+    expect(card.sector).toBe('other');
+    expect(card.sectorLabel).toBe('Diğer');
   });
   it('formats the headcount per locale (D18) and falls back to the code for an unknown country', () => {
     const bundle = testBundle({
-      strings: { ...STRINGS, 'success.041': 'work permits' },
+      strings: {
+        ...STRINGS,
+        'success.125': 'Hotels & tourism',
+        'success.150': 'Approval on file ·',
+        'success.151': 'workers covered',
+      },
       collections: {
         stories: [{ ...ROW, headcount: 1240, countries: ['ZZ'] }],
         sectors: SECTORS,
@@ -127,7 +156,8 @@ describe('storyCards', () => {
       },
     });
     const [card] = storyCards(bundle, 'en', readStories(bundle));
-    expect(card.headcountLabel).toBe('1,240 work permits');
+    expect(card.headcount).toBe('1,240');
+    expect(card.docLabel).toBe('Approval on file · 1,240 workers covered');
     expect(card.monthLabel).toBe('June 2026');
     expect(card.countries).toEqual(['ZZ']);
   });
@@ -141,6 +171,28 @@ describe('storyCards', () => {
       'AP-2026-118',
       'AP-2025-063',
     ]);
+  });
+});
+
+describe('sampleStoryCards (Phase A: the design’s nine sample approvals)', () => {
+  it('builds the nine cards in the design’s order from the committed TR bundle’s package ids', () => {
+    const raw = readFileSync(join(process.cwd(), 'src/content/local', 'bundle.tr.json'), 'utf8');
+    const bundle = BundleSchema.parse(JSON.parse(raw));
+    const cards = sampleStoryCards(bundle, 'tr');
+    expect(cards.map((c) => c.id)).toEqual(['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9']);
+    expect(cards[0]).toEqual({
+      id: 'a1',
+      sector: 'hotels',
+      sectorLabel: 'Otel ve turizm',
+      roles: 'Kat görevlileri, mutfak yardımcıları, çamaşırhane',
+      headcount: '45',
+      monthLabel: 'Ağustos 2025',
+      place: 'Kemer, Antalya',
+      countries: ['Özbekistan', 'Nepal'],
+      docLabel: 'Dosyada onay · 45 işçiyi kapsıyor',
+    });
+    expect(cards[5].sectorLabel).toBe('Restoranlar');
+    expect(cards[5].countries).toEqual(['Endonezya', 'Filipinler']);
   });
 });
 

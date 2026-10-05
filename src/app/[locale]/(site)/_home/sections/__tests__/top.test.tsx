@@ -1,7 +1,7 @@
-import { screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { act, fireEvent, screen, within } from '@testing-library/react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderWithIntl } from '@/test/render';
-import { homeBundle, withCollections } from '../../__tests__/fixtures';
+import { homeBundle } from '../../__tests__/fixtures';
 import { ChoiceCards } from '../ChoiceCards';
 import { Hero } from '../Hero';
 import { LiveCaseBar } from '../LiveCaseBar';
@@ -79,17 +79,16 @@ describe('Hero (D26, W1, W6, W10, W17)', () => {
     expect(document.body.textContent).not.toMatch(/\{[a-zA-Z]+\}/);
   });
 
-  it('hides the proof cell without stories and shows it once stories has rows (W6)', () => {
-    const { unmount } = renderWithIntl(<Hero locale="tr" bundle={TR} form={FORM} />);
-    expect(screen.queryByTestId('hero-proof')).toBeNull();
-    unmount();
-    renderWithIntl(
-      <Hero locale="tr" bundle={withCollections(TR, { stories: [{ title: 'x' }] })} form={FORM} />,
-    );
-    expect(screen.getByTestId('hero-proof').querySelector('a')).toHaveAttribute(
+  it('the fourth stats cell is the static link to the approvals, hidden at ≤ 460 px (S1.5)', () => {
+    renderWithIntl(<Hero locale="tr" bundle={TR} form={FORM} />);
+    const proof = screen.getByTestId('hero-proof');
+    expect(within(proof).getByRole('link', { name: TR.strings['home.053'] })).toHaveAttribute(
       'href',
       '/basari-hikayeleri',
     );
+    expect(proof).toHaveTextContent(TR.strings['home.054']);
+    expect(proof).toHaveClass('max-xs:hidden');
+    expect(screen.getByTestId('hero-stats')).toContainElement(proof);
   });
 
   it('hides the badge and the CTA row at ≤ 460 px by class, never by removal (W10)', () => {
@@ -104,24 +103,50 @@ describe('Hero (D26, W1, W6, W10, W17)', () => {
   });
 });
 
-describe('LiveCaseBar (W6/D23)', () => {
-  it('renders nothing without signed stories', () => {
-    const { container } = renderWithIntl(<LiveCaseBar locale="tr" bundle={TR} />);
-    expect(container).toBeEmptyDOMElement();
+describe('LiveCaseBar (owner 2026-10-05: the design sample, page-local — D23)', () => {
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
-  it('shows the newest story title and the approvals link once stories has rows', () => {
-    renderWithIntl(
-      <LiveCaseBar
-        locale="tr"
-        bundle={withCollections(TR, { stories: [{ title: 'Çalışma izni onaylandı' }] })}
-      />,
-    );
-    expect(screen.getByTestId('live-case-bar')).toHaveTextContent('Çalışma izni onaylandı');
+  it('shows the first sample case with the sample tag, the approvals link and a pause toggle', () => {
+    renderWithIntl(<LiveCaseBar locale="tr" bundle={TR} />);
+    const bar = screen.getByTestId('live-case-bar');
+    expect(bar).toHaveTextContent(TR.strings['home.201']);
+    expect(bar.querySelector('[data-sample-tag]')).not.toBeNull();
+    const line = screen.getByTestId('case-line');
+    expect(line).toHaveTextContent(TR.strings['home.275']);
+    expect(line).toHaveTextContent(TR.strings['home.280']);
+    expect(line).toHaveTextContent('JA-1042');
+    expect(line).toHaveTextContent(TR.strings['home.279']);
+    expect(line).not.toHaveAttribute('aria-live');
     expect(screen.getByRole('link', { name: TR.strings['home.055'] })).toHaveAttribute(
       'href',
       '/basari-hikayeleri',
     );
+    expect(screen.getByRole('button', { name: 'Duraklat' })).toHaveClass('motion-reduce:hidden');
+  });
+
+  it('rotates every 4.5 s through the six cases (derived recency through sys) and holds when paused', () => {
+    vi.useFakeTimers();
+    renderWithIntl(<LiveCaseBar locale="en" bundle={EN} />, { locale: 'en' });
+    const line = () => screen.getByTestId('case-line');
+    act(() => {
+      vi.advanceTimersByTime(4500);
+    });
+    expect(line()).toHaveTextContent(EN.strings['home.276']);
+    expect(line()).toHaveTextContent(EN.strings['home.289']); // "yesterday"
+    act(() => {
+      vi.advanceTimersByTime(4500);
+    });
+    expect(line()).toHaveTextContent(EN.strings['home.283']);
+    expect(line()).toHaveTextContent('JA-1062');
+    expect(line()).toHaveTextContent('4 days ago');
+    fireEvent.click(screen.getByRole('button', { name: 'Pause' }));
+    expect(screen.getByRole('button', { name: 'Play' })).toBeInTheDocument();
+    act(() => {
+      vi.advanceTimersByTime(13500);
+    });
+    expect(line()).toHaveTextContent(EN.strings['home.283']);
   });
 });
 
@@ -134,17 +159,50 @@ describe('ChoiceCards (≤ 460 px only, W10)', () => {
   });
 });
 
-describe('PoolSection (W6 empty state)', () => {
-  it('stands in for the candidate cards with the request door', () => {
+describe('PoolSection (owner 2026-10-05: the design sample, page-local — D23)', () => {
+  it('six sample profiles with the sample tag, placeholder photos, the head and footer doors', () => {
     renderWithIntl(<PoolSection locale="tr" bundle={TR} />);
-    const empty = screen.getByTestId('pool-empty');
-    expect(empty).toHaveAttribute('role', 'status');
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'Aday profilleri yakında burada' }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Aday talep edin →' })).toHaveAttribute(
+    const pool = screen.getByTestId('pool');
+    expect(pool.querySelector('[data-sample-tag]')).not.toBeNull();
+    expect(within(pool).getByRole('heading', { level: 2 })).toHaveTextContent(
+      TR.strings['home.063'],
+    );
+    expect(within(pool).getByRole('link', { name: TR.strings['home.064'] })).toHaveAttribute(
       'href',
       '/adaylar',
     );
+    // two copies of the six: the second is the loop filler, hidden and inert
+    expect(pool.querySelectorAll('[data-pool-card]')).toHaveLength(12);
+    const filler = pool.querySelector('[data-testid="pool-track"] > [aria-hidden="true"]')!;
+    expect(filler).toHaveAttribute('inert');
+    expect(filler.querySelectorAll('[data-pool-card]')).toHaveLength(6);
+    const first = pool.querySelector('[data-pool-card="JA-1042"]')!;
+    expect(first).toHaveAttribute('href', '/adaylar');
+    expect(first.querySelector('[data-placeholder="pool-JA-1042"]')).not.toBeNull();
+    expect(first.querySelector('img')).toBeNull(); // never a real photo
+    expect(first).toHaveTextContent('Pakistan');
+    expect(first).toHaveTextContent(TR.strings['home.222']);
+    expect(first).toHaveTextContent(TR.strings['home.229']);
+    expect(first).toHaveTextContent('6 yıl');
+    expect(first).toHaveTextContent(TR.strings['home.235']);
+    expect(first).toHaveTextContent(TR.strings['home.065']);
+    expect(pool).toHaveTextContent(TR.strings['home.066']);
+    expect(
+      within(pool).getByRole('link', { name: TR.strings['home.067'] }).getAttribute('href'),
+    ).toBe('/adaylar');
+    expect(screen.getByTestId('pool-toggle')).toHaveTextContent('Duraklat');
+  });
+
+  it('EN: country names from sourceCountries, years through sys, the toggle pauses the track', () => {
+    renderWithIntl(<PoolSection locale="en" bundle={EN} />, { locale: 'en' });
+    const card = screen.getByTestId('pool').querySelector('[data-pool-card="JA-1077"]')!;
+    expect(card).toHaveTextContent('Uzbekistan');
+    expect(card).toHaveTextContent('4 yrs');
+    expect(card).toHaveTextContent('Fanuc');
+    const track = screen.getByTestId('pool-track');
+    expect(track.style.animationPlayState).toBe('');
+    fireEvent.click(screen.getByTestId('pool-toggle'));
+    expect(track.style.animationPlayState).toBe('paused');
+    expect(screen.getByTestId('pool-toggle')).toHaveTextContent('Play');
   });
 });

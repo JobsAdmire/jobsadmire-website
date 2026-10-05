@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { FormField } from '@/design/primitives/FormField';
 import { useFieldError, useFieldId, useRegisterField } from '@/forms/client/FormErrorsContext';
+import { PaperclipIcon } from './icons';
 import {
   checkEvidence,
   EVIDENCE_ACCEPT,
@@ -18,8 +19,15 @@ type Item = { id: string; name: string; state: ItemState; key?: string };
 /** The catalog wire name the hidden inputs carry; the file input itself has NO name (W101). */
 const KEYS_FIELD = 'evidenceKeys';
 
-const FILE_INPUT =
-  'block w-full rounded-input border border-border-1 bg-white p-2 text-body-sm text-ink file:mr-3 file:min-h-[36px] file:cursor-pointer file:rounded-pill file:border-0 file:bg-tint file:px-4 file:font-bold file:text-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe aria-[invalid=true]:border-danger';
+/** The native control covers the styled face and stays transparent (S4.1): the browser's own
+ *  "Choose Files / No file chosen" text — English on the Turkish page — never shows, while the
+ *  input keeps its name (the visually hidden label), its keyboard focus and its click target. */
+const FILE_INPUT = 'absolute inset-0 size-full cursor-pointer opacity-0';
+
+/** The face: the report box's dashed "attach" row (dark, like the fields above it). Its focus ring
+ *  follows the transparent input inside it. */
+const FACE =
+  'relative flex min-h-[48px] items-center gap-2.5 rounded-xs border-[1.5px] border-dashed border-white/30 bg-white/[0.04] px-3.5 py-2.5 text-white/85 transition-colors hover:border-white/50 hover:bg-white/[0.08] has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-sky has-[input[aria-invalid=true]]:border-[#fca5a5]';
 
 const TONE: Record<ItemState, string> = {
   uploading: 'text-text-secondary',
@@ -123,17 +131,31 @@ export function EvidenceUpload({ upload }: { upload: UploadEvidenceAction }) {
         label={sys('form.labels.evidence')}
         hint={sys('form.hints.evidence')}
         error={error}
+        labelMode="hidden"
+        hintVisible={false}
       >
         {(p) => (
-          <input
-            {...p}
-            ref={inputRef}
-            type="file"
-            multiple
-            accept={EVIDENCE_ACCEPT}
-            onChange={(e) => void onPick(e)}
-            className={FILE_INPUT}
-          />
+          <div className={FACE}>
+            <PaperclipIcon size={16} className="shrink-0 text-sky" />
+            <span aria-hidden="true" className="min-w-0">
+              <span className="block text-[14px] font-extrabold xl:text-[11px]">
+                {sys('form.labels.evidence')}
+                <span className="font-semibold text-white/65"> · {sys('form.hints.optional')}</span>
+              </span>
+              <span className="block text-[12px] leading-[1.45] font-semibold text-white/65 xl:text-[11px]">
+                {sys('form.hints.evidence')}
+              </span>
+            </span>
+            <input
+              {...p}
+              ref={inputRef}
+              type="file"
+              multiple
+              accept={EVIDENCE_ACCEPT}
+              onChange={(e) => void onPick(e)}
+              className={FILE_INPUT}
+            />
+          </div>
         )}
       </FormField>
       <div role="status" className="flex flex-col gap-1.5">
@@ -160,13 +182,13 @@ export function EvidenceUpload({ upload }: { upload: UploadEvidenceAction }) {
           ))}
         </ul>
         {tooMany ? (
-          <p className="m-0 text-body-sm font-bold text-danger">
+          <p className="m-0 text-body-sm font-bold text-[#fca5a5]">
             {sys('form.evidence.tooMany', { max: EVIDENCE_MAX_FILES })}
           </p>
         ) : null}
       </div>
       {held && uploading ? (
-        <p role="alert" className="m-0 text-body-sm font-bold text-danger">
+        <p role="alert" className="m-0 text-body-sm font-bold text-[#fca5a5]">
           {sys('form.evidence.wait')}
         </p>
       ) : null}

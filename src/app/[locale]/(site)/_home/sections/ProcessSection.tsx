@@ -15,10 +15,14 @@ const STEPS = [
 const SECTOR_CHIP_IDS = ['home.224', 'home.225', 'home.226', 'home.227'] as const;
 
 /** "How it works" (design lines 616–703): the sticky intro + effort box + sector chips on the
- *  left, the five steps as the shared `ProcessSteps` (`plain`) on the right. `when` labels are
- *  resolved here (home.107 carries `{homepageReplyHours}` → `makeTf`). The chips are hidden at
- *  ≤ 460 px (`.ja-tl-chips`, W10). From 1101 the intro column is 0.75fr, so the step pills stay
- *  near their titles in the 1240 px box (W230). The intro sticks at `--sticky-top`, below the
+ *  left, the five steps as the shared `ProcessSteps` `timeline` face on the right (SHARED 8.1:
+ *  dark phase pills right-aligned in an 84 px column left of the node, check nodes in ink / blue
+ *  / blue / navy / green, the blue → pale connectors growing down — `.ja-stagger`, `.ja-grow`).
+ *  `when` labels are resolved here (home.107 carries `{homepageReplyHours}` → `makeTf`). The chips
+ *  are hidden at ≤ 460 px (`.ja-tl-chips`, W10). The intro column is the design's 0.42fr at every
+ *  desktop width: W230 had widened it to 0.75fr from 1101 because the old `plain` face put the
+ *  pills at the far right of the 1240 px box; the timeline face keeps them beside the node, so the
+ *  design's split (and its two-line h2) is back. The intro sticks at `--sticky-top`, below the
  *  header at its real height (W232). */
 export function ProcessSection({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
@@ -32,7 +36,7 @@ export function ProcessSection({ locale, bundle }: SectionProps) {
     <Section tone="light" id="process" className="ja-reveal">
       <div
         data-testid="process"
-        className="container-site grid items-start gap-[34px] lg:grid-cols-[0.42fr_1fr] lg:gap-14 xl:grid-cols-[0.75fr_1fr] xl:gap-[42px]"
+        className="container-site grid items-start gap-[34px] lg:grid-cols-[0.42fr_1fr] lg:gap-14 xl:gap-[42px]"
       >
         <div className="min-w-0 lg:sticky lg:top-(--sticky-top) lg:self-start">
           <Eyebrow>{tf('home.091')}</Eyebrow>
@@ -65,7 +69,7 @@ export function ProcessSection({ locale, bundle }: SectionProps) {
           bundle={bundle}
           locale={locale}
           steps={steps}
-          variant="plain"
+          variant="timeline"
           headingLevel={3}
           motion="stagger"
         />

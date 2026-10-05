@@ -23,7 +23,7 @@ const SYS: Record<Loc, Json> = {
   tr: readJson('src/messages/tr.json').sys as Json,
   en: readJson('src/messages/en.json').sys as Json,
 };
-/** `sys.<path>` in one locale — e.g. `sysText('en', 'workers.empty.title')`. */
+/** `sys.<path>` in one locale — e.g. `sysText('en', 'workers.pool.filter')`. */
 const sysText = (locale: Loc, path: string): string =>
   path.split('.').reduce<unknown>((node, key) => (node as Json)[key], SYS[locale]) as string;
 
@@ -36,6 +36,15 @@ const isMobile = () => test.info().project.name === 'mobile';
 const escapeRe = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 /** A label matcher anchored at the start — a required field's label reads "Label *". */
 const label = (text: string) => new RegExp(`^${escapeRe(text)}`);
+/** A package string up to its first `{metric}` token — the static head of a filled string. */
+const head = (text: string) => text.split('{')[0].trim();
+
+/** M2: on phones the request card is collapsed behind its CTA until opened. */
+async function openRequestForm(page: Page) {
+  const cta = page.getByTestId('workers-form-cta');
+  if (await cta.isVisible()) await cta.getByRole('button').click();
+  await expect(page.getByTestId('workers-form')).toBeVisible();
+}
 
 /** W92: only `staging` and production carry the Operations door. A door-less face (this task's
  *  localhost build, any other preview) reports `ops.state: 'unconfigured'`, and the kernel then
@@ -104,7 +113,7 @@ async function jsonLdNodes(page: Page): Promise<JsonLdNode[]> {
 }
 
 for (const locale of ['tr', 'en'] as const) {
-  test(`${locale}: one page-h1, the aw-hero photo holding the only data-lcp-slot, no placeholder, no leaked id or token (D26/W55/W1/W233)`, async ({
+  test(`${locale}: one page-h1, the aw-hero photo holding the only data-lcp-slot, only the sample avatars as placeholders, no leaked id or token (D26/W55/W1/W233)`, async ({
     page,
   }) => {
     const res = await page.goto(ROUTES[locale]);
@@ -122,13 +131,15 @@ for (const locale of ['tr', 'en'] as const) {
     const placeholders = await page
       .locator('[data-placeholder]')
       .evaluateAll((els) => els.map((el) => el.getAttribute('data-placeholder') ?? ''));
-    expect(placeholders).toEqual([]);
+    // the anonymised sample avatars are labelled image spots (blurred under a lock); nothing else
+    expect(placeholders.length).toBeGreaterThan(0);
+    for (const slot of placeholders) expect(slot).toMatch(/^aw-avatar-ja-\d+$/);
     const text = await page.locator('main').innerText();
     expect(text).not.toMatch(/\{[a-zA-Z]+\}|undefined|\[object /);
     expect(text).not.toMatch(/\b(?:availworkers|hire|wp)\.\d{3}\b/); // a package id as text
   });
 
-  test(`${locale}: the designed sections in order, #pool for the header CTA (W17/W152/W158), nothing pool-derived (W6/D2/D23)`, async ({
+  test(`${locale}: the designed sections in order, #pool for the header CTA (W17/W152/W158), the design's sample pool under its sample tag`, async ({
     page,
   }) => {
     await page.goto(ROUTES[locale]);
@@ -153,23 +164,29 @@ for (const locale of ['tr', 'en'] as const) {
     expect(await page.locator(`header a[href="${ROUTES[locale]}#pool"]`).count()).toBeGreaterThan(
       0,
     );
-    const empty = page.getByTestId('pool-empty');
-    await expect(empty).toBeVisible();
-    await expect(empty).toContainText(sysText(locale, 'workers.empty.title'));
-    await expect(empty.locator('a[href="#pool-form"]')).toHaveCount(1);
-    await expect(page.getByTestId('pool-live')).toHaveCount(0);
-    await expect(page.getByTestId('workers-pool')).not.toContainText(S[locale]['availworkers.052']);
-    await expect(page.getByTestId('workers-form-head')).toContainText(
-      sysText(locale, 'workers.form.titles.direct_employer'),
+    // the sample pool: the hero's live pill and the pool heading each wear the sample tag
+    await expect(page.getByTestId('pool-live')).toContainText(S[locale]['availworkers.023']);
+    await expect(page.getByTestId('workers-hero').locator('[data-sample-tag]')).toHaveCount(1);
+    await expect(page.getByTestId('workers-pool').locator('[data-sample-tag]')).toHaveCount(1);
+    await expect(page.getByTestId('workers-pool')).toContainText(S[locale]['availworkers.052']);
+    await expect(page.getByTestId('pool-stats')).toContainText('200+');
+    await expect(page.getByTestId('pool-grid').locator(':scope > li')).toHaveCount(
+      isMobile() ? 6 : 9,
     );
-    await expect(page.locator('#verified-steps > li')).toHaveCount(4);
+    await expect(page.getByTestId('pool-empty')).toHaveCount(0);
+    await expect(page.getByTestId('workers-form-head')).toContainText(
+      S[locale]['availworkers.107'],
+    );
+    await expect(page.locator('#verified-steps li')).toHaveCount(4);
     await expect(page.getByTestId('workers-after').locator('ol > li')).toHaveCount(4);
-    await expect(page.locator('#faq [data-accordion-trigger]')).toHaveCount(7);
-    await expect(page.locator('#faq')).not.toContainText(S[locale]['availworkers.210']);
+    await expect(page.locator('#faq [data-accordion-trigger]')).toHaveCount(8);
+    await expect(page.locator('#faq [data-accordion-trigger]').first()).toContainText(
+      S[locale]['availworkers.210'],
+    );
   });
 }
 
-test('en: metadata — the sys.seo.workers title and description, canonical, hreflang, OG image; one BreadcrumbList with the page own labels (W109), one FAQPage of seven', async ({
+test('en: metadata — the sys.seo.workers title and description, canonical, hreflang, OG image; one BreadcrumbList with the page own labels (W109), one FAQPage of eight', async ({
   page,
 }) => {
   await page.goto(ROUTES.en);
@@ -203,7 +220,7 @@ test('en: metadata — the sys.seo.workers title and description, canonical, hre
   ]);
   const faqs = nodes.filter((n) => n['@type'] === 'FAQPage');
   expect(faqs).toHaveLength(1);
-  expect(faqs[0].mainEntity as unknown[]).toHaveLength(7);
+  expect(faqs[0].mainEntity as unknown[]).toHaveLength(8);
   // the site-wide Organization/EmploymentAgency node once — the design's per-page block is not repeated
   expect(
     nodes.filter((n) => Array.isArray(n['@type']) && n['@type'].includes('EmploymentAgency')),
@@ -215,6 +232,7 @@ test('en: an empty submit answers field errors from the server action — nothin
 }) => {
   await page.goto(ROUTES.en);
   const s = S.en;
+  await openRequestForm(page);
   const form = page.getByTestId('workers-form');
   await form.getByRole('button', { name: label(s['availworkers.146']) }).click();
   const required = sysText('en', 'form.errors.required');
@@ -234,9 +252,14 @@ test('tr: a valid HR-agency request ends on the D11 panel without a door (W92) �
   test.skip(!(await doorless(page)), 'W92: this face carries the door — T14 owns real submissions');
   await page.goto(ROUTES.tr);
   const s = S.tr;
+  await openRequestForm(page);
   const form = page.getByTestId('workers-form');
-  await form.getByText(s['availworkers.147'], { exact: true }).click();
-  await expect(form.getByRole('radio', { name: s['availworkers.147'] })).toBeChecked();
+  await form.getByRole('tab', { name: s['availworkers.147'] }).click();
+  await expect(form.getByRole('tab', { name: s['availworkers.147'] })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await expect(form.locator('input[type="hidden"][name="iAm"]')).toHaveValue('hr_agency');
   await expect(page.getByTestId('workers-form-head')).toContainText(s['availworkers.148']);
   await form.getByLabel(label(s['availworkers.150'])).fill('Akdeniz İK A.Ş.');
   await form.getByLabel(label(s['availworkers.044'])).fill('Gate Runner');
@@ -244,11 +267,6 @@ test('tr: a valid HR-agency request ends on the D11 panel without a door (W92) �
   await form.getByLabel(label(s['availworkers.046'])).fill('+90 501 124 03 40');
   await form.getByLabel(label(s['availworkers.047'])).fill('Antalya');
   await form.getByLabel(label(s['availworkers.151'])).fill('2 kaynakçı, 3 aşçı');
-  await form.getByLabel(label(sysText('tr', 'form.labels.headcount'))).fill('5');
-  await form.getByLabel(label(sysText('tr', 'form.labels.startWhen'))).selectOption('month1');
-  await form
-    .getByLabel(label(sysText('tr', 'form.labels.message')))
-    .fill('Gate run — lütfen yok sayın.');
   await form.getByRole('checkbox').check(); // W79: the consent tick
   await form.getByRole('button', { name: label(s['availworkers.146']) }).click();
   const panel = form.getByTestId('form-fallback');
@@ -257,7 +275,7 @@ test('tr: a valid HR-agency request ends on the D11 panel without a door (W92) �
   await expect(panel).toBeFocused();
   expect(new URL(page.url()).pathname).toBe(ROUTES.tr);
   // The echo: the role and the typed values survive the failed submit.
-  await expect(form.getByRole('radio', { name: s['availworkers.147'] })).toBeChecked();
+  await expect(form.locator('input[type="hidden"][name="iAm"]')).toHaveValue('hr_agency');
   await expect(form.getByLabel(label(s['availworkers.044']))).toHaveValue('Gate Runner');
   expect(await page.locator('a[href*="Gate"], a[href*="kaynak"]').count()).toBe(0);
   await expectBareWhatsAppFallback(page, panel, 'Akdeniz İK A.Ş.');
@@ -276,9 +294,8 @@ test('desktop: the sticky bar carries Call / WhatsApp / #pool-form, tracks the c
   await expect(bar).toHaveCount(0);
   await page.evaluate(() => window.scrollTo(0, 1200));
   await expect(bar).toBeVisible();
-  await expect(bar).toContainText(
-    sysText('tr', 'workers.sticky.message').split('{hours}')[0].trim(),
-  );
+  await expect(bar).toContainText(head(S.tr['availworkers.048'])); // 048 over homepageReplyHours
+  await expect(bar).toHaveAttribute('data-tone', 'light');
   await expect(bar.locator(`a[href="${TEL}"]`)).toHaveCount(1);
   await expect(bar.locator(`a[href="${waHire('tr')}"]`)).toHaveCount(1); // the static prefill only (W95)
   await expect(bar.locator('a[href="#pool-form"]')).toHaveCount(1);
@@ -290,7 +307,7 @@ test('desktop: the sticky bar carries Call / WhatsApp / #pool-form, tracks the c
   await expect(bar).toHaveCount(0);
 });
 
-test('tr: every wa.me link carries only the catalogued prefill (W95); the hero WhatsApp and the ask-card e-mail fire page_cta (W12/W83)', async ({
+test('tr: every wa.me link carries only the catalogued prefill (W95); a WhatsApp door and the ask-card e-mail fire page_cta (W12/W83)', async ({
   page,
 }) => {
   await page.goto(ROUTES.tr);
@@ -298,19 +315,18 @@ test('tr: every wa.me link carries only the catalogued prefill (W95); the hero W
   const hrefs = await page
     .locator('main a[href^="https://wa.me/"]')
     .evaluateAll((as) => as.map((a) => a.getAttribute('href') ?? ''));
-  // the hero, the form footer, the FAQ ask card, the closing band (the sticky bar is not mounted at the top)
-  expect(hrefs).toHaveLength(4);
+  // the hero, the form footer, the FAQ ask card (its side copy and its phone copy after the list,
+  // M7), the closing band — the sticky bar is not mounted at the top, the basket bar is empty
+  expect(hrefs).toHaveLength(5);
   for (const href of hrefs) expect(href).toBe(waHire('tr'));
-  await page
-    .getByTestId('workers-hero')
-    .getByRole('link', { name: S.tr['availworkers.029'] })
-    .click();
+  // the hero's "Profil isteyin" on desktop; it gives way to the card's CTA on phones (M1)
+  await page.locator('main a[href^="https://wa.me/"]').filter({ visible: true }).first().click();
   const subject = encodeURIComponent(sysText('tr', 'workers.ask.emailSubject'));
   const mail = page
     .getByTestId('workers-faq')
     .locator(`a[href="mailto:${SETTINGS.email}?subject=${subject}"]`);
-  await expect(mail).toHaveCount(1);
-  await mail.click();
+  await expect(mail).toHaveCount(2); // the side copy (≥ 901 px) and the phone copy (M7)
+  await mail.filter({ visible: true }).click();
   expect(await pushed(page, 'whatsapp_click')).toEqual([
     { event: 'whatsapp_click', page: ROUTES.tr, locale: 'tr', placement: 'page_cta' },
   ]);

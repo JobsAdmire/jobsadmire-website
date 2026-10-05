@@ -1,6 +1,7 @@
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
 import { ContactCta } from '@/design/blocks/ContactCta';
 import { ImageSlot, type CoverHeights } from '@/design/blocks/ImageSlot';
+import { PhoneIcon, WhatsAppIcon } from '@/design/chrome/icons';
 import type { Locale } from '@/i18n/routing';
 import { telLink, waLink } from '@/lib/contact';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
@@ -100,7 +101,8 @@ export function Hero({
             {sp(h1b, h1c)}
             {h1c}
           </h1>
-          <p className="m-0 mb-7 max-w-[540px] text-body-lg text-white/80 max-md:mb-5">
+          {/* the design's lead and benefits are semibold (17.5 / 15.5 px, 600) */}
+          <p className="m-0 mb-7 max-w-[540px] text-body-lg font-semibold text-white/80 max-md:mb-5">
             <span className="max-md:hidden">{lead('hire.024', 'hire.025')}</span>
             <span className="md:hidden">{lead('hire.026', 'hire.027')}</span>
           </p>
@@ -111,7 +113,10 @@ export function Hero({
                 ['hire.030', 'hire.031'],
               ] as const
             ).map(([strong, tail]) => (
-              <li key={strong} className="flex items-start gap-2.5 text-body text-white/75">
+              <li
+                key={strong}
+                className="flex items-start gap-2.5 text-[15.5px] leading-[1.45] font-semibold text-white/75 max-md:text-[14.5px] max-md:leading-[1.4] xl:text-[11.625px]"
+              >
                 <CheckIcon className="mt-1 flex-none text-success-border" />
                 <span>
                   <strong className="text-white">{tf(strong)}</strong>
@@ -123,14 +128,21 @@ export function Hero({
           </ul>
           {/* ≤ 700 px the design hides this row — the mobile bottom bar carries both doors */}
           <div data-testid="hire-hero-ctas" className="mb-6 flex flex-wrap gap-3 max-md:hidden">
-            <ContactCta placement="page_cta" href={telLink(s.phone)} variant="inverse">
+            <ContactCta
+              placement="page_cta"
+              href={telLink(s.phone)}
+              variant="inverse"
+              icon={<PhoneIcon size={16} />}
+            >
               {tf('hire.032')}
             </ContactCta>
+            {/* the design's pale green WhatsApp face (#eafaf1, #bfe8cf edge) with its glyph */}
             <ContactCta
               placement="page_cta"
               href={waLink(s.whatsappNumber, tf('hire.249'))}
               variant="success"
               external
+              icon={<WhatsAppIcon size={16} />}
             >
               {whatsappLabel}
             </ContactCta>

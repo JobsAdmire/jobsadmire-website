@@ -134,7 +134,7 @@ describe('Message', () => {
       locale: 'en',
     });
     expect(container.querySelector('section#message')).not.toBeNull();
-    const steps = container.querySelectorAll('ol[data-variant="plain"] > li');
+    const steps = container.querySelectorAll('ol[data-variant="tint"] > li');
     expect(steps).toHaveLength(4);
     expect(steps[3]).toHaveTextContent('Written numbers within 24 hours');
     const qr = within(screen.getByTestId('contact-qr')).getByRole('img', {
@@ -174,10 +174,10 @@ describe('Offices', () => {
     const cards = [...container.querySelectorAll('article')] as HTMLElement[];
     expect(cards).toHaveLength(2);
     expect(
-      within(cards[0]).getByRole('heading', { level: 3, name: 'Antalya' }),
+      within(cards[0]).getByRole('heading', { level: 3, name: 'Antalya, Türkiye' }),
     ).toBeInTheDocument();
     expect(
-      within(cards[1]).getByRole('heading', { level: 3, name: 'Karachi' }),
+      within(cards[1]).getByRole('heading', { level: 3, name: 'Karachi, Pakistan' }),
     ).toBeInTheDocument();
     expect(
       screen
@@ -187,8 +187,19 @@ describe('Offices', () => {
     expect(
       within(cards[1]).getByRole('link', { name: 'See who is available →' }),
     ).toBeInTheDocument();
-    // OfficeCard renders its own tel / WhatsApp / mail rows with the office_card placement (W12).
+    // ContactOfficeCard: Antalya's one door is the phone, Karachi's the sourcing-desk WhatsApp
+    // (design l. 975 / 998), both with the office_card placement (W12) — no e-mail row.
     expect(cards[0].querySelector('a[href="tel:+905011240340"]')).not.toBeNull();
+    expect(cards[0].querySelector('a[href^="mailto:"]')).toBeNull();
+    expect(
+      within(cards[1]).getByRole('link', { name: 'WhatsApp the sourcing desk' }),
+    ).toBeInTheDocument();
+    expect(within(cards[0]).getByRole('link', { name: 'Get directions →' })).toBeInTheDocument();
+    // ≤ 700 px tabs: one tab per office, Antalya selected
+    expect(screen.getAllByRole('tab').map((t) => t.getAttribute('aria-selected'))).toEqual([
+      'true',
+      'false',
+    ]);
   });
 
   it('the site-visit band links WhatsApp with the company prefill; the visit card carries the visit form', () => {

@@ -27,7 +27,13 @@ export function Faq({ bundle, locale }: { bundle: Bundle; locale: Locale }) {
   ];
   return (
     <Section tone="light">
-      <div data-testid="contact-faq" className="container-site">
+      {/* The ask card is the design's pale #f4f9fc card; FaqBlock has no tone prop for it yet, so the
+          card's own classes (the only `rounded-base bg-white` in the block — the items are
+          `rounded-sm`) are repainted here (shared request: `askCard.tone`). */}
+      <div
+        data-testid="contact-faq"
+        className="container-site [&_.rounded-base.bg-white]:border-edge [&_.rounded-base.bg-white]:bg-pale-1"
+      >
         <FaqBlock
           bundle={bundle}
           locale={locale}
@@ -38,13 +44,17 @@ export function Faq({ bundle, locale }: { bundle: Bundle; locale: Locale }) {
           openFirst
           headingLevel={3}
           reveal
-          panelClassName="ja-panel-soft"
+          variant="cards"
+          mobileAsk="hidden"
           askCard={{
             titleId: 'contact.122',
             bodyId: 'contact.123',
             whatsappNumber: bundle.settings.whatsappNumber,
             whatsappText: sys('contact.wa.main'),
             whatsappLabelId: 'contact.124',
+            whatsappVariant: 'success-solid',
+            buttonShape: 'rect',
+            buttonRadius: 11,
           }}
         />
       </div>

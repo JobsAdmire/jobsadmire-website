@@ -1,5 +1,6 @@
-import { screen, within } from '@testing-library/react';
+import { fireEvent, screen, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
+import { getCollection } from '@/content/collections';
 import { IDLE_FORM_STATE } from '@/forms/types';
 import en from '@/messages/en.json';
 import tr from '@/messages/tr.json';
@@ -60,8 +61,14 @@ describe('Hero', () => {
         'href',
         '#structure',
       );
-      // QA W221 V-06: the design's ≤ 700 hero button is full-width (Verify l. 274)
-      expect(screen.getByRole('link', { name: s['verify.030'] })).toHaveClass('max-md:w-full');
+      // S1.6: an r12 rectangle; M4: hidden ≤ 700 (Verify l. 371 overrides l. 274)
+      expect(screen.getByRole('link', { name: s['verify.030'] })).toHaveClass(
+        'rounded-[12px]',
+        'max-md:hidden',
+      );
+      // S1.3: the id-shape placeholder; the answer is not part of the hero (S2.1)
+      expect(screen.getByLabelText(s['verify.032'])).toHaveAttribute('placeholder', 'JA-REP-014');
+      expect(screen.queryByTestId('verify-lookup-result')).toBeNull();
       expect(container.querySelectorAll('#check')).toHaveLength(1);
       expect(screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent)).toEqual([
         s['verify.037'],
@@ -93,7 +100,7 @@ describe('Hero', () => {
 });
 
 describe('Structure', () => {
-  it('Phase A: the designed empty state — no stats, founder, register, former strip or verify.056 (W6/W86)', () => {
+  it('Phase A, no founder row: the register frame without people — the feed badge, the views, the payroll head, the column bar and the one empty row; no stats, founder, list, former strip or verify.056 (W6/D23)', () => {
     const bundle = localBundle('en');
     const s = bundle.strings;
     const { container } = renderWithIntl(
@@ -107,13 +114,38 @@ describe('Structure', () => {
       { locale: 'en' },
     );
     expect(container.querySelector('section#structure')).not.toBeNull();
-    const empty = screen.getByTestId('verify-empty');
-    expect(empty).toHaveAttribute('role', 'status');
+    // S3.3: the design's `internal` feed state — the true one
+    expect(screen.getByTestId('verify-feed-badge')).toHaveTextContent(s['verify.220']);
+    // S3.2: the frame — three views, Antalya selected (the design's default), the panel head
+    const frame = screen.getByTestId('verify-register-frame');
+    const views = within(frame)
+      .getAllByRole('button')
+      .filter((b) => b.hasAttribute('aria-pressed'));
+    expect(views.map((b) => b.textContent)).toEqual([
+      s['verify.270'],
+      s['verify.227'],
+      s['home.132'],
+    ]);
+    expect(views.map((b) => b.getAttribute('aria-pressed'))).toEqual(['false', 'true', 'false']);
+    const panel = screen.getByTestId('verify-register-panel');
+    expect(within(panel).getByRole('heading', { level: 3 })).toHaveTextContent(s['verify.227']);
+    expect(panel).toHaveTextContent(s['verify.232']);
+    expect(panel).toHaveTextContent(s['verify.066']);
+    for (const id of ['verify.068', 'verify.069', 'verify.070', 'verify.071'])
+      expect(panel).toHaveTextContent(s[id]);
+    expect(within(panel).getByRole('link', { name: s['verify.067'] })).toHaveAttribute(
+      'href',
+      '#check',
+    );
+    // the one row: the empty-register copy and the office call — never a person
+    const empty = within(panel).getByTestId('verify-empty');
     expect(empty).toHaveTextContent(en.sys.verify.empty.title);
     expect(within(empty).getByRole('link', { name: s['verify.051'] })).toHaveAttribute(
       'href',
       'tel:+905011240340',
     );
+    expect(frame).toHaveTextContent(s['verify.064']);
+    expect(frame).toHaveTextContent(s['verify.065']);
     for (const id of ['verify-stats', 'verify-founder', 'verify-register', 'verify-former'])
       expect(screen.queryByTestId(id)).toBeNull();
     expect(container).not.toHaveTextContent(s['verify.056']);
@@ -127,6 +159,39 @@ describe('Structure', () => {
     );
     expect(collisionsInTree(container)).toEqual([]);
   });
+
+  for (const locale of LOCALES) {
+    it(`${locale}: the committed founder row (owner, 2026-10-05) renders the founder strip — photo, name, sole-signatory pill, "Authorised · no expiry", JA-REP-001 and "Open record"`, () => {
+      const bundle = localBundle(locale);
+      const s = bundle.strings;
+      const founder = getCollection(bundle, 'founder').find((f) => f.published) ?? null;
+      expect(founder?.name).toBe('Haris Jiva');
+      const { container } = renderWithIntl(
+        <Structure
+          bundle={bundle}
+          locale={locale}
+          register={readRegister(bundle)}
+          founder={founder}
+          updatedLabel={null}
+        />,
+        { locale },
+      );
+      const strip = screen.getByTestId('verify-founder');
+      expect(within(strip).getByRole('heading', { level: 3 })).toHaveTextContent('Haris Jiva');
+      expect(within(strip).getByRole('img', { name: 'Haris Jiva' })).toBeInTheDocument();
+      for (const id of ['verify.060', 'verify.061', 'verify.063', 'about.047'])
+        expect(strip).toHaveTextContent(s[id]);
+      expect(strip).toHaveTextContent('JA-REP-001');
+      expect(within(strip).getByRole('button', { name: s['verify.062'] })).toHaveAttribute(
+        'aria-haspopup',
+        'dialog',
+      );
+      expect(strip.querySelector('[data-placeholder]')).toBeNull();
+      // still no people: the panel's one row is the empty register
+      expect(screen.getByTestId('verify-empty')).toBeInTheDocument();
+      expect(collisionsInTree(container)).toEqual([]);
+    });
+  }
 
   it('v1.1 rows + a published founder: stats, the founder id and record link, the list, the former strip, verify.056', () => {
     const bundle = localBundle('en', { representatives: [FOUNDER_REP, OFFICE_REP, FORMER_REP] });
@@ -149,9 +214,9 @@ describe('Structure', () => {
     expect(founder).toHaveTextContent('Founder Example');
     expect(founder).toHaveTextContent(s['about.047']);
     expect(founder).toHaveTextContent('JA-REP-001');
-    expect(within(founder).getByRole('link', { name: s['verify.062'] })).toHaveAttribute(
-      'href',
-      '/en/verify?id=JA-REP-001',
+    expect(within(founder).getByRole('button', { name: s['verify.062'] })).toHaveAttribute(
+      'aria-haspopup',
+      'dialog',
     );
     expect(founder.querySelector('[data-placeholder="founder-photo"]')).not.toBeNull();
     // the header row + the two active people
@@ -179,10 +244,30 @@ describe('Report', () => {
     expect(container.querySelectorAll('#report')).toHaveLength(1);
     expect(container.querySelector('section#report')).not.toBeNull();
     // QA W221 V-07: the design numbers the sections — "01 · Our people" is verify.053's own text,
-    // the report eyebrow carries its "02 · " in the markup (Verify l. 845)
-    expect(screen.getByText(`02 · ${s['verify.077']}`)).toBeInTheDocument();
-    const flagsCard = screen.getByRole('heading', { name: s['verify.080'] }).parentElement;
-    expect(flagsCard?.querySelectorAll('li')).toHaveLength(5);
+    // the report's "02" is its own span beside the eyebrow (Verify ll. 844–847)
+    expect(screen.getByText(s['verify.077']).parentElement).toHaveTextContent(
+      `02${s['verify.077']}`,
+    );
+    const flagsCard = screen.getByRole('heading', { name: s['verify.080'] }).parentElement!;
+    const flags = flagsCard.querySelectorAll('li');
+    expect(flags).toHaveLength(5);
+    // S4.2: the flags card stretches to the report box's height
+    expect(flagsCard.parentElement).toHaveClass('items-stretch');
+    // M8: ≤ 700 flags 4–5 fold behind a real disclosure (verify.231 promises two)
+    const more = within(flagsCard).getByRole('button', { name: s['verify.231'] });
+    expect(more).toHaveAttribute('aria-expanded', 'false');
+    expect(more).toHaveClass('md:hidden');
+    expect(Array.from(flags).map((li) => li.classList.contains('max-md:hidden'))).toEqual([
+      false,
+      false,
+      false,
+      true,
+      true,
+    ]);
+    fireEvent.click(more);
+    expect(more).toHaveAttribute('aria-expanded', 'true');
+    expect(more).toHaveTextContent(s['verify.230']);
+    expect(Array.from(flags).some((li) => li.classList.contains('max-md:hidden'))).toBe(false);
 
     const form = screen.getByTestId('fraud-form');
     expect(form).toHaveAttribute('data-form-key', 'fraud');
@@ -197,8 +282,17 @@ describe('Report', () => {
       'description',
       'reporterName',
       'reporterEmail',
-      'reporterPhone',
     ]);
+    // S4.1: the box's three items are the first three fields, numbered 1–3, placeholder-only
+    for (const [n, name, id] of [
+      [1, 'suspectName', 'verify.094'],
+      [2, 'suspectContact', 'verify.095'],
+      [3, 'description', 'verify.096'],
+    ] as const) {
+      const field = form.querySelector<HTMLElement>(`[name="${name}"]`)!;
+      expect(field).toHaveAttribute('placeholder', s[id]);
+      expect(field.closest('.flex-1')?.previousElementSibling).toHaveTextContent(String(n));
+    }
     const labelOf = (name: string) =>
       form.querySelector<HTMLInputElement>(`[name="${name}"]`)?.labels?.[0]?.textContent ?? '';
     expect(labelOf('suspectName')).toContain(s['verify.094']);
@@ -213,14 +307,17 @@ describe('Report', () => {
     expect(evidence).toHaveAttribute('type', 'file');
     expect(evidence).not.toHaveAttribute('name');
     expect(form.querySelector('#f-fraud-consent')).not.toBeNull();
-    expect(screen.getByRole('button', { name: tr.sys.verify.report.submit })).toHaveAttribute(
-      'type',
-      'submit',
-    );
-    expect(screen.getByRole('link', { name: s['verify.097'] })).toHaveAttribute(
+    const submit = screen.getByRole('button', { name: tr.sys.verify.report.submit });
+    expect(submit).toHaveAttribute('type', 'submit');
+    expect(submit).toHaveClass('rounded-[12px]', 'bg-white');
+    const wa = screen.getByRole('link', { name: s['verify.097'] });
+    expect(wa).toHaveAttribute(
       'href',
       `https://wa.me/905011240340?text=${encodeURIComponent(s['verify.229'])}`,
     );
+    // S4.3: the WhatsApp glyph; S1.6: r12 rectangles
+    expect(wa.querySelector('svg')).not.toBeNull();
+    expect(wa).toHaveClass('rounded-[12px]');
     expect(screen.getByRole('link', { name: s['verify.051'] })).toHaveAttribute(
       'href',
       'tel:+905011240340',
@@ -283,6 +380,9 @@ describe('Faq', () => {
       { locale: 'en' },
     );
     expect(container.querySelectorAll('#faq')).toHaveLength(1);
+    // S5.1 / M10: phones only, as cards with the ⌄
+    expect(container.querySelector('section')).toHaveClass('md:hidden');
+    expect(container.querySelector('[data-variant="cards"]')).not.toBeNull();
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(s['verify.100']);
     for (const id of ['verify.101', 'verify.103', 'verify.105', 'verify.107'])
       expect(screen.getByRole('button', { name: s[id] })).toBeInTheDocument();

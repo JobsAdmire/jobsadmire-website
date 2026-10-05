@@ -1,6 +1,7 @@
 import type { Locale } from '@/i18n/routing';
 import {
   countryNameOf,
+  descriptionBlocks,
   detailHref,
   ENGAGEMENT_OF,
   isNewOpening,
@@ -19,12 +20,19 @@ import { formatDate } from '@/lib/format/date/formatDate';
 /** A package-id accessor: `makeTf(bundle, locale)` (D17 placeholders filled). */
 export type Tf = (id: string) => string;
 
+/** One list of the role's open panel (design `r.duties` / `r.wants`, ll. 745–770): the API has
+ *  no duties/wants split, so the panel shows the description's own first lists under their own
+ *  lead-in line ("The work:", "The profile:") — data, never the package's `jt.050`/`jt.051`. */
+export type RolePanelList = { heading: string; items: string[] };
+
 /** One role as the `RolesList` island and the hero card receive it: plain strings and typed
  *  hrefs, already resolved — no bundle, no `Date`, no function crosses to the client. */
 export type RoleCard = {
   slug: string;
   title: string;
   summary: string;
+  /** up to two lists for the open panel; empty → the panel shows `summary` */
+  panel: RolePanelList[];
   location: string;
   workModes: string;
   place: Place;
@@ -60,6 +68,26 @@ export const askHrefOf = (
   location: string,
 ) => waLink(whatsappNumber, `${copy.askIntro} ${title} ${copy.askTail}${location})`);
 
+/** A short line ending in a colon (or a heading) right before a list is that list's lead-in. */
+const LEAD_IN = /[:：]\s*$/u;
+
+/** The open panel's lists (parity S4.3): the description's first `max` lists, `maxItems`
+ *  items each, each under the heading or colon-ended line that introduces it (else none). */
+export function panelListsOf(description: string | null, max = 2, maxItems = 5): RolePanelList[] {
+  const blocks = descriptionBlocks(description);
+  const out: RolePanelList[] = [];
+  blocks.forEach((block, i) => {
+    if (out.length >= max || (block.type !== 'ul' && block.type !== 'ol')) return;
+    const prev = blocks[i - 1];
+    const lead =
+      prev && (prev.type === 'h' || (prev.type === 'p' && LEAD_IN.test(prev.text)))
+        ? prev.text.replace(LEAD_IN, '').trim()
+        : '';
+    out.push({ heading: lead.length <= 80 ? lead : '', items: block.items.slice(0, maxItems) });
+  });
+  return out;
+}
+
 export function roleCards(
   openings: readonly PublicOpening[],
   ctx: {
@@ -77,6 +105,7 @@ export function roleCards(
       slug: o.slug,
       title: o.title,
       summary: summaryOf(o.description),
+      panel: panelListsOf(o.description),
       location,
       workModes: workModesOf(o)
         .map((mode) => ctx.copy.workMode[mode])

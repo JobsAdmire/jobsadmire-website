@@ -272,7 +272,6 @@ export const FORM_INSTANCES: readonly FormInstance[] = [
         required: true,
       },
       { name: 'phone', kind: 'tel', value: '+905000000007', required: true },
-      { name: 'candidatesPerYear', kind: 'text', value: '50', required: false },
       { name: 'trades', kind: 'textarea', value: 'welder, cnc operator', required: false },
       { name: 'licenceDeclaration', kind: 'checkbox', value: 'on', required: true },
     ],
@@ -303,12 +302,10 @@ export const FORM_INSTANCES: readonly FormInstance[] = [
         required: true,
       },
       { name: 'phone', kind: 'tel', value: '+905000000008', required: true },
-      { name: 'city', kind: 'text', value: 'Kathmandu', required: false },
-      { name: 'candidatesPerYear', kind: 'text', value: '20', required: false },
       { name: 'trades', kind: 'textarea', value: 'welder', required: false },
     ],
     notes:
-      'This track has no `licence` field and no `message` field at all (the institute schema).',
+      "This track has no `licence` field and no `message` field at all (the institute schema). Parity 2026-10-05: the design's fields only — the optional `city` and `candidatesPerYear` are no longer rendered on this track or the sourcing one.",
   },
   {
     id: 9,
@@ -475,7 +472,6 @@ export const FORM_INSTANCES: readonly FormInstance[] = [
         value: t('door-smoke+t14-14@jobsadmire.com'),
         required: true,
       },
-      { name: 'reporterPhone', kind: 'tel', value: '+905000000014', required: false },
       {
         name: 'description',
         kind: 'textarea',
@@ -506,7 +502,6 @@ export const FORM_INSTANCES: readonly FormInstance[] = [
         value: t('door-smoke+t14-15@jobsadmire.com'),
         required: true,
       },
-      { name: 'reporterPhone', kind: 'tel', value: '+905000000015', required: false },
       {
         name: 'description',
         kind: 'textarea',

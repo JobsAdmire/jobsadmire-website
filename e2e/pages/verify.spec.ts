@@ -111,7 +111,7 @@ const typesOf = (n: JsonLdNode): string[] =>
   Array.isArray(n['@type']) ? n['@type'] : n['@type'] ? [n['@type']] : [];
 
 for (const locale of ['tr', 'en'] as const) {
-  test(`${locale}: one page-h1 holding the only LCP slot, no placeholder, the four anchors once, the sections in design order, the Phase A empty state, no leaked tokens (W6/D26/W17)`, async ({
+  test(`${locale}: one page-h1 holding the only LCP slot, no placeholder, the four anchors once, the sections in design order, the founder strip over the empty register frame, no leaked tokens (W6/D26/W17, parity 2026-10-05)`, async ({
     page,
   }) => {
     const res = await page.goto(ROUTES[locale]);
@@ -122,21 +122,35 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(h1).toHaveText(`${S[locale]['verify.023']} ${S[locale]['verify.024']}`);
     await expect(h1).toHaveAttribute('data-lcp-slot', 'h1');
     await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
-    await expect(page.locator('[data-placeholder]')).toHaveCount(0); // founder row unpublished (W86)
+    // the founder's photo is committed: no labelled placeholder anywhere on the page (D26)
+    await expect(page.locator('[data-placeholder]')).toHaveCount(0);
     for (const id of ['check', 'structure', 'report', 'faq'])
       await expect(page.locator(`#${id}`)).toHaveCount(1);
-    const tops = await page.evaluate(() =>
-      ['verify-hero', 'verify-structure', 'verify-report', 'verify-faq'].map(
-        (id) =>
-          document.querySelector(`[data-testid="${id}"]`)?.getBoundingClientRect().top ??
-          Number.NaN,
-      ),
+    // S5.1: the FAQ is phones-only; the visible sections follow the design's order
+    const visible = isMobile()
+      ? ['verify-hero', 'verify-structure', 'verify-report', 'verify-faq']
+      : ['verify-hero', 'verify-structure', 'verify-report'];
+    if (!isMobile()) await expect(page.getByTestId('verify-faq')).toBeHidden();
+    const tops = await page.evaluate(
+      (ids) =>
+        ids.map(
+          (id) =>
+            document.querySelector(`[data-testid="${id}"]`)?.getBoundingClientRect().top ??
+            Number.NaN,
+        ),
+      visible,
     );
     expect(tops.every((y) => Number.isFinite(y))).toBe(true);
     expect([...tops].sort((a, b) => a - b)).toEqual(tops);
-    // Phase A (W6, §10 row 11, D23): the empty register — no rows, no founder, no verdict
+    // owner ruling: the founder strip (published row) and NO people — the register frame's one
+    // row is the empty register; no stats, people list, former strip or verdict (W6, D23)
+    const founder = page.getByTestId('verify-founder');
+    await expect(founder).toContainText('Haris Jiva');
+    await expect(founder).toContainText('JA-REP-001');
+    await expect(founder).toContainText(S[locale]['verify.061']);
+    await expect(page.getByTestId('verify-feed-badge')).toHaveText(S[locale]['verify.220']);
     await expect(page.getByTestId('verify-empty')).toContainText(SYS[locale].verify.empty.title);
-    for (const id of ['verify-stats', 'verify-founder', 'verify-register', 'verify-former'])
+    for (const id of ['verify-stats', 'verify-register', 'verify-former'])
       await expect(page.getByTestId(id)).toHaveCount(0);
     await expect(page.getByTestId('verify-lookup-result')).toHaveCount(0);
     expect(await page.locator('main').innerText()).not.toMatch(
@@ -196,6 +210,9 @@ test('tr: a lookup answers neutrally — never the red verdict — fires verify_
   const result = page.getByTestId('verify-lookup-result');
   await expect(result).toHaveAttribute('data-outcome', 'register_unavailable');
   await expect(result).toContainText(SYS.tr.verify.lookup.resultTitle);
+  // S2.1: its own card below the hero, never inside the lookup card
+  await expect(card.getByTestId('verify-lookup-result')).toHaveCount(0);
+  await expect(page.locator('#verify [data-testid="verify-lookup-result"]')).toHaveCount(1);
   await expect(result).toContainText('JA-REP-014');
   for (const id of ['verify.048', 'verify.049'])
     await expect(page.locator('main')).not.toContainText(S.tr[id]);
@@ -334,46 +351,77 @@ test('tr: contact clicks fire page_cta — the empty state’s call and the repo
   expect((await pushed(page, 'whatsapp_click')).map((e) => e.placement)).toEqual(['page_cta']);
 });
 
-/** W202: over the Phase A empty register the page mounts no StickyCtaBar at all — the page is
- *  so short that `#report` is near before the 620 px threshold is passed. Mounted, the bar
- *  publishes `--sticky-cta-h` inline on `<html>` even while hidden ('0px'), so an empty inline
- *  value after hydration proves it is not there; the scroll positions include TR's former 22 px
- *  window (621–642 px at 1440 × 900). */
-for (const locale of ['tr', 'en'] as const) {
-  test(`${locale}: no sticky bar on the empty register (W202)`, async ({ page }) => {
-    await page.goto(ROUTES[locale]);
-    test.skip(
-      (await page.getByTestId('verify-empty').count()) === 0,
-      'W202: register rows are published — the show-after-scroll case covers the bar',
-    );
-    // hydrated once the lookup answers
-    await page.getByTestId('verify-check').getByRole('textbox').fill('JA-REP-014');
-    await expect(page.getByTestId('verify-lookup-result')).toBeVisible();
-    for (const y of [0, 630, 700, 1200, 2400]) {
-      await page.evaluate((top) => window.scrollTo(0, top), y);
-      await expect(page.getByTestId('sticky-cta')).toHaveCount(0);
-    }
-    expect(
-      await page.evaluate(() => document.documentElement.style.getPropertyValue('--sticky-cta-h')),
-    ).toBe('');
-  });
-}
-
-test('en: the sticky bar appears after scrolling on desktop with its two in-page anchors (V-5)', async ({
+/** S0s.1: the design's sticky mini search — desktop only, parked behind the header until the
+ *  visitor passes 620 px, then on the page's one lookup query. W202's anchors bar is retired:
+ *  no StickyCtaBar mounts (`--sticky-cta-h` is never published). */
+test('en: the sticky mini search slides in past 620 px on desktop and shares the lookup query', async ({
   page,
 }) => {
-  test.skip(isMobile(), 'the bar shows from 901 px; the chrome’s bottom bar owns phones');
+  test.skip(isMobile(), 'the bar is desktop-only (hidden ≤ 700, Verify l. 262)');
   await page.goto(ROUTES.en);
-  test.skip(
-    (await page.getByTestId('verify-empty').count()) > 0,
-    'W202: the bar mounts with the v1.1 register',
-  );
-  await expect(page.getByTestId('sticky-cta')).toHaveCount(0);
-  await page.evaluate(() => window.scrollTo(0, 700));
-  const bar = page.getByTestId('sticky-cta');
+  const bar = page.getByTestId('verify-sticky-search');
+  await expect(bar).toHaveAttribute('aria-hidden', 'true');
+  await expect(bar).toBeHidden();
+  await page.evaluate(() => window.scrollTo(0, 900));
   await expect(bar).toBeVisible();
-  await expect(bar.locator('a[href="#check"]')).toHaveCount(1);
-  await expect(bar.locator('a[href="#report"]')).toHaveCount(1);
+  await expect(bar).toHaveAttribute('data-sticky-subnav', '');
+  const input = bar.getByRole('searchbox', { name: S.en['verify.032'] });
+  await input.fill('JA-REP-022');
+  await expect(page.getByTestId('verify-check').getByRole('textbox')).toHaveValue('JA-REP-022');
+  await input.press('Enter');
+  await expect(page.getByTestId('verify-lookup-result')).toBeInViewport();
+  await expect(page.getByTestId('sticky-cta')).toHaveCount(0);
+  expect(
+    await page.evaluate(() => document.documentElement.style.getPropertyValue('--sticky-cta-h')),
+  ).toBe('');
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(bar).toBeHidden();
+});
+
+test('mobile: the sticky mini search never shows', async ({ page }) => {
+  test.skip(!isMobile(), 'phones only');
+  await page.goto(ROUTES.en);
+  await page.evaluate(() => window.scrollTo(0, 1500));
+  await expect(page.getByTestId('verify-sticky-search')).toBeHidden();
+});
+
+test('tr: the founder strip opens the founder’s record dialog — named, the May do / May never lists, no copy link in Phase A; Escape closes it and focus returns', async ({
+  page,
+}) => {
+  await page.goto(ROUTES.tr);
+  const open = page.getByTestId('verify-founder').getByRole('button', { name: S.tr['verify.062'] });
+  await open.click();
+  const dialog = page.getByRole('dialog', { name: 'Haris Jiva' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toContainText('JA-REP-001');
+  for (const id of ['verify.117', 'verify.118', 'verify.198', 'verify.213'])
+    await expect(dialog).toContainText(S.tr[id]);
+  await expect(dialog.getByRole('button', { name: S.tr['verify.226'] })).toHaveCount(0);
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  await expect(open).toBeFocused();
+});
+
+test('mobile tr: the register picker, the red-flag fold and the FAQ cards (M7/M8/M10)', async ({
+  page,
+}) => {
+  test.skip(!isMobile(), 'the ≤ 700 px faces');
+  await page.goto(ROUTES.tr);
+  const frame = page.getByTestId('verify-register-frame');
+  const picker = frame.getByRole('button', { name: new RegExp(S.tr['verify.227']) }).first();
+  await expect(picker).toHaveAttribute('aria-expanded', 'false');
+  await expect(frame.getByRole('button', { name: S.tr['verify.270'], exact: true })).toBeHidden();
+  await picker.click();
+  await frame.getByRole('button', { name: S.tr['home.132'], exact: true }).click();
+  await expect(
+    page.getByTestId('verify-register-panel').getByRole('heading', { level: 3 }),
+  ).toHaveText(S.tr['home.132']);
+  const report = page.getByTestId('verify-report');
+  const more = report.getByRole('button', { name: S.tr['verify.231'] });
+  await expect(report.locator('li').nth(3)).toBeHidden();
+  await more.click();
+  await expect(report.locator('li').nth(3)).toBeVisible();
+  await expect(page.getByTestId('verify-faq')).toBeVisible();
 });
 
 test('en: axe stays clean with the lookup answer and an evidence refusal shown (states the route sweep never opens)', async ({

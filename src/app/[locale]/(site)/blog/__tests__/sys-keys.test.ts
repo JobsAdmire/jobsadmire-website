@@ -22,6 +22,8 @@ const KEYS = [
   'blog.article.copyFailed',
   'blog.article.print',
   'blog.article.backToTop',
+  'blog.article.shareThis',
+  'blog.soon',
   'blog.faq.a1',
   'blog.faq.q3',
   'blog.whatsapp.article',

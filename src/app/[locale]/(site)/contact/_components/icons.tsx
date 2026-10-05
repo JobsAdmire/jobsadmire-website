@@ -106,3 +106,52 @@ export function ChainLinkIcon(props: IconProps) {
     </Glyph>
   );
 }
+
+/** The callback card's phone-outgoing glyph (Contact Us l. 713): the handset plus a ↗ arrow. */
+export function PhoneOutgoingIcon(props: IconProps) {
+  return (
+    <Glyph {...props}>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+      <path d="M15 3h6v6" />
+      <path d="m21 3-6 6" />
+    </Glyph>
+  );
+}
+
+/** The Turkish flag as the design's card head draws it (Contact Us l. 951). */
+export function FlagTR({ className }: { className?: string }) {
+  return (
+    <svg
+      width="26"
+      height="18"
+      viewBox="0 0 30 20"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <rect width="30" height="20" fill="#E30A17" />
+      <circle cx="11" cy="10" r="5" fill="#fff" />
+      <circle cx="12.2" cy="10" r="4" fill="#E30A17" />
+      <path d="M18.5 10l-3.4 1.1 2.1-2.9v3.6l-2.1-2.9z" fill="#fff" />
+    </svg>
+  );
+}
+
+/** The Pakistani flag (Contact Us l. 975). */
+export function FlagPK({ className }: { className?: string }) {
+  return (
+    <svg
+      width="26"
+      height="18"
+      viewBox="0 0 30 20"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <rect width="30" height="20" fill="#01411C" />
+      <rect width="7.5" height="20" fill="#fff" />
+      <circle cx="19.5" cy="10" r="5" fill="#fff" />
+      <circle cx="21" cy="9" r="4.4" fill="#01411C" />
+    </svg>
+  );
+}

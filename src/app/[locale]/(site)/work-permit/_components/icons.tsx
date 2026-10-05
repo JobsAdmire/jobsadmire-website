@@ -168,8 +168,9 @@ export function GlobeIcon({ size = 20, className }: IconProps) {
 export function LeafIcon({ size = 20, className }: IconProps) {
   return (
     <Svg size={size} className={className} strokeWidth={2}>
-      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" />
-      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+      <path d="M12 2v8" />
+      <path d="M4.9 10.6c-.6 5 2.6 9.4 7.1 9.4s7.7-4.4 7.1-9.4" />
+      <path d="M2 10.6h20" />
     </Svg>
   );
 }
@@ -190,6 +191,24 @@ export function PackageIcon({ size = 20, className }: IconProps) {
       <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
       <path d="M3.27 6.96L12 12.01l8.73-5.05" />
       <path d="M12 22.08V12" />
+    </Svg>
+  );
+}
+
+export function PieIcon({ size = 22, className }: IconProps) {
+  return (
+    <Svg size={size} className={className} strokeWidth={1.8}>
+      <path d="M21.2 15.9A10 10 0 1 1 8 2.8" />
+      <path d="M22 12A10 10 0 0 0 12 2v10z" />
+    </Svg>
+  );
+}
+
+export function UserIcon({ size = 20, className }: IconProps) {
+  return (
+    <Svg size={size} className={className} strokeWidth={2}>
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
     </Svg>
   );
 }

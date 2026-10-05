@@ -44,10 +44,10 @@ describe('Stepper', () => {
   it('stretch: the ≤ 700 px design grid on the row, the buttons and the input; nothing without it (B4)', () => {
     const { unmount } = render(<Controlled initial={5} spy={vi.fn()} stretch />);
     const input = screen.getByRole('spinbutton');
-    expect(input.parentElement).toHaveClass('flex', 'items-stretch', ...STRETCH_ROW);
+    expect(input.parentElement).toHaveClass('flex', 'items-center', 'gap-2.5', ...STRETCH_ROW);
     expect(input.closest('[role="group"]')).toHaveClass('flex', 'flex-col', 'max-md:w-full');
     for (const b of screen.getAllByRole('button')) expect(b).toHaveClass(...STRETCH_BTN);
-    expect(input).toHaveClass('w-20', 'border-y', ...STRETCH_INPUT);
+    expect(input).toHaveClass('w-[78px]', 'border-[1.5px]', ...STRETCH_INPUT);
     unmount();
     render(<Controlled initial={5} spy={vi.fn()} />);
     const plain = screen.getByRole('spinbutton');

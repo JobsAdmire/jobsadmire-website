@@ -144,11 +144,11 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(card.getByRole('group')).toBeVisible();
   });
 
-  test(`${locale}: both routes and both timeline cards show at every width — no tab switchers (D20/W10)`, async ({
+  test(`${locale}: both routes and both timeline cards side by side on desktop; ≤ 700 px two accessible tab switchers show one at a time`, async ({
     page,
   }) => {
     await page.goto(ROUTES[locale]);
-    await expect(page.getByRole('tab')).toHaveCount(0);
+    await expect(page.getByRole('tab')).toHaveCount(0); // hidden ≥ 701 px
     for (const id of [
       'wp-routes-permit',
       'wp-routes-exempt',
@@ -156,6 +156,15 @@ for (const locale of ['tr', 'en'] as const) {
       'wp-timeline-here',
     ])
       await expect(page.getByTestId(id)).toBeVisible();
+    await page.setViewportSize({ width: 390, height: 800 });
+    await expect(page.getByRole('tablist')).toHaveCount(2);
+    await expect(page.getByRole('tab')).toHaveCount(4);
+    await expect(page.getByTestId('wp-routes-permit')).toBeHidden();
+    await expect(page.getByTestId('wp-timeline-m-abroad')).toBeVisible();
+    await expect(page.getByTestId('wp-timeline-m-here')).toBeHidden();
+    await page.getByRole('tab').nth(3).click();
+    await expect(page.getByTestId('wp-timeline-m-here')).toBeVisible();
+    await expect(page.getByTestId('wp-timeline-m-abroad')).toBeHidden();
   });
 
   test(`${locale}: one BreadcrumbList on this page's own labels (W109), one FAQPage with nine pairs, the site-wide EmploymentAgency node once`, async ({
@@ -178,13 +187,16 @@ for (const locale of ['tr', 'en'] as const) {
   });
 }
 
-test('W4: the related-articles block is absent below the blog threshold (0 Turkish bodies)', async ({
+test('W4 + parity S15: below the blog threshold (0 Turkish bodies) the related block shows the design’s three sample cards with the örnek tag and no /blog link', async ({
   page,
 }) => {
   for (const path of Object.values(ROUTES)) {
     await page.goto(path);
     await expect(page.getByTestId('wp-hero')).toBeVisible();
-    await expect(page.getByTestId('wp-related')).toHaveCount(0);
+    const related = page.getByTestId('wp-related');
+    await expect(related.locator('[data-sample-tag]')).toBeVisible();
+    await expect(related.getByRole('article')).toHaveCount(3);
+    await expect(related.getByRole('link')).toHaveCount(0);
   }
 });
 

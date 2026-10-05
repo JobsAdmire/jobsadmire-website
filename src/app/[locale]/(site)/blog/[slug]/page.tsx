@@ -3,12 +3,10 @@ import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getBundle, makeT, makeTf, metricValues } from '@/content/adapter';
-import { blogNavVisible, getCollection, getRateConfig } from '@/content/collections';
-import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
+import { getCollection, getRateConfig } from '@/content/collections';
 import { ClosingCtaBand } from '@/design/blocks/ClosingCtaBand';
 import { ContactCta } from '@/design/blocks/ContactCta';
 import { FaqBlock, type FaqItem } from '@/design/blocks/FaqBlock';
-import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { NewsletterBand } from '@/design/blocks/NewsletterBand';
 import { Section } from '@/design/primitives/Section';
 import type { Href } from '@/i18n/navigation';
@@ -21,28 +19,33 @@ import { JsonLd } from '@/lib/seo/JsonLdScript';
 import { articleJsonLd } from '@/lib/seo/jsonld';
 import { buildMetadata } from '@/lib/seo/metadata';
 import { absoluteUrl, pageOgImageUrl } from '@/lib/seo/routes';
-import { ScrollEnhancementsLoader } from '../_components/ScrollEnhancementsLoader';
 import {
   articleAlternates,
   articleHref,
   findWritten,
   isWritten,
   otherLocale,
-  prevNext,
-  relatedPosts,
   writtenPosts,
 } from '../_lib/posts';
-import { ARTICLE_H2, ArticleBody } from './_components/ArticleBody';
+import { ArticleCrumbs } from './_components/ArticleCrumbs';
+import { ARTICLE_H2_SECTION, ArticleBody } from './_components/ArticleBody';
+import { ArticleScrollEnhancementsLoader } from './_components/ArticleScrollEnhancementsLoader';
 import type { ArticleSidebarProps } from './_components/ArticleSidebar';
 import { ArticleSidebarFallback } from './_components/ArticleSidebarFallback';
 import { ArticleSidebarIsland } from './_components/ArticleSidebarIsland';
+import { CategoryCover } from './_components/CategoryCover';
+import { CollapsibleSection } from './_components/CollapsibleSection';
+import { MobileToc } from './_components/MobileToc';
 import { RelatedPosts } from './_components/RelatedPosts';
 import { headings, parseMarkdown } from './_lib/markdown';
+import { listedPosts, neighboursListed, relatedListed } from './_lib/neighbours';
+import { remainingText } from './_lib/sidebar';
 
 type Params = { locale: string; slug: string };
 
-/** W5/W97 (D14): hidden until counsel clears — nothing rendered, nothing wrapping it (B-6). */
-const NEWSLETTER_ACTIVE = false;
+/** The owner switched the `newsletter` form on (2026-10-05): the band shows its own inline form
+ *  (`src/forms/newsletter/`, success → /tesekkurler?form=newsletter) under the design's proof line. */
+const NEWSLETTER_ACTIVE = true;
 /** W82: every "Request Workers →" lands on the Hire Workers form (T2 renders the anchor). */
 const HIRE_FORM: Exclude<Href, string> = { pathname: '/hire-workers', hash: '#request-form' };
 const FAQ_ID = 'faq';
@@ -130,11 +133,12 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
   const author = t('blogarticle.023');
   const readTime = formatReadMinutes(post.readMinutes, locale);
   const byline = `${formatDate(post.publishedAt, locale)} · ${readTime}`;
-  // W4/B-2: related and prev/next only once the blog is launched (six Turkish bodies).
-  const written = writtenPosts(rows, locale);
-  const launched = blogNavVisible(bundle);
-  const related = launched ? relatedPosts(written, post) : [];
-  const { prev, next } = launched ? prevNext(written, post) : { prev: null, next: null };
+  // Owner ruling 2026-10-05: related and previous/next come from every bundle row that has a title
+  // here (same category first); the cards of rows without a body are not links (`sys.blog.soon`).
+  const listed = listedPosts(rows, locale);
+  const related = relatedListed(listed, post);
+  const { prev, next } = neighboursListed(listed, post);
+  const categoryLabel = t(post.categoryLabelId);
   // W76/W95: static prefills only — page copy and the article's own title, never visitor input.
   const wa = (tail: string) =>
     waLink(bundle.settings.whatsappNumber, `${sys('whatsapp.prefill')}${tail}`);
@@ -156,13 +160,14 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
     },
     { id: 'q4', q: t('blogarticle.131'), a: t('blogarticle.132') },
   ];
+  const remainingTemplate = `≈ {n} ${t('blogarticle.141')}`;
   const sidebar: ArticleSidebarProps = {
     headings: toc,
     tocLabel,
     readMinutes: post.readMinutes,
     // The package splits "≈ N min left" into the number and blogarticle.141; ScrollSpyToc fills
     // the literal {n} token itself (W85 string props).
-    remaining: `≈ {n} ${t('blogarticle.141')}`,
+    remaining: remainingTemplate,
     url,
     title,
     share: {
@@ -175,7 +180,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
       copied: t('blogarticle.144'),
       copyFailed: sys('blog.article.copyFailed'),
     },
-    printLabel: sys('blog.article.print'),
+    shareThis: sys('blog.article.shareThis'),
   };
 
   return (
@@ -210,18 +215,17 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
           />
           <div className="container-site relative">
             <div className="mx-auto max-w-[980px] xl:max-w-[735px]">
-              <Breadcrumbs
+              <ArticleCrumbs
                 locale={locale}
-                tone="dark"
-                items={[
-                  { name: t('blogarticle.022'), href: '/' },
-                  { name: t('blogarticle.004'), href: '/blog' },
-                  { name: title, href },
-                ]}
+                home={t('blogarticle.022')}
+                blog={t('blogarticle.004')}
+                category={categoryLabel}
+                title={title}
+                href={href}
               />
               <p className="mt-5 mb-4 flex flex-wrap gap-2.5">
                 <span className="rounded-pill border border-sky/45 bg-blue/20 px-3.5 py-1 text-[12.5px] xl:text-[11px] font-extrabold text-sky">
-                  {t(post.categoryLabelId)}
+                  {categoryLabel}
                 </span>
                 {isWritten(post, other) ? (
                   <span
@@ -245,7 +249,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
               <div className="flex items-center gap-3.5">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-blue-safe text-[15px] xl:text-[11.25px] font-extrabold text-white"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-gradient-to-br from-[#1E9EE8] to-[#146fa1] text-[15px] xl:text-[11.25px] font-extrabold text-white"
                 >
                   JA
                 </span>
@@ -263,13 +267,14 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
              heights — 190 px ≤ 700, 430 px at 701–1100, 322.5 px from 1101 — independent of the
              box's width (the ratio box read 154 / 290–377 / 323 px). ---- */}
         <div className="container-site relative z-[2] -mt-[92px] md:-mt-[150px] xl:-mt-[112.5px]">
-          <div className="mx-auto max-w-[980px] overflow-hidden rounded-lg xl:max-w-[735px]">
-            <ImageSlot
+          <div className="mx-auto max-w-[980px] xl:max-w-[735px]">
+            <CategoryCover
               slot={`blog-cover-${post.key}`}
-              alt=""
-              width={980}
-              height={430}
-              cover={{ base: 190, md: 430, xl: 322.5 }}
+              category={post.category}
+              label={categoryLabel}
+              imageWidth={980}
+              imageHeight={430}
+              className="h-[190px] overflow-hidden rounded-lg shadow-[0_26px_60px_rgba(22,60,90,0.18)] xl:shadow-[0_19.5px_45px_rgba(22,60,90,0.18)] md:h-[430px] xl:h-[322.5px]"
             />
           </div>
         </div>
@@ -281,38 +286,12 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                 the two-column 56 px — `max-lg:gap-8`. */}
             <div className="mx-auto grid max-w-[1180px] items-start gap-14 max-lg:gap-8 lg:grid-cols-[minmax(0,1fr)_300px] xl:max-w-[885px] xl:grid-cols-[minmax(0,1fr)_225px] xl:gap-[42px]">
               <div className="min-w-0">
-                {/* ≤700 px: the TOC as a native disclosure — no JS (B-12) */}
-                <details
-                  data-testid="article-toc-mobile"
-                  className="mb-5 overflow-hidden rounded-base border border-border-1 bg-white shadow-social md:hidden"
-                >
-                  <summary className="flex min-h-[54px] cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 [&::-webkit-details-marker]:hidden">
-                    <span className="flex min-w-0 flex-col gap-0.5">
-                      <span className="font-extrabold text-ink">{tocLabel}</span>
-                      <span className="text-[12px] xl:text-[11px] font-bold text-text-tertiary">
-                        {`${sys('blog.article.sections', { n: toc.length })} · ${readTime}`}
-                      </span>
-                    </span>
-                    <span aria-hidden="true" className="shrink-0 font-extrabold text-blue-safe">
-                      +
-                    </span>
-                  </summary>
-                  <nav aria-label={tocLabel}>
-                    {/* QA W221 BLOG-08: `list-none` strips the list semantics in Safari — explicit role */}
-                    <ul role="list" className="m-0 flex list-none flex-col px-2.5 pt-0 pb-2.5">
-                      {toc.map((h) => (
-                        <li key={h.id} className="border-t border-border-3">
-                          <a
-                            href={`#${h.id}`}
-                            className="text-body-sm flex min-h-[46px] items-center px-2 font-bold text-text-secondary no-underline"
-                          >
-                            {h.text}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                </details>
+                {/* ≤700 px: the TOC as a disclosure — works before hydration (B-12) */}
+                <MobileToc
+                  headings={toc}
+                  label={tocLabel}
+                  sub={`${sys('blog.article.sections', { n: toc.length })} · ${remainingText(post.readMinutes, remainingTemplate)}`}
+                />
 
                 {/* The printable region (B-16): a print-only title/byline + the body */}
                 <div data-testid="article-body" className="print-isolate">
@@ -330,6 +309,8 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                         href={wa(sys('blog.whatsapp.permit'))}
                         external
                         variant="primary"
+                        shape="rect"
+                        radius={10}
                         className="print-hidden"
                       >
                         {t('blogarticle.064')}
@@ -338,34 +319,45 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                   />
                 </div>
 
-                {/* FAQ (B-10): the design's section heading, then one FaqBlock → one FAQPage */}
-                <h2 id={FAQ_ID} className={ARTICLE_H2}>
-                  {t('blogarticle.065')}
-                </h2>
-                <FaqBlock
-                  bundle={bundle}
-                  locale={locale}
-                  items={faq}
-                  id="faq-list"
-                  headingLevel={3}
-                />
+                {/* FAQ (B-10): a collapsible section on phones like every h2, then one FaqBlock in the
+                    design's separate-card face (rotating ⌄) → one FAQPage */}
+                <CollapsibleSection
+                  id={FAQ_ID}
+                  title={t('blogarticle.065')}
+                  headingClassName={ARTICLE_H2_SECTION}
+                >
+                  <FaqBlock
+                    bundle={bundle}
+                    locale={locale}
+                    items={faq}
+                    id="faq-list"
+                    headingLevel={3}
+                    variant="cards"
+                    toggle="chevron"
+                    layout="stacked"
+                  />
+                </CollapsibleSection>
 
                 {/* Author box (blogarticle.066–068; 068 is legal-flagged — verbatim) */}
                 <div
                   data-testid="article-author"
-                  className="mt-9 flex flex-wrap items-center gap-4 rounded-base border border-tint-border bg-pale-1 px-7 py-6"
+                  className="mt-9 flex flex-wrap items-center gap-[18px] xl:gap-[13.5px] rounded-base border border-tint-border bg-pale-1 px-7 py-6 max-md:mt-7 max-md:grid max-md:grid-cols-[42px_1fr] max-md:gap-x-3 max-md:gap-y-1 max-md:px-[18px] max-md:py-4"
                 >
                   <span
                     aria-hidden="true"
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-pill bg-blue-safe text-[18px] xl:text-[13.5px] font-extrabold text-white"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-pill bg-gradient-to-br from-[#1E9EE8] to-[#146fa1] text-[18px] max-md:h-[42px] max-md:w-[42px] max-md:text-[14.5px] xl:text-[13.5px] font-extrabold text-white"
                   >
                     JA
                   </span>
-                  <div className="min-w-[220px] flex-1">
-                    <p className="mt-0 mb-1 font-extrabold text-ink">{t('blogarticle.066')}</p>
-                    <p className="text-body-sm m-0 text-text-secondary">{t('blogarticle.067')}</p>
+                  <div className="min-w-[220px] flex-1 max-md:min-w-0">
+                    <p className="mt-0 mb-1 font-extrabold text-ink max-md:mb-0 max-md:text-[14.5px]">
+                      {t('blogarticle.066')}
+                    </p>
+                    <p className="text-body-sm m-0 text-text-secondary max-md:mt-[3px] max-md:text-[13px] max-md:leading-[1.55]">
+                      {t('blogarticle.067')}
+                    </p>
                   </div>
-                  <p className="m-0 inline-flex items-center gap-2 rounded-pill border border-tint-border bg-white px-4 py-2 text-[13px] xl:text-[11px] font-extrabold whitespace-nowrap text-blue-safe">
+                  <p className="m-0 inline-flex items-center gap-2 rounded-pill border border-tint-border bg-white px-[18px] xl:px-[13.5px] py-2 text-[13px] xl:text-[11px] font-extrabold whitespace-nowrap text-blue-safe max-md:col-span-full max-md:mt-2 max-md:justify-self-start max-md:px-[13px] max-md:py-1.5 max-md:text-[11.5px]">
                     <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
                     {t('blogarticle.068')}
                   </p>
@@ -386,7 +378,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                   {...sidebar}
                   fallback={<ArticleSidebarFallback {...sidebar} />}
                 />
-                <div className="rounded-base bg-gradient-to-br from-blue-safe to-navy p-6 text-white max-md:hidden">
+                <div className="rounded-base bg-[linear-gradient(160deg,var(--color-blue-safe),var(--color-blue-deep))] p-6 text-white max-md:hidden">
                   <p className="mt-0 mb-1.5 text-[17px] leading-snug font-extrabold xl:text-[12.75px]">
                     {t('blogarticle.071')}
                   </p>
@@ -395,7 +387,9 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                     placement="page_cta"
                     href={HIRE_FORM}
                     prefetch={false}
-                    variant="secondary"
+                    variant="white"
+                    shape="rect"
+                    radius={10}
                     className="w-full"
                   >
                     {t('blogarticle.073')}
@@ -407,11 +401,25 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
         </Section>
       </article>
 
-      {/* ---- Related + prev/next: nothing below the W4 threshold (B-2) ---- */}
+      {/* ---- Related + prev/next: every titled bundle row; bodiless ones are tagged, not linked ---- */}
       <RelatedPosts bundle={bundle} locale={locale} related={related} prev={prev} next={next} />
 
-      {/* ---- Newsletter: hidden in Phase A, nothing rendered (W5/W97) ---- */}
-      <NewsletterBand bundle={bundle} locale={locale} active={NEWSLETTER_ACTIVE} />
+      {/* ---- Newsletter band (DC 774–795): the band's own inline form + the proof line (blog.040) ---- */}
+      {NEWSLETTER_ACTIVE ? (
+        <Section tone="band">
+          <div className="container-site">
+            <div className="mx-auto xl:max-w-[885px]">
+              <NewsletterBand
+                bundle={bundle}
+                locale={locale}
+                active={NEWSLETTER_ACTIVE}
+                id="newsletter"
+                proofId="blog.040"
+              />
+            </div>
+          </div>
+        </Section>
+      ) : null}
 
       {/* ---- Closing band (blogarticle.092–095; 094 legal verbatim, 095 {homepageReplyHours} → makeTf) ---- */}
       <Section tone="band">
@@ -430,12 +438,14 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
               external: true,
             }}
             ticks={[tf('blogarticle.094'), tf('blogarticle.095')]}
+            hideSecondaryOnPhone
+            fullWidthOnPhone
           />
         </div>
       </Section>
 
-      {/* Progress bar, back-to-top (phones) and the sticky bar (lg+) — on the first scroll (B-13) */}
-      <ScrollEnhancementsLoader
+      {/* Progress bar, back-to-top (phones) and the white sticky bar (lg+) — on the first scroll (B-13) */}
+      <ArticleScrollEnhancementsLoader
         backToTopLabel={sys('blog.article.backToTop')}
         stickyBar={{
           message: t('blogarticle.084'),
@@ -445,9 +455,11 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
               label: t('blogarticle.085'),
               href: wa(sys('blog.whatsapp.article', { title })),
               external: true,
-              variant: 'success',
+              variant: 'success-solid',
+              icon: 'whatsapp',
+              radius: 9,
             },
-            { label: t('blogarticle.073'), href: HIRE_FORM, variant: 'primary' },
+            { label: t('blogarticle.073'), href: HIRE_FORM, variant: 'primary', radius: 9 },
           ],
         }}
       />

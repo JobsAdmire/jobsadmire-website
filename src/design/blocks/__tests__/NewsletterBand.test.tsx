@@ -1,7 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { NewsletterBand } from '../NewsletterBand';
 import { BLOCK_STRINGS, testBundle } from '@/test/bundle';
+import { renderWithIntl } from '@/test/render';
+
+vi.mock('@/forms/newsletter/actions', () => ({ submitNewsletter: vi.fn() }));
 
 const bundle = testBundle({ strings: BLOCK_STRINGS });
 
@@ -39,5 +42,24 @@ describe('NewsletterBand', () => {
     const proof = screen.getByText('200+ işveren');
     expect(proof.previousElementSibling).toBe(screen.getByTestId('shell'));
     expect(screen.getByRole('heading', { level: 2 })).toHaveClass('text-band');
+  });
+
+  it('renders its own inline newsletter form when the page passes no children', () => {
+    const withCopy = testBundle({
+      strings: { ...BLOCK_STRINGS, 'blog.039': 'Abone olun →', 'blog.041': 'İş e-postanız' },
+    });
+    renderWithIntl(<NewsletterBand bundle={withCopy} locale="tr" active />);
+    const form = screen.getByTestId('newsletter-form');
+    expect(form).toHaveAttribute('data-form-key', 'newsletter');
+    expect(form).toHaveAttribute('id', 'newsletter-form');
+    const email = screen.getByLabelText('İş e-postanız *');
+    expect(email).toHaveAttribute('name', 'email');
+    expect(email).toHaveAttribute('type', 'email');
+    expect(email).toHaveAttribute('placeholder', 'İş e-postanız');
+    expect(screen.getByRole('checkbox')).toHaveAttribute('name', 'consent');
+    const submit = screen.getByRole('button', { name: 'Abone olun →' });
+    expect(submit).toHaveAttribute('type', 'submit');
+    // the label already carries the arrow — no second glyph (FormShell `submitArrow`)
+    expect(submit.querySelector('svg')).toBeNull();
   });
 });

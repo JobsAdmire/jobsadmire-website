@@ -8,11 +8,12 @@ import type { Locale } from '@/i18n/routing';
 import { formatInt } from '@/lib/format/money';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 import { LookupCard } from '../_components/LookupCard';
-import type { RecordLabels } from '../_components/RecordDialog';
+import motion from '../_components/motion.module.css';
 import { StepsDisclosure } from '../_components/StepsDisclosure';
 import { RECORD_DIALOG_ENABLED } from '../_lib/flags';
-import { LOOKUP_MIN_CHARS } from '../_lib/lookup';
+import { ID_EXAMPLE, LOOKUP_MIN_CHARS } from '../_lib/lookup';
 import type { Register } from '../_lib/register';
+import { recordLabels } from './record';
 
 const TICKS = ['verify.027', 'verify.028', 'verify.029'] as const;
 
@@ -87,37 +88,29 @@ export function Hero({
       ? `${formatInt(register.active.length, locale)} ${t('verify.224')}`
       : null;
   // D9 v1.1: resolved only while the dialog is enabled; null in Phase A.
-  const recordLabels: RecordLabels | null = RECORD_DIALOG_ENABLED
-    ? {
-        badgeQrHint: t('verify.110'),
-        authorisedUntil: t('verify.111'),
-        noExpiry: t('verify.241'),
-        contact: t('verify.112'),
-        languages: t('verify.113'),
-        reportsTo: t('verify.114'),
-        withJobsAdmire: t('verify.115'),
-        desk: t('verify.116'),
-        soleSignatory: t('verify.060'),
-        copyLink: t('verify.226'),
-        copied: t('verify.267'),
-        wrong: t('verify.239'),
-        close: sys('verify.record.close'),
-        status: {
-          active: t('verify.046'),
-          suspended: t('verify.259'),
-          former: sys('verify.record.former'),
-        },
-        whatsappIntro: t('verify.228'),
-      }
-    : null;
+  const lookupRecordLabels = RECORD_DIALOG_ENABLED ? recordLabels(t, (k) => sys(k)) : null;
 
   return (
-    <section className="relative overflow-hidden bg-navy pb-14 text-white">
+    <section className="relative overflow-hidden bg-navy pb-[60px] text-white max-md:pb-[26px]">
+      {/* S1.2: the design's texture (Verify ll. 565–568) — the running blue dashed strip, 115°
+          hairline stripes, the radial glow top right and the fade into the section below. */}
+      <div
+        aria-hidden="true"
+        className={`absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(90deg,#1899d5_55%,transparent_45%)] bg-[length:22px_3px] opacity-80 ${motion.dash}`}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[image:repeating-linear-gradient(115deg,rgba(255,255,255,0.028)_0_1px,transparent_1px_9px)]"
+      />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_-10%,rgba(24,153,213,0.2),transparent_60%)]"
       />
-      <div className="container-site relative pt-7" data-testid="verify-hero">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[120px] bg-[linear-gradient(180deg,rgba(14,26,55,0)_0%,rgba(14,26,55,0.55)_100%)]"
+      />
+      <div className="container-site relative pt-7 max-md:pt-[18px]" data-testid="verify-hero">
         {/* W109: this package's own labels — verify.021 "Home", verify.006 the page's nav label. */}
         <Breadcrumbs
           locale={locale}
@@ -130,7 +123,8 @@ export function Hero({
         <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           {/* the design's `.ja-up`: the copy column rises in */}
           <div className="ja-up min-w-0">
-            <p className="mt-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/[0.07] px-4 py-2 text-body-sm font-bold text-white">
+            {/* M1: ≤ 700 the badge is tinted blue (Verify l. 367) */}
+            <p className="mt-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/[0.07] px-4 py-2 text-body-sm font-bold text-white max-md:mb-4 max-md:border-[rgba(127,208,245,0.38)] max-md:bg-[rgba(24,153,213,0.16)] max-md:px-[13px] max-md:py-1.5 max-md:text-[12px] max-md:text-[#cbeafb]">
               <span
                 aria-hidden="true"
                 className="ja-live size-2 shrink-0 rounded-pill bg-success"
@@ -159,19 +153,28 @@ export function Hero({
                 sys('verify.hero.lead')
               )}
             </p>
-            <ul className="mt-6 mb-0 flex list-none flex-col gap-2.5 p-0">
+            {/* M3: ≤ 700 the ticks sit in a boxed card (Verify ll. 369–370) */}
+            <ul className="mt-6 mb-0 flex list-none flex-col gap-2.5 p-0 max-md:mt-4 max-md:rounded-sm max-md:border max-md:border-white/[0.18] max-md:bg-white/[0.07] max-md:px-3.5 max-md:py-3">
               {TICKS.map((id) => (
                 <li
                   key={id}
-                  className="flex items-start gap-3 text-body-sm font-bold text-white/80"
+                  className="flex items-start gap-3 text-body-sm font-bold text-white/80 max-md:text-[13px] max-md:leading-[1.42] max-md:font-semibold max-md:text-white/[0.86]"
                 >
                   <CheckIcon className="mt-[3px] shrink-0 text-[#5ddfb0]" />
                   <span>{t(id)}</span>
                 </li>
               ))}
             </ul>
-            {/* QA W221 V-06: the design's ≤ 700 hero button is full-width (Verify l. 274) */}
-            <Button variant="inverse" size="lg" href="#structure" className="mt-6 max-md:w-full">
+            {/* S1.6: an r12 rectangle (Verify l. 590); M4: hidden ≤ 700 — l. 371 overrides the
+                full-width rule of l. 274 that QA W221 V-06 read */}
+            <Button
+              variant="inverse"
+              size="lg"
+              shape="rect"
+              radius={12}
+              href="#structure"
+              className="mt-6 max-md:hidden"
+            >
               {t('verify.030')}
             </Button>
           </div>
@@ -183,17 +186,13 @@ export function Hero({
               clear: t('verify.033'),
               callOffice: t('verify.034'),
               note: tf('verify.035'),
-              resultTitle: sys('verify.lookup.resultTitle'),
-              resultBody: sys.raw('verify.lookup.resultBody') as string,
-              resultCall: t('verify.051'),
-              resultWhatsapp: sys('verify.lookup.whatsapp'),
-              whatsappIntro: t('verify.228'),
             }}
+            placeholder={ID_EXAMPLE}
             phone={settings.phone}
             whatsappNumber={settings.whatsappNumber}
             livePill={livePill}
             updatedLabel={updatedLabel}
-            recordLabels={recordLabels}
+            recordLabels={lookupRecordLabels}
           />
         </div>
         <StepsDisclosure heading={t('verify.036')}>

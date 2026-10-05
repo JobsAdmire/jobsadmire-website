@@ -58,6 +58,36 @@ describe('ArticleBody (B-8, B-11)', () => {
     expect(ARTICLE_H2).toContain('max-md:text-[22px]');
   });
 
+  it('the checklist wears green ✓ circles; the long-item list is the amber ⚠ box (S3.1, S3.2)', () => {
+    render(<ArticleBody blocks={parseMarkdown(MD)} />);
+    const checks = screen.getAllByTestId('article-check');
+    expect(checks).toHaveLength(2);
+    expect(checks[0].className).toContain('bg-success');
+    expect(checks[0]).toHaveTextContent('✓');
+    const warning = screen.getByTestId('article-warning');
+    expect(warning.className).toContain('bg-[#fef8ec]');
+    expect(warning.querySelectorAll('li')).toHaveLength(2);
+    expect(warning).toHaveTextContent('⚠');
+  });
+
+  it('each h2 and its blocks is a collapsible section; the pull quote closes the last one (M1)', () => {
+    render(<ArticleBody blocks={parseMarkdown(MD)} />);
+    const sections = screen.getAllByTestId('article-section');
+    expect(sections).toHaveLength(2);
+    expect(sections[0].className).toContain('max-md:border-t');
+    expect(sections[0].querySelector('h2')?.id).toBe('first-section');
+    expect(sections[1]).not.toContainElement(screen.getByTestId('article-quote'));
+  });
+
+  it('the pull-quote button is hidden on phones and the mark is straight (M3, S3.5)', () => {
+    render(<ArticleBody blocks={parseMarkdown(MD)} closingCta={<a href="#talk">Talk</a>} />);
+    expect(screen.getByRole('link', { name: 'Talk' }).parentElement?.className).toContain(
+      'max-md:hidden',
+    );
+    expect(screen.getByTestId('article-quote')).toHaveTextContent('"');
+    expect(screen.getByTestId('article-quote')).not.toHaveTextContent('“');
+  });
+
   it('puts the closing CTA inside the final quote box', () => {
     render(<ArticleBody blocks={parseMarkdown(MD)} closingCta={<a href="#talk">Talk</a>} />);
     expect(screen.getByTestId('article-quote')).toContainElement(
@@ -103,6 +133,35 @@ const bundle = testBundle({
     'blogarticle.082': '← Previous article',
     'blogarticle.083': 'Next article →',
   },
+});
+
+describe('RelatedPosts (owner ruling 2026-10-05)', () => {
+  it('a card whose article has no body here is not a link and wears the soon tag', () => {
+    const bodiless: BlogPost = {
+      ...row('x'),
+      hasBody: { tr: false, en: false },
+      body: { tr: null, en: null },
+    };
+    renderWithIntl(
+      <RelatedPosts
+        bundle={bundle}
+        locale="en"
+        related={[row('a'), bodiless]}
+        prev={null}
+        next={bodiless}
+      />,
+      { locale: 'en' },
+    );
+    const cards = screen.getAllByTestId('article-related-card');
+    expect(cards[0]).toHaveAttribute('data-linked', 'true');
+    expect(cards[0].querySelector('a')).toHaveAttribute('href', '/en/blog/a');
+    expect(cards[1]).toHaveAttribute('data-linked', 'false');
+    expect(cards[1].querySelector('a')).toBeNull();
+    expect(screen.getAllByTestId('article-soon')).toHaveLength(2); // the card + the Next card
+    const next = screen.getByTestId('article-next');
+    expect(next.tagName).not.toBe('A');
+    expect(next.className).toContain('text-right');
+  });
 });
 
 describe('RelatedPosts (B-2)', () => {

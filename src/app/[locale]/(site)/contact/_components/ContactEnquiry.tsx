@@ -120,8 +120,15 @@ export function ContactEnquiry({
     <>
       <div className="px-6 pt-6 md:px-8">
         <fieldset className="m-0 min-w-0 border-0 p-0">
-          <legend className="mb-3 p-0 text-eyebrow font-extrabold uppercase tracking-[0.6px] text-text-tertiary">
+          <legend className="mb-3 flex w-full items-center justify-between gap-3 p-0 text-eyebrow font-extrabold uppercase tracking-[0.6px] text-text-tertiary">
             {copy.legend}
+            {/* ≤ 700 px the design shows the picked topic on the legend row (Contact Us l. 796) */}
+            <span
+              aria-hidden="true"
+              className="inline-flex items-center rounded-pill border border-tint-border bg-tint px-2.5 py-1 text-[11px] font-extrabold normal-case tracking-[0.3px] whitespace-nowrap text-blue-safe md:hidden"
+            >
+              {copy.topics[topic].label}
+            </span>
           </legend>
           <div className="grid grid-cols-2 gap-2.5">
             {PICKER_TOPICS.map((key) => (
@@ -168,16 +175,22 @@ export function ContactEnquiry({
             contact={contact}
             submitLabel={form.submit}
             consent="checkbox"
-            title={form.title}
+            consentStyle="box"
             headingLevel={3}
             testId="contact-enquiry-form"
             className="px-6 pt-6 md:px-8"
           >
             <input type="hidden" name="topic" value={formTopic} />
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <p className="m-0 max-w-[46ch] text-body-sm text-text-tertiary">{form.sub}</p>
-              <span className="inline-flex shrink-0 items-center gap-2 rounded-pill border border-border-2 bg-pale-1 px-3 py-1 text-body-sm font-extrabold text-text-secondary">
-                <span aria-hidden="true" className="inline-block h-2 w-2 rounded-full bg-success" />
+            <div className="flex items-start justify-between gap-3.5 max-md:flex-wrap">
+              <div className="min-w-0">
+                <h3 className="m-0 text-card-title font-extrabold">{form.title}</h3>
+                <p className="m-0 mt-1 max-w-[46ch] text-body-sm text-text-tertiary">{form.sub}</p>
+              </div>
+              <span className="mt-0.5 inline-flex shrink-0 items-center gap-2 rounded-pill border border-edge-soft bg-pale-1 px-3 py-1 text-body-sm font-extrabold text-text-secondary">
+                <span
+                  aria-hidden="true"
+                  className="ja-live inline-block h-2 w-2 rounded-full bg-success"
+                />
                 {copy.deskPrefix} {form.desk}
               </span>
             </div>
@@ -188,6 +201,7 @@ export function ContactEnquiry({
                 placeholder={form.companyPlaceholder}
                 required
                 autoComplete="organization"
+                labelMode="small"
                 maxLength={200}
               />
               <Field
@@ -196,6 +210,7 @@ export function ContactEnquiry({
                 placeholder={copy.namePlaceholder}
                 required
                 autoComplete="name"
+                labelMode="small"
                 maxLength={120}
               />
             </div>
@@ -207,6 +222,7 @@ export function ContactEnquiry({
                 required
                 autoComplete="email"
                 inputMode="email"
+                labelMode="small"
                 maxLength={254}
               />
               <Field
@@ -216,6 +232,7 @@ export function ContactEnquiry({
                 required
                 autoComplete="tel"
                 inputMode="tel"
+                labelMode="small"
                 maxLength={40}
               />
             </div>
@@ -225,6 +242,7 @@ export function ContactEnquiry({
                 label={form.subjectLabel}
                 placeholder={form.subjectPlaceholder}
                 required
+                labelMode="small"
                 maxLength={200}
               />
               {/* ≤ 700 px the optional inputs sit behind "+ Add extra details" (contact.211/210). */}
@@ -235,6 +253,7 @@ export function ContactEnquiry({
                     name="city"
                     label={form.extraLabel}
                     autoComplete="address-level2"
+                    labelMode="small"
                     maxLength={120}
                   />
                 ) : (
@@ -243,6 +262,7 @@ export function ContactEnquiry({
                     name="licence"
                     label={form.extraLabel}
                     placeholder={form.extraPlaceholder}
+                    labelMode="small"
                     maxLength={200}
                   />
                 )}
@@ -264,7 +284,7 @@ export function ContactEnquiry({
                 rows={3}
                 label={copy.notesLabel}
                 placeholder={copy.notesPlaceholder}
-                hint=""
+                labelMode="small"
                 maxLength={4000}
               />
             </div>
@@ -274,6 +294,8 @@ export function ContactEnquiry({
               value={reply}
               onChange={setReply}
               options={REPLY_CHANNELS.map((c) => ({ value: c, label: copy.reply[c] }))}
+              inlineLegend
+              compact
             />
           </FormShell>
           <div className="px-6 pb-7 pt-4 md:px-8">{footer}</div>

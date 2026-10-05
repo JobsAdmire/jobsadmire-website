@@ -94,7 +94,7 @@ async function jsonLdNodes(page: Page): Promise<JsonLdNode[]> {
 }
 
 for (const locale of ['tr', 'en'] as const) {
-  test(`${locale}: one page-h1 holding the only data-lcp-slot, the two named placeholders, no leaked ids or tokens, signed metrics only (D26/W55/W1)`, async ({
+  test(`${locale}: one page-h1 holding the only data-lcp-slot, the named placeholders, no leaked ids or tokens, the network card's samples tagged (D26/W55/W1)`, async ({
     page,
   }) => {
     const res = await page.goto(ROUTES[locale]);
@@ -108,13 +108,22 @@ for (const locale of ['tr', 'en'] as const) {
     const placeholders = await page
       .locator('[data-placeholder]')
       .evaluateAll((els) => els.map((el) => el.getAttribute('data-placeholder') ?? '').sort());
-    expect(placeholders).toEqual(['partner-portal-mobile', 'partner-portal-screen']);
+    // the portal's two screenshots + the logo band's labelled sample slots (owner 2026-10-05)
+    expect(placeholders.filter((p) => !p.startsWith('logo-'))).toEqual([
+      'partner-portal-mobile',
+      'partner-portal-screen',
+    ]);
+    expect(new Set(placeholders.filter((p) => p.startsWith('logo-'))).size).toBe(20);
     const body = await page.locator('body').innerText();
     expect(body).not.toMatch(/\{[a-zA-Z]+\}/);
     expect(body).not.toContain('undefined');
     expect(body).not.toMatch(/\bpartner\.\d{3}\b/); // a package id leaking as text
+    // the design's four rows: the 5+ / 20+ samples (tagged), the signed 13 and 470+ (W1)
     const network = page.getByTestId('partner-network');
-    await expect(network.locator('li')).toHaveCount(2);
+    await expect(network.locator('li')).toHaveCount(4);
+    await expect(network.locator('li[data-sample] [data-sample-tag]')).toHaveCount(2);
+    await expect(network).toContainText('5+');
+    await expect(network).toContainText('20+');
     await expect(network).toContainText('13');
     await expect(network).toContainText('470+');
     // W176: every tel: the page renders (FAQ ask card, closing band) is the partner line (T5 review M6)
@@ -124,7 +133,7 @@ for (const locale of ['tr', 'en'] as const) {
     expect(tels).toEqual([TEL]);
   });
 
-  test(`${locale}: the designed sections in order, #tracks for the header CTA (W17/W152/W158), no logo band (W6)`, async ({
+  test(`${locale}: the designed sections in order, #tracks for the header CTA (W17/W152/W158), the sample logo band (owner 2026-10-05)`, async ({
     page,
   }) => {
     // W163: the CTA target and its default form are server HTML, never lazy (T5 review M7)
@@ -134,6 +143,7 @@ for (const locale of ['tr', 'en'] as const) {
     await page.goto(ROUTES[locale]);
     const ids = [
       'partner-hero',
+      'partner-logos',
       'partner-chain',
       'partner-tracks',
       'partner-track-detail',
@@ -149,7 +159,8 @@ for (const locale of ['tr', 'en'] as const) {
       tops.push((await el.boundingBox())!.y);
     }
     expect(tops).toEqual([...tops].sort((a, b) => a - b));
-    await expect(page.getByTestId('partner-logos')).toHaveCount(0);
+    await expect(page.getByTestId('partner-logos')).toContainText('25+');
+    await expect(page.getByTestId('partner-logos').locator('[data-sample-tag]')).toHaveCount(1);
     await expect(page.locator('[id="tracks"]')).toHaveCount(1);
     await expect(page.locator('[id="closing"]')).toHaveCount(1);
     // CTA_BY_PATHNAME['/partner-with-us'] → this page's #tracks (partner.017/018)
@@ -331,7 +342,6 @@ test('en: the institute form (partner) ends on the D11 panel without a door (W92
   await expect(form).toBeVisible();
   await form.getByLabel(/^Institute name/).fill('Lahore Technical Institute');
   await form.getByLabel(/^Contact person/).fill('Sara Ahmed');
-  await form.getByLabel(/^City/).fill('Lahore');
   await form.getByLabel(/^Country/).selectOption('PK');
   await form.getByLabel(/^Email/).fill('sara@example.com');
   await form.getByLabel(/^Phone \/ WhatsApp/).fill('+92 42 1234567');
@@ -367,7 +377,7 @@ test('tr: the hero WhatsApp (static prefill, W95) and the FAQ ask card e-mail ro
   ]);
 });
 
-test('desktop: the sticky bar carries Call / WhatsApp / #tracks, tracks the call, pads the scroll by its height and yields to the closing band (W18/W81)', async ({
+test('desktop: the white sticky bar carries Call / WhatsApp / #tracks, tracks the call, pads the scroll by its height and hides over #tracks (W18/W81, S4.1/S4.3)', async ({
   page,
 }) => {
   test.skip(
@@ -378,8 +388,13 @@ test('desktop: the sticky bar carries Call / WhatsApp / #tracks, tracks the call
   await neutraliseContactLinks(page);
   const bar = page.getByTestId('sticky-cta');
   await expect(bar).toHaveCount(0);
-  await page.evaluate(() => window.scrollTo(0, 900));
+  // past 700 px and past #tracks (the chooser + the open form): the bar slides up
+  await page.evaluate(() => {
+    const r = document.getElementById('tracks')!.getBoundingClientRect();
+    window.scrollTo(0, window.scrollY + r.bottom + 10);
+  });
   await expect(bar).toBeVisible();
+  await expect(bar).toHaveAttribute('data-tone', 'light');
   await expect(bar.locator(`a[href="${TEL}"]`)).toHaveCount(1);
   await expect(bar.locator(`a[href^="${WA}?text="]`)).toHaveCount(1); // the static prefill only (W95)
   await expect(bar.locator('a[href="#tracks"]')).toHaveCount(1);
@@ -392,7 +407,8 @@ test('desktop: the sticky bar carries Call / WhatsApp / #tracks, tracks the call
   await expect
     .poll(() => page.evaluate(() => getComputedStyle(document.documentElement).scrollPaddingBottom))
     .toBe(`${height}px`);
-  await page.getByTestId('partner-closing').scrollIntoViewIfNeeded();
+  // back over the open form: the bar never covers what it advertises (the design's rule)
+  await page.getByTestId('partner-track-detail').scrollIntoViewIfNeeded();
   await expect(bar).toHaveCount(0);
   await expect
     .poll(() => page.evaluate(() => getComputedStyle(document.documentElement).scrollPaddingBottom))

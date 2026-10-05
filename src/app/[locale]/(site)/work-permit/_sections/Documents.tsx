@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Section } from '@/design/primitives/Section';
 import type { Locale } from '@/i18n/routing';
-import { BuildingIcon, CheckIcon, UsersIcon } from '../_components/icons';
+import { BuildingIcon, CheckIcon, UserIcon } from '../_components/icons';
 import { DOC_LISTS, type DocList } from '../_lib/tables';
 
 const LOOK: Record<DocList['key'], { Icon: typeof BuildingIcon; badge: string; count: string }> = {
@@ -11,7 +11,7 @@ const LOOK: Record<DocList['key'], { Icon: typeof BuildingIcon; badge: string; c
     count: 'border-tint-border bg-tint text-blue-safe',
   },
   worker: {
-    Icon: UsersIcon,
+    Icon: UserIcon,
     badge: 'bg-success-surface text-success-text',
     count: 'border-success-border bg-success-surface text-success-text',
   },
@@ -56,9 +56,12 @@ export function Documents({ tf, locale }: { tf: (id: string) => string; locale: 
                     {sys('wp.documents.count', { n: list.items.length })}
                   </span>
                 </div>
-                <ul className="flex flex-col gap-2.5 text-body-sm text-text-secondary">
+                <ul className="flex flex-col gap-2.5 text-body-sm text-text-secondary max-md:gap-2">
                   {list.items.map((item) => (
-                    <li key={item.id} className="flex items-start gap-2.5">
+                    <li
+                      key={item.id}
+                      className="flex items-start gap-2.5 max-md:gap-2 max-md:border-t max-md:border-border-4 max-md:pt-2 max-md:first:border-t-0 max-md:first:pt-0"
+                    >
                       <CheckIcon size={15} className="mt-0.5 flex-none text-success" />
                       <span>
                         {tf(item.id)}

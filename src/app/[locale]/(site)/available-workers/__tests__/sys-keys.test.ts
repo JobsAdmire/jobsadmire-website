@@ -1,20 +1,19 @@
 import { describe, expect, it } from 'vitest';
-import { START_WHEN_KEYS } from '@/forms/options';
 import en from '@/messages/en.json';
 import tr from '@/messages/tr.json';
 
 /** The page's whole `sys.workers.*` set (W6/W9/W23) — a key added to the page is added here and
  *  to BOTH message files (`src/messages/messages.test.ts` proves the two files agree; this proves
- *  the page and the files agree). The `startWhen` labels are the shared
- *  `sys.form.options.startWhen.*` (W78): consumed, not owned. */
+ *  the page and the files agree). The `pool.*` / `formCta.*` keys are the sample pool's words the
+ *  package does not carry (composed counters, "CV & photo on request", "Filter", "selected"). */
 const WORKERS_SYS_KEYS = [
-  'pool.heading',
-  'pool.intro',
-  'empty.title',
-  'empty.body',
-  'empty.cta',
-  'sticky.message',
-  'form.titles.direct_employer',
+  'pool.shown',
+  'pool.loadMore',
+  'pool.active',
+  'pool.cvOnRequest',
+  'pool.filter',
+  'pool.selected',
+  'formCta.ready',
   'timeline.days1to3',
   'timeline.arrival',
   'ask.emailSubject',
@@ -22,13 +21,11 @@ const WORKERS_SYS_KEYS = [
 
 /** sys keys the page reads but does not own. */
 const CONSUMED_SYS_KEYS = [
-  'form.labels.iAm',
-  'form.labels.headcount',
-  'form.labels.startWhen',
-  'form.labels.message',
   'nav.breadcrumbs',
   'thankYou.forms.workers',
-  ...START_WHEN_KEYS.map((k) => `form.options.startWhen.${k}`),
+  'sample.tag',
+  'sample.title',
+  'blocks.imagePlaceholder',
 ];
 
 const flatten = (o: unknown, prefix = ''): string[] =>
@@ -71,11 +68,15 @@ describe('sys.workers.* and sys.seo.workers.* (W6/W9/W23)', () => {
     });
   }
 
-  it('the two ICU messages name their single argument — the metric the page fills (D17)', () => {
+  it('the ICU messages name the slots the page fills (D17 / fillSlots)', () => {
     for (const messages of [tr, en]) {
       const sys = messages.sys as Record<string, unknown>;
-      expect(get(sys, 'workers.sticky.message')).toContain('{hours}');
       expect(get(sys, 'workers.timeline.arrival')).toContain('{weeks}');
+      const shown = get(sys, 'workers.pool.shown') as string;
+      expect(shown).toContain('{shown}');
+      expect(shown).toContain('{total}');
+      for (const key of ['pool.loadMore', 'pool.active', 'formCta.ready'])
+        expect(get(sys, `workers.${key}`), key).toContain('{count}');
     }
   });
 });

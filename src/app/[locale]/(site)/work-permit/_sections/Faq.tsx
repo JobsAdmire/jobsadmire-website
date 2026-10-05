@@ -8,8 +8,8 @@ import { FAQ_PAIRS } from '../_lib/tables';
 
 /** "Work permit questions" (#faq): nine pairs, the first open, one open at a time (as designed),
  *  one FAQPage node (AEO only). The fourth answer is `sys.wp.faq.exemptionAnswer` — `wp.340`
- *  has no answer id (delta 6, WP-C). The ask card is the design's WhatsApp + e-mail pair (W83 —
- *  no call row); it shows at every width (delta 14). */
+ *  has no answer id (delta 6, WP-C). The ask card is the design's WhatsApp + e-mail rows (W83 —
+ *  no call row); hidden ≤ 700 px as designed (rows layout, `variant="cards"`). */
 export function Faq({
   bundle,
   locale,
@@ -47,7 +47,15 @@ export function Faq({
             email: s.email,
             emailLabelId: 'wp.333',
             subject: sys('wp.faq.emailSubject'),
+            layout: 'rows',
+            // the bold value of the WhatsApp row: the shared line when it is the same number
+            whatsappDisplay:
+              s.phone.replace(/\D/g, '') === s.whatsappNumber
+                ? s.phoneDisplay
+                : `+${s.whatsappNumber}`,
           }}
+          variant="cards"
+          mobileAsk="hidden"
           singleOpen
           openFirst
           headingLevel={3}

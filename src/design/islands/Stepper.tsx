@@ -31,8 +31,11 @@ export const STEPPER_STRETCH = {
 
 const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
 
+/** Parity pass (Calculator S1.3): the design's two separate 38 px squares (r10, 1.5 px
+ *  #dbe6ee edge, #1073a8 glyph, the − greyed #cbd5e1 at its bound) either side of a 78 px field —
+ *  no longer one joined group. */
 const BTN =
-  'inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-border-1 bg-white text-body font-extrabold text-ink transition-colors hover:bg-pale-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe aria-disabled:cursor-not-allowed aria-disabled:opacity-40';
+  'inline-flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] border-[1.5px] border-field-border bg-white text-[19px] font-extrabold leading-none text-blue-safe transition-colors hover:bg-pale-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe aria-disabled:cursor-default aria-disabled:text-[#cbd5e1] aria-disabled:hover:bg-white';
 
 /** W131. `value` is the committed number. While the field has focus it holds a draft string,
  *  set only in event handlers (no setState in an effect, R27), so `''` and out-of-range text can
@@ -97,7 +100,9 @@ export function Stepper({
         {label}
       </label>
       <div
-        className={['flex items-stretch', stretch && STEPPER_STRETCH.row].filter(Boolean).join(' ')}
+        className={['flex items-center gap-2.5', stretch && STEPPER_STRETCH.row]
+          .filter(Boolean)
+          .join(' ')}
       >
         <button
           type="button"
@@ -106,9 +111,7 @@ export function Stepper({
           onClick={() => {
             if (!atMin) stepBy(-step);
           }}
-          className={[BTN, 'rounded-l-input', stretch && STEPPER_STRETCH.button]
-            .filter(Boolean)
-            .join(' ')}
+          className={[BTN, stretch && STEPPER_STRETCH.button].filter(Boolean).join(' ')}
         >
           <span aria-hidden="true">−</span>
         </button>
@@ -125,7 +128,7 @@ export function Stepper({
           onBlur={commit}
           onKeyDown={onKeyDown}
           className={[
-            'w-20 border-y border-border-1 text-center text-body font-extrabold tabular-nums focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-safe',
+            'w-[78px] rounded-[10px] border-[1.5px] border-field-border bg-white px-2 py-2.5 text-center text-[16px] font-extrabold tabular-nums text-ink focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-safe',
             stretch && STEPPER_STRETCH.input,
           ]
             .filter(Boolean)
@@ -138,9 +141,7 @@ export function Stepper({
           onClick={() => {
             if (!atMax) stepBy(step);
           }}
-          className={[BTN, 'rounded-r-input', stretch && STEPPER_STRETCH.button]
-            .filter(Boolean)
-            .join(' ')}
+          className={[BTN, stretch && STEPPER_STRETCH.button].filter(Boolean).join(' ')}
         >
           <span aria-hidden="true">+</span>
         </button>

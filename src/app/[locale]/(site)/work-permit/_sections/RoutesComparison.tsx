@@ -1,4 +1,5 @@
 import { Section } from '@/design/primitives/Section';
+import { Tabs } from '@/design/primitives/Tabs';
 import { Frags } from '../_components/Frags';
 import { CheckIcon, InfoIcon } from '../_components/icons';
 import { sp } from '../_lib/fragments';
@@ -28,7 +29,20 @@ export function RoutesComparison({ tf }: { tf: (id: string) => string }) {
         <p className="mx-auto mb-11 max-w-[620px] text-center text-body-lg text-text-tertiary max-md:mb-5 max-md:text-left">
           {tf('wp.098')}
         </p>
-        <div className="mx-auto max-w-[1080px] overflow-hidden rounded-xl border border-border-1 bg-white shadow-[0_18px_48px_rgba(22,60,90,0.1)] max-md:rounded-base">
+        {/* ≤ 700 px: the design's two-tab switcher (.ja-vs-tabs) shows ONE route at a time — an
+            ARIA tablist (Tabs, segmented); the full table below is the 701 px+ view. */}
+        <div data-testid="wp-routes-tabs" className="mx-auto max-w-[1080px] md:hidden">
+          <Tabs
+            variant="segmented"
+            defaultId="permit"
+            listClassName="-mb-3"
+            tabs={[
+              { id: 'permit', label: tf('wp.099'), panel: <MobileRoute side="permit" tf={tf} /> },
+              { id: 'exempt', label: tf('wp.100'), panel: <MobileRoute side="exempt" tf={tf} /> },
+            ]}
+          />
+        </div>
+        <div className="mx-auto max-w-[1080px] overflow-hidden rounded-xl border border-border-1 bg-white shadow-[0_18px_48px_rgba(22,60,90,0.1)] max-md:hidden">
           <div className="grid lg:grid-cols-[1fr_150px_1fr]">
             {/* D20: blue-safe, not the design's #1899d5 → #1073a8 gradient */}
             <div data-testid="wp-routes-permit" className={`${HEAD} bg-blue-safe`}>
@@ -88,7 +102,7 @@ export function RoutesComparison({ tf }: { tf: (id: string) => string }) {
             </p>
           </div>
         </div>
-        <p className="mx-auto mt-6 mb-0 flex max-w-[1080px] items-start gap-3 rounded-sm border border-warning-border bg-warning-surface px-5.5 py-4 text-body-sm leading-relaxed text-warning-text max-md:mt-3.5 max-md:px-3.5 max-md:py-3">
+        <p className="mx-auto mt-6 mb-0 flex max-w-[1080px] items-start gap-3 rounded-sm border border-warning-border bg-warning-surface px-5.5 py-4 text-body-sm leading-relaxed text-[#7a5210] max-md:mt-3.5 max-md:px-3.5 max-md:py-3">
           <InfoIcon size={18} className="mt-0.5 flex-none" />
           <span className="xl:max-w-[820px]">
             <strong className="font-extrabold text-ink">{important}</strong>
@@ -99,5 +113,43 @@ export function RoutesComparison({ tf }: { tf: (id: string) => string }) {
         <SampleCard tf={tf} />
       </div>
     </Section>
+  );
+}
+
+/** One route as the ≤ 700 px card: its head, each criterion (label over the cell) and its
+ *  closing line. Pure markup — the tab state lives in `Tabs`. */
+function MobileRoute({ side, tf }: { side: 'permit' | 'exempt'; tf: (id: string) => string }) {
+  const permit = side === 'permit';
+  const ids = permit
+    ? { eyebrow: 'wp.101', title: 'wp.102', pill: 'wp.103', foot: 'wp.135' }
+    : { eyebrow: 'wp.105', title: 'wp.106', pill: 'wp.107', foot: 'wp.136' };
+  return (
+    <div className="overflow-hidden rounded-base border border-border-1 bg-white shadow-[0_18px_48px_rgba(22,60,90,0.1)]">
+      <div
+        className={`${HEAD} ${permit ? 'bg-gradient-to-br from-blue-safe to-blue-deep' : 'bg-gradient-to-br from-[#253063] to-[#16204a]'}`}
+      >
+        <p className="m-0 mb-1 text-eyebrow font-extrabold tracking-[1.2px] uppercase">
+          {tf(ids.eyebrow)}
+        </p>
+        <p className="m-0 text-card-title font-extrabold">{tf(ids.title)}</p>
+        <span className={HEAD_PILL}>{tf(ids.pill)}</span>
+      </div>
+      {COMPARE_ROWS.map((row) => (
+        <div key={row.labelId} className="border-t border-border-3 px-4 py-3">
+          <p className="m-0 mb-1 text-eyebrow font-extrabold tracking-[0.8px] text-text-tertiary uppercase">
+            {tf(row.labelId)}
+          </p>
+          <p className="m-0 text-body-sm leading-relaxed text-text-secondary">
+            <Frags parts={permit ? row.permit : row.exempt} tf={tf} />
+          </p>
+        </div>
+      ))}
+      <p
+        className={`m-0 flex items-center gap-2.5 border-t border-border-3 px-4 py-3 text-body-sm font-bold ${permit ? 'bg-[#f4fafd] text-blue-safe' : 'bg-[#f0f3fa] text-[#253063]'}`}
+      >
+        <CheckIcon size={15} className="flex-none" />
+        {tf(ids.foot)}
+      </p>
+    </div>
   );
 }

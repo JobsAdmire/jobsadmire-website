@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { getBundle, makeT, makeTf, metricValues } from '@/content/adapter';
+import { getBundle, makeT, makeTf } from '@/content/adapter';
 import { getCollection } from '@/content/collections';
 import { StickyCtaBar } from '@/design/chrome/StickyCtaBar';
 import { routing } from '@/i18n/routing';
@@ -15,7 +15,7 @@ import { PARTNER_LOGOS } from './_lib/logos';
 import { partnerLineOf } from '@/lib/contact/partner-line';
 import type { TrackKey } from './_lib/tracks';
 import { Chain } from './_sections/Chain';
-import { CLOSING_ID, Closing } from './_sections/Closing';
+import { Closing } from './_sections/Closing';
 import { Faq } from './_sections/Faq';
 import { Hero } from './_sections/Hero';
 import { Logos } from './_sections/Logos';
@@ -105,14 +105,15 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
       <Hero
         locale={locale}
         tf={tf}
-        metrics={metricValues(bundle, locale)}
+        metrics={getCollection(bundle, 'metrics')}
         whatsappHref={whatsappHref}
       />
-      {/* W6: the band renders only with consented logos. A plain import by W216 (1): P2-7's
+      {/* The logo band always renders (owner 2026-10-05): consented logos once they exist (W6),
+          the design's labelled sample slots until then. A plain import by W216 (1): P2-7's
           server-side `await import()` moved no client bytes — Turbopack groups the `PausableMarquee`
           client reference into the route's eager chunk either way (proof at 20ce926) — so it was
           reverted; a client `next/dynamic` boundary is reserved for a partner route ≥ 192,000 B. */}
-      {PARTNER_LOGOS.length > 0 ? <Logos logos={PARTNER_LOGOS} /> : null}
+      <Logos tf={tf} logos={PARTNER_LOGOS} />
       <Chain tf={tf} />
       <Tracks tf={tf} panels={panels} />
       <Process bundle={bundle} locale={locale} tf={tf} />
@@ -130,6 +131,7 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
         whatsappNumber={settings.whatsappNumber}
         whatsappText={sys('partner.faq.whatsappText')}
         phone={line.phone}
+        phoneDisplay={line.phoneDisplay}
         email={settings.email}
         emailSubject={sys('partner.faq.emailSubject')}
       />
@@ -141,23 +143,31 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
         phoneDisplay={line.phoneDisplay}
         email={settings.email}
       />
-      {/* W18/W81: the design's bar — Call / WhatsApp / "Choose your partnership" (contact hrefs
-          tracked page_cta by the bar itself). It keys on the closing band, which repeats the
-          Apply/Call pair: `#tracks` sits ~1,000 px down, and a bar keyed on it would never show
-          (delta 12); html's scroll-padding-bottom keeps focused fields above it. */}
+      {/* W18/W81: the design's white bar (SHARED 7.1, ll. 596–609) — Call (phone icon) /
+          WhatsApp / "Choose your partnership", r10 rectangles (contact hrefs tracked page_cta by
+          the bar itself). It shows past 700 px and hides while `#tracks` — the chooser and the
+          open track's form — is on screen (S4.3, the design's own rule, ll. 1228–1236), so it
+          never covers the form it advertises; html's scroll-padding-bottom keeps focused
+          fields above it. */}
       <StickyCtaBar
+        tone="light"
         message={tf(STICKY_IDS.message)}
         ctas={[
-          { label: tf(STICKY_IDS.call), href: telLink(line.phone), variant: 'secondary' },
+          {
+            label: tf(STICKY_IDS.call),
+            href: telLink(line.phone),
+            variant: 'outline-blue',
+            icon: 'phone',
+          },
           {
             label: tf(STICKY_IDS.whatsapp),
             href: whatsappHref,
-            variant: 'success',
+            variant: 'outline-green',
             external: true,
           },
           { label: tf(STICKY_IDS.tracks), href: '#tracks' },
         ]}
-        hideNearId={CLOSING_ID}
+        hideWhileInViewId="tracks"
         live
       />
     </>

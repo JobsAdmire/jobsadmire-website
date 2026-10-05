@@ -7,9 +7,15 @@ import { Fragment, type ReactNode } from 'react';
  * white/`pale-2`/`pale-3`; the design's #94a3b8 kickers become `text-text-tertiary`.
  */
 
+/** S4.1 / S10.1: only the subtitle `<p>` is capped (design 818–819: `max-width:640px` on the
+ *  `<p>`), never the head — a 480 px head wrapped the h2 to two lines. */
 const HEAD = {
-  center: 'mx-auto mb-10 max-w-[680px] text-center max-md:sr-only xl:mb-[30px] xl:max-w-[510px]',
-  left: 'mb-2.5 max-w-[640px] max-md:sr-only xl:max-w-[480px]',
+  center: 'mx-auto mb-10 text-center max-md:sr-only xl:mb-[30px]',
+  left: 'mb-2.5 max-md:sr-only',
+} as const;
+const SUB = {
+  center: 'mx-auto max-w-[680px] xl:max-w-[510px]',
+  left: 'max-w-[640px] xl:max-w-[480px]',
 } as const;
 const H2 = {
   lg: 'm-0 mb-3.5 text-h2 leading-[1.05] tracking-[-0.04em] text-ink',
@@ -29,7 +35,7 @@ export function SectionHead({ title, sub, align = 'center', size = 'lg' }: Secti
   return (
     <div className={HEAD[align]}>
       <h2 className={H2[size]}>{title}</h2>
-      <p className="m-0 text-body-lg text-text-secondary">{sub}</p>
+      <p className={`m-0 text-body-lg text-text-secondary ${SUB[align]}`}>{sub}</p>
     </div>
   );
 }
@@ -51,17 +57,32 @@ const NOTE = {
     'm-0 rounded-base border border-success-border bg-success-surface px-[26px] xl:px-[19.5px] py-5 text-body leading-[1.65] text-[#14532d] max-md:px-3.5 max-md:py-[13px] max-md:text-body-sm',
 } as const;
 
-/** The design's amber/green notes. `className` is for margins and visibility only (W122). */
+/** The design's amber/green notes. `className` is for margins and visibility only (W122).
+ *  `icon` is the design's leading glyph (alert circle / shield-check, 18–20 px, top-aligned). */
 export function Note({
   tone,
   className,
+  icon,
   children,
 }: {
   tone: keyof typeof NOTE;
   className?: string;
+  icon?: ReactNode;
   children: ReactNode;
 }) {
-  return <p className={[NOTE[tone], className].filter(Boolean).join(' ')}>{children}</p>;
+  const cls = [NOTE[tone], className].filter(Boolean).join(' ');
+  if (!icon) return <p className={cls}>{children}</p>;
+  return (
+    <div className={`${cls} flex items-start ${tone === 'green' ? 'gap-3.5' : 'gap-3'}`}>
+      <span
+        aria-hidden="true"
+        className={`mt-0.5 shrink-0 ${tone === 'green' ? 'text-success' : 'text-[#d97706]'}`}
+      >
+        {icon}
+      </span>
+      <span className="min-w-0">{children}</span>
+    </div>
+  );
 }
 
 const TICK =

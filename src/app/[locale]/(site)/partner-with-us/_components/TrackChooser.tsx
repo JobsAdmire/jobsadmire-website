@@ -35,6 +35,9 @@ const ACCENT: Record<TrackKey, { on: string; icon: string; cta: string }> = {
   },
 };
 const OFF = 'border-border-2 hover:border-tint-border';
+/* S5.1: every card lifts 5 px under the pointer with the design's deeper shadow (`.ja-track:hover`,
+   l. 62); Tailwind's `hover:` only matches a hovering pointer, and the shadow composes with the
+   chosen card's ring (both are `box-shadow` layers), so the halo stays while it lifts. */
 /** ≤ 700 the design's `.ja-track` is a compact ROW, not a stacked card (Partner With Us ll.
  *  320–327, QA W220 P-04): `grid 40px 1fr 20px`, gaps 12 / 3, padding 13 × 14, radius 15, no
  *  shadow; the icon spans both rows in column 1, the 16 px title and the clamped 12.5 px body
@@ -42,7 +45,7 @@ const OFF = 'border-border-2 hover:border-tint-border';
  *  explicit cell, since auto-placement would put the body beside the title. All `max-md:` twins
  *  (1:1 values, D19); the pale chosen ground stays on `ACCENT.*.on`. */
 const CARD =
-  'flex h-full cursor-pointer flex-col rounded-lg border-[1.5px] bg-white p-7 shadow-[0_8px_24px_rgba(22,60,90,0.06)] xl:shadow-[0_6px_18px_rgba(22,60,90,0.06)] transition-[border-color,box-shadow] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-safe max-md:grid max-md:grid-cols-[40px_1fr_20px] max-md:items-center max-md:gap-x-3 max-md:gap-y-[3px] max-md:px-3.5 max-md:py-[13px] max-md:rounded-[15px] max-md:shadow-none';
+  'flex h-full cursor-pointer flex-col rounded-lg border-[1.5px] bg-white p-7 shadow-[0_8px_24px_rgba(22,60,90,0.06)] xl:shadow-[0_6px_18px_rgba(22,60,90,0.06)] transition-[transform,border-color,box-shadow] duration-[250ms] ease-out hover:-translate-y-[5px] hover:shadow-[0_20px_44px_rgba(22,60,90,0.13)] xl:hover:shadow-[0_15px_33px_rgba(22,60,90,0.13)] motion-reduce:hover:translate-y-0 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-safe max-md:grid max-md:grid-cols-[40px_1fr_20px] max-md:items-center max-md:gap-x-3 max-md:gap-y-[3px] max-md:px-3.5 max-md:py-[13px] max-md:rounded-[15px] max-md:shadow-none';
 const ICON_BOX =
   'mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-sm max-md:mb-0 max-md:h-10 max-md:w-10 max-md:col-start-1 max-md:row-start-1 max-md:row-span-2 max-md:self-center max-md:rounded-[12px]';
 /** The design's phone chevron (`.ja-track > span:last-child::after`: "›", "⌄" on the chosen row)

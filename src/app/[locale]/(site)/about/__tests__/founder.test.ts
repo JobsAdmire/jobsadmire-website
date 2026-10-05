@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { CollectionError } from '@/content/collections';
@@ -22,13 +22,20 @@ describe('publishedFounder (W86: the founder band reads only this)', () => {
     expect(publishedFounder(testBundle({ collections: { founder: [ROW] } }))).toEqual(ROW);
   });
 
-  it('the committed LOCAL bundles publish no founder (§10 row 3 is pending)', () => {
+  it('the committed LOCAL bundles publish the founder (owner 2026-10-05) with a photo on disk', () => {
     for (const locale of ['tr', 'en'] as const) {
       // The sanctioned readFileSync bypass (W40): src/** may not import src/content/local/*.
       const raw = JSON.parse(
         readFileSync(join(__dirname, `../../../../../content/local/bundle.${locale}.json`), 'utf8'),
       );
-      expect(publishedFounder(BundleSchema.parse(raw)), locale).toBeNull();
+      const founder = publishedFounder(BundleSchema.parse(raw));
+      expect(founder, locale).toEqual({
+        name: 'Haris Jiva',
+        titleId: 'about.047',
+        photoSrc: '/team/haris-jiva.jpg',
+        published: true,
+      });
+      expect(existsSync(join(process.cwd(), 'public', founder?.photoSrc ?? '')), locale).toBe(true);
     }
   });
 

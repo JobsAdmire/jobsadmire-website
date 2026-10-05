@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { OPENING, opening } from '@/test/careers';
-import { heroRoles, roleCards, type RoleCopy } from '../_lib/roles';
+import { heroRoles, panelListsOf, roleCards, type RoleCopy } from '../_lib/roles';
 
 const copy: RoleCopy = {
   engagement: { fullTime: 'Full-time', partTime: 'Part-time', project: 'Project-based' },
@@ -30,6 +30,13 @@ describe('roleCards', () => {
       title: 'Country Representative — Uzbekistan',
       summary:
         'Own the whole JobsAdmire pipeline in Uzbekistan — partners, candidates and quality.',
+      panel: [
+        {
+          heading: 'The work',
+          items: ['Find and manage licensed partner agencies', 'Run first interviews'],
+        },
+        { heading: 'The profile', items: ['A working network among agencies'] },
+      ],
       location: 'Tashkent · Uzbekistan',
       workModes: 'Remote',
       place: 'overseas',
@@ -69,6 +76,31 @@ describe('roleCards', () => {
       workModes: 'Hybrid · Remote',
       posted: 'Posted 1 Temmuz 2026',
     });
+  });
+});
+
+describe('panelListsOf (parity S4.3)', () => {
+  it('takes the first two lists under their own colon-ended lead-in, five items at most', () => {
+    const text =
+      'Intro line.\n\nWhat you do:\n- a\n- b\n- c\n- d\n- e\n- f\n\nProfile:\n- x\n\nPerks:\n- p';
+    expect(panelListsOf(text)).toEqual([
+      { heading: 'What you do', items: ['a', 'b', 'c', 'd', 'e'] },
+      { heading: 'Profile', items: ['x'] },
+    ]);
+  });
+
+  it('a list after an ordinary sentence carries no heading; no list, no panel lists', () => {
+    expect(panelListsOf('A whole paragraph about the role.\n- one\n- two')).toEqual([
+      { heading: '', items: ['one', 'two'] },
+    ]);
+    expect(panelListsOf('Just a paragraph.')).toEqual([]);
+    expect(panelListsOf(null)).toEqual([]);
+  });
+
+  it('reads the rich-text form too (a heading before a <ul>)', () => {
+    expect(panelListsOf('<h3>Duties</h3><ul><li>One</li><li>Two</li></ul>')).toEqual([
+      { heading: 'Duties', items: ['One', 'Two'] },
+    ]);
   });
 });
 

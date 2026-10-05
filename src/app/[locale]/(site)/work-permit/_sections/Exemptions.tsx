@@ -26,7 +26,7 @@ export function Exemptions({ bundle, tf }: { bundle: Bundle; tf: (id: string) =>
   return (
     <Section tone="pale" id="muafiyet" className="scroll-mt-24 lg:scroll-mt-32 xl:scroll-mt-40">
       <div className="container-site" data-testid="wp-muafiyet">
-        <div className="mx-auto mb-11 max-w-[720px] text-center max-md:mb-5 max-md:text-left">
+        <div className="mx-auto mb-11 max-w-[720px] text-center max-md:mb-5">
           <p className="m-0 mb-4 inline-block rounded-pill border border-[#ccd6ea] bg-[#edf1f9] px-4 py-1.5 text-eyebrow font-extrabold tracking-[1.5px] text-[#253063] uppercase">
             {tf('wp.100')}
           </p>
@@ -56,7 +56,7 @@ export function Exemptions({ bundle, tf }: { bundle: Bundle; tf: (id: string) =>
             return (
               <li key={card.titleId} className="min-w-0">
                 <article className="h-full rounded-md border border-[#ccd6ea] bg-white px-6.5 py-6.5 max-md:rounded-sm max-md:px-3.5 max-md:py-3.5">
-                  <div className="mb-3.5 flex items-center justify-between gap-2.5 max-md:mb-2">
+                  <div className="mb-3.5 flex items-center justify-between gap-2.5 max-md:mb-2 max-md:justify-start">
                     <span
                       aria-hidden="true"
                       className="flex h-10 w-10 flex-none items-center justify-center rounded-xs bg-[#edf1f9] text-[#253063]"

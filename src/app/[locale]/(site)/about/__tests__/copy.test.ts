@@ -41,9 +41,11 @@ const PACKAGE_ID = /(['"`])((?:about|home|hire|contact)\.\d{3})\1/g;
 const TOKEN = /\{([A-Za-z][A-Za-z0-9]*)\}/g;
 
 /** Ids the page must never read: the design's unsigned-stat labels (W1, MetricStrip renders
- *  each metric's own label), the "+ countries" suffix (W1: exact 13), the rotation list (the
- *  sourceCountries collection replaces it), the founder-name placeholder (W86 — the name comes
- *  from a published row only), and the hidden employer-updates subscription (W5). */
+ *  each metric's own label — about.063 "Client Retention" is the one exception, the label of
+ *  the stats row's tagged SAMPLE cell, owner 2026-10-05), the "+ countries" suffix (W1: exact
+ *  13), the rotation list (the sourceCountries collection replaces it), the founder-name
+ *  placeholder (W86 — the name comes from a published row only), and the employer-updates
+ *  subscription copy (the newsletter band speaks with its own blog.036–041 ids). */
 const NEVER_READ = [
   'about.026',
   'about.027',
@@ -52,7 +54,6 @@ const NEVER_READ = [
   'about.060',
   'about.061',
   'about.062',
-  'about.063',
   'about.139',
   'about.141',
   'about.142',
@@ -105,7 +106,7 @@ describe('About copy (W9/W23)', () => {
     }
   });
 
-  it('never reads the unsigned stat labels, the founder placeholder or the hidden subscription', () => {
+  it('never reads the unsigned stat labels, the founder placeholder or the subscription copy', () => {
     const all = sources(PAGE_DIR).join('\n');
     for (const id of NEVER_READ) expect(all.includes(`'${id}'`), id).toBe(false);
   });

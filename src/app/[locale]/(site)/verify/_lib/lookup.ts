@@ -1,3 +1,6 @@
+/** The design's format hint in the empty lookup and the sticky search (Verify ll. 559, 603) — an
+ *  id shape, not a person; locale-free, so a constant rather than copy. */
+export const ID_EXAMPLE = 'JA-REP-014';
 /** A result renders once the normalised query has this many characters (the design's `> 2`). */
 export const LOOKUP_MIN_CHARS = 3;
 /** The longest query a URL may prefill — a badge id is 10 characters; 80 covers a full name. */

@@ -27,7 +27,7 @@ const PROPS: ArticleSidebarProps = {
     copied: 'Copied!',
     copyFailed: 'The link could not be copied.',
   },
-  printLabel: 'Print this article',
+  shareThis: 'Share this article',
 };
 
 describe('the article sidebar island and its fallback (B-13, W132)', () => {
@@ -37,7 +37,7 @@ describe('the article sidebar island and its fallback (B-13, W132)', () => {
     );
   });
 
-  it('server-renders the TOC landmark (first entry current), the remaining time, the share links and the print button', () => {
+  it('server-renders the TOC landmark (first entry current), the clock line, the coloured share circles and Copy link (no print, no native Share)', () => {
     const html = renderToStaticMarkup(<ArticleSidebarFallback {...PROPS} />);
     expect(html).toContain('<nav aria-label="In this article">');
     // QA W221 BLOG-08: `list-none` strips the list semantics in Safari/VoiceOver — the TOC keeps
@@ -46,7 +46,14 @@ describe('the article sidebar island and its fallback (B-13, W132)', () => {
     expect(html).toContain('href="#who-can-hire" aria-current="location"');
     expect(html).toContain('≈ 8 min left');
     expect(html).toContain('https://wa.me/?text=');
-    expect(html).toContain('print-hidden mt-3');
+    expect(html).toContain('aria-label="Share on WhatsApp"');
+    expect(html).toContain('bg-success-text');
+    expect(html).toContain('bg-[#0A66C2]');
+    expect(html).toContain('Copy link');
+    expect(html).not.toContain('Print this article');
+    // the current entry is the design's pale pill, not a left rail
+    expect(html).toContain('bg-tint font-extrabold text-blue-deep');
+    expect(html).not.toContain('border-l-2');
   });
 
   it('the binder shows the fallback until the wrapper is in view (jsdom has no IntersectionObserver)', () => {

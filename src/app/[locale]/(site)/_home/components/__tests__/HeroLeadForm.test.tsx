@@ -56,6 +56,39 @@ beforeEach(() => {
 });
 
 describe('HeroLeadForm', () => {
+  it("lays the proposal out in the design's pairs: one column to 900 px, two from 901; e-mail full width under the contact pair (W3)", () => {
+    renderWithIntl(<HeroLeadForm {...props} />);
+    const form = screen.getByTestId('hire-form');
+    const order = [...form.querySelectorAll('input[name], select[name]')]
+      .map((el) => el.getAttribute('name'))
+      .filter((name) => !['honeypot', 'consent', 'cf-turnstile-response'].includes(name ?? ''));
+    expect(order).toEqual([
+      'company',
+      'name',
+      'phone',
+      'email',
+      'sector',
+      'headcount',
+      'city',
+      'startWhen',
+    ]);
+    const grid = form.querySelector('input[name="company"]')!.closest('.grid')!;
+    expect(grid).toHaveClass('lg:grid-cols-2');
+    expect(grid).not.toHaveClass('xs:grid-cols-2');
+    for (const name of ['company', 'email'])
+      expect(
+        form.querySelector(`input[name="${name}"]`)!.closest('.lg\\:col-span-2'),
+      ).not.toBeNull();
+    // `.ja-f-opt`: the optional fields hide at ≤ 460 px; the catalog's required ones never do
+    const phoneHidden = (name: string) => {
+      const box = form.querySelector(`[name="${name}"]`)!.closest('.max-xs\\:hidden');
+      return box !== null && form.contains(box);
+    };
+    for (const name of ['sector', 'city', 'startWhen']) expect(phoneHidden(name), name).toBe(true);
+    for (const name of ['company', 'name', 'phone', 'email', 'headcount'])
+      expect(phoneHidden(name), name).toBe(false);
+  });
+
   it('starts in proposal mode: the W3 fields, package labels (W115), key options (W78), the consent checkbox (W79)', () => {
     renderWithIntl(<HeroLeadForm {...props} />);
     const form = screen.getByTestId('hire-form');

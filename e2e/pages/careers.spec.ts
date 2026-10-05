@@ -86,15 +86,100 @@ for (const r of INDEX) {
       }
     });
 
-    test('W3/W89: the open application is WhatsApp + e-mail only, and nothing links to Operations', async ({
+    test('parity S7.1: the open application is a form that posts nothing — submit opens WhatsApp in a new tab', async ({
       page,
     }) => {
       await page.goto(r.path);
       const apply = page.getByTestId('careers-apply');
-      await expect(apply.locator('form')).toHaveCount(0);
-      await expect(apply.locator('a[href^="https://wa.me/905011240340?text="]')).toHaveCount(1);
+      const form = apply.getByTestId('careers-open-application');
+      await expect(form).toBeVisible();
+      // nothing typed ever sits in a DOM href (W76/W95); the e-mail door stays
+      await expect(apply.locator('a[href^="https://wa.me/"]')).toHaveCount(0);
       await expect(apply.locator('a[href^="mailto:careers@jobsadmire.com"]')).toHaveCount(1);
-      await expect(page.locator('a[href*="operations.jobsadmire.com"]')).toHaveCount(0);
+      const f = r.sys.careers.apply.form;
+      await form.getByPlaceholder(f.name).fill('Ada Lovelace');
+      await form.getByPlaceholder(f.country).fill('Tashkent');
+      await form.getByPlaceholder(f.email).fill('ada@example.com');
+      await form.getByPlaceholder(f.phone).fill('+998900000000');
+      await form.locator('select[name="engagement"]').selectOption('partTime');
+      await form.locator('input[name="consent"]').check();
+      const posts: string[] = [];
+      // no server action, no door call: nothing posted to the site itself (Vercel's own
+      // insights beacons aside) or to Operations
+      page.on('request', (req) => {
+        const url = new URL(req.url());
+        if (req.method() !== 'POST' || url.pathname.startsWith('/_vercel/')) return;
+        if (url.origin === new URL(page.url()).origin || url.host.includes('jobsadmire.com'))
+          posts.push(req.url());
+      });
+      // the work-permit pattern: record the composed URL instead of leaving for wa.me
+      await page.evaluate(() => {
+        const w = window as unknown as { __opened: string[] };
+        w.__opened = [];
+        window.open = ((url?: string | URL) => {
+          w.__opened.push(String(url));
+          return null;
+        }) as typeof window.open;
+      });
+      await form.locator('button[type="submit"]').click();
+      const opened = await page.evaluate(
+        () => (window as unknown as { __opened: string[] }).__opened,
+      );
+      expect(opened).toHaveLength(1);
+      expect(opened[0].startsWith('https://wa.me/905011240340?text=')).toBe(true);
+      const text = decodeURIComponent(opened[0].split('?text=')[1]);
+      expect(text.split('\n')).toHaveLength(9); // intro + eight "label value" lines
+      expect(text).toContain('Ada Lovelace');
+      await expect(apply.getByTestId('careers-open-application-sent')).toBeVisible();
+      expect(posts).toEqual([]);
+    });
+
+    test('Operations is reached only through the two owner-approved links, each in a new tab', async ({
+      page,
+    }) => {
+      await page.goto(r.path);
+      const ops = page.locator('a[href*="operations.jobsadmire.com"]');
+      const hrefs = await ops.evaluateAll((els) => els.map((el) => el.getAttribute('href')));
+      expect([...new Set(hrefs)].sort()).toEqual([
+        'https://operations.jobsadmire.com/en/careers',
+        'https://operations.jobsadmire.com/en/careers/status',
+      ]);
+      for (const i of hrefs.keys()) {
+        await expect(ops.nth(i)).toHaveAttribute('target', '_blank');
+        await expect(ops.nth(i)).toHaveAttribute('rel', 'noopener');
+      }
+      await expect(page.getByTestId('careers-portal')).toBeVisible();
+      await expect(page.getByTestId('careers-status')).toBeVisible();
+    });
+
+    test('phones (390): the country chips scroll in one row without moving the page; the ways fold, the first open', async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(r.path);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow).toBe(0);
+      const chips = page.getByTestId('careers-countries');
+      const tops = await chips
+        .locator('li')
+        .evaluateAll((els) => [
+          ...new Set(els.map((el) => Math.round(el.getBoundingClientRect().top))),
+        ]);
+      expect(tops).toHaveLength(1);
+      const ways = page.getByTestId('careers-way');
+      await expect(ways).toHaveCount(3);
+      await expect(ways.nth(0)).toHaveAttribute('data-open', 'true');
+      await expect(ways.nth(1)).not.toHaveAttribute('data-open', 'true');
+      await ways.nth(1).getByRole('button').click();
+      await expect(ways.nth(1)).toHaveAttribute('data-open', 'true');
+      await settleMotion(page);
+      const results = await new AxeBuilder({ page })
+        .include('[data-testid="careers-ways"]')
+        .include('[data-testid="careers-countries"]')
+        .analyze();
+      expect(results.violations).toEqual([]);
     });
 
     test('JSON-LD: FAQPage over the 8 on-page pairs, a two-item BreadcrumbList, no JobPosting (D15)', async ({
@@ -175,6 +260,26 @@ test.describe('careers — the fixture door (E2E_CAREERS_MOCK=1)', () => {
     await expect(roles).toHaveCount(5);
     await list.getByRole('button', { name: 'Show fewer roles' }).click();
     await expect(roles).toHaveCount(4);
+  });
+
+  test('a role row opens its panel (Apply, Ask) and closes again; the hero CTA pre-filters to overseas', async ({
+    page,
+  }) => {
+    await page.goto('/en/careers');
+    const list = page.getByTestId('careers-roles-list');
+    const row = list.locator(`[data-testid="careers-role"][data-slug="${FIX.uz}"]`);
+    await row.getByRole('button', { name: /^View role/ }).click();
+    await expect(row).toHaveAttribute('data-open', 'true');
+    await expect(row.getByRole('link', { name: /^Apply for this role/ })).toHaveAttribute(
+      'href',
+      `/en/careers/${FIX.uz}#apply`,
+    );
+    await expect(row.getByRole('link', { name: /^Ask a question first/ })).toBeVisible();
+    await row.getByRole('button', { name: /^Close/ }).click();
+    await expect(row).not.toHaveAttribute('data-open', 'true');
+    await page.getByRole('link', { name: 'See 3 open roles' }).click();
+    await expect(list.getByRole('radio', { name: 'Overseas' })).toBeChecked();
+    await expect(list.getByTestId('careers-role')).toHaveCount(3);
   });
 
   test('a detail page: JobPosting from the opening, a three-item trail, both alternates, its own title, axe clean', async ({
@@ -325,7 +430,8 @@ test.describe('careers — a configured door, read only', () => {
       (await cards.count()) === 0,
       'no opening is listed on this face (a door-less build, W92)',
     );
-    const href = await cards.first().getByRole('heading').getByRole('link').getAttribute('href');
+    // the Apply link of the (closed) first row: in the DOM, hidden until the row opens
+    const href = await cards.first().locator('a[href*="/kariyer/"]').first().getAttribute('href');
     const res = await page.goto(href ?? '/kariyer');
     expect(res?.status()).toBe(200);
     await expect(page.getByTestId('page-h1')).toHaveCount(1);

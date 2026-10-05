@@ -58,13 +58,17 @@ export function ClosingBand({ ctx }: { ctx: CalcCtx }) {
           <div className="flex flex-wrap justify-center gap-3.5 max-md:grid max-md:grid-cols-1 max-md:gap-2">
             <QuoteButton
               label={t('calc.105')}
-              variant="primary"
+              variant="success-solid"
+              shape="rect"
+              radius={11}
               size="lg"
               className="max-md:w-full"
               testId="calc-quote-open-band"
             />
             <Button
-              variant="secondary"
+              variant="outline-blue"
+              shape="rect"
+              radius={11}
               size="lg"
               href="/available-workers"
               prefetch={false}

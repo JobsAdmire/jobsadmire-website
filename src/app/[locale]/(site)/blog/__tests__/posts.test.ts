@@ -3,15 +3,19 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { getCollection, type BlogPost } from '@/content/collections';
 import { BundleSchema } from '../../../../../../contract/website-bundle.v1';
-import { ALL, countLabel, matchKeys } from '../_lib/filter';
+import { ALL, countLabel, matchKeys, resultLine } from '../_lib/filter';
 import {
   articleAlternates,
   articleHref,
   categoryOptions,
   filterItems,
   findWritten,
+  indexPosts,
   isWritten,
+  MOST_READ_KEYS,
+  mostReadPosts,
   otherLocale,
+  PAGE_SIZE,
   prevNext,
   relatedPosts,
   splitFeatured,
@@ -59,6 +63,28 @@ describe('the committed bundles (W4, W28, W64)', () => {
     expect(findWritten(tr, 'tr', 'yabanci-isciler-calisma-izni-rehberi')).toBeNull();
     expect(findWritten(en, 'en', 'hiring-from-pakistan-turkish-employers')).toBeNull();
     expect(findWritten(en, 'en', 'does-not-exist')).toBeNull();
+  });
+
+  it('the index lists every row with a title (owner 2026-10-05): EN 22, TR 4 — row 1 featured in both', () => {
+    const en = indexPosts(getCollection(load('en'), 'blog'), 'en');
+    const tr = indexPosts(getCollection(load('tr'), 'blog'), 'tr');
+    expect(en).toHaveLength(22);
+    expect(tr.map((p) => p.slug.tr)).toEqual([
+      'yabanci-isciler-calisma-izni-rehberi',
+      'pakistandan-isci-istihdami',
+      'iskur-ozel-istihdam-burolari-kurallari',
+      'turkiye-de-isgucu-acigi',
+    ]);
+    expect(en[0].key).toBe(tr[0].key);
+    expect(en[0].key).toBe('turkey-work-permit-process-employer-guide');
+    expect(PAGE_SIZE).toBe(6);
+  });
+
+  it("most read resolves the design's lists to bundle rows in both locales", () => {
+    for (const locale of ['tr', 'en'] as const) {
+      const rows = getCollection(load(locale), 'blog');
+      expect(mostReadPosts(rows, locale).map((p) => p.key)).toEqual([...MOST_READ_KEYS[locale]]);
+    }
   });
 
   it('the written article advertises only its own locale — no TR body, no TR hreflang (B-15)', () => {
@@ -158,6 +184,39 @@ describe('the pure helpers', () => {
     expect(matchKeys(items, '', 'recruitment', 'tr')).toEqual(['a']);
     expect(matchKeys(items, '', ALL, 'tr')).toEqual(['x', 'a']);
     expect(matchKeys(items, 'nothing', ALL, 'tr')).toEqual([]);
+  });
+
+  it('indexPosts keeps the collection order and drops rows with no title here', () => {
+    expect(indexPosts([d, c, b, a], 'tr').map((p) => p.key)).toEqual(['c', 'b', 'a']);
+    expect(indexPosts([d, c, b, a], 'en').map((p) => p.key)).toEqual(['d', 'c', 'b', 'a']);
+  });
+
+  it('mostReadPosts drops a key with no row or no title in the locale', () => {
+    const rows = [
+      post({ key: 'turkey-work-permit-process-employer-guide' }),
+      post({
+        key: 'hiring-from-pakistan-turkish-employers',
+        slug: { tr: null, en: 'x' },
+        title: { tr: null, en: 'X' },
+      }),
+    ];
+    expect(mostReadPosts(rows, 'tr').map((p) => p.key)).toEqual([
+      'turkey-work-permit-process-employer-guide',
+    ]);
+    expect(mostReadPosts(rows, 'en')).toHaveLength(2);
+  });
+
+  it("resultLine: the query, else the topic, else the total — the design's three lines", () => {
+    const forms = { one: '{n} article', other: '{n} articles', forQuote: 'for “' };
+    expect(resultLine({ shown: 3, total: 22, query: ' izin ', topic: 'Mevzuat', forms })).toBe(
+      '3 articles for “izin”',
+    );
+    expect(resultLine({ shown: 1, total: 22, query: '', topic: 'Compliance', forms })).toBe(
+      '1 article · Compliance',
+    );
+    expect(resultLine({ shown: 5, total: 22, query: '  ', topic: null, forms })).toBe(
+      '22 articles',
+    );
   });
 
   it('countLabel picks the singular only for exactly one', () => {

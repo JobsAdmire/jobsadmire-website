@@ -142,8 +142,13 @@ export function HeroLeadForm({
             testId="hire-form"
             submitLabel={copy.submitHire}
           >
-            <div className="grid gap-[11px] xs:grid-cols-2">
-              <div className="xs:col-span-2">
+            {/* The design's grid (ll. 395–415): one column to 900 px (`.ja-form`), two from 901 —
+                Firma full width; Kişi | Telefon; Sektör | İşçi sayısı; Şehir | Zamanlama. W3 keeps
+                the door's required e-mail: it sits full width under the contact pair. The
+                optional fields hide at ≤ 460 px (`.ja-f-opt`, W10); `name` stays (the catalog
+                requires it). */}
+            <div className="grid gap-[11px] lg:grid-cols-2">
+              <div className="lg:col-span-2">
                 <Field
                   name="company"
                   label={copy.labels.company}
@@ -152,7 +157,6 @@ export function HeroLeadForm({
                 />
               </div>
               <Field name="name" label={copy.labels.name} required autoComplete="name" />
-              <Field name="email" type="email" required autoComplete="email" inputMode="email" />
               <Field
                 name="phone"
                 type="tel"
@@ -162,7 +166,9 @@ export function HeroLeadForm({
                 inputMode="tel"
                 hint=""
               />
-              {/* The design hides its optional fields at ≤ 460 px (`.ja-f-opt`, W10). */}
+              <div className="lg:col-span-2">
+                <Field name="email" type="email" required autoComplete="email" inputMode="email" />
+              </div>
               <div className="max-xs:hidden">
                 <Field
                   name="sector"
@@ -183,7 +189,7 @@ export function HeroLeadForm({
               <div className="max-xs:hidden">
                 <Field name="city" label={copy.labels.city} autoComplete="address-level2" hint="" />
               </div>
-              <div className="max-xs:hidden xs:col-span-2">
+              <div className="max-xs:hidden">
                 <Field
                   name="startWhen"
                   as="select"
@@ -208,7 +214,7 @@ export function HeroLeadForm({
               <ClockIcon size={15} className="mt-0.5 shrink-0" />
               {copy.callbackNote}
             </p>
-            <div className="grid gap-[11px] xs:grid-cols-2">
+            <div className="grid gap-[11px] lg:grid-cols-2">
               <Field name="name" label={copy.labels.name} required autoComplete="name" />
               <Field
                 name="phone"

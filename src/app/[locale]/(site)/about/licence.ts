@@ -17,6 +17,10 @@ export type LicenceDoc = {
   file: string | null;
 };
 
+/** The company profile's slot: the profile strip's "Şirket Profilini İndir →" button (design
+ *  About l. 904), not a list row — `LicenceBlock` renders the other four as the D26 list. */
+export const PROFILE_SLOT = 'licence-pdf-company-profile' as const;
+
 export const LICENCE_DOCS: readonly LicenceDoc[] = [
   { slot: 'licence-pdf-iskur-permit', label: { kind: 'sys', key: 'iskurPermit' }, file: null },
   { slot: 'licence-pdf-iskur-annex', label: { kind: 'sys', key: 'iskurAnnex' }, file: null },
@@ -26,7 +30,7 @@ export const LICENCE_DOCS: readonly LicenceDoc[] = [
     file: null,
   },
   { slot: 'licence-pdf-oib-annex', label: { kind: 'sys', key: 'oibAnnex' }, file: null },
-  { slot: 'licence-pdf-company-profile', label: { kind: 'package', id: 'about.031' }, file: null },
+  { slot: PROFILE_SLOT, label: { kind: 'package', id: 'about.031' }, file: null },
 ];
 
 export function licenceDocHref(doc: LicenceDoc): string | null {

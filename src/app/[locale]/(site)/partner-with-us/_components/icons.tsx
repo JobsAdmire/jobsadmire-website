@@ -64,3 +64,49 @@ export function GlobeIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+/** The process journey's top-right line icons (Partner With Us ll. 913–937): a document (you
+ *  apply), a video camera (the call), a closed lock (portal access), an open lock (first
+ *  placement). Stroke 1.8 at 22 px, coloured by the caller (`ProcessSteps` row variant). */
+export type StepIconKind = 'doc' | 'video' | 'lock' | 'unlock';
+export function StepIcon({ kind, className }: { kind: StepIconKind; className?: string }) {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+      {...STROKE}
+      strokeWidth={1.8}
+    >
+      {kind === 'doc' && (
+        <>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <path d="M14 2v6h6" />
+          <path d="M8 13h8" />
+          <path d="M8 17h5" />
+        </>
+      )}
+      {kind === 'video' && (
+        <>
+          <path d="M23 7l-7 5 7 5V7z" />
+          <rect x="1" y="5" width="15" height="14" rx="2" />
+        </>
+      )}
+      {kind === 'lock' && (
+        <>
+          <rect x="3" y="11" width="18" height="11" rx="2" />
+          <path d="M7 11V7a5 5 0 0 1 9.9-1" />
+        </>
+      )}
+      {kind === 'unlock' && (
+        <>
+          <rect x="3" y="11" width="18" height="11" rx="2" />
+          <path d="M7 11V7a5 5 0 0 1 5-5 5 5 0 0 1 4.5 2.8" />
+        </>
+      )}
+    </svg>
+  );
+}

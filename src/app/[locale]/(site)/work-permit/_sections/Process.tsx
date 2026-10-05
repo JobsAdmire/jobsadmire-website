@@ -3,14 +3,14 @@ import { ContactCta } from '@/design/blocks/ContactCta';
 import { Section } from '@/design/primitives/Section';
 import { waLink } from '@/lib/contact';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
-import { CheckIcon, DocIcon, FileIcon, GlobeIcon, UserCheckIcon } from '../_components/icons';
+import { CheckIcon, DocIcon, FileIcon, PieIcon, UserCheckIcon } from '../_components/icons';
 import { sp } from '../_lib/fragments';
 import { waPrefill } from '../_lib/prefill';
 import { PROCESS_STEPS, type StepIcon } from '../_lib/tables';
 
 const STEP_ICON: Record<StepIcon, typeof DocIcon> = {
   doc: DocIcon,
-  globe: GlobeIcon,
+  pie: PieIcon,
   file: FileIcon,
   check: CheckIcon,
 };
@@ -45,20 +45,23 @@ export function Process({ bundle, tf }: { bundle: Bundle; tf: (id: string) => st
               return (
                 <li
                   key={step.titleId}
-                  className={`ja-step min-w-0 rounded-md border bg-white px-6 py-6.5 max-md:px-3.5 max-md:py-3.5 ${isLast ? 'border-success-border' : 'border-border-2'}`}
+                  className={`ja-step min-w-0 rounded-md border bg-white px-6 py-6.5 max-md:grid max-md:grid-cols-[34px_1fr] max-md:items-start max-md:gap-x-3 max-md:gap-y-1.5 max-md:rounded-sm max-md:px-3.5 max-md:py-3.5 ${isLast ? 'border-success-border' : 'border-border-2'}`}
                 >
-                  <div className="mb-4 flex items-center justify-between max-md:mb-2">
+                  <div className="mb-4 flex items-center justify-between max-md:col-start-1 max-md:row-start-1 max-md:mb-0 max-md:block">
                     {/* D20: solid blue-safe / success-text dots — white on the design's
                         #1e9ee8 → #1073a8 and #22c55e → #15803d gradients falls below 4.5:1 */}
                     <span
                       aria-hidden="true"
-                      className={`flex h-9.5 w-9.5 items-center justify-center rounded-pill text-body-sm font-extrabold text-white ${isLast ? 'bg-success-text' : 'bg-blue-safe'}`}
+                      className={`flex h-9.5 w-9.5 items-center justify-center rounded-pill text-body-sm max-md:h-8 max-md:w-8 font-extrabold text-white ${isLast ? 'bg-success-text' : 'bg-blue-safe'}`}
                     >
                       {i + 1}
                     </span>
-                    <Icon size={22} className={isLast ? 'text-success' : 'text-[#8fb6cd]'} />
+                    <Icon
+                      size={22}
+                      className={`max-md:hidden ${isLast ? 'text-success' : 'text-[#8fb6cd]'}`}
+                    />
                   </div>
-                  <div className="mb-1.5 flex flex-wrap items-center gap-2">
+                  <div className="mb-1.5 flex flex-wrap items-center gap-2 max-md:col-start-2 max-md:row-start-1 max-md:mb-0 max-md:self-center">
                     <h3 className="m-0 text-card-title">{tf(step.titleId)}</h3>
                     {step.badgeId ? (
                       <span className="rounded-pill border border-success-border bg-success-surface px-2.5 py-0.5 text-eyebrow font-extrabold tracking-[0.8px] text-success-text uppercase">
@@ -66,7 +69,9 @@ export function Process({ bundle, tf }: { bundle: Bundle; tf: (id: string) => st
                       </span>
                     ) : null}
                   </div>
-                  <p className="m-0 text-body-sm text-text-secondary">{tf(step.bodyId)}</p>
+                  <p className="m-0 text-body-sm text-text-secondary max-md:col-span-2 max-md:row-start-2">
+                    {tf(step.bodyId)}
+                  </p>
                 </li>
               );
             })}
@@ -83,7 +88,10 @@ export function Process({ bundle, tf }: { bundle: Bundle; tf: (id: string) => st
           </p>
           <ContactCta
             placement="page_cta"
-            variant="success"
+            variant="success-solid"
+            shape="rect"
+            radius={10}
+            className="max-md:w-full"
             external
             href={waLink(bundle.settings.whatsappNumber, waPrefill(sys, 'permitOnly'))}
           >

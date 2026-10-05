@@ -27,10 +27,12 @@ const id = (n: number) => `verify.${String(n).padStart(3, '0')}`;
 
 /** Never read here: the red verdict, its echo fragments and "Report this person" (W6); the
  *  mustache-token strings (`{{ queryEcho }}`, `{{ lastUpdatedLabel }}`); "Print badge" (V-6); the
- *  mobile red-flag fold (V-3); the CRM feed badges (the empty state replaces them); the staff-data
- *  sample rows (verify.148–197, 240, 242–258 — people, never copy). */
+ *  CRM feed badges that would be false today — loading, connected-but-empty, the sample list, live
+ *  (verify.219, 221, 222, 266; the parity pass shows the true one, verify.220 "Internal list · CRM
+ *  feed not configured"); the staff-data sample rows (verify.148–197, 240, 242–258 — people, never
+ *  copy). The mobile red-flag fold (verify.230/231) returned with the parity pass (M8). */
 const NEVER = new Set(
-  [48, 49, 50, 52, 119, 120, 219, 220, 221, 222, 230, 231, 235, 236, 266, 240]
+  [48, 49, 50, 52, 119, 120, 219, 221, 222, 235, 236, 266, 240]
     .concat(range(148, 197), range(242, 258))
     .map(id),
 );

@@ -1,0 +1,48 @@
+/* The Verify page's two loops the global motion system (src/design/motion/motion.css) has no
+   class for — page-local on purpose (parity brief: "page-local keyframes only when the design has
+   a unique one"). Both are decorative and stop under `prefers-reduced-motion` (D20).
+
+   - `dash`: the design's `jaDashMove` (Verify Representative ll. 54, 565, 595, 881) — a dashed
+     top strip whose dashes run sideways. The element carries its own `background-image` and a
+     `background-size` whose width divides 44 px (the 22 px hero/report dashes; the lookup card's
+     18 px dashes run on `dashFast`, whose 36 px step is two of them), so the loop is seamless.
+   - `spin`: the design's `jaSpin` (l. 53) — the conic ring around the founder's photo (l. 699),
+     one turn in 7 s. */
+
+.dash {
+  animation: vr-dash 1.6s linear infinite;
+}
+
+.dashFast {
+  animation: vr-dash-fast 1.4s linear infinite;
+}
+
+.spin {
+  animation: vr-spin 7s linear infinite;
+}
+
+@keyframes vr-dash {
+  to {
+    background-position: 44px 0;
+  }
+}
+
+@keyframes vr-dash-fast {
+  to {
+    background-position: 36px 0;
+  }
+}
+
+@keyframes vr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash,
+  .dashFast,
+  .spin {
+    animation: none;
+  }
+}

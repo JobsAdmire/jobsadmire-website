@@ -3,10 +3,11 @@ import { join } from 'node:path';
 import { screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { BundleSchema, type Bundle } from '../../../../../../../contract/website-bundle.v1';
-import { makeTf, metricValues } from '@/content/pure';
+import { getCollection } from '@/content/collections';
+import { makeTf } from '@/content/pure';
 import tr from '@/messages/tr.json';
 import { renderWithIntl } from '@/test/render';
-import { PARTNER_LOGOS } from '../../_lib/logos';
+import { PARTNER_LOGO_SLOTS, PARTNER_LOGOS } from '../../_lib/logos';
 import { Chain } from '../Chain';
 import { Closing } from '../Closing';
 import { Faq } from '../Faq';
@@ -31,9 +32,8 @@ const tfEn = makeTf(EN, 'en');
 const WA = 'https://wa.me/905011240340';
 const tokens = (el: Element | null) => (el?.getAttribute('class') ?? '').split(/\s+/);
 const heroWhatsApp = `${WA}?text=${encodeURIComponent(tr.sys.partner.whatsapp.prefill)}`;
-const hero = (
-  <Hero locale="tr" tf={tfTr} metrics={metricValues(TR, 'tr')} whatsappHref={heroWhatsApp} />
-);
+const METRICS_TR = getCollection(TR, 'metrics');
+const hero = <Hero locale="tr" tf={tfTr} metrics={METRICS_TR} whatsappHref={heroWhatsApp} />;
 
 describe('Hero', () => {
   it('holds the one page-h1 as the LCP slot, this page own crumbs (W109) and no photo slot (§10 #4)', () => {
@@ -42,6 +42,8 @@ describe('Hero', () => {
     expect(h1).toHaveAttribute('data-testid', 'page-h1');
     expect(h1).toHaveAttribute('data-lcp-slot', 'h1');
     expect(h1).toHaveTextContent(tfTr('partner.023'));
+    // S1.1: the design's sky accent on the agency phrase, the rest white
+    expect(within(h1).getByText('işe alım ajansıyla')).toHaveClass('text-sky');
     expect(container.querySelector('[data-placeholder]')).toBeNull();
     const crumbs = screen.getByRole('navigation', { name: tr.sys.nav.breadcrumbs });
     expect(within(crumbs).getByRole('link', { name: 'Ana Sayfa' })).toHaveAttribute('href', '/');
@@ -68,31 +70,70 @@ describe('Hero', () => {
   });
 });
 
-describe('NetworkCard (W1)', () => {
-  it('renders only the two signed rows — 13 source countries, 470+ placed — with desk/phone labels', () => {
-    renderWithIntl(<NetworkCard tf={tfTr} metrics={metricValues(TR, 'tr')} />);
+describe('NetworkCard (W1, owner 2026-10-05)', () => {
+  it('renders the design four rows in order — the 5+/20+ samples with the SampleTag, then the signed 13 and 470+', () => {
+    renderWithIntl(<NetworkCard tf={tfTr} metrics={METRICS_TR} locale="tr" />);
     const card = screen.getByTestId('partner-network');
     const rows = within(card).getAllByRole('listitem');
-    expect(rows).toHaveLength(2);
-    expect(rows[0]).toHaveTextContent('13');
-    expect(rows[1]).toHaveTextContent('470+');
+    expect(rows).toHaveLength(4);
+    expect(rows.map((r) => r.querySelector('.sr-only')?.textContent)).toEqual([
+      '5+',
+      '20+',
+      '13',
+      '470+',
+    ]);
+    expect(rows[0]).toHaveTextContent(tfTr('partner.037'));
+    expect(rows[1]).toHaveTextContent(tfTr('partner.039'));
+    // the two sample rows wear the tag, the signed ones never do
+    expect(rows.map((r) => r.querySelector('[data-sample-tag]') !== null)).toEqual([
+      true,
+      true,
+      false,
+      false,
+    ]);
     expect(tokens(within(card).getByText(tfTr('partner.041')))).toContain('max-md:hidden');
     expect(tokens(within(card).getByText(tfTr('partner.042')))).toContain('md:hidden');
-    expect(card).not.toHaveTextContent(tfTr('partner.037'));
-    expect(card).not.toHaveTextContent(tfTr('partner.039'));
+    // the rows slide in once in view, the figures count up (`Stat`), the live dot pulses
+    expect(tokens(card.querySelector('ul'))).toContain('ja-reveal-group');
+    for (const row of rows) expect(tokens(row)).toContain('ja-net-row');
+    expect(card.querySelectorAll('[data-count-up]')).toHaveLength(4);
+    expect(tokens(card.querySelector('[aria-hidden="true"].rounded-pill'))).toContain('ja-live');
   });
 
-  it('drops a row whose metric is unsigned (empty) — never a hard-typed number', () => {
-    renderWithIntl(<NetworkCard tf={tfTr} metrics={{ countries: '13', placed: '' }} />);
-    expect(within(screen.getByTestId('partner-network')).getAllByRole('listitem')).toHaveLength(1);
+  it('drops a signed row whose metric is unsigned (null) — never a hard-typed number', () => {
+    const metrics = METRICS_TR.map((m) => (m.key === 'placed' ? { ...m, value: null } : m));
+    renderWithIntl(<NetworkCard tf={tfTr} metrics={metrics} locale="tr" />);
+    const rows = within(screen.getByTestId('partner-network')).getAllByRole('listitem');
+    expect(rows).toHaveLength(3);
+    expect(screen.getByTestId('partner-network')).not.toHaveTextContent('470');
   });
 });
 
-describe('Logos (W6)', () => {
-  it('renders nothing, not even its band, while no consented logo exists', () => {
+describe('Logos (owner 2026-10-05, W6)', () => {
+  it('without consented logos shows the 25+ sample figure, its caption and tag, and the 20 labelled slots', () => {
     expect(PARTNER_LOGOS).toEqual([]);
-    const { container } = renderWithIntl(<Logos logos={PARTNER_LOGOS} />);
-    expect(container).toBeEmptyDOMElement();
+    const { container } = renderWithIntl(<Logos tf={tfTr} logos={PARTNER_LOGOS} />);
+    const band = screen.getByTestId('partner-logos');
+    expect(band).toHaveTextContent('25+');
+    expect(band).toHaveTextContent(tfTr('partner.045'));
+    expect(band.querySelector('[data-sample-tag]')).not.toBeNull();
+    const slots = [...container.querySelectorAll('[data-placeholder^="logo-"]')];
+    // the marquee renders its track twice for the seamless loop; the first lap is the 20 slots
+    expect(slots.length).toBeGreaterThanOrEqual(PARTNER_LOGO_SLOTS.length);
+    expect(slots[0]).toHaveTextContent('İş ortağı logosu 1');
+    expect(slots[9]).toHaveTextContent('İş ortağı logosu 10');
+    expect(slots[10]).toHaveTextContent('İş ortağı logosu 1');
+  });
+
+  it('with consented logos runs the logos instead of the slots', () => {
+    const { container } = renderWithIntl(
+      <Logos
+        tf={tfTr}
+        logos={[{ src: '/brand/logos/acme.svg', alt: 'Acme Lojistik', width: 160, height: 60 }]}
+      />,
+    );
+    expect(container.querySelector('[data-placeholder^="logo-"]')).toBeNull();
+    expect(screen.getAllByRole('img', { name: 'Acme Lojistik' }).length).toBeGreaterThan(0);
   });
 });
 
@@ -116,6 +157,18 @@ describe('Chain', () => {
     }
   });
 
+  it('hangs the nodes off the design rail on phones (M5): a 26 px gutter, ring dots per node', () => {
+    renderWithIntl(<Chain tf={tfTr} />);
+    const node = screen.getByText(tfTr('partner.051')).parentElement as HTMLElement;
+    const grid = node.parentElement as HTMLElement;
+    expect(tokens(grid)).toEqual(
+      expect.arrayContaining(['max-md:grid-cols-[26px_1fr]', "max-md:before:content-['']"]),
+    );
+    expect(tokens(node)).toEqual(
+      expect.arrayContaining(['max-md:col-start-2', 'max-md:before:border-blue']),
+    );
+  });
+
   it('links the English route under /en', () => {
     renderWithIntl(<Chain tf={tfEn} />, { locale: 'en' });
     expect(screen.getByRole('link', { name: 'Hire Workers' })).toHaveAttribute(
@@ -126,21 +179,29 @@ describe('Chain', () => {
 });
 
 describe('Process', () => {
-  it('is the four steps in order, step 4 with the Full access pill, the reply SLA filled (D17)', () => {
+  it('is the four-card journey in order with its icons, step 4 with the Full access pill, the reply SLA filled (D17)', () => {
     renderWithIntl(<Process bundle={TR} locale="tr" tf={tfTr} />);
-    const list = screen.getByTestId('partner-process').querySelector('ol#how-it-starts');
+    const journey = screen.getByTestId('partner-process').querySelector('#how-it-starts');
+    expect(journey).toHaveAttribute('data-variant', 'row');
+    const list = (journey as HTMLElement).querySelector('ol');
     expect(list).not.toBeNull();
     const steps = within(list as HTMLElement).getAllByRole('listitem');
-    expect(steps.map((s) => within(s).getByRole('heading', { level: 3 }).textContent)).toEqual(
-      ['partner.139', 'partner.141', 'partner.143', 'partner.145'].map(tfTr),
-    );
-    expect(steps[3]).toHaveTextContent(tfTr('partner.146'));
+    // S7.2: step 4's uppercase "Full access" pill sits inline after its title
+    expect(steps.map((s) => within(s).getByRole('heading', { level: 3 }).textContent)).toEqual([
+      ...['partner.139', 'partner.141', 'partner.143'].map(tfTr),
+      `${tfTr('partner.145')}${tfTr('partner.146')}`,
+    ]);
     expect(steps[0]).toHaveTextContent('4 iş saati');
+    for (const step of steps) expect(step.querySelector('svg')).not.toBeNull();
+    expect(steps[3].querySelector('svg')).toHaveClass('text-success');
+    // the cards rise and the line draws once in view (motion `steps`)
+    expect(tokens(journey)).toContain('ja-reveal-group');
+    expect((journey as HTMLElement).querySelector('.ja-journey-line')).not.toBeNull();
   });
 });
 
 describe('Portal', () => {
-  it('shows both store badges (W227), the {placed} claim (W1) and two named screenshot placeholders (W55)', () => {
+  it('shows both store badges, App Store first (W227, S8.1), the {placed} claim (W1) and two named screenshot placeholders (W55)', () => {
     const { container } = renderWithIntl(
       <Portal
         bundle={TR}
@@ -159,6 +220,11 @@ describe('Portal', () => {
       'href',
       TR.settings.storeLinks.ios ?? '',
     );
+    expect(
+      within(portal)
+        .getAllByRole('link')
+        .map((a) => a.getAttribute('href')),
+    ).toEqual([TR.settings.storeLinks.ios, TR.settings.storeLinks.android]);
     expect(portal).toHaveTextContent('470+ yerleştirme');
     expect(
       [...container.querySelectorAll('[data-placeholder]')].map((el) =>
@@ -210,11 +276,13 @@ describe('Faq', () => {
         whatsappNumber="905011240340"
         whatsappText={tr.sys.partner.faq.whatsappText}
         phone="+905011240340"
+        phoneDisplay="+90 501 124 03 40"
         email="info@jobsadmire.com"
         emailSubject={tr.sys.partner.faq.emailSubject}
       />,
     );
     const faq = screen.getByTestId('partner-faq');
+    expect(faq.querySelector('#faq')).toHaveAttribute('data-variant', 'cards');
     const triggers = within(faq).getAllByRole('button');
     expect(triggers).toHaveLength(6);
     expect(triggers[0]).toHaveAttribute('aria-expanded', 'true');
@@ -225,15 +293,16 @@ describe('Faq', () => {
     const faqNodes = nodes.filter((n) => n['@type'] === 'FAQPage');
     expect(faqNodes).toHaveLength(1);
     expect(faqNodes[0].mainEntity).toHaveLength(6);
-    expect(within(faq).getByRole('link', { name: 'WhatsApp' })).toHaveAttribute(
-      'href',
-      `${WA}?text=${encodeURIComponent(tr.sys.partner.faq.whatsappText)}`,
-    );
-    expect(within(faq).getByRole('link', { name: 'Bizi arayın' })).toHaveAttribute(
-      'href',
-      'tel:+905011240340',
-    );
-    expect(within(faq).getByRole('link', { name: 'E-posta' })).toHaveAttribute(
+    // S9.2: the design's contact rows — label + the bold number / address
+    expect(
+      within(faq).getByRole('link', { name: /^WhatsApp\s*\+90 501 124 03 40$/ }),
+    ).toHaveAttribute('href', `${WA}?text=${encodeURIComponent(tr.sys.partner.faq.whatsappText)}`);
+    expect(
+      within(faq).getByRole('link', { name: /^Bizi arayın\s*\+90 501 124 03 40$/ }),
+    ).toHaveAttribute('href', 'tel:+905011240340');
+    expect(
+      within(faq).getByRole('link', { name: /^E-posta\s*info@jobsadmire\.com$/ }),
+    ).toHaveAttribute(
       'href',
       `mailto:info@jobsadmire.com?subject=${encodeURIComponent(tr.sys.partner.faq.emailSubject)}`,
     );
@@ -241,7 +310,7 @@ describe('Faq', () => {
 });
 
 describe('Closing', () => {
-  it('is the dark band #closing with #tracks and phone CTAs, the reply badge on phones only, the legal e-mail', () => {
+  it('is the light centred band #closing with #tracks and phone CTAs, the reply badge on phones only, the legal e-mail', () => {
     const { container } = renderWithIntl(
       <Closing
         bundle={TR}
@@ -253,21 +322,18 @@ describe('Closing', () => {
       />,
     );
     const closing = screen.getByTestId('partner-closing');
-    expect(container.querySelector('#closing')).not.toBeNull();
+    expect(container.querySelector('#closing')).toHaveAttribute('data-tone', 'light');
     expect(within(closing).getByRole('heading', { level: 2 })).toHaveTextContent(
       tfTr('partner.187'),
     );
-    expect(within(closing).getByRole('link', { name: tfTr('partner.189') })).toHaveAttribute(
-      'href',
-      '#tracks',
-    );
+    const apply = within(closing).getByRole('link', { name: tfTr('partner.189') });
+    expect(apply).toHaveAttribute('href', '#tracks');
+    expect(tokens(apply)).toContain('bg-blue-safe'); // the design's blue primary, not the green
     expect(within(closing).getByRole('link', { name: '+90 501 124 03 40' })).toHaveAttribute(
       'href',
       'tel:+905011240340',
     );
-    expect(tokens(within(closing).getByText(tfTr('partner.186')).closest('ul'))).toContain(
-      'md:hidden',
-    );
+    expect(tokens(within(closing).getByText(tfTr('partner.186')))).toContain('md:hidden');
     expect(within(closing).getByRole('link', { name: 'info@jobsadmire.com' })).toHaveAttribute(
       'href',
       'mailto:info@jobsadmire.com',

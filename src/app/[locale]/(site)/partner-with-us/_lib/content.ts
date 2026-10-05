@@ -5,12 +5,13 @@ import type { TrackKey } from './tracks';
  * partner.059, 077, 078, 087, 140, 159 and 186 carry `{metric}` placeholders). NOT here, on
  * purpose: the chrome's own ids (partner.001, 003–007, 009–015, 019–022, 191–221 — the layout
  * renders the canonical `home.*` ids, R15), the header CTA pair partner.017/018
- * (`CTA_BY_PATHNAME`, W17), the hero photo alt partner.034 (gradient hero, §10 #4), the captions
- * of the unsigned 5+/20+/25+ figures partner.037/039/045 (W1), the inline success banner
- * partner.088/089 (D13), the KVKK sentence partner.090/091 (W79), the "City, country" box
- * partner.135 (split into `city` + the ISO-2 select) and the store micro-copy partner.162/163
- * (`StoreBadges` reads hire.240, W7). partner.002/008/016 ARE read: the Hire Workers link inside
- * the chain sentence the package splits around it (W23) and this page's own crumbs (W109).
+ * (`CTA_BY_PATHNAME`, W17), the hero photo alt partner.034 (gradient hero, §10 #4), the inline
+ * success banner partner.088/089 (D13), the KVKK sentence partner.090/091 (W79), the "City,
+ * country" box partner.135 (the ISO-2 select carries the country) and the store micro-copy
+ * partner.162/163 (`StoreBadges` reads contact.143/144 + hire.240/241, W7). partner.002/008/016
+ * ARE read: the Hire Workers link inside the chain sentence the package splits around it (W23)
+ * and this page's own crumbs (W109); so are the captions of the design's sample 5+/20+/25+
+ * figures partner.037/039/045 (parity 2026-10-05: shown with the `SampleTag`).
  */
 
 /** A package-string reader: `makeTf(bundle, locale)`. */
@@ -33,16 +34,43 @@ export const HERO_IDS = {
   speakTail: 'partner.033',
 } as const;
 
-/** "Our network today": only the rows whose number is a signed metric render (W1). */
+/** "Our network today": the design's four rows in its order (Partner With Us ll. 518–537). The
+ *  HR-agency and sourcing-partner rows have no signed metric (W1): they show the design's sample
+ *  figures (`data-target` 5 / 20) as page-local constants beside the `SampleTag` (owner
+ *  2026-10-05, D23 — never a fixture); the countries and placed rows read their signed metric and
+ *  drop out while it is empty. `tone` is the design's figure colour (contrast-safe, D20). */
 export const NETWORK_IDS = {
   heading: 'partner.035',
   live: 'partner.036',
   footnote: 'partner.046',
   rows: [
-    { metric: 'countries', deskId: 'partner.041', mobId: 'partner.042' },
-    { metric: 'placed', deskId: 'partner.043', mobId: 'partner.044' },
+    {
+      key: 'agencies',
+      sample: { value: 5, suffix: '+' },
+      tone: 'blue',
+      deskId: 'partner.037',
+      mobId: 'partner.038',
+    },
+    {
+      key: 'sourcing',
+      sample: { value: 20, suffix: '+' },
+      tone: 'green',
+      deskId: 'partner.039',
+      mobId: 'partner.040',
+    },
+    {
+      key: 'countries',
+      metric: 'countries',
+      tone: 'indigo',
+      deskId: 'partner.041',
+      mobId: 'partner.042',
+    },
+    { key: 'placed', metric: 'placed', tone: 'amber', deskId: 'partner.043', mobId: 'partner.044' },
   ],
 } as const;
+
+/** The logo band's caption (partner.045) beside the design's sample "25+" figure. */
+export const LOGOS_IDS = { caption: 'partner.045' } as const;
 
 export const CHAIN_IDS = {
   heading: 'partner.047',
@@ -138,8 +166,11 @@ export const PANEL_COPY: Record<TrackKey, PanelCopy> = {
   },
 };
 
-/** The package's field labels, passed to `Field` as `label` (W115). Fields not listed here
- *  (`candidatesPerYear`, the institute's `city`) take `sys.form.labels.<name>`. */
+/** The package's field labels, passed to `Field` as `label` (W115) — in the design's
+ *  placeholder-only face (SHARED 4.1) each label is visually hidden and its words are the
+ *  field's placeholder. Exactly the design's fields, in its pairs (parity 2026-10-05): the
+ *  optional `candidatesPerYear` and the institute's optional `city` the design never shows are
+ *  not rendered (the `trades` box asks for the volume in its own words). */
 export const FIELD_LABELS = {
   hr: {
     company: 'partner.093',
@@ -250,6 +281,7 @@ export const PARTNER_PACKAGE_IDS: readonly string[] = [
       [
         HERO_IDS,
         NETWORK_IDS,
+        LOGOS_IDS,
         CHAIN_IDS,
         STICKY_IDS,
         TRACKS_IDS,
@@ -273,4 +305,5 @@ export const PARTNER_SYS_KEYS = [
   'whatsapp.prefill',
   'faq.whatsappText',
   'faq.emailSubject',
+  'logos.slot',
 ] as const;

@@ -4,15 +4,18 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { getBundle, makeT } from '@/content/adapter';
 import { getCollection } from '@/content/collections';
-import { StickyCtaBar } from '@/design/chrome/StickyCtaBar';
 import { routing } from '@/i18n/routing';
 import { formatDate } from '@/lib/format/date/formatDate';
 import { buildMetadata } from '@/lib/seo/metadata';
 import { submitFraud, uploadEvidence } from './actions';
+import { LookupProvider } from './_components/LookupContext';
+import { StickySearch } from './_components/StickySearch';
+import { ID_EXAMPLE } from './_lib/lookup';
 import { readRegister } from './_lib/register';
 import { Faq } from './_sections/Faq';
 import { Hero } from './_sections/Hero';
 import { Report } from './_sections/Report';
+import { Result } from './_sections/Result';
 import { Structure } from './_sections/Structure';
 
 /** W225: this page's server action uploads a file first (up to `UPLOAD_TIMEOUT_MS`, 15 s) and then
@@ -44,9 +47,12 @@ export async function generateMetadata({
 }
 
 /** /temsilci-dogrulama · /en/verify — SSG (no dated rate badge, W150). The page never reads
- *  `searchParams` (V-1: the `?id=` deep link is read by the lookup island after hydration, so
+ *  `searchParams` (V-1: the `?id=` deep link is read by the lookup provider after hydration, so
  *  the route stays static). Phase A: the register is empty (D23 keeps the fixture out of
- *  production), the founder row unpublished (W86) and no sticky bar (W202). */
+ *  production) and the founder row published (owner, 2026-10-05). Order (the design's): hero
+ *  with the lookup → the lookup's answer card (`#verify`, only once a query is long enough) →
+ *  structure (founder strip + the register's frame) → report → the phones-only FAQ; the sticky
+ *  mini search (desktop, past 620 px) shares the lookup's query (`LookupProvider`). */
 export default async function VerifyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
@@ -60,7 +66,7 @@ export default async function VerifyPage({ params }: { params: Promise<{ locale:
     ? `${t('verify.225')} ${formatDate(register.updatedAt.slice(0, 10), locale)}`
     : null;
   return (
-    <>
+    <LookupProvider>
       <Hero
         bundle={bundle}
         locale={locale}
@@ -68,6 +74,7 @@ export default async function VerifyPage({ params }: { params: Promise<{ locale:
         founder={founder}
         updatedLabel={updatedLabel}
       />
+      <Result bundle={bundle} />
       <Structure
         bundle={bundle}
         locale={locale}
@@ -83,23 +90,12 @@ export default async function VerifyPage({ params }: { params: Promise<{ locale:
         uploadEvidence={uploadEvidence}
       />
       <Faq bundle={bundle} locale={locale} founder={founder} register={register} />
-      {/* V-5: the design's sticky mini search bar (a second, unlabelled input) → two in-page
-          anchors, from lg; it steps aside once the report section is near. W202: only with
-          register rows (the same test Structure uses) — over the Phase A empty register the
-          page is so short that `#report` is near before the 620 px threshold is passed, so the
-          bar could never show; it mounts once the v1.1 register ships. */}
-      {register.active.length > 0 ? (
-        <StickyCtaBar
-          message={t('verify.020')}
-          showAfterPx={620}
-          hideNearId="report"
-          live
-          ctas={[
-            { label: t('verify.067'), href: '#check', variant: 'inverse' },
-            { label: t('verify.015'), href: '#report', variant: 'danger' },
-          ]}
-        />
-      ) : null}
-    </>
+      {/* S0s.1: the design's sticky mini search (W202's anchors bar is retired with it). */}
+      <StickySearch
+        label={t('verify.020')}
+        inputLabel={t('verify.032')}
+        placeholder={`${t('verify.067')} — ${ID_EXAMPLE}`}
+      />
+    </LookupProvider>
   );
 }

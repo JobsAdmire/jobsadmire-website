@@ -18,12 +18,15 @@ const files = (sub: string, ext: RegExp) =>
     .map((f) => `${sub}/${f}`);
 
 describe('Blog article — cover, stack gap and xl twins (C1–C3)', () => {
-  it('C1: the cover slot runs in cover mode at 190 / 430 / 322.5 px, nothing else sizes it', () => {
+  it('C1: the cover is the category-coloured placeholder at 190 / 430 / 322.5 px with the design shadow', () => {
     const at = PAGE.indexOf('slot={`blog-cover-');
     expect(at).toBeGreaterThan(-1);
-    const slot = PAGE.slice(PAGE.lastIndexOf('<ImageSlot', at), PAGE.indexOf('/>', at));
-    expect(slot).toMatch(/cover=\{\{\s*base:\s*190,\s*md:\s*430,\s*xl:\s*322\.5\s*\}\}/);
-    expect(slot).not.toMatch(/className/);
+    const cover = PAGE.slice(PAGE.lastIndexOf('<CategoryCover', at), PAGE.indexOf('/>', at));
+    expect(cover).toContain('h-[190px]');
+    expect(cover).toContain('md:h-[430px]');
+    expect(cover).toContain('xl:h-[322.5px]');
+    expect(cover).toContain('rounded-lg');
+    expect(cover).toContain('shadow-[0_26px_60px_rgba(22,60,90,0.18)]');
   });
 
   it('C2: the body/sidebar grid closes its gap at 701–900 (max-lg:gap-8)', () => {

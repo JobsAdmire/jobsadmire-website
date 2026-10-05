@@ -1,12 +1,11 @@
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { StickyCta } from '@/design/chrome/StickyCtaBar';
 import { renderWithIntl } from '@/test/render';
 import { FOUNDER_REP, OFFICE_REP } from '../_lib/__tests__/fixtures';
 
 // The page renders its sections through the real local bundle; what varies is the register.
-// `getBundle` is the committed LOCAL bundle (no `representatives` key — Phase A) unless a case
-// sets v1.1 rows here. `setRequestLocale`/`getTranslations` need a Next request scope (the
+// `getBundle` is the committed LOCAL bundle (no `representatives` key — Phase A; the founder row
+// published) unless a case sets v1.1 rows here. `setRequestLocale`/`getTranslations` need a Next request scope (the
 // success-stories page test's pattern); the server actions and the record-dialog chunk are not
 // part of what this file proves.
 const state = vi.hoisted(() => ({ rows: [] as Record<string, unknown>[] }));
@@ -26,19 +25,6 @@ vi.mock('@/content/adapter', async (importOriginal) => {
       localBundle(locale, state.rows.length ? { representatives: state.rows } : {}),
   };
 });
-// The real bar renders nothing until the visitor scrolls (a browser fact jsdom never has), so a
-// stand-in makes the MOUNT itself observable, with the CTAs the page hands it.
-vi.mock('@/design/chrome/StickyCtaBar', () => ({
-  StickyCtaBar: ({ ctas }: { ctas: StickyCta[] }) => (
-    <div data-testid="sticky-cta-mount">
-      {ctas.map((c) => (
-        <a key={String(c.href)} href={String(c.href)}>
-          {c.label}
-        </a>
-      ))}
-    </div>
-  ),
-}));
 
 import VerifyPage from '../page';
 
@@ -46,25 +32,56 @@ beforeEach(() => {
   state.rows = [];
 });
 
-describe('W202 — the sticky bar waits for the v1.1 register', () => {
+describe('the page (parity pass, 2026-10-05)', () => {
   for (const locale of ['tr', 'en'] as const) {
-    it(`${locale}: the empty register (Phase A) mounts no StickyCtaBar`, async () => {
+    it(`${locale}: hero → structure (founder strip + the empty register frame) → report → the phones-only FAQ, the sticky mini search mounted, no StickyCtaBar`, async () => {
       const jsx = await VerifyPage({ params: Promise.resolve({ locale }) });
-      renderWithIntl(jsx, { locale });
+      const { container } = renderWithIntl(jsx, { locale });
+      const order = ['verify-hero', 'verify-structure', 'verify-report', 'verify-faq'].map((id) =>
+        screen.getByTestId(id),
+      );
+      for (let i = 1; i < order.length; i++)
+        expect(
+          order[i - 1].compareDocumentPosition(order[i]) & Node.DOCUMENT_POSITION_FOLLOWING,
+        ).toBeTruthy();
+      // the committed founder row is published (owner): the strip renders, the lead names him
+      expect(screen.getByTestId('verify-founder')).toHaveTextContent('Haris Jiva');
+      expect(screen.getByTestId('verify-lead')).toHaveTextContent('Haris Jiva');
+      // no people: the register frame's one row is the empty register
       expect(screen.getByTestId('verify-empty')).toBeInTheDocument();
-      expect(screen.queryByTestId('sticky-cta-mount')).toBeNull();
+      expect(screen.queryByTestId('verify-register')).toBeNull();
+      // S0s.1: the design's sticky mini search replaces the anchors bar (W202 retired)
+      expect(screen.getByTestId('verify-sticky-search')).toBeInTheDocument();
+      expect(screen.queryByTestId('sticky-cta')).toBeNull();
+      // no answer card until a query is typed
+      expect(container.querySelector('#verify')).toBeNull();
     });
   }
 
-  it('with published register rows the bar mounts with its two in-page anchors (V-5)', async () => {
+  it('en: a query typed in the hero opens the answer card between the hero and the structure section (S2.1)', async () => {
+    const jsx = await VerifyPage({ params: Promise.resolve({ locale: 'en' }) });
+    renderWithIntl(jsx, { locale: 'en' });
+    const hero = screen.getByTestId('verify-hero');
+    fireEvent.change(hero.querySelector('input')!, { target: { value: 'JA-REP-014' } });
+    const answer = screen.getByTestId('verify-lookup-result');
+    expect(hero).not.toContainElement(answer);
+    expect(hero.compareDocumentPosition(answer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(
+      answer.compareDocumentPosition(screen.getByTestId('verify-structure')) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    // the sticky input mirrors the one query
+    expect(screen.getByTestId('verify-sticky-search').querySelector('input')).toHaveValue(
+      'JA-REP-014',
+    );
+  });
+
+  it('with published register rows the frame lists them (v1.1) and the sticky search still mounts', async () => {
     state.rows = [FOUNDER_REP, OFFICE_REP];
     const jsx = await VerifyPage({ params: Promise.resolve({ locale: 'en' }) });
     renderWithIntl(jsx, { locale: 'en' });
     expect(screen.queryByTestId('verify-empty')).toBeNull();
-    const bar = screen.getByTestId('sticky-cta-mount');
-    expect(Array.from(bar.querySelectorAll('a')).map((a) => a.getAttribute('href'))).toEqual([
-      '#check',
-      '#report',
-    ]);
+    expect(screen.getByTestId('verify-register')).toBeInTheDocument();
+    expect(screen.getByTestId('verify-sticky-search')).toBeInTheDocument();
   });
 });

@@ -79,16 +79,24 @@ for (const { path, lang, alternate, requestHref } of CASES) {
       // the design's unsigned figures never render
       expect(text).not.toContain('14+');
       expect(text).not.toContain('12+');
-      expect(text).not.toMatch(/98\s?%|%\s?98/);
+      // the design's 98 % retention is the stats row's one tagged SAMPLE cell (owner 2026-10-05)
+      const band = page.locator('#about-journey');
+      await expect(band.getByText(lang === 'tr' ? '%98' : '98%', { exact: true })).toHaveCount(1);
+      await expect(band.locator('[data-sample-tag]')).toHaveCount(1);
     });
 
-    test('founder and newsletter render nothing (W6/W86, W97); #lisans carries five named slots (D26)', async ({
+    test('the published founder and the newsletter band render; #lisans carries five named slots (D26)', async ({
       page,
     }) => {
       await page.goto(path);
-      await expect(page.getByTestId('about-founder')).toHaveCount(0);
+      const founder = page.getByTestId('about-founder');
+      await expect(founder).toHaveCount(1);
+      await expect(founder).toContainText('Haris Jiva');
+      await expect(founder.locator('img[src*="haris-jiva"]')).toHaveCount(1);
       await expect(page.locator('[data-placeholder="founder-photo"]')).toHaveCount(0);
-      await expect(page.locator('#newsletter')).toHaveCount(0);
+      const newsletter = page.locator('#newsletter');
+      await expect(newsletter).toHaveCount(1);
+      await expect(newsletter.locator('input[type="email"]')).toHaveCount(1);
       const lisans = page.locator('#lisans');
       await expect(lisans).toHaveCount(1);
       const slots = await lisans
@@ -97,20 +105,29 @@ for (const { path, lang, alternate, requestHref } of CASES) {
       expect(slots).toHaveLength(5);
       for (const s of slots) expect(s).toMatch(/^licence-pdf-/);
       await expect(lisans.locator('a')).toHaveCount(0);
+      // the profile strip's download waits for the PDF: disabled, described by the note
+      const download = lisans.locator('button[data-placeholder="licence-pdf-company-profile"]');
+      await expect(download).toBeDisabled();
+      await expect(download).toHaveText(strings(lang)['about.109']);
       // no placeholder is the LCP element, and none is unnamed (D26, W55)
       await expect(page.locator('[data-placeholder][data-lcp-slot]')).toHaveCount(0);
       await expect(page.locator('[data-placeholder=""]')).toHaveCount(0);
       await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
     });
 
-    test('both offices render from the collection with their contact rows', async ({ page }) => {
+    test('both offices render from the collection with the design contact lines', async ({
+      page,
+    }) => {
       await page.goto(path);
       for (const key of ['antalya', 'karachi']) {
         const card = page.getByTestId(`about-office-${key}`);
         await expect(card.locator('article')).toHaveCount(1);
+        // the design's density (SHARED 14.8): WhatsApp and e-mail lines, no phone row, and the
+        // directions link (phones only, but always in the DOM)
         await expect(card.locator('a[href^="https://wa.me/"]')).toHaveCount(1);
         await expect(card.locator('a[href^="mailto:"]')).toHaveCount(1);
-        await expect(card.locator('a[href^="tel:"]')).toHaveCount(1);
+        await expect(card.locator('a[href^="tel:"]')).toHaveCount(0);
+        await expect(card.locator('a[href^="https://www.google.com/maps/"]')).toHaveCount(1);
       }
     });
 
@@ -139,16 +156,17 @@ for (const { path, lang, alternate, requestHref } of CASES) {
       expect(graphs.filter((g) => g.includes('"EmploymentAgency"'))).toHaveLength(1);
     });
 
-    test('both request-workers CTAs keep the localized #request-form hash (W82), and the primary green-band CTA keeps the component default face (W127/W128)', async ({
+    test('both request-workers CTAs keep the localized #request-form hash (W82), and the primary green-band CTA wears the white-green face (W127/W128)', async ({
       page,
     }) => {
       await page.goto(path);
       await expect(page.getByTestId('about-hero-request')).toHaveAttribute('href', requestHref);
       const bandPrimary = page.getByTestId('about-cta').locator(`a[href="${requestHref}"]`);
       await expect(bandPrimary).toHaveCount(1);
-      // W127/W128: ClosingCtaBand's own default is 'primary' on every tone unless a caller
-      // overrides it — the draft wrongly forced 'secondary' (a white/ink face) here.
+      // W127/W128 + SHARED 9.4: the green band's primary is the white face with green text
+      // (`white-green`), never the white/ink 'secondary' face the draft forced here.
       await expect(bandPrimary).not.toHaveClass(/border-border-1/);
+      await expect(bandPrimary).toHaveClass(/text-success-text/);
     });
 
     test('the language switch keeps the visitor on About', async ({ page }, testInfo) => {
@@ -189,6 +207,21 @@ test('the demo CTA carries a fixed prefill and pushes whatsapp_click page_cta (W
   const clicks = events.filter((e) => e.event === 'whatsapp_click');
   expect(clicks).toHaveLength(1);
   expect(clicks[0]).toMatchObject({ placement: 'page_cta', page: '/hakkimizda', locale: 'tr' });
+});
+
+test('the corridor lanes rotate every 2.5 s, and hold still under reduced motion', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'one viewport proves the timer');
+  const firstLane = () => page.getByTestId('about-lanes').locator('li').first().innerText();
+  await page.goto('/hakkimizda');
+  const before = await firstLane();
+  await expect.poll(firstLane, { timeout: 6000 }).not.toBe(before);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/hakkimizda');
+  const still = await firstLane();
+  await page.waitForTimeout(3000);
+  expect(await firstLane()).toBe(still);
 });
 
 test('legacy /certifications and /tr/certifications land on the #lisans block (D26)', async ({

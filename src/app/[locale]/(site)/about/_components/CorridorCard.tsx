@@ -1,16 +1,15 @@
 import { getCollection } from '@/content/collections';
-import { Flag } from '@/design/Flag';
-import { isFlagCode } from '@/design/assets/flag-codes';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
+import { CorridorLanes } from './CorridorLanes';
 
-/** The design rotates four lanes through its country list every 2.5 s (about.139) and flies a
- *  dot along each (`ja-fly`). The rotation is not ported. It is the one animation on the page
- *  with no reduced-motion override, it would need a live-region-safe client island, and it
- *  adds nothing a visitor can act on (D20). So the first four `sourceCountries` rows stand
- *  still, and the dots keep the motion through CSS only. */
-const LANES = 4;
-const DELAY = ['', '[animation-delay:1.5s]', '[animation-delay:3s]', '[animation-delay:4.5s]'];
-
+/**
+ * The hero's corridor card (design `.ja-corridor-card`, About l. 551–603): a white r24 card,
+ * the title row with the countries figure, four source-country lanes (ring marker, dashed track,
+ * a flying dot per lane in its own colour, rotating through the `sourceCountries` names every
+ * 2.5 s — the `CorridorLanes` island) and the Türkiye box (14 px green dot, name, "work permits
+ * included"). Phones (≤ 900, l. 289–293): tighter card, one column, the Türkiye box laid out as one
+ * row. The figure is the W1 countries metric with its own label, never the list length.
+ */
 export function CorridorCard({
   bundle,
   t,
@@ -26,39 +25,30 @@ export function CorridorCard({
    *  suffix would print "13+", which W1 normalised to the exact 13. */
   countriesLabel: string;
 }) {
-  const lanes = getCollection(bundle, 'sourceCountries').slice(0, LANES);
+  const names = getCollection(bundle, 'sourceCountries').map((c) => c.name);
   return (
     <div
       data-testid="about-corridor"
-      className="rounded-hero bg-white p-5 text-ink shadow-hero-form sm:p-8"
+      className="rounded-hero bg-white px-[34px] pt-8 pb-9 text-ink shadow-hero-form xl:px-[25.5px] max-lg:rounded-md max-lg:px-4 max-lg:pt-[18px] max-lg:pb-5"
     >
-      <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="m-0 text-card-title">{t('about.032')}</h2>
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 max-lg:mb-4">
+        <h2 className="m-0 text-card-title tracking-[-0.3px] max-lg:text-[16.5px]">
+          {t('about.032')}
+        </h2>
         {countriesText ? (
-          <span className="text-body-sm font-extrabold text-blue-safe">
+          <span className="text-body-sm font-bold whitespace-nowrap text-blue-safe">
             {countriesText} {countriesLabel}
           </span>
         ) : null}
       </div>
-      <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
-        <ul className="m-0 grid list-none gap-3 p-0">
-          {lanes.map((c, i) => (
-            <li key={c.code} className="grid grid-cols-[7.5rem_1fr] items-center gap-3">
-              <span className="flex items-center gap-2 text-body-sm font-extrabold">
-                {isFlagCode(c.code) ? <Flag code={c.code} size={18} /> : null}
-                {c.name}
-              </span>
-              <span aria-hidden="true" className="relative block h-0.5 rounded-pill bg-border-1">
-                <span className={`about-fly absolute inset-y-0 right-2 left-0 ${DELAY[i] ?? ''}`}>
-                  <span className="absolute top-1/2 left-0 h-2 w-2 -translate-y-1/2 rounded-pill bg-blue-safe" />
-                </span>
-              </span>
-            </li>
-          ))}
-        </ul>
-        <div className="rounded-base border border-tint-border bg-pale-1 px-4 py-3 text-center">
-          <span className="block text-body font-extrabold">{t('about.033')}</span>
-          <span className="block text-body-sm text-text-secondary">{t('about.034')}</span>
+      <div className="grid grid-cols-[1fr_auto] items-center gap-5.5 max-lg:grid-cols-1 max-lg:gap-3.5">
+        <CorridorLanes names={names} />
+        <div className="flex flex-col items-center gap-2 rounded-base border border-edge bg-pale-1 px-6 py-5 max-lg:flex-row max-lg:justify-center max-lg:gap-2.5 max-lg:rounded-sm max-lg:px-4 max-lg:py-3">
+          <span aria-hidden="true" className="h-3.5 w-3.5 shrink-0 rounded-pill bg-success" />
+          <span className="text-[17px] font-extrabold xl:text-[12.75px]">{t('about.033')}</span>
+          <span className="text-[12px] font-semibold whitespace-nowrap text-text-tertiary xl:text-[11px]">
+            {t('about.034')}
+          </span>
         </div>
       </div>
     </div>

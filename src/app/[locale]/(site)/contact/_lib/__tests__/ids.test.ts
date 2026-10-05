@@ -47,9 +47,6 @@ const NOT_READ = [
   'contact.086',
   'contact.087',
   'contact.088',
-  'contact.098',
-  'contact.102',
-  'contact.107',
   'contact.118',
   'contact.217',
   'contact.221',
@@ -57,8 +54,8 @@ const NOT_READ = [
 ];
 
 describe('package ids (W9/W23)', () => {
-  it('reads 144 distinct ids, every one present in both LOCAL bundles', () => {
-    expect(IDS.size).toBe(144);
+  it('reads 150 distinct ids, every one present in both LOCAL bundles', () => {
+    expect(IDS.size).toBe(150);
     const tr = strings('tr');
     const en = strings('en');
     for (const id of IDS) {

@@ -42,7 +42,11 @@ export function RangeSlider({
           {label}
         </label>
         {/* aria-live="off": the slider already announces its valuetext on every step. */}
-        <output htmlFor={id} aria-live="off" className="text-body font-extrabold tabular-nums">
+        <output
+          htmlFor={id}
+          aria-live="off"
+          className="text-body font-extrabold tabular-nums text-blue-safe"
+        >
           {shown}
         </output>
       </div>
@@ -56,7 +60,7 @@ export function RangeSlider({
         aria-valuetext={shown}
         aria-describedby={hintId}
         onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(Number(e.target.value))}
-        className="w-full accent-blue-safe focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-safe"
+        className="w-full cursor-pointer accent-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-safe"
       />
       {minLabel || maxLabel ? (
         <div aria-hidden="true" className="flex justify-between text-body-sm text-text-secondary">

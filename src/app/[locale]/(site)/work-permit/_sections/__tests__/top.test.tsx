@@ -142,17 +142,21 @@ describe('AudienceRouter', () => {
 });
 
 describe('RoutesComparison + SampleCard', () => {
-  it('stacks both routes with real captions instead of the design’s tabs (D20/W10)', () => {
+  it('table + real captions from 701 px; ≤ 700 px an accessible two-tab switcher (parity M.3)', () => {
     const { container } = renderWithIntl(<RoutesComparison tf={tfEn} />, { locale: 'en' });
     expect(container.querySelector('section#routes')).not.toBeNull();
     const region = screen.getByTestId('wp-routes');
-    expect(within(region).queryAllByRole('tab')).toHaveLength(0);
+    const tabs = within(region).getAllByRole('tab');
+    expect(tabs.map((t) => t.textContent)).toEqual([tfEn('wp.099'), tfEn('wp.100')]);
+    expect(tabs.map((t) => t.getAttribute('aria-selected'))).toEqual(['true', 'false']);
+    expect(tokens(within(region).getByTestId('wp-routes-tabs'))).toContain('md:hidden');
+    expect(within(region).getAllByRole('tabpanel', { hidden: true })).toHaveLength(2);
     expect(within(region).getByTestId('wp-routes-permit')).toHaveTextContent(tfEn('wp.102'));
     expect(within(region).getByTestId('wp-routes-exempt')).toHaveTextContent(tfEn('wp.106'));
     const captions = [
       ...within(region).getAllByText(tfEn('wp.099')),
       ...within(region).getAllByText(tfEn('wp.100')),
-    ];
+    ].filter((el) => el.getAttribute('role') !== 'tab' && tokens(el).includes('lg:sr-only'));
     expect(captions).toHaveLength(10);
     for (const caption of captions) {
       expect(tokens(caption)).toContain('lg:sr-only');

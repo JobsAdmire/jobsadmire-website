@@ -19,11 +19,12 @@ export function parseProfileRefs(raw: string | undefined): string[] {
   return out;
 }
 
-/** The `workers` catalog has no field for basket references (v1.0 + v1.1), so the v1.1 cards
- *  task's basket folds them into `message` as its first line. In Phase A there is no basket
- *  (cards off, D2) and `profileRefs` is never posted — the cards task adds a hidden
- *  `profileRefs` input and nothing else changes. Returns '' when there is neither text nor a
- *  ref (the caller then omits the field); never longer than the door's cap. */
+/** The `workers` catalog has no field for basket references (v1.0 + v1.1), so the request card's
+ *  basket (the hidden `profileRefs` input the sample cards' "Add to request" fills) folds into
+ *  `message` as its first line. Until the v1.1 cards task the refs are the design's sample
+ *  profiles (`sample-pool.ts`): the sales team reads them as "which kinds of profile caught the
+ *  visitor's eye", not as reserved candidates. Returns '' when there is neither text nor a ref
+ *  (the caller then omits the field); never longer than the door's cap. */
 export function composeWorkersMessage(message: string | undefined, profileRefs?: string): string {
   const body = (message ?? '').trim();
   const refs = parseProfileRefs(profileRefs);

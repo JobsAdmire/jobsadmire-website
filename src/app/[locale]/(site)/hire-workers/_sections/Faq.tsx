@@ -18,7 +18,11 @@ export function Faq({
   return (
     <Section tone="pale" id="faq" className="scroll-mt-20">
       <div className="container-site" data-testid="hire-faq">
-        {/* the design's ask card has WhatsApp + call only — no W83 e-mail row */}
+        {/* The design's FAQ (ll. 1118–1147, SHARED 6): one white card per question with the
+            tint +/− circle; the ask card has WhatsApp + call only (no W83 e-mail row) as r10
+            rectangles with their glyphs — WhatsApp white with the green edge. ≤ 700 px the
+            list comes first and only the full-width WhatsApp button follows it (M10; the call
+            lives in the mobile bottom bar). */}
         <FaqBlock
           bundle={bundle}
           locale={locale}
@@ -35,7 +39,14 @@ export function Faq({
             whatsappLabelId: 'hire.041',
             phone: s.phone,
             callLabelId: 'hire.032',
+            whatsappVariant: 'outline-green',
+            buttonShape: 'rect',
+            buttonRadius: 10,
+            icons: true,
           }}
+          variant="cards"
+          toggle="plus"
+          mobileAsk="whatsapp-after"
           singleOpen
           openFirst
           headingLevel={3}

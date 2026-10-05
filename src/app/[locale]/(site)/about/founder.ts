@@ -6,10 +6,10 @@ import type { Bundle } from '../../../../../contract/website-bundle.v1';
 export type FounderRow = CollectionRow<'founder'>;
 
 /**
- * The founder band's only input (W6/W86, §10 row 3). The importer ships one row with
- * `published: false`, so the band renders nothing until the owner's name, title and photo
- * are confirmed and the row is published (a content edit — no code change here). The quote's
- * figure is never stored on the row: it is the `placed` metric (W1).
+ * The founder band's only input (W6/W86, §10 row 3). The band renders nothing while no row is
+ * published; the owner published the row on 2026-10-05 (Haris Jiva, about.047,
+ * `/team/haris-jiva.jpg` — a content edit, no code change here). The quote's figure is never
+ * stored on the row: it is the `placed` metric (W1).
  */
 export function publishedFounder(bundle: Bundle): FounderRow | null {
   return getCollection(bundle, 'founder').find((row) => row.published) ?? null;

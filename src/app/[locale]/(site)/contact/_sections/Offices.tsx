@@ -2,21 +2,20 @@ import { useTranslations } from 'next-intl';
 import { getOffice } from '@/content/collections';
 import { makeTf } from '@/content/pure';
 import { ContactCta } from '@/design/blocks/ContactCta';
-import { OfficeCard } from '@/design/blocks/OfficeCard';
 import { Section } from '@/design/primitives/Section';
-import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 import { BuildingIcon, PlaneIcon } from '../_components/icons';
+import { ContactOfficeCard } from '../_components/ContactOfficeCard';
 import { LiveStatus } from '../_components/LiveStatus';
+import { OfficeTabs } from '../_components/OfficeTabs';
 import type { FormAction } from '../_components/types';
 import { VisitBooking } from '../_components/VisitBooking';
 import { formDoor } from '../_lib/door';
 
 const PILL =
-  'rounded-pill border border-border-2 bg-pale-1 px-3 py-1.5 text-body-sm font-extrabold text-text-secondary';
-const NOTE = 'm-0 mt-3 text-body-sm text-text-tertiary max-md:hidden';
+  'rounded-pill border border-edge-soft bg-pale-1 px-[13px] py-1.5 text-body-sm font-extrabold text-text-secondary';
 const DASH = 'w-0 flex-1 border-l-2 border-dashed border-white/30';
 
 /** "Two offices, one file": the navy card with both `OfficeCard`s (their tel / WhatsApp / mail
@@ -45,7 +44,15 @@ export function Offices({
     <Section tone="pale">
       <div data-testid="contact-offices" className="container-site">
         <div className="ja-reveal relative overflow-hidden rounded-hero bg-gradient-to-br from-[#2c3a75] via-[#253063] to-[#16204a] p-6 md:p-12">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-6 text-white">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-[100px] -top-[140px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(24,153,213,0.32)_0%,rgba(24,153,213,0)_70%)]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-[160px] -left-[120px] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(24,153,213,0.14)_0%,rgba(24,153,213,0)_70%)]"
+          />
+          <div className="relative mb-8 flex flex-wrap items-end justify-between gap-6 text-white">
             <div className="max-w-[560px]">
               <p className="m-0 mb-4 inline-block rounded-pill border border-white/30 bg-white/15 px-4 py-1.5 text-eyebrow font-extrabold uppercase tracking-[1.8px]">
                 {t('contact.092')}
@@ -60,60 +67,77 @@ export function Offices({
               {t('contact.095')}
             </p>
           </div>
-          {/* OfficeCard sets no text colour of its own: `text-ink` keeps its headings off the navy
-              card's white. D20: the design's ≤ 700 px tabs are a stacked column (both cards in
-              the HTML). */}
-          <div className="grid grid-cols-1 gap-4 text-ink lg:grid-cols-[1fr_72px_1fr] lg:gap-0">
-            <OfficeCard bundle={bundle} locale={locale} office={antalya}>
-              <LiveStatus
-                variant="office"
-                hours={antalya.hours}
-                locale={locale}
-                fallback={t(antalya.hoursId)}
-                labels={labels}
-                className={PILL}
-              />
-              <p className={NOTE}>{t('contact.101')}</p>
-            </OfficeCard>
-            <div
-              aria-hidden="true"
-              className="flex flex-col items-center justify-center text-white max-lg:hidden"
-            >
-              <span className={DASH} />
-              {/* `.ja-plane`: the plane flies in once the card is revealed */}
-              <span className="ja-plane my-2.5 flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-dashed border-white/45 bg-white/10">
-                <PlaneIcon size={19} />
-              </span>
-              <span className={DASH} />
-            </div>
-            <OfficeCard bundle={bundle} locale={locale} office={karachi}>
-              <LiveStatus
-                variant="office"
-                hours={karachi.hours}
-                locale={locale}
-                fallback={t(karachi.hoursId)}
-                labels={labels}
-                className={PILL}
-              />
-              <p className={NOTE}>{t('contact.108')}</p>
-              {/* W195: a cross-route page link never prefetches in the viewport (hover still does). */}
-              <Link
-                href="/available-workers"
-                prefetch={false}
-                className="mt-2 inline-flex min-h-[44px] items-center text-body-sm font-extrabold text-success-text underline"
+          {/* Both cards render once (e2e counts their live pills and rows); `OfficeTabs` shows
+              one at a time ≤ 700 px (the design's Antalya | Karaçi tabs) and both side by side
+              from there. `text-ink` keeps the cards' headings off the navy band's white. */}
+          <OfficeTabs
+            className="relative grid grid-cols-1 gap-4 text-ink md:grid-cols-1 lg:grid-cols-[1fr_72px_1fr] lg:items-stretch lg:gap-0"
+            tabs={[
+              {
+                id: 'antalya',
+                label: t('contact.096'),
+                card: (
+                  <ContactOfficeCard
+                    bundle={bundle}
+                    locale={locale}
+                    office={antalya}
+                    status={
+                      <LiveStatus
+                        variant="office"
+                        hours={antalya.hours}
+                        locale={locale}
+                        fallback={t(antalya.hoursId)}
+                        labels={labels}
+                        className={PILL}
+                      />
+                    }
+                  />
+                ),
+              },
+              {
+                id: 'karachi',
+                label: t('contact.097'),
+                card: (
+                  <ContactOfficeCard
+                    bundle={bundle}
+                    locale={locale}
+                    office={karachi}
+                    status={
+                      <LiveStatus
+                        variant="office"
+                        hours={karachi.hours}
+                        locale={locale}
+                        fallback={t(karachi.hoursId)}
+                        labels={labels}
+                        className={PILL}
+                      />
+                    }
+                  />
+                ),
+              },
+            ]}
+            plane={
+              <div
+                aria-hidden="true"
+                className="flex flex-col items-center justify-center text-white max-lg:hidden"
               >
-                {t('contact.109')}
-              </Link>
-            </OfficeCard>
-          </div>
-          <div className="mt-6 flex flex-wrap items-center gap-5 rounded-md border border-white/25 bg-white/10 p-5 text-white md:p-6">
+                <span className={DASH} />
+                {/* `.ja-plane`: the plane flies in once the card is revealed */}
+                <span className="ja-plane my-2.5 flex h-[46px] w-[46px] items-center justify-center rounded-full border-[1.5px] border-dashed border-white/45 bg-white/10">
+                  <PlaneIcon size={19} />
+                </span>
+                <span className={DASH} />
+              </div>
+            }
+          />
+          <div className="relative mt-6 flex flex-wrap items-center gap-5 rounded-[18px] border border-white/25 bg-white/10 px-7 py-[22px] text-white max-md:px-5">
             <span
               aria-hidden="true"
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-white/20"
+              className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-[14px] bg-white/20"
             >
               <BuildingIcon size={20} />
             </span>
-            <div className="min-w-0 flex-1 basis-[280px]">
+            <div className="min-w-0 flex-1 basis-[280px] max-md:basis-[calc(100%-4.25rem)]">
               <h3 className="m-0 mb-1 text-body text-white">{t('contact.110')}</h3>
               <p className="m-0 text-body-sm text-white/85 xl:max-w-[640px]">{t('contact.111')}</p>
             </div>
@@ -121,7 +145,10 @@ export function Offices({
               placement="page_cta"
               href={waLink(bundle.settings.whatsappNumber, sys('contact.wa.visitSite'))}
               external
-              variant="inverse"
+              variant="white"
+              shape="rect"
+              radius={11}
+              className="max-md:w-full"
             >
               {t('contact.112')}
             </ContactCta>

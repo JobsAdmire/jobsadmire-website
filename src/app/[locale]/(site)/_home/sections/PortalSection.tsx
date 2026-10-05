@@ -90,6 +90,15 @@ export function PortalSection({ locale, bundle }: SectionProps) {
           </div>
         </div>
         <div className="relative min-w-0 overflow-hidden rounded-[26px] bg-[linear-gradient(160deg,#16294f_0%,#0e1a37_60%,#0a1428_100%)] px-[30px] pb-[30px] pt-9 xl:rounded-[19.5px]">
+          {/* The design's 115° hairline texture and drifting glow (ll. 914–916). */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(115deg,rgba(255,255,255,0.03)_0_1px,transparent_1px_10px)]"
+          />
+          <div
+            aria-hidden="true"
+            className="ja-glow pointer-events-none absolute -right-[120px] -top-[140px] h-[400px] w-[400px] rounded-pill bg-[radial-gradient(circle,rgba(24,153,213,0.3),transparent_65%)] xl:-right-[90px] xl:-top-[105px] xl:h-[300px] xl:w-[300px]"
+          />
           <div aria-hidden="true" className="relative h-[400px] xl:mx-auto xl:max-w-[460px]">
             <div className="absolute left-0 top-0 w-[82%]">
               <div className="rounded-b-md rounded-t-[14px] bg-[#0f2438] px-[9px] pb-3 pt-[9px] shadow-[0_26px_56px_rgba(3,10,26,0.55)]">

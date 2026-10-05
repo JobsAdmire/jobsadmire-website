@@ -1,5 +1,5 @@
 /** The `iAm` values the Operations `workers` catalog accepts (`direct_employer | hr_agency`) —
- *  the role chips post exactly these (W77: wire values are keys). `startWhen` keys are the shared
+ *  the role tabs post exactly these (hidden `iAm`) (W77: wire values are keys). `startWhen` keys are the shared
  *  W78 set in `@/forms/options`, never a page-local list. Client-safe — no zod, no message files:
  *  the `RequestFormFields` island imports this module. */
 export const ROLE_KEYS = ['direct_employer', 'hr_agency'] as const;

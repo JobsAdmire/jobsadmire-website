@@ -1,11 +1,10 @@
 'use client';
 import { useId, useState } from 'react';
-import { PhoneIcon } from '@/design/chrome/icons';
 import { RadioChips } from '@/design/primitives/RadioChips';
 import { Field } from '@/forms/client/Field';
 import { FormShell } from '@/forms/client/FormShell';
 import { CALLBACK_DAYS, CALLBACK_SLOTS, type CallbackDay } from '../_lib/options';
-import { ChevronDownIcon } from './icons';
+import { ChevronDownIcon, PhoneOutgoingIcon } from './icons';
 import type { FormAction, FormDoor } from './types';
 
 export type CallbackWidgetCopy = {
@@ -59,7 +58,7 @@ export function CallbackWidget({
           aria-hidden="true"
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xs bg-pale-1 text-navy"
         >
-          <PhoneIcon size={19} />
+          <PhoneOutgoingIcon size={19} />
         </span>
         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
           <span className="text-card-title font-extrabold text-ink">{copy.title}</span>
@@ -87,6 +86,11 @@ export function CallbackWidget({
             contact={contact}
             submitLabel={copy.submit}
             consent="checkbox"
+            consentStyle="box"
+            submitShape="rect"
+            submitRadius={11}
+            submitFullWidth={false}
+            submitArrow={false}
             headingLevel={3}
             testId="contact-callback-form"
           >
@@ -96,6 +100,7 @@ export function CallbackWidget({
               value={day}
               onChange={setDay}
               options={CALLBACK_DAYS.map((d) => ({ value: d, label: copy.days[d] }))}
+              compact
             />
             <RadioChips
               name="slot"
@@ -103,6 +108,7 @@ export function CallbackWidget({
               value={slot}
               onChange={setSlot}
               options={slotOptions}
+              compact
             />
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <Field

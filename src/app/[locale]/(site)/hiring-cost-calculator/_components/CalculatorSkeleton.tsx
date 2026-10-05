@@ -107,9 +107,16 @@ export function CalculatorSkeleton({
           </div>
           <div>
             <RowHead label={labels.cWorkers} value={view.headcountText} />
-            <div className="flex flex-wrap items-end gap-2.5">
+            <div className="flex flex-wrap items-center gap-2.5">
               <StepperLook value={view.headcountText} stretch />
-              <ChipsLook options={HEADCOUNT_OPTIONS} value={presetValue(view.headcount)} stretch />
+              <div className="md:ml-1 max-md:w-full">
+                <ChipsLook
+                  options={HEADCOUNT_OPTIONS}
+                  value={presetValue(view.headcount)}
+                  stretch
+                  compact
+                />
+              </div>
             </div>
             <QuotaHint view={view} labels={labels} />
           </div>
@@ -144,7 +151,7 @@ export function CalculatorSkeleton({
               value={`${tier?.label ?? ''} · ${view.sgkRate}`}
               kicker
             />
-            <ChipsLook options={tierOptions(labels)} value={view.sgkTier} />
+            <ChipsLook options={tierOptions(labels)} value={view.sgkTier} compact />
           </div>
           <div aria-hidden="true" className={`${ADV_TOGGLE} md:hidden`}>
             {labels.advMore}

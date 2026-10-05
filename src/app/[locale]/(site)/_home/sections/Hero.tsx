@@ -6,7 +6,6 @@ import { Button, buttonClassName } from '@/design/primitives/Button';
 import { Link } from '@/i18n/navigation';
 import { LiveDot } from '../components/LiveDot';
 import { HERO_PHOTO } from '../lib/assets';
-import { hasRows } from '../lib/phase-a';
 import type { SectionProps } from './types';
 
 /**
@@ -109,37 +108,41 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
   );
 }
 
-/** The design's stats bar: W1 metrics through `MetricStrip` (dark tone; an unsigned metric is
- *  hidden, never 0). The fourth design cell ("All cases are public →") is a claim about the
- *  approvals wall, so it renders only once `stories` has rows (W6). */
+/** The design's stats bar (ll. 425–443): the W1 metrics through `MetricStrip` (`hero`: the dark
+ *  strip, ≤ 460 px the 2 × 1 + 1 fold with the third label inline; an unsigned metric is hidden,
+ *  never 0) and the fourth cell — the static "Gerçek onayları inceleyin →" link to the Success
+ *  Stories page with its note (home.053/054), ruled off on the left from 901 px and hidden at
+ *  ≤ 460 px as the design's `.ja-hero-stats > div:nth-child(4)` is. */
 function HeroStats({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
   return (
     <div className="relative border-t border-white/15 bg-[rgba(10,20,40,0.35)] backdrop-blur-[6px]">
       <div
         data-testid="hero-stats"
-        className={`${HERO_BOX} flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 xl:py-4`}
+        className={`${HERO_BOX} grid items-center gap-y-4 py-5 lg:grid-cols-[3fr_1fr] xl:py-4`}
       >
-        <div className="min-w-0 flex-1">
-          <MetricStrip
-            bundle={bundle}
-            locale={locale}
-            metrics={['placed', 'countries', 'permitDays']}
-            tone="dark"
-          />
+        <MetricStrip
+          bundle={bundle}
+          locale={locale}
+          metrics={['placed', 'countries', 'permitDays']}
+          tone="dark"
+          variant="hero"
+        />
+        <div
+          data-testid="hero-proof"
+          className="flex flex-col justify-center max-xs:hidden max-lg:border-t max-lg:border-white/15 max-lg:pt-4 lg:self-stretch lg:border-l lg:border-white/15 lg:pl-6 xl:pl-[18px]"
+        >
+          <Link
+            prefetch={false}
+            href="/success-stories"
+            className="text-body-sm font-extrabold text-sky no-underline hover:text-white hover:underline"
+          >
+            {tf('home.053')}
+          </Link>
+          <span className="mt-[5px] text-[12.5px] font-semibold text-white/60 xl:mt-1 xl:text-[11px]">
+            {tf('home.054')}
+          </span>
         </div>
-        {hasRows(bundle, 'stories') ? (
-          <div data-testid="hero-proof" className="flex flex-col max-xs:hidden">
-            <Link
-              prefetch={false}
-              href="/success-stories"
-              className="text-body-sm font-extrabold text-sky no-underline hover:underline"
-            >
-              {tf('home.053')}
-            </Link>
-            <span className="mt-1 text-[12.5px] font-semibold text-white/60">{tf('home.054')}</span>
-          </div>
-        ) : null}
       </div>
     </div>
   );

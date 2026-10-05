@@ -12,10 +12,11 @@ const STRINGS = Object.fromEntries(
 );
 const tf = (id: string) => `<${id}>`;
 
-describe('Available Workers FAQ (W6/D17, W9)', () => {
-  it('hides the live-sample pair while cards are not visible and answers the two JS-only questions with their package twins', () => {
-    const items = workersFaqItems(testBundle({ strings: STRINGS }), 'en', false);
+describe('Available Workers FAQ (W9)', () => {
+  it('shows all eight pairs, "How current is this list?" first, and answers the two JS-only questions with their package twins', () => {
+    const items = workersFaqItems(testBundle({ strings: STRINGS }), 'en');
     expect(items.map((i) => i.id)).toEqual([
+      'availworkers.210',
       'availworkers.212',
       'availworkers.214',
       'availworkers.216',
@@ -30,12 +31,6 @@ describe('Available Workers FAQ (W6/D17, W9)', () => {
       expect(item.q.startsWith('Q ')).toBe(true);
       expect(item.a.startsWith('A ')).toBe(true);
     }
-  });
-
-  it('shows all eight pairs, the live-sample pair first, once cards are visible (the v1.1 cards task)', () => {
-    const items = workersFaqItems(testBundle({ strings: STRINGS }), 'en', true);
-    expect(items).toHaveLength(8);
-    expect(items[0].id).toBe('availworkers.210');
   });
 });
 

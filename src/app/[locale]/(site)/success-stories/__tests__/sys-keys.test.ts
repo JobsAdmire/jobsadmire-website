@@ -8,18 +8,18 @@ import tr from '@/messages/tr.json';
 export const STORIES_SYS_KEYS = [
   'seo.stories.title',
   'seo.stories.description',
-  'stories.hero.bodyEmpty',
   'stories.hero.liveBadge',
   'stories.wall.intro',
   'stories.wall.legend',
   'stories.wall.showingAll',
   'stories.wall.showingFiltered',
-  'stories.empty.title',
-  'stories.empty.body',
-  'stories.empty.cta',
-  'stories.empty.prefill',
+  'stories.wall.watermarkCopy',
+  'stories.wall.watermarkPermit',
   'stories.whatsappPrefill',
   'stories.workers.card1Title',
+  // the sample tag (`SampleTag`) on the hero stats and the four sample sections
+  'sample.tag',
+  'sample.title',
 ] as const;
 
 const get = (root: unknown, path: string) =>
@@ -57,10 +57,14 @@ describe('sys.stories.* / sys.seo.stories.* (W9, W23)', () => {
     expect(get(tr.sys, 'seo.stories.title')).toMatch(/\| JobsAdmire$/);
     expect(get(en.sys, 'seo.stories.description')).not.toMatch(/\bTurkey\b/);
   });
-  it('the empty-wall copy never claims that approvals are shown (delta 7)', () => {
+  it('the job-order prefill never claims the visitor saw a published approval (delta 7)', () => {
     for (const messages of [tr, en]) {
-      expect(get(messages.sys, 'stories.hero.bodyEmpty')).not.toMatch(/Below|Aşağıda/);
       expect(get(messages.sys, 'stories.whatsappPrefill')).not.toMatch(/saw your|gördüm/);
+    }
+  });
+  it('the watermark month line is ICU with a {month} argument', () => {
+    for (const messages of [tr, en]) {
+      expect(get(messages.sys, 'stories.wall.watermarkPermit')).toContain('{month}');
     }
   });
 });

@@ -263,6 +263,9 @@
       "faq": {
         "whatsappText": "Hello JobsAdmire, I have a partnership question.",
         "emailSubject": "Partnership question"
+      },
+      "logos": {
+        "slot": "Partner logo {n}"
       }
     },
     "about": {
@@ -295,7 +298,8 @@
       "whatsapp": {
         "demo": "Hello JobsAdmire, I would like a demo of your CRM portal.",
         "consult": "Hello JobsAdmire, I would like a free consultation."
-      }
+      },
+      "profileSoon": "The company profile PDF is coming soon."
     },
     "contact": {
       "languages": {
@@ -334,25 +338,20 @@
       "faq": {
         "a3": "WhatsApp is the fastest channel in office hours ({hours}, Turkish time); e-mail is answered within about {replyHours} business hours. Messages sent at night or over the weekend are picked up the next business morning.",
         "a5": "Yes, but JobsAdmire does not take individual applications directly: it is a B2B agency and works through verified sourcing partners in your country. Pick “I am looking for a job” above and send a message; JobsAdmire replies with the verified partner’s contact details. JobsAdmire never charges a worker a placement fee — if anyone asks you for money in its name, report it on WhatsApp."
-      }
+      },
+      "footnote": "Your request goes straight to our team; we reply on the channel you picked."
     },
     "workers": {
       "pool": {
-        "heading": "The JobsAdmire candidate pool",
-        "intro": "Every candidate in the pool is skill-tested, document-checked and permit-ready. Until profiles are published here, tell JobsAdmire what you need and matching candidates are sent to you directly."
+        "shown": "Showing {shown} of {total} matching",
+        "loadMore": "Load more profiles ({count} more)",
+        "active": "{count} active",
+        "cvOnRequest": "CV & photo on request",
+        "filter": "Filter",
+        "selected": "selected"
       },
-      "empty": {
-        "title": "Public profiles are not published yet",
-        "body": "Profiles appear on this page once candidate privacy (KVKK) and partner consent are in place. Fill in the request form and JobsAdmire shares full CVs, documents and video interviews with you directly.",
-        "cta": "Go to the request form"
-      },
-      "sticky": {
-        "message": "Tell JobsAdmire the roles you need — full CV and video interview within {hours} hours."
-      },
-      "form": {
-        "titles": {
-          "direct_employer": "Request candidates from the pool"
-        }
+      "formCta": {
+        "ready": "{count} ready now"
       },
       "timeline": {
         "days1to3": "Days 1–3",
@@ -371,7 +370,9 @@
         "intro": "Each published approval is a card: sector, headcount, approval month and city. Personal details and documents are never shown.",
         "legend": "Filter by sector",
         "showingAll": "Showing all approvals ({count})",
-        "showingFiltered": "Showing {shown} of {total} approvals"
+        "showingFiltered": "Showing {shown} of {total} approvals",
+        "watermarkCopy": "verified copy",
+        "watermarkPermit": "permit {month}"
       },
       "empty": {
         "title": "The first approvals are on their way",
@@ -415,6 +416,9 @@
       "record": {
         "close": "Close the record",
         "former": "No longer authorised"
+      },
+      "register": {
+        "tapToChange": "Tap to change"
       }
     },
     "careers": {
@@ -453,8 +457,15 @@
         "body": "Every role is published here first. Send an open application by WhatsApp or e-mail below — JobsAdmire keeps good people on file and writes to you when a market opens."
       },
       "apply": {
-        "whatsapp": "Apply on WhatsApp",
-        "emailSubject": "Open application"
+        "emailSubject": "Open application",
+        "form": {
+          "name": "Full name",
+          "country": "Country / city",
+          "email": "Email",
+          "phone": "WhatsApp number",
+          "role": "Role you have in mind (optional)",
+          "about": "What would you bring JobsAdmire? Languages, network, experience — a few lines is enough."
+        }
       },
       "detail": {
         "metaTitle": "{title} — careers at JobsAdmire",
@@ -512,7 +523,8 @@
         "sections": "{n, plural, one {# section} other {# sections}}",
         "copyFailed": "The link could not be copied — copy it from the address bar instead.",
         "print": "Print this article",
-        "backToTop": "Back to top"
+        "backToTop": "Back to top",
+        "shareThis": "Share this article"
       },
       "faq": {
         "a1": "Approval takes about {permitDays} days on average, including the ministry's review, and the whole process up to the first working day usually takes {firstDayWeeks} weeks. A licensed agency checks the file first, so a missing document does not restart the clock.",
@@ -522,7 +534,8 @@
         "article": "I read “{title}” on your blog and want to hire workers.",
         "consult": "I want a free consultation.",
         "permit": "I need help with work permits."
-      }
+      },
+      "soon": "coming soon"
     },
     "form": {
       "labels": {
@@ -699,7 +712,8 @@
           "title": "Candidate profiles are coming soon",
           "body": "Candidates are interviewed and document-checked in their own country by JobsAdmire representatives. Share your sector and headcount, and matching profiles come straight to you.",
           "cta": "Request candidates →"
-        }
+        },
+        "years": "{n, plural, one {# yr} other {# yrs}}"
       },
       "calc": {
         "eyebrowUndated": "Real cost",
@@ -723,6 +737,9 @@
       },
       "portal": {
         "platforms": "iOS & Android"
+      },
+      "cases": {
+        "daysAgo": "{n, plural, one {# day ago} other {# days ago}}"
       }
     },
     "legal": {

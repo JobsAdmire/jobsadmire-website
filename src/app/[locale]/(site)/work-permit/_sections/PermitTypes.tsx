@@ -34,7 +34,7 @@ export function PermitTypes({ bundle, tf }: { bundle: Bundle; tf: (id: string) =
                 {tf('wp.163')}
               </span>
             </p>
-            <h3 className="m-0 mb-2.5 text-card-title">
+            <h3 className="m-0 mb-2.5 text-[23px] leading-[1.2] font-extrabold max-md:text-card-title">
               {name}
               {/* QA W221 WP-05: wp.165 ("· Süreli") glosses the Turkish term for English readers;
                   on the TR page the title already is that word ("Süreli izin · Süreli") — EN only */}
@@ -68,11 +68,14 @@ export function PermitTypes({ bundle, tf }: { bundle: Bundle; tf: (id: string) =
               <h3 className="m-0 mb-3.5 text-eyebrow font-extrabold tracking-[1px] text-text-tertiary uppercase">
                 {tf('wp.175')}
               </h3>
-              <ul className="flex flex-col gap-2.5 text-body-sm text-text-secondary">
+              <ul className="flex flex-col gap-2.5 text-body-sm text-text-secondary max-md:gap-2.5">
                 {OTHER_PERMIT_TYPES.map(([nameId, restId]) => {
                   const [a, b] = [tf(nameId), tf(restId)];
                   return (
-                    <li key={nameId}>
+                    <li
+                      key={nameId}
+                      className="max-md:border-t max-md:border-border-4 max-md:pt-2.5 max-md:first:border-t-0 max-md:first:pt-0"
+                    >
                       <strong className="font-extrabold text-ink">{a}</strong>
                       {sp(a, b)}
                       {b}
@@ -81,12 +84,14 @@ export function PermitTypes({ bundle, tf }: { bundle: Bundle; tf: (id: string) =
                 })}
               </ul>
             </div>
-            <div className="flex flex-1 flex-col justify-center rounded-lg bg-blue-safe px-7 py-6 text-white max-md:rounded-base max-md:px-4 max-md:py-4">
+            <div className="flex flex-1 flex-col justify-center rounded-lg bg-gradient-to-br from-blue-safe to-blue-deep px-7 py-6 text-white max-md:rounded-base max-md:px-4 max-md:py-4">
               <p className="m-0 mb-1.5 text-body font-extrabold">{tf('wp.184')}</p>
               <p className="m-0 mb-3.5 text-body-sm">{tf('wp.185')}</p>
               <ContactCta
                 placement="page_cta"
-                variant="secondary"
+                variant="white"
+                shape="rect"
+                radius={10}
                 external
                 className="self-start"
                 href={waLink(bundle.settings.whatsappNumber, waPrefill(sys, 'permitType'))}

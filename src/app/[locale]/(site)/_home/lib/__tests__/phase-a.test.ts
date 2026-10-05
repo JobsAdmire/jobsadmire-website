@@ -1,28 +1,24 @@
 import { describe, expect, it } from 'vitest';
 import { testBundle } from '@/test/bundle';
 import { homeBundle } from '../../__tests__/fixtures';
-import { hasRows, publishedFounder, rawRows } from '../phase-a';
+import { publishedFounder } from '../phase-a';
 
-describe('phase-a switches (W6/D23/W86: rendered by data, never deleted)', () => {
-  it('an absent collection reads as empty', () => {
-    const bundle = testBundle();
-    expect(rawRows(bundle, 'stories')).toEqual([]);
-    expect(hasRows(bundle, 'pool')).toBe(false);
-    expect(hasRows(bundle, 'representatives')).toBe(false);
+describe('publishedFounder (W86)', () => {
+  it('the committed founder row is published (owner 2026-10-05): Haris Jiva with his photo', () => {
+    expect(publishedFounder(homeBundle('tr'))).toMatchObject({
+      name: 'Haris Jiva',
+      photoSrc: '/team/haris-jiva.jpg',
+      published: true,
+    });
   });
 
-  it('a populated collection flips the switch', () => {
-    expect(hasRows(testBundle({ collections: { stories: [{ title: 'x' }] } }), 'stories')).toBe(
-      true,
-    );
-  });
-
-  it('W86: the committed founder row is unpublished, so no founder card renders', () => {
-    expect(publishedFounder(homeBundle('tr'))).toBeNull();
+  it('no founder row, or an unpublished one, reads as none', () => {
     expect(publishedFounder(testBundle())).toBeNull();
+    const row = { name: 'Ad Soyad', titleId: 'about.047', photoSrc: null, published: false };
+    expect(publishedFounder(testBundle({ collections: { founder: [row] } }))).toBeNull();
   });
 
-  it('W86: a published founder row is returned whole', () => {
+  it('a published founder row is returned whole', () => {
     const row = { name: 'Ad Soyad', titleId: 'about.047', photoSrc: null, published: true };
     expect(publishedFounder(testBundle({ collections: { founder: [row] } }))).toEqual(row);
   });

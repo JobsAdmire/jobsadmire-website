@@ -14,7 +14,6 @@ type BundleJson = {
   settings: { whatsappNumber: string };
   collections: {
     rateConfig: { legalMinGross: number; sgkRates: { other: number } }[];
-    blog?: { hasBody: { tr: boolean } }[];
   };
 };
 // The committed TR bundle is the data these assertions follow, read with `readFileSync` like the
@@ -29,29 +28,27 @@ const payrollTR = (n: number) => {
   const exact = Math.round((gross + gross * rate.sgkRates.other) * 1e4) / 1e4;
   return `${new Intl.NumberFormat('tr-TR').format(Math.round(exact))} ₺`;
 };
-/** W4: the guides block renders only from six Turkish bodies. */
-const blogVisible = (bundle.collections.blog ?? []).filter((p) => p.hasBody.tr).length >= 6;
 
 const LEAK = /\{[a-zA-Z]+\}|undefined|\[object /;
+/** Owner 2026-10-05: every design section renders — the case bar and the pool with the design's
+ *  sample content (SampleTag), the team with the published founder, the guides from the blog rows. */
 const ORDER = [
   'hero',
   'hero-form',
+  'hero-proof',
+  'live-case-bar',
   'choice-cards',
   'pool',
   'calc-teaser',
   'process',
   'season-planner',
   'network',
+  'team',
   'portal',
   'work-with-us',
+  'guides',
   'faq',
   'cta-band',
-];
-const HIDDEN_IN_PHASE_A = [
-  'live-case-bar',
-  'hero-proof',
-  'team',
-  ...(blogVisible ? [] : ['guides']),
 ];
 
 const testIds = (page: Page) =>
@@ -88,9 +85,7 @@ for (const [route, lang] of [
   ['/', 'tr'],
   ['/en', 'en'],
 ] as const) {
-  test(`homepage ${route}: the page contract, the design's section order, the Phase A switches`, async ({
-    page,
-  }) => {
+  test(`homepage ${route}: the page contract and the design's section order`, async ({ page }) => {
     const res = await page.goto(route);
     expect(res?.status()).toBe(200);
     await expect(page.locator('html')).toHaveAttribute('lang', lang);
@@ -112,7 +107,10 @@ for (const [route, lang] of [
       expect(position, `${ORDER[i]} is rendered`).toBeGreaterThanOrEqual(0),
     );
     expect([...positions].sort((a, b) => a - b)).toEqual(positions);
-    for (const id of HIDDEN_IN_PHASE_A) await expect(page.getByTestId(id)).toHaveCount(0);
+    // D23: the sample blocks wear the tag; the pool's photos are placeholders, never real photos.
+    await expect(page.getByTestId('live-case-bar').locator('[data-sample-tag]')).toHaveCount(1);
+    await expect(page.getByTestId('pool').locator('[data-sample-tag]')).toHaveCount(1);
+    await expect(page.getByTestId('pool').locator('img')).toHaveCount(0);
     // W17/W152: CTA_BY_PATHNAME['/'] and every in-page CTA point here.
     await expect(page.locator('#proposal')).toHaveCount(1);
     await expect(page.getByTestId('hire-form')).toHaveAttribute('data-form-key', 'hire');
@@ -242,4 +240,32 @@ test('the season planner hydrates on approach and answers a row selection', asyn
   await page.getByTestId('season-row-tourism').click();
   await expect(page.getByTestId('season-row-tourism')).toHaveAttribute('aria-pressed', 'true');
   await expect(headline).not.toHaveText(before);
+});
+
+test('the sample case bar rotates and pauses; the pool track pauses (D20 / WCAG 2.2.2)', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const line = page.getByTestId('case-line');
+  const first = await line.innerText();
+  await expect(line).not.toHaveText(first, { timeout: 7000 });
+  await page.getByTestId('case-toggle').click();
+  const held = await line.innerText();
+  await page.waitForTimeout(5000);
+  await expect(line).toHaveText(held);
+  const track = page.getByTestId('pool-track');
+  await track.scrollIntoViewIfNeeded();
+  await page.getByTestId('pool-toggle').click();
+  await expect(track).toHaveCSS('animation-play-state', 'paused');
+});
+
+test('the guides block: Turkish guides without a body are "yakında" cards, not links', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const guides = page.getByTestId('guides');
+  await expect(guides.getByTestId('guide-featured')).toBeVisible();
+  const soon = await guides.getByTestId('guide-soon').count();
+  expect(soon).toBeGreaterThan(0);
+  await expect(guides.locator('a[href*="/blog/"]')).toHaveCount(0);
 });

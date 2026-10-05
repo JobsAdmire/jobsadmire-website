@@ -9,7 +9,7 @@ type Tf = (id: string) => string;
 
 /** "What 'verified' means" (design `#ja-steps`): the four checks, `availworkers.074`–`082`.
  *  `ProcessSteps` resolves the title/body ids itself; step 4's "Goes live" pill (081) is its
- *  `when` — a resolved string, so it is passed in. */
+ *  `when` — a resolved string, so it is passed in. The page adds each card's glyph. */
 const VERIFIED_STEP_IDS = [
   { n: 1, titleId: 'availworkers.074', bodyId: 'availworkers.075' },
   { n: 2, titleId: 'availworkers.076', bodyId: 'availworkers.077' },
@@ -44,17 +44,17 @@ export function afterSteps(tf: Tf, badges: { days1to3: string; arrival?: string 
 }
 
 /**
- * The FAQ pairs (design `faqData`). Two answers exist only in the design's JavaScript: 218
- * ("Who files the work permit…") and 221 ("What if the worker leaves…"). The package carries the
- * same copy under `wp.350` and `hire.302` — both legal-flagged, so they sit behind the D8 APPROVE
- * gate the JS-only text would have bypassed, and W9 forbids minting an id for copy the package
- * already has; the WP-C legal review checks them in this page's context (wp.350's "track the
- * status live on your portal", hire.302's replacement guarantee). 210/211 promise a "live sample
- * of our portal, refreshed weekly" with a hard-typed "200+": shown only once cards are visible
- * (W6/D17).
+ * The FAQ pairs (design `faqData`, ll. 1291–1300), all eight, the first open. Two answers exist
+ * only in the design's JavaScript: 218 ("Who files the work permit…") and 221 ("What if the worker
+ * leaves…"). The package carries the same copy under `wp.350` and `hire.302` — both legal-flagged,
+ * so they sit behind the D8 APPROVE gate the JS-only text would have bypassed, and W9 forbids
+ * minting an id for copy the package already has; the WP-C legal review checks them in this
+ * page's context (wp.350's "track the status live on your portal", hire.302's replacement
+ * guarantee). 210/211 ("How current is this list?" — a weekly-refreshed sample, "200+" CVs) lead
+ * again now that the page shows the design's sample pool under its sample tag.
  */
-export const WORKERS_FAQ: readonly { q: string; a: string; liveSample?: true }[] = [
-  { q: 'availworkers.210', a: 'availworkers.211', liveSample: true },
+export const WORKERS_FAQ: readonly { q: string; a: string }[] = [
+  { q: 'availworkers.210', a: 'availworkers.211' },
   { q: 'availworkers.212', a: 'availworkers.213' },
   { q: 'availworkers.214', a: 'availworkers.215' },
   { q: 'availworkers.216', a: 'availworkers.217' },
@@ -64,15 +64,7 @@ export const WORKERS_FAQ: readonly { q: string; a: string; liveSample?: true }[]
   { q: 'availworkers.222', a: 'availworkers.223' },
 ];
 
-export function workersFaqItems(
-  bundle: Bundle,
-  locale: Locale,
-  showLiveSample: boolean,
-): FaqItem[] {
+export function workersFaqItems(bundle: Bundle, locale: Locale): FaqItem[] {
   const tf = makeTf(bundle, locale);
-  return WORKERS_FAQ.filter((f) => showLiveSample || !f.liveSample).map((f) => ({
-    id: f.q,
-    q: tf(f.q),
-    a: tf(f.a),
-  }));
+  return WORKERS_FAQ.map((f) => ({ id: f.q, q: tf(f.q), a: tf(f.a) }));
 }

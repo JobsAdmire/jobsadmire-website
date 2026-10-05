@@ -1,17 +1,18 @@
 import { useTranslations } from 'next-intl';
 import type { SourceCountry } from '@/content/collections';
-import { isFlagCode } from '@/design/assets/flag-codes';
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
-import { Flag } from '@/design/Flag';
+import { ArrowRightIcon } from '@/design/chrome/icons';
 import { buttonClassName } from '@/design/primitives/Button';
 import { Section } from '@/design/primitives/Section';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { HeroRoleCard } from '../_components/HeroRoleCard';
+import { MapPinIcon } from '../_components/icons';
 import type { RoleCard, Tf } from '../_lib/roles';
 
-/** The design's navy gradient (`.ja-jt-hero`); its glows and dot grid are decoration left out. */
-const HERO_BG = 'bg-[linear-gradient(158deg,#253063_0%,#1c2652_50%,#131c40_100%)]';
+/** The design's navy gradient (`.ja-jt-hero`); ≤ 900 px a solid #0a1428 (l. 295). */
+const HERO_BG =
+  'bg-[linear-gradient(158deg,#253063_0%,#1c2652_50%,#131c40_100%)] max-lg:bg-night max-lg:bg-none';
 const TRUST = ['jt.027', 'jt.028', 'jt.029'] as const;
 
 function Tick() {
@@ -26,7 +27,7 @@ function Tick() {
       strokeWidth="3"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="flex-none text-[#4ade80]"
+      className="flex-none text-[#4ade80] max-lg:text-sky"
     >
       <path d="M20 6L9 17l-5-5" />
     </svg>
@@ -39,24 +40,48 @@ function Tick() {
  * D26 — no image slot on this page), "See N open positions" + "Send an open application", the
  * trust chips, the overseas role card and the source-country strip (the ONE list, D17). Small
  * greys are #a9b5d8 (the design's #8b98c4 is 4.4:1 on #253063 — D20).
+ *
+ * Parity (S2.1–S2.4, M2–M6): the two radial glows and the 26 px dot grid (ll. 568–570; one
+ * smaller glow on a solid #0a1428 ≤ 900 px), 13 px rectangles from 901 px (pills below, full
+ * width ≤ 700 px) with the primary's →, the primary counting the OVERSEAS roles and
+ * pre-filtering the list to them (`data-roles-place`, read by `RolesList`), the pin before
+ * "Countries we work in", chips without flags, and ≤ 900 px the chips as ONE horizontally
+ * scrolling row bleeding into the gutters. The bleed stays inside the section's
+ * `overflow-hidden` (no document overflow), the row is a focusable scroll region, and both the
+ * row and its chips wear opaque faces so axe reads their real background (QA W220 CAR-01).
  */
 export function CareersHero({
   t,
   locale,
   openingsCount,
+  overseasCount = 0,
   heroCards,
   sourceCountries,
 }: {
   t: Tf;
   locale: Locale;
   openingsCount: number;
+  overseasCount?: number;
   heroCards: RoleCard[];
   sourceCountries: SourceCountry[];
 }) {
   const sys = useTranslations('sys');
+  const seeCount = overseasCount > 0 ? overseasCount : openingsCount;
   return (
-    <Section tone="dark" className={`pt-8 pb-0 ${HERO_BG}`}>
-      <div className="container-site">
+    <Section tone="dark" className={`relative overflow-hidden pt-8 pb-0 max-lg:pt-6 ${HERO_BG}`}>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-[180px] -right-[120px] h-[620px] w-[620px] rounded-full bg-[radial-gradient(circle,rgba(24,153,213,0.34)_0%,rgba(24,153,213,0)_68%)] max-lg:-top-[140px] max-lg:h-[320px] max-lg:w-[320px] max-lg:bg-[radial-gradient(circle,rgba(24,153,213,0.22)_0%,rgba(24,153,213,0)_70%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-[220px] -left-[160px] h-[540px] w-[540px] rounded-full bg-[radial-gradient(circle,rgba(127,208,245,0.16)_0%,rgba(127,208,245,0)_70%)] max-lg:hidden"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.65)_1px,transparent_1px)] [background-size:26px_26px] opacity-[0.13] max-lg:hidden"
+      />
+      <div className="container-site relative">
         <Breadcrumbs
           locale={locale}
           tone="dark"
@@ -65,13 +90,13 @@ export function CareersHero({
             { name: t('jt.005'), href: '/careers' },
           ]}
         />
-        <div className="grid items-center gap-8 pt-6 pb-10 lg:grid-cols-[1.06fr_0.94fr] lg:gap-14">
+        <div className="grid items-center gap-8 pt-6 pb-10 max-lg:gap-[26px] max-lg:pt-3.5 max-lg:pb-[30px] lg:grid-cols-[1.06fr_0.94fr] lg:gap-14">
           {/* the design's `.ja-up`: the copy column rises in */}
           <div className="ja-up min-w-0">
             {openingsCount > 0 && (
               <p
                 data-testid="careers-hiring-count"
-                className="mb-5 inline-flex items-center gap-2 rounded-pill border border-[#4ade80]/40 bg-[#16a34a]/15 px-4 py-1.5 text-body-sm font-extrabold text-[#86efac]"
+                className="mb-5 inline-flex items-center gap-2 rounded-pill border border-[#4ade80]/40 bg-[#16a34a]/15 px-4 py-1.5 text-body-sm font-extrabold text-[#86efac] max-lg:mb-4 max-lg:border-white/28 max-lg:bg-transparent max-lg:text-[11.5px] max-lg:font-bold max-lg:tracking-[0.7px] max-lg:text-white max-lg:uppercase"
               >
                 <span
                   aria-hidden="true"
@@ -95,15 +120,33 @@ export function CareersHero({
             >
               {t('jt.024')}
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href="#roles" className={buttonClassName('primary', 'lg')}>
-                {sys('careers.hero.seeOpenings', { count: openingsCount })}
+            <div className="mt-7 flex flex-wrap gap-3 max-md:flex-col max-md:gap-2.5">
+              <a
+                href="#roles"
+                data-roles-place={overseasCount > 0 ? 'overseas' : undefined}
+                className={buttonClassName(
+                  'primary',
+                  'lg',
+                  'ja-hover-card max-lg:min-h-[54px] max-lg:rounded-pill max-md:w-full',
+                  { shape: 'rect', radius: 13, lift: false },
+                )}
+              >
+                {sys('careers.hero.seeOpenings', { count: seeCount })}
+                <ArrowRightIcon size={16} />
               </a>
-              <a href="#apply" className={buttonClassName('inverse', 'lg')}>
+              <a
+                href="#apply"
+                className={buttonClassName(
+                  'inverse',
+                  'lg',
+                  'max-lg:min-h-[54px] max-lg:rounded-pill max-md:w-full',
+                  { shape: 'rect', radius: 13 },
+                )}
+              >
                 {t('jt.026')}
               </a>
             </div>
-            <ul className="mt-7 flex flex-col gap-2 text-body-sm font-bold text-[#a9b5d8] sm:flex-row sm:flex-wrap sm:gap-x-6">
+            <ul className="mt-7 flex flex-wrap gap-x-[26px] gap-y-[11px] text-body-sm font-bold text-[#a9b5d8] max-lg:mt-[22px] max-lg:flex-col max-lg:gap-[9px] max-lg:pt-1 max-lg:text-[13px] max-lg:text-white/60">
               {TRUST.map((id) => (
                 <li key={id} className="inline-flex items-center gap-2">
                   <Tick />
@@ -124,36 +167,36 @@ export function CareersHero({
             }}
           />
         </div>
-        {/* ≤ 900 (`max-lg:` — lg is 901) the design stacks the strip (Join Our Team ll. 339–342):
-            label, then the chips, then the sentence. As one wrapping row the `flex-1` list was
-            squeezed between label and sentence into a one-chip column (QA W220 CAR-01). D20 delta
-            (docs/ARCHITECTURE.md): the design's chip line is ONE horizontally scrolling row with the
-            scrollbar hidden, bleeding into the gutters; the site lets the chips wrap full-width
-            instead — a hidden-scrollbar region has no visible affordance, the negative-margin bleed
-            overflowed the document at 390–900 (`width-sweep`) and axe read the scroll container's
-            background as the page's white (contrast red on the chips) in the first proof attempt. */}
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/15 py-6 max-lg:flex-col max-lg:items-stretch max-lg:gap-y-2.5 max-lg:pt-3.5 max-lg:pb-[18px]">
+        {/* ≤ 900 (`max-lg:` — lg is 901) the design stacks the strip (Join Our Team ll. 339–345):
+            label, then ONE scrolling chip row, then the sentence. */}
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/15 pt-[22px] pb-[26px] max-lg:flex-col max-lg:items-stretch max-lg:gap-y-2.5 max-lg:pt-3.5 max-lg:pb-[18px]">
           <p
             id="careers-countries-label"
-            className="text-eyebrow font-extrabold uppercase tracking-[0.11em] text-[#a9b5d8]"
+            className="flex flex-none items-center gap-[9px] text-eyebrow font-extrabold tracking-[0.11em] text-[#a9b5d8] uppercase max-lg:text-[11px] max-lg:tracking-[1.1px] max-lg:text-white/50"
           >
+            <MapPinIcon size={15} className="text-sky" />
             {t('jt.036')}
           </p>
           <ul
+            data-testid="careers-countries"
             aria-labelledby="careers-countries-label"
-            className="flex flex-1 flex-wrap gap-2 max-lg:w-full max-lg:flex-none"
+            // a scroll region below 901 px: focusable so a keyboard can scroll it (axe
+            // `scrollable-region-focusable`)
+            tabIndex={0}
+            className="flex flex-1 flex-wrap gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky max-lg:mx-[calc(var(--gutter)*-1)] max-lg:flex-none max-lg:flex-nowrap max-lg:overflow-x-auto max-lg:bg-night max-lg:px-(--gutter) max-lg:pb-0.5 max-lg:[mask-image:linear-gradient(90deg,#000_calc(100%-28px),transparent)] max-lg:[scrollbar-width:none] max-lg:[&::-webkit-scrollbar]:hidden"
           >
             {sourceCountries.map((c) => (
               <li
                 key={c.code}
-                className="inline-flex items-center gap-2 rounded-[9px] border border-white/20 bg-white/10 px-3 py-1.5 text-body-sm font-extrabold text-[#dbe3f5] max-lg:whitespace-nowrap"
+                className="inline-flex items-center rounded-[9px] border border-white/20 bg-white/10 px-[13px] py-1.5 text-body-sm font-extrabold text-[#dbe3f5] max-lg:flex-none max-lg:rounded-lg max-lg:bg-[#1e2739] max-lg:px-2.5 max-lg:py-[5px] max-lg:text-[11.5px] max-lg:whitespace-nowrap max-lg:text-[#c2c6ce]"
               >
-                {isFlagCode(c.code) && <Flag code={c.code} size={16} />}
                 {c.name}
               </li>
             ))}
           </ul>
-          <p className="text-body-sm font-bold text-[#a9b5d8]">{t('jt.037')}</p>
+          <p className="text-body-sm font-bold text-[#a9b5d8] max-lg:text-[12px] max-lg:leading-[1.5] max-lg:text-white/50">
+            {t('jt.037')}
+          </p>
         </div>
       </div>
     </Section>

@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { test, expect } from '@playwright/test';
 import { expectHeroPhoto } from '../helpers/hero-photo';
 import en from '../../src/messages/en.json';
@@ -6,6 +8,14 @@ import tr from '../../src/messages/tr.json';
 // Canonicals, hreflang and og:image are built from SITE_URL (the production origin), not the run host.
 const ORIGIN = 'https://www.jobsadmire.com';
 const SYS = { tr: tr.sys, en: en.sys } as const;
+
+/** Package copy as the LOCAL bundles carry it (read, not imported — the JSON is large). */
+const strings = (locale: 'tr' | 'en') =>
+  (
+    JSON.parse(
+      readFileSync(join(__dirname, `../../src/content/local/bundle.${locale}.json`), 'utf8'),
+    ) as { strings: Record<string, string> }
+  ).strings;
 
 const ROUTES = [
   { path: '/basari-hikayeleri', locale: 'tr', alternate: '/en/success-stories' },
@@ -139,52 +149,90 @@ for (const r of ROUTES) {
       );
     });
 
-    test('shows the W6 empty wall with the site sector chips (no stories in Phase A)', async ({
+    test('shows the design’s sample approvals wall with its seven chips (parity pass; D23: page-local, never the fixture)', async ({
       page,
-    }) => {
+    }, testInfo) => {
+      const pkg = strings(r.locale);
       await page.goto(r.path);
       const wall = page.getByTestId('stories-wall');
       await expect(wall).toBeVisible();
-      // "All sectors" + the seven site sectors (`sectors` collection), never the design's own six.
-      await expect(wall.getByRole('radio')).toHaveCount(8);
-      const empty = page.getByTestId('stories-empty');
-      await expect(empty).toBeVisible();
-      await expect(empty).toHaveAttribute('role', 'status');
-      await expect(empty).toContainText(SYS[r.locale].stories.empty.title);
-      const cta = empty.locator('a[href^="https://wa.me/"]');
-      await expect(cta).toHaveCount(1);
-      await expect(cta).toHaveAttribute('target', '_blank');
-      const ctaHref = new URL((await cta.getAttribute('href')) ?? '');
-      expect(ctaHref.searchParams.get('text')).toBe(SYS[r.locale].stories.empty.prefill);
-      await expect(page.getByTestId('stories-grid')).toHaveCount(0);
-      // Picking a chip on an empty collection keeps the empty wall — no per-sector text.
+      // "All sectors" + the design's six sectors (success.124–130), never the site taxonomy.
+      await expect(wall.getByRole('radio')).toHaveCount(7);
+      await expect(wall.getByRole('radio').first()).toBeChecked();
+      await expect(page.getByTestId('stories-empty')).toHaveCount(0);
+      // the design's own amber sample badge (success.134) and the section's sample tag
+      await expect(page.getByTestId('stories-sample-badge')).toHaveText(pkg['success.134']);
+      await expect(page.locator('#cases [data-sample-tag]').first()).toBeVisible();
+      // every card frame is a labelled ImageSlot placeholder, never nothing
+      await expect(page.locator('[data-placeholder="approval-a1"]')).toHaveCount(1);
+      if (testInfo.project.name === 'desktop') {
+        const grid = page.getByTestId('stories-grid');
+        await expect(grid.getByRole('article')).toHaveCount(9);
+        await expect(grid.getByRole('article').first()).toBeVisible();
+        await expect(page.getByTestId('stories-slider')).toBeHidden();
+        await expect(page.getByTestId('stories-more')).toBeHidden();
+      } else {
+        // ≤ 700 px: the swipe slider of the first three, the compact list of cards 4–7, the toggle
+        const slider = page.getByTestId('stories-slider');
+        await expect(slider).toBeVisible();
+        await expect(slider).toContainText(pkg['success.144']);
+        await expect(slider.getByRole('article')).toHaveCount(3);
+        const items = page.getByTestId('stories-grid').getByRole('listitem');
+        await expect(items.nth(0)).toBeHidden();
+        await expect(items.nth(3)).toBeVisible();
+        await expect(items.nth(7)).toBeHidden();
+        const more = page.getByTestId('stories-more');
+        await expect(more).toHaveText(pkg['success.136']);
+        await more.click();
+        await expect(more).toHaveAttribute('aria-expanded', 'true');
+        await expect(items.nth(7)).toBeVisible();
+        // a tap anywhere on a compact card opens its proof
+        const card = items.nth(3).getByRole('article');
+        await card.click();
+        await expect(card).toHaveAttribute('data-open', 'true');
+      }
+      // Picking a chip filters the wall: Hotels & tourism carries two sample approvals.
       // The native radio is sr-only under its chip face, so click the chip (the <label>).
-      await wall.locator('label').nth(2).click();
-      await expect(wall.getByRole('radio').nth(2)).toBeChecked();
-      await expect(empty).toBeVisible();
+      await wall.locator('label').nth(1).click();
+      await expect(wall.getByRole('radio').nth(1)).toBeChecked();
+      await expect(page.getByTestId('stories-grid').getByRole('article')).toHaveCount(2);
       await expect(page.getByTestId('stories-none-in-sector')).toHaveCount(0);
-      await expect(page.getByTestId('stories-result')).toHaveCount(0);
-      // The design's feed/sample wording never reaches the page body (the chrome's own
-      // "CRM Login" label, home.012, lives outside <main>, so the check is scoped to it).
+      // The design's "live from CRM" wording never reaches the page body.
       const main = await page.locator('main').innerText();
-      expect(main).not.toMatch(/sample data|örnek veri|live from CRM|CRM['’]den canlı/i);
+      expect(main).not.toMatch(/live from CRM|CRM['’]den canlı/i);
     });
 
-    test('hides the unsigned metrics, the KPI box, testimonials and worker stories by data (W1/W6/§10 row 11)', async ({
+    test('shows the hero stats, the KPI box, testimonials and worker side as the design’s sample, each tagged (W1/§10 row 11)', async ({
       page,
     }) => {
+      const pkg = strings(r.locale);
       await page.goto(r.path);
-      await expect(page.getByTestId('stories-live')).toHaveCount(0);
-      await expect(page.getByTestId('stories-numbers')).toHaveCount(0);
-      await expect(page.getByTestId('stories-testimonials')).toHaveCount(0);
-      await expect(page.getByTestId('stories-workers')).toHaveCount(0);
+      // the hero badge: the 288 sample headcount with the design's own "örnek veri" (success.140)
+      const live = page.getByTestId('stories-live');
+      await expect(live).toBeVisible();
+      await expect(live).toContainText('288');
+      await expect(live).toContainText(pkg['success.140']);
+      for (const id of [
+        'stories-hero-stats',
+        'stories-numbers',
+        'stories-testimonials',
+        'stories-workers',
+      ]) {
+        const sec = page.getByTestId(id);
+        await expect(sec, id).toBeAttached();
+        await expect(sec.locator('[data-sample-tag]'), id).toHaveCount(1);
+      }
+      await expect(page.getByTestId('stories-hero-stats').getByRole('listitem')).toHaveCount(4);
+      await expect(page.getByTestId('stories-numbers').getByRole('listitem')).toHaveCount(4);
+      await expect(page.getByTestId('stories-testimonials').getByRole('article')).toHaveCount(3);
+      await expect(page.getByTestId('stories-workers').getByRole('article')).toHaveCount(2);
+      // owner ruling: the hero body is success.025 over the sample wall
+      await expect(page.locator('main')).toContainText(pkg['success.025']);
+      // the design-time notes never render (success.033/034, success.069)
       const main = await page.locator('main').innerText();
-      // The design's unsigned figures, its design-time notes and the v1.1 document claims never render.
       expect(main).not.toMatch(
-        /1[.,]240|\b68\b|\b91\s?%|%\s?91|\+19|Still to replace|Hâlâ değiştirilecek|Placeholder quotes|Yer tutucu yorumlar|blacked out|karartılır/,
+        /Still to replace|Hâlâ değiştirilecek|Placeholder quotes|Yer tutucu yorumlar/,
       );
-      // Delta 7: on the empty wall the hero body is the sys copy, not "Below are the actual…".
-      await expect(page.locator('main')).toContainText(SYS[r.locale].stories.hero.bodyEmpty);
     });
 
     test('renders no <main> of its own (R31 — the (site) chrome owns #main)', async ({ page }) => {

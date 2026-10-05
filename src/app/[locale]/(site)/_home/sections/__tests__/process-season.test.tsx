@@ -9,10 +9,14 @@ const TR = homeBundle('tr');
 const EN = homeBundle('en');
 
 describe('ProcessSection', () => {
-  it('renders the five plain steps (the reply-hours metric filled) and the four sector chips', () => {
+  it('renders the five steps on the timeline face (the reply-hours metric filled) and the four sector chips', () => {
     renderWithIntl(<ProcessSection locale="tr" bundle={TR} />);
     const process = screen.getByTestId('process');
+    expect(process.querySelector('ol')).toHaveAttribute('data-variant', 'timeline');
     expect(process.querySelectorAll('ol > li')).toHaveLength(5);
+    // the design's 0.42fr intro at every desktop width (the W230 0.75fr widening is gone)
+    expect(process).toHaveClass('lg:grid-cols-[0.42fr_1fr]');
+    expect(process.className).not.toContain('xl:grid-cols-');
     expect(within(process).getAllByRole('heading', { level: 3 })).toHaveLength(5);
     expect(process).toHaveTextContent('24 saat');
     const chips = within(process)

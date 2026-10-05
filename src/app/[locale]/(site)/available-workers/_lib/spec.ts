@@ -21,7 +21,8 @@ export const workersSchema = z.object({
   /** W77: the design's roles-and-volume input ("Which roles and how many workers?") is typed
    *  free text, so it travels as typed; `trade` is the only role slot `workers` has. */
   trade: z.string().min(1).max(FIELD_MAX.trade),
-  // ≤ 10 characters at the door; the input bounds it to 1–9,999 (`Field min/max`), so does this.
+  // Optional on the catalog and no longer asked by the page (the design draws no such field);
+  // ≤ 10 characters at the door, 1–9,999 here.
   headcount: z
     .string()
     .regex(/^[1-9]\d{0,3}$/)
@@ -30,7 +31,8 @@ export const workersSchema = z.object({
   /** W78: the shared key set; a `<select>` left on its placeholder posts ''. */
   startWhen: z.enum(START_WHEN_KEYS).or(z.literal('')).optional(),
   message: z.string().max(FIELD_MAX.message).optional(),
-  /** Basket references (the v1.1 cards task's hidden input); never posted in Phase A. */
+  /** Basket references — the request card's hidden input, filled by the cards' "Add to request"
+   *  (sample profiles until v1.1); '' when the basket is empty. */
   profileRefs: z.string().max(500).optional(),
 });
 export type WorkersInput = z.infer<typeof workersSchema>;

@@ -11,8 +11,8 @@ export type HeroRoleCardLabels = {
 };
 
 /** The design's "Overseas roles open now" card (`.ja-jt-rolecard`): up to four overseas roles,
- *  each a link to its detail page (the design's scroll-and-expand needs the duties/wants split
- *  the API does not have). Nothing when no overseas role is open (W6). The header is solid
+ *  each a link to its detail page (where the full description lives — `jt.031`; rows lift on
+ *  hover like the design's `.ja-ch`). Nothing when no overseas role is open (W6). The header is solid
  *  `blue-safe` with full-white text and a darkened "Live" pill (D20 — white/85 on the design's
  *  #1899d5 gradient is under 4.5:1). Up to 900 px the design shows two roles: the third and
  *  fourth are hidden by CSS, never by conditional rendering (W10, W119). */
@@ -22,6 +22,8 @@ export function HeroRoleCard({ cards, labels }: { cards: RoleCard[]; labels: Her
     <section
       data-testid="careers-hero-roles"
       aria-labelledby="careers-hero-roles-title"
+      // the design's `.ja-card-in` lands 0.14 s after the copy column's `.ja-up` (l. 609)
+      style={{ animationDelay: '0.14s' }}
       className="ja-card-in overflow-hidden rounded-lg border border-[#d3e6f2] bg-white text-ink shadow-[0_30px_70px_rgba(6,12,36,0.42)]"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 bg-blue-safe px-6 py-5 text-white">
@@ -50,7 +52,7 @@ export function HeroRoleCard({ cards, labels }: { cards: RoleCard[]; labels: Her
             <Link
               href={c.href}
               prefetch={false}
-              className="flex items-center gap-4 rounded-base border border-[#e6f0f7] bg-[#f6fafc] px-5 py-4 text-ink no-underline hover:bg-tint"
+              className="ja-hover-card flex items-center gap-4 rounded-base border border-[#e6f0f7] bg-[#f6fafc] px-5 py-4 text-ink no-underline hover:bg-tint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
             >
               <span className="flex min-w-0 flex-1 flex-col gap-1">
                 <span className="flex flex-wrap items-center gap-2">
@@ -94,7 +96,12 @@ export function HeroRoleCard({ cards, labels }: { cards: RoleCard[]; labels: Her
       </ul>
       <div className="flex items-center justify-between gap-3 px-6 pb-5">
         <span className="text-body-sm font-bold text-text-tertiary">{labels.footer}</span>
-        <a href="#roles" className="text-body-sm font-extrabold text-blue-safe underline">
+        {/* a flex item, never inline in a text block, so no underline (design l. 635; axe
+            link-in-text-block does not apply); the design's hover darkens it */}
+        <a
+          href="#roles"
+          className="text-body-sm font-extrabold text-blue-safe no-underline hover:text-blue-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
+        >
           {labels.all}
         </a>
       </div>

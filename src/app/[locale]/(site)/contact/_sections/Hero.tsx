@@ -131,7 +131,7 @@ export function Hero({
                 {t('contact.030')}
               </li>
             </ul>
-            <div className="mt-5 max-w-[520px] rounded-base border border-border-1 bg-white p-5 text-ink max-md:hidden xl:max-w-none">
+            <div className="mt-5 max-w-[520px] rounded-base border border-border-1 bg-white p-5 text-ink max-md:hidden">
               <p className="m-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1.4px] text-text-tertiary">
                 {t('contact.031')}
               </p>
@@ -157,7 +157,7 @@ export function Hero({
               rel="noopener noreferrer"
               className={`${CARD} relative flex flex-col gap-2.5 border-[1.5px] border-success-border p-5 shadow-[0_14px_34px_rgba(22,60,90,0.09)] md:flex-row md:items-center md:gap-4 md:p-6`}
             >
-              <span className="absolute right-4 top-3.5 rounded-pill border border-success-border bg-white px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-[1px] text-success-text max-md:static max-md:self-start">
+              <span className="absolute right-4 top-3.5 rounded-pill bg-success-surface px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-[1px] text-success-text max-md:static max-md:self-start">
                 {t('contact.033')}
               </span>
               <span

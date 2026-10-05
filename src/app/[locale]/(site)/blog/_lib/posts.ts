@@ -3,9 +3,9 @@ import { locales, type Locale } from '@/i18n/routing';
 import type { AlternateTarget } from '@/lib/seo/metadata';
 import type { FilterItem } from './filter';
 
-/** B-5: the index tools bar mounts only from this many non-featured written articles (the
- *  design's page size) — never in Phase A. */
-export const TOOLS_MIN_POSTS = 6;
+/** The design's grid page: six cards, "Daha fazla yazı ↓" (blog.090) adds six more
+ *  (`visibleCount` 6 / +6, Blog.dc.html ~1050). */
+export const PAGE_SIZE = 6;
 
 /** B-2: the design's related grid shows three cards (the third hidden on phones). */
 export const RELATED_MAX = 3;
@@ -35,7 +35,37 @@ export function writtenPosts(rows: readonly BlogPost[], locale: Locale): BlogPos
     .map(({ post }) => post);
 }
 
-/** The featured card is the newest written article; the grid holds the rest. */
+/** Owner 2026-10-05: the index lists EVERY bundle row with a title in the locale, in the
+ *  collection order (`blog-posts.js`'s, newest first) — not only the written ones. Row 1 is the
+ *  featured card, the rest is the grid; a row without a body here is a card that is not a link
+ *  and wears the `sys.blog.soon` tag (`isWritten` decides). */
+export function indexPosts(rows: readonly BlogPost[], locale: Locale): BlogPost[] {
+  return rows.filter((p) => p.title[locale] !== null);
+}
+
+/** The design's "Most read" lists (`mostReadByLang`, Blog.dc.html 931–942) as bundle keys —
+ *  sample content (no read counts exist), so the panel wears the `SampleTag`. A key with no
+ *  title in the locale drops out. */
+export const MOST_READ_KEYS: Record<Locale, readonly string[]> = {
+  tr: [
+    'turkey-work-permit-process-employer-guide', // yabanci-isciler-calisma-izni-rehberi
+    'hiring-from-pakistan-turkish-employers', // pakistandan-isci-istihdami
+    'turkey-labor-shortage-factories-hiring-overseas', // turkiye-de-isgucu-acigi
+  ],
+  en: [
+    'turkey-work-permit-process-employer-guide',
+    'hiring-from-pakistan-turkish-employers',
+    'work-permit-costs-timelines-budget',
+  ],
+};
+
+export function mostReadPosts(rows: readonly BlogPost[], locale: Locale): BlogPost[] {
+  return MOST_READ_KEYS[locale]
+    .map((key) => rows.find((p) => p.key === key))
+    .filter((p): p is BlogPost => p !== undefined && p.title[locale] !== null);
+}
+
+/** The featured card is the first row; the grid holds the rest. */
 export function splitFeatured(written: readonly BlogPost[]): {
   featured: BlogPost | null;
   rest: BlogPost[];
@@ -97,7 +127,7 @@ export function prevNext(
   return { prev: written[i - 1] ?? null, next: written[i + 1] ?? null };
 }
 
-/** The distinct categories of the written articles, first-seen order, as chip options (labels
+/** The distinct categories of the listed rows, first-seen order, as chip options (labels
  *  through the rows' own `categoryLabelId`, home.262–265). */
 export function categoryOptions(
   written: readonly BlogPost[],
@@ -108,7 +138,7 @@ export function categoryOptions(
   return [...seen].map(([value, label]) => ({ value, label }));
 }
 
-/** B-5: the tools island's rows, built on the server so the island needs no content module. */
+/** B-5: the tools' rows, built on the server so the island needs no content module. */
 export function filterItems(
   posts: readonly BlogPost[],
   locale: Locale,

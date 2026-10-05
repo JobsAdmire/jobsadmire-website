@@ -45,6 +45,7 @@ type StickyProps = {
   showAfterPx?: number;
   hideNearId?: string;
   live?: boolean;
+  tone?: 'dark' | 'light';
 };
 
 /** The sticky bar renders `null` until the visitor is past `showAfterPx`, so `null` is its

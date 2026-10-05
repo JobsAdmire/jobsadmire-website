@@ -50,4 +50,21 @@ describe('FounderBand', () => {
     expect(slot?.className?.match(/object-cover/g)?.length).toBe(1);
     expect(slot?.parentElement).toHaveClass('w-[102px]');
   });
+
+  it('a published photo renders inside the design gradient ring, named by the founder (About l. 668–670)', () => {
+    const { container } = render(
+      <FounderBand
+        founder={{ ...ROW, photoSrc: '/team/haris-jiva.jpg' }}
+        placedText="470+"
+        t={t}
+      />,
+    );
+    expect(container.querySelector('[data-placeholder="founder-photo"]')).toBeNull();
+    const img = screen.getByRole('img', { name: 'Ada Example' });
+    expect(img.getAttribute('src')).toContain('haris-jiva.jpg');
+    const ring = img.parentElement?.parentElement;
+    expect(ring?.className).toMatch(/bg-gradient-to-br/);
+    expect(ring?.className).toMatch(/from-\[#1e9ee8\]/);
+    expect(ring?.className).toMatch(/to-success/);
+  });
 });

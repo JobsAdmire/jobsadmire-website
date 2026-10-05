@@ -284,9 +284,27 @@ describe('the section bodies (real TR bundle; every island shows its server fall
       'href',
       '/calisma-izni',
     );
-    expect(screen.getByText(TR.t('calc.087')).closest('p')?.textContent).toBe(
+    expect(screen.getByText(TR.t('calc.087')).closest('div')?.textContent).toBe(
       `${TR.t('calc.087')} ${TR.t('calc.088')}`,
     );
+  });
+
+  it('Parity: page-local SVG icons — four basis tiles + note, the legend sits under the chips, underline tabs', () => {
+    const { container, unmount } = renderWithIntl(<Basis ctx={TR} />);
+    // 4 tiles + the amber note's alert + the updated pill's clock
+    expect(container.querySelectorAll('svg[aria-hidden="true"]')).toHaveLength(6);
+    expect(container.querySelector('svg')).toHaveAttribute('viewBox', '0 0 24 24');
+    unmount();
+    const sal = renderWithIntl(<Salaries ctx={TR} />);
+    const guide = screen.getByTestId('guide-view');
+    const [chips, legend] = [...guide.children];
+    expect(chips.querySelector('[role="radiogroup"], span')).not.toBeNull();
+    expect(legend.tagName).toBe('UL'); // chips first, then the colour key, then the cards
+    sal.unmount();
+    renderWithIntl(<Quota ctx={TR} />);
+    const tabs = within(screen.getByTestId('calc-exemptions')).getAllByRole('tab');
+    expect(tabs).toHaveLength(3);
+    expect(tabs[0].parentElement).toHaveClass('grid', 'bg-pale-2');
   });
 
   it('Salaries: the legend’s minimum wage from rateConfig, the guide fallback at the model floor (W2/W59)', () => {
@@ -390,11 +408,11 @@ describe('the section bodies (real TR bundle; every island shows its server fall
     const faq = jsonLd(container).filter((n) => n['@type'] === 'FAQPage');
     expect(faq).toHaveLength(1);
     expect(faq[0].mainEntity).toHaveLength(15);
-    expect(screen.getByRole('link', { name: TR.t('calc.052') })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: (n) => n.includes(TR.t('calc.052')) })).toHaveAttribute(
       'href',
       `${WA}?text=${encodeURIComponent(tr.sys.calc.whatsapp.generic)}`,
     );
-    expect(screen.getByRole('link', { name: TR.t('calc.406') })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: (n) => n.includes(TR.t('calc.406')) })).toHaveAttribute(
       'href',
       `mailto:${TR.settings.email}?subject=${encodeURIComponent(TR.t('calc.002'))}`,
     );

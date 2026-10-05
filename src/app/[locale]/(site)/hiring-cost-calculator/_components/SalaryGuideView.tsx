@@ -7,9 +7,9 @@ const TIER_SKILLED =
 const TIER_STANDARD =
   'shrink-0 whitespace-nowrap rounded-pill border border-border-1 bg-pale-1 px-2.5 py-1 text-[11px] xl:text-[11px] font-extrabold text-text-secondary';
 const USE_ON =
-  'min-h-[44px] shrink-0 cursor-pointer whitespace-nowrap rounded-[10px] border border-success-border bg-success-surface px-[13px] xl:px-[9.75px] text-[12.5px] xl:text-[11px] font-extrabold text-success-text';
+  'min-h-9 shrink-0 cursor-pointer whitespace-nowrap rounded-[10px] border border-success-border bg-success-surface px-[13px] xl:px-[9.75px] text-[12.5px] xl:text-[11px] font-extrabold text-success-text';
 const USE_OFF =
-  'min-h-[44px] shrink-0 cursor-pointer whitespace-nowrap rounded-[10px] border border-tint-border bg-pale-1 px-[13px] xl:px-[9.75px] text-[12.5px] xl:text-[11px] font-extrabold text-blue-safe';
+  'min-h-9 shrink-0 cursor-pointer whitespace-nowrap rounded-[10px] border border-tint-border bg-pale-1 px-[13px] xl:px-[9.75px] text-[12.5px] xl:text-[11px] font-extrabold text-blue-safe';
 
 /** The salary guide's cards (design 833–864). `filter` is the island's `RadioChips` or the
  *  fallback's `ChipsLook`; `onUse` exists only in the island (the server fallback renders the same
@@ -21,6 +21,7 @@ export function SalaryGuideView({
   scaleMin,
   scaleMax,
   filter,
+  legend,
   onUse,
   live,
 }: {
@@ -30,12 +31,15 @@ export function SalaryGuideView({
   scaleMin: string;
   scaleMax: string;
   filter: ReactNode;
+  /** the colour key under the chips (S4.2: heading, chips, legend, cards) */
+  legend?: ReactNode;
   onUse?: (key: string) => void;
   live: boolean;
 }) {
   return (
     <div data-testid="guide-view" data-live={live}>
       <div className="mb-[22px] xl:mb-[16.5px]">{filter}</div>
+      {legend}
       <div className="grid gap-[18px] xl:gap-[13.5px] lg:grid-cols-3">
         {rows.map((r) => {
           const active = r.key === activeKey;

@@ -14,10 +14,13 @@ import type { SectorKey } from '@/content/collections';
 export function SectorPrefillLink({
   sector,
   className,
+  'aria-label': ariaLabel,
   children,
 }: {
   sector: SectorKey;
   className?: string;
+  /** the industry row's round → (design `.ja-arrow`, `requestIndN`) has no words of its own */
+  'aria-label'?: string;
   children: ReactNode;
 }) {
   const prefill = () => {
@@ -28,7 +31,7 @@ export function SectorPrefillLink({
     select.dispatchEvent(new Event('change', { bubbles: true }));
   };
   return (
-    <a href="#request-form" onClick={prefill} className={className}>
+    <a href="#request-form" onClick={prefill} className={className} aria-label={ariaLabel}>
       {children}
     </a>
   );

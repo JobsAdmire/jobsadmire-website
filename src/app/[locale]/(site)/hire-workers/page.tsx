@@ -9,7 +9,7 @@ import { START_WHEN_KEYS } from '@/forms/options';
 import { routing } from '@/i18n/routing';
 import { telLink, waLink } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo/metadata';
-import { CLIENT_LOGOS } from './_lib/assets';
+import { CLIENT_LOGOS, CLIENT_LOGO_SLOT_COUNT } from './_lib/assets';
 import { ClientLogos } from './_sections/ClientLogos';
 import { Comparison } from './_sections/Comparison';
 import { Faq } from './_sections/Faq';
@@ -61,16 +61,22 @@ export default async function HireWorkers({ params }: { params: Promise<{ locale
   }));
   // W81: the bar renders its tel:/wa.me CTAs through ContactCta → ContactLink (page_cta); the
   // request CTA is a same-page anchor. Faces are variants (W122/W127), never caller classes.
+  // Design ll. 680–692 (SHARED 7.1): the white bar — "Arayın" white with the blue edge and its
+  // phone glyph, WhatsApp white with the green edge, the solid blue request; all pills here.
   const stickyCtas: StickyCta[] = [
-    { label: tf('hire.033'), href: telLink(s.phone), variant: 'secondary' },
+    { label: tf('hire.033'), href: telLink(s.phone), variant: 'outline-blue', icon: 'phone' },
     {
       label: whatsapp,
       href: waLink(s.whatsappNumber, tf('hire.249')),
-      variant: 'success',
+      variant: 'outline-green',
       external: true,
     },
     { label: tf('hire.040'), href: '#request-form', variant: 'primary' },
   ];
+  const logoSlots = Array.from(
+    { length: CLIENT_LOGO_SLOT_COUNT },
+    (_, i) => `${tf('hire.245')} ${i + 1}`,
+  );
   return (
     <>
       <Hero bundle={bundle} locale={locale} tf={tf} metrics={metrics} whatsappLabel={whatsapp} />
@@ -82,8 +88,15 @@ export default async function HireWorkers({ params }: { params: Promise<{ locale
         showAfterPx={700}
         hideNearId="request-form"
         live
+        tone="light"
+        shape="pill"
       />
-      <ClientLogos tf={tf} employers={metrics.employers ?? ''} logos={CLIENT_LOGOS} />
+      <ClientLogos
+        tf={tf}
+        employers={metrics.employers ?? ''}
+        logos={CLIENT_LOGOS}
+        slotLabels={logoSlots}
+      />
       <Industries bundle={bundle} tf={tf} />
       <SourceCountries
         bundle={bundle}

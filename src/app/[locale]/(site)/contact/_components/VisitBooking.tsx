@@ -49,6 +49,8 @@ export function VisitBooking({
   const [day, setDay] = useState<string | null>(null);
   const [time, setTime] = useState<string | null>(null);
   const days = tick === null ? null : nextOpenDates(new Date(tick * 60_000), hours, 5);
+  // The design opens with day 1 filled (Contact Us l. 1015); the visitor's own pick wins.
+  const chosenDay = day ?? days?.[0] ?? null;
   return (
     <div
       data-testid="contact-visit"
@@ -82,6 +84,11 @@ export function VisitBooking({
           contact={contact}
           submitLabel={copy.submit}
           consent="checkbox"
+          consentStyle="box"
+          submitVariant="tint"
+          submitShape="rect"
+          submitRadius={11}
+          submitFullWidth={false}
           headingLevel={3}
           testId="contact-visit-form"
         >
@@ -89,8 +96,10 @@ export function VisitBooking({
             <RadioChips
               name="preferredDate"
               legend={copy.dayLegend}
-              value={day}
+              value={chosenDay}
               onChange={setDay}
+              inlineLegend
+              compact
               options={days.map((iso) => ({ value: iso, label: formatVisitDay(iso, locale) }))}
             />
           ) : (
@@ -101,6 +110,8 @@ export function VisitBooking({
             legend={copy.timeLegend}
             value={time}
             onChange={setTime}
+            inlineLegend
+            compact
             options={VISIT_SLOTS.map((s) => ({ value: s, label: s }))}
           />
           <div className="grid grid-cols-1 gap-3 md:grid-cols-3">

@@ -94,13 +94,35 @@ export function PermitCta({ bundle, tf }: { bundle: Bundle; tf: (id: string) => 
             data-testid="wp-cta-buttons"
             className="flex flex-wrap justify-center gap-3.5 max-md:hidden"
           >
-            <Button prefetch={false} variant="primary" size="lg" href="/hire-workers">
+            <Button
+              prefetch={false}
+              variant="primary"
+              size="lg"
+              shape="rect"
+              radius={11}
+              href="/hire-workers"
+            >
               {tf('wp.366')}
             </Button>
-            <ContactCta placement="page_cta" variant="success" size="lg" external href={permitOnly}>
+            <ContactCta
+              placement="page_cta"
+              variant="outline-green"
+              size="lg"
+              shape="rect"
+              radius={11}
+              external
+              href={permitOnly}
+            >
               {tf('wp.367')}
             </ContactCta>
-            <ContactCta placement="page_cta" variant="secondary" size="lg" href={telLink(s.phone)}>
+            <ContactCta
+              placement="page_cta"
+              variant="outline-blue"
+              size="lg"
+              shape="rect"
+              radius={11}
+              href={telLink(s.phone)}
+            >
               {s.phoneDisplay}
             </ContactCta>
           </div>

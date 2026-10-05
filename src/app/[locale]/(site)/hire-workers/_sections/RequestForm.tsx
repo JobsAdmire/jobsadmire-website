@@ -1,13 +1,14 @@
 import { ContactLink } from '@/analytics/ContactLink';
 import { getCollection } from '@/content/collections';
+import { MailIcon, PhoneIcon, WhatsAppIcon } from '@/design/chrome/icons';
 import { Section } from '@/design/primitives/Section';
+import { dialSelectOptions } from '@/forms/client/dial';
 import { Field, type FieldOption } from '@/forms/client/Field';
 import { FormShell } from '@/forms/client/FormShell';
 import type { Locale } from '@/i18n/routing';
 import { mailLink, telLink } from '@/lib/contact';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 import { CheckIcon } from '../_components/icons';
-import { dialOptions } from '../_lib/countries';
 import { submitHireFull } from '../actions';
 
 const STEPS = [
@@ -17,10 +18,14 @@ const STEPS = [
 ] as const;
 
 const TILE =
-  'min-w-0 items-center gap-3 rounded-xs border border-border-2 bg-pale-1 px-3.5 py-3 no-underline hover:bg-tint';
+  'min-w-0 items-center gap-2.75 overflow-hidden rounded-xs border border-edge-soft bg-pale-1 px-3.5 py-3 no-underline transition-colors duration-200 hover:border-tint-border hover:bg-tint max-md:min-h-14 max-md:py-3.25';
+/** the design's 32 px white icon square (r9, #d3e6f2 edge) before each direct-contact tile */
+const TILE_ICON =
+  'flex h-8 w-8 flex-none items-center justify-center rounded-input border border-edge bg-white text-blue';
 // D20: the tiles are bg-pale-1, where text-tertiary is 4.49:1 — the labels use text-secondary
-const TILE_LABEL = 'block text-body-sm font-bold uppercase tracking-[0.5px] text-text-secondary';
-const TILE_VALUE = 'block truncate text-body font-extrabold text-ink';
+const TILE_LABEL =
+  'block text-[11.5px] font-bold uppercase tracking-[0.5px] text-text-secondary xl:text-[11px]';
+const TILE_VALUE = 'block truncate text-[14px] font-extrabold text-ink xl:text-[11px]';
 
 export function RequestForm({
   bundle,
@@ -42,7 +47,8 @@ export function RequestForm({
     value: row.key,
     label: tf(row.labelId),
   }));
-  const dials = dialOptions(getCollection(bundle, 'countries'), locale);
+  // SHARED 4.5: the design's compact "🇹🇷 +90" select (120 px, 104 px on phones) beside the phone
+  const dials = dialSelectOptions(getCollection(bundle, 'countries'), locale);
   // W95: the subject only — the design's sendByEmail body (hire.254–263 + the typed fields)
   // would put visitor data into a DOM href.
   const mailto = mailLink(s.email, tf('hire.253'));
@@ -64,16 +70,23 @@ export function RequestForm({
           <h2 className="m-0 mb-4 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] xl:text-balance max-md:mb-2.5 max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.5px]">
             {tf('hire.200')}
           </h2>
-          <p className="m-0 mb-7 text-body-lg text-text-secondary max-md:mb-[18px] max-md:text-[14.5px] max-md:leading-[1.55]">
+          {/* the design's lede is 16.5 px / 600 */}
+          <p className="m-0 mb-7 text-[16.5px] leading-[1.65] font-semibold text-text-secondary max-md:mb-[18px] max-md:text-[14.5px] max-md:leading-[1.55] xl:text-[12.375px]">
             {tf('hire.201')}
           </p>
         </div>
-        <div className="mb-8 overflow-hidden rounded-lg border border-border-1 bg-white shadow-card-hover lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mb-0 lg:self-start">
-          <div className="bg-blue-safe px-8 py-6 text-white max-md:px-5 max-md:py-4">
-            <h3 className="m-0 mb-1 text-card-title">{tf('hire.214')}</h3>
-            <p className="m-0 text-body-sm text-white">{tf('hire.215')}</p>
+        {/* `.ja-rf-card`: #d3e6f2 edge, r20 (18 on phones), the 0 24 60 shadow; the head is the
+            contrast-safe take on the design's 135° brand gradient (D20, SHARED 5.5) */}
+        <div className="mb-8 overflow-hidden rounded-lg border border-edge bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-md max-md:shadow-[0_12px_32px_rgba(22,60,90,0.12)] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mb-0 lg:self-start xl:shadow-[0_18px_45px_rgba(22,60,90,0.14)]">
+          <div className="bg-gradient-to-br from-blue-safe to-blue-deep px-8 py-6 text-white max-md:px-4.5 max-md:py-4.5">
+            <h3 className="m-0 mb-1.25 text-[24px] leading-[1.2] font-extrabold max-md:text-[20px] xl:text-[18px]">
+              {tf('hire.214')}
+            </h3>
+            <p className="m-0 text-[14.5px] text-white max-md:text-[13px] xl:text-[11px]">
+              {tf('hire.215')}
+            </p>
           </div>
-          <div className="px-8 pb-6 pt-7 max-md:px-4 max-md:pb-5 max-md:pt-5">
+          <div className="px-8 pt-7 pb-6.5 max-md:px-4 max-md:pt-4.5 max-md:pb-5">
             <FormShell
               action={submitHireFull}
               formKey="hire"
@@ -84,6 +97,9 @@ export function RequestForm({
               whatsappIntro={tf('hire.249')}
               contact={{ phone: s.phone, phoneDisplay: s.phoneDisplay, email: s.email }}
               submitLabel={tf('hire.063')}
+              submitVariant="success-solid"
+              submitIcon={<WhatsAppIcon size={17} />}
+              submitPlacement="before-consent"
               consent="checkbox"
               headingLevel={4}
               testId="hire-form-full"
@@ -113,31 +129,27 @@ export function RequestForm({
                   maxLength={254}
                 />
               </div>
-              <div className="grid gap-2.5 sm:grid-cols-[minmax(120px,0.45fr)_1fr]">
-                {/* ISO-2 values (W3): +1/+7 are shared by several countries; W111: the select
-                    ignores placeholder, defaultValue pre-selects Türkiye */}
-                <Field
-                  name="dial"
-                  label={dialLabel}
-                  as="select"
-                  options={dials}
-                  defaultValue="TR"
-                  required
-                  autoComplete="tel-country-code"
-                />
-                {/* the dial select carries the country code: no "+90 …" placeholder or hint */}
-                <Field
-                  name="phone"
-                  label={tf('hire.051')}
-                  type="tel"
-                  required
-                  hint=""
-                  placeholder=""
-                  autoComplete="tel-national"
-                  inputMode="tel"
-                  maxLength={32}
-                />
-              </div>
+              {/* The dial select sits beside the phone in one row at every width (the design's
+                  `.ja-rf-dial`): ISO-2 values (W3 — +1/+7 are shared by several countries),
+                  Türkiye preselected (W111). It carries the country code, so the phone field has
+                  no "+90 …" example and no hint. */}
+              <Field
+                name="phone"
+                label={tf('hire.051')}
+                type="tel"
+                required
+                hint=""
+                autoComplete="tel-national"
+                inputMode="tel"
+                maxLength={32}
+                dial={{
+                  name: 'dial',
+                  label: dialLabel,
+                  options: dials,
+                  defaultValue: 'TR',
+                  required: true,
+                }}
+              />
               <div className="grid gap-3.5 sm:grid-cols-2">
                 <Field
                   name="sector"
@@ -164,13 +176,14 @@ export function RequestForm({
                   maxLength={120}
                 />
               </div>
+              {/* the design's last field; it draws no message box (the catalog keeps `message`
+                  optional, so the door is unchanged) */}
               <Field
                 name="startWhen"
                 label={tf('hire.058')}
                 as="select"
                 options={startWhenOptions}
               />
-              <Field name="message" as="textarea" rows={3} maxLength={5000} />
             </FormShell>
             <p className="m-0 mt-2 text-center text-body-sm text-text-tertiary">{tf('hire.219')}</p>
             <p className="m-0 mt-1 text-center text-body-sm leading-snug text-text-tertiary xl:mx-auto xl:max-w-[460px]">
@@ -194,7 +207,7 @@ export function RequestForm({
               <li key={lead} className="flex items-start gap-3.5">
                 <span
                   aria-hidden="true"
-                  className="flex h-6 w-6 flex-none items-center justify-center rounded-pill bg-blue-safe text-body-sm font-extrabold text-white"
+                  className="flex h-6.5 w-6.5 flex-none items-center justify-center rounded-pill bg-blue-safe text-[13px] font-extrabold text-white xl:text-[11px]"
                 >
                   {i + 1}
                 </span>
@@ -207,7 +220,7 @@ export function RequestForm({
           <ul className="m-0 mt-7 flex list-none flex-col gap-3 border-t border-border-1 p-0 pt-6 text-body text-text-secondary max-md:mt-0 max-md:border-t-0 max-md:pt-0">
             {(['hire.208', 'hire.209', 'hire.210'] as const).map((id) => (
               <li key={id} className="flex items-start gap-2.5">
-                <CheckIcon size={15} className="mt-1 flex-none text-success" />
+                <CheckIcon size={17} className="mt-0.5 flex-none text-blue" />
                 <span>{tf(id)}</span>
               </li>
             ))}
@@ -217,19 +230,26 @@ export function RequestForm({
             <p className="m-0 mb-3 text-body-sm font-extrabold uppercase tracking-[0.6px] text-text-secondary">
               {tf('hire.211')}
             </p>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {/* ≤ 700 px the phone tile hides — the mobile bottom bar carries the call */}
+            <div className="grid grid-cols-2 gap-3 max-md:grid-cols-[minmax(0,max-content)]">
+              {/* ≤ 700 px the phone tile hides — the mobile bottom bar carries the call — and
+                  the e-mail tile keeps its own width with its icon, as in the design (M12) */}
               <ContactLink
                 href={telLink(s.phone)}
                 placement="page_cta"
                 className={`flex ${TILE} max-md:hidden`}
               >
+                <span aria-hidden="true" className={TILE_ICON}>
+                  <PhoneIcon size={15} />
+                </span>
                 <span className="block min-w-0">
                   <span className={TILE_LABEL}>{tf('hire.212')}</span>
                   <span className={TILE_VALUE}>{s.phoneDisplay}</span>
                 </span>
               </ContactLink>
               <ContactLink href={mailto} placement="page_cta" className={`flex ${TILE}`}>
+                <span aria-hidden="true" className={TILE_ICON}>
+                  <MailIcon size={15} />
+                </span>
                 <span className="block min-w-0">
                   <span className={TILE_LABEL}>{tf('hire.213')}</span>
                   <span className={TILE_VALUE}>{s.email}</span>

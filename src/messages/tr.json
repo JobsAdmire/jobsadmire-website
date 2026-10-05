@@ -263,6 +263,9 @@
       "faq": {
         "whatsappText": "Merhaba JobsAdmire, iş ortaklığıyla ilgili bir sorum var.",
         "emailSubject": "İş ortaklığı sorusu"
+      },
+      "logos": {
+        "slot": "İş ortağı logosu {n}"
       }
     },
     "about": {
@@ -295,7 +298,8 @@
       "whatsapp": {
         "demo": "Merhaba JobsAdmire, CRM portalınızın demosunu görmek istiyorum.",
         "consult": "Merhaba JobsAdmire, ücretsiz danışmanlık almak istiyorum."
-      }
+      },
+      "profileSoon": "Şirket profili PDF olarak yakında eklenecek."
     },
     "contact": {
       "languages": {
@@ -334,25 +338,20 @@
       "faq": {
         "a3": "Mesai saatlerinde ({hours}, Türkiye saati) en hızlı kanal WhatsApp’tır; e-postalar yaklaşık {replyHours} iş saati içinde yanıtlanır. Gece ya da hafta sonu gönderilen mesajlar bir sonraki iş günü sabahı ele alınır.",
         "a5": "Evet, ancak JobsAdmire bireysel başvuruları doğrudan almaz: B2B bir ajanstır ve ülkenizdeki doğrulanmış tedarik ortakları aracılığıyla çalışır. Yukarıdan “İş arıyorum” seçeneğini seçip mesaj gönderin; JobsAdmire size doğrulanmış ortağın iletişim bilgisini iletir. JobsAdmire bir işçiden asla yerleştirme ücreti almaz — biri JobsAdmire adına sizden para isterse WhatsApp’tan bildirin."
-      }
+      },
+      "footnote": "Talebiniz doğrudan ekibimize ulaşır; yanıtı seçtiğiniz kanaldan alırsınız."
     },
     "workers": {
       "pool": {
-        "heading": "JobsAdmire aday havuzu",
-        "intro": "Havuzdaki her aday beceri testinden geçer, belgeleri kontrol edilir ve çalışma iznine hazırlanır. Profiller burada yayımlanana kadar ihtiyacınızı JobsAdmire’a iletin; eşleşen adaylar doğrudan size gönderilir."
+        "shown": "{total} eşleşmeden {shown} gösteriliyor",
+        "loadMore": "{count} profil daha yükle",
+        "active": "{count} aktif",
+        "cvOnRequest": "CV ve fotoğraf talep üzerine",
+        "filter": "Filtrele",
+        "selected": "seçili"
       },
-      "empty": {
-        "title": "Herkese açık profiller henüz yayımlanmadı",
-        "body": "Profiller, aday gizliliği (KVKK) ve iş ortaklarının onayı tamamlandığında bu sayfada görünecek. Talep formunu doldurun; JobsAdmire tam CV’leri, belgeleri ve video mülakatları doğrudan sizinle paylaşır.",
-        "cta": "Talep formuna gidin"
-      },
-      "sticky": {
-        "message": "İhtiyacınız olan pozisyonları JobsAdmire’a iletin — {hours} saat içinde tam CV ve video mülakat."
-      },
-      "form": {
-        "titles": {
-          "direct_employer": "Havuzdan aday talep edin"
-        }
+      "formCta": {
+        "ready": "{count} şimdi hazır"
       },
       "timeline": {
         "days1to3": "1–3. gün",
@@ -371,7 +370,9 @@
         "intro": "Yayınlanan her onay bir karttır: sektör, kişi sayısı, onay ayı ve şehir. Kişisel bilgiler ve belgeler gösterilmez.",
         "legend": "Sektöre göre filtreleyin",
         "showingAll": "Toplam {count} onay gösteriliyor",
-        "showingFiltered": "{total} onaydan {shown} tanesi gösteriliyor"
+        "showingFiltered": "{total} onaydan {shown} tanesi gösteriliyor",
+        "watermarkCopy": "doğrulanmış kopya",
+        "watermarkPermit": "izin {month}"
       },
       "empty": {
         "title": "İlk onaylar yolda",
@@ -415,6 +416,9 @@
       "record": {
         "close": "Kaydı kapat",
         "former": "Artık yetkili değil"
+      },
+      "register": {
+        "tapToChange": "Değiştirmek için dokunun"
       }
     },
     "careers": {
@@ -453,8 +457,15 @@
         "body": "Her pozisyon önce burada yayınlanır. Aşağıdan WhatsApp ya da e-posta ile açık başvuru gönderin; JobsAdmire iyi adayları kayıtta tutar ve bir pazar açıldığında size yazar."
       },
       "apply": {
-        "whatsapp": "WhatsApp'tan başvurun",
-        "emailSubject": "Açık başvuru"
+        "emailSubject": "Açık başvuru",
+        "form": {
+          "name": "Ad soyad",
+          "country": "Ülke / şehir",
+          "email": "E-posta",
+          "phone": "WhatsApp numarası",
+          "role": "Düşündüğünüz pozisyon (isteğe bağlı)",
+          "about": "JobsAdmire'a ne katarsınız? Diller, ağınız, deneyiminiz — birkaç satır yeterli."
+        }
       },
       "detail": {
         "metaTitle": "{title} — JobsAdmire'da kariyer",
@@ -512,7 +523,8 @@
         "sections": "{n, plural, one {# bölüm} other {# bölüm}}",
         "copyFailed": "Bağlantı kopyalanamadı; adres çubuğundan kopyalayabilirsiniz.",
         "print": "Bu yazıyı yazdırın",
-        "backToTop": "Başa dön"
+        "backToTop": "Başa dön",
+        "shareThis": "Bu yazıyı paylaş"
       },
       "faq": {
         "a1": "Onay, bakanlık incelemesi dahil ortalama {permitDays} gün sürer; ilk iş gününe kadar tüm süreç genellikle {firstDayWeeks} hafta alır. Lisanslı bir ajans dosyayı önceden kontrol ettiği için eksik bir belge süreyi baştan başlatmaz.",
@@ -522,7 +534,8 @@
         "article": "blogunuzdaki “{title}” yazısını okudum ve işçi talebinde bulunmak istiyorum.",
         "consult": "ücretsiz danışmanlık almak istiyorum.",
         "permit": "çalışma izinleri konusunda desteğe ihtiyacım var."
-      }
+      },
+      "soon": "yakında"
     },
     "form": {
       "labels": {
@@ -699,7 +712,8 @@
           "title": "Aday profilleri yakında burada",
           "body": "Adaylar kendi ülkelerinde JobsAdmire temsilcileri tarafından görüşülür ve belgeleri doğrulanır. Sektörünüzü ve ihtiyacınızı yazın; uygun profiller doğrudan size iletilir.",
           "cta": "Aday talep edin →"
-        }
+        },
+        "years": "{n} yıl"
       },
       "calc": {
         "eyebrowUndated": "Gerçek maliyet",
@@ -723,6 +737,9 @@
       },
       "portal": {
         "platforms": "iOS ve Android"
+      },
+      "cases": {
+        "daysAgo": "{n} gün önce"
       }
     },
     "legal": {

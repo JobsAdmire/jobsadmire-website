@@ -1,6 +1,7 @@
 import type { CardView } from '../_lib/card-view';
 import { HEADCOUNT_PRESETS, MONTH_OPTIONS } from '../_lib/estimate-inputs';
 import type { CardLabels } from '../_lib/ids';
+import { UsersIcon } from './icons';
 import { QuoteButton } from './QuoteButton';
 import { Sentence } from './Sentence';
 
@@ -109,7 +110,7 @@ export function Snapshot({ view, labels }: { view: CardView; labels: CardLabels 
       <p className="m-0 mt-1.5 mb-2.5 text-[29px] xl:text-[21.75px] font-extrabold leading-[1.05] tracking-[-1.2px] xl:tracking-[-0.9px]">
         {view.f.contract.total}
       </p>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 gap-2">
         {cell(labels.cPerMonth, view.f.monthly.total)}
         {cell(labels.cOneOff, view.f.oneOff.total)}
       </div>
@@ -132,6 +133,7 @@ export function QuotaHint({ view, labels }: { view: CardView; labels: CardLabels
       href="#quota"
       className="mt-[11px] xl:mt-[8.25px] flex items-start gap-2.5 rounded-[11px] border border-border-2 bg-pale-2 px-3.5 py-[11px] xl:py-[8.25px] text-body-sm text-text-secondary no-underline hover:border-tint-border hover:bg-tint"
     >
+      <UsersIcon size={16} className="mt-px shrink-0 text-blue" />
       <span>
         <strong className="font-extrabold text-ink">
           <Sentence runs={[labels.cQuotaQ1, view.headcountText, labels.cQuotaQ2]} />

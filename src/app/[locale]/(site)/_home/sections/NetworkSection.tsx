@@ -19,6 +19,24 @@ const PILL =
   'inline-flex min-h-[44px] items-center justify-center gap-2 rounded-pill border-[1.5px] px-6 text-body-sm font-extrabold no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
 const FRAUD = 'border-danger-border bg-white text-danger hover:bg-danger-surface';
 
+/** The design's flag-chip order (`iso`, v4 l. 1571 — Sri Lanka third); a code it does not list
+ *  keeps its collection position after the listed ones. */
+const CHIP_ORDER: readonly string[] = [
+  'PK',
+  'IN',
+  'LK',
+  'NP',
+  'UZ',
+  'KG',
+  'TM',
+  'PH',
+  'ID',
+  'RU',
+  'ML',
+  'SN',
+  'CM',
+];
+
 /**
  * "Agent network" (design lines 762–800). From 461 px the build-time `SourceMap` (W14 — 13
  * sourcing countries + Türkiye, no runtime fetch) and the flag chips; at ≤ 460 px the dark country
@@ -31,7 +49,13 @@ const FRAUD = 'border-danger-border bg-white text-danger hover:bg-danger-surface
 export function NetworkSection({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
   const sys = useTranslations('sys');
-  const countries = getCollection(bundle, 'sourceCountries');
+  const rank = (code: string) => {
+    const i = CHIP_ORDER.indexOf(code);
+    return i === -1 ? CHIP_ORDER.length : i;
+  };
+  const countries = [...getCollection(bundle, 'sourceCountries')].sort(
+    (a, b) => rank(a.code) - rank(b.code),
+  );
   const count = metricValues(bundle, locale).countries ?? String(countries.length);
   return (
     <Section tone="light" id="network" className="ja-reveal">

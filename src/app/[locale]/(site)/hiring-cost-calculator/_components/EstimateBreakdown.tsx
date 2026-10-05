@@ -2,6 +2,7 @@ import { PrintButton } from '@/design/islands/PrintButton';
 import type { CardView } from '../_lib/card-view';
 import { joinText } from '../_lib/fragments';
 import type { CardLabels } from '../_lib/ids';
+import { PrinterIcon, WhatsAppIcon } from './icons';
 import { QuoteButton } from './QuoteButton';
 import { Sentence } from './Sentence';
 
@@ -20,7 +21,7 @@ function Row({
   const valueCls =
     tone === 'green' ? 'text-success-text' : tone === 'note' ? 'text-blue-safe' : 'text-ink';
   return (
-    <div className="flex items-baseline justify-between gap-3 py-2 max-md:py-[7px]">
+    <div className="flex items-baseline justify-between gap-3 py-2 transition-colors hover:bg-pale-2 max-md:py-[7px]">
       <span className={`text-body-sm ${labelCls}`}>
         {label}
         {note ? (
@@ -164,11 +165,21 @@ export function EstimateBreakdown({
         <div className="print-hidden flex gap-2 max-md:grid max-md:grid-cols-1">
           <QuoteButton
             label={labels.cQuoteBtn}
-            variant="secondary"
+            variant="white"
+            shape="rect"
+            radius={11}
+            icon={<WhatsAppIcon size={16} />}
             className="flex-1"
             testId="calc-quote-open"
           />
-          <PrintButton label={labels.cPrint} variant="inverse" className="max-md:hidden" />
+          <PrintButton
+            label={labels.cPrint}
+            variant="inverse"
+            shape="rect"
+            radius={11}
+            icon={<PrinterIcon size={16} />}
+            className="max-md:hidden"
+          />
         </div>
       </div>
     </>

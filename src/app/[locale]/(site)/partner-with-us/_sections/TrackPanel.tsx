@@ -5,24 +5,31 @@ import { FORM_ANCHOR, type TrackKey } from '../_lib/tracks';
 
 /** Per track: the panel's pale gradient + edge, the eyebrow colour, the asks card edge and the
  *  phone-only jump link (the design's blue / green / indigo accents, AA on their grounds). */
-const LOOK: Record<TrackKey, { panel: string; eyebrow: string; edge: string; jump: string }> = {
+const LOOK: Record<
+  TrackKey,
+  { panel: string; eyebrow: string; edge: string; jump: string; tick: string }
+> = {
   hr: {
     panel: 'border-tint-border bg-gradient-to-b from-pale-1 to-[#e8f3f9]',
     eyebrow: 'text-blue-safe',
     edge: 'border-tint-border',
     jump: 'border-blue-safe text-blue-safe',
+    tick: 'bg-success',
   },
   sourcing: {
     panel: 'border-[#c9e8d6] bg-gradient-to-b from-[#f4fbf6] to-[#e8f6ee]',
     eyebrow: 'text-success-text',
     edge: 'border-[#c9e8d6]',
     jump: 'border-success-text text-success-text',
+    tick: 'bg-success',
   },
+  // the institute's benefit ticks are indigo, not green (ll. 853–880)
   institute: {
     panel: 'border-[#ccd6ea] bg-gradient-to-b from-[#f6f8fc] to-[#e9eef7]',
     eyebrow: 'text-[#35468a]',
     edge: 'border-[#ccd6ea]',
     jump: 'border-[#35468a] text-[#35468a]',
+    tick: 'bg-[#35468a]',
   },
 };
 
@@ -57,7 +64,9 @@ export function TrackPanel({
         <h2 className="text-h2 m-0 mb-3 max-md:text-[24px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
           {tf(copy.heading)}
         </h2>
-        <p className="m-0 mb-6 text-body text-text-secondary xl:max-w-[560px]">{tf(copy.lead)}</p>
+        <p className="m-0 mb-6 text-body font-semibold text-text-secondary xl:max-w-[560px]">
+          {tf(copy.lead)}
+        </p>
         <a
           href={`#${FORM_ANCHOR[track]}`}
           className={`mb-5 flex min-h-[46px] items-center justify-center rounded-xs border-[1.5px] border-dashed text-body font-extrabold no-underline md:hidden ${look.jump}`}
@@ -69,7 +78,7 @@ export function TrackPanel({
             <li key={titleId} className="flex items-start gap-3">
               <span
                 aria-hidden="true"
-                className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-pill bg-success text-white"
+                className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-pill text-white max-md:h-5 max-md:w-5 ${look.tick}`}
               >
                 <CheckIcon size={13} />
               </span>

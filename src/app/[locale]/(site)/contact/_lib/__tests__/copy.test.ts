@@ -30,6 +30,7 @@ const KEYS = [
   'contact.fallbackIntro.visit',
   'contact.faq.a3',
   'contact.faq.a5',
+  'contact.footnote',
 ] as const;
 
 type Tree = Record<string, unknown>;
@@ -47,8 +48,8 @@ const FILES = [
 ] as const;
 
 describe('sys.contact.* + sys.seo.contact.*', () => {
-  it('pins 25 keys, each a non-empty string in both locales', () => {
-    expect(KEYS).toHaveLength(25);
+  it('pins 26 keys, each a non-empty string in both locales', () => {
+    expect(KEYS).toHaveLength(26);
     for (const [, sys] of FILES)
       for (const key of KEYS) {
         const v = get(sys, key);

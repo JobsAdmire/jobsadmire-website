@@ -147,7 +147,7 @@ export const EXEMPTION_FACTS: readonly { labelId: string; strongId: string; rest
   { labelId: 'wp.243', strongId: 'wp.244', restId: 'wp.245' },
 ];
 
-export type StepIcon = 'doc' | 'globe' | 'file' | 'check';
+export type StepIcon = 'doc' | 'pie' | 'file' | 'check';
 /** "How we get a permit approved" — the last step carries the "SGK day one" badge. */
 export const PROCESS_STEPS: readonly {
   icon: StepIcon;
@@ -156,14 +156,14 @@ export const PROCESS_STEPS: readonly {
   badgeId?: string;
 }[] = [
   { icon: 'doc', titleId: 'wp.248', bodyId: 'wp.249' },
-  { icon: 'globe', titleId: 'wp.250', bodyId: 'wp.251' },
+  { icon: 'pie', titleId: 'wp.250', bodyId: 'wp.251' },
   { icon: 'file', titleId: 'wp.252', bodyId: 'wp.253' },
   { icon: 'check', titleId: 'wp.254', bodyId: 'wp.256', badgeId: 'wp.255' },
 ];
 
 /** The two timing cards. `wp.264`/`wp.274` carry `{firstDayWeeks}`/`{firstDayWeeksInCountry}` —
- *  the metrics through `makeTf` (W1/D17). The design's tab labels (`wp.261`/`262`) are not
- *  rendered: both cards show at every width (D20). */
+ *  the metrics through `makeTf` (W1/D17). The design's tab labels (`wp.261`/`262`) label the
+ *  ≤ 700 px tab switcher; from 701 px both cards show side by side. */
 export type TimelineCard = {
   key: 'abroad' | 'here';
   titleId: string;

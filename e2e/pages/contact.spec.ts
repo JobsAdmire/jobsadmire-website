@@ -344,6 +344,25 @@ test('tr: book-a-visit — five ISO day chips from the Istanbul clock, five slot
   await expect(form.locator('input[name="preferredTime"][value="11:00"]')).toBeChecked();
 });
 
+test('tr: the offices show both cards from 701 px and one at a time behind Antalya | Karaçi tabs on a phone (parity M.7)', async ({
+  page,
+}) => {
+  await page.goto(ROUTES.tr);
+  const cards = page.getByTestId('contact-offices').locator('article');
+  await expect(cards).toHaveCount(2);
+  const tabs = page.getByRole('tab');
+  if (await tabs.first().isVisible()) {
+    await expect(cards.nth(0)).toBeVisible();
+    await expect(cards.nth(1)).toBeHidden();
+    await tabs.nth(1).click();
+    await expect(cards.nth(1)).toBeVisible();
+    await expect(cards.nth(0)).toBeHidden();
+  } else {
+    await expect(cards.nth(0)).toBeVisible();
+    await expect(cards.nth(1)).toBeVisible();
+  }
+});
+
 test('tr: contact clicks fire their placements — page_cta from the hero cards, office_card from the office rows (W12)', async ({
   page,
 }) => {

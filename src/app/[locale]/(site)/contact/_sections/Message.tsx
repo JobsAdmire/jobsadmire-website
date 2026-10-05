@@ -3,6 +3,7 @@ import { ContactLink } from '@/analytics/ContactLink';
 import { makeTf } from '@/content/pure';
 import { ContactCta } from '@/design/blocks/ContactCta';
 import { ProcessSteps } from '@/design/blocks/ProcessSteps';
+import { WhatsAppIcon } from '@/design/chrome/icons';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
 import { Section } from '@/design/primitives/Section';
 import { QrCode } from '@/design/QrCode';
@@ -139,26 +140,31 @@ export function Message({
             {t('contact.051')}
           </h2>
           <p className="m-0 mb-6 text-body text-text-secondary">{t('contact.052')}</p>
-          <ProcessSteps
-            bundle={bundle}
-            locale={locale}
-            variant="plain"
-            headingLevel={3}
-            steps={[
-              { n: 1, titleId: 'contact.187', bodyId: 'contact.188' },
-              { n: 2, titleId: 'contact.189', bodyId: 'contact.190' },
-              { n: 3, titleId: 'contact.191', bodyId: 'contact.192' },
-              { n: 4, titleId: 'contact.193', bodyId: 'contact.194' },
-            ]}
-          />
-          <div className="mt-6 rounded-base border border-border-1 bg-white p-5 max-md:hidden">
+          <div className="max-md:rounded-base max-md:bg-pale-1 max-md:p-4">
+            <ProcessSteps
+              bundle={bundle}
+              locale={locale}
+              variant="tint"
+              headingLevel={3}
+              steps={[
+                { n: 1, titleId: 'contact.187', bodyId: 'contact.188' },
+                { n: 2, titleId: 'contact.189', bodyId: 'contact.190' },
+                { n: 3, titleId: 'contact.191', bodyId: 'contact.192' },
+                { n: 4, titleId: 'contact.193', bodyId: 'contact.194' },
+              ]}
+            />
+          </div>
+          <div className="mt-[22px] rounded-base border border-edge bg-white px-[22px] py-5 max-md:hidden">
             <h3 className="m-0 mb-1 text-card-title">{t('contact.053')}</h3>
             <p className="m-0 mb-4 text-body-sm text-text-tertiary">{t('contact.054')}</p>
             <ContactCta
               placement="page_cta"
               href={waMain}
               external
-              variant="success"
+              variant="success-solid"
+              shape="rect"
+              radius={11}
+              icon={<WhatsAppIcon size={16} />}
               className="w-full"
             >
               {t('contact.055')}
@@ -194,15 +200,18 @@ export function Message({
               />
             }
             footer={
-              <p className="m-0 text-right text-body-sm">
+              <div className="flex flex-wrap items-center justify-between gap-x-3.5 gap-y-1 text-body-sm text-text-tertiary">
+                {/* contact.073 says the form goes out through WhatsApp, which a kernel post does not
+                    (W3): the slot carries an accurate sys line instead. */}
+                <span>{sys('contact.footnote')}</span>
                 <ContactLink
                   href={mailLink(settings.email)}
                   placement="page_cta"
-                  className="inline-flex min-h-[44px] items-center font-extrabold text-blue-safe underline"
+                  className="inline-flex min-h-[44px] items-center font-extrabold text-blue-safe no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
                 >
                   {t('contact.074')}
                 </ContactLink>
-              </p>
+              </div>
             }
           />
         </div>

@@ -1,17 +1,19 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { collisionsInTree } from '@/test/class-collisions';
-import { PostFilter, type PostFilterLabels } from '../_components/PostFilter';
+import { BlogTools, type BlogToolsLabels, type TopicOption } from '../_components/BlogTools';
+import { IndexState } from '../_components/IndexState';
+import { LoadMore } from '../_components/LoadMore';
+import { ResultLine } from '../_components/ResultLine';
 import { RotatingWord } from '../_components/RotatingWord';
 import { RotationToggle } from '../_components/RotationToggle';
 import { ScrollEnhancements } from '../_components/ScrollEnhancements';
-import { POST_LIST_ID, type FilterItem } from '../_lib/filter';
+import { ALL, POST_LIST_ID, type FilterItem } from '../_lib/filter';
 import { rotation } from '../_lib/rotation';
 import { scrollArm } from '../_lib/scroll-arm';
 
 const WORDS = ['employers', 'factories', 'hotels'];
-const current = () =>
-  screen.getByTestId('hero-word-live').querySelector('[data-current]')?.textContent;
+const current = () => screen.getByTestId('hero-word-live').querySelector('[data-current]');
 
 /** jsdom has no matchMedia (PausableMarquee's guard reads it the same way). */
 function mockReducedMotion(reduce: boolean) {
@@ -27,7 +29,7 @@ function mockReducedMotion(reduce: boolean) {
   });
 }
 
-describe('RotatingWord + RotationToggle (B-4 — D20, WCAG 2.2.2)', () => {
+describe('RotatingWord + RotationToggle (B-4 — D20, WCAG 2.2.2; S1.4/S1.5)', () => {
   beforeEach(() => vi.useFakeTimers());
   afterEach(() => {
     vi.useRealTimers();
@@ -35,7 +37,7 @@ describe('RotatingWord + RotationToggle (B-4 — D20, WCAG 2.2.2)', () => {
     Reflect.deleteProperty(window, 'matchMedia');
   });
 
-  it('keeps the first word for assistive tech and rotates only the aria-hidden stack', () => {
+  it('keeps the first word for assistive tech and rotates only the aria-hidden word', () => {
     mockReducedMotion(false);
     render(
       <h1>
@@ -44,44 +46,53 @@ describe('RotatingWord + RotationToggle (B-4 — D20, WCAG 2.2.2)', () => {
     );
     expect(screen.getByTestId('hero-word-static')).toHaveTextContent('employers');
     expect(screen.getByTestId('hero-word-live')).toHaveAttribute('aria-hidden', 'true');
-    expect(current()).toBe('employers');
+    expect(current()).toHaveTextContent('employers');
     act(() => {
       vi.advanceTimersByTime(2600);
     });
-    expect(current()).toBe('factories');
+    expect(current()).toHaveTextContent('factories');
     expect(screen.getByRole('heading', { level: 1 })).toHaveAccessibleName(
       'Insights for employers',
     );
   });
 
-  it('stacks every word in one grid cell, so a rotation never resizes the heading (no CLS)', () => {
+  it('draws only the current word with its hugging underline; a turned word rises in, the first does not', () => {
     mockReducedMotion(false);
     const { container } = render(<RotatingWord words={WORDS} />);
-    const spans = Array.from(screen.getByTestId('hero-word-live').querySelectorAll('span'));
-    expect(spans).toHaveLength(3);
-    for (const span of spans) expect(span.className).toContain('col-start-1 row-start-1');
-    expect(spans.filter((s) => s.className.includes('invisible'))).toHaveLength(2);
-    expect(collisionsInTree(container)).toEqual([]);
-  });
-
-  it('the toggle — outside the heading — pauses and resumes the rotation', () => {
-    mockReducedMotion(false);
-    render(
-      <>
-        <RotatingWord words={WORDS} />
-        <RotationToggle pauseLabel="Pause" playLabel="Play" />
-      </>,
-    );
-    fireEvent.click(screen.getByRole('button', { name: 'Pause' }));
-    act(() => {
-      vi.advanceTimersByTime(8000);
-    });
-    expect(current()).toBe('employers');
-    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+    const live = screen.getByTestId('hero-word-live');
+    expect(live.querySelectorAll('span')).toHaveLength(1);
+    expect(current()?.className).toContain('border-b-[5px]');
+    expect(current()?.className).not.toContain('ja-wordin'); // painted with the h1 (LCP)
     act(() => {
       vi.advanceTimersByTime(2600);
     });
-    expect(current()).toBe('factories');
+    expect(live.querySelectorAll('span')).toHaveLength(1);
+    expect(current()?.className).toContain('ja-wordin');
+    expect(collisionsInTree(container)).toEqual([]);
+  });
+
+  it('the icon toggle — outside the heading — pauses the word and marks the hero for the floats', () => {
+    mockReducedMotion(false);
+    render(
+      <section id="hero">
+        <RotatingWord words={WORDS} />
+        <RotationToggle pauseLabel="Pause" playLabel="Play" targetId="hero" />
+      </section>,
+    );
+    const hero = document.getElementById('hero')!;
+    expect(hero.hasAttribute('data-paused')).toBe(false);
+    fireEvent.click(screen.getByRole('button', { name: 'Pause' }));
+    expect(hero.hasAttribute('data-paused')).toBe(true);
+    act(() => {
+      vi.advanceTimersByTime(8000);
+    });
+    expect(current()).toHaveTextContent('employers');
+    fireEvent.click(screen.getByRole('button', { name: 'Play' }));
+    expect(hero.hasAttribute('data-paused')).toBe(false);
+    act(() => {
+      vi.advanceTimersByTime(2600);
+    });
+    expect(current()).toHaveTextContent('factories');
   });
 
   it('never rotates under prefers-reduced-motion; the toggle is hidden there by CSS (R20)', () => {
@@ -95,100 +106,162 @@ describe('RotatingWord + RotationToggle (B-4 — D20, WCAG 2.2.2)', () => {
     act(() => {
       vi.advanceTimersByTime(8000);
     });
-    expect(current()).toBe('employers');
+    expect(current()).toHaveTextContent('employers');
     expect(screen.getByRole('button', { name: 'Pause' }).className).toContain(
       'motion-reduce:hidden',
     );
   });
 });
 
+/** Eight grid rows (two pages of six) and a featured row outside the grid. */
 const ITEMS: FilterItem[] = [
   { key: 'a', category: 'workPermits', text: 'work permit guide excerpt work permits' },
   { key: 'b', category: 'recruitment', text: 'hiring from pakistan excerpt recruitment' },
   { key: 'c', category: 'workPermits', text: 'permit renewals excerpt work permits' },
+  { key: 'd', category: 'compliance', text: 'sgk registration excerpt compliance' },
+  { key: 'e', category: 'recruitment', text: 'onboarding checklist excerpt recruitment' },
+  { key: 'f', category: 'marketNews', text: 'labour shortage excerpt market news' },
+  { key: 'g', category: 'marketNews', text: 'tourism season excerpt market news' },
+  { key: 'h', category: 'workPermits', text: 'quota system excerpt work permits' },
 ];
-const CATEGORIES = [
-  { value: 'workPermits', label: 'Work Permits' },
-  { value: 'recruitment', label: 'Recruitment' },
+const FEATURED: FilterItem = {
+  key: 'feat',
+  category: 'workPermits',
+  text: 'the complete permit guide excerpt work permits',
+};
+const TOPICS: TopicOption[] = [
+  { value: ALL, label: 'All', dot: 'bg-ink' },
+  { value: 'workPermits', label: 'Work Permits', dot: 'bg-blue' },
+  { value: 'recruitment', label: 'Recruitment', dot: 'bg-success' },
+  { value: 'compliance', label: 'Compliance', dot: 'bg-[#7c3aed]' },
+  { value: 'marketNews', label: 'Market News', dot: 'bg-warning' },
 ];
-const LABELS: PostFilterLabels = {
+const FORMS = { one: '{n} article', other: '{n} articles', forQuote: 'for “' };
+const LABELS: BlogToolsLabels = {
   search: 'Search articles',
   placeholder: 'Search articles…',
   clear: 'Clear search',
-  reset: 'Clear',
-  all: 'All',
   topic: 'Topic',
   pickTopic: 'Pick a topic',
   close: 'Close',
-  noResults: 'No articles match your search.',
-  resultsOne: '{n} article',
-  resultsOther: '{n} articles',
+  language: 'Language',
+  results: FORMS,
 };
 
-function renderFilter() {
+function renderIndex() {
   return render(
-    <>
+    <IndexState locale="en" items={ITEMS} featured={FEATURED} pageSize={6}>
+      <BlogTools
+        labels={LABELS}
+        topics={TOPICS}
+        langs={[
+          { code: 'EN', href: '/en/blog', hrefLang: 'en', current: true },
+          { code: 'TR', href: '/blog', hrefLang: 'tr', current: false },
+        ]}
+      />
+      <ResultLine forms={FORMS} topics={TOPICS} clearLabel="Clear" />
       <ul id={POST_LIST_ID}>
-        {ITEMS.map((it) => (
-          <li key={it.key} data-post-key={it.key}>
+        {ITEMS.map((it, i) => (
+          <li key={it.key} data-post-key={it.key} hidden={i >= 6}>
             {it.key}
           </li>
         ))}
       </ul>
-      <PostFilter
+      <LoadMore
         listId={POST_LIST_ID}
-        locale="en"
-        items={ITEMS}
-        categories={CATEGORIES}
-        labels={LABELS}
+        moreLabel="Load more articles ↓"
+        noResultsLabel="No articles match your search."
       />
-    </>,
+    </IndexState>,
   );
 }
 const row = (key: string) => document.querySelector<HTMLElement>(`[data-post-key="${key}"]`)!;
+const visibleKeys = () => ITEMS.map((it) => it.key).filter((key) => !row(key).hidden);
+const status = () => screen.getByTestId('blog-tools-status');
 
-describe('PostFilter (B-5 — the dormant tools island)', () => {
-  it('filters the server-rendered rows by query and announces the count', () => {
-    const { container } = renderFilter();
-    expect(screen.getByText('3 articles')).toBeInTheDocument();
-    fireEvent.change(screen.getByRole('searchbox', { name: 'Search articles' }), {
-      target: { value: 'PERMIT' },
-    });
-    expect(row('a').hidden).toBe(false);
-    expect(row('b').hidden).toBe(true);
-    expect(row('c').hidden).toBe(false);
-    expect(screen.getByText('2 articles')).toBeInTheDocument();
+describe('the index islands (S1.3, S3.2, M3, M4 — IndexState, BlogTools, LoadMore, ResultLine)', () => {
+  it('shows six, then six more on "Load more"; the button goes when nothing waits', () => {
+    const { container } = renderIndex();
+    expect(visibleKeys()).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+    expect(status()).toHaveTextContent('9 articles'); // the grid + the featured card
+    expect(screen.getByTestId('blog-result-line')).toHaveTextContent('9 articles');
+    fireEvent.click(screen.getByRole('button', { name: 'Load more articles ↓' }));
+    expect(visibleKeys()).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+    expect(screen.queryByTestId('blog-load-more')).toBeNull();
     expect(collisionsInTree(container)).toEqual([]);
   });
 
-  it('filters by topic chip and resets both filters', () => {
-    renderFilter();
+  it('filters by query (featured counted, design countFor); Escape clears; the line names the query', () => {
+    renderIndex();
+    const box = screen.getByRole('searchbox', { name: 'Search articles' });
+    fireEvent.change(box, { target: { value: 'PERMIT' } });
+    expect(visibleKeys()).toEqual(['a', 'c', 'h']);
+    expect(status()).toHaveTextContent('4 articles for “PERMIT”');
+    expect(screen.getByTestId('blog-result-line')).toHaveTextContent('4 articles for “PERMIT”');
+    fireEvent.keyDown(box, { key: 'Escape' });
+    expect(box).toHaveValue('');
+    expect(visibleKeys()).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+  });
+
+  it('filters by topic chip and resets from the phone line', () => {
+    renderIndex();
     fireEvent.click(screen.getByLabelText('Recruitment'));
-    expect(row('a').hidden).toBe(true);
-    expect(row('b').hidden).toBe(false);
-    expect(screen.getByText('1 article')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button', { name: 'Clear' }));
-    for (const key of ['a', 'b', 'c']) expect(row(key).hidden).toBe(false);
+    expect(visibleKeys()).toEqual(['b', 'e']);
+    expect(status()).toHaveTextContent('2 articles · Recruitment');
+    fireEvent.click(
+      within(screen.getByTestId('blog-result-line')).getByRole('button', { name: 'Clear' }),
+    );
+    expect(visibleKeys()).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+    expect(within(screen.getByTestId('blog-result-line')).queryByRole('button')).toBeNull();
   });
 
   it('shows the no-results panel when nothing matches', () => {
-    renderFilter();
+    renderIndex();
     fireEvent.change(screen.getByRole('searchbox', { name: 'Search articles' }), {
       target: { value: 'zzz' },
     });
     expect(screen.getByTestId('blog-no-results')).toHaveTextContent(
       'No articles match your search.',
     );
-    for (const key of ['a', 'b', 'c']) expect(row(key).hidden).toBe(true);
+    expect(visibleKeys()).toEqual([]);
+    expect(screen.queryByTestId('blog-load-more')).toBeNull();
   });
 
-  it('picks a topic from the phone sheet and closes it', () => {
-    renderFilter();
-    fireEvent.click(screen.getByRole('button', { name: 'Topic' }));
-    fireEvent.click(within(screen.getByRole('dialog')).getByLabelText('Recruitment'));
+  it('a match only the featured card has empties the grid without the no-results panel', () => {
+    renderIndex();
+    fireEvent.change(screen.getByRole('searchbox', { name: 'Search articles' }), {
+      target: { value: 'complete' },
+    });
+    expect(visibleKeys()).toEqual([]);
+    expect(screen.queryByTestId('blog-no-results')).toBeNull();
+    expect(status()).toHaveTextContent('1 article for “complete”');
+  });
+
+  it('the phone topic button opens the sheet: rows with counts, a pick filters and closes it', () => {
+    renderIndex();
+    const button = screen.getByTestId('blog-topic-button');
+    expect(button).toHaveTextContent('All');
+    expect(button).toHaveTextContent('9');
+    fireEvent.click(button);
+    const sheet = screen.getByRole('dialog');
+    expect(within(sheet).getByRole('heading', { name: 'Pick a topic' })).toBeInTheDocument();
+    const radios = within(sheet).getAllByRole('radio');
+    expect(radios).toHaveLength(5);
+    expect(within(sheet).getByLabelText(/Work Permits/)).toBeInTheDocument();
+    fireEvent.click(within(sheet).getByLabelText(/Market News/));
     expect(screen.queryByRole('dialog')).toBeNull();
-    expect(row('a').hidden).toBe(true);
-    expect(row('b').hidden).toBe(false);
+    expect(visibleKeys()).toEqual(['f', 'g']);
+    expect(screen.getByTestId('blog-topic-button')).toHaveTextContent('Market News');
+  });
+
+  it('the EN/TR pair links the two indexes, the current one marked', () => {
+    renderIndex();
+    const group = screen.getByRole('group', { name: 'Language' });
+    expect(within(group).getByRole('link', { name: 'EN' })).toHaveAttribute('aria-current', 'page');
+    const tr = within(group).getByRole('link', { name: 'TR' });
+    expect(tr).toHaveAttribute('href', '/blog');
+    expect(tr).toHaveAttribute('hreflang', 'tr');
+    expect(tr).not.toHaveAttribute('aria-current');
   });
 });
 

@@ -21,6 +21,7 @@ export const VERIFY_SYS_KEYS = [
   'verify.report.submit',
   'verify.record.close',
   'verify.record.former',
+  'verify.register.tapToChange', // parity: the ≤ 700 register picker's pill
   'form.evidence.uploading',
   'form.evidence.attached',
   'form.evidence.remove',

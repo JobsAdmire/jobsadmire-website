@@ -84,12 +84,47 @@ describe('Success Stories — the page renders its own breadcrumb and anchor ids
     expect(img.parentElement).toHaveClass('absolute', 'inset-0', 'overflow-hidden');
     expect(img).toHaveClass('w-full', 'object-cover', 'h-(--cover-h)', 'opacity-60');
     expect(img).not.toHaveClass('h-auto');
-    expect(img.style.getPropertyValue('--cover-h')).toBe('650px');
-    expect(img.style.getPropertyValue('--cover-h-sm')).toBe('650px');
-    expect(img.style.getPropertyValue('--cover-h-md')).toBe('500px');
-    expect(img.style.getPropertyValue('--cover-h-lg')).toBe('550px');
-    expect(img.style.getPropertyValue('--cover-h-xl')).toBe('450px');
+    // Parity pass: raised for the live badge and the stat cards that stack under the copy ≤ 900.
+    expect(img.style.getPropertyValue('--cover-h')).toBe('950px');
+    expect(img.style.getPropertyValue('--cover-h-xs')).toBe('820px');
+    expect(img.style.getPropertyValue('--cover-h-sm')).toBe('760px');
+    expect(img.style.getPropertyValue('--cover-h-md')).toBe('1000px');
+    expect(img.style.getPropertyValue('--cover-h-lg')).toBe('800px');
+    expect(img.style.getPropertyValue('--cover-h-xl')).toBe('560px');
     // W119/W122/W155: the real collision checker over the whole rendered page (T9 review M7)
+    expect(collisionsInTree(container)).toEqual([]);
+  });
+
+  it('renders the design’s sections with the page-local sample under the sample badge and tags (parity pass, D23)', async () => {
+    const jsx = await SuccessStories({ params: Promise.resolve({ locale: 'tr' }) });
+    const { container } = renderWithIntl(jsx, { locale: 'tr' });
+    const q = (id: string) => container.querySelector(`[data-testid="${id}"]`) as HTMLElement;
+    // hero: the pulsing badge with the design's own "örnek veri", the 2 × 2 stat cards
+    expect(q('stories-live')).toHaveTextContent('288 izin onaylandı · örnek veri');
+    expect(q('stories-hero-stats').querySelectorAll('li')).toHaveLength(4);
+    // hero body: success.025 (owner ruling)
+    expect(container).toHaveTextContent('Aşağıda, Türkiye');
+    // the wall: the design's seven chips, nine sample cards with frames, the amber sample badge
+    const wall = q('stories-wall');
+    expect(wall.querySelectorAll('input[type="radio"]')).toHaveLength(7);
+    expect(q('stories-grid').querySelectorAll('article')).toHaveLength(9);
+    expect(container.querySelector('[data-placeholder="approval-a1"]')).not.toBeNull();
+    expect(container.querySelector('[data-placeholder="approval-slide-a1"]')).not.toBeNull();
+    expect(q('stories-sample-badge')).toHaveTextContent('Örnek veri gösteriliyor');
+    // every data-gated section carries the sample tag
+    for (const id of [
+      'stories-hero-stats',
+      'stories-numbers',
+      'stories-testimonials',
+      'stories-workers',
+    ]) {
+      expect(q(id).querySelector('[data-sample-tag]'), id).not.toBeNull();
+    }
+    expect(container.querySelector('#cases [data-sample-tag]')).not.toBeNull();
+    // designer notes never render (success.033/034 and success.069)
+    expect(container).not.toHaveTextContent(/Hâlâ değiştirilecek|Yer tutucu yorumlar/);
+    // the closing band: the blue split with the WhatsApp primary and the centred cost link
+    expect(q('stories-closing').querySelector('[data-tone="blue"]')).not.toBeNull();
     expect(collisionsInTree(container)).toEqual([]);
   });
 });

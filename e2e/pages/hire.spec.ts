@@ -108,12 +108,14 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(page.getByTestId('hire-hero-pills')).toContainText('470+');
   });
 
-  test(`${locale}: the designed sections in order, one of each anchor, no logo band, the header CTA's #request-form (W6/W152/W158)`, async ({
+  test(`${locale}: the designed sections in order, one of each anchor, the sample logo band from 701 px, the header CTA's #request-form (W152/W158)`, async ({
     page,
   }) => {
     await page.goto(ROUTES[locale]);
     const ids = [
       'hire-hero',
+      // owner 2026-10-05: the design's labelled logo slots + the sample tag; ≤ 700 px it hides
+      ...(isMobile() ? [] : ['hire-logos']),
       'hire-industries',
       'hire-source-countries',
       'hire-compare',
@@ -129,7 +131,17 @@ for (const locale of ['tr', 'en'] as const) {
       tops.push((await el.boundingBox())!.y);
     }
     expect(tops).toEqual([...tops].sort((a, b) => a - b));
-    await expect(page.getByTestId('hire-logos')).toHaveCount(0); // W6
+    const logos = page.getByTestId('hire-logos');
+    await expect(logos).toHaveCount(1);
+    if (isMobile()) await expect(logos).toBeHidden();
+    else {
+      await expect(logos.locator('[data-sample-tag]')).toBeVisible();
+      await expect(logos).toContainText('22+');
+      // ten labelled slots in the visible copy of the marquee (the second copy is inert)
+      await expect(
+        logos.locator(':not([aria-hidden="true"]) > [data-placeholder^="logo-"]'),
+      ).toHaveCount(10);
+    }
     for (const anchor of ['request-form', 'industries', 'compare', 'process', 'faq'])
       await expect(page.locator(`[id="${anchor}"]`)).toHaveCount(1);
     // DEFAULT_CTAS (no CTA_BY_PATHNAME entry, W121) → the header CTA targets this page's form
@@ -212,9 +224,31 @@ test('tr: the industries accordion opens one sector at a time and its CTA prefil
     'aria-expanded',
     'true',
   );
-  await region.getByRole('link', { name: /Tekstil işçisi talep edin/ }).click();
+  // the open row's panel (named by its sector button) holds the prefill CTA
+  await region
+    .getByRole('region', { name: /Tekstil/ })
+    .getByRole('link', { name: /Tekstil işçisi talep edin/ })
+    .click();
   await expect(page.getByTestId('hire-form-full').getByLabel(/Sektör/)).toHaveValue('textile');
   expect(new URL(page.url()).hash).toBe('#request-form');
+});
+
+test('tr: at rest every industry row shows its chips; from 701 px the round → prefills its sector (S7.1/S7.4)', async ({
+  page,
+}) => {
+  await page.goto(ROUTES.tr);
+  const region = page.getByTestId('hire-industries');
+  await expect(region.getByText('Kaynakçı', { exact: true }).first()).toBeVisible();
+  test.skip(isMobile(), 'the design hides the round arrow at ≤ 700 px');
+  const arrow = region.locator('a.ja-arrow').nth(1); // 02 · İnşaat
+  await expect(arrow).toBeVisible();
+  await arrow.click();
+  await expect(page.getByTestId('hire-form-full').getByLabel(/Sektör/)).toHaveValue('construction');
+  // the arrow is not the row's toggle: the row stays closed
+  await expect(region.getByRole('button', { name: 'İnşaat' })).toHaveAttribute(
+    'aria-expanded',
+    'false',
+  );
 });
 
 test('tr: one BreadcrumbList on this page’s own labels and one FAQPage with seven pairs (W109)', async ({

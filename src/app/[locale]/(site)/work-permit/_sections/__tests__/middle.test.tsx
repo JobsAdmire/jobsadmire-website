@@ -113,19 +113,23 @@ describe('Process', () => {
 });
 
 describe('Timeline', () => {
-  it('#timeline: both cards at every width — no tabs (D20) — with the metric durations (W1)', () => {
+  it('#timeline: both cards from 701 px, a two-tab switcher ≤ 700 px, with the metric durations (W1)', () => {
     const { container } = renderWithIntl(<Timeline tf={tfTr} />);
     expect(container.querySelector('section#timeline')).not.toBeNull();
     const abroad = screen.getByTestId('wp-timeline-abroad');
     const here = screen.getByTestId('wp-timeline-here');
     for (const card of [abroad, here])
       expect(tokens(card).some((t) => t.endsWith('hidden'))).toBe(false);
+    expect(tokens(abroad.parentElement as HTMLElement)).toContain('max-md:hidden');
     expect(abroad).toHaveTextContent('~6–8 hafta'); // wp.264 {firstDayWeeks}
     expect(here).toHaveTextContent('~4–6 hafta'); // wp.274 {firstDayWeeksInCountry}
     expect(abroad.querySelectorAll('dt')).toHaveLength(4);
     expect(here.querySelectorAll('dt')).toHaveLength(3);
     expect(here).toHaveTextContent(tfTr('wp.280'));
-    expect(screen.queryAllByRole('tab')).toHaveLength(0);
+    const tabs = screen.getAllByRole('tab');
+    expect(tabs.map((t) => t.textContent)).toEqual([tfTr('wp.261'), tfTr('wp.262')]);
+    expect(tokens(screen.getByTestId('wp-timeline-tabs'))).toContain('md:hidden');
+    expect(within(screen.getByTestId('wp-timeline-m-abroad')).getAllByRole('term')).toHaveLength(4);
     expect(collisionsInTree(container)).toEqual([]);
   });
 });
@@ -139,10 +143,13 @@ describe('Costs', () => {
     const region = screen.getByTestId('wp-costs');
     expect(within(region).getAllByRole('article')).toHaveLength(3);
     expect(region.textContent).not.toMatch(/₺|\bTRY\b/);
-    expect(within(region).getByRole('link', { name: tfEn('wp.296') })).toHaveAttribute(
-      'href',
-      waEn('what would a work permit cost for my case?'),
-    );
+    // desktop: the plain green text link; ≤ 700 px: the full-width outlined button
+    const quote = within(region).getAllByRole('link', { name: tfEn('wp.296') });
+    expect(quote).toHaveLength(2);
+    for (const a of quote)
+      expect(a).toHaveAttribute('href', waEn('what would a work permit cost for my case?'));
+    expect(tokens(quote[0])).toContain('max-md:hidden');
+    expect(tokens(quote[1])).toContain('md:hidden');
     expect(collisionsInTree(container)).toEqual([]);
   });
 });
@@ -187,7 +194,9 @@ describe('Renewal', () => {
     const banner = screen.getByTestId('wp-renewal');
     expect(tokens(screen.getByTestId('wp-renewal-desk'))).toContain('max-md:hidden');
     expect(tokens(screen.getByTestId('wp-renewal-mob'))).toContain('md:hidden');
-    expect(tokens(screen.getByText(tfEn('wp.326')))).toContain('md:hidden');
+    expect(tokens(screen.getByTestId('wp-renewal-window'))).toContain('md:hidden');
+    expect(screen.getByTestId('wp-renewal-window')).toHaveTextContent(tfEn('wp.326'));
+    expect(screen.getByTestId('wp-renewal-window')).toHaveTextContent(tfEn('wp.325'));
     expect(within(banner).getByRole('link', { name: tfEn('wp.327') })).toHaveAttribute(
       'href',
       waEn('I need help renewing a work permit.'),

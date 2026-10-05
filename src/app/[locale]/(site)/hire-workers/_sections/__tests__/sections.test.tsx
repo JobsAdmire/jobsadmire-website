@@ -8,7 +8,7 @@ import { makeTf, metricValues } from '@/content/pure';
 import en from '@/messages/en.json';
 import tr from '@/messages/tr.json';
 import { renderWithIntl } from '@/test/render';
-import { CLIENT_LOGOS } from '../../_lib/assets';
+import { CLIENT_LOGOS, CLIENT_LOGO_SLOT_COUNT } from '../../_lib/assets';
 import { INDUSTRIES } from '../../_lib/tables';
 import { ClientLogos } from '../ClientLogos';
 import { Comparison } from '../Comparison';
@@ -54,50 +54,136 @@ describe('JumpNav', () => {
 });
 
 describe('ClientLogos', () => {
-  it('renders nothing while no consented logo exists (W6, §10 #11)', () => {
+  const slots = Array.from(
+    { length: CLIENT_LOGO_SLOT_COUNT },
+    (_, i) => `${tfTr('hire.245')} ${i + 1}`,
+  );
+
+  it('until consented logos exist: the "22+" figure, hire.073, the sample tag and the ten labelled slots (owner 2026-10-05, design ll. 694–711)', () => {
+    renderWithIntl(
+      <ClientLogos tf={tfTr} employers="22+" logos={CLIENT_LOGOS} slotLabels={slots} />,
+    );
+    const band = screen.getByTestId('hire-logos');
+    expect(tokens(band)).toContain('max-md:hidden'); // the design's `.ja-hw-logos` ≤ 700 rule
+    expect(band).toHaveAttribute('data-sample', 'true');
+    expect(within(band).getByText('22+')).toBeInTheDocument();
+    expect(within(band).getByText(tfTr('hire.073'))).toBeInTheDocument();
+    expect(band.querySelectorAll('[data-sample-tag]')).toHaveLength(1);
+    expect(band.querySelector('[data-sample-tag]')?.textContent).toContain(tr.sys.sample.tag);
+    // the first copy of the marquee is the visible one; the second is the inert loop filler
+    const visible = Array.from(band.querySelectorAll('[data-placeholder^="logo-"]')).filter(
+      (el) => !el.closest('[aria-hidden="true"]'),
+    );
+    expect(visible.map((el) => el.textContent)).toEqual([
+      'Müşteri logosu 1',
+      'Müşteri logosu 2',
+      'Müşteri logosu 3',
+      'Müşteri logosu 4',
+      'Müşteri logosu 5',
+      'Müşteri logosu 6',
+      'Müşteri logosu 7',
+      'Müşteri logosu 8',
+      'Müşteri logosu 9',
+      'Müşteri logosu 10',
+    ]);
+  });
+
+  it('an unsigned employers metric drops the figure, never the band (W1)', () => {
+    renderWithIntl(<ClientLogos tf={tfTr} employers="" logos={CLIENT_LOGOS} slotLabels={slots} />);
+    const band = screen.getByTestId('hire-logos');
+    expect(band.textContent).not.toContain(tfTr('hire.073'));
+    expect(band.querySelectorAll('[data-sample-tag]')).toHaveLength(1);
+  });
+
+  it('renders nothing with neither logos nor slots', () => {
     const { container } = renderWithIntl(
-      <ClientLogos tf={tfTr} employers="22+" logos={CLIENT_LOGOS} />,
+      <ClientLogos tf={tfTr} employers="22+" logos={CLIENT_LOGOS} slotLabels={[]} />,
     );
     expect(container).toBeEmptyDOMElement();
   });
 });
 
 describe('Industries', () => {
+  const names = [
+    'Fabrika / Üretim',
+    'İnşaat',
+    'Turizm / Konaklama',
+    'Tarım',
+    'Tekstil',
+    'Lojistik / Depo',
+  ];
+
   it('six sector rows in design order, one open at a time, each CTA a #request-form anchor', async () => {
     const { container } = renderWithIntl(<Industries bundle={TR} tf={tfTr} />);
     expect(container.querySelector('section#industries')).not.toBeNull();
     const region = screen.getByTestId('hire-industries');
-    const names = [
-      '01 · Fabrika / Üretim',
-      '02 · İnşaat',
-      '03 · Turizm / Konaklama',
-      '04 · Tarım',
-      '05 · Tekstil',
-      '06 · Lojistik / Depo',
-    ];
+    // the h3 is the toggle: one real button per row, named by the sector title
+    expect(
+      within(region)
+        .getAllByRole('heading', { level: 3 })
+        .map((h) => h.textContent),
+    ).toEqual(names);
     for (const name of names)
       expect(within(region).getByRole('button', { name })).toHaveAttribute(
         'aria-expanded',
         'false',
       );
-    await userEvent.click(within(region).getByRole('button', { name: '05 · Tekstil' }));
-    expect(within(region).getByRole('button', { name: '05 · Tekstil' })).toHaveAttribute(
+    await userEvent.click(within(region).getByRole('button', { name: 'Tekstil' }));
+    expect(within(region).getByRole('button', { name: 'Tekstil' })).toHaveAttribute(
       'aria-expanded',
       'true',
     );
-    expect(within(region).getByRole('link', { name: tfTr('hire.134') })).toHaveAttribute(
+    const panel = region.querySelector<HTMLElement>(
+      `#${CSS.escape(within(region).getByRole('button', { name: 'Tekstil' }).getAttribute('aria-controls')!)}`,
+    )!;
+    expect(panel).not.toHaveAttribute('hidden');
+    expect(within(panel).getByRole('link', { name: tfTr('hire.134') })).toHaveAttribute(
       'href',
       '#request-form',
     );
-    await userEvent.click(within(region).getByRole('button', { name: '01 · Fabrika / Üretim' }));
-    expect(within(region).getByRole('button', { name: '05 · Tekstil' })).toHaveAttribute(
+    await userEvent.click(within(region).getByRole('button', { name: 'Fabrika / Üretim' }));
+    expect(within(region).getByRole('button', { name: 'Tekstil' })).toHaveAttribute(
       'aria-expanded',
       'false',
     );
+    expect(panel).toHaveAttribute('hidden');
     // every one of the 41 role chips is server-rendered (closed panels are `hidden`, still in the DOM)
     for (const row of INDUSTRIES)
       for (const id of [...row.visibleRoleIds, ...row.moreRoleIds])
         expect(region.textContent).toContain(tfTr(id));
+  });
+
+  it('S7.1: at rest each row shows its number tile, subtitle and row chips — only the "more roles" sit in the hidden panel', () => {
+    renderWithIntl(<Industries bundle={TR} tf={tfTr} />);
+    const region = screen.getByTestId('hire-industries');
+    const rows = region.querySelectorAll(':scope li.ja-row');
+    expect(rows).toHaveLength(6);
+    rows.forEach((row, i) => {
+      const tile = row.querySelector('.ja-num')!;
+      expect(tile.textContent).toBe(String(i + 1).padStart(2, '0'));
+      expect(tile).toHaveAttribute('aria-hidden', 'true');
+      for (const id of INDUSTRIES[i].visibleRoleIds) {
+        const chip = within(row as HTMLElement).getByText(tfTr(id));
+        expect(chip.closest('[hidden]')).toBeNull();
+      }
+      for (const id of INDUSTRIES[i].moreRoleIds) {
+        const chip = within(row as HTMLElement).getByText(tfTr(id));
+        expect(chip.closest('[hidden]')).not.toBeNull();
+      }
+    });
+    // row 1's subtitle carries the design's green dot; every sector subtitle is at rest
+    expect(rows[0].querySelector('h3 + p span[aria-hidden="true"]')).not.toBeNull();
+  });
+
+  it('S7.4: each row’s round → prefills the form like the panel CTA, named by the CTA words (no arrow glyph)', () => {
+    renderWithIntl(<Industries bundle={TR} tf={tfTr} />);
+    const region = screen.getByTestId('hire-industries');
+    const arrows = region.querySelectorAll('a.ja-arrow');
+    expect(arrows).toHaveLength(6);
+    expect(arrows[0]).toHaveAttribute('href', '#request-form');
+    expect(arrows[0]).toHaveAttribute('aria-label', tfTr('hire.130').replace(/\s*→\s*$/, ''));
+    expect(arrows[0].querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+    expect(tokens(arrows[0])).toContain('max-md:hidden'); // ≤ 700 px the design hides it
   });
 });
 
@@ -167,6 +253,13 @@ describe('Process', () => {
       `${tfTr('hire.170')} ${tfTr('hire.171')}`,
     );
     expect(within(region).getAllByRole('heading', { level: 3 })).toHaveLength(6);
+    // SHARED 8.2: the design's numbered timeline (46 px gradient dots, white r18 cards)
+    expect(region.querySelector('ol[data-variant="numbered"]')).not.toBeNull();
+    // the total-duration pill carries its clock
+    expect(screen.getByText(tfTr('hire.173')).querySelector('svg')).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    );
     expect(within(region).getByRole('link', { name: tfTr('hire.175') })).toHaveAttribute(
       'href',
       '/calisma-izni',
@@ -185,12 +278,14 @@ describe('PortalPreview', () => {
     expect(region.closest('[class*="hidden"]')).toBeNull();
     expect(region.textContent).toContain('portal.jobsadmire.com');
     expect(region.querySelector('[data-placeholder="portal-shortlist"]')).not.toBeNull();
+    // S11.1: each placeholder wears the design's own caption (hire.243 / hire.244)
+    expect(region.textContent).toContain(tfTr('hire.243'));
+    expect(region.textContent).toContain(tfTr('hire.244'));
     const phone = region.querySelector('[data-placeholder="portal-mobile-app"]')!;
     expect(phone.closest('[class~="max-md:hidden"]')).not.toBeNull(); // ≤ 700 px: no phone mock
-    expect(within(region).getByRole('link', { name: tfTr('hire.193') })).toHaveAttribute(
-      'href',
-      `${WA}?text=${encodeURIComponent(tfTr('hire.251'))}`,
-    );
+    const demo = within(region).getByRole('link', { name: tfTr('hire.193') });
+    expect(demo).toHaveAttribute('href', `${WA}?text=${encodeURIComponent(tfTr('hire.251'))}`);
+    expect(tokens(demo)).toEqual(expect.arrayContaining(['rounded-[11px]', 'max-md:w-full']));
     expect(within(region).getByRole('link', { name: /Google Play/ })).toBeInTheDocument();
     expect(within(region).getByRole('link', { name: /App Store/ })).toBeInTheDocument(); // W227
     expect(region.textContent).not.toMatch(/✓/);
@@ -202,13 +297,16 @@ describe('Faq', () => {
     const { container } = renderWithIntl(<Faq bundle={TR} locale="tr" tf={tfTr} />);
     expect(container.querySelector('section#faq')).not.toBeNull();
     const region = screen.getByTestId('hire-faq');
+    expect(region.querySelector('[data-variant="cards"]')).not.toBeNull(); // S12.1
     const triggers = within(region).getAllByRole('button');
     expect(triggers).toHaveLength(7);
     expect(triggers[0]).toHaveAttribute('aria-expanded', 'true');
-    expect(within(region).getByRole('link', { name: tfTr('hire.041') })).toHaveAttribute(
-      'href',
-      `${WA}?text=${encodeURIComponent(tfTr('hire.252'))}`,
-    );
+    // the ask card's WhatsApp (lg+) and the ≤ 900 px full-width copy after the list (M10)
+    const wa = within(region).getAllByRole('link', { name: tfTr('hire.041') });
+    expect(wa).toHaveLength(2);
+    for (const a of wa)
+      expect(a).toHaveAttribute('href', `${WA}?text=${encodeURIComponent(tfTr('hire.252'))}`);
+    expect(tokens(wa[1])).toEqual(expect.arrayContaining(['w-full', 'lg:hidden']));
     expect(within(region).getByRole('link', { name: tfTr('hire.032') })).toHaveAttribute(
       'href',
       'tel:+905011240340',

@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react';
+import { cleanup, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { renderWithIntl } from '@/test/render';
 import { blogPost, homeBundle, withCollections } from '../../__tests__/fixtures';
@@ -24,6 +24,11 @@ describe('NetworkSection (W1/W10/W14)', () => {
     expect(network.querySelectorAll('li[data-chip="desktop"]')).toHaveLength(13);
     expect(network.querySelectorAll('li[data-chip="phone"]')).toHaveLength(13);
     expect(within(network).getByText('13')).toBeInTheDocument(); // the `countries` metric
+    // the design's chip order (`iso`, v4 l. 1571): Sri Lanka third
+    const chips = [...network.querySelectorAll('li[data-chip="desktop"]')].map((li) =>
+      li.textContent?.trim(),
+    );
+    expect(chips.slice(0, 4)).toEqual(['Pakistan', 'Hindistan', 'Sri Lanka', 'Nepal']);
   });
 
   it('"Report fraud" is the Verify page’s form; the partner CTA is a plain link; no Telegram (W226)', () => {
@@ -40,29 +45,37 @@ describe('NetworkSection (W1/W10/W14)', () => {
   });
 });
 
-describe('TeamSection (W6/W86)', () => {
-  it('renders nothing while the public register is empty', () => {
-    const { container } = renderWithIntl(<TeamSection locale="tr" bundle={TR} />);
-    expect(container).toBeEmptyDOMElement();
-  });
-
-  it('renders once representatives has rows; the founder card only once the row is published', () => {
-    const withReps = withCollections(TR, { representatives: [{ ref: 'JA-1001' }] });
-    const first = renderWithIntl(<TeamSection locale="tr" bundle={withReps} />);
-    expect(screen.getByTestId('team')).toBeInTheDocument();
-    expect(screen.queryByTestId('team-founder')).toBeNull();
-    first.unmount();
-    renderWithIntl(
-      <TeamSection
-        locale="tr"
-        bundle={withCollections(withReps, {
-          founder: [{ name: 'Ad Soyad', titleId: 'about.047', photoSrc: null, published: true }],
-        })}
-      />,
+describe('TeamSection (W86: the founder is published)', () => {
+  it('renders the founder card (name and photo from the row), three minis hidden ≤ 460 px, three CTAs', () => {
+    renderWithIntl(<TeamSection locale="tr" bundle={TR} />);
+    const team = screen.getByTestId('team');
+    expect(within(team).getByRole('heading', { level: 2 })).toHaveTextContent(
+      TR.strings['home.127'],
     );
     const founder = screen.getByTestId('team-founder');
-    expect(founder).toHaveTextContent('Ad Soyad');
-    expect(founder.querySelector('[data-placeholder="founder-photo"]')).not.toBeNull();
+    expect(founder).toHaveTextContent('Haris Jiva');
+    expect(founder).toHaveTextContent(TR.strings['home.129']);
+    expect(within(founder).getByRole('img', { name: 'Haris Jiva' }).getAttribute('src')).toContain(
+      encodeURIComponent('/team/haris-jiva.jpg'),
+    );
+    expect(founder.querySelector('.ja-glow')).not.toBeNull();
+    const minis = team.querySelectorAll('[data-team-mini]');
+    expect(minis).toHaveLength(3);
+    for (const mini of minis) expect(mini).toHaveClass('max-xs:hidden');
+    expect(team.querySelector('[data-sample-tag]')).toBeNull(); // nothing here is sample data
+    const hrefs = within(team)
+      .getAllByRole('link')
+      .map((a) => a.getAttribute('href'));
+    expect(hrefs).toEqual(['/temsilci-dogrulama', '/hakkimizda', '/kariyer']);
+  });
+
+  it('without a published founder row the minis carry the section', () => {
+    const unpublished = withCollections(TR, {
+      founder: [{ name: 'Ad Soyad', titleId: 'about.047', photoSrc: null, published: false }],
+    });
+    renderWithIntl(<TeamSection locale="tr" bundle={unpublished} />);
+    expect(screen.getByTestId('team')).toBeInTheDocument();
+    expect(screen.queryByTestId('team-founder')).toBeNull();
   });
 });
 
@@ -100,22 +113,54 @@ describe('WorkWithUs', () => {
   });
 });
 
-describe('GuidesSection (W4)', () => {
-  it('renders nothing below the six-Turkish-bodies threshold', () => {
-    const { container } = renderWithIntl(<GuidesSection locale="tr" bundle={TR} />);
-    expect(container).toBeEmptyDOMElement();
+describe('GuidesSection (owner 2026-10-05: the blog rows; unwritten guides are not links)', () => {
+  it('TR: no Turkish body yet — the featured card and three rows, none a link, each "yakında"', () => {
+    renderWithIntl(<GuidesSection locale="tr" bundle={TR} />);
+    const guides = screen.getByTestId('guides');
+    const featured = screen.getByTestId('guide-featured');
+    expect(featured.tagName).toBe('ARTICLE');
+    expect(within(featured).getByRole('heading', { level: 3 })).toHaveTextContent(
+      'Yabancı işçiler için çalışma izni süreci',
+    );
+    expect(featured).toHaveTextContent(TR.strings['home.177']);
+    expect(featured).not.toHaveTextContent(TR.strings['home.178']);
+    expect(featured.querySelector('[data-placeholder^="blog-cover-"]')).not.toBeNull();
+    const rows = screen.getByTestId('guides-list').querySelectorAll('[data-guide-row]');
+    expect(rows).toHaveLength(3);
+    expect(within(guides).getAllByTestId('guide-soon')).toHaveLength(4);
+    expect(within(guides).getAllByTestId('guide-soon')[0]).toHaveTextContent('yakında');
+    const articleLinks = within(guides)
+      .getAllByRole('link')
+      .filter((a) => a.getAttribute('href') !== '/blog');
+    expect(articleLinks).toHaveLength(0);
+    expect(screen.getByTestId('guides-list')).toHaveClass('max-xs:hidden');
   });
 
-  it('once the blog is visible, the newest written article is the featured card', () => {
+  it('EN: the written article is the featured link; four planned rows carry the tag', () => {
+    renderWithIntl(<GuidesSection locale="en" bundle={EN} />, { locale: 'en' });
+    const featured = screen.getByTestId('guide-featured');
+    expect(featured.tagName).toBe('A');
+    expect(featured.getAttribute('href')).toContain('turkey-work-permit-process-employer-guide');
+    expect(featured).toHaveTextContent(EN.strings['home.178']);
+    const rows = screen.getByTestId('guides-list').querySelectorAll('[data-guide-row]');
+    expect(rows).toHaveLength(4);
+    expect(within(screen.getByTestId('guides')).getAllByTestId('guide-soon')).toHaveLength(4);
+    expect(rows[0]).toHaveTextContent('5 min read');
+  });
+
+  it('written articles lead, newest first; renders nothing without blog rows', () => {
     const blog = Array.from({ length: 6 }, (_, i) =>
       blogPost(`guide-${i}`, `2026-0${i + 1}-10`, { tr: true, en: false }),
     );
     renderWithIntl(<GuidesSection locale="tr" bundle={withCollections(TR, { blog })} />);
-    const guides = screen.getByTestId('guides');
-    expect(within(guides).getAllByRole('heading', { level: 3 })[0]).toHaveTextContent('guide-5 TR');
-    expect(
-      within(guides).getAllByRole('link', { name: TR.strings['home.176'] })[0],
-    ).toHaveAttribute('href', '/blog');
+    const featured = screen.getByTestId('guide-featured');
+    expect(featured.tagName).toBe('A');
+    expect(featured).toHaveTextContent('guide-5 TR');
+    cleanup();
+    const { container } = renderWithIntl(
+      <GuidesSection locale="tr" bundle={withCollections(TR, { blog: [] })} />,
+    );
+    expect(container).toBeEmptyDOMElement();
   });
 });
 
@@ -126,6 +171,7 @@ describe('FaqSection', () => {
     });
     const faq = screen.getByTestId('faq');
     expect(within(faq).getAllByRole('heading', { level: 3 })).toHaveLength(6);
+    expect(faq.querySelector('[data-variant="cards"]')).not.toBeNull();
     const jsonLd = [...container.querySelectorAll('script[type="application/ld+json"]')].map(
       (s) => s.textContent ?? '',
     );
@@ -137,20 +183,24 @@ describe('FaqSection', () => {
   });
 });
 
-describe('ContactStrip (ClosingCtaBand)', () => {
-  it('three doors: #proposal, WhatsApp and call (tracked page_cta); no Telegram (W226)', () => {
+describe('ContactStrip (page-local band)', () => {
+  it('three doors under the copy: #proposal, WhatsApp (live dot) and call (tracked page_cta); no Telegram (W226)', () => {
     renderWithIntl(<ContactStrip locale="tr" bundle={TR} />);
     const band = screen.getByTestId('cta-band');
     expect(within(band).getByRole('heading', { level: 2 })).toHaveTextContent(
       TR.strings['home.184'],
     );
-    const hrefs = within(band)
-      .getAllByRole('link')
-      .map((a) => a.getAttribute('href'));
+    const links = within(band).getAllByRole('link');
+    const hrefs = links.map((a) => a.getAttribute('href'));
     expect(hrefs[0]).toBe('#proposal');
     expect(hrefs[1]).toMatch(/^https:\/\/wa\.me\/905011240340\?text=/);
     expect(hrefs).toHaveLength(3);
     expect(hrefs).not.toContain(TR.settings.telegramUrl);
-    expect(hrefs).toContain(`tel:${TR.settings.phone}`);
+    expect(hrefs[2]).toBe(`tel:${TR.settings.phone}`);
+    expect(links[1].querySelector('.ja-live')).not.toBeNull();
+    // ≤ 460 px: "Request workers" and WhatsApp as full-width rows, the call button hidden
+    expect(links[0]).toHaveClass('max-xs:w-full');
+    expect(links[1]).toHaveClass('max-xs:w-full');
+    expect(links[2]).toHaveClass('max-xs:hidden');
   });
 });

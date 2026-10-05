@@ -33,3 +33,35 @@ export function matchKeys(
 export function countLabel(n: number, forms: { one: string; other: string }): string {
   return (n === 1 ? forms.one : forms.other).replace('{n}', String(n));
 }
+
+/** The labels the result line needs, resolved on the server (W148). */
+export type ResultLineForms = {
+  one: string; // sys.blog.tools.results.one — "{n} yazı" / "{n} article"
+  other: string; // sys.blog.tools.results.other
+  forQuote: string; // blog.085 — "“" / "for “"
+};
+
+/**
+ * The design's result line (`resultLine`, Blog.dc.html ~1043): the count with the query
+ * ("3 yazı “izin”" / "3 articles for “permit”"), else with the topic ("2 yazı · Mevzuat"), else
+ * the index total ("22 articles"). Built from the catalogue's own pieces — no new copy.
+ */
+export function resultLine({
+  shown,
+  total,
+  query,
+  topic,
+  forms,
+}: {
+  shown: number;
+  total: number;
+  query: string;
+  /** the active topic's label, or null for "all" */
+  topic: string | null;
+  forms: ResultLineForms;
+}): string {
+  const q = query.trim();
+  if (q) return `${countLabel(shown, forms)} ${forms.forQuote}${q}”`;
+  if (topic) return `${countLabel(shown, forms)} · ${topic}`;
+  return countLabel(total, forms);
+}

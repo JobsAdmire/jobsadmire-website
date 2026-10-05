@@ -40,24 +40,34 @@ describe('Faq', () => {
     expect(faq[0].mainEntity).toHaveLength(9);
     expect(faq[0].mainEntity[3].name).toBe(tfEn('wp.340'));
     expect(faq[0].mainEntity[3].acceptedAnswer.text).toBe(en.sys.wp.faq.exemptionAnswer);
-    expect(within(region).getByRole('link', { name: tfEn('wp.332') })).toHaveAttribute(
+    expect(within(region).getByRole('link', { name: new RegExp(tfEn('wp.332')) })).toHaveAttribute(
       'href',
       waLink('905011240340', 'Hello JobsAdmire, I have a work permit question.'),
     );
-    expect(within(region).getByRole('link', { name: tfEn('wp.333') })).toHaveAttribute(
+    expect(within(region).getByRole('link', { name: new RegExp(tfEn('wp.333')) })).toHaveAttribute(
       'href',
       `mailto:info@jobsadmire.com?subject=${encodeURIComponent('Work permit question')}`,
     );
+    // parity S14.2: the rows layout shows the numbers, and ≤ 700 px the card is hidden
+    expect(region).toHaveTextContent('+90 501 124 03 40');
+    expect(region).toHaveTextContent('info@jobsadmire.com');
     expect(collisionsInTree(container)).toEqual([]);
   });
 });
 
 describe('RelatedArticles (W4)', () => {
-  it('renders nothing below the blog threshold — the real bundle has 0 Turkish bodies', () => {
+  it('below the blog threshold (0 Turkish bodies) shows the design’s three sample cards with the örnek tag and no /blog link', () => {
     const { container } = renderWithIntl(
       <RelatedArticles bundle={BUNDLES.tr} locale="tr" tf={tfTr} />,
     );
-    expect(container).toBeEmptyDOMElement();
+    const region = screen.getByTestId('wp-related');
+    expect(region).toHaveTextContent(tfTr('wp.351'));
+    expect(container.querySelector('[data-sample-tag]')).not.toBeNull();
+    const cards = within(screen.getByTestId('wp-related-sample')).getAllByRole('article');
+    expect(cards).toHaveLength(3);
+    expect(cards[0]).toHaveTextContent(tfTr('wp.353'));
+    expect(cards[2]).toHaveTextContent(tfTr('wp.358'));
+    expect(within(region).queryAllByRole('link')).toHaveLength(0);
   });
 
   it('once the threshold is met, shows up to three work-permit posts with a body in this locale', () => {

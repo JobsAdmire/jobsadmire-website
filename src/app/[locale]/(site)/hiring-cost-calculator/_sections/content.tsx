@@ -6,6 +6,23 @@ import { Tabs } from '@/design/primitives/Tabs';
 import { Link } from '@/i18n/navigation';
 import { sgkRateLabel, updatedAtLabel } from '@/lib/calculator';
 import { formatInt, formatTRY } from '@/lib/format/money';
+import {
+  AlertCircleIcon,
+  ClockIcon,
+  DollarIcon,
+  GradCapIcon,
+  IconTile,
+  LockIcon,
+  PlaneIcon,
+  ShieldCheckIcon,
+  StarIcon,
+  TargetIcon,
+  UserIcon,
+  WalletIcon,
+  WhatsAppIcon,
+  XCircleIcon,
+  type TileTone,
+} from '../_components/icons';
 import { PassCheckLoader, QuotaLoader, SalaryGuideLoader } from '../_components/LazyBinders';
 import { LiveSgkRate } from '../_components/LiveSgkRate';
 import { BarLook, ChipsLook, StepperLook, TriStateLook } from '../_components/Lookalikes';
@@ -28,7 +45,8 @@ import { Dot, KICKER, KICKER_DARK, KICKER_SM, KICKER_SM_PALE, Lines, Note, Tick 
  * through `Sentence` (trimmed fragments, `_lib/fragments.ts`). Each island is mounted through its
  * `LazyIsland` binder with a DOM-matched server fallback built from the same view model (W132).
  * The design's phone-only variants are `md:hidden`, the desktop-only parts `max-md:hidden` —
- * both in the DOM (W10/W119). The design's decorative card icons are omitted (delta 9).
+ * both in the DOM (W10/W119). The design's card icons are page-local inline SVGs
+ * (`_components/icons.tsx`, 24 × 24, `currentColor`) on the design's tinted tiles.
  */
 
 const b = (text: string): Run => ({ b: text });
@@ -78,10 +96,12 @@ const BASIS_CARD =
 export function Basis({ ctx }: { ctx: CalcCtx }) {
   const { t, locale, rateConfig } = ctx;
   const permits = t('calc.084');
-  const cards: { title: string; body: ReactNode }[] = [
-    { title: t('calc.078'), body: t('calc.079') },
-    { title: t('calc.080'), body: t('calc.081') },
+  const cards: { title: string; body: ReactNode; icon: ReactNode; tone: TileTone }[] = [
+    { title: t('calc.078'), body: t('calc.079'), icon: <DollarIcon />, tone: 'blue' },
+    { title: t('calc.080'), body: t('calc.081'), icon: <UserIcon />, tone: 'green' },
     {
+      icon: <LockIcon />,
+      tone: 'navy',
       title: t('calc.082'),
       body: (
         <Sentence
@@ -104,19 +124,22 @@ export function Basis({ ctx }: { ctx: CalcCtx }) {
         />
       ),
     },
-    { title: t('calc.085'), body: t('calc.086') },
+    { title: t('calc.085'), body: t('calc.086'), icon: <PlaneIcon />, tone: 'amber' },
   ];
   return (
     <>
       <div className={BASIS_GRID}>
         {cards.map((c) => (
           <div key={c.title} className={BASIS_CARD}>
+            <IconTile tone={c.tone} className="mb-[13px] xl:mb-[9.75px] max-md:hidden">
+              {c.icon}
+            </IconTile>
             <h3 className="m-0 mb-1.5 text-body font-extrabold text-ink">{c.title}</h3>
             <p className="m-0 text-body-sm leading-[1.6] text-text-secondary">{c.body}</p>
           </div>
         ))}
       </div>
-      <Note tone="amber" className="mt-[22px] xl:mt-[16.5px]">
+      <Note tone="amber" className="mt-[22px] xl:mt-[16.5px]" icon={<AlertCircleIcon />}>
         <Sentence runs={[b(t('calc.087')), t('calc.088')]} />
       </Note>
       {/* D17: the "last updated" date is rateConfig.updatedAt, never typed (design line 2617) */}
@@ -124,8 +147,12 @@ export function Basis({ ctx }: { ctx: CalcCtx }) {
         data-testid="calc-updated"
         className="m-0 mt-[18px] xl:mt-[13.5px] flex flex-wrap items-center justify-center gap-2.5 text-body-sm text-text-tertiary max-md:justify-start"
       >
-        <span className="inline-flex items-center rounded-pill border border-tint-border bg-white px-[15px] xl:px-[11.25px] py-1.5 font-bold text-text-secondary">
-          <Sentence runs={[t('calc.089'), b(updatedAtLabel(rateConfig, locale))]} />
+        <span className="inline-flex items-center gap-[7px] xl:gap-[5.25px] rounded-pill border border-tint-border bg-white px-[15px] xl:px-[11.25px] py-1.5 font-bold text-text-secondary">
+          <ClockIcon size={14} className="shrink-0 text-blue" />
+          {/* one span: a flex item per fragment would drop the space before the date */}
+          <span>
+            <Sentence runs={[t('calc.089'), b(updatedAtLabel(rateConfig, locale))]} />
+          </span>
         </span>
         <span>{t('calc.090')}</span>
       </p>
@@ -148,28 +175,32 @@ export function Salaries({ ctx }: { ctx: CalcCtx }) {
       label: industryLabels[i] ?? i,
     })),
   ];
+  // S4.2: the design's order is heading, industry chips, THEN the legend — the legend goes into
+  // the guide view (below its chips) instead of above the island.
+  const legend = (
+    <ul className="m-0 mb-[22px] xl:mb-[16.5px] flex list-none flex-wrap items-center gap-[18px] xl:gap-[13.5px] p-0 text-[12.5px] font-bold text-text-secondary xl:text-[11px]">
+      <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
+        <span
+          aria-hidden="true"
+          className="h-[7px] w-[22px] rounded-pill bg-[linear-gradient(90deg,#1899d5_0%,#5cc0ef_100%)]"
+        />
+        {t('calc.093')}
+      </li>
+      <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
+        <span aria-hidden="true" className="h-[13px] w-0.5 bg-ink" />
+        <Sentence runs={[t('calc.094'), formatTRY(rateConfig.legalMinGross, locale)]} />
+      </li>
+      <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
+        <span
+          aria-hidden="true"
+          className="h-[9px] w-[9px] rounded-[3px] border border-success-border bg-success-surface"
+        />
+        {t('calc.095')}
+      </li>
+    </ul>
+  );
   return (
     <>
-      <ul className="m-0 mb-[22px] xl:mb-[16.5px] flex list-none flex-wrap items-center gap-[18px] xl:gap-[13.5px] p-0 text-[12.5px] font-bold text-text-secondary xl:text-[11px]">
-        <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
-          <span
-            aria-hidden="true"
-            className="h-[7px] w-[22px] rounded-pill bg-[linear-gradient(90deg,#1899d5_0%,#5cc0ef_100%)]"
-          />
-          {t('calc.093')}
-        </li>
-        <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
-          <span aria-hidden="true" className="h-[13px] w-0.5 bg-ink" />
-          <Sentence runs={[t('calc.094'), formatTRY(rateConfig.legalMinGross, locale)]} />
-        </li>
-        <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
-          <span
-            aria-hidden="true"
-            className="h-[9px] w-[9px] rounded-[3px] border border-success-border bg-success-surface"
-          />
-          {t('calc.095')}
-        </li>
-      </ul>
       {roles.length > 0 ? (
         <SalaryGuideLoader
           locale={locale}
@@ -180,6 +211,7 @@ export function Salaries({ ctx }: { ctx: CalcCtx }) {
           industryLabels={industryLabels}
           scaleMin={scaleMin}
           scaleMax={scaleMax}
+          legend={legend}
           fallback={
             <SalaryGuideView
               rows={buildGuideRows({
@@ -195,6 +227,7 @@ export function Salaries({ ctx }: { ctx: CalcCtx }) {
               labels={guide}
               scaleMin={scaleMin}
               scaleMax={scaleMax}
+              legend={legend}
               filter={<ChipsLook options={filterOptions} value="all" />}
               live={false}
             />
@@ -354,9 +387,14 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
         data-testid="calc-longterm"
         className="mx-auto mt-[26px] xl:mt-[19.5px] max-w-[1080px] rounded-xl border border-border-1 bg-white px-[34px] py-8 shadow-[0_18px_48px_rgba(22,60,90,0.10)] max-md:mt-3 max-md:rounded-sm max-md:p-[15px] max-md:shadow-none xl:max-w-[1040px] xl:px-[25.5px] xl:py-6"
       >
-        <h3 className="m-0 mb-2 text-[22px] font-extrabold tracking-[-0.4px] xl:tracking-[-0.3px] text-ink max-md:text-[18px] xl:text-[16.5px]">
-          {t('calc.225')}
-        </h3>
+        <div className="mb-2 flex items-center gap-[11px] xl:gap-[8.25px]">
+          <IconTile tone="green" size="sm">
+            <TargetIcon size={18} />
+          </IconTile>
+          <h3 className="m-0 text-[22px] font-extrabold tracking-[-0.4px] xl:tracking-[-0.3px] text-ink max-md:text-[18px] xl:text-[16.5px]">
+            {t('calc.225')}
+          </h3>
+        </div>
         <p className="m-0 mb-6 max-w-[780px] text-[15px] leading-[1.65] text-text-tertiary max-md:mb-3.5 max-md:text-[13.5px] max-md:leading-[1.55] xl:text-[11.25px]">
           {t('calc.226')}
         </p>
@@ -526,20 +564,20 @@ function Exemptions({ ctx }: { ctx: CalcCtx }) {
       <p className="m-0 border-b border-border-3 bg-pale-2 px-[26px] xl:px-[19.5px] py-4 text-eyebrow font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-text-tertiary max-md:px-3.5 max-md:py-3">
         {t('calc.172')}
       </p>
-      <div className="px-[26px] xl:px-[19.5px] py-[22px] xl:py-[16.5px] max-md:px-3.5 max-md:py-[15px]">
-        <Tabs
-          defaultId="sector"
-          panelClassName="ja-panel-soft"
-          tabs={groups.map((g) => ({
-            id: g.id,
-            label: t(g.tabId),
-            panel: panel(g.introId, g.rows),
-          }))}
-        />
-        <p className="m-0 mt-1.5 text-body-sm leading-[1.6] text-text-tertiary">
-          <Sentence runs={[b(t('calc.173')), t('calc.174')]} />
-        </p>
-      </div>
+      {/* S6.1: the design's tab bar spans the card edge to edge, under the heading bar */}
+      <Tabs
+        defaultId="sector"
+        variant="underline"
+        panelClassName="ja-panel-soft px-[26px] xl:px-[19.5px] py-[22px] xl:py-[16.5px] max-md:px-3.5 max-md:py-[15px]"
+        tabs={groups.map((g) => ({
+          id: g.id,
+          label: t(g.tabId),
+          panel: panel(g.introId, g.rows),
+        }))}
+      />
+      <p className="m-0 px-[26px] xl:px-[19.5px] pb-[22px] xl:pb-[16.5px] text-body-sm leading-[1.6] text-text-tertiary max-md:px-3.5 max-md:pb-[15px]">
+        <Sentence runs={[b(t('calc.173')), t('calc.174')]} />
+      </p>
     </div>
   );
 }
@@ -735,8 +773,12 @@ export function PassCheck({ ctx }: { ctx: CalcCtx }) {
               target="_blank"
               rel="noopener noreferrer"
               data-testid="pass-send"
-              className={buttonClassName('success', 'lg', 'w-full')}
+              className={buttonClassName('success-solid', 'lg', 'w-full', {
+                shape: 'rect',
+                radius: 13,
+              })}
             >
+              <WhatsAppIcon size={17} />
               {pass.pcSend}
             </ContactLink>
           }
@@ -752,25 +794,32 @@ const INC = {
   blue: {
     card: 'flex flex-col rounded-md border-[1.5px] border-tint-border bg-white px-6 py-[26px] xl:py-[19.5px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-tint-border bg-tint px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-blue-safe xl:text-[11px]',
+      'rounded-pill border border-tint-border bg-tint px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-blue-safe xl:text-[11px]',
     sub: 'm-0 mb-2 text-[13px] xl:text-[11px] font-extrabold text-blue-safe',
   },
   green: {
     card: 'flex flex-col rounded-md border-[1.5px] border-success-border bg-white px-6 py-[26px] xl:py-[19.5px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-success-border bg-success-surface px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-success-text xl:text-[11px]',
+      'rounded-pill border border-success-border bg-success-surface px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-success-text xl:text-[11px]',
     sub: 'm-0 mb-2 text-[13px] xl:text-[11px] font-extrabold text-success-text',
   },
   plain: {
     card: 'flex flex-col rounded-md border border-border-2 bg-white px-6 py-[26px] xl:py-[19.5px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-border-2 bg-pale-1 px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-text-secondary xl:text-[11px]',
+      'rounded-pill border border-border-2 bg-pale-1 px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-text-secondary xl:text-[11px]',
     sub: 'm-0 mb-2 text-[13px] xl:text-[11px] font-extrabold text-[#253063]',
   },
 } as const;
 
+const INC_TILE: Record<keyof typeof INC, TileTone> = {
+  blue: 'blue',
+  green: 'green',
+  plain: 'navy',
+};
+
 function IncentiveCard({
   tone,
+  icon,
   badge,
   title,
   sub,
@@ -778,6 +827,7 @@ function IncentiveCard({
   foot,
 }: {
   tone: keyof typeof INC;
+  icon: ReactNode;
   badge: string;
   title: string;
   sub: string;
@@ -787,7 +837,10 @@ function IncentiveCard({
   const c = INC[tone];
   return (
     <div className={c.card}>
-      <span className={c.badge}>{badge}</span>
+      <div className="mb-3.5 flex items-center justify-between gap-2.5">
+        <IconTile tone={INC_TILE[tone]}>{icon}</IconTile>
+        <span className={c.badge}>{badge}</span>
+      </div>
       <h3 className="m-0 mb-1 text-[17px] font-extrabold text-ink xl:text-[12.75px]">{title}</h3>
       <p className={c.sub}>{sub}</p>
       <p className="m-0 mb-3.5 text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
@@ -862,6 +915,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
         <div className="mb-5 grid gap-5 lg:grid-cols-3">
           <IncentiveCard
             tone="blue"
+            icon={<WalletIcon />}
             badge={t('calc.388')}
             title={t('calc.330')}
             sub={t('calc.331')}
@@ -893,6 +947,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
           />
           <IncentiveCard
             tone="green"
+            icon={<DollarIcon />}
             badge={t('calc.388')}
             title={t('calc.332')}
             sub={t('calc.337')}
@@ -906,6 +961,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
           />
           <IncentiveCard
             tone="plain"
+            icon={<StarIcon />}
             badge={t('calc.389')}
             title={t('calc.333')}
             sub={t('calc.334')}
@@ -914,13 +970,18 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
           />
         </div>
         <div className="mb-5 rounded-md border border-border-2 bg-white px-7 py-[26px] xl:py-[19.5px]">
-          <h3 className="m-0 mb-4 text-[18px] font-extrabold text-ink xl:text-[13.5px]">
-            {/* TR: "Devletin öde" + "mediği" + "şeyler" — the suffix stays glued (fragments.ts) */}
-            <Sentence
-              runs={[t('calc.342'), { em: t('calc.343') }, t('calc.344')]}
-              em="not-italic underline decoration-warning-border decoration-[3px] underline-offset-[3px]"
-            />
-          </h3>
+          <div className="mb-4 flex items-center gap-[11px] xl:gap-[8.25px]">
+            <IconTile tone="grey" size="sm">
+              <XCircleIcon size={16} />
+            </IconTile>
+            <h3 className="m-0 text-[18px] font-extrabold text-ink xl:text-[13.5px]">
+              {/* TR: "Devletin öde" + "mediği" + "şeyler" — the suffix stays glued (fragments.ts) */}
+              <Sentence
+                runs={[t('calc.342'), { em: t('calc.343') }, t('calc.344')]}
+                em="not-italic underline decoration-warning-border decoration-[3px] underline-offset-[3px]"
+              />
+            </h3>
+          </div>
           <div className="grid gap-x-[34px] xl:gap-x-[25.5px] gap-y-[22px] xl:gap-y-[16.5px] lg:grid-cols-2">
             {(
               [
@@ -944,7 +1005,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
             <Sentence runs={[b(t('calc.353')), t('calc.354')]} />
           </p>
         </div>
-        <Note tone="amber">
+        <Note tone="amber" icon={<AlertCircleIcon size={19} />}>
           <Sentence runs={[b(t('calc.355')), t('calc.356')]} />
         </Note>
       </div>
@@ -1040,6 +1101,7 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
       </ul>
       <Note
         tone="green"
+        icon={<ShieldCheckIcon size={20} />}
         className="mx-auto mt-[22px] xl:mt-[16.5px] max-w-[1080px] max-md:hidden xl:max-w-[1040px]"
       >
         <Sentence runs={[t('calc.134'), b(t('calc.135')), t('calc.136'), b(t('calc.137'))]} />
@@ -1072,12 +1134,14 @@ const RULE_ROW = 'px-3.5 py-[11px] xl:py-[8.25px] text-[13px] xl:text-[11px] lea
 
 function StudentPhoneCard({
   tone,
+  icon,
   title,
   sub,
   cells,
   note,
 }: {
   tone: keyof typeof STUDENT;
+  icon: ReactNode;
   title: string;
   sub: string;
   cells: readonly (readonly [string, string])[];
@@ -1086,14 +1150,19 @@ function StudentPhoneCard({
   const s = STUDENT[tone];
   return (
     <div className={s.card}>
-      <p className="m-0 mb-2.5">
-        <span className="block text-[14.5px] xl:text-[11px] font-extrabold leading-[1.2] text-ink">
-          {title}
-        </span>
-        <span className="block text-[11.5px] xl:text-[11px] font-bold text-text-tertiary">
-          {sub}
-        </span>
-      </p>
+      <div className="mb-2.5 flex items-center gap-2.5">
+        <IconTile tone={tone === 'amber' ? 'blue' : 'green'} size="xs">
+          {icon}
+        </IconTile>
+        <p className="m-0 min-w-0">
+          <span className="block text-[14.5px] xl:text-[11px] font-extrabold leading-[1.2] text-ink">
+            {title}
+          </span>
+          <span className="block text-[11.5px] xl:text-[11px] font-bold text-text-tertiary">
+            {sub}
+          </span>
+        </p>
+      </div>
       <div className="grid grid-cols-2 gap-[7px] xl:gap-[5.25px]">
         {cells.map(([value, label]) => (
           <p key={value} className={`m-0 ${s.cell}`}>
@@ -1111,19 +1180,28 @@ function StudentPhoneCard({
 
 function TierCard({
   tone,
+  icon,
   title,
   sub,
   items,
 }: {
   tone: keyof typeof TIER;
+  icon: ReactNode;
   title: string;
   sub: string;
   items: Run[][];
 }) {
   return (
     <div className={TIER[tone]}>
-      <h3 className="m-0 text-[17.5px] font-extrabold text-ink xl:text-[13.1px]">{title}</h3>
-      <p className="m-0 mb-3.5 text-[13px] xl:text-[11px] font-bold text-text-tertiary">{sub}</p>
+      <div className="mb-3.5 flex items-center gap-[11px] xl:gap-[8.25px]">
+        <IconTile tone={tone === 'amber' ? 'blue' : 'green'} size="md">
+          {icon}
+        </IconTile>
+        <div className="min-w-0">
+          <h3 className="m-0 text-[17.5px] font-extrabold text-ink xl:text-[13.1px]">{title}</h3>
+          <p className="m-0 text-[13px] xl:text-[11px] font-bold text-text-tertiary">{sub}</p>
+        </div>
+      </div>
       <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
         {items.map((runs, i) => (
           <li key={i} className="flex items-start gap-2.5">
@@ -1160,6 +1238,7 @@ export function Students({ ctx }: { ctx: CalcCtx }) {
         {/* the design types the phone subtitle of the second card (line 1440); calc.297 is its id */}
         <StudentPhoneCard
           tone="amber"
+          icon={<GradCapIcon size={16} />}
           title={t('calc.289')}
           sub={t('calc.290')}
           cells={[
@@ -1170,6 +1249,7 @@ export function Students({ ctx }: { ctx: CalcCtx }) {
         />
         <StudentPhoneCard
           tone="green"
+          icon={<StarIcon size={16} />}
           title={t('calc.296')}
           sub={t('calc.297')}
           cells={[
@@ -1206,6 +1286,7 @@ export function Students({ ctx }: { ctx: CalcCtx }) {
           {/* the design types both subtitles (lines 1447, 1461); calc.263/271 are their ids */}
           <TierCard
             tone="amber"
+            icon={<GradCapIcon />}
             title={t('calc.262')}
             sub={t('calc.263')}
             items={[
@@ -1216,6 +1297,7 @@ export function Students({ ctx }: { ctx: CalcCtx }) {
           />
           <TierCard
             tone="green"
+            icon={<StarIcon />}
             title={t('calc.270')}
             sub={t('calc.271')}
             items={[
@@ -1272,6 +1354,7 @@ export function Faq({ ctx }: { ctx: CalcCtx }) {
       id="calc-faq"
       items={items}
       panelClassName="ja-panel-soft"
+      variant="cards"
       eyebrowId="calc.405"
       headingId="calc.383"
       bodyId="calc.384"
@@ -1282,6 +1365,8 @@ export function Faq({ ctx }: { ctx: CalcCtx }) {
         whatsappNumber: settings.whatsappNumber,
         whatsappText: sys('calc.whatsapp.generic'),
         whatsappLabelId: 'calc.052',
+        layout: 'rows',
+        whatsappDisplay: settings.phoneDisplay,
         email: settings.email,
         emailLabelId: 'calc.406',
         subject: t('calc.002'),

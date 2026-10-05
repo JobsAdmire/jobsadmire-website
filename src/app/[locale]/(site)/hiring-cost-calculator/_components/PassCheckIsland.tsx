@@ -18,6 +18,7 @@ import {
 } from '../_lib/pass-check';
 import { useEstimateInputs } from './estimate-store';
 import { PassCheckView, RESET } from './PassCheckView';
+import { WhatsAppIcon } from './icons';
 import { WhatsAppComposeLink } from './WhatsAppComposeLink';
 
 export type PassCheckIslandProps = {
@@ -104,8 +105,12 @@ export function PassCheckIsland({
           number={whatsappNumber}
           text={view.whatsappText}
           testId="pass-send"
-          className={buttonClassName('success', 'lg', 'w-full')}
+          className={buttonClassName('success-solid', 'lg', 'w-full', {
+            shape: 'rect',
+            radius: 13,
+          })}
         >
+          <WhatsAppIcon size={17} />
           {labels.pcSend}
         </WhatsAppComposeLink>
       }

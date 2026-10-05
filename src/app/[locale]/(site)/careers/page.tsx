@@ -92,6 +92,7 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
         t={t}
         locale={locale}
         openingsCount={cards.length}
+        overseasCount={cards.filter((c) => c.place === 'overseas').length}
         heroCards={heroRoles(cards)}
         sourceCountries={getCollection(bundle, 'sourceCountries')}
       />
@@ -100,6 +101,8 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
       <WaysSection t={t} />
       <HiringSteps t={t} />
       <OpenApplication t={t} settings={settings} />
+      {/* Parity S8.1/S8.2: the eyebrow + h2 centred over one 900 px column of white cards with a
+          grey chevron (design `.ja-jt-faq`), the mail line centred under them. */}
       <Section tone="pale" className="ja-reveal border-t border-border-3">
         <div data-testid="careers-faq" className="container-site">
           <FaqBlock
@@ -109,11 +112,13 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
             eyebrowId="jt.111"
             headingId="jt.112"
             openFirst
-            panelClassName="ja-panel-soft"
+            variant="cards"
+            toggle="chevron-muted"
+            layout="centered"
             items={FAQ.map(([q, a]) => ({ id: q, q: t(q), a: t(a) }))}
             footer={
               // W102: the careers mailbox from settings, never the literal jt.114.
-              <p className="mt-6 text-body-sm text-text-secondary">
+              <p className="mt-[26px] text-center text-[14.5px] font-semibold text-text-secondary xl:text-[11px]">
                 {t('jt.113')}{' '}
                 <ContactLink
                   href={mailLink(settings.careersEmail)}

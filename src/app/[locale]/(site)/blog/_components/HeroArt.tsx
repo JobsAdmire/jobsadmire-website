@@ -1,47 +1,80 @@
-import type { BlogPost } from '@/content/collections';
 import { makeT } from '@/content/pure';
-import type { Locale } from '@/i18n/routing';
-import { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 
+/** A float pauses with the rotating word: `RotationToggle` sets `data-paused` on the hero
+ *  (`group/hero`), WCAG 2.2.2. `!important` because the loop is the unlayered `.ja-float-*`
+ *  shorthand (src/design/motion/motion.css). */
+const PAUSE = 'group-data-[paused]/hero:[animation-play-state:paused]!';
+const CARD = 'absolute rounded-base border border-white/10 bg-white px-4.5 py-4 text-left text-ink';
+
+function Stars() {
+  return (
+    <span className="inline-flex gap-px text-warning">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <svg key={i} viewBox="0 0 24 24" fill="currentColor" className="h-3 w-3" focusable="false">
+          <path d="M12 2.5l2.94 6.1 6.56.9-4.78 4.6 1.17 6.6L12 17.6l-5.89 3.1 1.17-6.6L2.5 9.5l6.56-.9z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
 /**
- * The design's hero art (desktop only — hidden ≤700 px by class, W10): ONE float card built
- * from the featured row (category label, title, author · read time — the design's blog.027/028
- * hard-type "— 2026" and "8 min read", D17/B-3) and the EN·TR pill as authored (blog.032). The
- * "Most read" card (blog.030/031) has no data source in Phase A (B-2). Decorative: the same
- * article is the featured card below, so it is `aria-hidden`. Both float as the design's do
- * (`.ja-float-1` / `.ja-float-3`, src/design/motion/motion.css; still under reduced motion).
- * Renders nothing without a featured article (the TR index in Phase A).
+ * The design's hero art (Blog.dc.html 530–556, desktop only — hidden ≤ 700 px): two floating
+ * article cards and the EN · TR pill, decorative (`aria-hidden`). Fixed copy from the package
+ * ids, as the design types it (owner, 2026-10-05): card 1, tilted −4°, "Çalışma İzinleri"
+ * (blog.011) over blog.027 with the gradient avatar and blog.028; card 2, tilted 3°, the green
+ * "İşe alım" pill (blog.029) over blog.030 with five stars and "En çok okunan" (blog.031); the
+ * pill "EN · TR 2 dil" (blog.032). The three float (`ja-float-1/2/3`, 6 / 7.5 + 0.9 / 6.5 + 1.6 s);
+ * under reduced motion they stand still at their tilt.
  */
-export function HeroArt({
-  bundle,
-  locale,
-  featured,
-}: {
-  bundle: Bundle;
-  locale: Locale;
-  featured: BlogPost | null;
-}) {
-  const title = featured?.title[locale];
-  if (!featured || !title) return null;
+export function HeroArt({ bundle }: { bundle: Bundle }) {
   const t = makeT(bundle);
   return (
     <div
       aria-hidden="true"
       data-testid="blog-hero-art"
-      className="relative min-h-[240px] max-md:hidden"
+      className="relative h-70 min-w-0 max-md:hidden"
     >
-      <div className="ja-float-1 absolute top-4 left-[4%] w-[250px] rounded-base border border-white/10 bg-white px-4.5 py-4 shadow-hero-form">
-        <span className="inline-block rounded-pill bg-tint px-2.5 py-0.5 text-[11px] font-extrabold text-blue-safe">
-          {t(featured.categoryLabelId)}
-        </span>
-        <p className="text-body-sm mt-2.5 mb-2 leading-snug font-extrabold text-ink">{title}</p>
-        <p className="m-0 flex items-center gap-2 text-[11.5px] font-semibold text-text-tertiary">
-          <span className="inline-block h-[22px] w-[22px] shrink-0 rounded-pill bg-gradient-to-br from-blue to-success" />
-          {featured.author} · {formatReadMinutes(featured.readMinutes, locale)}
+      <div
+        className={`${CARD} ja-float-1 top-4.5 left-[4%] z-2 w-62.5 [transform:rotate(-4deg)] shadow-[0_26px_60px_rgba(3,10,26,0.5)] xl:shadow-[0_19.5px_45px_rgba(3,10,26,0.5)] ${PAUSE}`}
+      >
+        <div className="mb-2.5 flex items-center gap-2">
+          <span className="rounded-pill bg-tint px-2.5 py-0.75 text-[11px] font-extrabold text-blue-safe xl:text-[11px]">
+            {t('blog.011')}
+          </span>
+        </div>
+        <p className="m-0 mb-2 text-[14.5px] leading-[1.35] font-extrabold text-ink xl:text-[11px]">
+          {t('blog.027')}
+        </p>
+        <p className="m-0 flex items-center gap-2">
+          <span className="inline-block h-5.5 w-5.5 shrink-0 rounded-pill bg-gradient-to-br from-[#1e9ee8] to-success" />
+          <span className="text-[11.5px] font-semibold text-text-tertiary xl:text-[11px]">
+            {t('blog.028')}
+          </span>
         </p>
       </div>
-      <p className="ja-float-3 absolute bottom-1.5 left-[12%] m-0 inline-flex items-center gap-2 rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-[12.5px] font-extrabold text-white">
+      <div
+        className={`${CARD} ja-float-2 top-30 right-0 z-3 w-57.5 [transform:rotate(3deg)] shadow-[0_22px_52px_rgba(3,10,26,0.45)] xl:shadow-[0_16.5px_39px_rgba(3,10,26,0.45)] ${PAUSE}`}
+      >
+        <div className="mb-2.5 flex items-center gap-2">
+          <span className="rounded-pill bg-success-soft px-2.5 py-0.75 text-[11px] font-extrabold text-success-text xl:text-[11px]">
+            {t('blog.029')}
+          </span>
+        </div>
+        <p className="m-0 mb-2 text-[14.5px] leading-[1.35] font-extrabold text-ink xl:text-[11px]">
+          {t('blog.030')}
+        </p>
+        <p className="m-0 flex items-center gap-1.5">
+          <Stars />
+          <span className="text-[11.5px] font-semibold text-text-tertiary xl:text-[11px]">
+            {t('blog.031')}
+          </span>
+        </p>
+      </div>
+      <p
+        className={`ja-float-3 absolute bottom-1.5 left-[12%] z-4 m-0 inline-flex items-center gap-1.75 rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-[12.5px] font-extrabold text-white backdrop-blur-[6px] xl:text-[11px] ${PAUSE}`}
+      >
         <span className="text-sky">EN</span>
         <span className="text-white/40">·</span>
         <span className="text-sky">TR</span>

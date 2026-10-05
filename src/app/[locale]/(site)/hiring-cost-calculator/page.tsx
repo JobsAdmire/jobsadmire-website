@@ -73,11 +73,12 @@ export default async function HiringCostCalculator({
   // prefill is the generic visitor-voice line, never the estimate (W95); faces are variants
   // (W122/W127), never caller classes.
   const stickyCtas: StickyCta[] = [
-    { label: t('calc.051'), href: telLink(s.phone), variant: 'secondary' },
+    { label: t('calc.051'), href: telLink(s.phone), variant: 'outline-blue', icon: 'phone' },
     {
       label: t('calc.052'),
       href: waLink(s.whatsappNumber, sys('calc.whatsapp.generic')),
-      variant: 'success',
+      variant: 'outline-green',
+      icon: 'whatsapp',
       external: true,
     },
     { label: t('calc.053'), href: '/hire-workers', variant: 'primary' },
@@ -108,6 +109,7 @@ export default async function HiringCostCalculator({
         showAfterPx={700}
         hideNearId="calc-cta"
         live
+        tone="light"
       />
       <CalcSection
         id="salaries"

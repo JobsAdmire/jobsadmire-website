@@ -213,6 +213,7 @@ export function CalculatorIsland({
                 name="calc-sheet-industry"
                 legend={sys('calc.a11y.industries')}
                 legendHidden
+                face="solid"
                 value={sheetIndustry}
                 onChange={setSheetIndustry}
                 options={[
@@ -257,7 +258,7 @@ export function CalculatorIsland({
           </div>
           <div>
             <RowHead label={labels.cWorkers} value={view.headcountText} hidden />
-            <div className="flex flex-wrap items-end gap-2.5">
+            <div className="flex flex-wrap items-center gap-2.5">
               <Stepper
                 id="calc-headcount"
                 label={labels.cWorkers}
@@ -275,6 +276,9 @@ export function CalculatorIsland({
                 legend={sys('calc.a11y.headcountPresets')}
                 legendHidden
                 stretch
+                face="solid"
+                compact
+                className="md:ml-1"
                 value={presetValue(view.headcount)}
                 onChange={(v) => pickHeadcount(Number(v))}
                 options={HEADCOUNT_OPTIONS}
@@ -288,6 +292,7 @@ export function CalculatorIsland({
               name="calc-months"
               legend={labels.cContract}
               legendHidden
+              face="solid"
               value={String(view.months)}
               onChange={(v) => {
                 const m = Number(v);
@@ -346,6 +351,8 @@ export function CalculatorIsland({
               name="calc-tier"
               legend={labels.cSgkDisc}
               legendHidden
+              face="solid"
+              compact
               value={view.sgkTier}
               onChange={(v) => {
                 // W144: estimate() throws on an unknown tier — only a known key reaches the store

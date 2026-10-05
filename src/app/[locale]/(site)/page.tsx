@@ -50,8 +50,10 @@ export async function generateMetadata({
 }
 
 /** The homepage (design/JobsAdmire Homepage v4), section for section in the design's order. No
- *  <main> here — SiteChrome owns it (R31). Sections that need live data decide for themselves
- *  whether to render (W6); no StickyCtaBar (the sticky header carries this page's #proposal CTA). */
+ *  <main> here — SiteChrome owns it (R31). Every section renders (owner 2026-10-05): the case bar
+ *  and the candidate pool show the design's sample content with the `SampleTag` (page-local
+ *  constants, D23), the team its published founder, the guides the `blog` rows; no StickyCtaBar
+ *  (the sticky header carries this page's #proposal CTA). */
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();

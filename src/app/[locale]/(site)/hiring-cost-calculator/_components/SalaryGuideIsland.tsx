@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { track } from '@/analytics/track';
@@ -22,6 +22,8 @@ export type SalaryGuideIslandProps = {
   industryLabels: Record<string, string>;
   scaleMin: string;
   scaleMax: string;
+  /** server-rendered colour key (S4.2), shown under the chips */
+  legend?: ReactNode;
 };
 
 /** The guide follows the calculator's tier (W59) and its role; "Use in calculator" sets the role,
@@ -36,6 +38,7 @@ export function SalaryGuideIsland({
   industryLabels,
   scaleMin,
   scaleMax,
+  legend,
 }: SalaryGuideIslandProps) {
   const sys = useTranslations('sys');
   const page = usePathname() ?? '/';
@@ -68,6 +71,7 @@ export function SalaryGuideIsland({
       labels={labels}
       scaleMin={scaleMin}
       scaleMax={scaleMax}
+      legend={legend}
       onUse={use}
       live
       filter={
@@ -75,6 +79,7 @@ export function SalaryGuideIsland({
           name="calc-guide-industry"
           legend={sys('calc.a11y.industries')}
           legendHidden
+          face="solid"
           value={industry}
           onChange={setIndustry}
           options={[

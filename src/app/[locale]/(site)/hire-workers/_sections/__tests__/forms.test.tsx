@@ -74,10 +74,17 @@ describe('QuickQuote', () => {
       expect(labelOf(`f-hire-quick-${name}`)).toBe(tf(id));
     }
     expect(form.querySelector('#f-hire-quick-consent')).toHaveAttribute('type', 'checkbox'); // W79
-    expect(within(form).getByRole('button', { name: tf('hire.063') })).toHaveAttribute(
-      'type',
-      'submit',
-    );
+    const submit = within(form).getByRole('button', { name: tf('hire.063') });
+    expect(submit).toHaveAttribute('type', 'submit');
+    // S3.3: the design's full-width green submit with the WhatsApp glyph, ABOVE the consent line
+    expect(tokens(submit)).toEqual(expect.arrayContaining(['w-full', 'bg-success-text']));
+    expect(submit.querySelector('svg')).not.toBeNull();
+    expect(
+      submit.compareDocumentPosition(form.querySelector('#f-hire-quick-consent')!) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    // S3.1: placeholder-only fields — the label words are the placeholder, the label stays for AT
+    expect(form.querySelector('[name="company"]')).toHaveAttribute('placeholder', tf('hire.047'));
     const desktop = screen.getByTestId('hire-quick-desktop');
     expect(tokens(desktop)).toContain('max-md:hidden');
     expect(tokens(desktop)).not.toContain('hidden');
@@ -116,7 +123,6 @@ describe('RequestForm', () => {
       ['headcount', tf('hire.056')],
       ['city', tf('hire.057')],
       ['startWhen', tf('hire.058')],
-      ['message', tr.sys.form.labels.message],
     ];
     for (const [name, label] of expected) {
       expect(form.querySelector(`[name="${name}"]`)).toHaveAttribute('id', `f-hire-full-${name}`);
@@ -129,9 +135,29 @@ describe('RequestForm', () => {
       );
     expect(values('sector')).toEqual(['', ...SECTOR_KEYS]); // W77
     expect(values('startWhen')).toEqual(['', ...START_WHEN_KEYS]); // W78
-    expect(values('dial')).toHaveLength(65); // the placeholder + the 64 countries rows (W3)
-    expect((form.querySelector('select[name="dial"]') as HTMLSelectElement).value).toBe('TR');
+    // the 64 countries rows (W3), "🇹🇷 +90" faces (SHARED 4.5); preselected, so no empty option
+    expect(values('dial')).toHaveLength(64);
+    const dial = form.querySelector('select[name="dial"]') as HTMLSelectElement;
+    expect(dial.value).toBe('TR');
+    expect(dial.selectedOptions[0].textContent).toBe('🇹🇷 +90');
+    // M11: the dial sits beside the phone in one row at every width
+    expect(dial.closest('[class*="grid-cols-[104px_minmax(0,1fr)]"]')).toContainElement(
+      form.querySelector('[name="phone"]') as HTMLElement,
+    );
     expect(form.querySelector('#f-hire-full-consent')).toHaveAttribute('type', 'checkbox'); // W79
+  });
+
+  it('S13.2/S13.4: no message box; the full-width green submit with its glyph sits above consent', () => {
+    renderWithIntl(requestForm);
+    const form = screen.getByTestId('hire-form-full');
+    expect(form.querySelector('textarea')).toBeNull();
+    const submit = within(form).getByRole('button', { name: tf('hire.063') });
+    expect(tokens(submit)).toEqual(expect.arrayContaining(['w-full', 'bg-success-text']));
+    expect(submit.querySelector('svg')).not.toBeNull();
+    expect(
+      submit.compareDocumentPosition(form.querySelector('#f-hire-full-consent')!) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it('mails with the subject only (W95); the steps and the phone tile hide ≤ 700 px (W10/W119)', () => {
@@ -146,6 +172,13 @@ describe('RequestForm', () => {
     const tel = region.querySelector('a[href="tel:+905011240340"]')!;
     expect(tokens(tel)).toContain('max-md:hidden');
     expect(tokens(tel)).not.toContain('hidden');
+    // S13.5: both direct-contact tiles lead with their 32 px icon square
+    expect(tel.querySelector('svg')).not.toBeNull();
+    expect(
+      within(region)
+        .getAllByRole('link', { name: new RegExp(tf('hire.213')) })[0]
+        .querySelector('svg'),
+    ).not.toBeNull();
   });
 });
 

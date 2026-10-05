@@ -1,4 +1,5 @@
 import { ProcessSteps, type ProcessStep } from '@/design/blocks/ProcessSteps';
+import { ClockIcon } from '@/design/chrome/icons';
 import { Section } from '@/design/primitives/Section';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -41,7 +42,9 @@ export function Process({
           {tf('hire.172')}
         </p>
         <div className="mb-11 text-center max-md:mb-7">
-          <p className="m-0 inline-flex items-center gap-2 rounded-pill border border-success-border bg-success-surface px-5 py-2 text-body-sm font-extrabold text-success-text">
+          {/* the design's total-duration pill: #eafaf1 face, #bfe8cf edge, a clock before it */}
+          <p className="m-0 inline-flex items-center gap-2 rounded-pill border border-success-soft-border bg-success-soft px-5 py-2 text-[14px] font-extrabold text-success-text max-md:px-3.75 max-md:py-1.75 max-md:text-[12.5px] xl:text-[11px]">
+            <ClockIcon size={15} />
             {tf('hire.173')}
           </p>
           {/* The design's two cross-links are absolute www.jobsadmire.com URLs — locale-aware
@@ -66,16 +69,17 @@ export function Process({
             {l2c}
           </p>
         </div>
-        <div className="mx-auto max-w-[760px]">
-          <ProcessSteps
-            bundle={bundle}
-            locale={locale}
-            steps={steps}
-            variant="cards"
-            headingLevel={3}
-            motion="timeline"
-          />
-        </div>
+        {/* SHARED 8.2 `numbered` (design ll. 1021–1033): 46 px gradient dots double-ringed in a
+            90 px column on the blue → green rail, a white r18 card per step lifting on hover,
+            the last dot and pill green; the rail draws and the rows rise 120 ms apart */}
+        <ProcessSteps
+          bundle={bundle}
+          locale={locale}
+          steps={steps}
+          variant="numbered"
+          headingLevel={3}
+          motion="timeline"
+        />
       </div>
     </Section>
   );

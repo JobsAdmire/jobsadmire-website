@@ -20,11 +20,13 @@ const PAIRS = [
 
 /**
  * "Common questions" (design lines 1071–1089): the page's own eyebrow + h2 in the design's single
- * 880 px column, then `FaqBlock` without a side column — the accordion (`singleOpen={false}` keeps
- * the design's independent toggles) and the FAQPage node (AEO only, docs/SEO.md; the page's one
- * FaqBlock). The answers include the legal-flagged home.295/297/299/301/303, rendered as authored
- * (W1/W58/W142 — home.299's ₺38,944 is on the WP-C sheet beside the model's ₺40,214). The footer is
- * the design's own line + a tracked WhatsApp CTA with the fixed hire prefill.
+ * 880 px column, then `FaqBlock` without a side column — the accordion as the design's separate
+ * white cards with the blue ⌄ (`variant="cards"`, `toggle="chevron"`, `layout="stacked"`, SHARED
+ * 6.1 — ll. 1077–1081; `singleOpen={false}` keeps the independent toggles) and the FAQPage node
+ * (AEO only, docs/SEO.md; the page's one FaqBlock). The answers include the legal-flagged
+ * home.295/297/299/301/303, rendered as authored (W1/W58/W142 — home.299's ₺38,944 is on the WP-C
+ * sheet beside the model's ₺40,214). The footer is the design's own line + a tracked WhatsApp CTA
+ * with the fixed hire prefill.
  */
 export function FaqSection({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
@@ -42,6 +44,9 @@ export function FaqSection({ locale, bundle }: SectionProps) {
             items={items}
             singleOpen={false}
             headingLevel={3}
+            variant="cards"
+            toggle="chevron"
+            layout="stacked"
             footer={
               <div className="mt-[22px] flex flex-wrap items-center gap-3">
                 <p className="m-0 text-body-sm font-bold text-text-tertiary">{tf('home.182')}</p>

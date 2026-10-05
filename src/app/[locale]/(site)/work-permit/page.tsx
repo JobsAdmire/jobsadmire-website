@@ -74,11 +74,11 @@ export default async function WorkPermit({ params }: { params: Promise<{ locale:
   // W81: the bar renders its tel:/wa.me CTAs through ContactCta → ContactLink (page_cta); the
   // hire CTA is an internal link. Faces are variants (W122/W127), never caller classes.
   const stickyCtas: StickyCta[] = [
-    { label: tf('wp.054'), href: telLink(s.phone), variant: 'secondary' },
+    { label: tf('wp.054'), href: telLink(s.phone), variant: 'outline-blue', icon: 'phone' },
     {
       label: tf('wp.035'),
       href: waLink(s.whatsappNumber, waPrefill(sys, 'question')),
-      variant: 'success',
+      variant: 'outline-green',
       external: true,
     },
     { label: tf('wp.055'), href: '/hire-workers', variant: 'primary' },
@@ -94,7 +94,13 @@ export default async function WorkPermit({ params }: { params: Promise<{ locale:
         wizard={wizard}
       />
       {/* design .ja-sticky: after 700 px of scroll, hidden while #permit-cta is near (W18) */}
-      <StickyCtaBar message={tf('wp.053')} ctas={stickyCtas} hideNearId="permit-cta" live />
+      <StickyCtaBar
+        message={tf('wp.053')}
+        ctas={stickyCtas}
+        hideNearId="permit-cta"
+        tone="light"
+        live
+      />
       <JumpNav tf={tf} />
       <AudienceRouter bundle={bundle} tf={tf} />
       <RoutesComparison tf={tf} />
