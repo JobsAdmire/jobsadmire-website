@@ -12,16 +12,24 @@ const EN = homeBundle('en');
 const FORM = <div id="proposal" />;
 
 describe('Hero (D26, W1, W6, W10, W17)', () => {
-  it('names the h1 as the one LCP element while v4-hero is a placeholder', () => {
+  // W233: v4-hero carries the licensed stock photo, so the image — not the h1 — is the page's one
+  // LCP slot (HERO_PHOTO set), and no placeholder is left in the hero.
+  it('names the hero photo as the one LCP element; the h1 carries none (D26, W233)', () => {
     const { container } = renderWithIntl(<Hero locale="tr" bundle={TR} form={FORM} />);
     const h1 = screen.getByRole('heading', { level: 1 });
     expect(h1).toHaveAttribute('data-testid', 'page-h1');
-    expect(h1).toHaveAttribute('data-lcp-slot', 'h1');
+    expect(h1).not.toHaveAttribute('data-lcp-slot');
     expect(h1).toHaveTextContent(
       `${TR.strings['home.018']}${TR.strings['home.019']}${TR.strings['home.020']}`,
     );
-    expect(container.querySelectorAll('[data-lcp-slot]')).toHaveLength(1);
-    expect(container.querySelector('[data-placeholder="v4-hero"]')).not.toBeNull();
+    const lcp = container.querySelectorAll('[data-lcp-slot]');
+    expect(lcp).toHaveLength(1);
+    expect(lcp[0].tagName).toBe('IMG');
+    expect(lcp[0]).toHaveAttribute('data-lcp-slot', 'v4-hero');
+    expect(lcp[0]).toHaveAttribute('alt', '');
+    expect(lcp[0].getAttribute('src')).toContain(encodeURIComponent('/hero/home.jpg'));
+    expect(lcp[0].closest('[aria-hidden="true"]')).not.toBeNull(); // decorative
+    expect(container.querySelector('[data-placeholder]')).toBeNull();
     expect(container.querySelector('#proposal')).not.toBeNull();
   });
 
@@ -46,14 +54,14 @@ describe('Hero (D26, W1, W6, W10, W17)', () => {
     expect(container.querySelector('.container-site')).toBeNull();
   });
 
-  // Final pass A8 (W189 A5, W210 c): the hero slot is wired in cover mode, dormant — a fixed
-  // height per band, ≥ 10 % above the tallest measured hero in that band (1,109 / 1,653 / 1,455 /
-  // 970 / 811 px at ≤ 460 / 461–700 / 701–900 / 901–1100 / ≥ 1101, both locales, final pass), so
-  // the photo, once it ships (W174), never follows the text's height (W187); its wrapper only pins
-  // it behind the hero.
+  // Final pass A8 (W189 A5, W210 c): the hero slot is wired in cover mode — a fixed height per
+  // band, ≥ 10 % above the tallest measured hero in that band (1,109 / 1,653 / 1,455 / 970 /
+  // 811 px at ≤ 460 / 461–700 / 701–900 / 901–1100 / ≥ 1101, both locales, final pass), so the
+  // photo (licensed stock since W233) never follows the text's height (W187); its wrapper only
+  // pins it behind the hero.
   it('wires v4-hero in cover mode with the measured per-band heights (A8)', () => {
     const { container } = renderWithIntl(<Hero locale="tr" bundle={TR} form={FORM} />);
-    const slot = container.querySelector<HTMLElement>('[data-placeholder="v4-hero"]')!;
+    const slot = container.querySelector<HTMLElement>('img[data-lcp-slot="v4-hero"]')!;
     expect(slot).toHaveClass('w-full', 'object-cover', 'h-(--cover-h)', 'xl:h-(--cover-h-xl)');
     expect(slot).not.toHaveClass('h-auto');
     expect(slot.style.getPropertyValue('--cover-h')).toBe('1250px');

@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
+import { expectHeroPhoto } from '../helpers/hero-photo';
 
 const ROUTES = { tr: '/calisma-izni', en: '/en/work-permit' } as const;
 /** `bundle.settings.whatsappNumber` in the Phase A LOCAL bundle. */
@@ -18,7 +19,7 @@ async function jsonLdNodes(page: Page): Promise<JsonLdNode[]> {
 const typesOf = (n: JsonLdNode) => ([] as string[]).concat(n['@type'] ?? []);
 
 for (const locale of ['tr', 'en'] as const) {
-  test(`${locale}: one page-h1 holding the only data-lcp-slot, the named wp-hero placeholder, no leaked ids or tokens (D26/W55/W1)`, async ({
+  test(`${locale}: one page-h1, the wp-hero photo holding the only data-lcp-slot, no leaked ids or tokens (D26/W55/W1/W233)`, async ({
     page,
   }) => {
     const res = await page.goto(ROUTES[locale]);
@@ -27,9 +28,10 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(page.locator('h1')).toHaveCount(1);
     const h1 = page.getByTestId('page-h1');
     await expect(h1).not.toBeEmpty();
-    await expect(h1).toHaveAttribute('data-lcp-slot', 'h1'); // §10 row 4: no photo for this page
+    await expect(page.locator('h1[data-lcp-slot]')).toHaveCount(0); // W233: the photo is the slot
     await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
-    await expect(page.locator('[data-placeholder="wp-hero"]')).toHaveCount(1);
+    await expectHeroPhoto(page.locator('img[data-lcp-slot="wp-hero"]'), '/hero/work-permit.jpg');
+    await expect(page.locator('[data-placeholder="wp-hero"]')).toHaveCount(0);
     await expect(page.locator('[data-placeholder=""]')).toHaveCount(0);
     const body = await page.locator('body').innerText();
     expect(body).not.toMatch(/\{[a-zA-Z]+\}/);

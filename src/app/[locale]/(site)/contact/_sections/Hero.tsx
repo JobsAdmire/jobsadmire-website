@@ -54,15 +54,18 @@ export function Hero({
   const lines = { open: t('contact.215'), closed: t('contact.216') };
   return (
     <Section tone="dark" className="relative overflow-hidden">
-      {/* §10 #4/D26: the full-bleed photo slot is a named placeholder under the design's two
-          overlays (`position:absolute; inset:0; width:100%; height:100%` — Contact Us l. 635), so
-          the h1 stays the LCP element. Cover mode at a fixed height per band, anchored top-left
-          (W187 / W189 A5 / final pass A8), so the placeholder spans the whole hero under the two
+      {/* §10 #4/D26: the full-bleed photo slot carries licensed stock (Antalya at sunset, owner
+          2026-10-05, W233) under the design's two overlays (`position:absolute; inset:0;
+          width:100%; height:100%` — Contact Us l. 635) — decorative and preloaded, while the h1
+          stays the page's one LCP slot. Cover mode at a fixed height per band, anchored top-left
+          (W187 / W189 A5 / final pass A8), so the photo spans the whole hero under the two
           overlays — never a box sized from the text beside it. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-0 top-0 w-full">
           <ImageSlot
             slot="contact-hero"
+            src="/hero/contact.jpg"
+            priority
             alt=""
             width={1600}
             height={900}

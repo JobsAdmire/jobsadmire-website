@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
 import { EmptyState } from '@/design/blocks/EmptyState';
-import { ImageSlot } from '@/design/blocks/ImageSlot';
+import { ImageSlot, type CoverHeights } from '@/design/blocks/ImageSlot';
 import { effectiveFromLabel, effectiveYear, isReviewDue } from '@/lib/calculator';
 import { CalculatorLoader } from '../_components/CalculatorLoader';
 import { CalculatorSkeleton } from '../_components/CalculatorSkeleton';
@@ -10,6 +10,12 @@ import type { CalcCtx } from './context';
 
 const BADGE =
   'm-0 mb-4 inline-flex items-center gap-[9px] rounded-pill border border-[rgba(74,222,128,0.35)] bg-[rgba(74,222,128,0.12)] px-4 py-1.5 text-[12px] font-extrabold uppercase tracking-[1.2px] text-[#86efac] max-md:mb-3 max-md:px-3 max-md:py-[5px] max-md:text-[11px] max-md:tracking-[1px] xl:text-[11px]';
+/** W233 (QA W220 contact-01's fix, W187 / final pass A8): the photo's fixed height per band, each
+ *  ≥ 10 % above the tallest hero — the calculator card included — measured in both locales, with
+ *  and without the island, every 10 px from 320 to 1440 (1,574 / 1,364 / 1,270 / 2,004 / 1,531 /
+ *  1,071 px at ≤ 460 / 461–560 / 561–700 / 701–900 / 901–1100 / ≥ 1101). The width-driven 16:9
+ *  box stopped at 180–810 px, so the photo ended in a hard edge under the h1 on a phone. */
+const HERO_COVER: CoverHeights = { base: 1750, md: 2250, lg: 1700, xl: 1200 };
 
 /**
  * Final pass A7 (W190 A1b, W210 a): the design's global `@media (max-width: 600px) { h1 { 32px;
@@ -17,9 +23,10 @@ const BADGE =
  * Design 559–572: the navy hero — breadcrumbs (W109: this page's own calc.001 → `/`, calc.002 →
  * this page), the D17 badge, the three-part h1 (the page's LCP element, `data-lcp-slot="h1"`,
  * D26) and the lede; `children` is the calculator card, which sits inside the hero as in the
- * design. The full-bleed photo slot `calc-hero` is a named placeholder under the 90–97 % navy
- * gradient — decorative, never preloaded, never the LCP (W55); `ImageSlot` owns its box (W129),
- * so it is wrapped, and it covers its own aspect box, not the whole hero (a (c) delta).
+ * design. The full-bleed photo slot `calc-hero` carries licensed stock (owner 2026-10-05, W233)
+ * under the 90–97 % navy gradient — decorative and preloaded, never the LCP: the h1 keeps the
+ * page's one `data-lcp-slot` (D26); `ImageSlot` owns its box (W129), so it is wrapped, and since
+ * W233 it covers the whole hero in cover mode (HERO_COVER) instead of its own aspect box.
  */
 export function Hero({ ctx, children }: { ctx: CalcCtx; children: ReactNode }) {
   const { t, sys, locale, rateConfig } = ctx;
@@ -38,7 +45,16 @@ export function Hero({ ctx, children }: { ctx: CalcCtx; children: ReactNode }) {
       className="relative overflow-hidden bg-navy pt-14 pb-[68px] max-md:pt-6 max-md:pb-[30px] xl:pt-[42px] xl:pb-[51px]"
     >
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
-        <ImageSlot slot="calc-hero" alt="" width={1600} height={900} sizes="100vw" />
+        <ImageSlot
+          slot="calc-hero"
+          src="/hero/hiring-cost-calculator.jpg"
+          priority
+          alt=""
+          width={1600}
+          height={900}
+          sizes="100vw"
+          cover={HERO_COVER}
+        />
       </div>
       <div
         aria-hidden="true"

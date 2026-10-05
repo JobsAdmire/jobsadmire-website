@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { expectHeroPhoto } from '../helpers/hero-photo';
 import { expectedRobots } from '../helpers/face';
 
 // Canonicals, hreflang and JSON-LD URLs come from SITE_URL — the production origin — whatever
@@ -30,6 +31,9 @@ test.describe('/en/blog — the index with one written article (W4)', () => {
     const res = await page.goto('/en/blog');
     expect(res?.status()).toBe(200);
     await expectOneCleanH1(page);
+    // W233: the hero photo is licensed stock — decorative and preloaded; the h1 keeps the slot
+    await expectHeroPhoto(page.locator('img[src*="blog.jpg"]'), '/hero/blog.jpg');
+    await expect(page.locator('img[data-lcp-slot]')).toHaveCount(0);
     await expect(page.getByTestId('hero-word-static')).toHaveText('employers');
     await expect(page.getByTestId('page-h1')).toHaveAccessibleName('Insights for employers');
     await expect(
@@ -99,6 +103,7 @@ test.describe('/blog — the TR index with no written article (W6)', () => {
     expect(res?.status()).toBe(200);
     await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
     await expectOneCleanH1(page);
+    await expectHeroPhoto(page.locator('img[src*="blog.jpg"]'), '/hero/blog.jpg'); // W233
     await expect(page.getByTestId('hero-word-static')).toHaveText('İşverenler');
     await expect(page.getByTestId('page-h1')).toHaveAccessibleName('İşverenler için içgörüler');
     await expect(page.getByTestId('blog-empty')).toContainText('Türkçe yazılar hazırlanıyor');

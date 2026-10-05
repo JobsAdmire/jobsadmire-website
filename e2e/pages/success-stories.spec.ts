@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { expectHeroPhoto } from '../helpers/hero-photo';
 import en from '../../src/messages/en.json';
 import tr from '../../src/messages/tr.json';
 
@@ -30,13 +31,16 @@ for (const r of ROUTES) {
       expect(body).not.toMatch(/\{[a-zA-Z]+\}|undefined|\[object /);
     });
 
-    test('names the hero image slot as a placeholder, never as the LCP element (D26/W55)', async ({
+    test('renders the hero photo (licensed stock), never as the LCP element (D26/W233)', async ({
       page,
     }) => {
       await page.goto(r.path);
-      const slot = page.locator('[data-placeholder="ss-hero"]');
-      await expect(slot).toHaveCount(1);
-      await expect(slot).not.toHaveAttribute('data-lcp-slot', /.+/);
+      await expectHeroPhoto(
+        page.locator('img[src*="success-stories.jpg"]'),
+        '/hero/success-stories.jpg',
+      );
+      await expect(page.locator('img[data-lcp-slot]')).toHaveCount(0);
+      await expect(page.locator('[data-placeholder="ss-hero"]')).toHaveCount(0);
       await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
     });
 

@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { test, expect, type Locator, type Page } from '@playwright/test';
+import { expectHeroPhoto } from '../helpers/hero-photo';
 
 const ROUTES = { tr: '/iletisim', en: '/en/contact' } as const;
 /** Canonicals, hreflang and JSON-LD URLs are built from SITE_URL, never the host this run hits. */
@@ -114,7 +115,7 @@ const valuesOf = (inputs: Locator) =>
   inputs.evaluateAll((els) => els.map((e) => (e as HTMLInputElement).value));
 
 for (const locale of ['tr', 'en'] as const) {
-  test(`${locale}: one page-h1 holding the only LCP slot, the named hero placeholder, #message once, the sections in design order, no leaked tokens (D26/W55/W17)`, async ({
+  test(`${locale}: one page-h1 holding the only LCP slot, the decorative hero photo, #message once, the sections in design order, no leaked tokens (D26/W55/W17/W233)`, async ({
     page,
   }) => {
     const res = await page.goto(ROUTES[locale]);
@@ -123,12 +124,14 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(page.locator('h1')).toHaveCount(1);
     const h1 = page.getByTestId('page-h1');
     await expect(h1).toHaveText(COPY[locale].h1);
-    await expect(h1).toHaveAttribute('data-lcp-slot', 'h1'); // the hero photo is a placeholder (§10 #4)
+    await expect(h1).toHaveAttribute('data-lcp-slot', 'h1'); // the stock photo is decorative (W233)
     await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
+    await expectHeroPhoto(page.locator('img[src*="contact.jpg"]'), '/hero/contact.jpg');
+    await expect(page.locator('img[data-lcp-slot]')).toHaveCount(0);
     const placeholders = await page
       .locator('[data-placeholder]')
       .evaluateAll((els) => els.map((el) => el.getAttribute('data-placeholder')));
-    expect(placeholders).toEqual(['contact-hero']);
+    expect(placeholders).toEqual([]);
     await expect(page.locator('#message')).toHaveCount(1);
     await expect(page.locator('#faq')).toHaveCount(1);
     const tops = await page.evaluate(() =>

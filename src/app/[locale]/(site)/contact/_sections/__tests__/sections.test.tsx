@@ -23,7 +23,7 @@ beforeEach(() => {
 afterEach(() => vi.useRealTimers());
 
 describe('Hero', () => {
-  it('EN: one h1 as the only LCP slot, the named photo placeholder, this page’s own crumbs (D26/W109)', () => {
+  it('EN: one h1 as the only LCP slot, the decorative stock photo, no placeholder, this page’s own crumbs (D26/W109/W233)', () => {
     const { container } = renderWithIntl(<Hero bundle={en} locale="en" submitCallback={idle} />, {
       locale: 'en',
     });
@@ -32,11 +32,18 @@ describe('Hero', () => {
     expect(h1).toHaveAttribute('data-testid', 'page-h1');
     expect(h1).toHaveAttribute('data-lcp-slot', 'h1');
     expect(container.querySelectorAll('[data-lcp-slot]')).toHaveLength(1);
+    expect(container.querySelector('[data-placeholder]')).toBeNull();
+    const photo = container.querySelector(`img[src*="${encodeURIComponent('/hero/contact.jpg')}"]`);
+    expect(photo).not.toBeNull();
+    expect(photo).toHaveAttribute('alt', '');
+    expect(photo).not.toHaveAttribute('data-lcp-slot');
+    expect(photo!.closest('[aria-hidden="true"]')).not.toBeNull();
+    // `priority` → next/image's `preload`: the photo is requested from the <head>
     expect(
-      [...container.querySelectorAll('[data-placeholder]')].map((el) =>
-        el.getAttribute('data-placeholder'),
+      document.head.querySelector(
+        `link[rel="preload"][as="image"][imagesrcset*="${encodeURIComponent('/hero/contact.jpg')}"]`,
       ),
-    ).toEqual(['contact-hero']);
+    ).not.toBeNull();
     const crumbs = screen.getByRole('navigation', { name: 'Breadcrumb' });
     expect(within(crumbs).getByRole('link', { name: 'Home' })).toBeInTheDocument();
     expect(within(crumbs).getByText('Contact')).toHaveAttribute('aria-current', 'page');
@@ -45,10 +52,13 @@ describe('Hero', () => {
   // QA W220 contact-01: the design's `image-slot#contact-hero` is `inset: 0; height: 100%` under
   // the two overlays. A width-driven 16:9 box stopped at 219 / 506 px while the hero ran to
   // ≈ 1,090 / 1,325 px (390 / 900) — a seam through the h1. Like hw-hero (W187, final pass A8):
-  // cover mode at a fixed height per band, anchored top-left, never sized from the text.
+  // cover mode at a fixed height per band, anchored top-left, never sized from the text. W233: the
+  // stock photo fills that box.
   it('runs the contact-hero slot in cover mode over the whole hero, anchored top-left (contact-01)', () => {
     renderWithIntl(<Hero bundle={en} locale="en" submitCallback={idle} />, { locale: 'en' });
-    const slot = document.querySelector<HTMLElement>('[data-placeholder="contact-hero"]')!;
+    const slot = document.querySelector<HTMLElement>(
+      `img[src*="${encodeURIComponent('/hero/contact.jpg')}"]`,
+    )!;
     const box = slot.parentElement!;
     const tokens = (el: Element) => (el.getAttribute('class') ?? '').split(/\s+/);
     expect(tokens(box)).toEqual(expect.arrayContaining(['absolute', 'left-0', 'top-0', 'w-full']));

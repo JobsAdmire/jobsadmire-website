@@ -1,4 +1,5 @@
 import { test, expect, type Locator, type Page } from '@playwright/test';
+import { expectHeroPhoto } from '../helpers/hero-photo';
 
 const ROUTES = { tr: '/isci-talebi', en: '/en/hire-workers' } as const;
 /** `bundle.settings.whatsappNumber` in the Phase A LOCAL bundle. */
@@ -83,7 +84,7 @@ for (const locale of ['tr', 'en'] as const) {
     await expectBareWhatsAppFallback(page, panel, 'Acme A.Ş.');
   });
 
-  test(`${locale}: one page-h1 holding the only data-lcp-slot, named placeholders, no leaked ids or tokens, metric pills (D26/W55/W1)`, async ({
+  test(`${locale}: one page-h1, the hero photo holding the only data-lcp-slot, named placeholders, no leaked ids or tokens, metric pills (D26/W55/W1/W233)`, async ({
     page,
   }) => {
     const res = await page.goto(ROUTES[locale]);
@@ -92,9 +93,11 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(page.locator('h1')).toHaveCount(1);
     const h1 = page.getByTestId('page-h1');
     await expect(h1).not.toBeEmpty();
-    await expect(h1).toHaveAttribute('data-lcp-slot', 'h1'); // the hero photo is still a placeholder
+    await expect(page.locator('h1[data-lcp-slot]')).toHaveCount(0); // W233: the photo is the slot
     await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
-    for (const slot of ['hw-hero', 'portal-shortlist', 'portal-mobile-app'])
+    await expectHeroPhoto(page.locator('img[data-lcp-slot="hw-hero"]'), '/hero/hire-workers.jpg');
+    await expect(page.locator('[data-placeholder="hw-hero"]')).toHaveCount(0);
+    for (const slot of ['portal-shortlist', 'portal-mobile-app'])
       await expect(page.locator(`[data-placeholder="${slot}"]`)).toHaveCount(1);
     await expect(page.locator('[data-placeholder=""]')).toHaveCount(0);
     const body = await page.locator('body').innerText();

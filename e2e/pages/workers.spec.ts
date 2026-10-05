@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { test, expect, type Locator, type Page } from '@playwright/test';
+import { expectHeroPhoto } from '../helpers/hero-photo';
 
 const ROUTES = { tr: '/adaylar', en: '/en/available-workers' } as const;
 type Loc = keyof typeof ROUTES;
@@ -103,7 +104,7 @@ async function jsonLdNodes(page: Page): Promise<JsonLdNode[]> {
 }
 
 for (const locale of ['tr', 'en'] as const) {
-  test(`${locale}: one page-h1 holding the only data-lcp-slot, the named aw-hero placeholder, no leaked id or token (D26/W55/W1)`, async ({
+  test(`${locale}: one page-h1, the aw-hero photo holding the only data-lcp-slot, no placeholder, no leaked id or token (D26/W55/W1/W233)`, async ({
     page,
   }) => {
     const res = await page.goto(ROUTES[locale]);
@@ -111,13 +112,17 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(page.locator('html')).toHaveAttribute('lang', locale);
     await expect(page.locator('h1')).toHaveCount(1);
     const h1 = page.getByTestId('page-h1');
-    await expect(h1).toHaveAttribute('data-lcp-slot', 'h1'); // aw-hero is a placeholder (§10 row 4)
+    await expect(page.locator('h1[data-lcp-slot]')).toHaveCount(0); // W233: the photo is the slot
     await expect(h1).toContainText(S[locale]['availworkers.025']);
     await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
+    await expectHeroPhoto(
+      page.locator('img[data-lcp-slot="aw-hero"]'),
+      '/hero/available-workers.jpg',
+    );
     const placeholders = await page
       .locator('[data-placeholder]')
       .evaluateAll((els) => els.map((el) => el.getAttribute('data-placeholder') ?? ''));
-    expect(placeholders).toEqual(['aw-hero']);
+    expect(placeholders).toEqual([]);
     const text = await page.locator('main').innerText();
     expect(text).not.toMatch(/\{[a-zA-Z]+\}|undefined|\[object /);
     expect(text).not.toMatch(/\b(?:availworkers|hire|wp)\.\d{3}\b/); // a package id as text

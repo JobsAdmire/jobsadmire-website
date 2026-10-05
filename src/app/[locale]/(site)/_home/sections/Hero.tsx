@@ -14,9 +14,10 @@ import type { SectionProps } from './types';
  * overlays, the badge, the three-line h1 (the package splits it into home.018–020 on purpose, the
  * `<br/>`s are authored), the sub, the CTAs and the metric strip. The right column is the
  * `#proposal` lead card, passed in as `form` so the page owns the server actions (Cycle 2).
- * D26: while `v4-hero` is a placeholder the h1 carries the page's one `data-lcp-slot`;
- * `HERO_PHOTO` moves it onto the image. W10: the badge and the CTA row are hidden at ≤ 460 px by
- * class, exactly as the design's `.ja-hero-1` / `.ja-hero-cta-primary` rules do.
+ * D26: `HERO_PHOTO` (licensed stock since W233) puts the page's one `data-lcp-slot` on the image;
+ * without it `v4-hero` is a placeholder and the h1 carries it. W10: the badge and the CTA row are
+ * hidden at ≤ 460 px by class, exactly as the design's `.ja-hero-1` / `.ja-hero-cta-primary`
+ * rules do.
  */
 /** The hero's own content box (W185 A1): 20 px gutters ≤ 460 and the design's 48 px from 461 to
  *  1100; from 1101 it is the sections' own box (`--container-max`, 36 px gutters, 1240 px since
@@ -27,10 +28,10 @@ const HERO_BOX =
 
 /** Final pass A8 (W189 A5, W210 c): the hero slot's cover-mode heights — fixed per band, ≥ 10 %
  *  above the tallest hero measured in that band in both locales (1,109 / 1,653 / 1,455 / 970 /
- *  811 px at ≤ 460 / 461–700 / 701–900 / 901–1100 / ≥ 1101), so the photo, once it ships
- *  (W174), never follows the text's height (W187). Dormant while HERO_PHOTO is null: the named
- *  placeholder sits behind the two overlays. Art-directed sources and a true `sizes` come with
- *  the photo (W189 A5). */
+ *  811 px at ≤ 460 / 461–700 / 701–900 / 901–1100 / ≥ 1101), so the photo (licensed stock since
+ *  W233) never follows the text's height (W187); with HERO_PHOTO null the named placeholder sits
+ *  behind the two overlays instead. Art-directed sources and a true `sizes` (W189 A5) are deferred
+ *  to the later speed work by the owner (W233). */
 const HERO_COVER: CoverHeights = { base: 1250, xs: 1850, md: 1650, lg: 1100, xl: 900 };
 
 export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode }) {

@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
+import { expectHeroPhoto } from '../helpers/hero-photo';
 
 // W92: the door variables reach only production and the `staging` preview. Every other target —
 // a local `next start`, a branch preview — has no write token, so a submission answers
@@ -94,10 +95,12 @@ for (const [route, lang] of [
     expect(res?.status()).toBe(200);
     await expect(page.locator('html')).toHaveAttribute('lang', lang);
     await expect(page.locator('h1')).toHaveCount(1);
-    // D26: the hero photo is a named placeholder, so the h1 is the page's one LCP slot.
+    // D26 (W233): the hero photo is licensed stock, so the image is the page's one LCP slot,
+    // loaded and preloaded; the h1 carries none.
     await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
-    await expect(page.locator('h1[data-testid="page-h1"][data-lcp-slot="h1"]')).toHaveCount(1);
-    await expect(page.locator('[data-placeholder="v4-hero"]')).toHaveCount(1);
+    await expect(page.locator('h1[data-testid="page-h1"]:not([data-lcp-slot])')).toHaveCount(1);
+    await expectHeroPhoto(page.locator('img[data-lcp-slot="v4-hero"]'), '/hero/home.jpg');
+    await expect(page.locator('[data-placeholder="v4-hero"]')).toHaveCount(0);
     const placeholders = await page
       .locator('[data-placeholder]')
       .evaluateAll((els) => els.map((el) => el.getAttribute('data-placeholder')));

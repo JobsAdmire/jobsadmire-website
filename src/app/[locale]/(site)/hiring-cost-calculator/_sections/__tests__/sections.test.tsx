@@ -105,7 +105,7 @@ describe('buildCalcCtx — the page’s one server read', () => {
 });
 
 describe('Hero + CalculatorCard', () => {
-  it('one h1 = the LCP slot, the calc-hero placeholder (never the LCP), W109 breadcrumbs, one BreadcrumbList', () => {
+  it('one h1 = the LCP slot, the calc-hero photo decorative (never the LCP, W233), W109 breadcrumbs, one BreadcrumbList', () => {
     const { container } = renderWithIntl(
       <Hero ctx={TR}>
         <CalculatorCard ctx={TR} />
@@ -116,13 +116,43 @@ describe('Hero + CalculatorCard', () => {
     expect(h1).toHaveAttribute('data-lcp-slot', 'h1');
     expect(h1.textContent).toBe("Türkiye'de yabancı bir işçi gerçekte ne kadara mal olur?");
     expect(container.querySelectorAll('[data-lcp-slot]')).toHaveLength(1);
-    const slot = container.querySelector('[data-placeholder="calc-hero"]');
-    expect(slot).not.toBeNull();
-    expect(slot).not.toHaveAttribute('data-lcp-slot');
+    expect(container.querySelector('[data-placeholder="calc-hero"]')).toBeNull();
+    const photo = container.querySelector(
+      `img[src*="${encodeURIComponent('/hero/hiring-cost-calculator.jpg')}"]`,
+    );
+    expect(photo).not.toBeNull();
+    expect(photo).toHaveAttribute('alt', '');
+    expect(photo).not.toHaveAttribute('data-lcp-slot');
+    expect(photo!.closest('[aria-hidden="true"]')).not.toBeNull();
+    // `priority` → next/image's `preload`: the photo is requested from the <head>
+    expect(
+      document.head.querySelector(
+        `link[rel="preload"][as="image"][imagesrcset*="${encodeURIComponent('/hero/hiring-cost-calculator.jpg')}"]`,
+      ),
+    ).not.toBeNull();
     const nav = screen.getByRole('navigation', { name: tr.sys.nav.breadcrumbs });
     expect(within(nav).getByRole('link', { name: TR.t('calc.001') })).toHaveAttribute('href', '/');
     expect(within(nav).getByText(TR.t('calc.002'))).toHaveAttribute('aria-current', 'page');
     expect(jsonLd(container).filter((n) => n['@type'] === 'BreadcrumbList')).toHaveLength(1);
+  });
+
+  // W233 (QA W220 contact-01's fix): the width-driven 16:9 box ended 180–810 px down a hero of up
+  // to 2,004 px, a hard edge under the h1 once a photo filled it. Cover mode at a fixed height per
+  // band, ≥ 10 % above the tallest hero measured (card included), never sized from the text (W187).
+  it('runs the calc-hero photo in cover mode over the whole hero (W233)', () => {
+    const { container } = renderWithIntl(<Hero ctx={TR}>{null}</Hero>);
+    const slot = container.querySelector<HTMLElement>(
+      `img[src*="${encodeURIComponent('/hero/hiring-cost-calculator.jpg')}"]`,
+    )!;
+    expect(slot.parentElement).toHaveClass('absolute', 'inset-0', 'overflow-hidden');
+    expect(slot).toHaveClass('w-full', 'object-cover', 'h-(--cover-h)', 'xl:h-(--cover-h-xl)');
+    expect(slot).not.toHaveClass('h-auto');
+    expect(slot.style.aspectRatio).toBe('');
+    expect(slot.style.getPropertyValue('--cover-h')).toBe('1750px');
+    expect(slot.style.getPropertyValue('--cover-h-sm')).toBe('1750px');
+    expect(slot.style.getPropertyValue('--cover-h-md')).toBe('2250px');
+    expect(slot.style.getPropertyValue('--cover-h-lg')).toBe('1700px');
+    expect(slot.style.getPropertyValue('--cover-h-xl')).toBe('1200px');
   });
 
   // Final pass A7 (W189 A7, W190 A1b, W210 a): the design's global `@media (max-width: 600px)

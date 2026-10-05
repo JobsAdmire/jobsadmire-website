@@ -9,7 +9,7 @@ import { getCollection } from '@/content/collections';
 import { Breadcrumbs, type Crumb } from '@/design/blocks/Breadcrumbs';
 import { ClosingCtaBand } from '@/design/blocks/ClosingCtaBand';
 import { EmptyState } from '@/design/blocks/EmptyState';
-import { ImageSlot } from '@/design/blocks/ImageSlot';
+import { ImageSlot, type CoverHeights } from '@/design/blocks/ImageSlot';
 import { MetricStrip } from '@/design/blocks/MetricStrip';
 import { Button } from '@/design/primitives/Button';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
@@ -26,6 +26,13 @@ import { WorkerStories } from './_components/WorkerStories';
 import { NEGATIVE_KPIS, STORIES_HERO_METRICS, WORKER_STORIES_CONSENTED } from './_lib/signoff';
 import { readStories, readTestimonials, storyCards } from './_lib/stories';
 import { ALL_SECTORS, type WallResultCopy } from './_lib/wall';
+
+/** W233 (QA W220 contact-01's fix, W187 / final pass A8): the hero photo's fixed height per band,
+ *  each ≥ 10 % above the tallest hero measured in both locales every 10 px from 320 to 1440 (561 /
+ *  479 / 383 / 393 / 453 / 358 px at ≤ 460 / 461–560 / 561–700 / 701–900 / 901–1100 / ≥ 1101).
+ *  The width-driven 1440 × 620 box is 43 % of the width tall (138 px at 320, 387 px at 900),
+ *  short of the hero on phones and tablets, so the photo ended in a hard edge through the h1. */
+const HERO_COVER: CoverHeights = { base: 650, md: 500, lg: 550, xl: 450 };
 
 export async function generateMetadata({
   params,
@@ -96,12 +103,23 @@ export default async function SuccessStories({ params }: { params: Promise<{ loc
     <>
       {/* ---- Hero (design .ja-ss-hero: navy + gradient overlay over the ss-hero slot) ---- */}
       <Section tone="dark" className="relative overflow-hidden">
-        {/* §10 row 4 / delta 12: the hero photo is a named placeholder (W55) inside a
-            positioning wrapper — `ImageSlot` owns its own box (W129), so the wrapper, not the
-            slot, carries the full-bleed sizing; the h1 is the LCP element (D26). Decorative:
-            alt "" → aria-hidden. */}
+        {/* §10 row 4 / delta 12: the hero photo is licensed stock (owner 2026-10-05, W233) inside
+            a positioning wrapper — `ImageSlot` owns its own box (W129): the wrapper pins it
+            full-bleed and its cover mode (HERO_COVER) covers the whole hero; preloaded, while the
+            h1 stays the page's one LCP slot (D26). Decorative: alt "" inside an aria-hidden
+            wrapper. */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-          <ImageSlot slot="ss-hero" alt="" width={1440} height={620} className="opacity-60" />
+          <ImageSlot
+            slot="ss-hero"
+            src="/hero/success-stories.jpg"
+            priority
+            alt=""
+            width={1440}
+            height={620}
+            sizes="100vw"
+            cover={HERO_COVER}
+            className="opacity-60"
+          />
         </div>
         <div
           aria-hidden="true"

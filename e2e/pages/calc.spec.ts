@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
+import { expectHeroPhoto } from '../helpers/hero-photo';
 
 type BundleJson = {
   strings: Record<string, string>;
@@ -86,7 +87,7 @@ async function openSection(page: Page, id: string) {
 for (const locale of ['tr', 'en'] as const) {
   const route = ROUTES[locale];
 
-  test(`${locale}: one h1 holding the only data-lcp-slot, the calc-hero placeholder, the dated badge, no leaked ids or tokens (D17/D26/W1/W55)`, async ({
+  test(`${locale}: one h1 holding the only data-lcp-slot, the decorative calc-hero photo, the dated badge, no leaked ids or tokens (D17/D26/W1/W55/W233)`, async ({
     page,
   }) => {
     const res = await page.goto(route);
@@ -99,7 +100,13 @@ for (const locale of ['tr', 'en'] as const) {
       `${s(locale, 'calc.004')} ${s(locale, 'calc.005')} ${s(locale, 'calc.006')}`,
     );
     await expect(page.locator('[data-lcp-slot]')).toHaveCount(1);
-    await expect(page.locator('[data-placeholder="calc-hero"]')).toHaveCount(1);
+    // W233: the hero photo is licensed stock — decorative and preloaded, never the LCP slot
+    await expectHeroPhoto(
+      page.getByTestId('calc-top').locator(`img[src*="hiring-cost-calculator.jpg"]`),
+      '/hero/hiring-cost-calculator.jpg',
+    );
+    await expect(page.locator('img[data-lcp-slot]')).toHaveCount(0);
+    await expect(page.locator('[data-placeholder="calc-hero"]')).toHaveCount(0);
     await expect(page.locator('[data-placeholder=""]')).toHaveCount(0);
     if (reviewDue) await expect(page.getByTestId('calc-badge')).toHaveCount(0);
     else await expect(page.getByTestId('calc-badge')).toHaveText(BADGE[locale]);

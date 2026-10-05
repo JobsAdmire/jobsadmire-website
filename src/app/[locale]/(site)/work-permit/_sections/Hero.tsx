@@ -50,10 +50,11 @@ export function Hero({
           box never follows the text's height (a wrapper sized `h-full` or centred on a
           text-driven hero moves and resizes when the h1 rewraps) — it is anchored top-left at
           a fixed height per breakpoint, each above the tallest hero in its range (the stacked
-          wizard below 901 px, two columns from 901). With a photo (HERO_SRC) the image becomes
-          the LCP element (`data-lcp-slot="wp-hero"` + preload; W189 A5's cover-mode slot
-          first); without one it is a decorative named placeholder and the h1 carries the
-          slot. */}
+          wizard below 901 px, two columns from 901). With a photo (HERO_SRC, licensed stock
+          since W233) the image is the LCP element (`data-lcp-slot="wp-hero"` + preload); without
+          one it is a decorative named placeholder and the h1 carries the slot. W189 A5's
+          cover-mode slot, art-directed sources and true `sizes` are deferred to the later speed
+          work by the owner (W233). */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 aspect-[16/9] h-[2000px] min-w-full md:h-[1800px] lg:h-[1200px]">
           <ImageSlot

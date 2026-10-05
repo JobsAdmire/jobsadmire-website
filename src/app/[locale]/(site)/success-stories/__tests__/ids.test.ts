@@ -55,7 +55,7 @@ describe('Success Stories — the page renders its own breadcrumb and anchor ids
     expect(container.querySelector('[data-testid="stories-closing"]')).toBeInTheDocument();
   });
 
-  it('tags exactly one h1 as page-h1 and the sole data-lcp-slot; the hero photo is a placeholder, never the LCP slot (D26/W55)', async () => {
+  it('tags exactly one h1 as page-h1 and the sole data-lcp-slot; the hero photo is decorative stock, never the LCP slot (D26/W233)', async () => {
     const jsx = await SuccessStories({ params: Promise.resolve({ locale: 'tr' }) });
     const { container } = renderWithIntl(jsx, { locale: 'tr' });
     const h1s = container.querySelectorAll('h1');
@@ -63,9 +63,32 @@ describe('Success Stories — the page renders its own breadcrumb and anchor ids
     expect(h1s[0]).toHaveAttribute('data-testid', 'page-h1');
     expect(h1s[0]).toHaveAttribute('data-lcp-slot', 'h1');
     expect(container.querySelectorAll('[data-lcp-slot]')).toHaveLength(1);
-    const placeholder = container.querySelector('[data-placeholder="ss-hero"]');
-    expect(placeholder).toBeInTheDocument();
-    expect(placeholder).not.toHaveAttribute('data-lcp-slot');
+    expect(container.querySelector('[data-placeholder="ss-hero"]')).toBeNull();
+    const photo = container.querySelector(
+      `img[src*="${encodeURIComponent('/hero/success-stories.jpg')}"]`,
+    );
+    expect(photo).toBeInTheDocument();
+    expect(photo).toHaveAttribute('alt', '');
+    expect(photo).not.toHaveAttribute('data-lcp-slot');
+    expect(photo!.closest('[aria-hidden="true"]')).not.toBeNull();
+    // `priority` → next/image's `preload`: the photo is requested from the <head>
+    expect(
+      document.head.querySelector(
+        `link[rel="preload"][as="image"][imagesrcset*="${encodeURIComponent('/hero/success-stories.jpg')}"]`,
+      ),
+    ).not.toBeNull();
+    // W233 (QA W220 contact-01's fix): cover mode at a fixed height per band, ≥ 10 % above the
+    // tallest hero measured, so the photo never ends in an edge through the h1 (W187: never sized
+    // from the text); the design's 60 % opacity stays.
+    const img = photo as HTMLElement;
+    expect(img.parentElement).toHaveClass('absolute', 'inset-0', 'overflow-hidden');
+    expect(img).toHaveClass('w-full', 'object-cover', 'h-(--cover-h)', 'opacity-60');
+    expect(img).not.toHaveClass('h-auto');
+    expect(img.style.getPropertyValue('--cover-h')).toBe('650px');
+    expect(img.style.getPropertyValue('--cover-h-sm')).toBe('650px');
+    expect(img.style.getPropertyValue('--cover-h-md')).toBe('500px');
+    expect(img.style.getPropertyValue('--cover-h-lg')).toBe('550px');
+    expect(img.style.getPropertyValue('--cover-h-xl')).toBe('450px');
     // W119/W122/W155: the real collision checker over the whole rendered page (T9 review M7)
     expect(collisionsInTree(container)).toEqual([]);
   });

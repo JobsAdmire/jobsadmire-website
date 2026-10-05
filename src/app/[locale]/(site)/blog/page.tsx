@@ -8,7 +8,7 @@ import { getCollection } from '@/content/collections';
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
 import { ClosingCtaBand } from '@/design/blocks/ClosingCtaBand';
 import { EmptyState } from '@/design/blocks/EmptyState';
-import { ImageSlot } from '@/design/blocks/ImageSlot';
+import { ImageSlot, type CoverHeights } from '@/design/blocks/ImageSlot';
 import { NewsletterBand } from '@/design/blocks/NewsletterBand';
 import { PostCard } from '@/design/blocks/PostCard';
 import { CheckIcon } from '@/design/chrome/icons';
@@ -38,6 +38,13 @@ import {
 /** W5/W97 (D14): the newsletter band stays hidden until counsel clears — it renders nothing and
  *  nothing wraps it; its form (checkbox consent + double opt-in, W79) lands with its activation. */
 const NEWSLETTER_ACTIVE = false;
+
+/** W233 (QA W220 contact-01's fix, W187 / final pass A8): the hero photo's fixed height per band,
+ *  each ≥ 10 % above the tallest hero measured in both locales every 10 px from 320 to 1440 (534 /
+ *  450 / 423 / 722 / 509 / 336 px at ≤ 460 / 461–560 / 561–700 / 701–900 / 901–1100 / ≥ 1101 —
+ *  701–900 stacks the hero art under the text). The width-driven 1440 × 520 box was 116–397 px
+ *  tall below 1101, short of the hero, so the photo ended in a hard edge through the h1. */
+const HERO_COVER: CoverHeights = { base: 600, md: 800, lg: 600, xl: 400 };
 
 /** W82: the design's "Request Workers →" lands on the Hire Workers form (T2 renders the anchor). */
 const HIRE_FORM: Exclude<Href, string> = { pathname: '/hire-workers', hash: '#request-form' };
@@ -95,8 +102,20 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
     <>
       {/* ---- Hero: crumbs (W109), the rotating h1 (B-4 — the LCP element, B-7), sub, ticks ---- */}
       <Section tone="dark" className="relative overflow-hidden">
+        {/* W233: the photo slot carries licensed stock (Istanbul at night, owner 2026-10-05) —
+            decorative and preloaded under the two overlays, covering the whole hero (cover mode,
+            HERO_COVER); the h1 keeps the one LCP slot. */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <ImageSlot slot="blog-hero" alt="" width={1440} height={520} />
+          <ImageSlot
+            slot="blog-hero"
+            src="/hero/blog.jpg"
+            priority
+            alt=""
+            width={1440}
+            height={520}
+            sizes="100vw"
+            cover={HERO_COVER}
+          />
         </div>
         <div
           aria-hidden="true"

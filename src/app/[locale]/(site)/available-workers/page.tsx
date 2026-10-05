@@ -93,8 +93,10 @@ export default async function AvailableWorkersPage({
             tallest hero in its range (the stacked request card below 901 px, two columns from
             901) with ≥ 10 % to spare — measured at 320–1920 px in both locales, both roles, the
             error state and the fallback panel: ≤ 2,657 px below 701, ≤ 1,638 px at 701–900,
-            ≤ 1,473 px from 901. While HERO_SRC is null it is a decorative placeholder and the h1
-            is the LCP element; a photo first gets W189 A5's cover-mode slot. */}
+            ≤ 1,473 px from 901. With the photo (HERO_SRC, licensed stock since W233) the image is
+            the LCP element; while HERO_SRC is null it is a decorative placeholder and the h1 is.
+            W189 A5's cover-mode slot, art-directed sources and true `sizes` are deferred to the
+            later speed work by the owner (W233). */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 aspect-[16/9] h-[3000px] min-w-full md:h-[1900px] lg:h-[1700px]">
             <ImageSlot

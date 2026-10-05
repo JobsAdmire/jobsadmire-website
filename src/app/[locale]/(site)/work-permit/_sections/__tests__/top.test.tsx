@@ -39,17 +39,21 @@ const renderHero = (locale: Locale, badge: string | null) =>
   );
 
 describe('Hero', () => {
-  it('one page-h1 holding the only data-lcp-slot; wp-hero is a named, decorative placeholder (D26/W55)', () => {
+  it('one page-h1; the decorative wp-hero photo holds the only data-lcp-slot (D26, W233)', () => {
     const { container } = renderHero('tr', BADGE_TR);
     const h1 = screen.getByRole('heading', { level: 1 });
     expect(h1).toHaveAttribute('data-testid', 'page-h1');
-    expect(h1).toHaveAttribute('data-lcp-slot', 'h1');
+    expect(h1).not.toHaveAttribute('data-lcp-slot');
     expect(h1.textContent).toBe(`${tfTr('wp.023')} ${tfTr('wp.024')}`);
-    expect(container.querySelectorAll('[data-lcp-slot]')).toHaveLength(1);
-    const slot = container.querySelector('[data-placeholder="wp-hero"]');
-    expect(slot).not.toBeNull();
-    expect(slot).toHaveAttribute('aria-hidden', 'true');
-    expect(slot).not.toHaveAttribute('data-lcp-slot');
+    const lcp = container.querySelectorAll('[data-lcp-slot]');
+    expect(lcp).toHaveLength(1);
+    const slot = lcp[0];
+    expect(slot.tagName).toBe('IMG');
+    expect(slot).toHaveAttribute('data-lcp-slot', 'wp-hero');
+    expect(slot).toHaveAttribute('alt', '');
+    expect(slot.getAttribute('src')).toContain(encodeURIComponent('/hero/work-permit.jpg'));
+    expect(slot.closest('[aria-hidden="true"]')).not.toBeNull();
+    expect(container.querySelector('[data-placeholder]')).toBeNull();
     expect(collisionsInTree(container)).toEqual([]);
   });
 

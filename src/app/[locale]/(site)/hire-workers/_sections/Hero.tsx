@@ -50,11 +50,11 @@ export function Hero({
           the text's height — when the Turkish web font arrives the h1 rewraps and the hero grows,
           so a box sized (`h-full`) or centred from it moves and resizes (CLS 0.137 on
           /isci-talebi). The slot is anchored top-left at full width with a fixed height per
-          breakpoint, each above the tallest hero in its range; the photo, once the stock pack
-          lands (W174), covers that box (art-directed sources and a true `sizes` then, W189 A5).
-          With a photo (HERO_SRC) the image is the LCP element (`data-lcp-slot="hw-hero"` +
-          preload); without one it is a decorative named placeholder and the h1 carries the LCP
-          slot. */}
+          breakpoint, each above the tallest hero in its range; the photo (licensed stock since
+          W233) covers that box — art-directed sources and a true `sizes` (W189 A5) are deferred
+          to the later speed work by the owner (W233). With a photo (HERO_SRC) the image is the
+          LCP element (`data-lcp-slot="hw-hero"` + preload); without one it is a decorative named
+          placeholder and the h1 carries the LCP slot. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-0 top-0 w-full">
           <ImageSlot

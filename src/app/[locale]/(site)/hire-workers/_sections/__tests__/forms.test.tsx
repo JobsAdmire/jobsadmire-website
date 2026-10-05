@@ -168,16 +168,19 @@ describe('RequestForm h2 (Cycle 8(a))', () => {
 });
 
 describe('Hero', () => {
-  it('names the h1 the LCP slot while hw-hero is a placeholder (D26); own crumbs (W109); metric pills (W1)', () => {
+  it('names the hw-hero photo the one LCP slot, not the h1 (D26, W233); own crumbs (W109); metric pills (W1)', () => {
     const { container } = renderWithIntl(hero);
     const h1 = screen.getByRole('heading', { level: 1 });
     expect(h1).toHaveAttribute('data-testid', 'page-h1');
-    expect(h1).toHaveAttribute('data-lcp-slot', 'h1');
+    expect(h1).not.toHaveAttribute('data-lcp-slot');
     expect(h1.textContent).toBe(`${tf('hire.021')} ${tf('hire.022')} ${tf('hire.023')}`);
-    expect(container.querySelectorAll('[data-lcp-slot]')).toHaveLength(1);
-    expect(container.querySelector('[data-placeholder="hw-hero"]')).not.toHaveAttribute(
-      'data-lcp-slot',
-    );
+    const lcp = container.querySelectorAll('[data-lcp-slot]');
+    expect(lcp).toHaveLength(1);
+    expect(lcp[0].tagName).toBe('IMG');
+    expect(lcp[0]).toHaveAttribute('data-lcp-slot', 'hw-hero');
+    expect(lcp[0]).toHaveAttribute('alt', '');
+    expect(lcp[0].getAttribute('src')).toContain(encodeURIComponent('/hero/hire-workers.jpg'));
+    expect(container.querySelector('[data-placeholder="hw-hero"]')).toBeNull();
     const crumbs = screen.getByRole('navigation', { name: tr.sys.nav.breadcrumbs });
     expect(within(crumbs).getByRole('link', { name: tf('hire.020') })).toHaveAttribute('href', '/');
     expect(within(crumbs).getByText(tf('hire.002'))).toHaveAttribute('aria-current', 'page');
@@ -197,14 +200,14 @@ describe('Hero', () => {
     );
   });
 
-  it('anchors the decorative hw-hero box top-left at a fixed per-breakpoint size, never sized from the text (W187)', () => {
+  it('anchors the decorative hw-hero photo box top-left at a fixed per-breakpoint size, never sized from the text (W187)', () => {
     // The h1 rewraps when the Turkish web font arrives; a box sized or centred from the hero's
     // height then moves and resizes with it (CLS 0.137 on /isci-talebi). Fixed heights, top-left.
     // Final pass A8 (W189 A5, W210 c): the fixed heights now live in the slot's own cover mode
     // (1,200 / 1,800 / 1,200 px — the measured hero maxima 1,040 / 1,368 / 1,018 px + ≥ 10 %);
-    // the wrapper only anchors it top-left at full width.
+    // the wrapper only anchors it top-left at full width. W233: the photo fills that box.
     renderWithIntl(hero);
-    const slot = document.querySelector<HTMLElement>('[data-placeholder="hw-hero"]')!;
+    const slot = document.querySelector<HTMLElement>('img[data-lcp-slot="hw-hero"]')!;
     const box = slot.parentElement!;
     const t = tokens(box);
     expect(t).toEqual(expect.arrayContaining(['absolute', 'left-0', 'top-0', 'w-full']));
