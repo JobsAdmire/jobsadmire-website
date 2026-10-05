@@ -103,6 +103,20 @@
   --content-max: 1240px;
   /* W231: the root zoom of the liquid desktop (below); 1 up to 1440 px. */
   --zoom: 1;
+  /* W232: the sticky header's height in CSS px. The page publishes the real one on <html> (a
+     ResizeObserver on the header, src/design/chrome/sticky-header.ts); these per-band values,
+     measured on the gate routes in both locales, hold before that and without JS, each the
+     band's largest: one row (71 px) below 901, where nothing reads it; two or three rows where
+     the desktop nav wraps — 113 px from 901, 157 px up to 959 on the calculator and workers
+     pages (their longer CTA), 107 px from 1101 until the nav fits (1104–1164 px by page and
+     locale); 71 px from 1200. */
+  --header-h: 71px;
+  /* W232: how far a page's sticky sub-navigation reaches below the header (0 without one; the
+     work-permit jump nav from 1101 px, below). */
+  --jumpnav-h: 0px;
+  /* W232: where every sticky column sticks — below the header and any sticky sub-navigation, with
+     1.5rem of air (24 px below 1101, 18 px from it). */
+  --sticky-top: calc(var(--header-h) + var(--jumpnav-h) + 1.5rem);
 }
 @media (min-width: 461px) {
   :root {
@@ -119,6 +133,7 @@
     --fs-nav: 12px;
     --gutter: 48px;
     --gutter-nav: 32px;
+    --header-h: 157px; /* W232: the nav on two rows (113 px), three on the longest CTAs */
   }
 }
 @media (min-width: 1101px) {
@@ -139,6 +154,18 @@
     /* W229: never closer than 33 px to the viewport edge, so the content (gutter included, 69 px)
        clears the fixed social rail (12–45 px) as it did before the widening; 1240 px from 1378 px. */
     --container-max: min(calc(var(--content-max) + 2 * var(--gutter)), calc(100% - 66px));
+    --header-h: 107px; /* W232: the nav on two rows until it fits on one */
+  }
+  /* W232: the work-permit jump nav sticks 8 px below the header from here: one 60 px row that
+     never wraps (44 px targets, 2 × 0.625rem of padding, a 1 px border; 159 px of slack in
+     Turkish at 1101), so sticky columns clear its 8 px and its height on that page. */
+  :root:has([data-sticky-subnav]) {
+    --jumpnav-h: calc(8px + 44px + 1.25rem + 1px);
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    --header-h: 71px; /* W232: the desktop nav fits on one row */
   }
 }
 /* W231 (owner, 2026-10-05: "It should be a liquid layout so it can fit on bigger and small

@@ -40,6 +40,11 @@ vi.mock('../LanguageHint', () => ({
   },
 }));
 
+// W232: the header-height publisher re-observes per pathname (a route into another group swaps
+// the header element); the test drives the pathname by hand.
+const nav = vi.hoisted(() => ({ pathname: '/' }));
+vi.mock('next/navigation', () => ({ usePathname: () => nav.pathname }));
+
 function browserLanguages(languages: string[]) {
   Object.defineProperty(window.navigator, 'languages', {
     configurable: true,
@@ -121,5 +126,72 @@ describe('ClientIslands keeps the reader’s place across a zoom change (W231)',
     document.documentElement.style.setProperty('zoom', '2');
     window.dispatchEvent(new Event('resize'));
     expect(scrollTo).toHaveBeenCalledTimes(1);
+  });
+});
+
+// W232: every page mounts the focus guard and the header-height publisher here (their own cases
+// are in sticky-header.test.ts).
+describe('ClientIslands keeps the sticky header clear of keyboard focus and sticky columns (W232)', () => {
+  const readVar = () => document.documentElement.style.getPropertyValue('--header-h');
+  /** A sticky header, first in the body like SiteChrome's, `height` CSS px tall. */
+  const header = (height: number) => {
+    const el = document.createElement('header');
+    el.style.position = 'sticky';
+    el.style.top = '0px';
+    Object.defineProperty(el, 'offsetHeight', { configurable: true, get: () => height });
+    document.body.prepend(el);
+    return el;
+  };
+  afterEach(() => {
+    vi.restoreAllMocks();
+    document.querySelectorAll('header, a[data-probe]').forEach((el) => el.remove());
+    document.documentElement.style.removeProperty('--header-h');
+    nav.pathname = '/';
+  });
+
+  it('publishes the header’s height, then the height of the header a route change brings', () => {
+    browserLanguages(['tr-TR', 'tr']);
+    const first = header(113);
+    const { rerender, unmount } = render(<ClientIslands consent={false} locale="tr" />);
+    expect(readVar()).toBe('113px');
+    // (site) → (minimal): the group layout renders a new header element
+    first.remove();
+    header(107);
+    nav.pathname = '/gizlilik';
+    rerender(<ClientIslands consent={false} locale="tr" />);
+    expect(readVar()).toBe('107px');
+    unmount();
+    expect(readVar()).toBe('');
+  });
+
+  it('scrolls a keyboard-focused control out from under the header while mounted, never after', () => {
+    browserLanguages(['tr-TR', 'tr']);
+    vi.spyOn(header(113), 'getBoundingClientRect').mockReturnValue({
+      top: 0,
+      bottom: 113,
+      height: 113,
+    } as DOMRect);
+    /** A keyboard-focusable link under the 113 px header. */
+    const probe = () => {
+      const link = document.createElement('a');
+      link.href = '#';
+      link.dataset.probe = '';
+      document.body.append(link);
+      vi.spyOn(link, 'getBoundingClientRect').mockReturnValue({
+        top: 50,
+        bottom: 80,
+        height: 30,
+      } as DOMRect);
+      vi.spyOn(link, 'matches').mockImplementation((selector) => selector === ':focus-visible');
+      return link;
+    };
+    const [first, second] = [probe(), probe()];
+    const scrollBy = vi.spyOn(window, 'scrollBy').mockImplementation(() => {});
+    const { unmount } = render(<ClientIslands consent={false} locale="tr" />);
+    first.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+    expect(scrollBy).toHaveBeenCalledExactlyOnceWith({ top: 50 - 113 - 8, behavior: 'instant' });
+    unmount();
+    second.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+    expect(scrollBy).toHaveBeenCalledTimes(1);
   });
 });

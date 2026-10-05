@@ -92,7 +92,7 @@ describe('Hero', () => {
 });
 
 describe('JumpNav', () => {
-  it('is a labelled nav of the eight in-page anchors, sticky only from 1101 px under the 79 px header', () => {
+  it('is a labelled nav of the eight in-page anchors, sticky only from 1101 px, 8 px below the header', () => {
     const { container } = renderWithIntl(<JumpNav tf={tfTr} />);
     const nav = screen.getByRole('navigation', { name: tfTr('wp.056') });
     expect(
@@ -100,7 +100,13 @@ describe('JumpNav', () => {
         .getAllByRole('link')
         .map((a) => a.getAttribute('href')),
     ).toEqual(JUMP_LINKS.map((j) => j.hash));
-    expect(tokens(nav)).toEqual(expect.arrayContaining(['xl:sticky', 'xl:top-[79px]']));
+    // W232: below the header at its real height (`--header-h`, 107 px where its nav wraps) — the
+    // fixed 79 px slid it under the header there — and marked as top chrome, so the page's sticky
+    // columns (`--sticky-top`) and the focus guard clear it too.
+    expect(tokens(nav)).toEqual(
+      expect.arrayContaining(['xl:sticky', 'xl:top-[calc(var(--header-h)+8px)]']),
+    );
+    expect(nav).toHaveAttribute('data-sticky-subnav');
     // QA W221 WP-01: the design hides the chip row's scrollbar only ≤ 700 (its `.ja-jump` phone
     // rule); from 701 a scrollbar stays visible wherever the eight chips overflow — the one
     // affordance that tells a mouse user the row scrolls.

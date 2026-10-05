@@ -1,9 +1,11 @@
 'use client';
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useSyncExternalStore } from 'react';
 import { keepScrollAcrossZoom } from '@/design/zoom';
 import type { Locale } from '@/i18n/routing';
 import { hintEligibleHere } from './hint-eligibility';
+import { guardFocusUnderHeader, publishHeaderHeight } from './sticky-header';
 
 /** The two chrome islands that only ever exist in the browser, behind `ssr: false` so their
  *  code leaves the initial script graph — D27's budget. A server layout cannot pass
@@ -32,9 +34,18 @@ const subscribe = () => () => {};
 const onServer = () => false;
 
 export function ClientIslands({ consent, locale }: { consent: boolean; locale: Locale }) {
+  const pathname = usePathname();
   // W231: a resize that changes the liquid desktop's zoom keeps the reader's place — mounted
   // here because the locale layout renders this boundary on every page, `(bare)` included.
   useEffect(() => keepScrollAcrossZoom(), []);
+  // W232: keyboard focus never lands under the sticky header (WCAG 2.2 SC 2.4.11). The guard
+  // reads the header afresh on every focus, so one listener serves every page; without a header
+  // (`(bare)`) it does nothing.
+  useEffect(() => guardFocusUnderHeader(), []);
+  // W232: the header's real height for the sticky columns (`--header-h`). This boundary outlives
+  // client navigations, and a route into another group (`(site)` ↔ `(minimal)`) swaps the header
+  // element, so it is observed afresh on every pathname.
+  useEffect(() => publishHeaderHeight(), [pathname]);
   const hint = useSyncExternalStore(
     subscribe,
     useCallback(() => hintEligibleHere(locale), [locale]),

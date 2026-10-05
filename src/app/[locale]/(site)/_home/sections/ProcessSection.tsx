@@ -18,7 +18,8 @@ const SECTOR_CHIP_IDS = ['home.224', 'home.225', 'home.226', 'home.227'] as cons
  *  left, the five steps as the shared `ProcessSteps` (`plain`) on the right. `when` labels are
  *  resolved here (home.107 carries `{homepageReplyHours}` → `makeTf`). The chips are hidden at
  *  ≤ 460 px (`.ja-tl-chips`, W10). From 1101 the intro column is 0.75fr, so the step pills stay
- *  near their titles in the 1240 px box (W230). */
+ *  near their titles in the 1240 px box (W230). The intro sticks at `--sticky-top`, below the
+ *  header at its real height (W232). */
 export function ProcessSection({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
   const steps: ProcessStep[] = STEPS.map((step) => ({
@@ -33,7 +34,7 @@ export function ProcessSection({ locale, bundle }: SectionProps) {
         data-testid="process"
         className="container-site grid items-start gap-[34px] lg:grid-cols-[0.42fr_1fr] lg:gap-14 xl:grid-cols-[0.75fr_1fr] xl:gap-[42px]"
       >
-        <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
+        <div className="min-w-0 lg:sticky lg:top-(--sticky-top) lg:self-start">
           <Eyebrow>{tf('home.091')}</Eyebrow>
           <h2 className="mb-4 mt-3.5 text-h2-process leading-[1.02] tracking-[-1.8px] max-xs:tracking-[-1px] xl:tracking-[-1.35px]">
             {tf('home.092')}

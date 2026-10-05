@@ -34,8 +34,8 @@ export type FaqAskCard = {
   subject?: string;
 };
 
-/** FAQ section body: side column (eyebrow, h2, sub, ask card — sticky from lg, at `top-24` like
- *  the site's other sticky columns so it clears the sticky header, W230) + the
+/** FAQ section body: side column (eyebrow, h2, sub, ask card — sticky from lg at `--sticky-top`
+ *  like the site's other sticky columns: below the header at its real height, W232) + the
  *  accordion + the FAQPage node (AEO only, docs/SEO.md). Pages put it inside a
  *  `<Section tone="pale"><div className="container-site">…`. Ids resolve through
  *  `makeTf(bundle, locale)`, so a re-authored `{metric}` string (hire.198-style reply times)
@@ -75,7 +75,7 @@ export function FaqBlock({
   return (
     <div id={id} className={hasSide ? 'grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16' : ''}>
       {hasSide && (
-        <div className="lg:sticky lg:top-24 lg:self-start">
+        <div className="lg:sticky lg:top-(--sticky-top) lg:self-start">
           {eyebrowId && <Eyebrow>{t(eyebrowId)}</Eyebrow>}
           {/* Final pass A7 (W189 A6): the design's section-h2 face (−1.6 px, × 0.75 from 1101;
               line-height 1.05) and its `.ja-faq-side h2` ≤ 700 px rule (24 px / −0.5 px / 1.14,

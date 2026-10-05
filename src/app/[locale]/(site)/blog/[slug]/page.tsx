@@ -373,13 +373,14 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
               </div>
 
               {/* Sidebar: the lazy island (TOC, share, print — B-13) + the CTA card (≥701 px).
-                  Stuck, it is capped to the height it can show — the screen less its 6rem top,
-                  1.5rem of air and the sticky bar — and scrolls inside: the column is taller
-                  than the CSS viewport the liquid desktop's zoom leaves (W231). The 0.25rem
-                  inline bleed keeps focus rings at its edges inside the scroll box's clip. */}
+                  Stuck below the header at its real height (`--sticky-top`, W232), it is capped
+                  to the height it can show — the screen less that top, 1.5rem of air and the
+                  sticky bar — and scrolls inside: the column is taller than the CSS viewport
+                  the liquid desktop's zoom leaves (W231). The 0.25rem inline bleed keeps focus
+                  rings at its edges inside the scroll box's clip. */}
               <div
                 data-testid="article-sidebar"
-                className="flex flex-col gap-4 lg:sticky lg:top-24 lg:-mx-1 lg:max-h-[calc(100vh/var(--zoom,1)_-_7.5rem_-_var(--sticky-cta-h,0px))] lg:overflow-y-auto lg:overscroll-contain lg:px-1"
+                className="flex flex-col gap-4 lg:sticky lg:top-(--sticky-top) lg:-mx-1 lg:max-h-[calc(100vh/var(--zoom,1)_-_var(--sticky-top)_-_1.5rem_-_var(--sticky-cta-h,0px))] lg:overflow-y-auto lg:overscroll-contain lg:px-1"
               >
                 <ArticleSidebarIsland
                   {...sidebar}

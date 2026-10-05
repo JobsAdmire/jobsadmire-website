@@ -18,6 +18,7 @@ describe('SiteChrome <main> (M3)', () => {
     const main = container.querySelector<HTMLElement>('main#main')!;
     expect(main).toHaveAttribute('tabindex', '-1');
     expect(main.className).toContain('focus:outline-none');
+    expect(main.className).toContain('scroll-mt-(--header-h)'); // W232: the skip link clears the header
     // Programmatic focus (what the skip link does) must actually land here — Chrome moves
     // sequential focus to the target but leaves `document.activeElement` on `body` unless the
     // element itself is focusable (M3).

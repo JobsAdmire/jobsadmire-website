@@ -103,9 +103,10 @@ export function PassCheckView({
           {labels.pcPriv}
         </p>
       </div>
-      {/* W231 review: stuck below the 71 px sticky header at `top-24`, as every sticky column —
-          `top-5` (15 px from 1101) slid the verdict under it */}
-      <div className="flex flex-col gap-4 lg:sticky lg:top-24">
+      {/* Stuck below the sticky header at its real height (`--sticky-top`, W232), as every
+          sticky column — `top-5` (15 px from 1101) slid the verdict under it (W231 review), and
+          `top-24` still did where the header's nav wraps (107–157 px, 901 to ≈ 1165 px) */}
+      <div className="flex flex-col gap-4 lg:sticky lg:top-(--sticky-top)">
         {/* QA W221 calc-05: the verdict changes with every answer — a polite, atomic live region */}
         <div
           data-testid="pass-verdict"
