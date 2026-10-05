@@ -85,10 +85,15 @@ export function StoreBadges({
     .join(' ');
   const two = (kicker: string, name: string) => (
     <span aria-hidden="true" className="flex flex-col text-left leading-[1.15]">
-      <span className={`text-[9px] font-semibold tracking-[0.3px] uppercase ${KICKER[tone]}`}>
+      {/* The design's 8.5–9.5 px kicker sits under the 11 px desktop type floor (W190): it is
+          raised to the floor at the desktop step, and the name keeps its 13 px there so the
+          kicker still reads smaller than the store name. */}
+      <span
+        className={`text-[9px] font-semibold tracking-[0.3px] uppercase xl:text-[11px] ${KICKER[tone]}`}
+      >
         {kicker}
       </span>
-      <span className="text-[13px] font-bold xl:text-[11px]">{name}</span>
+      <span className="text-[13px] font-bold">{name}</span>
     </span>
   );
   const play = android ? (

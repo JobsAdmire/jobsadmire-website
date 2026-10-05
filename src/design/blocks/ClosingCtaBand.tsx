@@ -116,6 +116,14 @@ const TONE: Record<
   },
 };
 
+/** The title's face: the `gradient` band's one-line title, every other tone's h2. Both carry
+ *  their own ≤ 700 size (QA W221 W-03 — `.ja-close h2` 25 px / 1.12 / −0.5 px); a file-level
+ *  const so phone-heading-rule.test.ts reads both faces. */
+const TITLE_SIZE = {
+  gradient: 'text-band leading-[1.15] tracking-[-0.6px] max-md:text-[23px]',
+  other: 'text-h2 max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]',
+} as const;
+
 /** The closing band every page ends on (Homepage contact strip, Blog's "let's just do it",
  *  About's green band, the light centred band, Success Stories' blue split). Pages mount the
  *  dark tones inside `<Section tone="band">`'s container, `light` full-bleed. Every CTA
@@ -197,10 +205,6 @@ export function ClosingCtaBand({
   );
   const centered = tone === 'light';
   const split = tone === 'blue';
-  const titleSize =
-    tone === 'gradient'
-      ? 'text-band leading-[1.15] tracking-[-0.6px] max-md:text-[23px]'
-      : 'text-h2 max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]';
   const actions = (
     <div
       className={[
@@ -248,7 +252,11 @@ export function ClosingCtaBand({
       {/* QA W221 W-03: the design's `.ja-close h2` ≤ 700 is 25 px / 1.12 / −0.5 px on every
           page's closing band — the block's own phone face (W217; phone-heading-rule.test.ts
           sweeps this module like a route); the `gradient` band's one-line title is smaller. */}
-      <h2 className={`m-0 mb-2 ${titleSize} ${look.title} xl:text-balance`}>{t(titleId)}</h2>
+      <h2
+        className={`m-0 mb-2 ${TITLE_SIZE[tone === 'gradient' ? 'gradient' : 'other']} ${look.title} xl:text-balance`}
+      >
+        {t(titleId)}
+      </h2>
       {bodyId && (
         <p
           className={`text-body m-0 max-w-[600px] ${look.body}${hideBodyOnPhone ? ' max-md:hidden' : ''}`}

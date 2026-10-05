@@ -49,7 +49,7 @@ export function Renewal({ bundle, tf }: { bundle: Bundle; tf: (id: string) => st
                 className="flex flex-none flex-col items-center rounded-xs bg-white px-2.5 py-1.5 leading-none text-blue-safe"
               >
                 <span className="text-[18px] font-extrabold tracking-[-0.5px]">60</span>
-                <span className="mt-0.5 text-[8.5px] font-extrabold tracking-[0.6px] uppercase">
+                <span className="mt-0.5 text-[8.5px] font-extrabold tracking-[0.6px] uppercase xl:text-[11px]">
                   {tf('wp.325')}
                 </span>
               </span>

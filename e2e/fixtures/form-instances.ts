@@ -1,5 +1,5 @@
 /**
- * The 17 door-backed form instances across the 13 designed pages, as data — T14's own record
+ * The 20 door-backed form instances across the designed pages, as data — T14's own record
  * of what the BUILT pages under `src/app/[locale]/(site)/**` render, re-read directly from
  * their code on 2026-10-02 (W199: the code wins over any table — every `testId`, `idScope`,
  * DOM `name` and required flag below was checked against the page's FormShell, its zod schema
@@ -7,8 +7,9 @@
  * field `name`, every `open`-selector token and every select/radio value to the page sources). Corrected along the way against ruling W105 (careers' own country, the
  * #pool/#pool-form anchor, the sourcing track's required licence, T8/T10's under-reported
  * required fields). `e2e/door-test-mode.spec.ts` (Cycle 5) iterates this; the Cycle 7 manual
- * table is filled by hand from the same 17 rows so the two never diverge. Not imported by
- * `src/**` — a fixture, not runtime code.
+ * table is filled by hand from the same rows so the two never diverge. Rows 18–20 (the newsletter
+ * band on About, Blog and the article) were added when the owner switched the form on (2026-10-05).
+ * Not imported by `src/**` — a fixture, not runtime code.
  */
 import type { FormKey } from '../../src/analytics/forms';
 
@@ -577,6 +578,74 @@ export const FORM_INSTANCES: readonly FormInstance[] = [
     notes:
       '`expectedSalary` is rendered and REQUIRED only because the opening’s own country is PK (`applyToFields` throws a field error otherwise); `expectedSalaryCurrency` is set server-side from the opening’s `payCurrency` (PKR fallback), never typed. The live PK opening is re-read at run time, never hardcoded. Runs only in Cycle 7 (W171).',
   },
+  {
+    id: 18,
+    page: 'About (T9)',
+    locale: 'tr',
+    path: { tr: '/hakkimizda', en: '/en/about' },
+    anchor: '#newsletter',
+    mode: 'newsletter band, inline form',
+    doorKey: 'newsletter',
+    testId: 'newsletter-form',
+    idScope: 'newsletter',
+    consentMode: 'checkbox',
+    fields: [
+      {
+        name: 'email',
+        kind: 'email',
+        value: t('door-smoke+t14-18@jobsadmire.com'),
+        required: true,
+      },
+    ],
+    notes:
+      'The shared NewsletterBand’s own inline shell (src/design/blocks/NewsletterBand.tsx: `testId={`${id}-form`}`, `idScope={id}`, default id `newsletter`) inside `#about-newsletter`; switched on by the owner 2026-10-05 (Operations `newsletter` isActive + the page’s `NEWSLETTER_ACTIVE`). One e-mail control; the optional catalog `name` is never rendered. The door runs the I12 double opt-in.',
+  },
+  {
+    id: 19,
+    page: 'Blog index (T12)',
+    locale: 'en',
+    path: { tr: '/blog', en: '/en/blog' },
+    anchor: '#newsletter',
+    mode: 'newsletter band, inline form',
+    doorKey: 'newsletter',
+    testId: 'newsletter-form',
+    idScope: 'newsletter',
+    consentMode: 'checkbox',
+    fields: [
+      {
+        name: 'email',
+        kind: 'email',
+        value: t('door-smoke+t14-19@jobsadmire.com'),
+        required: true,
+      },
+    ],
+    notes: 'As row 18 — the same shared band and shell on the blog index (owner, 2026-10-05).',
+  },
+  {
+    id: 20,
+    page: 'Blog article (T12)',
+    locale: 'en',
+    path: {
+      tr: '/blog/yabanci-isciler-calisma-izni-rehberi',
+      en: '/en/blog/turkey-work-permit-process-employer-guide',
+    },
+    anchor: '#newsletter',
+    mode: 'newsletter band, inline form',
+    doorKey: 'newsletter',
+    testId: 'newsletter-form',
+    idScope: 'newsletter',
+    consentMode: 'checkbox',
+    fields: [
+      {
+        name: 'email',
+        kind: 'email',
+        value: t('door-smoke+t14-20@jobsadmire.com'),
+        required: true,
+      },
+    ],
+    notes:
+      'As row 18, on the one written article (EN; the TR slug has no body — W4, so this row runs in EN only).',
+  },
 ];
 
 /** Rendered on a designed page but never a door submission — recorded in the Cycle 7/9 ledger,
@@ -593,10 +662,6 @@ export const NON_DOOR_INSTANCES: readonly { label: string; note: string }[] = [
   {
     label: 'Verify — representative lookup',
     note: 'Client-only, neutral W6 result; verify_lookup outcome register_unavailable.',
-  },
-  {
-    label: 'newsletter band',
-    note: 'Hidden on every page in Phase A (W5, `NEWSLETTER_ACTIVE=false`) — assert no form[data-form-key="newsletter"] exists on /blog, /en/blog, /.',
   },
   {
     label: 'newsletter confirm/unsubscribe pages',

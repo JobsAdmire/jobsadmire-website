@@ -34,20 +34,17 @@ function pageSources(dir: string): string {
   return out;
 }
 
-describe('FORM_INSTANCES — the 17-instance inventory pinned against the pages it was read from', () => {
-  it('has exactly 17 rows, ids 1..17 in order', () => {
-    expect(FORM_INSTANCES).toHaveLength(17);
-    expect(FORM_INSTANCES.map((r) => r.id)).toEqual(Array.from({ length: 17 }, (_, i) => i + 1));
+describe('FORM_INSTANCES — the 20-instance inventory pinned against the pages it was read from', () => {
+  it('has exactly 20 rows, ids 1..20 in order', () => {
+    expect(FORM_INSTANCES).toHaveLength(20);
+    expect(FORM_INSTANCES.map((r) => r.id)).toEqual(Array.from({ length: 20 }, (_, i) => i + 1));
   });
 
-  it('every doorKey is a real FormKey, and every key except newsletter is used at least once', () => {
+  it('every doorKey is a real FormKey, and every key is used at least once', () => {
     for (const row of FORM_INSTANCES) expect(FORM_KEYS as readonly string[]).toContain(row.doorKey);
     const used = new Set(FORM_INSTANCES.map((r) => r.doorKey));
-    for (const key of FORM_KEYS) {
-      if (key === 'newsletter')
-        expect(used.has(key)).toBe(false); // D14: inactive, no instance
-      else expect(used.has(key)).toBe(true);
-    }
+    // newsletter included since the owner switched the form on (2026-10-05, rows 18–20)
+    for (const key of FORM_KEYS) expect(used.has(key)).toBe(true);
   });
 
   it('hire runs on both locales (D13/R55 — the two-locale autoresponder proof)', () => {
@@ -72,13 +69,24 @@ describe('FORM_INSTANCES — the 17-instance inventory pinned against the pages 
     // renders several shells, as a template with a static prefix (PartnerForms: `partner-form-${track}`);
     // its idScope likewise as a literal or as a value of a per-track record (`FORM_ID_SCOPE`).
     const templatePrefixes = [...src.matchAll(/testId(?:=\{|:\s*)`([^`$]+)\$\{/g)].map((m) => m[1]);
+    // The shared NewsletterBand renders its own shell (rows 18–20): `testId={`${id}-form`}`,
+    // `idScope={id}`, with the band's default `id = '…'` — counted only where a page mounts the band.
+    const band = readFileSync(
+      join(__dirname, '..', 'src', 'design', 'blocks', 'NewsletterBand.tsx'),
+      'utf8',
+    );
+    const bandId = /\bid = '([^']+)'/.exec(band)?.[1];
+    const bandMounted =
+      src.includes('<NewsletterBand') && band.includes('testId={`${id}-form`}') && !!bandId;
     const hasTestId = (id: string) =>
       src.includes(`testId="${id}"`) ||
-      templatePrefixes.some((p) => id.startsWith(p) && id.length > p.length);
+      templatePrefixes.some((p) => id.startsWith(p) && id.length > p.length) ||
+      (bandMounted && id === `${bandId}-form`);
     const hasIdScope = (scope: string) =>
       src.includes(`idScope="${scope}"`) ||
       src.includes(`'${scope}'`) ||
-      src.includes(`"${scope}"`);
+      src.includes(`"${scope}"`) ||
+      (bandMounted && scope === bandId);
     for (const row of FORM_INSTANCES) {
       expect({ id: row.id, testId: row.testId, found: hasTestId(row.testId) }).toEqual({
         id: row.id,
@@ -96,10 +104,13 @@ describe('FORM_INSTANCES — the 17-instance inventory pinned against the pages 
 
   it('every field name the inventory fills, and every token in an `open` selector, exists in the BUILT pages (W199)', () => {
     const src = pageSources(join(__dirname, '..', 'src', 'app', '[locale]'));
-    // A control's `name` is a literal (`name="roleNeeded"`) or a named constant whose value is a
-    // string literal in the page's own `_lib` (`DECLARATION_FIELD = 'licenceDeclaration'`).
+    // A control's `name` is a literal (`name="roleNeeded"`), a named constant whose value is a
+    // string literal in the page's own `_lib` (`DECLARATION_FIELD = 'licenceDeclaration'`), or the
+    // `name` of a control a `Field` prop describes (the hire form's dial select: `dial={{ name: 'dial', … }}`).
     const hasName = (n: string) =>
-      src.includes(`name="${n}"`) || new RegExp(`(?<![=!])= '${n}'`).test(src);
+      src.includes(`name="${n}"`) ||
+      new RegExp(`(?<![=!])= '${n}'`).test(src) ||
+      src.includes(`name: '${n}'`);
     for (const row of FORM_INSTANCES)
       for (const f of row.fields)
         expect({ id: row.id, name: f.name, found: hasName(f.name) }).toEqual({
