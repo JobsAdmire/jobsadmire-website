@@ -211,6 +211,11 @@ describe('Header', () => {
     // the intrinsic box is the 34 px size in the asset's own ratio: no CLS, a small srcset
     expect(logo).toHaveAttribute('width', '173');
     expect(logo).toHaveAttribute('height', '34');
+    // W231: its share of the screen above 1440; a 3× phone keeps the 384 px file (128 × 3)
+    expect(logo).toHaveAttribute(
+      'sizes',
+      '(min-width: 1441px) 9.03vw, (min-resolution: 2.5dppx) 128px, 173px',
+    );
     expect(logo).toHaveClass('h-[30px]', 'lg:h-[34px]', 'xl:h-[25.5px]', 'w-auto');
     // eager and preloaded, as the mark was (the logo is above the fold on every page)
     expect(logo).not.toHaveAttribute('loading');

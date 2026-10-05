@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { makeT } from '@/content/pure';
 import { BRAND } from '@/design/assets/brand';
+import { liquidSizes } from '@/design/zoom';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
@@ -18,10 +19,16 @@ import { NavLink } from './NavLink';
 const PROMOTED = new Set(['/blog', '/careers', '/verify', '/partner-with-us']);
 
 /** W183: the design's full wordmark (`logo4.png` = `BRAND.logo`) — never the mark alone. Its
- *  intrinsic box is the 34 px size in the asset's own 742 × 146 ratio (173 × 34), so next/image
- *  serves a 1x/2x srcset sized for the header, not for the 742 px file. */
+ *  intrinsic box is the 34 px size in the asset's own 742 × 146 ratio (173 × 34), so its space is
+ *  reserved before the file lands. With a `sizes` (W231) next/image emits a width-list srcset,
+ *  and `LOGO_SIZES` asks for 173 px up to 1440 px and for the logo's share of the screen above. */
 const LOGO_H = 34;
 const LOGO_W = Math.round((BRAND.logo.width * LOGO_H) / BRAND.logo.height);
+/** W231: 130 px is the logo's width from 1101 (25.5 px tall), which the zoom scales above 1440.
+ *  A screen from 2.5× asks for 128 px, so a 3× phone keeps the 384 px file the 1x/2x srcset gave
+ *  it before (173 × 3 would pick 640); 1× still gets 256 and 2–2.5× 384 (Chrome picks the
+ *  smaller of two candidates below their densities' geometric mean, which 2.01× would trip). */
+const LOGO_SIZES = liquidSizes(130, `(min-resolution: 2.5dppx) 128px, ${LOGO_W}px`);
 // The design's heights: 30 px below 901 (its ≤ 900 `.ja-nav img` rule; ≤ 460 too), the authored
 // 34 px at 901–1100, 34 × 0.75 from 1101 (D19). Final pass A3/A4 (W184, W185 A2, W210 b): the box
 // ratio is pinned from the asset's own dimensions (`LOGO_RATIO`, so the width never settles by a
@@ -55,6 +62,7 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
             alt="JobsAdmire"
             width={LOGO_W}
             height={LOGO_H}
+            sizes={LOGO_SIZES}
             preload
             style={LOGO_RATIO}
             className={LOGO}

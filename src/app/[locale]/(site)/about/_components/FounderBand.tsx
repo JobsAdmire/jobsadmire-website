@@ -1,4 +1,5 @@
 import { ImageSlot } from '@/design/blocks/ImageSlot';
+import { liquidSizes } from '@/design/zoom';
 import type { FounderRow } from '../founder';
 
 /** The founder figure (design 662–678). Renders nothing without a published row (W86): the
@@ -29,7 +30,7 @@ export function FounderBand({
             alt={founder.name}
             width={102}
             height={102}
-            sizes="102px"
+            sizes={liquidSizes(102)}
             className="rounded-pill"
           />
         </div>

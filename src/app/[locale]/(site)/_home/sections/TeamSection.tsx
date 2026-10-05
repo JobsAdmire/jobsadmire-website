@@ -3,6 +3,7 @@ import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { Button } from '@/design/primitives/Button';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
 import { Section } from '@/design/primitives/Section';
+import { liquidSizes } from '@/design/zoom';
 import { LiveDot } from '../components/LiveDot';
 import { BuildingIcon, GlobeIcon, MonitorIcon, ShieldIcon } from '../components/icons';
 import { hasRows, publishedFounder } from '../lib/phase-a';
@@ -62,7 +63,7 @@ export function TeamSection({ locale, bundle }: SectionProps) {
                   alt={founder.name}
                   width={104}
                   height={130}
-                  sizes="104px"
+                  sizes={liquidSizes(104)}
                 />
               </div>
               <div className="relative min-w-0">

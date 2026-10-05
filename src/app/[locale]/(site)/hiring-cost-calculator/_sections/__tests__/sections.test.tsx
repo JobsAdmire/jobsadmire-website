@@ -58,6 +58,9 @@ const EN = ctxFor('en');
 const NO_ROLES: CalcCtx = { ...TR, roles: [], defaultView: null };
 const WA = `https://wa.me/${TR.settings.whatsappNumber}`;
 const tokens = (el: Element) => (el.getAttribute('class') ?? '').split(/\s+/);
+/** W231 review: an anchor jump clears the sticky chrome at its three heights — the homepage
+ *  `#proposal` and Partner `#tracks` bands; `scroll-mt-5` landed it under the header. */
+const ANCHOR_BANDS = ['scroll-mt-[90px]', 'lg:scroll-mt-[125px]', 'min-[1200px]:scroll-mt-[90px]'];
 /** A COPY_DELTAS model figure (W142/W143) — the page's numbers are pinned to it. */
 const model = (id: string) => {
   const row = COPY_DELTAS.find((r) => r.id === id);
@@ -159,6 +162,8 @@ describe('Hero + CalculatorCard', () => {
     const card = container.querySelector('#calculator');
     expect(card).not.toBeNull();
     expect(tokens(card!)).toContain('print-isolate');
+    expect(tokens(card!)).toEqual(expect.arrayContaining(ANCHOR_BANDS));
+    expect(tokens(card!)).not.toContain('scroll-mt-5');
     expect(screen.getByTestId('calc-card')).toHaveAttribute('data-island', 'idle');
     expect(screen.getByTestId('calc-monthly-total')).toHaveTextContent('60.321 ₺');
     expect(screen.getByTestId('calc-year-total')).toHaveTextContent('751.852 ₺');
@@ -205,6 +210,26 @@ describe('CalcSection — the ≤ 700 px accordion (W10)', () => {
     expect(body).toHaveAttribute('data-open', 'true');
     expect(tokens(body)).not.toContain('max-md:hidden');
   });
+
+  it.each(['basis', 'section'] as const)(
+    'the %s padding keeps an anchor jump clear of the sticky chrome (W231 review)',
+    (pad) => {
+      const { container } = renderWithIntl(
+        <CalcSection
+          id="quota"
+          tone="light"
+          testId="calc-quota"
+          toggle={{ title: 'Trigger', subtitle: 'Subtitle' }}
+          pad={pad}
+        >
+          <p>body</p>
+        </CalcSection>,
+      );
+      const section = container.querySelector('section#quota')!;
+      expect(tokens(section)).toEqual(expect.arrayContaining(ANCHOR_BANDS));
+      expect(tokens(section)).not.toContain('scroll-mt-5');
+    },
+  );
 });
 
 describe('the section bodies (real TR bundle; every island shows its server fallback)', () => {

@@ -7,6 +7,7 @@ import { BRAND } from '@/design/assets/brand';
 // By module path, not the barrel (W147): a server component's barrel import makes every
 // 'use client' primitive the barrel re-exports a client reference of the route.
 import { Accordion } from '@/design/primitives/Accordion';
+import { liquidSizes } from '@/design/zoom';
 import { mailLink, telLink, waLink } from '@/lib/contact';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
@@ -36,6 +37,10 @@ const LEGAL = [
  *  742 × 146 ratio, so the box is reserved before the image lands (CLS). */
 const LOGO_H = 50;
 const LOGO_W = Math.round((BRAND.logo.width * LOGO_H) / BRAND.logo.height);
+/** W231: 191 px is the logo's width from 1101 (37.5 px tall), which the zoom scales above 1440.
+ *  A screen from 2.5× asks for 213 px, so a 3× phone keeps the 640 px file the 1x/2x srcset gave
+ *  it before (254 × 3 would pick 828); 1× still gets 256 and 2–2.5× 640. */
+const LOGO_SIZES = liquidSizes(191, `(min-resolution: 2.5dppx) 213px, ${LOGO_W}px`);
 const LOGO =
   'mb-4 block h-[50px] w-auto object-contain object-left brightness-0 invert opacity-95 xl:h-[37.5px] xl:max-w-none';
 const HEADING =
@@ -157,7 +162,14 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
       <div className="container-site grid gap-10 pt-16 pb-12 lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))] xl:gap-x-[27px] xl:gap-y-[30px]">
         <div>
           {/* decorative: the header's logo already names the site */}
-          <Image src={BRAND.logo.src} alt="" width={LOGO_W} height={LOGO_H} className={LOGO} />
+          <Image
+            src={BRAND.logo.src}
+            alt=""
+            width={LOGO_W}
+            height={LOGO_H}
+            sizes={LOGO_SIZES}
+            className={LOGO}
+          />
           <p className="m-0 mb-4 max-w-[330px] text-white/65">{t('home.188')}</p>
           <p className="m-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/5 px-4 py-1.5 font-bold text-sky xl:text-balance">
             <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />

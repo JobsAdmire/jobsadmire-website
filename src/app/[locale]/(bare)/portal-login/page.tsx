@@ -11,6 +11,7 @@ import { StoreBadges } from '@/design/blocks/StoreBadges';
 import { LanguageSwitcher } from '@/design/chrome/LanguageSwitcher';
 import { Button, buttonClassName } from '@/design/primitives/Button';
 import { QrCode } from '@/design/QrCode';
+import { liquidSizes } from '@/design/zoom';
 import { APP_LINK_PATH } from '@/lib/app-link';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
@@ -197,9 +198,11 @@ export default async function PortalLoginPage({ params }: { params: Promise<{ lo
   const whatsappHref = waLink(settings.whatsappNumber, sys('whatsapp.prefill'));
 
   return (
+    // The shell fills the screen's height; above 1440 px the liquid desktop's zoom multiplies
+    // `vh` too, so the height divides by it (W231).
     <div
       data-testid="portal-shell"
-      className="grid bg-white lg:min-h-screen lg:grid-cols-[1.02fr_1fr]"
+      className="grid bg-white lg:min-h-[calc(100vh/var(--zoom,1))] lg:grid-cols-[1.02fr_1fr]"
     >
       {/* The brand panel (design .ja-cl-brand; its #0a1428 is the navy token). */}
       <div className="relative overflow-hidden bg-navy px-5 py-5 text-white md:px-8 md:py-7 lg:px-9 lg:py-9 xl:px-[42px] xl:py-8">
@@ -215,7 +218,7 @@ export default async function PortalLoginPage({ params }: { params: Promise<{ lo
         <div className="relative flex items-center gap-3">
           <span className="flex h-[34px] w-[34px] flex-none items-center justify-center rounded-[9px] bg-white">
             {/* Decorative: the wordmark beside it names the brand (the asset's 336 × 285 ratio). */}
-            <Image src={BRAND.mark.src} alt="" width={28} height={24} />
+            <Image src={BRAND.mark.src} alt="" width={28} height={24} sizes={liquidSizes(28)} />
           </span>
           <span className="font-display text-[16px] font-extrabold tracking-[-0.3px]">
             JobsAdmire

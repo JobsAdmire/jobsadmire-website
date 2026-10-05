@@ -1,5 +1,6 @@
 'use client';
 import { useCallback, useSyncExternalStore } from 'react';
+import { rootZoom } from '@/design/zoom';
 import { useScrollProgress } from './useScrollProgress';
 
 export type TocHeading = { id: string; text: string };
@@ -49,9 +50,11 @@ export function ScrollSpyToc({
   const first = headings[0]?.id ?? '';
   const getActive = useCallback(() => {
     let active = first;
+    // the rect is in zoomed px on the liquid desktop, the offset in CSS px (W231)
+    const line = offsetPx * rootZoom();
     for (const h of headings) {
       const el = document.getElementById(h.id);
-      if (el && el.getBoundingClientRect().top <= offsetPx) active = h.id;
+      if (el && el.getBoundingClientRect().top <= line) active = h.id;
     }
     return active;
   }, [headings, first, offsetPx]);

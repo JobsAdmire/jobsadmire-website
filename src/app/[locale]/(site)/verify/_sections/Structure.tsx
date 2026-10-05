@@ -6,6 +6,7 @@ import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { Button, buttonClassName } from '@/design/primitives/Button';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
 import { Section } from '@/design/primitives/Section';
+import { liquidSizes } from '@/design/zoom';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { telLink } from '@/lib/contact';
@@ -153,7 +154,7 @@ function FounderStrip({
           alt={founder.name}
           width={84}
           height={84}
-          sizes="84px"
+          sizes={liquidSizes(84)}
         />
       </div>
       <div className="min-w-[240px] flex-1">

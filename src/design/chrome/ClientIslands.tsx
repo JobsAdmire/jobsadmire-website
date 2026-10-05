@@ -1,6 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
-import { useCallback, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useSyncExternalStore } from 'react';
+import { keepScrollAcrossZoom } from '@/design/zoom';
 import type { Locale } from '@/i18n/routing';
 import { hintEligibleHere } from './hint-eligibility';
 
@@ -31,6 +32,9 @@ const subscribe = () => () => {};
 const onServer = () => false;
 
 export function ClientIslands({ consent, locale }: { consent: boolean; locale: Locale }) {
+  // W231: a resize that changes the liquid desktop's zoom keeps the reader's place — mounted
+  // here because the locale layout renders this boundary on every page, `(bare)` included.
+  useEffect(() => keepScrollAcrossZoom(), []);
   const hint = useSyncExternalStore(
     subscribe,
     useCallback(() => hintEligibleHere(locale), [locale]),

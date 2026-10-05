@@ -26,7 +26,10 @@ function stubTops(tops: Record<string, number>) {
   });
 }
 
-afterEach(() => vi.restoreAllMocks());
+afterEach(() => {
+  vi.restoreAllMocks();
+  document.documentElement.style.removeProperty('zoom');
+});
 
 describe('ScrollSpyToc', () => {
   it('links every heading and marks the last one scrolled past as current', () => {
@@ -52,6 +55,27 @@ describe('ScrollSpyToc', () => {
     expect(links[0]).not.toHaveAttribute('aria-current');
     // No scroll in jsdom → progress 0 → the whole read time is left.
     expect(screen.getByText('≈ 8 min left')).toBeInTheDocument();
+  });
+
+  // W231: on the liquid desktop the rect is in zoomed px and offsetPx in CSS px, so the line a
+  // heading must pass is offsetPx × the root zoom — 192 at zoom 2 with the default 96.
+  it('scales the offset by the root zoom before comparing it with the zoomed rect (W231)', () => {
+    document.documentElement.style.setProperty('zoom', '2');
+    stubTops({ overview: -300, documents: 150, process: 200 });
+    render(
+      <>
+        <h2 id="overview">Overview</h2>
+        <h2 id="documents">Documents</h2>
+        <h2 id="process">Process</h2>
+        <ScrollSpyToc headings={HEADINGS} label="Contents" />
+      </>,
+    );
+    // 150 ≤ 192 is reached (never against the unscaled 96); 200 > 192 is not
+    expect(screen.getByRole('link', { name: 'Documents' })).toHaveAttribute(
+      'aria-current',
+      'location',
+    );
+    expect(screen.getByRole('link', { name: 'Process' })).not.toHaveAttribute('aria-current');
   });
 
   it('falls back to the first heading when none has been reached', () => {

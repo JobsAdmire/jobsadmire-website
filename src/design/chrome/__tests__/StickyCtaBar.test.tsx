@@ -38,6 +38,7 @@ afterEach(() => {
   vi.restoreAllMocks();
   document.getElementById('request-form')?.remove();
   document.documentElement.style.removeProperty(STICKY_CTA_HEIGHT_VAR);
+  document.documentElement.style.removeProperty('zoom');
 });
 
 describe('isBarVisible (the Hire Workers rule)', () => {
@@ -62,6 +63,17 @@ describe('StickyCtaBar', () => {
     setScroll(100);
     expect(screen.queryByRole('link', { name: 'Request' })).toBeNull();
     expect(readVar()).toBe('0px');
+  });
+
+  // W231: on the liquid desktop scrollY is in zoomed px and showAfterPx in CSS px, so the bar
+  // waits for showAfterPx × the root zoom — 1400 at zoom 2.
+  it('scales showAfterPx by the root zoom before comparing it with scrollY (W231)', () => {
+    document.documentElement.style.setProperty('zoom', '2');
+    renderWithIntl(<StickyCtaBar message="m" ctas={ctas} showAfterPx={700} />);
+    setScroll(1000); // past 700, short of 1400
+    expect(screen.queryByRole('link', { name: 'Request' })).toBeNull();
+    setScroll(1500);
+    expect(screen.getByRole('link', { name: 'Request' })).toBeInTheDocument();
   });
 
   it('hides while the hideNearId target is within the lower 10% of the viewport', () => {

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { BRAND } from '@/design/assets/brand';
+import { liquidSizes } from '@/design/zoom';
 
 export type LicenceRow = { slot: string; title: string; href: string | null };
 
@@ -31,10 +32,12 @@ export function LicenceBlock({
       className="mt-7 scroll-mt-24 rounded-base border border-border-4 bg-white p-6 sm:p-8"
     >
       <div className="mb-5 flex flex-wrap items-center gap-4">
+        {/* `h-12` is 48 px, 36 from 1101: above 1440 it is fetched for 36 px' share (W231) */}
         <Image
           src={BRAND.iskur.src}
           width={48}
           height={48}
+          sizes={liquidSizes(36, '48px')}
           alt=""
           className="h-12 w-12 shrink-0 object-contain"
         />

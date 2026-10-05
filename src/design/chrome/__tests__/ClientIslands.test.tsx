@@ -96,3 +96,30 @@ describe('ClientIslands requests LanguageHint only for an eligible visitor (W148
     expect(screen.getByTestId('language-hint')).toBeInTheDocument();
   });
 });
+
+// W231: every page mounts the liquid desktop's scroll keeper here (`keepScrollAcrossZoom`, whose
+// own cases are in src/design/__tests__/liquid.test.ts).
+describe('ClientIslands keeps the reader’s place across a zoom change (W231)', () => {
+  const SCROLL_Y = Object.getOwnPropertyDescriptor(window, 'scrollY');
+  afterEach(() => {
+    vi.restoreAllMocks();
+    document.documentElement.style.removeProperty('zoom');
+    if (SCROLL_Y) Object.defineProperty(window, 'scrollY', SCROLL_Y);
+    else delete (window as { scrollY?: number }).scrollY;
+  });
+
+  it('restores the place on a zoom-changing resize while mounted, never after', () => {
+    browserLanguages(['tr-TR', 'tr']);
+    const scrollTo = vi.spyOn(window, 'scrollTo').mockImplementation(() => {});
+    document.documentElement.style.setProperty('zoom', '2');
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 1000 });
+    const { unmount } = render(<ClientIslands consent={false} locale="tr" />);
+    document.documentElement.style.setProperty('zoom', '1.5');
+    window.dispatchEvent(new Event('resize'));
+    expect(scrollTo).toHaveBeenCalledWith({ top: 750, behavior: 'instant' });
+    unmount();
+    document.documentElement.style.setProperty('zoom', '2');
+    window.dispatchEvent(new Event('resize'));
+    expect(scrollTo).toHaveBeenCalledTimes(1);
+  });
+});

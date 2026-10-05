@@ -19,6 +19,7 @@ import { buttonClassName } from '@/design/primitives/Button';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
 import { Section } from '@/design/primitives/Section';
 import { Timeline } from '@/design/primitives/Timeline';
+import { liquidSizes } from '@/design/zoom';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
@@ -213,12 +214,14 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                 hangs it `bottom: -44px` (About Us l. 606) — `lg:-bottom-11` = 44 px at the 16 px
                 root, 33 px from 1101 (a rem utility, so the × 0.75 D19 step is automatic); at
                 `-bottom-6` it rode ≈ 20 px too high and covered the corridor card's fourth lane
-                (QA W220 about-01). */}
+                (QA W220 about-01). The roundel's `h-10` is 40 px, 30 from 1101: above 1440 its
+                image is fetched for 30 px' share of the screen (W231). */}
             <div className="mt-4 flex items-center gap-4 rounded-base border border-white/20 bg-white/10 px-4 py-3 lg:absolute lg:-bottom-11 lg:left-6 lg:mt-0 lg:bg-navy lg:shadow-hero-form">
               <Image
                 src={BRAND.iskur.src}
                 width={40}
                 height={40}
+                sizes={liquidSizes(30, '40px')}
                 alt=""
                 className="h-10 w-10 rounded-xs bg-white object-contain p-1"
               />
@@ -405,7 +408,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                   alt={sys('about.tech.appAlt')}
                   width={150}
                   height={300}
-                  sizes="150px"
+                  sizes={liquidSizes(112.5, '150px')}
                   className="rounded-lg"
                 />
               </div>

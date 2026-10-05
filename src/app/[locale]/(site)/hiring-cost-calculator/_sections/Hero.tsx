@@ -91,7 +91,9 @@ export function Hero({ ctx, children }: { ctx: CalcCtx; children: ReactNode }) {
  * opt-in). The server skeleton paints the model's defaults; the island loads on the first
  * hover/touch/focus or at `#calculator` (W13 amended). Without design roles it is the designed
  * empty state, its CTA an object Href to the closing band's quote button (W82). The fine print
- * `calc.040` closes it (on `pale-1`: `text-text-secondary`, D20).
+ * `calc.040` closes it (on `pale-1`: `text-text-secondary`, D20). A `#calculator` jump clears the
+ * sticky chrome at its three heights — the homepage `#proposal` bands (HeroLeadForm, W152); W231
+ * review: `scroll-mt-5` landed the card's first row under the header.
  */
 export function CalculatorCard({ ctx }: { ctx: CalcCtx }) {
   const { t, sys, locale, rateConfig, roles, roleLabels, industryLabels, labels, defaultView } =
@@ -99,7 +101,7 @@ export function CalculatorCard({ ctx }: { ctx: CalcCtx }) {
   return (
     <div
       id="calculator"
-      className="print-isolate mx-auto max-w-[1080px] scroll-mt-5 overflow-hidden rounded-xl border border-tint-border bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-base max-md:shadow-[0_16px_38px_rgba(3,10,26,0.4)] xl:max-w-[1040px]"
+      className="print-isolate mx-auto max-w-[1080px] scroll-mt-[90px] lg:scroll-mt-[125px] min-[1200px]:scroll-mt-[90px] overflow-hidden rounded-xl border border-tint-border bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-base max-md:shadow-[0_16px_38px_rgba(3,10,26,0.4)] xl:max-w-[1040px]"
     >
       {defaultView ? (
         <CalculatorLoader

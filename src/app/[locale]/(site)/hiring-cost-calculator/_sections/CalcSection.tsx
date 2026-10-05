@@ -4,10 +4,15 @@ import { SectionToggle } from '../_components/SectionToggle';
 import { SectionHead, type SectionHeadProps } from './ui';
 
 // Section's tones set `py-16`; these set padding only at OTHER variants (W122): the design's 8 px
-// ≤ 700 px, its 62/80 px from 701 px and × 0.75 from 1101 px (D19).
+// ≤ 700 px, its 62/80 px from 701 px and × 0.75 from 1101 px (D19). An anchor jump (the jump
+// chips, "Check your quota →", the header CTA sweep) clears the sticky chrome at its three
+// heights — the homepage `#proposal` bands (HeroLeadForm, W152); W231 review: `scroll-mt-5`
+// landed the heading under the header.
 const PAD = {
-  basis: 'scroll-mt-5 max-md:py-2 md:py-[62px] xl:py-[46.5px]',
-  section: 'scroll-mt-5 max-md:py-2 md:py-20 xl:py-[60px]',
+  basis:
+    'scroll-mt-[90px] lg:scroll-mt-[125px] min-[1200px]:scroll-mt-[90px] max-md:py-2 md:py-[62px] xl:py-[46.5px]',
+  section:
+    'scroll-mt-[90px] lg:scroll-mt-[125px] min-[1200px]:scroll-mt-[90px] max-md:py-2 md:py-20 xl:py-[60px]',
 } as const;
 // `.container-site` is unlayered CSS, so a utility cannot narrow it: a narrow body nests.
 const NARROW = 'mx-auto max-w-[1080px] xl:max-w-[1040px]';

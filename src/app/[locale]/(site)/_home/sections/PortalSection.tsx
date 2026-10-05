@@ -4,6 +4,7 @@ import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { StoreBadges } from '@/design/blocks/StoreBadges';
 import { ClockIcon } from '@/design/chrome/icons';
 import { Button } from '@/design/primitives/Button';
+import { liquidSizes } from '@/design/zoom';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
 import { Section } from '@/design/primitives/Section';
 import { LiveDot } from '../components/LiveDot';
@@ -121,7 +122,7 @@ export function PortalSection({ locale, bundle }: SectionProps) {
                   alt=""
                   width={136}
                   height={278}
-                  sizes="136px"
+                  sizes={liquidSizes(136)}
                 />
               </div>
             </div>

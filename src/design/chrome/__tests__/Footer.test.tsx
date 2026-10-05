@@ -302,6 +302,11 @@ describe('Footer', () => {
     expect(logo).toHaveAttribute('alt', '');
     expect(logo).toHaveAttribute('width', '254');
     expect(logo).toHaveAttribute('height', '50');
+    // W231: its share of the screen above 1440; a 3× phone keeps the 640 px file (213 × 3)
+    expect(logo).toHaveAttribute(
+      'sizes',
+      '(min-width: 1441px) 13.26vw, (min-resolution: 2.5dppx) 213px, 254px',
+    );
     expect(logo).toHaveClass(
       'brightness-0',
       'invert',

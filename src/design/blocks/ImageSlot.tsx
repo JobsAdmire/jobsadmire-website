@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
+import { liquidSizes } from '@/design/zoom';
 
 /** Cover-mode heights in px per min-width step (`xs` 461, `sm` 561, `md` 701, `lg` 901, `xl`
  *  1101); a missing step inherits the one below it. */
@@ -97,7 +98,7 @@ export function ImageSlot({
         alt={alt}
         width={width}
         height={height}
-        sizes={sizes}
+        sizes={sizes ?? liquidSizes(width)}
         preload={priority ?? lcp}
         style={style}
         className={[box, className].filter(Boolean).join(' ')}

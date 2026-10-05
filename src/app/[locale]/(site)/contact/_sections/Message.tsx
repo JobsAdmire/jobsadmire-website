@@ -130,8 +130,10 @@ export function Message({
         className="container-site grid grid-cols-1 items-start gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14"
       >
         {/* ≤ 700 px the enquiry card comes first (the design's order swap); the explainer then holds
-            nothing focusable — its one card hides — so the focus order is unchanged. */}
-        <div className="min-w-0 max-md:order-2 lg:sticky lg:top-24">
+            nothing focusable — its one card hides — so the focus order is unchanged. Not sticky
+            (W231): the column is taller than the CSS viewport the liquid desktop's zoom leaves,
+            stuck it travelled only ≈ 160 px, and a scroll box would clip its cards' shadows. */}
+        <div className="min-w-0 max-md:order-2">
           <Eyebrow>{t('contact.050')}</Eyebrow>
           <h2 className="m-0 mb-4 mt-3 text-h2 max-md:text-[21px] max-md:leading-[1.13] max-md:tracking-[-0.6px] xl:text-balance">
             {t('contact.051')}

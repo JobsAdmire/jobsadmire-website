@@ -103,7 +103,9 @@ export function PassCheckView({
           {labels.pcPriv}
         </p>
       </div>
-      <div className="flex flex-col gap-4 lg:sticky lg:top-5">
+      {/* W231 review: stuck below the 71 px sticky header at `top-24`, as every sticky column —
+          `top-5` (15 px from 1101) slid the verdict under it */}
+      <div className="flex flex-col gap-4 lg:sticky lg:top-24">
         {/* QA W221 calc-05: the verdict changes with every answer — a polite, atomic live region */}
         <div
           data-testid="pass-verdict"
