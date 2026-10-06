@@ -37,6 +37,9 @@ const HOME_SYS_KEYS = [
   'home.network.mapTitle',
   'home.network.turkiye',
   'home.portal.platforms',
+  'home.press.title', // W249: the press strip
+  'home.press.sub',
+  'home.press.cta',
 ] as const;
 
 function get(obj: unknown, path: string): unknown {

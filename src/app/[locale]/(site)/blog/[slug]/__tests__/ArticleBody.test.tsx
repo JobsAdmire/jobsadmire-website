@@ -1,5 +1,5 @@
 import { render, screen, within } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type { BlogPost } from '@/content/collections';
 import { BLOCK_STRINGS, testBundle } from '@/test/bundle';
 import { collisionsInTree } from '@/test/class-collisions';
@@ -261,5 +261,81 @@ describe('RelatedPosts (B-2)', () => {
     expect(screen.getByTestId('article-prev')).toHaveAttribute('href', '/en/blog/p');
     expect(screen.queryByTestId('article-next')).toBeNull();
     expect(collisionsInTree(container)).toEqual([]);
+  });
+});
+
+describe('ArticleBody — the video block (W249)', () => {
+  const TITLE = 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj';
+  const MD_VIDEO = `Intro.\n\n!video[${TITLE}](atv-vizyon-haris-jiva)\n\n## Section\n\nText.`;
+
+  it('a captioned native player in a fixed 16:9 box: poster, MP4 source, Turkish track, no autoplay', () => {
+    const { container } = render(<ArticleBody blocks={parseMarkdown(MD_VIDEO)} locale="tr" />);
+    const figure = screen.getByTestId('article-video');
+    expect(figure.tagName).toBe('FIGURE');
+    expect(figure).toHaveAttribute('data-video-key', 'atv-vizyon-haris-jiva');
+    // the box reserves the player's space before anything loads; the body's image face
+    const box = figure.firstElementChild as HTMLElement;
+    expect(box.className).toContain('aspect-video');
+    expect(box.className).toContain('rounded-base');
+    expect(box.className).toContain('border-tint-border');
+    const video = figure.querySelector('video')!;
+    expect(video).toHaveAttribute('controls');
+    expect(video).toHaveAttribute('preload', 'none');
+    expect(video).toHaveAttribute('playsinline');
+    expect(video).not.toHaveAttribute('autoplay');
+    expect(video).toHaveAttribute('poster', '/media/blog/atv-vizyon-haris-jiva.jpg');
+    expect(video).toHaveAttribute('width', '1920');
+    expect(video).toHaveAttribute('height', '1080');
+    expect(video).toHaveAttribute('aria-label', TITLE);
+    const source = video.querySelector('source')!;
+    expect(source).toHaveAttribute('src', '/media/blog/atv-vizyon-haris-jiva.mp4');
+    expect(source).toHaveAttribute('type', 'video/mp4');
+    const tracks = video.querySelectorAll('track');
+    expect(tracks).toHaveLength(1);
+    expect(tracks[0]).toHaveAttribute('kind', 'captions');
+    expect(tracks[0]).toHaveAttribute('srclang', 'tr');
+    expect(tracks[0]).toHaveAttribute('label', 'Türkçe');
+    expect(tracks[0]).toHaveAttribute('src', '/media/blog/atv-vizyon-haris-jiva.tr.vtt');
+    expect(tracks[0]).toHaveAttribute('default');
+    expect(within(figure).getByText(TITLE).tagName).toBe('FIGCAPTION');
+    // before the first h2: outside every collapsible section, so never folded away on phones
+    expect(figure.closest('[data-testid="article-section"]')).toBeNull();
+    expect(collisionsInTree(container)).toEqual([]);
+  });
+
+  it('the track is on by default only on a page in its own language', () => {
+    render(<ArticleBody blocks={parseMarkdown(MD_VIDEO)} locale="en" />);
+    const track = screen.getByTestId('article-video').querySelector('track')!;
+    expect(track).not.toHaveAttribute('default');
+    expect(track).toHaveAttribute('srclang', 'tr');
+  });
+
+  it('a key the registry does not know renders nothing (and says so outside production)', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { container } = render(
+      <ArticleBody blocks={parseMarkdown('Before.\n\n!video[Soon](not-yet)\n\nAfter.')} />,
+    );
+    expect(screen.queryByTestId('article-video')).toBeNull();
+    expect(container.querySelector('video, figure')).toBeNull();
+    expect(container).toHaveTextContent('Before.After.');
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining('"not-yet"'));
+    warn.mockRestore();
+  });
+
+  it('a pull quote inside the body stays in its section; only the closing one stands outside', () => {
+    const md = [
+      '## One',
+      'Text.',
+      '> A quote mid-section.',
+      'More of one.',
+      '## Two',
+      '> Closing.',
+    ];
+    render(<ArticleBody blocks={parseMarkdown(md.join('\n\n'))} />);
+    const [one, two] = screen.getAllByTestId('article-section');
+    const [mid, closing] = screen.getAllByTestId('article-quote');
+    expect(one).toContainElement(mid);
+    expect(one).toHaveTextContent('More of one.');
+    expect(two).not.toContainElement(closing);
   });
 });

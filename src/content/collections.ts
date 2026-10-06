@@ -211,6 +211,8 @@ const perLocaleMinutes = z.object({
 });
 const BlogFaqItemSchema = z.object({ q: z.string().min(1), a: z.string().min(1) });
 const isoInstant = z.string().refine((s) => !Number.isNaN(Date.parse(s)), 'not an ISO date');
+/** A path of the site itself (`/media/blog/x.jpg`), never protocol-relative (`//host`). */
+const SITE_FILE = /^\/(?!\/)\S+$/;
 /** W4 + W28: one row per article; `body[locale]` (Markdown) is present exactly when `hasBody[locale]`.
  *  The optional fields below arrive only with the Operations feed (`BLOG_SOURCE=OPS`, contract
  *  `blog.v1`, mapped by `src/content/blog-feed.ts`); the LOCAL importer writes none of them, and
@@ -237,10 +239,12 @@ export const BlogPostSchema = z
       .object({ name: z.string().min(1), title: z.string().min(1).nullable() })
       .nullable()
       .optional(),
-    /** The cover photo (absolute Operations media URL, `next.config.ts` `images.remotePatterns`). */
+    /** The cover photo: an absolute Operations media URL (`next.config.ts`
+     *  `images.remotePatterns`), or a file of the site itself (`/media/blog/<key>.jpg` — W249: a
+     *  post without a cover shows its first video's poster). */
     cover: z
       .object({
-        url: z.string().url(),
+        url: z.union([z.string().url(), z.string().regex(SITE_FILE)]),
         width: z.number().int().positive(),
         height: z.number().int().positive(),
       })

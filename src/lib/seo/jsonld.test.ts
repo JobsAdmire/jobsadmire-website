@@ -1,5 +1,12 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { articleJsonLd, faqJsonLd, jobPostingJsonLd, organizationJsonLd } from './jsonld';
+import {
+  articleJsonLd,
+  faqJsonLd,
+  isoDuration,
+  jobPostingJsonLd,
+  organizationJsonLd,
+  videoObjectJsonLd,
+} from './jsonld';
 import fixture from '../../../contract/website-bundle.v1.fixture.json';
 import { BundleSchema } from '../../../contract/website-bundle.v1';
 
@@ -79,6 +86,47 @@ describe('articleJsonLd', () => {
 
   it('rejects an invalid date outside production', () => {
     expect(() => articleJsonLd({ ...input, datePublished: 'not-a-date' })).toThrow(RangeError);
+  });
+});
+
+describe('videoObjectJsonLd (W249)', () => {
+  const input = {
+    name: 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj',
+    description: 'ATV Vizyon, JobsAdmire’ın Antalya’daki ofisine konuk oldu.',
+    thumbnailUrl: 'https://www.jobsadmire.com/media/blog/atv-vizyon-haris-jiva.jpg',
+    uploadDate: '2026-10-06',
+    durationSec: 205,
+    contentUrl: 'https://www.jobsadmire.com/media/blog/atv-vizyon-haris-jiva.mp4',
+    inLanguage: 'tr',
+  };
+
+  it('is a VideoObject with the fields Google reads: ISO upload date and duration, the file itself', () => {
+    expect(videoObjectJsonLd(input)).toEqual({
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: input.name,
+      description: input.description,
+      thumbnailUrl: input.thumbnailUrl,
+      uploadDate: '2026-10-06T00:00:00.000Z',
+      duration: 'PT3M25S',
+      contentUrl: input.contentUrl,
+      inLanguage: 'tr',
+    });
+  });
+
+  it('an empty description takes the name; a bad date throws outside production', () => {
+    expect(videoObjectJsonLd({ ...input, description: ' ' }).description).toBe(input.name);
+    expect(() => videoObjectJsonLd({ ...input, uploadDate: 'soon' })).toThrow(RangeError);
+  });
+
+  it('isoDuration: whole seconds as ISO 8601', () => {
+    expect(isoDuration(205)).toBe('PT3M25S');
+    expect(isoDuration(59.6)).toBe('PT1M');
+    expect(isoDuration(60)).toBe('PT1M');
+    expect(isoDuration(3661)).toBe('PT1H1M1S');
+    expect(isoDuration(7200)).toBe('PT2H');
+    expect(isoDuration(0)).toBe('PT0S');
+    expect(isoDuration(-5)).toBe('PT0S');
   });
 });
 

@@ -273,6 +273,18 @@ describe('blog rows (W248: the optional Operations fields)', () => {
     expect(readMinutesOf(parsed, 'en')).toBe(parsed.readMinutes);
     expect(BlogPostSchema.safeParse({ ...ops, updatedAt: 'yesterday' }).success).toBe(false);
   });
+
+  it('W249: a cover may be a file of the site (a video poster), never a protocol-relative URL', () => {
+    const withCover = (url: string) => ({
+      ...post(true),
+      cover: { url, width: 1920, height: 1080 },
+    });
+    expect(
+      BlogPostSchema.safeParse(withCover('/media/blog/atv-vizyon-haris-jiva.jpg')).success,
+    ).toBe(true);
+    for (const bad of ['//evil.example/x.jpg', 'media/x.jpg', '/media/a b.jpg', ''])
+      expect(BlogPostSchema.safeParse(withCover(bad)).success, bad).toBe(false);
+  });
 });
 
 describe('page keys', () => {

@@ -67,8 +67,18 @@ const nextConfig: NextConfig = {
   // only (the canonical Next matcher form, which Vercel does support). `/og/*`, `/api/*` and
   // `/_next/*` therefore carry `nosniff` only. e2e/headers.spec.ts pins pages, a chunk, an
   // optimised image and the OG route.
+  //
+  // W249: the blog's video files (`public/media/blog/<key>.{mp4,jpg,<lang>.vtt}`, the registry in
+  // src/content/videos.ts) are cached for a year, `immutable` — a file is never overwritten in
+  // place: a new cut of a video is a new key, so its URLs are new too.
   async headers() {
-    return [{ source: '/:path*', headers: [{ key: 'X-Content-Type-Options', value: 'nosniff' }] }];
+    return [
+      { source: '/:path*', headers: [{ key: 'X-Content-Type-Options', value: 'nosniff' }] },
+      {
+        source: '/media/blog/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+    ];
   },
 };
 

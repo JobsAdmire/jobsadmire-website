@@ -1,7 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
+import { ATV_KEY, atvPost, doorFeed } from '@/test/blog-fixtures';
 import { testBundle } from '@/test/bundle';
+import { BlogFeedPostSchema } from '../../contract/blog-feed.v1';
 import {
   BlogFeedContractError,
   coverVariant,
@@ -238,5 +240,81 @@ describe('previewToRow (the draft preview)', () => {
     const post = structuredClone(FIXTURE.posts[1]);
     expect(previewToRow({ post }, 'en')).toBeNull();
     expect(() => previewToRow({ nope: true }, 'en')).toThrow(BlogFeedContractError);
+  });
+});
+
+describe('the video poster as the cover (W249)', () => {
+  const POSTER = '/media/blog/atv-vizyon-haris-jiva.jpg';
+  type PostJson = Record<string, Record<string, unknown>>;
+  const atv = () => atvPost() as PostJson;
+  const map = (post: PostJson) => mapFeedPost(BlogFeedPostSchema.parse(post), { log: quiet() });
+
+  it('a post without a cover but with a video shows the poster, its size, the video title as alt', () => {
+    const row = map(atv()); // as Operations sends it: no cover, so no coverAlt either
+    expect(row?.cover).toEqual({ url: POSTER, width: 1920, height: 1080 });
+    expect(row?.coverAlt).toEqual({
+      tr: 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj',
+      en: null, // not written in English
+    });
+    // a file of the site: BlogPostSchema (and so getCollection) takes it
+    expect(BlogPostSchema.safeParse(row).success).toBe(true);
+  });
+
+  it('a coverAlt never describes the poster (it belongs to a cover photo)', () => {
+    const post = atv();
+    post.coverAlt = { tr: 'Silinen bir kapak fotoğrafı', en: null };
+    expect(map(post)?.coverAlt?.tr).toBe('ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj');
+  });
+
+  it('a cover of its own always wins, with its own alt; a post with neither keeps none', () => {
+    const own = atv();
+    own.cover = structuredClone(FIXTURE.posts[0].cover) as Record<string, unknown>;
+    own.coverAlt = { tr: 'Kapak', en: null };
+    expect(map(own)?.cover?.url).toMatch(/\/1600\.webp$/);
+    expect(map(own)?.coverAlt?.tr).toBe('Kapak');
+    const plain = atv();
+    plain.body.tr = 'No video here.\n\n!video[Not yet](unknown-video)';
+    expect(map(plain)?.cover).toBeNull(); // the category cover shows
+    expect(map(plain)?.coverAlt?.tr).toBeNull();
+  });
+
+  it('the English body’s video stands in when the Turkish one has none; its title per locale', () => {
+    const post = atv();
+    post.body = {
+      tr: 'Türkçe metin.\n\n!video[Türkçe başlık](atv-vizyon-haris-jiva)',
+      en: 'English text.\n\n!video[English title](atv-vizyon-haris-jiva)',
+    };
+    post.slug.en = 'atv-interview';
+    post.title.en = 'The ATV interview';
+    post.hasBody.en = true;
+    expect(map(post)?.coverAlt).toEqual({ tr: 'Türkçe başlık', en: 'English title' });
+    post.body.tr = 'Türkçe metin, videosuz.';
+    expect(map(post)?.cover?.url).toBe(POSTER);
+  });
+
+  it('through the whole feed: the fixture door’s posts all map, the ATV post first', () => {
+    const { rows } = feedToRows(doorFeed(), quiet());
+    expect(rows.map((r) => r.key)).toEqual([
+      ATV_KEY,
+      'cmgblog0000000000000000001',
+      'cmgblog0000000000000000002',
+      'cmgblog0000000000000000003',
+    ]);
+    expect(rows[0]).toMatchObject({
+      readMinutesByLocale: { tr: 2, en: null },
+      featured: true,
+      publishedAt: '2026-10-06',
+      slug: { tr: 'atv-vizyon-jobsadmire-haris-jiva-roportaji', en: null },
+      cover: { url: POSTER },
+      authorObj: null,
+    });
+    expect(rows[0].faq?.tr).toHaveLength(3);
+    for (const row of rows) expect(BlogPostSchema.safeParse(row).success).toBe(true);
+    // the other three are unchanged: their own cover, or none (no video in their bodies)
+    expect(rows.slice(1).map((r) => r.cover?.url ?? null)).toEqual([
+      'https://operations.jobsadmire.com/api/website/v1/media/cmgmedia000000000000000001/1600.webp',
+      null,
+      null,
+    ]);
   });
 });

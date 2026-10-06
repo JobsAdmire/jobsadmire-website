@@ -2,14 +2,13 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { feedToRows, redirectTarget, withBlogRows } from '@/content/blog-feed';
+import { doorFeed } from '@/test/blog-fixtures';
 import { BundleSchema } from '../../../../../../../contract/website-bundle.v1';
 
 /** The `/blog/[slug]` route under `BLOG_SOURCE=OPS` (W248): the feed's rows over the committed
- *  bundle, its redirects, and Next's navigation signals as throwable markers. */
-const FEED = feedToRows(
-  JSON.parse(readFileSync(join(process.cwd(), 'contract/blog-feed.v1.fixture.json'), 'utf8')),
-  vi.fn(),
-);
+ *  bundle, its redirects, and Next's navigation signals as throwable markers. The feed is the
+ *  fixture door's (W249): the owner's ATV post, then the contract fixture's three. */
+const FEED = feedToRows(doorFeed(), vi.fn());
 const bundleOf = (locale: 'tr' | 'en') =>
   withBlogRows(
     BundleSchema.parse(
@@ -57,6 +56,7 @@ beforeEach(() => vi.spyOn(console, 'error').mockImplementation(() => {}));
 describe('/blog/[slug] from the Operations feed (W248)', () => {
   it('prerenders every written article of both locales', async () => {
     expect(await generateStaticParams()).toEqual([
+      { locale: 'tr', slug: 'atv-vizyon-jobsadmire-haris-jiva-roportaji' },
       { locale: 'tr', slug: 'pakistandan-isci-istihdami-rehberi' },
       { locale: 'tr', slug: 'sgk-bildirimi-yabanci-isciler' },
       { locale: 'en', slug: 'hiring-from-pakistan-employer-guide' },
@@ -98,6 +98,19 @@ describe('/blog/[slug] from the Operations feed (W248)', () => {
     );
     expect(og.modifiedTime).toBe('2026-10-06T07:30:00.000Z');
     expect(og.authors).toEqual(['Ayşe Demir']);
+  });
+
+  it('W249: a post without a cover shares its video’s poster, absolute', async () => {
+    const m = await meta('tr', 'atv-vizyon-jobsadmire-haris-jiva-roportaji');
+    expect(m.title).toBe("ATV Vizyon'da JobsAdmire: Haris Jiva Röportajı");
+    const og = m.openGraph as Record<string, unknown> & { images: { url: string }[] };
+    expect(og.images[0].url).toBe(
+      'https://www.jobsadmire.com/media/blog/atv-vizyon-haris-jiva.jpg',
+    );
+    expect(m.alternates?.languages).toEqual({
+      tr: 'https://www.jobsadmire.com/blog/atv-vizyon-jobsadmire-haris-jiva-roportaji',
+      'x-default': 'https://www.jobsadmire.com/blog/atv-vizyon-jobsadmire-haris-jiva-roportaji',
+    });
   });
 
   it('metadata without overrides: "{title} | JobsAdmire", the excerpt, the index image, the editorial author', async () => {

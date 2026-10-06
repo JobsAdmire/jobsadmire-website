@@ -1,7 +1,7 @@
 import type { BlogPost } from '@/content/collections';
 import { coverVariant } from '@/content/blog-feed';
 import type { Locale } from '@/i18n/routing';
-import { pageOgImageUrl } from '@/lib/seo/routes';
+import { absoluteFileUrl, pageOgImageUrl } from '@/lib/seo/routes';
 
 /** The byline and author box of one article (W248). A named author (Operations' `author`) is a
  *  Person: their name, their title as the box's line, their initials in the avatar. Without one
@@ -35,10 +35,14 @@ export function authorOf(post: BlogPost, t: (id: string) => string, locale: Loca
   return { name: t('blogarticle.023'), initials: 'JA', bio: t('blogarticle.067'), person: false };
 }
 
-/** The article's share image: its cover's 1200 px variant when it has one (W248), else the blog
- *  index's generated card (W169). */
+/** The article's share image (absolute): its cover's 1200 px variant when it has one (W248) — or,
+ *  for a cover that is a file of the site (a video poster standing in, W249), that file — else
+ *  the blog index's generated card (W169). */
 export function articleOgImage(post: BlogPost, locale: Locale): string {
-  return post.cover ? coverVariant(post.cover.url, 1200) : pageOgImageUrl(locale, 'blog');
+  if (!post.cover) return pageOgImageUrl(locale, 'blog');
+  return post.cover.url.startsWith('/')
+    ? absoluteFileUrl(post.cover.url)
+    : coverVariant(post.cover.url, 1200);
 }
 
 /** The `<title>` and meta description: the post's SEO overrides (verbatim) when Operations sends

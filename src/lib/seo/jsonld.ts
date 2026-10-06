@@ -133,6 +133,45 @@ export function articleJsonLd(input: ArticleJsonLdInput) {
   });
 }
 
+/** ISO 8601 duration for schema.org (`205` → `PT3M25S`): whole seconds, hours from one hour. */
+export function isoDuration(totalSeconds: number): string {
+  const s = Math.max(0, Math.round(totalSeconds));
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = s % 60;
+  return `PT${h ? `${h}H` : ''}${m ? `${m}M` : ''}${sec || s === 0 ? `${sec}S` : ''}`;
+}
+
+export type VideoObjectJsonLdInput = {
+  name: string;
+  /** the post's excerpt; the name stands in when it is empty */
+  description: string;
+  /** absolute poster URL */
+  thumbnailUrl: string;
+  uploadDate: string | Date;
+  durationSec: number;
+  /** absolute file URL */
+  contentUrl: string;
+  /** the spoken language */
+  inLanguage: string;
+};
+
+/** One VideoObject per video an article shows (W249, docs/SEO.md § JSON-LD) — beside its
+ *  BlogPosting. The file is the site's own, so `contentUrl` is the MP4 itself (no `embedUrl`). */
+export function videoObjectJsonLd(input: VideoObjectJsonLdInput) {
+  return compact({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject' as const,
+    name: input.name,
+    description: input.description.trim() || input.name,
+    thumbnailUrl: input.thumbnailUrl,
+    uploadDate: isoDate(input.uploadDate, 'uploadDate'),
+    duration: isoDuration(input.durationSec),
+    contentUrl: input.contentUrl,
+    inLanguage: input.inLanguage,
+  });
+}
+
 export type JobPostingJsonLdInput = {
   title: string;
   description: string;

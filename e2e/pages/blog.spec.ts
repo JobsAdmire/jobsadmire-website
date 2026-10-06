@@ -1,6 +1,8 @@
+import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 import { expectHeroPhoto } from '../helpers/hero-photo';
 import { expectedRobots } from '../helpers/face';
+import { settleMotion } from '../helpers/motion';
 
 // Canonicals, hreflang and JSON-LD URLs come from SITE_URL — the production origin — whatever
 // host the run hits (e2e/seo.spec.ts's rule).
@@ -522,5 +524,125 @@ test.describe('/blog/preview — the draft preview (W248)', () => {
         'invalid',
       );
     });
+  });
+});
+
+// W249 — the owner's first real post: the ATV interview, a video of the site's own registry in
+// its body and no cover of its own. Run against a server BUILT and started with BLOG_SOURCE=OPS
+// and OPS_API_URL on e2e/mocks/careers-door.mjs (`npm run e2e:blog-ops`, which greps these
+// blocks: everything else in this file assumes the LOCAL bundle).
+test.describe('the ATV interview article, from the fixture door (E2E_BLOG_OPS=1)', () => {
+  test.skip(
+    process.env.E2E_BLOG_OPS !== '1',
+    'needs a server built and started with BLOG_SOURCE=OPS on e2e/mocks/careers-door.mjs',
+  );
+  const ATV = '/blog/atv-vizyon-jobsadmire-haris-jiva-roportaji';
+  const ATV_KEY = 'cmgblog0000000000000000004'; // e2e/mocks/blog-atv-post.json
+  const TITLE = 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj';
+  const FILES = '/media/blog/atv-vizyon-haris-jiva';
+
+  test('the interview under the intro: poster, MP4, Turkish captions on; the poster as the cover', async ({
+    page,
+  }) => {
+    const res = await page.goto(ATV);
+    expect(res?.status()).toBe(200);
+    await expectOneCleanH1(page);
+    const figure = page.getByTestId('article-body').getByTestId('article-video');
+    await expect(figure).toBeVisible(); // before the first h2: never folded away on phones
+    const video = figure.locator('video');
+    await expect(video).toHaveAttribute('poster', `${FILES}.jpg`);
+    await expect(video).toHaveAttribute('preload', 'none');
+    await expect(video).toHaveAttribute('controls', '');
+    await expect(video).not.toHaveAttribute('autoplay');
+    await expect(video).toHaveAccessibleName(TITLE);
+    await expect(video.locator('source')).toHaveAttribute('src', `${FILES}.mp4`);
+    await expect(video.locator('source')).toHaveAttribute('type', 'video/mp4');
+    const track = video.locator('track');
+    await expect(track).toHaveCount(1);
+    await expect(track).toHaveAttribute('kind', 'captions');
+    await expect(track).toHaveAttribute('srclang', 'tr');
+    await expect(track).toHaveAttribute('src', `${FILES}.tr.vtt`);
+    await expect(track).toHaveAttribute('default', '');
+    await expect(figure.locator('figcaption')).toHaveText(TITLE);
+    // the browser loads the default track (the only network use before play) and shows it
+    await expect
+      .poll(() =>
+        video.evaluate((v: HTMLVideoElement) => {
+          const t = v.textTracks[0];
+          return t ? `${t.kind}/${t.language}/${t.mode}` : 'none';
+        }),
+      )
+      .toBe('captions/tr/showing');
+    // the fixed 16:9 box, the poster painted before anything plays
+    const box = (await video.boundingBox())!;
+    expect(Math.abs(box.width / box.height - 16 / 9)).toBeLessThan(0.02);
+    // no cover of its own: the poster is the cover, through next/image (the post's own slot —
+    // the related card below carries the Pakistan guide's photo)
+    await expect(page.locator(`[data-cover-photo="blog-cover-${ATV_KEY}"] img`)).toHaveAttribute(
+      'src',
+      /media%2Fblog%2Fatv-vizyon-haris-jiva\.jpg/,
+    );
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      'content',
+      `${ORIGIN}${FILES}.jpg`,
+    );
+  });
+
+  test('one VideoObject beside the BlogPosting; the BlogPosting image is the poster', async ({
+    page,
+  }) => {
+    await page.goto(ATV);
+    const nodes = await jsonLd(page);
+    const of = (type: string) => nodes.filter((n) => n['@type'] === type);
+    expect(of('BlogPosting')).toHaveLength(1);
+    expect((of('BlogPosting')[0] as { image: string }).image).toBe(`${ORIGIN}${FILES}.jpg`);
+    expect(of('VideoObject')).toHaveLength(1);
+    expect(of('VideoObject')[0]).toMatchObject({
+      name: TITLE,
+      description: expect.stringMatching(/^ATV Vizyon, JobsAdmire'ın Antalya'daki ofisine/),
+      thumbnailUrl: `${ORIGIN}${FILES}.jpg`,
+      contentUrl: `${ORIGIN}${FILES}.mp4`,
+      uploadDate: '2026-10-06T00:00:00.000Z',
+      duration: 'PT3M25S',
+      inLanguage: 'tr',
+    });
+  });
+
+  test('no horizontal overflow at 390 px; the player fills the column', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(ATV);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(overflow).toBeLessThanOrEqual(0);
+    const box = (await page.getByTestId('article-video').locator('video').boundingBox())!;
+    expect(box.width).toBeGreaterThan(300);
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(390);
+  });
+
+  test('axe: the article is clean', async ({ page }) => {
+    await page.goto(ATV);
+    await settleMotion(page);
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
+      .analyze();
+    expect(
+      results.violations,
+      JSON.stringify(results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length }))),
+    ).toEqual([]);
+  });
+
+  test('the blog index features it, with the poster as its cover', async ({ page }) => {
+    await page.goto('/blog');
+    const featured = page.getByTestId('blog-featured');
+    await expect(featured.getByRole('link', { name: /ATV Vizyon'da JobsAdmire/ })).toHaveAttribute(
+      'href',
+      ATV,
+    );
+    await expect(featured.locator('img')).toHaveAttribute(
+      'src',
+      /media%2Fblog%2Fatv-vizyon-haris-jiva\.jpg/,
+    );
   });
 });

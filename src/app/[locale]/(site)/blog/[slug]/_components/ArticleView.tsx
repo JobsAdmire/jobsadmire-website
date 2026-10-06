@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { makeT, makeTf, metricValues } from '@/content/pure';
 import { getRateConfig, readMinutesOf, type BlogPost } from '@/content/collections';
+import { videosOf } from '@/content/videos';
 import { ClosingCtaBand } from '@/design/blocks/ClosingCtaBand';
 import { ContactCta } from '@/design/blocks/ContactCta';
 import { FaqBlock, type FaqItem } from '@/design/blocks/FaqBlock';
@@ -14,8 +15,8 @@ import { formatDate } from '@/lib/format/date/formatDate';
 import { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';
 import { formatInt } from '@/lib/format/money';
 import { JsonLd } from '@/lib/seo/JsonLdScript';
-import { articleJsonLd } from '@/lib/seo/jsonld';
-import { absoluteUrl } from '@/lib/seo/routes';
+import { articleJsonLd, videoObjectJsonLd } from '@/lib/seo/jsonld';
+import { absoluteFileUrl, absoluteUrl } from '@/lib/seo/routes';
 import type { Bundle } from '../../../../../../../contract/website-bundle.v1';
 import {
   articleHref,
@@ -58,8 +59,9 @@ const COVER_SIZES = liquidSizes(735, '(min-width: 1101px) 735px, (min-width: 102
  * W248): the hero (crumbs, pills, the h1 — the LCP element — and the byline), the cover, the body
  * with its TOC sidebar, the FAQ (the post's own, or the LOCAL article's generic four), the author
  * box, related + previous/next from `rows`, the newsletter and closing bands. `preview` adds the
- * "not published" bar and leaves out the JSON-LD (the page is noindex). The caller has resolved
- * the post: it is written in `locale` (a slug, a title and a body).
+ * "not published" bar and leaves out the JSON-LD (the page is noindex) — the BlogPosting and one
+ * VideoObject per video the body shows (W249). The caller has resolved the post: it is written in
+ * `locale` (a slug, a title and a body).
  */
 export async function ArticleView({
   bundle,
@@ -84,6 +86,7 @@ export async function ArticleView({
   const values = metricValues(bundle, locale);
   const excerpt = post.excerpt[locale] ?? '';
   const blocks = parseMarkdown(body, RESERVED_IDS);
+  const videos = videosOf(blocks);
   // W248: the post's own FAQ when the feed sends one (none = no FAQ block and no FAQPage node);
   // the LOCAL article, which carries no `faq`, keeps the four generic Q&As (B-10: A1 and Q3 have
   // no package id; their numbers come from data, D17).
@@ -155,20 +158,36 @@ export async function ArticleView({
       {preview ? <PreviewBar locale={locale} /> : null}
       <article>
         {preview ? null : (
-          <JsonLd
-            data={articleJsonLd({
-              headline: title,
-              description: excerpt,
-              url,
-              image: articleOgImage(post, locale),
-              datePublished: post.publishedAt,
-              dateModified: post.updatedAt,
-              authorName: author.name,
-              authorType: author.person ? 'Person' : 'Organization',
-              publisherSettings: bundle.settings,
-              locale,
-            })}
-          />
+          <>
+            <JsonLd
+              data={articleJsonLd({
+                headline: title,
+                description: excerpt,
+                url,
+                image: articleOgImage(post, locale),
+                datePublished: post.publishedAt,
+                dateModified: post.updatedAt,
+                authorName: author.name,
+                authorType: author.person ? 'Person' : 'Organization',
+                publisherSettings: bundle.settings,
+                locale,
+              })}
+            />
+            {videos.map(({ key, title: name, video }) => (
+              <JsonLd
+                key={key}
+                data={videoObjectJsonLd({
+                  name,
+                  description: excerpt,
+                  thumbnailUrl: absoluteFileUrl(video.poster),
+                  uploadDate: post.publishedAt,
+                  durationSec: video.durationSec,
+                  contentUrl: absoluteFileUrl(video.src),
+                  inLanguage: video.lang,
+                })}
+              />
+            ))}
+          </>
         )}
 
         {/* ---- Hero: crumbs (W109, B-9), pills, the h1 (the LCP element, B-7), byline ---- */}
@@ -279,6 +298,7 @@ export async function ArticleView({
                   </div>
                   <ArticleBody
                     blocks={blocks}
+                    locale={locale}
                     closingCta={
                       <ContactCta
                         placement="page_cta"

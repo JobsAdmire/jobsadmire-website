@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { getCollection } from '@/content/collections';
+import { atvPost } from '@/test/blog-fixtures';
 import { BundleSchema } from '../../../../../../../contract/website-bundle.v1';
 import {
   headingId,
@@ -11,6 +12,7 @@ import {
   parseMarkdown,
   safeHref,
   unescapeText,
+  VIDEO_KEY_RE,
 } from '../_lib/markdown';
 
 const SAMPLE = [
@@ -219,6 +221,83 @@ describe('parseMarkdown (the importer grammar, B-8)', () => {
         const flat = JSON.stringify(blocks);
         expect(flat).not.toMatch(/\*\*|\]\(|\\\\/);
       }
+  });
+});
+
+describe('the video line (W249): !video[Title](key), a block of its own', () => {
+  const video = (key: string, title: string) => ({ kind: 'video' as const, key, title });
+
+  it('a line of its own is a video block — blank lines or not, the title unescaped and trimmed', () => {
+    expect(
+      parseMarkdown('Intro.\n\n!video[ATV: an interview](atv-vizyon-haris-jiva)\n\nAfter.'),
+    ).toEqual([
+      { kind: 'p', inlines: [text('Intro.')] },
+      video('atv-vizyon-haris-jiva', 'ATV: an interview'),
+      { kind: 'p', inlines: [text('After.')] },
+    ]);
+    // glued to its neighbours, like an image line
+    expect(parseMarkdown('Before\n!video[A \\[cut\\] ](clip-2)\nAfter')).toEqual([
+      { kind: 'p', inlines: [text('Before')] },
+      video('clip-2', 'A [cut]'),
+      { kind: 'p', inlines: [text('After')] },
+    ]);
+    // the key is not checked here: the renderer looks it up (an unknown one shows nothing)
+    expect(parseMarkdown('!video[Soon](not-in-the-registry)')).toEqual([
+      video('not-in-the-registry', 'Soon'),
+    ]);
+  });
+
+  it('a malformed video line is a paragraph, never a video', () => {
+    for (const line of [
+      '!video[](atv-vizyon-haris-jiva)', // no title
+      '!video[   ](atv-vizyon-haris-jiva)', // a blank title
+      '!video[Title](ATV-Vizyon)', // upper case
+      '!video[Title](atv_vizyon)', // not words and hyphens
+      '!video[Title](atv--vizyon)',
+      '!video[Title](-atv)',
+      '!video[Title](https://example.com/v.mp4)', // a URL is not a key
+      '!video[Title](atv vizyon)',
+      '!video[Title](atv-vizyon) and more', // anything else on its line
+      '!video [Title](atv-vizyon)',
+      '!VIDEO[Title](atv-vizyon)',
+    ]) {
+      const blocks = parseMarkdown(line);
+      expect(
+        blocks.map((b) => b.kind),
+        line,
+      ).toEqual(['p']);
+    }
+  });
+
+  it('inline, in a list or in a quote it is not a video', () => {
+    const md = [
+      'Watch !video[Title](atv-vizyon-haris-jiva) here.',
+      '- !video[Title](atv-vizyon-haris-jiva)',
+      '> !video[Title](atv-vizyon-haris-jiva)',
+    ].join('\n\n');
+    expect(parseMarkdown(md).map((b) => b.kind)).toEqual(['p', 'ul', 'quote']);
+  });
+
+  it('the owner’s first post: the intro, then the interview, then the sections', () => {
+    const body = (atvPost() as { body: { tr: string } }).body.tr;
+    const blocks = parseMarkdown(body, ['faq']);
+    expect(blocks.slice(0, 3).map((b) => b.kind)).toEqual(['p', 'video', 'h2']);
+    expect(blocks[1]).toEqual(
+      video('atv-vizyon-haris-jiva', 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj'),
+    );
+    expect(blocks.filter((b) => b.kind === 'video')).toHaveLength(1);
+    // the interview's highlights are the Key-takeaways box (title, a blank `>`, the items)
+    const callout = blocks.find((b) => b.kind === 'callout');
+    expect(callout?.kind === 'callout' && callout.title).toBe('Röportajdan öne çıkanlar');
+    expect(callout?.kind === 'callout' && callout.items).toHaveLength(4);
+    expect(JSON.stringify(blocks)).not.toMatch(/!video|\]\(/);
+  });
+
+  it('the key pattern is the slug shape', () => {
+    for (const ok of ['atv', 'atv-vizyon-haris-jiva', 'clip-2026'])
+      expect(VIDEO_KEY_RE.test(ok), ok).toBe(true);
+    for (const bad of ['', 'Atv', 'atv_1', 'atv-', '-atv', 'a--b', 'a b'])
+      expect(VIDEO_KEY_RE.test(bad), bad).toBe(false);
   });
 });
 

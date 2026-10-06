@@ -2,7 +2,9 @@ import { Fragment, type ReactNode } from 'react';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { liquidSizes } from '@/design/zoom';
+import type { Locale } from '@/i18n/routing';
 import { inlineText, type Block, type Inline } from '../_lib/markdown';
+import { BlogVideo } from './BlogVideo';
 import { CollapsibleSection } from './CollapsibleSection';
 
 /** The body's h2 face — the page's FAQ heading wears it too. `scroll-mt-24` keeps a TOC jump
@@ -94,7 +96,17 @@ function Inlines({ inlines }: { inlines: readonly Inline[] }) {
   );
 }
 
-function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: ReactNode }) {
+function BlockView({
+  block,
+  first,
+  cta,
+  locale,
+}: {
+  block: Block;
+  first: boolean;
+  cta?: ReactNode;
+  locale?: Locale;
+}) {
   switch (block.kind) {
     case 'p':
       return (
@@ -126,6 +138,8 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
           />
         </figure>
       );
+    case 'video':
+      return <BlogVideo videoKey={block.key} title={block.title} locale={locale} />;
     case 'callout':
       return (
         <div
@@ -272,16 +286,20 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
 
 /**
  * The parsed v1 body (B-8) in the design's article typography: the intro, the Key-takeaways box,
- * the H2 sections (ids for the TOC), the two-up rule cards, the lists, the numbered steps and the
- * pull quote. React nodes only — no HTML string, so nothing needs sanitising. `closingCta` (B-11)
- * renders inside the final quote box when the body ends with one, else after the body.
+ * the H2 sections (ids for the TOC), the two-up rule cards, the lists, the numbered steps, the
+ * pull quotes, the images and the videos (W249). React nodes only — no HTML string, so nothing
+ * needs sanitising. `closingCta` (B-11) renders inside the final quote box when the body ends with
+ * one, else after the body. `locale` is the page's: a video's caption track in that language is
+ * on by default.
  */
 export function ArticleBody({
   blocks,
   closingCta,
+  locale,
 }: {
   blocks: readonly Block[];
   closingCta?: ReactNode;
+  locale?: Locale;
 }) {
   const last = blocks.length - 1;
   const ctaInQuote = closingCta != null && blocks[last]?.kind === 'quote';
@@ -291,10 +309,14 @@ export function ArticleBody({
       block={block}
       first={i === 0}
       cta={ctaInQuote && i === last ? closingCta : undefined}
+      locale={locale}
     />
   );
-  // The design's sections: an h2 and its blocks up to the next h2 or the pull quote, which
-  // closes the section (the quote stays outside, between the last section and the FAQ).
+  // The design's sections: an h2 and its blocks up to the next h2 or the body's closing pull
+  // quote — its last block, which stays outside, between the last section and the FAQ. A quote
+  // inside the body stays in its section (W249: on phones a mid-section quote would otherwise
+  // show under a collapsed heading and leave the rest of its section outside it).
+  const closingQuote = (j: number) => j === last && blocks[j].kind === 'quote';
   const out: ReactNode[] = [];
   for (let i = 0; i < blocks.length; i += 1) {
     const block = blocks[i];
@@ -304,7 +326,7 @@ export function ArticleBody({
     }
     const start = i;
     const inside: ReactNode[] = [];
-    while (i + 1 < blocks.length && blocks[i + 1].kind !== 'h2' && blocks[i + 1].kind !== 'quote') {
+    while (i + 1 < blocks.length && blocks[i + 1].kind !== 'h2' && !closingQuote(i + 1)) {
       i += 1;
       inside.push(view(blocks[i], i));
     }

@@ -18,6 +18,7 @@ import { LiveCaseBar } from './_home/sections/LiveCaseBar';
 import { NetworkSection } from './_home/sections/NetworkSection';
 import { PoolSection } from './_home/sections/PoolSection';
 import { PortalSection } from './_home/sections/PortalSection';
+import { PressStrip } from './_home/sections/PressStrip';
 import { ProcessSection } from './_home/sections/ProcessSection';
 import { SeasonSection } from './_home/sections/SeasonSection';
 import { TeamSection } from './_home/sections/TeamSection';
@@ -54,12 +55,14 @@ export async function generateMetadata({
  *  <main> here — SiteChrome owns it (R31). Every section renders (owner 2026-10-05): the case bar
  *  and the candidate pool show the design's sample content with the `SampleTag` (page-local
  *  constants, D23), the team its published founder, the guides the `blog` rows; no StickyCtaBar
- *  (the sticky header carries this page's #proposal CTA). */
+ *  (the sticky header carries this page's #proposal CTA). Between the hero and the case bar the
+ *  press strip (W249, not in the design) shows while the feed carries the featured interview. */
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  // The guides read the `blog` rows: the bundle with the blog source applied (W248).
+  // The guides and the press strip read the `blog` rows: the bundle with the blog source applied
+  // (W248, W249).
   const bundle = await getBlogBundle(locale);
   const section = { locale, bundle };
   return (
@@ -68,6 +71,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         {...section}
         form={<HeroForm {...section} actions={{ hire: submitHire, callback: submitCallback }} />}
       />
+      <PressStrip {...section} />
       <LiveCaseBar {...section} />
       <ChoiceCards {...section} />
       <PoolSection {...section} />

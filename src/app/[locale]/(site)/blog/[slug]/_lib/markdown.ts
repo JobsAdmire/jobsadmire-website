@@ -7,12 +7,14 @@ import { isBlogImageSrc } from '@/lib/blog-media';
  *
  * Blocks, separated by blank lines: `## ` h2, `### ` h3, a paragraph, a `- ` list, a `1. ` list,
  * a `> ` quote, the takeaways callout (`> **Title**`, a blank `>`, then `> - item` lines), the
- * leads cards (`**lead** — body` paragraphs), and an image line `![alt](url)`. Inline:
- * `**bold**`, `*italic*`, `[text](url)` (https:, mailto: or site-relative `/…`), and `\` escaping
- * `*`, `[` or `]`. Nothing else is markup: there is no HTML pass-through, so there is nothing to
- * sanitise — `ArticleBody` emits React nodes, never a string. A link to any other scheme renders
- * its text only; an image from anywhere but the Operations media route or the site itself is
- * dropped. Pure: no React, no DOM.
+ * leads cards (`**lead** — body` paragraphs), an image line `![alt](url)` and a video line
+ * `!video[Title](key)` (W249: a key of the site's video registry, `src/content/videos.ts`).
+ * Inline: `**bold**`, `*italic*`, `[text](url)` (https:, mailto: or site-relative `/…`), and `\`
+ * escaping `*`, `[` or `]`. Nothing else is markup: there is no HTML pass-through, so there is
+ * nothing to sanitise — `ArticleBody` emits React nodes, never a string. A link to any other
+ * scheme renders its text only; an image from anywhere but the Operations media route or the site
+ * itself is dropped; a malformed video line (no title, a key that is not lower-case words and
+ * hyphens, anything else on its line) is a paragraph. Pure: no React, no DOM.
  */
 export type Inline =
   | { kind: 'text'; text: string }
@@ -29,16 +31,23 @@ export type Block =
   | { kind: 'leads'; items: { lead: string; body: Inline[] }[] }
   | { kind: 'callout'; title: string; items: Inline[][] }
   | { kind: 'quote'; inlines: Inline[] }
-  | { kind: 'image'; src: string; alt: string };
+  | { kind: 'image'; src: string; alt: string }
+  /** W249: `key` is not checked here — the renderer looks it up and an unknown one shows nothing. */
+  | { kind: 'video'; key: string; title: string };
 
 // No `s` flag (ES2018; the tsconfig targets ES2017): `[\s\S]` spans the joined lines.
 const LEAD = /^\*\*(.+?)\*\*\s+—\s+([\s\S]+)$/;
 const UL = /^-\s+/;
 const OL = /^\d+\.\s+/;
 const CALLOUT_TITLE = /^\*\*(.+)\*\*$/;
-/** A heading or an image line is always a block of its own, blank lines or not. */
-const OWN_LINE = /^(#{2,3} .*|!\[[^\n]*\]\([^\s()]+\))$/gm;
+/** A heading, an image line or a video line is always a block of its own, blank lines or not. */
+const OWN_LINE = /^(#{2,3} .*|!(?:video)?\[[^\n]*\]\([^\s()]+\))$/gm;
 const IMAGE_LINE = /^!\[((?:\\[\s\S]|[^\\\]])*)\]\(([^\s()]+)\)$/;
+/** A video key (W249): lower-case ASCII words joined by single hyphens — a slug's shape. */
+export const VIDEO_KEY_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+/** `!video[Title](key)` alone on its line; the title (escapes allowed, like an image's alt) is
+ *  required. */
+const VIDEO_LINE = /^!video\[((?:\\[\s\S]|[^\\\]])+)\]\(([a-z0-9]+(?:-[a-z0-9]+)*)\)$/;
 const DIACRITICS = /[̀-ͯ]/g; // combining marks left by NFKD (escaped, never literal)
 
 // Sticky (`y`) so each is tried exactly at the scan position. An escape pair (`\x`) is consumed
@@ -191,6 +200,8 @@ export function parseMarkdown(md: string, reserved: readonly string[] = []): Blo
     const lines = chunk.split('\n').map((line) => line.trim());
     const single = lines.length === 1 ? lines[0] : null;
     const image = single ? IMAGE_LINE.exec(single) : null;
+    const video = single ? VIDEO_LINE.exec(single) : null;
+    const videoTitle = video ? unescapeText(video[1]).trim() : '';
     if (single?.startsWith('## ')) {
       const text = plain(single.slice(3).trim());
       blocks.push({ kind: 'h2', id: headingId(text, used), text });
@@ -201,6 +212,9 @@ export function parseMarkdown(md: string, reserved: readonly string[] = []): Blo
       // own media, docs/CONTENT-MODEL.md).
       if (isBlogImageSrc(image[2]))
         blocks.push({ kind: 'image', src: image[2], alt: unescapeText(image[1]) });
+    } else if (video && videoTitle) {
+      // W249: a video of the site's registry; a blank title falls through to a paragraph.
+      blocks.push({ kind: 'video', key: video[2], title: videoTitle });
     } else if (lines.every((line) => line.startsWith('>'))) {
       blocks.push(parseQuote(lines));
     } else if (lines.every((line) => UL.test(line))) {

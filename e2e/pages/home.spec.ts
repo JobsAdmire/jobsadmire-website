@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
+import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 import { expectHeroPhoto } from '../helpers/hero-photo';
+import { settleMotion } from '../helpers/motion';
 
 // W92: the door variables reach only production and the `staging` preview. Every other target —
 // a local `next start`, a branch preview — has no write token, so a submission answers
@@ -288,4 +290,98 @@ test('the guides block (W248): published articles only — no "yakında" card; T
   );
   await expect(guides.getByTestId('guides-list')).toHaveCount(0); // one post: no side list
   await expect(guides.getByTestId('guide-soon')).toHaveCount(0);
+});
+
+// W249 — the TR home with the fixture door's feed: the owner's ATV interview post (featured, no
+// cover) drives the press strip under the hero and the guides' featured card. Run against a
+// server BUILT and started with BLOG_SOURCE=OPS and OPS_API_URL on e2e/mocks/careers-door.mjs
+// (`npm run e2e:blog-ops`, which greps these blocks: the rest of this file assumes LOCAL).
+test.describe('the press strip and the guides from the fixture door (E2E_BLOG_OPS=1)', () => {
+  test.skip(
+    process.env.E2E_BLOG_OPS !== '1',
+    'needs a server built and started with BLOG_SOURCE=OPS on e2e/mocks/careers-door.mjs',
+  );
+  const ATV = '/blog/atv-vizyon-jobsadmire-haris-jiva-roportaji';
+  const POSTER = /media%2Fblog%2Fatv-vizyon-haris-jiva\.jpg/;
+
+  test('TR: the strip sits between the hero and the case bar, one link to the interview', async ({
+    page,
+  }, testInfo) => {
+    await page.goto('/');
+    const ids = await testIds(page);
+    const at = (id: string) => ids.indexOf(id);
+    expect(at('home-press')).toBeGreaterThan(at('hero-proof'));
+    expect(at('home-press')).toBeLessThan(at('live-case-bar'));
+    const strip = page.getByTestId('home-press');
+    await expect(strip).toBeVisible();
+    const link = strip.getByRole('link');
+    await expect(link).toHaveCount(1);
+    await expect(link).toHaveAttribute('href', ATV);
+    await expect(link).toHaveAccessibleName(
+      'ATV Vizyon’da JobsAdmire Kurucu Haris Jiva ile röportaj Röportajı izleyin →',
+    );
+    await expect(link.locator('img')).toHaveAttribute('src', POSTER);
+    await expect(link.locator('img')).toHaveAttribute('alt', '');
+    // a fixed height per band: 88 px, 74 px at ≤ 460 (the Pixel project is 412 px wide)
+    const phone = testInfo.project.name === 'mobile';
+    expect((await link.boundingBox())!.height).toBeCloseTo(phone ? 74 : 88, 0);
+    // every line fits on one line at this width (truncation is the guard, not the plan)
+    const clipped = await link
+      .locator('strong, span.truncate')
+      .evaluateAll((els) => els.filter((el) => el.scrollWidth > el.clientWidth).length);
+    expect(clipped).toBe(0);
+    // keyboard: the strip takes focus and shows the ring
+    await link.focus();
+    await expect(link).toBeFocused();
+    await page.keyboard.press('Shift+Tab');
+    await page.keyboard.press('Tab');
+    await expect(link).toHaveCSS('outline-style', 'solid');
+    await link.click();
+    await expect(page).toHaveURL(new RegExp(`${ATV}$`));
+    await expect(page.getByTestId('article-video')).toBeVisible();
+  });
+
+  test('TR: the guides feature the interview with its poster, linking to the article', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    const featured = page.getByTestId('guides').getByTestId('guide-featured');
+    await expect(featured).toHaveAttribute('href', ATV);
+    await expect(featured.locator('img')).toHaveAttribute('src', POSTER);
+    await expect(featured).toContainText('ATV Vizyon');
+  });
+
+  test('EN: no strip — no English article carries the interview', async ({ page }) => {
+    await page.goto('/en');
+    await expect(page.getByTestId('hero')).toBeVisible();
+    await expect(page.getByTestId('home-press')).toHaveCount(0);
+  });
+
+  test('390 px: thumbnail and text in one compact row, no overflow', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/');
+    const link = page.getByTestId('home-press').getByRole('link');
+    await link.scrollIntoViewIfNeeded();
+    const box = (await link.boundingBox())!;
+    expect(box.height).toBeCloseTo(74, 0);
+    expect(box.x + box.width).toBeLessThanOrEqual(390);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(overflow).toBeLessThanOrEqual(0);
+    const thumb = (await link.locator('img').boundingBox())!;
+    expect([Math.round(thumb.width), Math.round(thumb.height)]).toEqual([88, 50]);
+  });
+
+  test('axe: the TR home with the strip is clean', async ({ page }) => {
+    await page.goto('/');
+    await settleMotion(page);
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
+      .analyze();
+    expect(
+      results.violations,
+      JSON.stringify(results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length }))),
+    ).toEqual([]);
+  });
 });

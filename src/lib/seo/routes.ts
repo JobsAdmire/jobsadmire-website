@@ -70,6 +70,12 @@ export function absoluteUrl(locale: Locale, href: Href): string {
   return `${SITE_URL}${getPathname({ locale, href })}`;
 }
 
+/** Absolute URL of a file the site serves from `public/` (`/media/blog/x.jpg`, W249) — an
+ *  `og:image` and a JSON-LD node need one. */
+export function absoluteFileUrl(path: string): string {
+  return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
+}
+
 /** hreflang map for one page: both locales plus `x-default` = TR, self-reference included
  *  (a page missing its own locale here is a defect — docs/SEO.md). */
 export function localeAlternates(href: Href): { languages: Record<string, string> } {

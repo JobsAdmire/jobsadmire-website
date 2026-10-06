@@ -7,6 +7,7 @@ import { feedToRows, withBlogRows } from '@/content/blog-feed';
 import { getCollection } from '@/content/collections';
 import en from '@/messages/en.json';
 import tr from '@/messages/tr.json';
+import { ATV_KEY, doorFeed } from '@/test/blog-fixtures';
 import { renderWithIntl } from '@/test/render';
 import { BundleSchema } from '../../../../../../../contract/website-bundle.v1';
 
@@ -119,5 +120,63 @@ describe('ArticleView — the LOCAL article keeps its generic FAQ (no `faq` fiel
     );
     expect(screen.queryByTestId('blog-preview-bar')).toBeNull();
     expect(screen.queryAllByTestId('article-related-card')).toHaveLength(0);
+  });
+});
+
+describe('ArticleView — the owner’s first post: the ATV interview (W249)', () => {
+  const LOCAL_TR = BundleSchema.parse(
+    JSON.parse(readFileSync(join(process.cwd(), 'src/content/local/bundle.tr.json'), 'utf8')),
+  );
+  const DOOR_TR = withBlogRows(LOCAL_TR, feedToRows(doorFeed(), vi.fn()).rows);
+  const ORIGIN = 'https://www.jobsadmire.com';
+
+  async function showTr(preview = false) {
+    const rows = getCollection(DOOR_TR, 'blog');
+    const post = rows.find((p) => p.key === ATV_KEY)!;
+    const jsx = await ArticleView({ bundle: DOOR_TR, locale: 'tr', post, rows, preview });
+    const view = renderWithIntl(jsx!, { locale: 'tr' });
+    const nodes = [...view.container.querySelectorAll('script[type="application/ld+json"]')].map(
+      (s) => JSON.parse(s.innerHTML) as Record<string, unknown>,
+    );
+    return { ...view, post, of: (t: string) => nodes.filter((n) => n['@type'] === t) };
+  }
+
+  it('the video under the intro, the poster as the cover, one VideoObject beside the BlogPosting', async () => {
+    const { container, post, of } = await showTr();
+    const video = within(screen.getByTestId('article-body')).getByTestId('article-video');
+    expect(video.querySelector('video')).toHaveAttribute(
+      'aria-label',
+      'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj',
+    );
+    expect(video.querySelector('track')).toHaveAttribute('default');
+    // no cover of its own: the poster is the article's cover (next/image), the video title its alt
+    const cover = container.querySelector(`[data-cover-photo="blog-cover-${ATV_KEY}"] img`)!;
+    expect(cover.getAttribute('src')).toContain(
+      encodeURIComponent('/media/blog/atv-vizyon-haris-jiva.jpg'),
+    );
+    expect(cover).toHaveAttribute('alt', 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj');
+    const [posting] = of('BlogPosting') as { image: string }[];
+    expect(posting.image).toBe(`${ORIGIN}/media/blog/atv-vizyon-haris-jiva.jpg`);
+    expect(of('VideoObject')).toEqual([
+      {
+        '@context': 'https://schema.org',
+        '@type': 'VideoObject',
+        name: 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj',
+        description: post.excerpt.tr,
+        thumbnailUrl: `${ORIGIN}/media/blog/atv-vizyon-haris-jiva.jpg`,
+        uploadDate: '2026-10-06T00:00:00.000Z',
+        duration: 'PT3M25S',
+        contentUrl: `${ORIGIN}/media/blog/atv-vizyon-haris-jiva.mp4`,
+        inLanguage: 'tr',
+      },
+    ]);
+    expect(of('FAQPage')).toHaveLength(1); // its own three Q&As
+  });
+
+  it('the preview shows the video but carries no JSON-LD at all', async () => {
+    const { of } = await showTr(true);
+    expect(screen.getByTestId('article-video')).toBeInTheDocument();
+    expect(of('VideoObject')).toHaveLength(0);
+    expect(of('BlogPosting')).toHaveLength(0);
   });
 });

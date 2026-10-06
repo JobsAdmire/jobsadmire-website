@@ -15,9 +15,15 @@ import { createServer } from 'node:http';
 // GET /api/website/v1/blog/preview/:token (the first fixture post for BLOG_PREVIEW_TOKEN, 410 for
 // any other token). `E2E_BLOG_MOCK=1` in e2e/pages/blog.spec.ts means the server under test was
 // STARTED with OPS_API_URL pointing here (the preview page is dynamic: no rebuild needed).
-const BLOG_FEED = JSON.parse(
+// W249: the feed leads with the owner's first real post (`blog-atv-post.json`: Turkish only,
+// featured, no cover, the ATV interview video line in its body); `E2E_BLOG_OPS=1` in the blog and
+// home specs means the server was BUILT and started with BLOG_SOURCE=OPS and OPS_API_URL here.
+const BLOG_FIXTURE = JSON.parse(
   readFileSync(new URL('../../contract/blog-feed.v1.fixture.json', import.meta.url), 'utf8'),
 );
+const ATV_POST = JSON.parse(readFileSync(new URL('./blog-atv-post.json', import.meta.url), 'utf8'));
+const BLOG_FEED = { ...BLOG_FIXTURE, posts: [ATV_POST, ...BLOG_FIXTURE.posts] };
+const BLOG_PREVIEW_POST = BLOG_FIXTURE.posts[0];
 const BLOG_PREVIEW_TOKEN = 'e2e-preview-token.0000000000000000';
 
 const PORT = Number(process.env.CAREERS_DOOR_PORT ?? 8481);
@@ -162,7 +168,7 @@ const server = createServer((req, res) => {
   const preview = url.pathname.match(/^\/api\/website\/v1\/blog\/preview\/([^/]+)$/);
   if (req.method === 'GET' && preview)
     return decodeURIComponent(preview[1]) === BLOG_PREVIEW_TOKEN
-      ? send(res, 200, { post: BLOG_FEED.posts[0] })
+      ? send(res, 200, { post: BLOG_PREVIEW_POST })
       : send(res, 410, { message: 'Preview link expired' });
   if (req.method === 'GET' && url.pathname === '/api/careers/openings') {
     const limit = Math.min(Math.max(Number(url.searchParams.get('limit')) || 20, 1), 50);

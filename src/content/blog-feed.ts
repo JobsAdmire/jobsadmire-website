@@ -14,6 +14,7 @@ import {
 } from '../../contract/blog-feed.v1';
 import { isBlogImageSrc } from '@/lib/blog-media';
 import { BLOG_CATEGORY_LABEL_ID, type BlogPost } from './collections';
+import { bodyVideos, firstVideo } from './videos';
 
 type Locale = 'tr' | 'en';
 const LOCALES: readonly Locale[] = ['tr', 'en'];
@@ -92,11 +93,28 @@ export function mapFeedPost(
   const published = post.publishedAt ?? (options.now ?? (() => new Date()))().toISOString();
   // `next/image` refuses any host but the media route (`next.config.ts`): a cover from anywhere
   // else would take the page down, so it is dropped (the category cover shows instead).
-  const cover = post.cover && isBlogImageSrc(post.cover.url) ? post.cover : null;
-  if (post.cover && !cover)
+  const own = post.cover && isBlogImageSrc(post.cover.url) ? post.cover : null;
+  if (post.cover && !own)
     log('a cover is not on the media route and was left out', { key: post.key });
   const only = <T>(v: { tr: T | null; en: T | null }) =>
     perLocale((l) => (written[l] ? v[l] : null));
+  const body = only(post.body);
+  // W249: a post without a cover of its own shows its first video's poster (a file of the site)
+  // wherever a cover is read — the article, every card, the home guides, the share image and the
+  // BlogPosting image. The poster's alt is the video's title in that language (its line there,
+  // else the line the poster came from): `coverAlt` describes a cover photo, and Operations sends
+  // it only with one.
+  const video = own ? null : (firstVideo(body.tr) ?? firstVideo(body.en));
+  const cover =
+    own ??
+    (video
+      ? { url: video.video.poster, width: video.video.width, height: video.video.height }
+      : null);
+  const coverAlt = perLocale((l) => {
+    if (!written[l]) return null;
+    if (!video) return post.coverAlt[l];
+    return bodyVideos(body[l]).find((v) => v.key === video.key)?.title ?? video.title;
+  });
   return {
     key: post.key,
     slug: perLocale((l) => (written[l] ? (post.slug[l] ?? 'preview') : null)),
@@ -108,12 +126,12 @@ export function mapFeedPost(
     publishedAt: istanbulDate(published),
     readMinutes: (minutes.en ?? minutes.tr) as number,
     hasBody: written,
-    body: only(post.body),
+    body,
     updatedAt: post.updatedAt,
     featured: post.featured,
     authorObj: post.author ? { name: post.author.name, title: post.author.title } : null,
     cover,
-    coverAlt: only(post.coverAlt),
+    coverAlt,
     seo: { title: only(post.seo.title), description: only(post.seo.description) },
     faq: perLocale((l) => (written[l] ? post.faq[l] : [])),
     readMinutesByLocale: minutes,

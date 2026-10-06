@@ -64,3 +64,29 @@ test('the OG route carries nosniff only — never the document headers (W160)', 
   expect(headers['x-content-type-options']).toBe('nosniff');
   for (const key of DOCUMENT_ONLY) expect(headers[key], `${key} on the OG route`).toBeUndefined();
 });
+
+// W249: the blog's video files are static files of the site, versioned by key (a new cut is a
+// new key — never an overwrite), so they are cached for a year, immutable (`next.config.ts`).
+test('the blog video files: a year of immutable cache, their own types, the MP4 seekable (W249)', async ({
+  request,
+}) => {
+  const files = '/media/blog/atv-vizyon-haris-jiva';
+  const immutable = 'public, max-age=31536000, immutable';
+  for (const [file, type] of [
+    [`${files}.jpg`, 'image/jpeg'],
+    [`${files}.tr.vtt`, 'text/vtt'],
+  ] as const) {
+    const res = await request.get(file);
+    expect(res.status(), file).toBe(200);
+    expect(res.headers()['content-type'], file).toContain(type);
+    expect(res.headers()['cache-control'], file).toBe(immutable);
+    expect(res.headers()['x-content-type-options'], file).toBe('nosniff');
+  }
+  expect((await (await request.get(`${files}.tr.vtt`)).text()).startsWith('WEBVTT')).toBe(true);
+  // a range request, as a player seeks: the first KB, the `ftyp` box first (faststart)
+  const range = await request.get(`${files}.mp4`, { headers: { range: 'bytes=0-1023' } });
+  expect(range.status()).toBe(206);
+  expect(range.headers()['content-type']).toContain('video/mp4');
+  expect(range.headers()['cache-control']).toBe(immutable);
+  expect((await range.body()).subarray(4, 8).toString('latin1')).toBe('ftyp');
+});
