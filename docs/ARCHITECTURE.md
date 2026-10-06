@@ -384,7 +384,19 @@ The eight hero photos are licensed stock, chosen and downloaded on 2026-10-05 fo
 
 All eight were downloaded on 2026-10-05. Both licences allow free commercial use without attribution; never caption stock people as JobsAdmire workers or clients. The office, team/founder and portal-screenshot slots stay placeholders on purpose (PRD § 10).
 
-**Founder photo (owner-supplied, 2026-10-05).** `public/team/haris-jiva.jpg` is the founder portrait for the published `founder` row (the Verify founder strip and record dialog, the About founder band, the Home team card); `public/team/haris-jiva-wide.jpg` is a wide crop not used yet. It is the owner's own photo, not stock — unlike `public/hero/`. The office, portal-screenshot and licence/profile PDF slots stay placeholders.
+**Founder photo (owner-supplied, 2026-10-05).** `public/team/haris-jiva.jpg` is the founder portrait for the published `founder` row (the Verify founder strip and record dialog, the About founder band, the Home team card); `public/team/haris-jiva-wide.jpg` is a wide crop not used yet. It is the owner's own photo, not stock — unlike `public/hero/`. The office and portal-screenshot slots stay placeholders (the licence/profile PDFs: next paragraph).
+
+**Licence documents and company profile (owner-supplied, 2026-10-06, W246).** `public/docs/licence/` holds the PDFs that `LICENCE_DOCS` (`src/app/[locale]/(site)/about/licence.ts`) points at — static files at `/docs/licence/<file>`, served as `application/pdf` (the proxy matcher skips any path with an extension) and linked only from About `#lisans` and the About hero. Names are clean ASCII. The two large files were re-saved once through macOS Quartz's "Reduce File Size" filter (`PDFDocument.write` + `QuartzFilter`: JPEG 0.7, images above 144 ppi downsampled, at most 2,400 px) — page count unchanged, and a render-and-diff against the originals showed no visible change; the three certificates are the owner's files byte for byte. The certificates expired in April 2025 and are published by owner decision with their validity dates in the row titles (PRD § 10).
+
+| File (`public/docs/licence/`)            | Document                                                                                                               | Size                          |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `jobsadmire-iskur-izin-belgesi-1730.pdf` | İŞKUR private employment agency permit no. 1730 (19.09.2024; valid 23.09.2024–22.09.2027), 1 page                      | 1.2 MB (re-saved from 5.4 MB) |
+| `jobsadmire-iso-21001-2018.pdf`          | BELCERT ISO 21001:2018 certificate A1550314 (04.04.2024 – 04.04.2025, expired), 1 page                                 | 0.66 MB (original)            |
+| `jobsadmire-iso-10002-2018.pdf`          | BELCERT ISO 10002:2018 certificate A1550315 (04.04.2024 – 04.04.2025, expired), 1 page                                 | 0.53 MB (original)            |
+| `jobsadmire-guvenilir-marka-belgesi.pdf` | GUMIB-TOBNC Trusted Brand Name certificate, reg. 2023/130621, cert. 2024/99 (03.04.2024 – 03.04.2025, expired), 1 page | 1.2 MB (original)             |
+| `jobsadmire-sirket-profili.pdf`          | Company profile brochure, 8 pages — the About "Şirket Profilini İndir →" download                                      | 7.8 MB (re-saved from 19 MB)  |
+
+A replacement keeps the file name (or changes `file` in `licence.ts`); a new document is a new `LICENCE_DOCS` row plus a `sys.about.licence.docs.<key>` title in TR and EN.
 
 ### Chrome
 

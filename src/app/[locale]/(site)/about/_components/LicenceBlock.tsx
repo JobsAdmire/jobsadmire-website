@@ -23,14 +23,16 @@ const DOWNLOAD =
 /**
  * The `#lisans` block (D26) in the design's profile strip (About l. 898–905): one white r16 row
  * under the offices — the İŞKUR mark, the legal line (about.108, legal-flagged, verbatim) and
- * "Şirket Profilini İndir →" (about.109). The company profile PDF is not in the repo yet, so the
- * button is a disabled `<button>` named `data-placeholder="licence-pdf-company-profile"` with the
- * `sys.about.profileSoon` note under it (never a dead link, W55/D20); once the file is set it is a
- * PDF link in the same face. D26 still republishes the four İŞKUR licence documents here, so a
- * compact list follows under a hairline, headed by `sys.about.licence.title`: a slot with no
- * file is a list item marked `data-placeholder`, never a dead link. Phones (≤ 900, l. 378–382):
- * the logo in a pale tile, the legal line full width, the button a full-width pale pill. Copy
- * arrives resolved from the page, so this server component takes plain strings.
+ * "Şirket Profilini İndir →" (about.109). With the company profile PDF set (owner, 2026-10-06,
+ * W246) the button is a `download` link to it in the design's face (l. 903 is a plain link);
+ * without one it is a disabled `<button>` named `data-placeholder="licence-pdf-company-profile"`
+ * with the `sys.about.profileSoon` note under it (never a dead link, W55/D20). D26 republishes the
+ * İŞKUR licence documents and the company certificates here, so a compact list follows under a
+ * hairline, headed by `sys.about.licence.title`: a supplied document opens its PDF in a new tab;
+ * a slot with no file is a list item marked `data-placeholder`, never a dead link. Phones
+ * (≤ 900, l. 378–382): the logo in a pale tile, the legal line full width, the button a
+ * full-width pale pill. Copy arrives resolved from the page, so this server component takes
+ * plain strings.
  */
 export function LicenceBlock({
   title,
@@ -77,6 +79,7 @@ export function LicenceBlock({
             <a
               href={profile.href}
               type="application/pdf"
+              download
               className={`${DOWNLOAD} ja-hover-lift hover:bg-blue-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe`}
             >
               {profile.label}
@@ -121,6 +124,8 @@ export function LicenceBlock({
                 <a
                   href={row.href}
                   type="application/pdf"
+                  target="_blank"
+                  rel="noopener"
                   aria-describedby={`${row.slot}-title`}
                   className="inline-flex min-h-[44px] shrink-0 items-center text-body-sm font-extrabold text-blue-safe underline-offset-4 hover:underline"
                 >

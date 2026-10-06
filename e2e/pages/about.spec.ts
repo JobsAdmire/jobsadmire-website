@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { test, expect, type Page } from '@playwright/test';
+import en from '../../src/messages/en.json';
 import tr from '../../src/messages/tr.json';
 
 // Canonicals and JSON-LD are built from SITE_URL (the production origin), whatever host the run hits.
@@ -29,6 +30,20 @@ const CASES = [
     requestHref: '/en/hire-workers#request-form',
   },
 ] as const;
+
+/** The owner-supplied documents (W246, 2026-10-06): four list rows + the profile download. */
+const LICENCE_ROWS = [
+  ['iskurPermit', 'jobsadmire-iskur-izin-belgesi-1730.pdf'],
+  ['iso21001', 'jobsadmire-iso-21001-2018.pdf'],
+  ['iso10002', 'jobsadmire-iso-10002-2018.pdf'],
+  ['trustedBrand', 'jobsadmire-guvenilir-marka-belgesi.pdf'],
+] as const;
+const PROFILE_PDF = '/docs/licence/jobsadmire-sirket-profili.pdf';
+const PENDING_SLOTS = [
+  'licence-pdf-iskur-annex',
+  'licence-pdf-oib-certificate',
+  'licence-pdf-oib-annex',
+];
 
 const SECTION_IDS = [
   'about-corridor',
@@ -85,7 +100,7 @@ for (const { path, lang, alternate, requestHref } of CASES) {
       await expect(band.locator('[data-sample-tag]')).toHaveCount(1);
     });
 
-    test('the published founder and the newsletter band render; #lisans carries five named slots (D26)', async ({
+    test('the published founder and the newsletter band render; #lisans publishes the supplied PDFs and names the missing ones (D26, W246)', async ({
       page,
     }) => {
       await page.goto(path);
@@ -102,13 +117,30 @@ for (const { path, lang, alternate, requestHref } of CASES) {
       const slots = await lisans
         .locator('[data-placeholder]')
         .evaluateAll((els) => els.map((el) => el.getAttribute('data-placeholder')));
-      expect(slots).toHaveLength(5);
-      for (const s of slots) expect(s).toMatch(/^licence-pdf-/);
-      await expect(lisans.locator('a')).toHaveCount(0);
-      // the profile strip's download waits for the PDF: disabled, described by the note
-      const download = lisans.locator('button[data-placeholder="licence-pdf-company-profile"]');
-      await expect(download).toBeDisabled();
+      expect(slots).toEqual(PENDING_SLOTS);
+      // four documents open their PDF in a new tab, each row titled from sys copy (the
+      // certificates with their validity dates, W246)
+      const docs = (lang === 'tr' ? tr : en).sys.about.licence.docs;
+      await expect(lisans.locator('a[target="_blank"]')).toHaveCount(LICENCE_ROWS.length);
+      for (const [key, file] of LICENCE_ROWS) {
+        const link = lisans.locator(`a[href="/docs/licence/${file}"]`);
+        await expect(link).toHaveCount(1);
+        await expect(link).toHaveAttribute('target', '_blank');
+        await expect(link).toHaveAttribute('rel', 'noopener');
+        await expect(link).toHaveAttribute('type', 'application/pdf');
+        await expect(lisans.getByText(docs[key], { exact: true })).toHaveCount(1);
+      }
+      // the profile strip's download is live: a download link, no disabled button, no note
+      const download = lisans.locator(`a[href="${PROFILE_PDF}"]`);
+      await expect(download).toHaveCount(1);
       await expect(download).toHaveText(strings(lang)['about.109']);
+      await expect(download).toHaveAttribute('download', '');
+      await expect(lisans.locator('button')).toHaveCount(0);
+      await expect(lisans.getByText((lang === 'tr' ? tr : en).sys.about.profileSoon)).toHaveCount(
+        0,
+      );
+      // the hero's phone-only profile link goes straight to the file too
+      await expect(page.locator(`a[href="${PROFILE_PDF}"]`)).toHaveCount(2);
       // no placeholder is the LCP element, and none is unnamed (D26, W55)
       await expect(page.locator('[data-placeholder][data-lcp-slot]')).toHaveCount(0);
       await expect(page.locator('[data-placeholder=""]')).toHaveCount(0);
@@ -222,6 +254,15 @@ test('the corridor lanes rotate every 2.5 s, and hold still under reduced motion
   const still = await firstLane();
   await page.waitForTimeout(3000);
   expect(await firstLane()).toBe(still);
+});
+
+test('every published licence document is served as a PDF (W246)', async ({ request }) => {
+  for (const file of [...LICENCE_ROWS.map(([, f]) => `/docs/licence/${f}`), PROFILE_PDF]) {
+    const res = await request.get(file);
+    expect(res.status(), file).toBe(200);
+    expect(res.headers()['content-type'], file).toContain('application/pdf');
+    expect((await res.body()).subarray(0, 5).toString('latin1'), file).toBe('%PDF-');
+  }
 });
 
 test('legacy /certifications and /tr/certifications land on the #lisans block (D26)', async ({

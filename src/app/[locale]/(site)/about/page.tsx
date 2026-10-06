@@ -281,11 +281,12 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                 {t('about.029')}
               </Link>
             </div>
-            {/* The profile PDF is not in the repo yet: the link goes to the profile strip
-                (#lisans) until it is, then straight to the file. */}
+            {/* The company profile PDF (owner, 2026-10-06, W246): a download link straight to
+                the file; without one it would fall back to the profile strip (#lisans). */}
             <a
               href={profileHref ?? '#lisans'}
               type={profileHref ? 'application/pdf' : undefined}
+              download={profileHref ? true : undefined}
               className="mt-3.5 inline-flex min-h-[44px] items-center gap-2 font-bold text-white/75 no-underline lg:hidden max-lg:text-[14px]"
             >
               <DownloadIcon />
@@ -665,9 +666,10 @@ export default async function About({ params }: { params: Promise<{ locale: stri
           </div>
 
           {/* #lisans (D26) is the design's profile strip (l. 898–905): the İŞKUR mark, the legal
-              line (about.108, verbatim) and "Şirket Profilini İndir →" (about.109) — disabled
-              with the sys.about.profileSoon note until the PDF exists — then the four licence
-              documents D26 republishes here. */}
+              line (about.108, verbatim) and "Şirket Profilini İndir →" (about.109) — a download
+              link to the company profile PDF (W246; disabled with the sys.about.profileSoon note
+              while no file is set) — then the licence documents and company certificates D26
+              republishes here (W246: permit + three certificates live, annex/ÖİB slots pending). */}
           <LicenceBlock
             title={sys('about.licence.title')}
             body={sys('about.licence.body')}
