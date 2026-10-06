@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { expectedRobots } from './helpers/face';
-import { INDEXABLE_GATE_ROUTES } from './routes';
+import { gateRouteLanguages, INDEXABLE_GATE_ROUTES } from './routes';
 
 // Canonicals, hreflang and the sitemap are built from SITE_URL — the production origin — not
 // from the host the run happens to hit, so these stay jobsadmire.com URLs against localhost.
@@ -33,16 +33,25 @@ test('an inner page canonicalises to its own localized URL', async ({ page }) =>
   );
 });
 
-// Every indexable gate route: self-referencing canonical, both locales + x-default = TR
+// Every indexable gate route: self-referencing canonical, its locales (both, unless a blog
+// article is written in one only — D16/B-15) + x-default = TR when TR exists, else its own
 // (docs/SEO.md — a page missing its own locale in hreflang is a defect), and no noindex.
 for (const route of INDEXABLE_GATE_ROUTES) {
   test(`canonical + hreflang on ${route}`, async ({ page }) => {
     await page.goto(route);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', canonicalOf(route));
-    await expect(page.locator('link[hreflang="tr"]')).toHaveCount(1);
-    await expect(page.locator('link[hreflang="en"]')).toHaveCount(1);
-    const tr = await page.locator('link[hreflang="tr"]').getAttribute('href');
-    await expect(page.locator('link[hreflang="x-default"]')).toHaveAttribute('href', tr ?? '');
+    const languages = gateRouteLanguages(route);
+    for (const lang of ['tr', 'en'] as const)
+      await expect(page.locator(`link[hreflang="${lang}"]`)).toHaveCount(
+        languages.includes(lang) ? 1 : 0,
+      );
+    const xDefault = await page
+      .locator(`link[hreflang="${languages.includes('tr') ? 'tr' : languages[0]}"]`)
+      .getAttribute('href');
+    await expect(page.locator('link[hreflang="x-default"]')).toHaveAttribute(
+      'href',
+      xDefault ?? '',
+    );
     await expect(page.locator('meta[name="robots"][content*="noindex"]')).toHaveCount(0);
   });
 }
@@ -60,9 +69,10 @@ test('the sitemap lists every indexable gate route and omits the noindex ones', 
   expect(xml).not.toContain('/thank-you');
   expect(xml).not.toContain('[slug]');
   // Owner 2026-10-05: the blog index is always in the nav, listed in the sitemap and indexable;
-  // the articles stay noindex (and out of the sitemap) until the 6-TR-bodies threshold.
+  // W248: so is every published article, with its last edit as lastmod.
   expect(xml).toContain(`<loc>${ORIGIN}/blog</loc>`);
-  expect(xml).not.toMatch(/<loc>[^<]*\/blog\/[^<]/);
+  expect(xml).toContain(`<loc>${ORIGIN}/en/blog/turkey-work-permit-process-employer-guide</loc>`);
+  expect(xml).not.toContain('/blog/preview');
 });
 
 test('every sitemap URL answers 200 — no unbuilt route is advertised (W20)', async ({
@@ -108,9 +118,8 @@ test("robots.txt matches this run's face and points at the sitemap in production
     '/en/newsletter/unsubscribe',
   ])
     expect(body).toContain(`Disallow: ${path}`);
-  // The blog index is indexable; only its articles' prefix is disallowed.
-  expect(body).not.toMatch(/^Disallow: \/blog$/m);
-  expect(body).toContain('Disallow: /blog/');
+  // W248 (the SEO flip): neither the blog index nor its articles is disallowed, in either locale.
+  expect(body).not.toMatch(/^Disallow: (\/en)?\/blog/m);
   // The retired portal login chooser is no longer a page, so robots never names it.
   expect(body).not.toContain('portal-girisi');
   expect(body).not.toContain('[slug]');

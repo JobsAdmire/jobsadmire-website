@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { testBundle } from '@/test/bundle';
 import { blogPost } from '../../__tests__/fixtures';
-import { guidesPosts } from '../guides';
+import { GUIDES_MAX, guidesTeaser } from '../guides';
 
-describe('guidesPosts (W4/W33: written articles only, newest first, per locale)', () => {
+describe('guidesTeaser (W248: written articles only, featured first, then newest, per locale)', () => {
   const bundle = testBundle({
     collections: {
       blog: [
@@ -15,15 +15,31 @@ describe('guidesPosts (W4/W33: written articles only, newest first, per locale)'
     },
   });
 
-  it('EN: the two written EN articles, newest first', () => {
-    expect(guidesPosts(bundle, 'en').map((p) => p.key)).toEqual(['new', 'old']);
+  it('EN: the two written EN articles, newest first — never an unwritten row', () => {
+    expect(guidesTeaser(bundle, 'en').map((p) => p.key)).toEqual(['new', 'old']);
   });
 
   it('TR: only the article with a Turkish body', () => {
-    expect(guidesPosts(bundle, 'tr').map((p) => p.key)).toEqual(['tr-only']);
+    expect(guidesTeaser(bundle, 'tr').map((p) => p.key)).toEqual(['tr-only']);
   });
 
-  it('no blog collection → no posts', () => {
-    expect(guidesPosts(testBundle(), 'en')).toEqual([]);
+  it('a post flagged featured leads; the list is capped at the design five', () => {
+    const many = testBundle({
+      collections: {
+        blog: [
+          ...Array.from({ length: 7 }, (_, i) =>
+            blogPost(`p${i}`, `2026-0${i + 1}-01`, { tr: false, en: true }),
+          ),
+          { ...blogPost('flag', '2025-12-01', { tr: false, en: true }), featured: true },
+        ],
+      },
+    });
+    const keys = guidesTeaser(many, 'en').map((p) => p.key);
+    expect(keys).toHaveLength(GUIDES_MAX);
+    expect(keys).toEqual(['flag', 'p6', 'p5', 'p4', 'p3']);
+  });
+
+  it('no blog collection → no posts (the section is left out)', () => {
+    expect(guidesTeaser(testBundle(), 'en')).toEqual([]);
   });
 });

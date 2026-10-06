@@ -28,8 +28,12 @@ describe('robots', () => {
     // Guarded on the set itself so this cannot rot when a page task builds the page and
     // deletes the key — the rule then appears by itself.
     const d = disallow();
-    if (UNBUILT_PATHNAMES.has('/blog/[slug]')) expect(d).not.toContain('/blog/');
     if (UNBUILT_PATHNAMES.has('/newsletter/confirm')) expect(d).not.toContain('/abone-onay');
+  });
+
+  it('never disallows the blog — the index nor its published articles (W248, the SEO flip)', () => {
+    const d = disallow();
+    for (const path of ['/blog', '/blog/', '/en/blog', '/en/blog/']) expect(d).not.toContain(path);
   });
 
   it('blocks everything on a preview deployment', () => {

@@ -16,29 +16,29 @@ export type Href = Parameters<typeof getPathname>[0]['href'];
 export type StaticPathname = Exclude<keyof typeof pathnames, `${string}[${string}`>;
 
 /**
- * Internal pathnames that are never indexed: the conversion page (D13), the portal door, the
- * two newsletter one-shot pages, and — W4, until six Turkish article bodies exist — the blog
- * index and its articles. One set, two consumers (M-3): `app/sitemap.ts` excludes them and
+ * Internal pathnames that are never indexed: the conversion page (D13) and the two newsletter
+ * one-shot pages. The blog left this set on 2026-10-06 (W248, the SEO flip): its index since the
+ * owner's 2026-10-05 ruling, its published articles with the Operations blog — they are listed
+ * in the sitemap (`DETAIL_SITEMAP_SOURCES`) and robots no longer names `/blog/`. One set, two
+ * consumers (M-3): `app/sitemap.ts` excludes them and
  * `app/robots.ts` disallows their external form in both locales through
  * `robotsDisallowPaths(locale)` (below), which folds in `UNBUILT_PATHNAMES` so a robots rule
  * never names a path that does not exist yet. `noindexExternalPaths` is the same fold with no
  * UNBUILT subtraction — kept as the reference `routes.test.ts` pins `robotsDisallowPaths`
  * against; it has no production caller of its own. (`/api/` is disallowed literally there; it
- * is not a `pathnames` route.) Typed as keys, not `Href`s: '/blog/[slug]' is a key but not a
- * bare href, so never hand this set to `getPathname`/`absoluteUrl` directly — go through
- * `robotsDisallowPaths`. The blog flip back to index is a manual, reviewed step (T12/WP-C):
- * remove both entries here and nowhere else.
+ * is not a `pathnames` route.) Typed as keys, not `Href`s: a dynamic key such as '/blog/[slug]'
+ * is not a bare href, so never hand this set to `getPathname`/`absoluteUrl` directly — go through
+ * `robotsDisallowPaths`, which folds a dynamic key into its parent's prefix.
  */
-export const NOINDEX_PATHNAMES = [
+export const NOINDEX_PATHNAMES: readonly (keyof typeof pathnames)[] = [
   '/thank-you',
   '/newsletter/confirm',
   '/newsletter/unsubscribe',
-  '/blog/[slug]',
 ] as const satisfies readonly (keyof typeof pathnames)[];
 
 /** One noindex key as its robots path. A dynamic key becomes its parent's prefix WITH a trailing
- *  slash (`/blog/[slug]` → `/blog/`, `/en/blog/`): the articles stay disallowed while the index
- *  page `/blog` (owner 2026-10-05: always in the nav, listed and indexable) is not. */
+ *  slash (`/x/[slug]` → `/x/`, `/en/x/`), so its detail pages are disallowed while the index page
+ *  `/x` is not (the shape the blog articles had until W248). */
 function robotsPath(locale: Locale, href: keyof typeof pathnames): string {
   if (!href.includes('[')) return getPathname({ locale, href: href as StaticPathname });
   const parent = getPathname({

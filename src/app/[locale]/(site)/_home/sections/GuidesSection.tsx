@@ -1,5 +1,4 @@
-import { useTranslations } from 'next-intl';
-import type { BlogCategory } from '@/content/collections';
+import { readMinutesOf, type BlogCategory, type BlogPost } from '@/content/collections';
 import { makeTf } from '@/content/pure';
 import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { Button } from '@/design/primitives/Button';
@@ -7,7 +6,7 @@ import { Eyebrow } from '@/design/primitives/Eyebrow';
 import { Section } from '@/design/primitives/Section';
 import { Link } from '@/i18n/navigation';
 import { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';
-import { guidesTeaser, type GuideTeaser } from '../lib/guides';
+import { guidesTeaser } from '../lib/guides';
 import { H2, SECTION_HEAD } from './styles';
 import type { SectionProps } from './types';
 
@@ -25,31 +24,17 @@ const PILL: Record<BlogCategory, string> = {
  *  slot covers. */
 const COVER = { base: 190, xs: 270, xl: 203 };
 
-/** `sys.blog.soon` — a guide whose article is not written in this locale is not a link and says
- *  so (owner 2026-10-05, the same rule as the Blog Article's related cards). */
-function SoonTag() {
-  const sys = useTranslations('sys');
-  return (
-    <span
-      data-testid="guide-soon"
-      className="inline-flex shrink-0 items-center rounded-pill border border-amber-border bg-amber-surface px-2.5 py-[3px] text-[10.5px] leading-none font-extrabold uppercase tracking-[0.5px] text-warning-text xl:text-[11px]"
-    >
-      {sys('blog.soon')}
-    </span>
-  );
-}
-
-/** A guide's own article route (only for a written one). */
+/** A guide's own article route. */
 const articleHref = (slug: string) => ({ pathname: '/blog/[slug]' as const, params: { slug } });
 
 /**
- * "Guides and market updates" (design ll. 1026–1069). Owner 2026-10-05: the section renders from
- * the bundle's `blog` rows rather than waiting for W4's threshold — the featured card (cover slot
- * `blog-cover-<key>`, the category pill, "Featured guide", title, excerpt, "Read the guide →") and
- * up to four index rows (category pill + read time, title, excerpt), chosen by `guidesTeaser`
- * (written articles first). A guide without a body in this locale is a plain card with the
- * "coming soon" tag, never a link (W33: no route exists for it). The side list and the top CTA
- * hide at ≤ 460 px, where the dark bottom CTA shows (W10).
+ * "Guides and market updates" (design ll. 1026–1069), from the published articles of this locale
+ * (W248 — no "yakında" cards): the featured card (the post's cover photo, else the named slot
+ * `blog-cover-<key>`; the category pill, "Featured guide", title, excerpt, "Read the guide →") and
+ * up to four index rows (category pill + read time, title, excerpt), chosen by `guidesTeaser`.
+ * Few posts: one post is the featured card alone across the row; none leaves the section out
+ * (the design has no empty state for it). The side list and the top CTA hide at ≤ 460 px, where
+ * the dark bottom CTA shows (W10).
  */
 export function GuidesSection({ locale, bundle }: SectionProps) {
   const guides = guidesTeaser(bundle, locale);
@@ -70,15 +55,17 @@ export function GuidesSection({ locale, bundle }: SectionProps) {
             </Button>
           </div>
         </div>
-        <div className="grid items-stretch gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-          <FeaturedGuide guide={featured} locale={locale} tf={tf} />
+        <div
+          className={`grid items-stretch gap-5${rest.length > 0 ? ' lg:grid-cols-[1.15fr_0.85fr]' : ''}`}
+        >
+          <FeaturedGuide post={featured} locale={locale} tf={tf} />
           {rest.length > 0 ? (
             <div
               data-testid="guides-list"
               className="flex flex-col rounded-hero border border-border-2 bg-white px-[26px] py-2 max-xs:hidden xl:rounded-[18px] xl:px-[19.5px]"
             >
               {rest.map((guide) => (
-                <GuideRow key={guide.post.key} guide={guide} locale={locale} tf={tf} />
+                <GuideRow key={guide.key} post={guide} locale={locale} tf={tf} />
               ))}
               <Link
                 prefetch={false}
@@ -101,23 +88,30 @@ export function GuidesSection({ locale, bundle }: SectionProps) {
 }
 
 type GuideProps = {
-  guide: GuideTeaser;
+  post: BlogPost;
   locale: SectionProps['locale'];
   tf: ReturnType<typeof makeTf>;
 };
 
-function FeaturedGuide({ guide, locale, tf }: GuideProps) {
-  const { post, written } = guide;
+function FeaturedGuide({ post, locale, tf }: GuideProps) {
   const slug = post.slug[locale] as string;
-  const body = (
-    <>
+  const shell =
+    'flex flex-col overflow-hidden rounded-hero border border-border-2 bg-white max-xs:rounded-lg xl:rounded-[18px]';
+  return (
+    <Link
+      prefetch={false}
+      href={articleHref(slug)}
+      data-testid="guide-featured"
+      className={`${shell} ja-hover-card no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe`}
+    >
       <div className="bg-tint">
         <ImageSlot
           slot={`blog-cover-${post.key}`}
-          src={null}
-          alt=""
+          src={post.cover?.url ?? null}
+          alt={post.cover ? (post.coverAlt?.[locale] ?? '') : ''}
           width={640}
           height={270}
+          sizes="(min-width: 901px) 720px, 100vw"
           cover={COVER}
         />
       </div>
@@ -131,7 +125,6 @@ function FeaturedGuide({ guide, locale, tf }: GuideProps) {
           <span className="text-[12.5px] font-bold text-text-tertiary xl:text-[11px]">
             {tf('home.177')}
           </span>
-          {written ? null : <SoonTag />}
         </span>
         <h3 className="m-0 font-display text-[clamp(22px,2.2vw,28px)] font-extrabold leading-[1.15] tracking-[-1px] text-ink max-xs:text-[21px] max-xs:tracking-[-0.6px] xl:text-[clamp(16.5px,1.65vw,21px)] xl:tracking-[-0.75px]">
           {post.title[locale]}
@@ -141,37 +134,23 @@ function FeaturedGuide({ guide, locale, tf }: GuideProps) {
             {post.excerpt[locale]}
           </p>
         ) : null}
-        {written ? (
-          <span className="text-[13.5px] font-extrabold text-blue-safe xl:text-[11px]">
-            {tf('home.178')}
-          </span>
-        ) : null}
+        <span className="text-[13.5px] font-extrabold text-blue-safe xl:text-[11px]">
+          {tf('home.178')}
+        </span>
       </div>
-    </>
-  );
-  const shell =
-    'flex flex-col overflow-hidden rounded-hero border border-border-2 bg-white max-xs:rounded-lg xl:rounded-[18px]';
-  return written ? (
-    <Link
-      prefetch={false}
-      href={articleHref(slug)}
-      data-testid="guide-featured"
-      className={`${shell} ja-hover-card no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe`}
-    >
-      {body}
     </Link>
-  ) : (
-    <article data-testid="guide-featured" className={shell}>
-      {body}
-    </article>
   );
 }
 
-function GuideRow({ guide, locale, tf }: GuideProps) {
-  const { post, written } = guide;
+function GuideRow({ post, locale, tf }: GuideProps) {
   const slug = post.slug[locale] as string;
-  const body = (
-    <>
+  return (
+    <Link
+      prefetch={false}
+      href={articleHref(slug)}
+      data-guide-row={post.key}
+      className="flex flex-col gap-2 border-b border-border-3 py-5 no-underline transition-colors hover:bg-pale-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
+    >
       <span className="flex flex-wrap items-center gap-2.5">
         <span
           className={`rounded-pill px-[11px] py-[3px] text-[11px] font-extrabold tracking-[0.4px] ${PILL[post.category]}`}
@@ -179,9 +158,8 @@ function GuideRow({ guide, locale, tf }: GuideProps) {
           {tf(post.categoryLabelId)}
         </span>
         <span className="text-[12px] font-bold text-text-tertiary xl:text-[11px]">
-          {formatReadMinutes(post.readMinutes, locale)}
+          {formatReadMinutes(readMinutesOf(post, locale), locale)}
         </span>
-        {written ? null : <SoonTag />}
       </span>
       <h3 className="m-0 font-display text-[17px] font-extrabold leading-[1.25] tracking-[-0.5px] text-ink xl:text-[12.75px] xl:tracking-[-0.4px]">
         {post.title[locale]}
@@ -191,21 +169,6 @@ function GuideRow({ guide, locale, tf }: GuideProps) {
           {post.excerpt[locale]}
         </p>
       ) : null}
-    </>
-  );
-  const row = 'flex flex-col gap-2 border-b border-border-3 py-5';
-  return written ? (
-    <Link
-      prefetch={false}
-      href={articleHref(slug)}
-      data-guide-row={post.key}
-      className={`${row} no-underline transition-colors hover:bg-pale-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe`}
-    >
-      {body}
     </Link>
-  ) : (
-    <div data-guide-row={post.key} className={row}>
-      {body}
-    </div>
   );
 }

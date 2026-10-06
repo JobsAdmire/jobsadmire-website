@@ -113,49 +113,52 @@ describe('WorkWithUs', () => {
   });
 });
 
-describe('GuidesSection (owner 2026-10-05: the blog rows; unwritten guides are not links)', () => {
-  it('TR: no Turkish body yet — the featured card and three rows, none a link, each "yakında"', () => {
-    renderWithIntl(<GuidesSection locale="tr" bundle={TR} />);
-    const guides = screen.getByTestId('guides');
-    const featured = screen.getByTestId('guide-featured');
-    expect(featured.tagName).toBe('ARTICLE');
-    expect(within(featured).getByRole('heading', { level: 3 })).toHaveTextContent(
-      'Yabancı işçiler için çalışma izni süreci',
-    );
-    expect(featured).toHaveTextContent(TR.strings['home.177']);
-    expect(featured).not.toHaveTextContent(TR.strings['home.178']);
-    expect(featured.querySelector('[data-placeholder^="blog-cover-"]')).not.toBeNull();
-    const rows = screen.getByTestId('guides-list').querySelectorAll('[data-guide-row]');
-    expect(rows).toHaveLength(3);
-    expect(within(guides).getAllByTestId('guide-soon')).toHaveLength(4);
-    expect(within(guides).getAllByTestId('guide-soon')[0]).toHaveTextContent('yakında');
-    const articleLinks = within(guides)
-      .getAllByRole('link')
-      .filter((a) => a.getAttribute('href') !== '/blog');
-    expect(articleLinks).toHaveLength(0);
-    expect(screen.getByTestId('guides-list')).toHaveClass('max-xs:hidden');
+describe('GuidesSection (W248: real published posts only — no "yakında" cards)', () => {
+  it('TR on the LOCAL bundle: no Turkish article yet, so the section is left out', () => {
+    const { container } = renderWithIntl(<GuidesSection locale="tr" bundle={TR} />);
+    expect(container).toBeEmptyDOMElement();
   });
 
-  it('EN: the written article is the featured link; four planned rows carry the tag', () => {
+  it('EN: the one written article is the featured link, alone across the row (no list)', () => {
     renderWithIntl(<GuidesSection locale="en" bundle={EN} />, { locale: 'en' });
     const featured = screen.getByTestId('guide-featured');
     expect(featured.tagName).toBe('A');
     expect(featured.getAttribute('href')).toContain('turkey-work-permit-process-employer-guide');
     expect(featured).toHaveTextContent(EN.strings['home.178']);
-    const rows = screen.getByTestId('guides-list').querySelectorAll('[data-guide-row]');
-    expect(rows).toHaveLength(4);
-    expect(within(screen.getByTestId('guides')).getAllByTestId('guide-soon')).toHaveLength(4);
-    expect(rows[0]).toHaveTextContent('5 min read');
+    expect(featured.querySelector('[data-placeholder^="blog-cover-"]')).not.toBeNull();
+    expect(screen.queryByTestId('guides-list')).toBeNull();
+    expect(featured.parentElement?.className).not.toContain('lg:grid-cols-');
+    expect(document.querySelector('[data-testid="guide-soon"]')).toBeNull();
   });
 
-  it('written articles lead, newest first; renders nothing without blog rows', () => {
+  it('the featured post leads, then newest first, every row a link; a cover photo fills the slot; nothing without rows', () => {
     const blog = Array.from({ length: 6 }, (_, i) =>
       blogPost(`guide-${i}`, `2026-0${i + 1}-10`, { tr: true, en: false }),
     );
+    blog[1] = {
+      ...blog[1],
+      featured: true,
+      cover: {
+        url: 'https://operations.jobsadmire.com/api/website/v1/media/m1/1600.webp',
+        width: 1600,
+        height: 900,
+      },
+      coverAlt: { tr: 'Kapak', en: null },
+    };
     renderWithIntl(<GuidesSection locale="tr" bundle={withCollections(TR, { blog })} />);
     const featured = screen.getByTestId('guide-featured');
     expect(featured.tagName).toBe('A');
-    expect(featured).toHaveTextContent('guide-5 TR');
+    expect(featured).toHaveTextContent('guide-1 TR');
+    expect(within(featured).getByRole('img', { name: 'Kapak' })).toBeInTheDocument();
+    const rows = screen.getByTestId('guides-list').querySelectorAll('[data-guide-row]');
+    expect([...rows].map((r) => r.getAttribute('data-guide-row'))).toEqual([
+      'guide-5',
+      'guide-4',
+      'guide-3',
+      'guide-2',
+    ]);
+    for (const r of rows) expect(r.tagName).toBe('A');
+    expect(featured.parentElement?.className).toContain('lg:grid-cols-[1.15fr_0.85fr]');
     cleanup();
     const { container } = renderWithIntl(
       <GuidesSection locale="tr" bundle={withCollections(TR, { blog: [] })} />,

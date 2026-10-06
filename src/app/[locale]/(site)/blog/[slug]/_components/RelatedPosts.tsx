@@ -1,6 +1,5 @@
 import type { CSSProperties } from 'react';
-import { useTranslations } from 'next-intl';
-import type { BlogPost } from '@/content/collections';
+import { readMinutesOf, type BlogPost } from '@/content/collections';
 import { makeT } from '@/content/pure';
 import { Section } from '@/design/primitives/Section';
 import { Link } from '@/i18n/navigation';
@@ -12,53 +11,34 @@ import { articleHref, isWritten } from '../../_lib/posts';
 import { CATEGORY_LOOK } from '../_lib/category';
 import { CategoryCover } from './CategoryCover';
 
-/** The `sys.blog.soon` tag — the owner's ruling (2026-10-05): a card whose article has no body in
- *  this locale is not a link and says so. */
-function SoonTag() {
-  const sys = useTranslations('sys');
-  return (
-    <span
-      data-testid="article-soon"
-      className="inline-flex shrink-0 items-center rounded-pill border border-amber-border bg-amber-surface px-2.5 py-[3px] xl:py-[2px] text-[11px] leading-none font-extrabold tracking-[0.5px] xl:tracking-[0.4px] text-warning-text uppercase xl:text-[11px]"
-    >
-      {sys('blog.soon')}
-    </span>
-  );
-}
-
-const CARD_SHELL =
-  'relative flex flex-col overflow-hidden rounded-[18px] border border-edge-soft bg-white max-md:flex-row max-md:items-stretch max-md:rounded-[14px]';
-const CARD_HOVER =
-  'transition-shadow duration-200 hover:shadow-[0_14px_34px_rgba(22,60,90,0.1)] focus-within:shadow-[0_14px_34px_rgba(22,60,90,0.1)]';
+const CARD =
+  'relative flex flex-col overflow-hidden rounded-[18px] border border-edge-soft bg-white max-md:flex-row max-md:items-stretch max-md:rounded-[14px] transition-shadow duration-200 hover:shadow-[0_14px_34px_rgba(22,60,90,0.1)] focus-within:shadow-[0_14px_34px_rgba(22,60,90,0.1)]';
 const STRETCH =
   'text-ink no-underline after:absolute after:inset-0 after:content-[""] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-blue-safe';
 
-/** One related card (DC 721–733, mobile CSS 352–362): a 160 px category-coloured cover, the
- *  category pill, the title and the meta line; at ≤ 700 px a row with a 92 px cover, the pill
- *  shown as a bare 10 px label and a 2-line title. The title is the single link (stretched over
- *  the card) — and there is no link at all when the article has no body here. */
+/** One related card (DC 721–733, mobile CSS 352–362): a 160 px cover (the post's photo, else
+ *  the category-coloured one), the category pill, the title and the meta line; at ≤ 700 px a row
+ *  with a 92 px cover, the pill shown as a bare 10 px label and a 2-line title. The title is the
+ *  single link, stretched over the card. Only written articles get here (W248). */
 function RelatedCard({ bundle, locale, post }: { bundle: Bundle; locale: Locale; post: BlogPost }) {
   const t = makeT(bundle);
-  const title = post.title[locale] ?? '';
+  const title = post.title[locale];
   const href = isWritten(post, locale) ? articleHref(post, locale) : null;
+  if (!title || !href) return null;
   const look = CATEGORY_LOOK[post.category];
   const label = t(post.categoryLabelId);
-  const meta = `${formatDate(post.publishedAt, locale)} · ${formatReadMinutes(post.readMinutes, locale)}`;
+  const meta = `${formatDate(post.publishedAt, locale)} · ${formatReadMinutes(readMinutesOf(post, locale), locale)}`;
   const pill = { '--pill-bg': look.pillBg, '--pill-fg': look.pillText } as CSSProperties;
   return (
-    <article
-      data-testid="article-related-card"
-      data-linked={href ? 'true' : 'false'}
-      className={[CARD_SHELL, href ? CARD_HOVER : ''].join(' ')}
-    >
+    <article data-testid="article-related-card" className={CARD}>
       <div className="block max-md:w-[92px] max-md:shrink-0">
         <CategoryCover
           slot={`blog-cover-${post.key}`}
           category={post.category}
           label={label}
+          photo={post.cover ? { src: post.cover.url, alt: '' } : null}
+          sizes="(min-width: 701px) 380px, 92px"
           compact
-          imageWidth={380}
-          imageHeight={160}
           className="h-[160px] max-md:h-full max-md:min-h-[92px] xl:h-[120px]"
         />
       </div>
@@ -72,17 +52,12 @@ function RelatedCard({ bundle, locale, post }: { bundle: Bundle; locale: Locale;
           </span>
         </p>
         <h3 className="m-0 mb-1.5 text-[16.5px] leading-[1.4] font-extrabold text-ink max-md:m-0 max-md:line-clamp-2 max-md:text-[14.5px] max-md:leading-[1.3] xl:text-[12.4px]">
-          {href ? (
-            <Link href={href} prefetch={false} className={STRETCH}>
-              {title}
-            </Link>
-          ) : (
-            title
-          )}
+          <Link href={href} prefetch={false} className={STRETCH}>
+            {title}
+          </Link>
         </h3>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[12.5px] font-semibold text-text-tertiary max-md:text-[11.5px] xl:text-[11px]">
           <span>{meta}</span>
-          {href ? null : <SoonTag />}
         </div>
       </div>
     </article>
@@ -93,8 +68,7 @@ const NEIGHBOUR =
   'flex flex-col gap-1.5 rounded-base border border-edge-soft bg-white px-6 py-5 no-underline xl:px-[18px] xl:py-[15px]';
 
 /** The Previous / Next cards (DC 738–754): 12 px caps label, 15.5 px title; the Next card is
- *  right-aligned and takes the full width when there is no Previous. A neighbour without a body
- *  here is a plain card with the `sys.blog.soon` tag, not a link. */
+ *  right-aligned and takes the full width when there is no Previous. */
 function NeighbourCard({
   locale,
   post,
@@ -109,7 +83,8 @@ function NeighbourCard({
   align: 'start' | 'end';
 }) {
   const href = isWritten(post, locale) ? articleHref(post, locale) : null;
-  const title = post.title[locale] ?? '';
+  const title = post.title[locale];
+  if (!href || !title) return null;
   const inner = (
     <>
       <span className="text-[12px] font-extrabold tracking-[1px] xl:tracking-[0.75px] text-text-tertiary uppercase xl:text-[11px]">
@@ -121,33 +96,27 @@ function NeighbourCard({
     </>
   );
   const face = [NEIGHBOUR, align === 'end' ? 'items-end text-right' : ''].join(' ');
-  if (href)
-    return (
-      <Link
-        href={href}
-        prefetch={false}
-        data-testid={testId}
-        className={[
-          face,
-          'transition-[border-color,box-shadow] duration-200 hover:border-blue hover:shadow-[0_10px_26px_rgba(22,60,90,0.08)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe',
-        ].join(' ')}
-      >
-        {inner}
-      </Link>
-    );
   return (
-    <div data-testid={testId} data-linked="false" className={face}>
+    <Link
+      href={href}
+      prefetch={false}
+      data-testid={testId}
+      className={[
+        face,
+        'transition-[border-color,box-shadow] duration-200 hover:border-blue hover:shadow-[0_10px_26px_rgba(22,60,90,0.08)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe',
+      ].join(' ')}
+    >
       {inner}
-      <SoonTag />
-    </div>
+    </Link>
   );
 }
 
 /**
  * The article's related row (≤ 3 cards, the 3rd hidden on phones) and Previous / Next cards
- * (blogarticle.081–083). The page hands it every listed row with a title in this locale — written
- * or not (owner ruling 2026-10-05); the cards of bodiless rows are not links and carry the
- * `sys.blog.soon` tag. Renders nothing when there is nothing to show. It owns its `Section`.
+ * (blogarticle.081–083), from the written articles of this locale only (W248: no "yakında"
+ * cards). With few posts it shrinks: no related row without another article, no Previous/Next
+ * without a neighbour, and the whole band is left out when there is nothing to show — the design
+ * has no empty state here. It owns its `Section`.
  */
 export function RelatedPosts({
   bundle,

@@ -3,7 +3,6 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { BundleSchema, type Bundle } from '../../contract/website-bundle.v1';
 import {
-  blogNavVisible,
   getCollection,
   getMetric,
   getOffice,
@@ -30,7 +29,7 @@ describe('generated LOCAL bundles through the typed accessors', () => {
       expect(getCollection(bundle, 'countries')).toHaveLength(64);
       expect(getCollection(bundle, 'offices')).toHaveLength(2);
       expect(getCollection(bundle, 'sectors')).toHaveLength(7);
-      expect(getCollection(bundle, 'blog')).toHaveLength(22);
+      expect(getCollection(bundle, 'blog')).toHaveLength(1); // W248: the one written article
       // W86 closed (owner 2026-10-05): one founder row, published with the owner's photo
       expect(getCollection(bundle, 'founder')).toEqual([
         expect.objectContaining({
@@ -91,8 +90,7 @@ describe('generated LOCAL bundles through the typed accessors', () => {
     expect(guide.body.en).toMatch(/^Türkiye's factories/);
     expect(guide.body.tr).toBeNull();
   });
-  it('keeps /blog in nav whatever the threshold (owner 2026-10-05) and carries every page record', () => {
-    expect(blogNavVisible(tr)).toBe(false); // the threshold now gates only the home guides / related articles
+  it('keeps /blog in nav (owner 2026-10-05) and carries every page record', () => {
     expect(tr.nav.filter((n) => n.href === '/blog')).toHaveLength(4);
     for (const key of PAGE_KEYS) expect(getPageSeo(tr, key), key).toBeDefined();
   });

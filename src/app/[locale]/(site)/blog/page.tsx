@@ -3,7 +3,8 @@ import NextLink from 'next/link';
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { getBundle, makeT, makeTf } from '@/content/adapter';
+import { makeT, makeTf } from '@/content/adapter';
+import { getBlogBundle } from '@/content/blog';
 import { getCollection } from '@/content/collections';
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
 import { ClosingCtaBand } from '@/design/blocks/ClosingCtaBand';
@@ -72,7 +73,7 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const [bundle, sys] = await Promise.all([
-    getBundle(locale),
+    getBlogBundle(locale),
     getTranslations({ locale, namespace: 'sys' }),
   ]);
   // The `blog` record has '' SEO ids (T0b) → the sys.seo.blog fallbacks (W23/W38); `noindex`
@@ -93,14 +94,14 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const [bundle, sys] = await Promise.all([
-    getBundle(locale),
+    getBlogBundle(locale),
     getTranslations({ locale, namespace: 'sys' }),
   ]);
   const t = makeT(bundle);
   const tf = makeTf(bundle, locale);
   const rows = getCollection(bundle, 'blog');
-  // Owner 2026-10-05: every bundle row with a title here — row 1 featured, the rest the grid;
-  // a row without a body is a card that is not a link (`sys.blog.soon`).
+  // W248: the written articles of this locale only — row 1 featured, the rest the grid; a
+  // locale with none shows the W6 empty state and the other locale's index.
   const listed = indexPosts(rows, locale);
   const [featured = null, ...grid] = listed;
   const mostRead = mostReadPosts(rows, locale);
@@ -293,9 +294,12 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
 
         {featured ? (
           <>
-            {/* ---- Featured + most read (599–634): 1.85fr / 1.15fr from 901 px ---- */}
+            {/* ---- Featured + most read (599–634): 1.85fr / 1.15fr from 901 px; the featured card
+                    alone takes the row while there is no ranking to show (W248) ---- */}
             <section className="bg-white pt-11 pb-2 max-md:pt-[22px]">
-              <div className="container-site grid items-stretch gap-6 max-md:gap-3.5 lg:grid-cols-[1.85fr_1.15fr]">
+              <div
+                className={`container-site grid items-stretch gap-6 max-md:gap-3.5${mostRead.length > 0 ? ' lg:grid-cols-[1.85fr_1.15fr]' : ''}`}
+              >
                 <div data-testid="blog-featured" className="min-w-0">
                   <BlogPostCard
                     bundle={bundle}
@@ -326,11 +330,21 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
                   />
                 </div>
               </section>
-            ) : null}
+            ) : (
+              // One post (W248): no grid, but a search that misses the featured card still
+              // answers with the no-results panel.
+              <div className="container-site">
+                <LoadMore
+                  listId={POST_LIST_ID}
+                  moreLabel={t('blog.090')}
+                  noResultsLabel={t('blog.035')}
+                />
+              </div>
+            )}
           </>
         ) : (
-          // W6, kept as a guard: a locale whose bundle lists no row at all (never with the
-          // committed bundles) shows the empty state and the other locale's index.
+          // W6: a locale with no written article (TR on the LOCAL bundle, W248) shows the empty
+          // state and the other locale's index.
           <Section tone="light" id="articles">
             <div className="container-site">
               <div data-testid="blog-empty-wrap" className="flex flex-col items-center gap-4">

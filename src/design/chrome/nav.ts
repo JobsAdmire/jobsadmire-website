@@ -3,9 +3,8 @@ import type { ChromeNavItem } from './NavLink';
 
 /** One nav group of the bundle as chrome items: sorted by `order`, labels resolved through
  *  `t()`, `external` passed through. Owner 2026-10-05: `/blog` is ALWAYS in the nav (the design's
- *  slim bar, hamburger and footer Company column show it) — the W4 six-article threshold
- *  (`blogNavVisible`, `src/content/collections.ts`) no longer gates any nav row; it still gates
- *  the home Guides section and the work-permit related articles. */
+ *  slim bar, hamburger and footer Company column show it); the W4 six-article threshold is
+ *  retired altogether (W248, the blog's SEO flip). */
 export function navGroup(
   bundle: Bundle,
   group: NavItem['group'],

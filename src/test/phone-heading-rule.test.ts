@@ -60,7 +60,7 @@ const EXEMPT = [/\bsr-only\b/, /\btext-(card-title|eyebrow)\b/];
  *  every entry still matches a heading that would otherwise fail, so the list cannot rot. */
 const ALLOWLIST: readonly { file: string; match: string; reason: string }[] = [
   {
-    file: 'src/app/[locale]/(site)/blog/[slug]/page.tsx',
+    file: 'src/app/[locale]/(site)/blog/[slug]/_components/ArticleView.tsx',
     match: 'text-[27px]',
     reason:
       'the article hero h1 is sized by its own ≤ 700 design rule (`.ja-art-hero h1`, 27 px — Blog Article.dc.html:309), spelled as the base size with `md:` steps',

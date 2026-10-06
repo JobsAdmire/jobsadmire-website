@@ -3,7 +3,15 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { getCollection } from '@/content/collections';
 import { BundleSchema } from '../../../../../../../contract/website-bundle.v1';
-import { headingId, headings, parseInline, parseMarkdown } from '../_lib/markdown';
+import {
+  headingId,
+  headings,
+  inlineText,
+  parseInline,
+  parseMarkdown,
+  safeHref,
+  unescapeText,
+} from '../_lib/markdown';
 
 const SAMPLE = [
   'Intro paragraph with **bold** inside.',
@@ -17,17 +25,87 @@ const SAMPLE = [
   '> Closing quote.',
 ].join('\n\n');
 
+const text = (t: string) => ({ kind: 'text' as const, text: t });
+const strong = (t: string) => ({ kind: 'strong' as const, children: [text(t)] });
+
 describe('parseInline', () => {
   it('splits **bold** spans and keeps everything else as text', () => {
-    expect(parseInline('a **b** c')).toEqual([
-      { kind: 'text', text: 'a ' },
-      { kind: 'strong', text: 'b' },
-      { kind: 'text', text: ' c' },
+    expect(parseInline('a **b** c')).toEqual([text('a '), strong('b'), text(' c')]);
+    expect(parseInline('plain')).toEqual([text('plain')]);
+    expect(parseInline('<script>x</script>')).toEqual([text('<script>x</script>')]);
+  });
+
+  it('*italic*, nested in bold and bold in italic (blog.v1)', () => {
+    expect(parseInline('a *b* c')).toEqual([
+      text('a '),
+      { kind: 'em', children: [text('b')] },
+      text(' c'),
     ]);
-    expect(parseInline('plain')).toEqual([{ kind: 'text', text: 'plain' }]);
-    expect(parseInline('<script>x</script>')).toEqual([
-      { kind: 'text', text: '<script>x</script>' },
+    expect(parseInline('**bold *it***')).toEqual([
+      { kind: 'strong', children: [text('bold '), { kind: 'em', children: [text('it')] }] },
     ]);
+    expect(parseInline('*an **x** y*')).toEqual([
+      { kind: 'em', children: [text('an '), strong('x'), text(' y')] },
+    ]);
+  });
+
+  it('a star next to a space is not emphasis; an unclosed span is text', () => {
+    expect(parseInline('5 * 3 * 2')).toEqual([text('5 * 3 * 2')]);
+    expect(parseInline('**not closed')).toEqual([text('**not closed')]);
+    expect(parseInline('* a*')).toEqual([text('* a*')]);
+  });
+
+  it('[text](url): https (external), site-relative, mailto; link text may carry emphasis', () => {
+    expect(parseInline('see [the **guide**](/en/work-permit).')).toEqual([
+      text('see '),
+      {
+        kind: 'link',
+        href: '/en/work-permit',
+        external: false,
+        children: [text('the '), strong('guide')],
+      },
+      text('.'),
+    ]);
+    expect(parseInline('[x](https://a.example/p?q=1)')).toEqual([
+      { kind: 'link', href: 'https://a.example/p?q=1', external: true, children: [text('x')] },
+    ]);
+    expect(parseInline('[mail](mailto:info@jobsadmire.com)')[0]).toMatchObject({
+      kind: 'link',
+      href: 'mailto:info@jobsadmire.com',
+      external: false,
+    });
+  });
+
+  it('any other link target renders its text only; links never nest', () => {
+    for (const href of ['http://a.example', 'javascript:void0', '//evil.example', 'ftp://x', 'x'])
+      expect(parseInline(`[t](${href})`)).toEqual([text('t')]);
+    const nested = parseInline('[a [b](/x)](/y)');
+    expect(nested.filter((n) => n.kind === 'link')).toHaveLength(1);
+    expect(inlineText(nested)).toBe('a [b](/y)');
+  });
+
+  it('\\ escapes *, [ and ] — the escaped character is literal, any other backslash stays', () => {
+    expect(parseInline('5 \\* 3 \\[a\\] \\n')).toEqual([text('5 * 3 [a] \\n')]);
+    expect(parseInline('**a \\*\\* b**')).toEqual([strong('a ** b')]);
+    expect(parseInline('\\[not](/link)')).toEqual([text('[not](/link)')]);
+    expect(unescapeText('\\*\\[\\]')).toBe('*[]');
+  });
+});
+
+describe('safeHref', () => {
+  it('allows https, mailto and one site-relative path — nothing else', () => {
+    expect(safeHref('https://www.csgb.gov.tr/')).toBe('https://www.csgb.gov.tr/');
+    expect(safeHref('/blog')).toBe('/blog');
+    expect(safeHref('mailto:a@b.co')).toBe('mailto:a@b.co');
+    for (const bad of [
+      'http://x.co',
+      '//x.co',
+      'javascript:x',
+      'data:text/html,x',
+      'mailto:nobody',
+      'https://',
+    ])
+      expect(safeHref(bad), bad).toBeNull();
   });
 });
 
@@ -64,11 +142,8 @@ describe('parseMarkdown (the importer grammar, B-8)', () => {
     const callout = blocks[1];
     expect(callout.kind === 'callout' && callout.title).toBe('Key takeaways');
     expect(callout.kind === 'callout' && callout.items).toEqual([
-      [{ kind: 'text', text: 'First point' }],
-      [
-        { kind: 'text', text: 'Second ' },
-        { kind: 'strong', text: 'point' },
-      ],
+      [text('First point')],
+      [text('Second '), strong('point')],
     ]);
   });
 
@@ -82,14 +157,12 @@ describe('parseMarkdown (the importer grammar, B-8)', () => {
 
   it('numbered steps keep their bold lead as the first inline', () => {
     const ol = blocks[6];
-    expect(ol.kind === 'ol' && ol.items[0][0]).toEqual({ kind: 'strong', text: 'Offer.' });
+    expect(ol.kind === 'ol' && ol.items[0][0]).toEqual(strong('Offer.'));
   });
 
   it('any other blockquote is a pull quote', () => {
     const quote = blocks[7];
-    expect(quote.kind === 'quote' && quote.inlines).toEqual([
-      { kind: 'text', text: 'Closing quote.' },
-    ]);
+    expect(quote.kind === 'quote' && quote.inlines).toEqual([text('Closing quote.')]);
   });
 
   it('headings() lists the h2s with their ids; reserved ids are skipped', () => {
@@ -108,10 +181,44 @@ describe('parseMarkdown (the importer grammar, B-8)', () => {
   });
 
   it('unknown syntax is text, never markup', () => {
-    const [p] = parseMarkdown('<img src=x onerror=alert(1)> [link](https://x)');
+    const [p] = parseMarkdown('<img src=x onerror=alert(1)> #### h4 `code` _u_');
     expect(p.kind === 'p' && p.inlines).toEqual([
-      { kind: 'text', text: '<img src=x onerror=alert(1)> [link](https://x)' },
+      text('<img src=x onerror=alert(1)> #### h4 `code` _u_'),
     ]);
+  });
+
+  it('### is an h3 (no TOC entry); markup in a heading is dropped to text', () => {
+    const md = '## A *b* \\[c\\]\n\n### Sub **x**\n\nText';
+    expect(parseMarkdown(md)).toEqual([
+      { kind: 'h2', id: 'a-b-c', text: 'A b [c]' },
+      { kind: 'h3', text: 'Sub x' },
+      { kind: 'p', inlines: [text('Text')] },
+    ]);
+    expect(headings(parseMarkdown(md))).toEqual([{ id: 'a-b-c', text: 'A b [c]' }]);
+  });
+
+  it('an image line is a block of its own — only from the media route or the site, alt unescaped', () => {
+    const media = 'https://operations.jobsadmire.com/api/website/v1/media/m1/1200.webp';
+    const md = `Before\n![A \\[photo\\]](${media})\nAfter\n\n![x](/hero/blog.jpg)\n\n![y](https://evil.example/p.webp)\n\n![z](${media.replace('/m1/', '/../')})`;
+    expect(parseMarkdown(md)).toEqual([
+      { kind: 'p', inlines: [text('Before')] },
+      { kind: 'image', src: media, alt: 'A [photo]' },
+      { kind: 'p', inlines: [text('After')] },
+      { kind: 'image', src: '/hero/blog.jpg', alt: 'x' },
+    ]);
+  });
+
+  it('parses the contract fixture bodies without leaking markup characters', () => {
+    const fixture = JSON.parse(
+      readFileSync(join(process.cwd(), 'contract/blog-feed.v1.fixture.json'), 'utf8'),
+    ) as { posts: { body: { tr: string | null; en: string | null } }[] };
+    for (const post of fixture.posts)
+      for (const body of [post.body.tr, post.body.en]) {
+        if (!body) continue;
+        const blocks = parseMarkdown(body, ['faq']);
+        const flat = JSON.stringify(blocks);
+        expect(flat).not.toMatch(/\*\*|\]\(|\\\\/);
+      }
   });
 });
 

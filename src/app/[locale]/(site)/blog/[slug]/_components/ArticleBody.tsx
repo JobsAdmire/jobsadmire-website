@@ -1,5 +1,8 @@
 import { Fragment, type ReactNode } from 'react';
-import type { Block, Inline } from '../_lib/markdown';
+import Image from 'next/image';
+import NextLink from 'next/link';
+import { liquidSizes } from '@/design/zoom';
+import { inlineText, type Block, type Inline } from '../_lib/markdown';
 import { CollapsibleSection } from './CollapsibleSection';
 
 /** The body's h2 face — the page's FAQ heading wears it too. `scroll-mt-24` keeps a TOC jump
@@ -11,23 +14,82 @@ export const ARTICLE_H2 =
  *  button carries the 16 px padding) — flex so the "+" tile sits at the end. */
 export const ARTICLE_H2_SECTION = `${ARTICLE_H2.replace('max-md:text-[22px]', 'max-md:text-[18.5px]')} max-md:m-0 max-md:flex max-md:items-center max-md:gap-3 max-md:leading-[1.3] max-md:tracking-[-0.4px]`;
 
+/** The h3 face (contract `blog.v1`): a step below the h2 — the design has no h3, so this is the
+ *  h2's family at the body's card-title size. */
+const ARTICLE_H3 =
+  'mt-7 mb-3 text-[20px] leading-snug font-extrabold tracking-[-0.2px] text-ink max-md:text-[17.5px] xl:text-[15px] xl:tracking-[-0.15px]';
+
+/** An in-body link: the contrast-safe blue, underlined (a link inside running text must not rely
+ *  on colour alone — WCAG 1.4.1), focus ring like every other link. */
+const BODY_LINK =
+  'font-bold text-blue-safe underline decoration-1 underline-offset-[3px] hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
+
+/** An inline image fills the body column: ≤ 830 px wide up to 1100 px, 620 px from 1101 (D19),
+ *  growing with the liquid desktop past 1440 (`liquidSizes`, W231). */
+const BODY_IMAGE_SIZES = liquidSizes(
+  620,
+  '(min-width: 1101px) 620px, (min-width: 901px) 830px, 100vw',
+);
+
 /** A list whose every item is this short reads as a checklist — two columns from `sm` (the
  *  design's "Documents you'll need" grid); longer items (the rejection reasons) stay one column. */
 const CHECKLIST_MAX_CHARS = 40;
-const plain = (inlines: readonly Inline[]) => inlines.map((n) => n.text).join('');
+
+function BodyLink({
+  href,
+  external,
+  children,
+}: {
+  href: string;
+  external: boolean;
+  children: ReactNode;
+}) {
+  // A site page goes through next/link (client navigation, no prefetch on a long article); an
+  // external page opens in a new tab with `noopener`; `mailto:` is a plain link.
+  if (href.startsWith('/'))
+    return (
+      <NextLink href={href} prefetch={false} className={BODY_LINK}>
+        {children}
+      </NextLink>
+    );
+  return (
+    <a
+      href={href}
+      className={BODY_LINK}
+      {...(external ? { target: '_blank', rel: 'noopener' } : {})}
+    >
+      {children}
+    </a>
+  );
+}
 
 function Inlines({ inlines }: { inlines: readonly Inline[] }) {
   return (
     <>
-      {inlines.map((n, i) =>
-        n.kind === 'strong' ? (
-          <strong key={i} className="font-extrabold text-ink">
-            {n.text}
-          </strong>
-        ) : (
-          <Fragment key={i}>{n.text}</Fragment>
-        ),
-      )}
+      {inlines.map((n, i) => {
+        switch (n.kind) {
+          case 'strong':
+            return (
+              <strong key={i} className="font-extrabold text-ink">
+                <Inlines inlines={n.children} />
+              </strong>
+            );
+          case 'em':
+            return (
+              <em key={i}>
+                <Inlines inlines={n.children} />
+              </em>
+            );
+          case 'link':
+            return (
+              <BodyLink key={i} href={n.href} external={n.external}>
+                <Inlines inlines={n.children} />
+              </BodyLink>
+            );
+          default:
+            return <Fragment key={i}>{n.text}</Fragment>;
+        }
+      })}
     </>
   );
 }
@@ -45,6 +107,24 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
         <h2 id={block.id} className={ARTICLE_H2}>
           {block.text}
         </h2>
+      );
+    case 'h3':
+      return <h3 className={ARTICLE_H3}>{block.text}</h3>;
+    case 'image':
+      // The grammar carries no intrinsic size: the 1200 × 675 box is the placeholder ratio and
+      // `h-auto` lets the photo keep its own once it loads — never cropped (a chart or a
+      // screenshot must stay whole), unlike `ImageSlot`'s fixed ratio box.
+      return (
+        <figure data-testid="article-image" className="mx-0 mt-2 mb-6">
+          <Image
+            src={block.src}
+            alt={block.alt}
+            width={1200}
+            height={675}
+            sizes={BODY_IMAGE_SIZES}
+            className="h-auto w-full rounded-base border border-tint-border bg-pale-1"
+          />
+        </figure>
       );
     case 'callout':
       return (
@@ -105,7 +185,7 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
         </div>
       );
     case 'ul': {
-      const checklist = block.items.every((item) => plain(item).length <= CHECKLIST_MAX_CHARS);
+      const checklist = block.items.every((item) => inlineText(item).length <= CHECKLIST_MAX_CHARS);
       if (!checklist)
         // The design's "mistakes" box (DC 618–625): the long-item list is the rejection reasons,
         // an amber callout with a ⚠ before each line.

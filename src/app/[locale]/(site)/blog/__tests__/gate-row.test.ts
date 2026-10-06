@@ -18,13 +18,16 @@ describe('the blog gate rows (W21, B-14)', () => {
     (r) => r.path === '/blog' || r.path.startsWith('/blog/') || r.path.startsWith('/en/blog'),
   );
 
-  it('sweeps both indexes and the one written article — all noindex, never audited by Lighthouse', () => {
+  it('sweeps both indexes and the one written article — all indexable since W248, so Lighthouse audits them', () => {
     expect(blogRows.map((r) => r.path)).toEqual([
       '/blog',
       '/en/blog',
       '/en/blog/turkey-work-permit-process-employer-guide',
     ]);
-    expect(blogRows.every((r) => !r.indexable)).toBe(true);
+    expect(blogRows.every((r) => r.indexable)).toBe(true);
+    // the article is written in English only: hreflang en (+ x-default), never a TR 404
+    expect(blogRows[2].languages).toEqual(['en']);
+    expect(blogRows[0].languages).toBeUndefined();
   });
 
   it('the article row is the newest written EN article; no TR article row while TR has none', () => {

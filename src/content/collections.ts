@@ -196,8 +196,25 @@ export const SectorSchema = z.object({
 
 export const BLOG_CATEGORIES = ['workPermits', 'recruitment', 'compliance', 'marketNews'] as const;
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
+/** The category chip's package id (the home guides' four labels, home.262–265) — the importer
+ *  and the Operations feed mapping (`src/content/blog-feed.ts`) both read it from here. */
+export const BLOG_CATEGORY_LABEL_ID: Record<BlogCategory, string> = {
+  workPermits: 'home.263',
+  recruitment: 'home.265',
+  compliance: 'home.264',
+  marketNews: 'home.262',
+};
 const perLocale = z.object({ tr: z.string().min(1).nullable(), en: z.string().min(1).nullable() });
-/** W4 + W28: one row per article; `body[locale]` (Markdown) is present exactly when `hasBody[locale]`. */
+const perLocaleMinutes = z.object({
+  tr: z.number().int().positive().nullable(),
+  en: z.number().int().positive().nullable(),
+});
+const BlogFaqItemSchema = z.object({ q: z.string().min(1), a: z.string().min(1) });
+const isoInstant = z.string().refine((s) => !Number.isNaN(Date.parse(s)), 'not an ISO date');
+/** W4 + W28: one row per article; `body[locale]` (Markdown) is present exactly when `hasBody[locale]`.
+ *  The optional fields below arrive only with the Operations feed (`BLOG_SOURCE=OPS`, contract
+ *  `blog.v1`, mapped by `src/content/blog-feed.ts`); the LOCAL importer writes none of them, and
+ *  every reader treats a missing one as "the LOCAL article's default" (docs/CONTENT-MODEL.md § Blog). */
 export const BlogPostSchema = z
   .object({
     key: id,
@@ -211,11 +228,42 @@ export const BlogPostSchema = z
     readMinutes: z.number().int().positive(),
     hasBody: z.object({ tr: z.boolean(), en: z.boolean() }),
     body: perLocale,
+    /** The last edit (ISO instant): `dateModified`, `article:modified_time`, sitemap `lastmod`. */
+    updatedAt: isoInstant.optional(),
+    /** The index's featured card: the newest flagged post, else the newest post. */
+    featured: z.boolean().optional(),
+    /** The named author; `null` (or absent) → "JobsAdmire Editorial" (blogarticle.023/066). */
+    authorObj: z
+      .object({ name: z.string().min(1), title: z.string().min(1).nullable() })
+      .nullable()
+      .optional(),
+    /** The cover photo (absolute Operations media URL, `next.config.ts` `images.remotePatterns`). */
+    cover: z
+      .object({
+        url: z.string().url(),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+      })
+      .nullable()
+      .optional(),
+    coverAlt: perLocale.optional(),
+    /** Per-locale `<title>` / meta-description overrides; `null` → the title / the excerpt. */
+    seo: z.object({ title: perLocale, description: perLocale }).optional(),
+    /** The post's own FAQ; absent = the LOCAL article's four generic Q&As, `[]` = no FAQ block
+     *  and no FAQPage node. */
+    faq: z.object({ tr: z.array(BlogFaqItemSchema), en: z.array(BlogFaqItemSchema) }).optional(),
+    /** Per-locale reading time; `readMinutes` stays the row's single value for older readers. */
+    readMinutesByLocale: perLocaleMinutes.optional(),
   })
   .refine((p) => (p.body.tr !== null) === p.hasBody.tr && (p.body.en !== null) === p.hasBody.en, {
     message: 'body and hasBody disagree',
     path: ['body'],
   });
+
+/** The reading time of a post in one locale (the feed's per-locale value, else the row's). */
+export function readMinutesOf(post: BlogPost, locale: 'tr' | 'en'): number {
+  return post.readMinutesByLocale?.[locale] ?? post.readMinutes;
+}
 
 /** W86: the signing founder (About team card, founder band, Verify founder strip). One row,
  *  `published: false` until the owner supplies the name and photo (§10 row 3) — every reader
@@ -311,12 +359,6 @@ export function getOffice(bundle: Bundle, key: OfficeKey): Office {
   const row = getCollection(bundle, 'offices').find((o) => o.key === key);
   if (!row) throw new CollectionError(`office "${key}" is not in the bundle`);
   return row;
-}
-
-/** W4: /blog joins nav, sitemap and robots only once this many Turkish bodies exist. */
-export const BLOG_NAV_THRESHOLD = 6;
-export function blogNavVisible(bundle: Bundle): boolean {
-  return getCollection(bundle, 'blog').filter((p) => p.hasBody.tr).length >= BLOG_NAV_THRESHOLD;
 }
 
 export function getPageSeo(bundle: Bundle, key: PageKey): Bundle['pages'][string] | undefined {

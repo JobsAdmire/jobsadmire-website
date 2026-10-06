@@ -31,7 +31,8 @@ const payrollTR = (n: number) => {
 
 const LEAK = /\{[a-zA-Z]+\}|undefined|\[object /;
 /** Owner 2026-10-05: every design section renders — the case bar and the pool with the design's
- *  sample content (SampleTag), the team with the published founder, the guides from the blog rows. */
+ *  sample content (SampleTag), the team with the published founder, the guides from the blog's
+ *  published articles (W248: a locale with none leaves the guides out — `ORDER_OF`). */
 const ORDER = [
   'hero',
   'hero-form',
@@ -102,9 +103,12 @@ for (const [route, lang] of [
     for (const name of placeholders) expect(name).toBeTruthy(); // W55: never unnamed
     expect(await page.locator('body').innerText()).not.toMatch(LEAK);
     const ids = await testIds(page);
-    const positions = ORDER.map((id) => ids.indexOf(id));
+    // W248: the LOCAL bundle's one article is English, so the Turkish homepage has no guides
+    const order = lang === 'tr' ? ORDER.filter((id) => id !== 'guides') : ORDER;
+    if (lang === 'tr') expect(ids).not.toContain('guides');
+    const positions = order.map((id) => ids.indexOf(id));
     positions.forEach((position, i) =>
-      expect(position, `${ORDER[i]} is rendered`).toBeGreaterThanOrEqual(0),
+      expect(position, `${order[i]} is rendered`).toBeGreaterThanOrEqual(0),
     );
     expect([...positions].sort((a, b) => a - b)).toEqual(positions);
     // D23: the sample blocks wear the tag; the pool's photos are placeholders, never real photos.
@@ -268,13 +272,20 @@ test('the sample case bar rotates and pauses; the pool track pauses (D20 / WCAG 
   await expect(track).toHaveCSS('animation-play-state', 'paused');
 });
 
-test('the guides block: Turkish guides without a body are "yakında" cards, not links', async ({
+test('the guides block (W248): published articles only — no "yakında" card; TR has none on LOCAL', async ({
   page,
 }) => {
   await page.goto('/');
+  await expect(page.getByTestId('guides')).toHaveCount(0);
+  await expect(page.getByTestId('guide-soon')).toHaveCount(0);
+  await page.goto('/en');
   const guides = page.getByTestId('guides');
-  await expect(guides.getByTestId('guide-featured')).toBeVisible();
-  const soon = await guides.getByTestId('guide-soon').count();
-  expect(soon).toBeGreaterThan(0);
-  await expect(guides.locator('a[href*="/blog/"]')).toHaveCount(0);
+  const featured = guides.getByTestId('guide-featured');
+  await expect(featured).toBeVisible();
+  await expect(featured).toHaveAttribute(
+    'href',
+    '/en/blog/turkey-work-permit-process-employer-guide',
+  );
+  await expect(guides.getByTestId('guides-list')).toHaveCount(0); // one post: no side list
+  await expect(guides.getByTestId('guide-soon')).toHaveCount(0);
 });

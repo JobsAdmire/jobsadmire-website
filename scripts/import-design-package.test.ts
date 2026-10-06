@@ -426,7 +426,7 @@ describe('import-design-package — collections', () => {
     for (const s of tr.collections.sourceCountries as Row[])
       expect(codes.has(s.code), s.code).toBe(true);
   });
-  it('emits the two offices, the seven sectors and 22 blog rows', () => {
+  it('emits the two offices, the seven sectors and the one written blog row (W248)', () => {
     expect(
       (tr.collections.offices as { key: string; kind: string; hours: { days: number[] } }[]).map(
         (o) => [o.key, o.kind, o.hours.days],
@@ -451,9 +451,10 @@ describe('import-design-package — collections', () => {
       publishedAt: string;
       readMinutes: number;
     }[];
-    expect(blog).toHaveLength(22);
-    expect(blog.filter((p) => p.slug.tr).length).toBe(4);
-    expect(blog.filter((p) => p.hasBody.en).length).toBe(1);
+    // W248 (owner 2026-10-06): real published posts only — the 21 index-only "yakında" rows of
+    // blog-posts.js are dropped; the row with a body stays (the LOCAL fallback's one article).
+    expect(blog).toHaveLength(1);
+    expect(blog.every((p) => p.hasBody.en || p.hasBody.tr)).toBe(true);
     expect(blog.filter((p) => p.hasBody.tr).length).toBe(0);
     expect(blog[0]).toMatchObject({
       key: 'turkey-work-permit-process-employer-guide',
@@ -461,7 +462,7 @@ describe('import-design-package — collections', () => {
       readMinutes: 8,
       slug: { tr: 'yabanci-isciler-calisma-izni-rehberi' },
     });
-    expect(report.blog).toEqual({ rows: 22, trBodies: 0, navVisible: false }); // the threshold flag is report-only now
+    expect(report.blog).toEqual({ rows: 1, dropped: 21, trBodies: 0 });
   });
   it('carries the one written article as Markdown composed from the Blog Article package ids (W28)', () => {
     type Row = {
@@ -614,7 +615,8 @@ describe('import-design-package — nav and pages', () => {
       jsonLd: ['organization', 'website', 'faq'],
     });
     expect(tr.pages.blog.robots).toBe('index'); // owner 2026-10-05
-    for (const key of ['blogArticle', 'thankYou', 'newsletterConfirm', 'newsletterUnsubscribe'])
+    expect(tr.pages.blogArticle.robots).toBe('index'); // W248: the SEO flip
+    for (const key of ['thankYou', 'newsletterConfirm', 'newsletterUnsubscribe'])
       expect(tr.pages[key].robots, key).toBe('noindex');
     expect(tr.pages.careersDetail.jsonLd).toEqual(['breadcrumb', 'jobPosting']);
     expect(tr.pages.blogArticle.jsonLd).toEqual(['breadcrumb', 'article', 'faq']);

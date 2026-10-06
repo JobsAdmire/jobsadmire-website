@@ -1,10 +1,11 @@
-import { blogNavVisible, getCollection } from '@/content/collections';
+import { getCollection } from '@/content/collections';
 import { PostCard } from '@/design/blocks/PostCard';
 import { SampleTag } from '@/design/blocks/SampleTag';
 import { Section } from '@/design/primitives/Section';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
+import { writtenPosts } from '../../blog/_lib/posts';
 
 /** The design's three "Keep reading" cards. */
 export const RELATED_LIMIT = 3;
@@ -19,14 +20,13 @@ const SAMPLE_CARDS: readonly (readonly [string, string])[] = [
 const CARD =
   'ja-hover-card block min-w-0 rounded-md border border-border-2 bg-white px-6.5 py-6 no-underline max-md:grid max-md:grid-cols-[1fr_auto] max-md:items-center max-md:gap-x-3 max-md:gap-y-1 max-md:rounded-none max-md:border-0 max-md:px-3.5 max-md:py-3.5';
 
-/** "Keep reading on the blog" (#related). Real posts when `/blog` is visible and a work-permit
- *  article has a body in this locale (W4: up to three `PostCard`s). Otherwise — below
- *  `BLOG_NAV_THRESHOLD` Turkish bodies, or with no work-permit article — the design's three
- *  sample cards (`wp.353`–`358`) render as page-local constants with the `SampleTag`
- *  (owner 2026-10-05; never the blog collection or the sample JSON, D23). The sample cards and
- *  the "all articles" link point at `/blog` only while it is visible (it is noindex and out of
- *  every nav below the threshold, so a link would advertise a dead end); otherwise they are
- *  plain cards. ≤ 700 px the samples fold into one list card, rows title + excerpt + "→",
+/** "Keep reading on the blog" (#related). The published articles of this locale (W248: real
+ *  posts only, the W4 six-article threshold retired with the SEO flip) — work-permit articles
+ *  first, then the newest others, up to three `PostCard`s; one post is one card. With no
+ *  article in this locale, the section keeps its existing empty face: the design's three sample
+ *  cards (`wp.353`–`358`), page-local constants with the `SampleTag` (owner 2026-10-05; never the
+ *  blog collection or the sample JSON, D23), each a way into `/blog`, which is always in the nav
+ *  (owner 2026-10-05). ≤ 700 px the samples fold into one list card, rows title + excerpt + "→",
  *  the chip hidden (design `.ja-blog-grid`). */
 export function RelatedArticles({
   bundle,
@@ -37,12 +37,11 @@ export function RelatedArticles({
   locale: Locale;
   tf: (id: string) => string;
 }) {
-  const blogVisible = blogNavVisible(bundle);
-  const posts = blogVisible
-    ? getCollection(bundle, 'blog')
-        .filter((p) => p.category === 'workPermits' && p.hasBody[locale])
-        .slice(0, RELATED_LIMIT)
-    : [];
+  const written = writtenPosts(getCollection(bundle, 'blog'), locale);
+  const posts = [
+    ...written.filter((p) => p.category === 'workPermits'),
+    ...written.filter((p) => p.category !== 'workPermits'),
+  ].slice(0, RELATED_LIMIT);
   const sample = posts.length === 0;
   return (
     <Section tone="light">
@@ -52,15 +51,13 @@ export function RelatedArticles({
             {tf('wp.351')}
             {sample ? <SampleTag /> : null}
           </h2>
-          {blogVisible ? (
-            <Link
-              prefetch={false}
-              href="/blog"
-              className="text-body-sm font-extrabold whitespace-nowrap text-blue-safe no-underline hover:underline"
-            >
-              {tf('wp.352')}
-            </Link>
-          ) : null}
+          <Link
+            prefetch={false}
+            href="/blog"
+            className="text-body-sm font-extrabold whitespace-nowrap text-blue-safe no-underline hover:underline"
+          >
+            {tf('wp.352')}
+          </Link>
         </div>
         {sample ? (
           <ul
@@ -92,13 +89,9 @@ export function RelatedArticles({
                   key={titleId}
                   className="min-w-0 max-md:border-t max-md:border-border-4 max-md:first:border-t-0"
                 >
-                  {blogVisible ? (
-                    <Link prefetch={false} href="/blog" className={CARD}>
-                      {inner}
-                    </Link>
-                  ) : (
-                    <article className={CARD}>{inner}</article>
-                  )}
+                  <Link prefetch={false} href="/blog" className={CARD}>
+                    {inner}
+                  </Link>
                 </li>
               );
             })}
@@ -107,7 +100,13 @@ export function RelatedArticles({
           <ul className="grid gap-5 md:grid-cols-3">
             {posts.map((post) => (
               <li key={post.key} className="min-w-0">
-                <PostCard bundle={bundle} locale={locale} post={post} headingLevel={3} />
+                <PostCard
+                  bundle={bundle}
+                  locale={locale}
+                  post={post}
+                  coverSrc={post.cover?.url ?? null}
+                  headingLevel={3}
+                />
               </li>
             ))}
           </ul>

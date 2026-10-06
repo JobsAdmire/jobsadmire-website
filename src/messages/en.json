@@ -516,7 +516,8 @@
         "copyFailed": "The link could not be copied — copy it from the address bar instead.",
         "print": "Print this article",
         "backToTop": "Back to top",
-        "shareThis": "Share this article"
+        "shareThis": "Share this article",
+        "writtenBy": "Written by {name}"
       },
       "faq": {
         "a1": "Approval takes about {permitDays} days on average, including the ministry's review, and the whole process up to the first working day usually takes {firstDayWeeks} weeks. A licensed agency checks the file first, so a missing document does not restart the clock.",
@@ -527,7 +528,23 @@
         "consult": "I want a free consultation.",
         "permit": "I need help with work permits."
       },
-      "soon": "coming soon"
+      "preview": {
+        "bar": "Preview — not published",
+        "exit": "Exit preview",
+        "metaTitle": "Preview | JobsAdmire",
+        "invalid": {
+          "title": "This preview link is invalid or has expired",
+          "body": "Preview links last 30 minutes. Open the post in Operations and choose “Preview on website” for a new link."
+        },
+        "empty": {
+          "title": "There is no text in this language yet",
+          "body": "Fill in the post’s title and text in this language in Operations, then preview again."
+        },
+        "unavailable": {
+          "title": "The preview cannot be opened right now",
+          "body": "Operations could not be reached. Try again in a few minutes."
+        }
+      }
     },
     "form": {
       "labels": {

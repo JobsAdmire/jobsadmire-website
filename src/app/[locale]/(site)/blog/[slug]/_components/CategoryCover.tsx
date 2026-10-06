@@ -1,40 +1,52 @@
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import type { BlogCategory } from '@/content/collections';
-import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { coverGradient } from '../_lib/category';
 
 /** The design's category-coloured cover (Blog Article DC 524–531, script 1139; blog-posts.js
  *  `JA_BLOG_COVER`): a 135° gradient per category with the image glyph, the category label and
  *  a dashed frame. It is the named placeholder (`data-placeholder="<slot>"`, D26) until the
- *  article has a photo; with `src` it is a plain `ImageSlot`. Page-local because the shared
- *  `ImageSlot` placeholder has one fixed tint→sky face (Shared request: a `tone` prop).
- *  `className` carries the box (height steps, radius) — the caller sizes it, like the design. */
+ *  article has a photo; with `photo` (the post's cover from Operations, W248) the same box shows
+ *  it — `next/image` `fill`, cropped to the box, `preload` when it is the article's own cover.
+ *  Page-local because the shared `ImageSlot` placeholder has one fixed tint→sky face and a
+ *  ratio box, where this one is sized by the caller's height steps (Shared request: a `tone`
+ *  prop). `className` carries the box (height steps, radius) — the caller sizes it, like the
+ *  design. */
 export function CategoryCover({
   slot,
   category,
   label,
-  src = null,
+  photo = null,
+  sizes,
+  preload = false,
   className,
   compact = false,
-  imageWidth,
-  imageHeight,
 }: {
   slot: string;
   category: BlogCategory;
   label: string;
-  src?: string | null;
+  photo?: { src: string; alt: string } | null;
+  /** `next/image` `sizes` for the photo (the box's rendered widths). */
+  sizes?: string;
+  /** The article's own cover: above the fold on most screens (never the LCP slot — the h1 is). */
+  preload?: boolean;
   className: string;
   /** a small box (the related cards): the glyph and label only, no caption lines */
   compact?: boolean;
-  imageWidth: number;
-  imageHeight: number;
 }) {
   const sys = useTranslations('sys');
-  if (src) {
+  if (photo) {
     return (
-      <div className={className}>
-        <ImageSlot slot={slot} src={src} alt="" width={imageWidth} height={imageHeight} />
+      <div data-cover-photo={slot} className={`relative bg-tint ${className}`}>
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          sizes={sizes}
+          preload={preload}
+          className="object-cover"
+        />
       </div>
     );
   }

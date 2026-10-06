@@ -35,17 +35,21 @@ export function writtenPosts(rows: readonly BlogPost[], locale: Locale): BlogPos
     .map(({ post }) => post);
 }
 
-/** Owner 2026-10-05: the index lists EVERY bundle row with a title in the locale, in the
- *  collection order (`blog-posts.js`'s, newest first) — not only the written ones. Row 1 is the
- *  featured card, the rest is the grid; a row without a body here is a card that is not a link
- *  and wears the `sys.blog.soon` tag (`isWritten` decides). */
+/** The index (owner 2026-10-06, W248: real published posts only — the design's index-only
+ *  "yakında" rows are gone): the written articles of the locale, newest first, with the newest
+ *  post flagged `featured` (Operations' switch) moved to the front — row 1 is the featured card,
+ *  the rest is the grid. Without a flag the newest post is featured. */
 export function indexPosts(rows: readonly BlogPost[], locale: Locale): BlogPost[] {
-  return rows.filter((p) => p.title[locale] !== null);
+  const written = writtenPosts(rows, locale);
+  const flagged = written.findIndex((p) => p.featured === true);
+  if (flagged <= 0) return written;
+  return [written[flagged], ...written.slice(0, flagged), ...written.slice(flagged + 1)];
 }
 
-/** The design's "Most read" lists (`mostReadByLang`, Blog.dc.html 931–942) as bundle keys —
- *  sample content (no read counts exist), so the panel wears the `SampleTag`. A key with no
- *  title in the locale drops out. */
+/** The design's "Most read" lists (`mostReadByLang`, Blog.dc.html 931–942) — sample content (no
+ *  read counts exist), so the panel wears the `SampleTag`. A key matches a row's `key` (LOCAL) or
+ *  its EN slug (the same article from Operations, whose key is the post id); only written
+ *  articles count. */
 export const MOST_READ_KEYS: Record<Locale, readonly string[]> = {
   tr: [
     'turkey-work-permit-process-employer-guide', // yabanci-isciler-calisma-izni-rehberi
@@ -59,10 +63,15 @@ export const MOST_READ_KEYS: Record<Locale, readonly string[]> = {
   ],
 };
 
+/** A ranking of one is no ranking: below this the panel is left out and the featured card
+ *  takes the row (few posts, W248). */
+export const MOST_READ_MIN = 2;
+
 export function mostReadPosts(rows: readonly BlogPost[], locale: Locale): BlogPost[] {
-  return MOST_READ_KEYS[locale]
-    .map((key) => rows.find((p) => p.key === key))
-    .filter((p): p is BlogPost => p !== undefined && p.title[locale] !== null);
+  const posts = MOST_READ_KEYS[locale]
+    .map((key) => rows.find((p) => p.key === key || p.slug.en === key))
+    .filter((p): p is BlogPost => p !== undefined && isWritten(p, locale));
+  return posts.length >= MOST_READ_MIN ? posts : [];
 }
 
 /** The featured card is the first row; the grid holds the rest. */

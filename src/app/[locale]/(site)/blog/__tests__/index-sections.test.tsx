@@ -25,9 +25,16 @@ const row = (key: string, over: Partial<BlogPost> = {}): BlogPost => ({
   body: { tr: 'metin', en: 'text' },
   ...over,
 });
-/** An index-only row: a title, no body (the committed bundles' rows 2–22). */
-const listed = (key: string, over: Partial<BlogPost> = {}): BlogPost =>
-  row(key, { hasBody: { tr: false, en: false }, body: { tr: null, en: null }, ...over });
+/** A row written in English only. */
+const enOnly = (key: string, over: Partial<BlogPost> = {}): BlogPost =>
+  row(key, {
+    slug: { tr: null, en: key },
+    title: { tr: null, en: `Title ${key}` },
+    hasBody: { tr: false, en: true },
+    body: { tr: null, en: 'text' },
+    ...over,
+  });
+const COVER_URL = 'https://operations.jobsadmire.com/api/website/v1/media/cmgmedia1/1600.webp';
 
 const bundle = testBundle({
   strings: {
@@ -99,81 +106,92 @@ describe('BlogPostCard (S2.3–S2.6, S3.3, M5, M7)', () => {
     expect(collisionsInTree(container)).toEqual([]);
   });
 
-  it('featured without a body here: no link, the soon tag instead of "Read article →"', () => {
-    const { container } = renderWithIntl(
-      <BlogPostCard
-        bundle={bundle}
-        locale="tr"
-        post={row('guide', { hasBody: { tr: false, en: true }, body: { tr: null, en: 'x' } })}
-        variant="featured"
-      />,
-      { locale: 'tr' },
-    );
-    expect(screen.queryByRole('link')).toBeNull();
-    expect(screen.getByRole('heading', { level: 2, name: 'Başlık guide' })).toBeInTheDocument();
-    expect(container.querySelector('[data-soon-tag]')).toHaveTextContent('yakında');
-    expect(container).not.toHaveTextContent('Read article →');
-    expect(container).toHaveTextContent('Haziran 2026 · 5 dk okuma');
+  it('renders nothing for a row with no article in the locale — no "yakında" card (W248)', () => {
+    for (const variant of ['featured', 'card'] as const) {
+      const { container, unmount } = renderWithIntl(
+        <BlogPostCard
+          bundle={bundle}
+          locale="tr"
+          post={row('guide', { hasBody: { tr: false, en: true }, body: { tr: null, en: 'x' } })}
+          variant={variant}
+        />,
+        { locale: 'tr' },
+      );
+      expect(container).toBeEmptyDOMElement();
+      unmount();
+    }
   });
 
-  it('card: the category face, the alt pill when the other locale lists the post, a lift only as a link', () => {
+  it('card: the category face, the alt pill when the article is written in the other locale too, always a link', () => {
     const { container } = renderWithIntl(
       <>
         <BlogPostCard
           bundle={bundle}
           locale="en"
-          post={listed('a', { category: 'recruitment', categoryLabelId: 'home.265' })}
+          post={row('a', { category: 'recruitment', categoryLabelId: 'home.265' })}
         />
+        <BlogPostCard bundle={bundle} locale="en" post={enOnly('b')} />
         <BlogPostCard
           bundle={bundle}
           locale="en"
-          post={listed('b', { slug: { tr: null, en: 'b' }, title: { tr: null, en: 'Title b' } })}
+          post={row('c', {
+            title: { tr: 'Başlık c', en: 'Title c' },
+            hasBody: { tr: false, en: true },
+            body: { tr: null, en: 'text' },
+          })}
         />
-        <BlogPostCard bundle={bundle} locale="en" post={row('c')} />
       </>,
       { locale: 'en' },
     );
     const [a, b, c] = Array.from(container.querySelectorAll('article'));
-    expect(within(a).queryByRole('link')).toBeNull();
-    expect(a.querySelector('[data-soon-tag]')).toHaveTextContent('coming soon');
+    expect(within(a).getByRole('link', { name: 'Title a' })).toHaveAttribute('href', '/en/blog/a');
     expect(a).toHaveTextContent("Türkçe'de de var");
-    expect(a.className).not.toContain('ja-hover-card');
+    expect(a.className).toContain('ja-hover-card');
     expect(
       within(a).getByText('Recruitment', { selector: 'span.rounded-pill' }).className,
     ).toContain('text-success-text');
     expect(b).not.toHaveTextContent("Türkçe'de de var");
-    expect(within(c).getByRole('link', { name: 'Title c' })).toHaveAttribute('href', '/en/blog/c');
-    expect(c.className).toContain('ja-hover-card');
-    expect(c.querySelector('[data-soon-tag]')).toBeNull();
+    // a TR title without a TR article is not "also in Turkish"
+    expect(c).not.toHaveTextContent("Türkçe'de de var");
+    expect(container.querySelector('[data-soon-tag]')).toBeNull();
     // phones: a row card — 104 px cover, no excerpt, no alt pill
-    expect(c.className).toContain('max-md:flex-row');
-    expect(c.querySelector('[data-placeholder]')?.className).toContain('max-md:w-[104px]');
+    expect(b.className).toContain('max-md:flex-row');
+    expect(b.querySelector('[data-placeholder]')?.className).toContain('max-md:w-[104px]');
     expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(3);
     expect(collisionsInTree(container)).toEqual([]);
   });
 
-  it('renders nothing for a row with no title in the locale', () => {
+  it("a post's cover photo replaces the category placeholder (W248)", () => {
     const { container } = renderWithIntl(
       <BlogPostCard
         bundle={bundle}
-        locale="tr"
-        post={listed('x', { slug: { tr: null, en: 'x' }, title: { tr: null, en: 'X' } })}
+        locale="en"
+        post={row('p', {
+          cover: { url: COVER_URL, width: 1600, height: 900 },
+          coverAlt: { tr: null, en: 'An interview' },
+        })}
+        variant="featured"
       />,
-      { locale: 'tr' },
+      { locale: 'en' },
     );
-    expect(container).toBeEmptyDOMElement();
+    expect(container.querySelector('[data-placeholder]')).toBeNull();
+    const box = container.querySelector('[data-cover-photo="blog-cover-p"]') as HTMLElement;
+    expect(box.className).toContain('h-[270px]');
+    const img = within(box).getByRole('img', { name: 'An interview' });
+    expect(img.getAttribute('src')).toContain(encodeURIComponent(COVER_URL));
+    expect(img).toHaveAttribute('sizes');
   });
 });
 
 describe('MostRead (S2.2, M6)', () => {
-  it('ranks the rows under "Most read" with the sample tag; a written row is a link', () => {
+  it('ranks the written rows under "Most read" with the sample tag, each a link', () => {
     const { container } = renderWithIntl(
       <MostRead
         bundle={bundle}
         locale="en"
         posts={[
           row('a', { readMinutes: 8 }),
-          listed('b', { category: 'recruitment', categoryLabelId: 'home.265' }),
+          enOnly('b', { category: 'recruitment', categoryLabelId: 'home.265' }),
         ]}
       />,
       { locale: 'en' },
@@ -189,8 +207,11 @@ describe('MostRead (S2.2, M6)', () => {
       '/en/blog/a',
     );
     expect(items[0]).toHaveTextContent('Work Permits · 8 min read');
-    expect(within(items[1]).queryByRole('link')).toBeNull();
-    expect(items[1].querySelector('[data-soon-tag]')).not.toBeNull();
+    expect(within(items[1]).getByRole('link', { name: 'Title b' })).toHaveAttribute(
+      'href',
+      '/en/blog/b',
+    );
+    expect(container.querySelector('[data-soon-tag]')).toBeNull();
     expect(collisionsInTree(container)).toEqual([]);
   });
 
@@ -212,7 +233,7 @@ describe('PostList (S3.1 — the grid LoadMore pages)', () => {
   });
 
   it('lists every row under a screen-reader h2; rows past the first page start hidden', () => {
-    const posts = Array.from({ length: 8 }, (_, i) => listed(`p${i}`));
+    const posts = Array.from({ length: 8 }, (_, i) => row(`p${i}`));
     const { container } = renderWithIntl(
       <PostList bundle={bundle} locale="en" posts={posts} heading="Latest articles" pageSize={6} />,
       { locale: 'en' },

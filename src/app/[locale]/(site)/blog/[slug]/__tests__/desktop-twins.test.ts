@@ -10,7 +10,8 @@ import { TWIN_PREFIXES, formatTwinFindings, twinFindings } from '@/test/px-twins
  * (`max-lg:gap-8`); every page-local px literal carries its × 0.75 `xl:` twin.
  */
 const DIR = join(process.cwd(), 'src/app/[locale]/(site)/blog/[slug]');
-const PAGE = readFileSync(join(DIR, 'page.tsx'), 'utf8');
+// The article's markup lives in `ArticleView` since W248 (shared with the draft preview).
+const PAGE = readFileSync(join(DIR, '_components', 'ArticleView.tsx'), 'utf8');
 const PREFIXES = [...TWIN_PREFIXES, 'shadow', 'w', 'max-w'];
 const files = (sub: string, ext: RegExp) =>
   readdirSync(join(DIR, sub))
@@ -18,7 +19,7 @@ const files = (sub: string, ext: RegExp) =>
     .map((f) => `${sub}/${f}`);
 
 describe('Blog article — cover, stack gap and xl twins (C1–C3)', () => {
-  it('C1: the cover is the category-coloured placeholder at 190 / 430 / 322.5 px with the design shadow', () => {
+  it('C1: the cover (photo or category-coloured placeholder) is 190 / 430 / 322.5 px with the design shadow', () => {
     const at = PAGE.indexOf('slot={`blog-cover-');
     expect(at).toBeGreaterThan(-1);
     const cover = PAGE.slice(PAGE.lastIndexOf('<CategoryCover', at), PAGE.indexOf('/>', at));

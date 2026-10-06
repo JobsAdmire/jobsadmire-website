@@ -23,7 +23,16 @@ const KEYS = [
   'blog.article.print',
   'blog.article.backToTop',
   'blog.article.shareThis',
-  'blog.soon',
+  'blog.article.writtenBy', // W248: a named author's box
+  'blog.preview.bar', // W248: the draft preview (/blog/preview)
+  'blog.preview.exit',
+  'blog.preview.metaTitle',
+  'blog.preview.invalid.title',
+  'blog.preview.invalid.body',
+  'blog.preview.empty.title',
+  'blog.preview.empty.body',
+  'blog.preview.unavailable.title',
+  'blog.preview.unavailable.body',
   'blog.faq.a1',
   'blog.faq.q3',
   'blog.whatsapp.article',
@@ -77,6 +86,7 @@ describe('sys.blog.* and sys.seo.blog.* (T12)', () => {
   it('the templates carry the placeholders the pages fill', () => {
     for (const m of [en, tr]) {
       expect(read(m, 'blog.article.metaTitle')).toBe('{title} | JobsAdmire');
+      expect(read(m, 'blog.article.writtenBy')).toMatch(/\{name\}/);
       expect(read(m, 'blog.faq.a1')).toMatch(/\{permitDays\}[\s\S]*\{firstDayWeeks\}/);
       expect(read(m, 'blog.faq.q3')).toMatch(/\{ratio\}:1/);
       expect(read(m, 'blog.whatsapp.article')).toMatch(/\{title\}/);
@@ -90,6 +100,11 @@ describe('sys.blog.* and sys.seo.blog.* (T12)', () => {
       /^\{n, plural, one \{guide\} other \{guides\}\}$/,
     );
     expect(read(tr, 'blog.index.guides')).not.toMatch(/[{}]/);
+  });
+
+  it('has no "yakında" key any more — the blog lists real published posts only (W248)', () => {
+    expect(read(en, 'blog.soon')).toBeUndefined();
+    expect(read(tr, 'blog.soon')).toBeUndefined();
   });
 
   it('keeps the article title template out of sys.seo — the OG route reads sys.seo.<pageKey>.title with no arguments (B-15, W169)', () => {

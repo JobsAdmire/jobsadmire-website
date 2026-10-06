@@ -20,6 +20,7 @@ export default defineConfig({
     env: {
       NEXT_PUBLIC_SITE_URL: 'https://www.jobsadmire.com',
       CONTENT_SOURCE: 'LOCAL',
+      BLOG_SOURCE: '',
       OPS_API_URL: '',
       OPS_WEBSITE_READ_TOKEN: '',
       OPS_WEBSITE_WRITE_TOKEN: '',

@@ -5,8 +5,7 @@ import enBundle from './local/bundle.en.json';
 import trBundle from './local/bundle.tr.json';
 import { FIXTURE_ONLY_COLLECTIONS } from './config';
 import {
-  BLOG_NAV_THRESHOLD,
-  blogNavVisible,
+  BlogPostSchema,
   CalculatorRoleSchema,
   CollectionError,
   CollectionSchemas,
@@ -19,6 +18,7 @@ import {
   PAGE_KEYS,
   PAGE_PATHNAME,
   RateConfigSchema,
+  readMinutesOf,
 } from './collections';
 
 const base = BundleSchema.parse(fixture);
@@ -250,13 +250,28 @@ describe('RateConfigSchema date fields (W144(b))', () => {
   });
 });
 
-describe('blog nav threshold (W4)', () => {
-  it('is hidden below six Turkish bodies and visible from six', () => {
-    expect(BLOG_NAV_THRESHOLD).toBe(6);
-    expect(blogNavVisible(withCollections({ blog: [post(true)] }))).toBe(false);
-    const six = Array.from({ length: 6 }, (_, i) => ({ ...post(true), key: `k${i}` }));
-    expect(blogNavVisible(withCollections({ blog: six }))).toBe(true);
-    expect(blogNavVisible(withCollections({}))).toBe(false);
+describe('blog rows (W248: the optional Operations fields)', () => {
+  it('a LOCAL row without them parses; a row with them parses; readMinutesOf prefers the locale', () => {
+    expect(BlogPostSchema.safeParse(post(true)).success).toBe(true);
+    const ops = {
+      ...post(true),
+      updatedAt: '2026-10-06T07:30:00.000Z',
+      featured: true,
+      authorObj: { name: 'Ayşe Demir', title: null },
+      cover: {
+        url: 'https://operations.jobsadmire.com/api/website/v1/media/a/1600.webp',
+        width: 1600,
+        height: 900,
+      },
+      coverAlt: { tr: 'Alt', en: null },
+      seo: { title: { tr: null, en: null }, description: { tr: null, en: null } },
+      faq: { tr: [{ q: 'S?', a: 'C.' }], en: [] },
+      readMinutesByLocale: { tr: 3, en: null },
+    };
+    const parsed = BlogPostSchema.parse(ops);
+    expect(readMinutesOf(parsed, 'tr')).toBe(3);
+    expect(readMinutesOf(parsed, 'en')).toBe(parsed.readMinutes);
+    expect(BlogPostSchema.safeParse({ ...ops, updatedAt: 'yesterday' }).success).toBe(false);
   });
 });
 

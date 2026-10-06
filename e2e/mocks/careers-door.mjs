@@ -7,7 +7,18 @@
 // or the build; nothing in production reads it.
 //   npm run careers:door   → http://127.0.0.1:8481 (CAREERS_DOOR_PORT moves it)
 import { randomUUID } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { createServer } from 'node:http';
+
+// W248: the public blog feed and the draft preview too (contract `blog.v1`), served from the
+// contract fixture — GET /api/website/v1/blog (the feed) and
+// GET /api/website/v1/blog/preview/:token (the first fixture post for BLOG_PREVIEW_TOKEN, 410 for
+// any other token). `E2E_BLOG_MOCK=1` in e2e/pages/blog.spec.ts means the server under test was
+// STARTED with OPS_API_URL pointing here (the preview page is dynamic: no rebuild needed).
+const BLOG_FEED = JSON.parse(
+  readFileSync(new URL('../../contract/blog-feed.v1.fixture.json', import.meta.url), 'utf8'),
+);
+const BLOG_PREVIEW_TOKEN = 'e2e-preview-token.0000000000000000';
 
 const PORT = Number(process.env.CAREERS_DOOR_PORT ?? 8481);
 const HOST = '127.0.0.1';
@@ -146,6 +157,13 @@ const send = (res, status, body) => {
 
 const server = createServer((req, res) => {
   const url = new URL(req.url ?? '/', `http://${HOST}:${PORT}`);
+  if (req.method === 'GET' && url.pathname === '/api/website/v1/blog')
+    return send(res, 200, BLOG_FEED);
+  const preview = url.pathname.match(/^\/api\/website\/v1\/blog\/preview\/([^/]+)$/);
+  if (req.method === 'GET' && preview)
+    return decodeURIComponent(preview[1]) === BLOG_PREVIEW_TOKEN
+      ? send(res, 200, { post: BLOG_FEED.posts[0] })
+      : send(res, 410, { message: 'Preview link expired' });
   if (req.method === 'GET' && url.pathname === '/api/careers/openings') {
     const limit = Math.min(Math.max(Number(url.searchParams.get('limit')) || 20, 1), 50);
     const page = Math.max(Number(url.searchParams.get('page')) || 1, 1);

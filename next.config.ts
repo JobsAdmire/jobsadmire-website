@@ -3,6 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 import legacy from './redirects/legacy.json';
 import localBundle from './src/content/local/bundle.tr.json';
 import { appLinkRedirects, type StoreLinks } from './src/lib/app-link';
+import { BLOG_MEDIA_HOST, BLOG_MEDIA_PATH } from './src/lib/blog-media';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
@@ -17,6 +18,14 @@ const nextConfig: NextConfig = {
   // `join(process.cwd(), '…')` literal, this is the belt to that brace so a tracer change can
   // never ship the function without its bytes (docs/SEO.md § OG images).
   outputFileTracingIncludes: { '/og/[locale]/[pageKey]': ['./src/design/fonts/*.ttf'] },
+  // W248: the one remote image source — Operations' public blog media route (covers and inline
+  // body images, contract `blog.v1`). Nothing else is optimised; the blog mapping and the body
+  // grammar drop any other image URL before it reaches `next/image` (src/lib/blog-media.ts).
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: BLOG_MEDIA_HOST, pathname: `${BLOG_MEDIA_PATH}**` },
+    ],
+  },
   // W73/W116: a form's file travels inside its server action. Next caps a server-action body
   // at 1 MB by default and Vercel caps a function body at 4.5 MB; the per-file cap is 3 MB
   // (`MAX_UPLOAD_BYTES`, src/forms/uploads.ts), 1 MB under this limit for the other fields and

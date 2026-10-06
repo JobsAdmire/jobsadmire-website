@@ -31,22 +31,15 @@ describe('seo routes', () => {
       'https://www.jobsadmire.com/blog/isgucu',
     );
   });
-  it('indexes the blog index (owner 2026-10-05) and keeps articles out of the index', () => {
+  it('indexes the blog index (owner 2026-10-05) and its published articles (W248, the SEO flip)', () => {
     expect(NOINDEX_PATHNAMES).not.toContain('/blog');
-    expect(NOINDEX_PATHNAMES).toContain('/blog/[slug]');
-    // robots form: localized, deduped — the dynamic key becomes its parent prefix with a
-    // trailing slash, so /blog itself is not disallowed
-    expect(noindexExternalPaths('tr')).toEqual([
-      '/tesekkurler',
-      '/abone-onay',
-      '/abonelikten-cik',
-      '/blog/',
-    ]);
+    expect(NOINDEX_PATHNAMES).not.toContain('/blog/[slug]');
+    // robots form: localized, deduped — no blog path at all
+    expect(noindexExternalPaths('tr')).toEqual(['/tesekkurler', '/abone-onay', '/abonelikten-cik']);
     expect(noindexExternalPaths('en')).toEqual([
       '/en/thank-you',
       '/en/newsletter/confirm',
       '/en/newsletter/unsubscribe',
-      '/en/blog/',
     ]);
   });
 });
@@ -58,15 +51,15 @@ describe('robotsDisallowPaths (W20/W37)', () => {
     expect(d).toContain('/tesekkurler');
     for (const path of d) expect(noindexExternalPaths('tr')).toContain(path);
   });
-  it('names the blog articles once their page exists (UNBUILT empty)', () => {
+  it('names every noindex page once it exists (UNBUILT empty) — and never the blog (W248)', () => {
     expect(robotsDisallowPaths('tr', new Set())).toEqual(noindexExternalPaths('tr'));
     expect(robotsDisallowPaths('en', new Set())).toEqual(noindexExternalPaths('en'));
-    expect(robotsDisallowPaths('en', new Set())).toContain('/en/blog/');
+    for (const locale of ['tr', 'en'] as const)
+      for (const path of robotsDisallowPaths(locale, new Set())) expect(path).not.toMatch(/\/blog/);
   });
-  it('subtracts per key, before the parent-prefix fold', () => {
-    // the articles' prefix rule is dropped only when the key itself is unbuilt
-    expect(robotsDisallowPaths('tr', new Set(['/blog/[slug]']))).not.toContain('/blog/');
-    expect(robotsDisallowPaths('tr', new Set())).toContain('/blog/');
+  it('subtracts per key', () => {
+    expect(robotsDisallowPaths('tr', new Set(['/thank-you']))).not.toContain('/tesekkurler');
+    expect(robotsDisallowPaths('tr', new Set())).toContain('/tesekkurler');
     // Everything unbuilt: nothing to name.
     expect(robotsDisallowPaths('tr', new Set(NOINDEX_PATHNAMES))).toEqual([]);
   });

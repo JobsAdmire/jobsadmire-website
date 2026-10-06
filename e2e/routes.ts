@@ -12,6 +12,9 @@ export type GateRoute = {
    *  width sweep and the placeholder counter, never audited by Lighthouse, never expected in the
    *  sitemap, never in the page-contract loop. */
   indexable: boolean;
+  /** The hreflang languages the page advertises when not both (a blog article written in one
+   *  language only, D16/B-15) — the SEO spec's page-contract loop checks exactly these. */
+  languages?: readonly ('tr' | 'en')[];
 };
 
 export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
@@ -54,13 +57,18 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   { path: '/en/verify', indexable: true },
   { path: '/kariyer', indexable: true },
   { path: '/en/careers', indexable: true },
-  // T12: the blog index — noindex (W4): axe, the width sweep and the placeholder counter sweep
-  // it; Lighthouse and the sitemap never do. The TR index is the W6 empty state.
-  { path: '/blog', indexable: false },
-  { path: '/en/blog', indexable: false },
-  // T12 (B-14): the one written article (EN; TR has no body — W4). Pinned to the committed bundle
-  // by src/app/[locale]/(site)/blog/__tests__/gate-row.test.ts.
-  { path: '/en/blog/turkey-work-permit-process-employer-guide', indexable: false },
+  // T12: the blog index — indexable (owner 2026-10-05) and, since W248, its published articles:
+  // Lighthouse, the sitemap and the page-contract loop take all three. The TR index is the W6
+  // empty state (no Turkish article on the LOCAL bundle).
+  { path: '/blog', indexable: true },
+  { path: '/en/blog', indexable: true },
+  // T12 (B-14): the one written article (EN only — hreflang en + x-default). Pinned to the
+  // committed bundle by src/app/[locale]/(site)/blog/__tests__/gate-row.test.ts.
+  {
+    path: '/en/blog/turkey-work-permit-process-employer-guide',
+    indexable: true,
+    languages: ['en'],
+  },
   // T15 (W21): the EN twin of the WP2a conversion-page row — noindex, never audited by Lighthouse.
   { path: '/en/thank-you?form=hire', indexable: false },
 ];
@@ -70,3 +78,8 @@ export const GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.map((r) => r.path
 export const INDEXABLE_GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.filter(
   (r) => r.indexable,
 ).map((r) => r.path);
+
+/** The hreflang languages one indexable gate route advertises (both unless it says otherwise). */
+export function gateRouteLanguages(path: string): readonly ('tr' | 'en')[] {
+  return GATE_ROUTE_TABLE.find((r) => r.path === path)?.languages ?? ['tr', 'en'];
+}

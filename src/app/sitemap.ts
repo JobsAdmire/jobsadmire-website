@@ -18,8 +18,8 @@ const EXCLUDED: ReadonlySet<string> = new Set<string>([...NOINDEX_PATHNAMES, ...
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static routes here; the dynamic keys are filtered by pattern. Detail entries (careers
-  // openings; blog once it leaves noindex, W4) come from DETAIL_SITEMAP_SOURCES (W31), read
-  // from the bundle under their own ISR tags.
+  // openings; blog articles since W248) come from DETAIL_SITEMAP_SOURCES (W31), read under their
+  // own ISR tags.
   const hrefs = (Object.keys(pathnames) as (keyof typeof pathnames)[]).filter(
     (href): href is StaticPathname => !href.includes('[') && !EXCLUDED.has(href),
   );

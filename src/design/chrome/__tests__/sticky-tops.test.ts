@@ -136,7 +136,7 @@ describe('every sticky element’s top comes from the header (W232)', () => {
         'src/design/chrome/Header.tsx',
         'src/design/blocks/FaqBlock.tsx',
         'src/app/[locale]/(site)/_home/sections/ProcessSection.tsx',
-        'src/app/[locale]/(site)/blog/[slug]/page.tsx',
+        'src/app/[locale]/(site)/blog/[slug]/_components/ArticleView.tsx',
         'src/app/[locale]/(site)/hiring-cost-calculator/_components/PassCheckView.tsx',
         'src/app/[locale]/(site)/work-permit/_sections/JumpNav.tsx',
         'src/app/[locale]/(site)/work-permit/_sections/Rules.tsx',
@@ -160,7 +160,9 @@ describe('every sticky element’s top comes from the header (W232)', () => {
   });
 
   it('caps the blog sidebar to the screen below that same top (W231 + W232)', () => {
-    const sidebar = stickyClassLists.find((c) => c.file.endsWith('/blog/[slug]/page.tsx'));
+    const sidebar = stickyClassLists.find((c) =>
+      c.file.endsWith('/blog/[slug]/_components/ArticleView.tsx'),
+    );
     expect(sidebar?.tokens).toEqual(
       expect.arrayContaining([
         'lg:top-(--sticky-top)',

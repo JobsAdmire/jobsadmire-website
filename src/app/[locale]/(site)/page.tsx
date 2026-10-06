@@ -3,6 +3,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { getBundle } from '@/content/adapter';
+import { getBlogBundle } from '@/content/blog';
 import { routing } from '@/i18n/routing';
 import { buildMetadata } from '@/lib/seo/metadata';
 import { submitCallback, submitHire } from './_home/actions';
@@ -58,7 +59,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  const bundle = await getBundle(locale);
+  // The guides read the `blog` rows: the bundle with the blog source applied (W248).
+  const bundle = await getBlogBundle(locale);
   const section = { locale, bundle };
   return (
     <>

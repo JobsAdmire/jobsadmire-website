@@ -1,0 +1,132 @@
+{
+  "contractVersion": "blog.v1",
+  "generatedAt": "2026-10-06T08:00:00.000Z",
+  "posts": [
+    {
+      "key": "cmgblog0000000000000000001",
+      "number": "BLOG-0003",
+      "category": "recruitment",
+      "featured": true,
+      "publishedAt": "2026-10-05T21:30:00.000Z",
+      "updatedAt": "2026-10-06T07:30:00.000Z",
+      "author": { "name": "Ayşe Demir", "title": "Recruitment Lead" },
+      "cover": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/cmgmedia000000000000000001/1600.webp",
+        "width": 1600,
+        "height": 900
+      },
+      "slug": {
+        "tr": "pakistandan-isci-istihdami-rehberi",
+        "en": "hiring-from-pakistan-employer-guide"
+      },
+      "title": {
+        "tr": "Pakistan'dan işçi istihdamı: işverenler için rehber",
+        "en": "Hiring from Pakistan: a guide for employers"
+      },
+      "excerpt": {
+        "tr": "Pakistan'dan işçi getirmek planlama ister. İzin dosyası, kota oranı ve maliyetler adım adım.",
+        "en": "Hiring from Pakistan takes planning. The permit file, the quota ratio and the costs, step by step."
+      },
+      "body": {
+        "tr": "Pakistan'dan işe alım *planlama* ister, şans değil. Bu rehber Türk işverenler için adımları anlatır.\n\n> **Önemli noktalar**\n>\n> - İzin dosyasını aday yola çıkmadan **önce** başlatın\n> - Kota oranını bütçeleyin\n> - Lisanslı bir ajansla çalışın\n\n## Başlamadan önce\n\nÖnce [çalışma izni rehberini](/calisma-izni) okuyun ve [resmi kuralları](https://www.csgb.gov.tr/) kontrol edin.\n\n### Belgeler\n\n- Pasaport kopyası\n- Diploma\n- İmzalı teklif\n\n![Belgeleri inceleyen bir işe alım uzmanı](https://operations.jobsadmire.com/api/website/v1/media/cmgmedia000000000000000002/1200.webp)\n\n## Maliyetler\n\n**İzin harcı** — işçi başına bir kez ödenir, her yıl yenilenir.\n\n**Uçuşlar** — genellikle işverence karşılanır.\n\nBakanlık tablosunda fiyatlar 5 \\* 3 diye yazılır — kaçışlı yıldızlar ve \\[köşeli parantezler\\] olduğu gibi kalır.\n\n1. İşçi talep edin\n2. Kısa listeyle görüşün\n3. İzin dosyasını verin\n\n> Sorunuz mu var? [info@jobsadmire.com](mailto:info@jobsadmire.com) adresine yazın.",
+        "en": "Hiring from Pakistan takes *planning*, not luck. This guide walks Turkish employers through the steps.\n\n> **Key takeaways**\n>\n> - Start the permit file **before** the candidate travels\n> - Budget for the quota ratio\n> - Work with a licensed agency\n\n## Before you start\n\nRead the [work permit guide](/en/work-permit) first and check the [official rules](https://www.csgb.gov.tr/).\n\n### Documents\n\n- Passport copy\n- Diploma\n- Signed offer\n\n![A recruiter reviewing documents](https://operations.jobsadmire.com/api/website/v1/media/cmgmedia000000000000000002/1200.webp)\n\n## Costs\n\n**Permit fee** — paid once per worker, renewed every year.\n\n**Flights** — usually covered by the employer.\n\nThe ministry's table writes prices as 5 \\* 3 — escaped stars stay literal, and so do \\[brackets\\].\n\n1. Request workers\n2. Interview the shortlist\n3. File the permit\n\n> Questions? Write to [info@jobsadmire.com](mailto:info@jobsadmire.com)."
+      },
+      "hasBody": { "tr": true, "en": true },
+      "readMinutes": { "tr": 4, "en": 4 },
+      "coverAlt": {
+        "tr": "Antalya ofisinde bir işe alım görüşmesi",
+        "en": "A hiring interview at the Antalya office"
+      },
+      "seo": {
+        "title": {
+          "tr": "Pakistan'dan işçi istihdamı 2026 rehberi",
+          "en": "Hiring from Pakistan in 2026: employer guide"
+        },
+        "description": {
+          "tr": null,
+          "en": "Permit file, quota ratio, costs: hiring from Pakistan."
+        }
+      },
+      "faq": {
+        "tr": [
+          {
+            "q": "Pakistan'dan işe alım ne kadar sürer?",
+            "a": "İzin onayı dahil genellikle 6–8 hafta."
+          }
+        ],
+        "en": [
+          {
+            "q": "How long does hiring from Pakistan take?",
+            "a": "Usually 6–8 weeks, permit approval included."
+          },
+          {
+            "q": "Who pays for the flight?",
+            "a": "Usually the employer, as part of the offer."
+          }
+        ]
+      }
+    },
+    {
+      "key": "cmgblog0000000000000000002",
+      "number": "BLOG-0002",
+      "category": "compliance",
+      "featured": false,
+      "publishedAt": "2026-09-20T07:00:00.000Z",
+      "updatedAt": "2026-09-20T07:00:00.000Z",
+      "author": { "name": "Mehmet Kaya", "title": null },
+      "cover": null,
+      "slug": { "tr": "sgk-bildirimi-yabanci-isciler", "en": null },
+      "title": { "tr": "Yabancı işçiler için SGK bildirimi", "en": null },
+      "excerpt": { "tr": "İlk iş gününden önce yapılması gereken SGK bildirimi.", "en": null },
+      "body": {
+        "tr": "İşe giriş bildirimi ilk iş gününden **önce** yapılır.\n\n## Süre\n\nBildirim en geç bir gün önce verilir.",
+        "en": null
+      },
+      "hasBody": { "tr": true, "en": false },
+      "readMinutes": { "tr": 2, "en": null },
+      "coverAlt": { "tr": null, "en": null },
+      "seo": { "title": { "tr": null, "en": null }, "description": { "tr": null, "en": null } },
+      "faq": { "tr": [], "en": [] }
+    },
+    {
+      "key": "cmgblog0000000000000000003",
+      "number": "BLOG-0001",
+      "category": "workPermits",
+      "featured": false,
+      "publishedAt": "2026-06-12T09:00:00.000Z",
+      "updatedAt": "2026-10-06T06:00:00.000Z",
+      "author": null,
+      "cover": null,
+      "slug": { "tr": null, "en": "turkey-work-permit-process-employer-guide" },
+      "title": {
+        "tr": null,
+        "en": "The Türkiye work permit process: a step-by-step guide for employers"
+      },
+      "excerpt": {
+        "tr": null,
+        "en": "Everything a Turkish employer needs to file a foreign worker's permit: documents, costs, timelines."
+      },
+      "body": {
+        "tr": null,
+        "en": "A work permit is the employer's application, not the worker's.\n\n## Documents you'll need\n\n- Passport copy\n- Diploma\n\n## The steps\n\n1. Collect the documents\n2. File online\n3. Wait for approval"
+      },
+      "hasBody": { "tr": false, "en": true },
+      "readMinutes": { "tr": null, "en": 8 },
+      "coverAlt": { "tr": null, "en": null },
+      "seo": { "title": { "tr": null, "en": null }, "description": { "tr": null, "en": null } },
+      "faq": { "tr": [], "en": [] }
+    }
+  ],
+  "redirects": [
+    {
+      "locale": "en",
+      "from": "hiring-from-pakistan-guide",
+      "to": "hiring-from-pakistan-employer-guide"
+    },
+    {
+      "locale": "tr",
+      "from": "pakistandan-isci-istihdami",
+      "to": "pakistandan-isci-istihdami-rehberi"
+    }
+  ]
+}

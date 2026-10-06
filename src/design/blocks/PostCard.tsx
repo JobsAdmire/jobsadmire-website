@@ -1,4 +1,4 @@
-import type { BlogPost } from '@/content/collections';
+import { readMinutesOf, type BlogPost } from '@/content/collections';
 import { makeTf } from '@/content/pure';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -50,7 +50,7 @@ export function PostCard({
   const Heading = `h${headingLevel}` as 'h2' | 'h3';
   const other: Locale = locale === 'tr' ? 'en' : 'tr';
   const excerpt = post.excerpt[locale];
-  const meta = `${formatDate(post.publishedAt, locale)} · ${formatReadMinutes(post.readMinutes, locale)}`;
+  const meta = `${formatDate(post.publishedAt, locale)} · ${formatReadMinutes(readMinutesOf(post, locale), locale)}`;
   const row = variant === 'row';
   const cover = (
     <ImageSlot

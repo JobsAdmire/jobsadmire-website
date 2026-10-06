@@ -19,9 +19,9 @@ import { GATE_ROUTE_TABLE } from '../../e2e/routes';
  * (`scripts/gate-routes.mjs`'s `careersDetailRoutes`), so Lighthouse sees it without ever
  * hand-maintaining a slug here (a hard-coded one would 404 the day that opening closes — exactly
  * what `wp2b/check.md`'s `foundation_gaps_to_rule` list rules against). `/blog/[slug]` gets a
- * soft check only: T12 owns the one written article's row, and W4 keeps the Turkish body count
- * at zero at Gate A, so only the EN row is expected to exist in practice — this file requires
- * ONE non-indexable `/blog/<slug>` row, never both locales.
+ * soft check only: T12 owns the one written article's row (EN — the LOCAL bundle has no Turkish
+ * article), so this file requires ONE indexable `/blog/<slug>` row (W248, the SEO flip) that
+ * names its one language, never both locales.
  *
  * Runs ONLY under `vitest.launch.config.mts` (never `npm run verify` — the default suite's
  * `scripts/**\/*.test.ts` glob does not match `*.launch-check.ts`). T15 runs last (W99), so by
@@ -47,11 +47,12 @@ describe('GATE_ROUTE_TABLE covers every static route in both locales (T15, W21)'
     }
   }
 
-  it('has at least one non-indexable /blog/<slug> article row (T12 owns it; W4 keeps TR empty)', () => {
+  it('has at least one indexable /blog/<slug> article row (T12 owns it; W248 the SEO flip)', () => {
     const blogArticles = GATE_ROUTE_TABLE.filter((r) => /^\/(en\/)?blog\/[^/?]+$/.test(r.path));
     expect(blogArticles.length, 'no /blog/<slug> row yet — T12 has not landed').toBeGreaterThan(0);
     for (const r of blogArticles) {
-      expect(r.indexable, `${r.path} must be indexable:false (W4)`).toBe(false);
+      expect(r.indexable, `${r.path} must be indexable (W248)`).toBe(true);
+      expect(r.languages, `${r.path} must name its language(s)`).toBeDefined();
     }
   });
 

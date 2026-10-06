@@ -26,18 +26,19 @@ The catalogue below is plan §4, with phase tags: **[A]** Phase A, **[B]** Phase
 | I18 | Sentry                                                      | A                    | Website → Sentry                             | DSN                            |
 | I19 | Site-health, synthetic lead, digest, uptime monitors        | A                    | Vercel ↔ external monitor                    | heartbeat URLs                 |
 | I20 | WhatsApp deep links                                         | A                    | Website → wa.me                              | n/a                            |
+| I21 | Blog feed, draft preview, blog media (contract `blog.v1`)   | B (W248)             | Ops → Website (server-side reads)            | none (public); signed preview  |
 
 ## I1 — Bundle, pages, blog, nav, settings, redirects, sitemap data
 
-**Direction:** Ops → Website. **Auth:** read token (current + previous class), timing-safe, fail closed. **Shape:** contract v1, see `contract/` once frozen in WP1 — `GET /api/website/v1/bundle?locale=<tr|en>`, validated against `contract/website-bundle.v1.ts` (a Zod schema — there is no JSON-Schema file). **Failure/degraded:** last-good ISR content served past its time floor; failure counted, Sentry-reported, surfaces on `/api/site-health`.
+**Direction:** Ops → Website. **Auth:** read token (current + previous class), timing-safe, fail closed. **Shape:** contract v1, see `contract/` once frozen in WP1 — `GET /api/website/v1/bundle?locale=<tr|en>`, validated against `contract/website-bundle.v1.ts` (a Zod schema — there is no JSON-Schema file). **Failure/degraded:** last-good ISR content served past its time floor; failure counted, Sentry-reported, surfaces on `/api/site-health`. **Blog (W248):** the `blog` collection no longer waits for this bundle — it comes from the public blog feed (I21) under `BLOG_SOURCE=OPS`, whatever `CONTENT_SOURCE` says; the bundle's `blog` rows are the fallback.
 
 ## I2 — Revalidate + read-back
 
-**Direction:** Ops → Website. **Auth:** shared secret (`REVALIDATE_SECRET`). **Shape:** `POST /api/revalidate` with tag(s); response confirms the read-back fetch succeeded. **Failure/degraded:** `WEBSITE_REVALIDATE_FAILED` alert; content stays on its time floor until manually retried from the Operations dashboard (LIVE/NOT_LIVE indicator).
+**Direction:** Ops → Website. **Auth:** shared secret (`REVALIDATE_SECRET`). **Shape:** `POST /api/revalidate` with tag(s); response confirms the read-back fetch succeeded. **Failure/degraded:** `WEBSITE_REVALIDATE_FAILED` alert; content stays on its time floor until manually retried from the Operations dashboard (LIVE/NOT_LIVE indicator). **Not used by the blog (W248):** a publish reaches the site through the feed's 60 s time-based ISR (I21) — no webhook, no shared secret; Operations' LIVE/NOT LIVE chip polls the article URL instead (`POST /api/revalidate` with tag `blog` still works if Operations ever sends it).
 
 ## I3 — Draft preview
 
-**Direction:** Website → Ops. **Auth:** HMAC-signed, 30-minute preview token. **Shape:** contract v1, see `contract/` once frozen. **Failure/degraded:** expired/forged token → 401, no draft content leaks; negative-tested at WP5-gate.
+**Direction:** Website → Ops. **Auth:** HMAC-signed, 30-minute preview token. **Shape:** contract v1, see `contract/` once frozen. **Failure/degraded:** expired/forged token → 401, no draft content leaks; negative-tested at WP5-gate. **Built for the blog (W248) as I21's preview leg:** the website holds no preview secret and no preview-class token — Operations signs and validates its own token and answers 410 for an expired or forged one; the site shows a friendly message, never a draft. The bundle-wide (strings/pages) preview is still unbuilt.
 
 ## I4 — Forms (13–15)
 
@@ -92,7 +93,7 @@ The catalogue below is plan §4, with phase tags: **[A]** Phase A, **[B]** Phase
 
 ## I11 — Media
 
-**Direction:** public bucket (`website-public` on the files vhost) → Vercel via `next/image`. **Auth:** anonymous `GetObject` only — no `ListBucket`, so the bucket is never enumerable. **Shape:** `remotePatterns` scoped in `next.config.ts`; `minimumCacheTTL`; per-slot `sizes`; static fallback for a missing asset. **Failure/degraded:** broken image → static fallback, never a broken-image icon on a hero/LCP slot (content-readiness gate blocks launch on this).
+**Direction:** public bucket (`website-public` on the files vhost) → Vercel via `next/image`. **Auth:** anonymous `GetObject` only — no `ListBucket`, so the bucket is never enumerable. **Shape:** `remotePatterns` scoped in `next.config.ts`; `minimumCacheTTL`; per-slot `sizes`; static fallback for a missing asset. **Failure/degraded:** broken image → static fallback, never a broken-image icon on a hero/LCP slot (content-readiness gate blocks launch on this). **Blog media (W248)** does not use a public bucket: Operations streams it from its private MinIO through a public route (I21), and `images.remotePatterns` allows exactly `https://operations.jobsadmire.com/api/website/v1/media/**`.
 
 ## I12 — Newsletter confirm/unsubscribe
 
@@ -131,6 +132,14 @@ The catalogue below is plan §4, with phase tags: **[A]** Phase A, **[B]** Phase
 ## I20 — WhatsApp deep links
 
 **Direction:** Website → wa.me. **Auth:** none. **Shape:** `https://wa.me/<number>?text=<prefilled>` — the same mechanism the design package uses for every form's mock submission, kept as a co-primary/secondary CTA and the visitor fallback panel's escape hatch (I4).
+
+## I21 — Blog feed, draft preview, blog media (contract `blog.v1`, W248)
+
+The blog module (plan `docs/superpowers/plans/2026-10-06-blog-module.md` § Contract; Operations `docs/PRD.md` §5.12/§7.10). Marketing writes in Operations → Website → Blog, the owner publishes (`website.blog` APPROVE), and the website shows it within a minute. Every read is server-side; the browser never calls Operations (D6).
+
+- **Feed — `GET ${OPS_API_URL}/api/website/v1/blog`.** **Auth:** none — published posts are public content (the careers-openings precedent); no website token is sent or needed. **Shape:** `{ contractVersion: "blog.v1", generatedAt, posts: Post[], redirects: { locale, from, to }[] }`, newest first, only PUBLISHED posts with at least one ready language. Zod schema `contract/blog-feed.v1.ts`, golden fixture `contract/blog-feed.v1.fixture.json` (diff it against Operations' `apps/backend/src/modules/website/blog/__fixtures__/blog-feed.v1.json` whenever either changes). Read only when `BLOG_SOURCE=OPS` and `OPS_API_URL` are set, with `next: { revalidate: 60, tags: ['blog'] }` (`src/content/blog.ts`), mapped into the site's `blog` rows (`src/content/blog-feed.ts`). The envelope must be `blog.v1`; each post and redirect is then validated on its own — a bad one is logged and left out, the rest render (R28). A slug a newer post already holds, a reserved slug (`preview`) and a cover off the media route are dropped the same way. `redirects` → an old slug 308s to the new one (one hop, only onto a written article). **Failure/degraded:** logged (`[blog] feed unavailable …`). At build time and outside production the LOCAL bundle's rows stand in (a cold build never fails on an Operations outage); at runtime in production the error is thrown, so ISR keeps the last good page and retries on the next request — an outage never swaps live articles for the fallback or 404s them. Rollback: unset `BLOG_SOURCE`.
+- **Draft preview — `GET ${OPS_API_URL}/api/website/v1/blog/preview/:token`.** Operations' "Preview on website" opens `https://www.jobsadmire.com/api/blog-preview?token=<signed>&locale=tr|en`; the route turns Next draft mode on, stores the token in the httpOnly cookie `ja_blog_preview` (30 min, `SameSite=Lax`, `Secure` in production; a malformed token is never stored) and redirects to `/blog/preview` or `/en/blog/preview`. That page fetches `{ post }` per request (`cache: 'no-store'`) and renders it exactly as the article will look, `noindex, nofollow`, under the "Önizleme — yayında değil / Preview — not published" bar with "Exit preview" (`/api/blog-preview/exit`: draft mode off, cookie gone, back to the blog index). 410/404/400/401/403 → the invalid-link message; no door, 5xx or a broken body → "unavailable"; a language with no title or body yet → "no text in this language". Needs only `OPS_API_URL` (works before `BLOG_SOURCE` is switched). `preview` is a reserved slug on both sides: the static `blog/preview` segment always wins over `[slug]`.
+- **Media — `GET https://operations.jobsadmire.com/api/website/v1/media/:assetId/:variant.webp`** (640/1200/1600/2400). Public, immutable. Covers arrive as the absolute 1600 URL; the per-post OG image is its 1200 variant; inline body images (`![alt](media:<id>)` in Operations) arrive rewritten to the absolute 1200 URL. `next.config.ts` `images.remotePatterns` allows this origin and path only; the mapping and the body grammar drop any other image URL before it reaches `next/image` (`src/lib/blog-media.ts`).
 
 ## Token threat model + rotation runbook (D12, WP5-gate)
 

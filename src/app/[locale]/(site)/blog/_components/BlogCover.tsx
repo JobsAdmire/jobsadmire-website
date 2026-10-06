@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import type { BlogCategory } from '@/content/collections';
 import { CATEGORY_FACE } from '../_lib/category';
@@ -10,7 +11,8 @@ import { CATEGORY_FACE } from '../_lib/category';
  * rule, 2026-10-05; `data-placeholder` keeps the D26 counter's view). Page-local because the
  * shared `ImageSlot` placeholder has one tint→sky face (Shared request: a `tone`/`label` prop,
  * with the article's `CategoryCover`). `className` carries the box; `rowOnPhone` keeps only the
- * glyph in the 104 px phone row cover.
+ * glyph in the 104 px phone row cover. With `photo` (the post's cover from Operations, W248) the
+ * box shows the photo instead — `next/image` `fill`, cropped to the box the caller sizes.
  */
 export function BlogCover({
   slot,
@@ -18,14 +20,25 @@ export function BlogCover({
   label,
   className,
   rowOnPhone = false,
+  photo = null,
+  sizes,
 }: {
   slot: string;
   category: BlogCategory;
   label: string;
   className: string;
   rowOnPhone?: boolean;
+  photo?: { src: string; alt: string } | null;
+  /** `next/image` `sizes` for the photo (the box's rendered widths). */
+  sizes?: string;
 }) {
   const sys = useTranslations('sys');
+  if (photo)
+    return (
+      <div data-cover-photo={slot} className={`relative overflow-hidden bg-tint ${className}`}>
+        <Image src={photo.src} alt={photo.alt} fill sizes={sizes} className="object-cover" />
+      </div>
+    );
   const phoneText = rowOnPhone ? ' max-md:hidden' : '';
   return (
     <div

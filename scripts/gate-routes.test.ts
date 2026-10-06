@@ -33,9 +33,14 @@ describe('gate routes (W21)', () => {
   });
 
   it('carries both locales for every indexable page', () => {
-    // Each page task appends its two locale paths (W21): the EN and TR halves must stay equal.
-    const en = INDEXABLE_GATE_ROUTES.filter(isEn);
-    const tr = INDEXABLE_GATE_ROUTES.filter((p) => !isEn(p));
+    // Each page task appends its two locale paths (W21): the EN and TR halves must stay equal —
+    // except a blog article written in one language only (W248: `languages` names it), which
+    // has no twin in the other.
+    const bilingual = INDEXABLE_GATE_ROUTES.filter(
+      (p) => (GATE_ROUTE_TABLE.find((r) => r.path === p)?.languages ?? ['tr', 'en']).length === 2,
+    );
+    const en = bilingual.filter(isEn);
+    const tr = bilingual.filter((p) => !isEn(p));
     expect(en.length).toBe(tr.length);
     expect(tr).toContain('/');
     expect(en).toContain('/en');

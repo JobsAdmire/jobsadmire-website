@@ -23,7 +23,8 @@ Two levels, annotated; excludes `node_modules/`, `.next/`, and `design-package/`
 ```
 .
 ├── contract/            # Frozen Zod schema + golden fixture for the Ops<->Website content bundle
-│                         #   website-bundle.v1.ts, website-bundle.v1.fixture.json, CONTRACT.md, contract.test.ts
+│                         #   website-bundle.v1.ts, website-bundle.v1.fixture.json, CONTRACT.md, contract.test.ts;
+│                         #   blog-feed.v1.ts + blog-feed.v1.fixture.json (the Ops blog feed, contract blog.v1 — W248)
 ├── docs/                 # PRD, this file, DEPLOYMENT, INTEGRATIONS, SEO, ANALYTICS, CONTENT-MODEL,
 │                         #   redirects.md, PRIVACY, OPERATING, WEBSITE-HANDOFF, superpowers/ (plans/specs)
 ├── e2e/                  # Playwright specs: routing, redirects, seo, smoke, thank-you, ops, chrome, a11y (axe), width-sweep;
@@ -37,7 +38,8 @@ Two levels, annotated; excludes `node_modules/`, `.next/`, and `design-package/`
 ├── src/
 │   ├── analytics/         # GtmLoader, consent, ConversionPing, track.ts, ContactLink + useContactClick, forms.ts (FormKey allowlist)
 │   ├── app/                # App Router: [locale]/ layout + (site)/(minimal) route groups, api/ route handlers, og/ (the OG image route), robots.ts, sitemap.ts, global-error.tsx
-│   ├── content/             # Content adapter: config.ts / pure.ts / adapter.ts; local/ (bundle.en.json, bundle.tr.json, catalogue.json)
+│   ├── content/             # Content adapter: config.ts / pure.ts / adapter.ts; blog.ts / blog-feed.ts (the blog source, W248);
+│   │                         #   local/ (bundle.en.json, bundle.tr.json, catalogue.json)
 │   ├── design/               # Design system: chrome/ (Header, Footer, MobileNav, ...), primitives/ (Button, Card, ...), blocks/ (server page blocks),
 │   │                         #   islands/ (client page islands), assets/ (map/flag codes, BRAND, the generated SourceMap), Flag.tsx, QrCode.tsx,
 │   │                         #   contrast.ts, tokens, fonts/ (the OG route's vendored Archivo Bold)
@@ -45,7 +47,8 @@ Two levels, annotated; excludes `node_modules/`, `.next/`, and `design-package/`
 │   ├── i18n/                  # next-intl routing.ts (locales, pathnames table), navigation.ts, request.ts
 │   ├── lib/                    # contact.ts, qr.ts, format/ (money.ts, date/ — one function per file, W156), calculator/ (engine.ts, quota.ts,
 │   │                         #   labels.ts, copy-deltas.ts, types.ts — the pure calculator engine, W143), seo/ (metadata, jsonld, routes,
-│   │                         #   og, sitemap-sources), sanity.ts; legal/ (body.ts, documents.ts), newsletter/ (types, classify, copy, one-click, forward — T13)
+│   │                         #   og, sitemap-sources), sanity.ts; legal/ (body.ts, documents.ts), newsletter/ (types, classify, copy, one-click, forward — T13);
+│   │                         #   blog-media.ts, blog-preview.ts, blog-sitemap.ts (W248)
 │   ├── messages/                 # sys.* next-intl message catalogues (en.json, tr.json)
 │   ├── proxy.ts                   # Locale routing / 410 / RFC 8058 one-click rewrite / document headers (Next 16's proxy.ts convention)
 │   └── test/                       # Vitest test helpers (storage.ts — Node-version localStorage workaround)
@@ -71,6 +74,8 @@ Two levels, annotated; excludes `node_modules/`, `.next/`, and `design-package/`
 - **`src/i18n/routing.ts`, `navigation.ts`, `request.ts`, `client-messages.ts`** — next-intl locale/pathname configuration and the client-message allowlist (W90/W148); `routing.ts`'s `pathnames` table is the single internal-path → per-locale-external-path source (see "Routing" below).
 - **`src/analytics/GtmLoader.tsx`, `consent.ts`, `ConversionPing.tsx`, `track.ts`, `ContactLink.tsx` + `useContactClick.ts`, `forms.ts`** — GTM loading, consent state, conversion pings, event tracking (the W12/W26 allowlist + `PARAM_ENUMS`), the contact-click anchor, and the `FormKey` allowlist.
 - **`src/content/adapter.ts`** (+ `config.ts`, `pure.ts`) — the content adapter (`LOCAL`/`OPS`); see "Content adapter" below.
+- **`src/content/blog.ts`** (+ `blog-feed.ts`, `contract/blog-feed.v1.ts`) — the blog source (W248): `getBlogBundle(locale)` = `getBundle(locale)` with the `blog` collection from Operations' public feed under `BLOG_SOURCE=OPS`; `fetchBlogPreview` for the draft preview. See "Content adapter — the blog source" below.
+- **`src/app/api/blog-preview/route.ts`** (+ `exit/route.ts`), **`src/app/[locale]/(site)/blog/preview/page.tsx`** — the blog draft preview (I21): draft mode + an httpOnly token cookie → `/blog/preview` renders the draft fetched per request.
 - **`src/design/chrome/*`, `src/design/primitives/*`, `src/design/blocks/*`** — site chrome, the 14 design-system primitives and the shared page blocks; see "Design system" below.
 
 ## Environment variables
@@ -80,7 +85,8 @@ Names and purpose only — no values live here or anywhere in this repo (`.gitig
 | Variable                           | Purpose                                                                                                                                                                                                                                                                                                                                                                          |
 | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `CONTENT_SOURCE`                   | `LOCAL` or `OPS` — which content adapter `contentSource()` resolves to                                                                                                                                                                                                                                                                                                           |
-| `OPS_API_URL`                      | Base URL for the Operations website API                                                                                                                                                                                                                                                                                                                                          |
+| `BLOG_SOURCE`                      | `OPS` — the `blog` collection comes from Operations' public feed `${OPS_API_URL}/api/website/v1/blog` (no token, 60 s ISR, W248); empty/anything else — the LOCAL bundle's rows. Independent of `CONTENT_SOURCE`; plain value, Production only (`docs/DEPLOYMENT.md`). Rollback = unset                                                                                          |
+| `OPS_API_URL`                      | Base URL for the Operations website API (also the blog feed, the blog draft preview and the careers door)                                                                                                                                                                                                                                                                        |
 | `OPS_WEBSITE_READ_TOKEN`           | Bearer token for bundle/content reads from Operations                                                                                                                                                                                                                                                                                                                            |
 | `OPS_WEBSITE_WRITE_TOKEN`          | Bearer token for form submissions to Operations (consumed by `post.ts`, `uploads.ts` and `site-health/ops.ts` — see "Integrations" / "Forms flow" below)                                                                                                                                                                                                                         |
 | `OPS_WEBSITE_TEST_TOKEN`           | Test-class door token (`wst_…`) — never the write token; consumed by `npm run door:smoke` (`scripts/door-smoke.ts`) from the operator's shell and, on `staging`'s Phase A face, placed in the WRITE slot for `e2e/door-test-mode.spec.ts` (T14); read by `GET /api/cron/synthetic-lead` (`testDoorEnv`, T15), which answers 503 without a call when it is missing or not `wst_…` |
@@ -94,11 +100,12 @@ Names and purpose only — no values live here or anywhere in this repo (`.gitig
 
 Runtime-only variables (not in `.env.example`, provided by Vercel or the shell, read directly in code):
 
-| Variable                | Read in                                                               | Purpose                                                 |
-| ----------------------- | --------------------------------------------------------------------- | ------------------------------------------------------- |
-| `VERCEL_GIT_COMMIT_SHA` | `src/app/api/site-health/route.ts`                                    | Commit SHA surfaced in the health-check response        |
-| `VERCEL_ENV`            | `src/app/robots.ts`                                                   | Drives `noindex` on every non-production deployment     |
-| `NODE_ENV`              | `src/content/pure.ts`, `src/app/[locale]/(site)/dev/gallery/page.tsx` | Production fixture guard; dev-gallery 404 in production |
+| Variable                | Read in                                                               | Purpose                                                                                                                                                  |
+| ----------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VERCEL_GIT_COMMIT_SHA` | `src/app/api/site-health/route.ts`                                    | Commit SHA surfaced in the health-check response                                                                                                         |
+| `VERCEL_ENV`            | `src/app/robots.ts`                                                   | Drives `noindex` on every non-production deployment                                                                                                      |
+| `NODE_ENV`              | `src/content/pure.ts`, `src/app/[locale]/(site)/dev/gallery/page.tsx` | Production fixture guard; dev-gallery 404 in production                                                                                                  |
+| `NEXT_PHASE`            | `src/content/blog.ts`                                                 | Set by `next build`: a blog feed failure falls back to the LOCAL rows while building, but is thrown at production runtime (ISR keeps the last good page) |
 
 ## Run locally
 
@@ -138,10 +145,11 @@ Deploys to **Vercel**, not the VPS (`vercel.json`: `framework: nextjs`, `buildCo
 
 ## Integrations
 
-Full catalogue (I1–I20), contracts, and token rotation runbook: `docs/INTEGRATIONS.md`. Found in this repo's code:
+Full catalogue (I1–I21), contracts, and token rotation runbook: `docs/INTEGRATIONS.md`. Found in this repo's code:
 
 - **Operations content bundle** — server-only `fetch()` to `${OPS_API_URL}/api/website/v1/bundle?locale=...`, Bearer `OPS_WEBSITE_READ_TOKEN` (`src/content/adapter.ts`); gated by `CONTENT_SOURCE=OPS`.
 - **Operations → Website revalidate webhook** — `POST /api/revalidate`, Bearer `REVALIDATE_SECRET` (`src/app/api/revalidate/route.ts`).
+- **Operations blog feed + draft preview + media (I21, W248)** — server-only `fetch()` to `${OPS_API_URL}/api/website/v1/blog` (no token, `revalidate: 60`, tag `blog`; gated by `BLOG_SOURCE=OPS`) and `…/blog/preview/:token` (`no-store`, the token from the httpOnly preview cookie); covers and body images through `next/image` from `https://operations.jobsadmire.com/api/website/v1/media/**`, the one `images.remotePatterns` entry (`next.config.ts`, `src/lib/blog-media.ts`).
 - **Forms → Operations intake** — built in WP2a Task 2: server actions post through `src/forms/post.ts` to `${OPS_API_URL}/api/website/v1/forms/:formKey` with Bearer `OPS_WEBSITE_WRITE_TOKEN`; see § Forms flow (D11) below.
 - **Google Tag Manager / GA4 / Google Ads conversion tracking** — `NEXT_PUBLIC_GTM_ID` / `NEXT_PUBLIC_GA4_ID` / `NEXT_PUBLIC_ADS_ID` + `NEXT_PUBLIC_ADS_CONVERSION_LABEL` (`src/analytics/GtmLoader.tsx`, `src/content/pure.ts`).
 - **Cloudflare Turnstile** — `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, site key only; the secret key is held by Operations, not this repo.
@@ -172,6 +180,8 @@ No direct SDK imports for axios/Sanity/Stripe/Resend/Twilio/PostHog exist in `sr
 
 `pathnames` (`src/i18n/routing.ts`) is the single internal-pathname → per-locale-external-path table that next-intl, the redirect generator, and the SEO builders all read; add a route there once and every consumer picks it up.
 
+**Blog slug redirects and the preview route (W248)** sit outside both lists above, because they are content: when Operations renames a post, its feed lists `{ locale, from, to }` and `/blog/[slug]` answers the old slug with Next's `permanentRedirect` (308, one hop, only onto a written article; unknown or unpublished → 404 as before) — resolved in the page and its metadata alike (`resolveArticle`). `/blog/preview` (TR) and `/en/blog/preview` are a static segment beside `[slug]`, so `preview` can never be a post's slug (reserved in Operations too); the route is dynamic (draft mode + the `ja_blog_preview` cookie), `noindex, nofollow`, outside `pathnames`, the sitemap and robots. `/api/blog-preview` and `/api/blog-preview/exit` are route handlers (outside the proxy's matcher).
+
 **`alternateLinks: false`** — left at its default, next-intl's middleware answers every response with its own `Link: rel="alternate"; hreflang=…` header built from the _request host_ (`localhost`, a preview `*.vercel.app`, the apex), which then disagrees with the `<link rel="alternate">` tags rendered from `NEXT_PUBLIC_SITE_URL` (`docs/SEO.md`) — Lighthouse's SEO audit fails on a canonical that points at "another hreflang location." This was a real defect the WP1 gate caught (Task 14), not a stylistic choice; disabling the header makes the metadata layer the single source of hreflang truth.
 
 **`ja_locale` is written only when the resolved locale differs from Accept-Language negotiation** — next-intl's `syncCookie` behaviour, proved by curl bisection in Task 1's fix round (visiting `/` then `/en` with an English `Accept-Language` header sets it; visiting only `/` with a Turkish header never does). **"No `ja_locale` cookie" therefore means "no explicit choice was ever recorded," never "the visitor chose Turkish."** `LanguageHint` (Chrome, below) does not read this cookie for that reason — it reads `navigator.languages` directly.
@@ -200,22 +210,35 @@ Every bundle — from either adapter — validates against the Zod schema in `co
 
 `t(id)` honours the seven deliberately-empty Turkish fragments (`docs/CONTENT-MODEL.md`) and must not substitute English for an intentionally empty `tr` value.
 
+### Content adapter — the blog source (W248)
+
+The blog is the first collection Phase B serves from Operations, ahead of the bundle (owner 2026-10-06: Phase B starts with the blog). One switch, one place — `src/content/blog.ts` (`server-only`):
+
+- **`blogSource(env)`** — `OPS` only when `BLOG_SOURCE=OPS` **and** `OPS_API_URL` is set; anything else is `LOCAL`. Independent of `CONTENT_SOURCE` and of every website token: the feed is public (published posts are public content).
+- **`getBlogBundle(locale)`** (React `cache`) — `getBundle(locale)` with `collections.blog` replaced by the feed's rows (`withBlogRows`); unchanged under `LOCAL`. Every blog reader takes this bundle and keeps calling `getCollection(bundle, 'blog')`: the blog index and article (`generateStaticParams`, metadata, page), the home page (guides), the work-permit page (related articles) and the sitemap's blog source. Only those routes take the feed's 60 s floor; nothing else changes.
+- **The read** — `fetch(${OPS_API_URL}/api/website/v1/blog, { next: { revalidate: 60, tags: ['blog'] } })`; the envelope must be `blog.v1` (`contract/blog-feed.v1.ts`), then `src/content/blog-feed.ts` (pure, unit-tested against `contract/blog-feed.v1.fixture.json`) validates each post on its own and maps it into a `BlogPostSchema` row: per-locale slug/title/excerpt/body only for a written language (else nulled), `publishedAt` as the calendar day in Türkiye, `updatedAt`, `featured`, `authorObj`, `cover` (dropped unless on the media route), `coverAlt`, `seo`, `faq`, `readMinutesByLocale`. A bad post, a duplicate slug, a reserved slug (`preview`) is logged and left out; the feed's `redirects` drive the article's 308s.
+- **Failure** — one class, `BlogFeedUnavailableError` (network, HTTP, not JSON, not `blog.v1`), always logged. During `next build` (`NEXT_PHASE=phase-production-build`) and outside production the LOCAL rows stand in, so a cold build never fails on an Operations outage; at production runtime it is thrown, so ISR keeps the last good page and retries on the next request (the careers rule) — an outage never replaces live articles with the fallback or 404s them.
+- **The draft preview** — `fetchBlogPreview(token, locale)`: `GET …/blog/preview/:token` with `cache: 'no-store'`, needs only `OPS_API_URL`; answers `ok` (the draft as a row, lenient: a language not yet marked ready is still previewed), `invalid` (malformed token, 4xx/410), `empty` (no text in that language) or `unavailable`.
+
+The LOCAL bundle's `blog` rows are the importer's written articles only (W248: the design's index-only "yakında" rows are dropped) — the Phase A content and the fallback.
+
 ### The frozen contract
 
 `contract/website-bundle.v1.ts` (Zod schema, `CONTRACT_VERSION = '1.0'`) plus `contract/website-bundle.v1.fixture.json` (the golden fixture) are frozen as of Task 5 and pinned by `contract/contract.test.ts` against a SHA-256 computed over the **Prettier-formatted** schema file: `b407d92f39ab560e4c256ec2e7d1cd5d36f6166281b9d1dfdd178ede01319dcf`. `jobsadmire-operations` vendors both files byte-identically and must `.prettierignore` its copy, so a routine format pass on that side can never drift the bytes — and therefore the hash — away from this repo's. Bump procedure: `contract/CONTRACT.md`. `docs/CONTENT-MODEL.md` covers the bundle's content shape (strings, nav, settings, collections); this repo's own generated `src/content/local/*.json` bundles validate against the same schema (`contract.test.ts`'s third assertion).
 
 ## Freshness: ISR tags and time floors (D8)
 
-Tags: `site:${locale}`, `page:${slug}`, `blog`, `pool`, `openings`, `stories`, `sitemap`. Publishing in Operations triggers serial tag revalidation with a **read-back** — the site is re-fetched after revalidation and shown LIVE/NOT_LIVE in the Operations dashboard; NOT_LIVE is red with a Retry action and raises `WEBSITE_REVALIDATE_FAILED`.
+Tags: `site:${locale}`, `page:${slug}`, `blog`, `pool`, `openings`, `stories`, `sitemap`. **The blog is time-based only (W248):** the feed is read with `revalidate: 60` under `blog`, so a publish, edit or unpublish is live within a minute with no webhook; Operations' LIVE chip polls the article URL. Publishing in Operations triggers serial tag revalidation with a **read-back** — the site is re-fetched after revalidation and shown LIVE/NOT_LIVE in the Operations dashboard; NOT_LIVE is red with a Retry action and raises `WEBSITE_REVALIDATE_FAILED`.
 
 Every ISR route **also** carries a time floor independent of tag revalidation — belt-and-braces against a missed or failed webhook:
 
-| Content class                                 | Time floor                                 |
-| --------------------------------------------- | ------------------------------------------ |
-| Pages, strings, collections (general content) | 900 s                                      |
-| Candidate pool stats, careers openings        | 300 s                                      |
-| Representatives (list view)                   | 60 s                                       |
-| Representatives single-record view            | **`no-store`** — no floor, no cache at all |
+| Content class                                                 | Time floor                                 |
+| ------------------------------------------------------------- | ------------------------------------------ |
+| Pages, strings, collections (general content)                 | 900 s                                      |
+| Candidate pool stats, careers openings                        | 300 s                                      |
+| Representatives (list view)                                   | 60 s                                       |
+| Blog feed (W248; the blog routes, home, work-permit, sitemap) | 60 s                                       |
+| Representatives single-record view                            | **`no-store`** — no floor, no cache at all |
 
 The representatives single-record view is the one exception to "everything is ISR": a revoked representative's `status` must take effect immediately, with zero cache window, because the page exists specifically so an employer can check whether someone is still authorised (design-package `docs/crm-feed.md`).
 

@@ -12,7 +12,7 @@ import {
   findWritten,
   indexPosts,
   isWritten,
-  MOST_READ_KEYS,
+  MOST_READ_MIN,
   mostReadPosts,
   otherLocale,
   PAGE_SIZE,
@@ -54,7 +54,7 @@ describe('the committed bundles (W4, W28, W64)', () => {
     expect(writtenPosts(getCollection(load('tr'), 'blog'), 'tr')).toEqual([]);
   });
 
-  it('findWritten: the EN slug resolves; its TR slug, an index-only slug and an unknown slug do not (B-1)', () => {
+  it('findWritten: the EN slug resolves; its TR slug, a dropped index-only slug and an unknown slug do not (B-1)', () => {
     const en = getCollection(load('en'), 'blog');
     const tr = getCollection(load('tr'), 'blog');
     expect(findWritten(en, 'en', 'turkey-work-permit-process-employer-guide')?.key).toBe(
@@ -65,25 +65,18 @@ describe('the committed bundles (W4, W28, W64)', () => {
     expect(findWritten(en, 'en', 'does-not-exist')).toBeNull();
   });
 
-  it('the index lists every row with a title (owner 2026-10-05): EN 22, TR 4 — row 1 featured in both', () => {
+  it('the index lists the written articles only (W248): EN the one article, TR none (the W6 empty state)', () => {
     const en = indexPosts(getCollection(load('en'), 'blog'), 'en');
     const tr = indexPosts(getCollection(load('tr'), 'blog'), 'tr');
-    expect(en).toHaveLength(22);
-    expect(tr.map((p) => p.slug.tr)).toEqual([
-      'yabanci-isciler-calisma-izni-rehberi',
-      'pakistandan-isci-istihdami',
-      'iskur-ozel-istihdam-burolari-kurallari',
-      'turkiye-de-isgucu-acigi',
-    ]);
-    expect(en[0].key).toBe(tr[0].key);
-    expect(en[0].key).toBe('turkey-work-permit-process-employer-guide');
+    expect(en.map((p) => p.key)).toEqual(['turkey-work-permit-process-employer-guide']);
+    expect(tr).toEqual([]);
     expect(PAGE_SIZE).toBe(6);
   });
 
-  it("most read resolves the design's lists to bundle rows in both locales", () => {
+  it('most read is left out while fewer than two written articles rank (W248)', () => {
     for (const locale of ['tr', 'en'] as const) {
       const rows = getCollection(load(locale), 'blog');
-      expect(mostReadPosts(rows, locale).map((p) => p.key)).toEqual([...MOST_READ_KEYS[locale]]);
+      expect(mostReadPosts(rows, locale)).toEqual([]);
     }
   });
 
@@ -186,24 +179,33 @@ describe('the pure helpers', () => {
     expect(matchKeys(items, 'nothing', ALL, 'tr')).toEqual([]);
   });
 
-  it('indexPosts keeps the collection order and drops rows with no title here', () => {
-    expect(indexPosts([d, c, b, a], 'tr').map((p) => p.key)).toEqual(['c', 'b', 'a']);
-    expect(indexPosts([d, c, b, a], 'en').map((p) => p.key)).toEqual(['d', 'c', 'b', 'a']);
+  it('indexPosts: the written articles only, newest first; the newest flagged post leads (W248)', () => {
+    expect(indexPosts([d, c, b, a], 'tr').map((p) => p.key)).toEqual(['a', 'b']);
+    expect(indexPosts([d, c, b, a], 'en').map((p) => p.key)).toEqual(['a', 'c', 'b', 'd']);
+    const flagged = { ...b, featured: true };
+    expect(indexPosts([d, c, flagged, a], 'en').map((p) => p.key)).toEqual(['b', 'a', 'c', 'd']);
+    expect(indexPosts([], 'en')).toEqual([]);
   });
 
-  it('mostReadPosts drops a key with no row or no title in the locale', () => {
+  it('mostReadPosts: written rows of the design list (by key or EN slug), none below the minimum', () => {
     const rows = [
       post({ key: 'turkey-work-permit-process-employer-guide' }),
+      // the same article from Operations: the post id as key, the design key as EN slug
       post({
-        key: 'hiring-from-pakistan-turkish-employers',
-        slug: { tr: null, en: 'x' },
+        key: 'cmg-ops-id',
+        slug: { tr: null, en: 'hiring-from-pakistan-turkish-employers' },
         title: { tr: null, en: 'X' },
+        hasBody: { tr: false, en: true },
+        body: { tr: null, en: 'x' },
       }),
     ];
-    expect(mostReadPosts(rows, 'tr').map((p) => p.key)).toEqual([
+    expect(MOST_READ_MIN).toBe(2);
+    expect(mostReadPosts(rows, 'en').map((p) => p.key)).toEqual([
       'turkey-work-permit-process-employer-guide',
+      'cmg-ops-id',
     ]);
-    expect(mostReadPosts(rows, 'en')).toHaveLength(2);
+    // TR: only one of them is written in Turkish — no ranking of one
+    expect(mostReadPosts(rows, 'tr')).toEqual([]);
   });
 
   it("resultLine: the query, else the topic, else the total — the design's three lines", () => {

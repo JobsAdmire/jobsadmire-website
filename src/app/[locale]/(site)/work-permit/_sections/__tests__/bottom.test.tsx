@@ -55,29 +55,57 @@ describe('Faq', () => {
   });
 });
 
-describe('RelatedArticles (W4)', () => {
-  it('below the blog threshold (0 Turkish bodies) shows the design’s three sample cards with the örnek tag and no /blog link', () => {
+describe('RelatedArticles (W248: real posts, the samples only while none exists)', () => {
+  it('TR on the LOCAL bundle (no Turkish article): the design’s three sample cards with the örnek tag, each into /blog', () => {
     const { container } = renderWithIntl(
       <RelatedArticles bundle={BUNDLES.tr} locale="tr" tf={tfTr} />,
     );
     const region = screen.getByTestId('wp-related');
     expect(region).toHaveTextContent(tfTr('wp.351'));
     expect(container.querySelector('[data-sample-tag]')).not.toBeNull();
-    const cards = within(screen.getByTestId('wp-related-sample')).getAllByRole('article');
+    const list = screen.getByTestId('wp-related-sample');
+    const cards = within(list).getAllByRole('link');
     expect(cards).toHaveLength(3);
     expect(cards[0]).toHaveTextContent(tfTr('wp.353'));
     expect(cards[2]).toHaveTextContent(tfTr('wp.358'));
-    expect(within(region).queryAllByRole('link')).toHaveLength(0);
+    for (const card of cards) expect(card).toHaveAttribute('href', '/blog');
+    expect(within(region).getByRole('link', { name: tfTr('wp.352') })).toHaveAttribute(
+      'href',
+      '/blog',
+    );
   });
 
-  it('once the threshold is met, shows up to three work-permit posts with a body in this locale', () => {
-    const posts = getCollection(BUNDLES.tr, 'blog').map((p, i) => ({
-      ...p,
-      slug: { ...p.slug, tr: p.slug.tr ?? `yazi-${i}` },
-      title: { ...p.title, tr: p.title.tr ?? `Yazı ${i}` },
-      hasBody: { ...p.hasBody, tr: true },
-      body: { ...p.body, tr: '# Başlık' },
-    }));
+  it('EN on the LOCAL bundle: the one written article is the one card — no samples, no empty slots', () => {
+    renderWithIntl(<RelatedArticles bundle={BUNDLES.en} locale="en" tf={tfEn} />, {
+      locale: 'en',
+    });
+    const region = screen.getByTestId('wp-related');
+    expect(region.querySelector('[data-sample-tag]')).toBeNull();
+    const cards = within(region).getAllByRole('article');
+    expect(cards).toHaveLength(1);
+    expect(within(cards[0]).getByRole('link').getAttribute('href')).toBe(
+      '/en/blog/turkey-work-permit-process-employer-guide',
+    );
+  });
+
+  it('with more posts: work-permit articles first, then the newest others, capped at three', () => {
+    const base = getCollection(BUNDLES.tr, 'blog')[0];
+    const make = (key: string, category: typeof base.category, publishedAt: string) => ({
+      ...base,
+      key,
+      category,
+      publishedAt,
+      slug: { tr: key, en: null },
+      title: { tr: `Yazı ${key}`, en: null },
+      hasBody: { tr: true, en: false },
+      body: { tr: 'Metin', en: null },
+    });
+    const posts = [
+      make('r-new', 'recruitment', '2026-09-01'),
+      make('wp-old', 'workPermits', '2026-01-01'),
+      make('c-mid', 'compliance', '2026-05-01'),
+      make('wp-new', 'workPermits', '2026-08-01'),
+    ];
     const bundle: Bundle = {
       ...BUNDLES.tr,
       collections: { ...BUNDLES.tr.collections, blog: posts },
@@ -86,14 +114,11 @@ describe('RelatedArticles (W4)', () => {
     const region = screen.getByTestId('wp-related');
     const cards = within(region).getAllByRole('article');
     expect(cards).toHaveLength(RELATED_LIMIT);
-    const expected = posts.filter((p) => p.category === 'workPermits').slice(0, RELATED_LIMIT);
-    expect(cards.map((c) => within(c).getByRole('link').getAttribute('href'))).toEqual(
-      expected.map((p) => `/blog/${p.slug.tr}`),
-    );
-    expect(within(region).getByRole('link', { name: tfTr('wp.352') })).toHaveAttribute(
-      'href',
-      '/blog',
-    );
+    expect(cards.map((c) => within(c).getByRole('link').getAttribute('href'))).toEqual([
+      '/blog/wp-new',
+      '/blog/wp-old',
+      '/blog/r-new',
+    ]);
     expect(collisionsInTree(container)).toEqual([]);
   });
 });

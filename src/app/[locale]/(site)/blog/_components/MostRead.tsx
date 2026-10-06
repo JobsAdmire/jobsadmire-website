@@ -1,4 +1,4 @@
-import type { BlogPost } from '@/content/collections';
+import { readMinutesOf, type BlogPost } from '@/content/collections';
 import { makeT } from '@/content/pure';
 import { SampleTag } from '@/design/blocks/SampleTag';
 import { Link } from '@/i18n/navigation';
@@ -6,7 +6,6 @@ import type { Locale } from '@/i18n/routing';
 import { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 import { articleHref, isWritten } from '../_lib/posts';
-import { SoonTag } from './SoonTag';
 
 const STRETCH =
   'text-ink no-underline after:absolute after:inset-0 after:content-[""] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-blue-safe';
@@ -14,8 +13,8 @@ const STRETCH =
 /**
  * The design's "Most read" panel beside the featured card (Blog.dc.html 622–632; phones
  * 337–343): a white r20 card, the h2 "En çok okunan" (blog.031) and three ranked rows — the
- * rank numeral, the title and "Kategori · n dk okuma" — split by hairlines, a written article's
- * row a link with the pale hover. On phones the h2 is a small grey caps label and the rank sits
+ * rank numeral, the title and "Kategori · n dk okuma" — split by hairlines, each row a link
+ * with the pale hover (only written articles are ranked, `mostReadPosts`). On phones the h2 is a small grey caps label and the rank sits
  * in a tinted square. The list is the design's (`mostReadByLang`, `MOST_READ_KEYS`) — there are
  * no read counts yet, so the panel wears the `SampleTag`. The rank uses a darker blue than the
  * design's #bfdff0 (1.4:1 on white) so it passes the large-text 3:1 (D20).
@@ -46,11 +45,12 @@ export function MostRead({
         {posts.map((post, i) => {
           const href = isWritten(post, locale) ? articleHref(post, locale) : null;
           const title = post.title[locale];
+          if (!href || !title) return null;
           return (
             <li
               key={post.key}
-              data-post-link={href ? '' : undefined}
-              className={`relative flex flex-1 items-start gap-3.5 border-t border-border-3 px-1 py-4 max-md:min-h-[44px] max-md:items-center max-md:gap-3 max-md:py-[13px]${href ? ' transition-colors hover:bg-pale-1' : ''}`}
+              data-post-link=""
+              className="relative flex flex-1 items-start gap-3.5 border-t border-border-3 px-1 py-4 transition-colors hover:bg-pale-1 max-md:min-h-[44px] max-md:items-center max-md:gap-3 max-md:py-[13px]"
             >
               <span
                 aria-hidden="true"
@@ -60,19 +60,15 @@ export function MostRead({
               </span>
               <span className="flex min-w-0 flex-col gap-1 max-md:gap-[3px]">
                 <span className="text-[14.5px] leading-[1.4] font-extrabold text-ink xl:text-[11px] max-md:line-clamp-2 max-md:text-[15px] max-md:leading-[1.35]">
-                  {href ? (
-                    <Link prefetch={false} href={href} className={STRETCH}>
-                      {title}
-                    </Link>
-                  ) : (
-                    title
-                  )}
+                  <Link prefetch={false} href={href} className={STRETCH}>
+                    {title}
+                  </Link>
                 </span>
                 <span className="flex flex-wrap items-center gap-2 text-[12.5px] font-semibold text-text-tertiary xl:text-[11px] max-md:text-[12px]">
                   <span>
-                    {t(post.categoryLabelId)} · {formatReadMinutes(post.readMinutes, locale)}
+                    {t(post.categoryLabelId)} ·{' '}
+                    {formatReadMinutes(readMinutesOf(post, locale), locale)}
                   </span>
-                  {href ? null : <SoonTag />}
                 </span>
               </span>
             </li>

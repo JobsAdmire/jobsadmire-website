@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import type { BlogPost } from '@/content/collections';
 import { BLOCK_STRINGS, testBundle } from '@/test/bundle';
@@ -112,6 +112,56 @@ describe('ArticleBody (B-8, B-11)', () => {
   });
 });
 
+describe('ArticleBody — the blog.v1 additions (W248)', () => {
+  const V1 = [
+    'Read *this* and [the guide](/en/work-permit), the [rules](https://www.csgb.gov.tr/) or [write](mailto:info@jobsadmire.com).',
+    '## Costs',
+    '### Fees',
+    'Bad [link](javascript:void0) and [plain](http://example.com) stay text; 5 \\* 3 stays literal.',
+    '![A recruiter at work](https://operations.jobsadmire.com/api/website/v1/media/m1/1200.webp)',
+    '![tracker](https://evil.example.com/pixel.webp)',
+  ].join('\n\n');
+
+  it('renders italics, site links through next/link, external links in a new tab with noopener, mailto plainly', () => {
+    const { container } = render(<ArticleBody blocks={parseMarkdown(V1)} />);
+    expect(screen.getByText('this').tagName).toBe('EM');
+    const site = screen.getByRole('link', { name: 'the guide' });
+    expect(site).toHaveAttribute('href', '/en/work-permit');
+    expect(site).not.toHaveAttribute('target');
+    const ext = screen.getByRole('link', { name: 'rules' });
+    expect(ext).toHaveAttribute('href', 'https://www.csgb.gov.tr/');
+    expect(ext).toHaveAttribute('target', '_blank');
+    expect(ext).toHaveAttribute('rel', 'noopener');
+    const mail = screen.getByRole('link', { name: 'write' });
+    expect(mail).toHaveAttribute('href', 'mailto:info@jobsadmire.com');
+    expect(mail).not.toHaveAttribute('target');
+    for (const a of container.querySelectorAll('a')) expect(a.className).toContain('underline');
+  });
+
+  it('an unsafe or http link renders its text only; an escaped star is a literal star', () => {
+    const { container } = render(<ArticleBody blocks={parseMarkdown(V1)} />);
+    expect(container.querySelectorAll('a')).toHaveLength(3);
+    expect(container.textContent).toContain('Bad link and plain stay text; 5 * 3 stays literal.');
+    expect(container.innerHTML).not.toContain('javascript:');
+  });
+
+  it('an h3 sits inside its h2 section; only the media route image renders, sized and never cropped', () => {
+    render(<ArticleBody blocks={parseMarkdown(V1)} />);
+    const h3 = screen.getByRole('heading', { level: 3, name: 'Fees' });
+    expect(h3.closest('[data-testid="article-section"]')?.querySelector('h2')?.id).toBe('costs');
+    const figures = screen.getAllByTestId('article-image');
+    expect(figures).toHaveLength(1);
+    const img = within(figures[0]).getByRole('img', { name: 'A recruiter at work' });
+    expect(img.getAttribute('src')).toContain(
+      encodeURIComponent('https://operations.jobsadmire.com/api/website/v1/media/m1/1200.webp'),
+    );
+    expect(img).toHaveAttribute('sizes');
+    expect(img.className).toContain('h-auto');
+    expect(img.className).not.toContain('object-cover');
+    expect(document.body.innerHTML).not.toContain('evil.example.com');
+  });
+});
+
 const row = (key: string): BlogPost => ({
   key,
   slug: { tr: `${key}-tr`, en: key },
@@ -135,8 +185,8 @@ const bundle = testBundle({
   },
 });
 
-describe('RelatedPosts (owner ruling 2026-10-05)', () => {
-  it('a card whose article has no body here is not a link and wears the soon tag', () => {
+describe('RelatedPosts (W248: written articles only, no "yakında" cards)', () => {
+  it('never renders a card or a neighbour for an article without a body here', () => {
     const bodiless: BlogPost = {
       ...row('x'),
       hasBody: { tr: false, en: false },
@@ -153,14 +203,34 @@ describe('RelatedPosts (owner ruling 2026-10-05)', () => {
       { locale: 'en' },
     );
     const cards = screen.getAllByTestId('article-related-card');
-    expect(cards[0]).toHaveAttribute('data-linked', 'true');
+    expect(cards).toHaveLength(1);
     expect(cards[0].querySelector('a')).toHaveAttribute('href', '/en/blog/a');
-    expect(cards[1]).toHaveAttribute('data-linked', 'false');
-    expect(cards[1].querySelector('a')).toBeNull();
-    expect(screen.getAllByTestId('article-soon')).toHaveLength(2); // the card + the Next card
-    const next = screen.getByTestId('article-next');
-    expect(next.tagName).not.toBe('A');
-    expect(next.className).toContain('text-right');
+    expect(screen.queryByTestId('article-next')).toBeNull();
+    expect(document.querySelector('[data-soon-tag], [data-testid="article-soon"]')).toBeNull();
+  });
+
+  it('a related card shows the post cover photo when it has one', () => {
+    const { container } = renderWithIntl(
+      <RelatedPosts
+        bundle={bundle}
+        locale="en"
+        related={[
+          {
+            ...row('a'),
+            cover: {
+              url: 'https://operations.jobsadmire.com/api/website/v1/media/m1/1600.webp',
+              width: 1600,
+              height: 900,
+            },
+          },
+        ]}
+        prev={null}
+        next={null}
+      />,
+      { locale: 'en' },
+    );
+    expect(container.querySelector('[data-cover-photo="blog-cover-a"] img')).not.toBeNull();
+    expect(container.querySelector('[data-placeholder="blog-cover-a"]')).toBeNull();
   });
 });
 

@@ -34,13 +34,17 @@ describe('sitemap', () => {
     for (const url of urls) expect(url).not.toContain('[');
   });
 
-  it('is exactly (static keys − excluded) × locales while the detail sources yield nothing (no door in the unit suite)', () => {
+  it('is exactly (static keys − excluded) × locales + the LOCAL blog article (no careers door in the unit suite)', () => {
     const staticKeys = (Object.keys(pathnames) as (keyof typeof pathnames)[]).filter(
       (key) =>
         isStatic(key) &&
         !(NOINDEX_PATHNAMES as readonly string[]).includes(key) &&
         !UNBUILT_PATHNAMES.has(key),
     );
-    expect(urls).toHaveLength(staticKeys.length * routing.locales.length);
+    // W248: the blog source lists the one written article of the LOCAL bundle (EN only).
+    expect(urls).toHaveLength(staticKeys.length * routing.locales.length + 1);
+    expect(urls).toContain(
+      'https://www.jobsadmire.com/en/blog/turkey-work-permit-process-employer-guide',
+    );
   });
 });

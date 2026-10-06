@@ -1,42 +1,138 @@
+import { isBlogImageSrc } from '@/lib/blog-media';
+
 /**
- * The v1 blog body grammar (docs/CONTENT-MODEL.md § Blog, B-8): exactly what the importer writes
- * today (W64 — the EN body composed from blogarticle.025–063) and what the Phase B editor may
- * write. Blocks are separated by blank lines; inside a block only `**bold**` is markup. Anything
- * else — HTML, links, images — is text: there is no HTML pass-through, so there is nothing to
- * sanitise, and `ArticleBody` emits React nodes, never a string. Pure: no React, no DOM.
+ * The site's blog body grammar (docs/CONTENT-MODEL.md § Blog body grammar; contract `blog.v1`,
+ * which Operations validates on save): what the importer writes for the LOCAL article (W64) and
+ * what the Operations editor writes.
+ *
+ * Blocks, separated by blank lines: `## ` h2, `### ` h3, a paragraph, a `- ` list, a `1. ` list,
+ * a `> ` quote, the takeaways callout (`> **Title**`, a blank `>`, then `> - item` lines), the
+ * leads cards (`**lead** — body` paragraphs), and an image line `![alt](url)`. Inline:
+ * `**bold**`, `*italic*`, `[text](url)` (https:, mailto: or site-relative `/…`), and `\` escaping
+ * `*`, `[` or `]`. Nothing else is markup: there is no HTML pass-through, so there is nothing to
+ * sanitise — `ArticleBody` emits React nodes, never a string. A link to any other scheme renders
+ * its text only; an image from anywhere but the Operations media route or the site itself is
+ * dropped. Pure: no React, no DOM.
  */
-export type Inline = { kind: 'text'; text: string } | { kind: 'strong'; text: string };
+export type Inline =
+  | { kind: 'text'; text: string }
+  | { kind: 'strong'; children: Inline[] }
+  | { kind: 'em'; children: Inline[] }
+  | { kind: 'link'; href: string; external: boolean; children: Inline[] };
 export type Heading = { id: string; text: string };
 export type Block =
   | { kind: 'p'; inlines: Inline[] }
   | { kind: 'h2'; id: string; text: string }
+  | { kind: 'h3'; text: string }
   | { kind: 'ul'; items: Inline[][] }
   | { kind: 'ol'; items: Inline[][] }
   | { kind: 'leads'; items: { lead: string; body: Inline[] }[] }
   | { kind: 'callout'; title: string; items: Inline[][] }
-  | { kind: 'quote'; inlines: Inline[] };
+  | { kind: 'quote'; inlines: Inline[] }
+  | { kind: 'image'; src: string; alt: string };
 
-const STRONG = /\*\*(.+?)\*\*/g;
 // No `s` flag (ES2018; the tsconfig targets ES2017): `[\s\S]` spans the joined lines.
 const LEAD = /^\*\*(.+?)\*\*\s+—\s+([\s\S]+)$/;
 const UL = /^-\s+/;
 const OL = /^\d+\.\s+/;
 const CALLOUT_TITLE = /^\*\*(.+)\*\*$/;
-const HEADING_LINE = /^(## .*)$/gm;
-const DIACRITICS = /[\u0300-\u036f]/g; // combining marks left by NFKD (escaped, never literal)
+/** A heading or an image line is always a block of its own, blank lines or not. */
+const OWN_LINE = /^(#{2,3} .*|!\[[^\n]*\]\([^\s()]+\))$/gm;
+const IMAGE_LINE = /^!\[((?:\\[\s\S]|[^\\\]])*)\]\(([^\s()]+)\)$/;
+const DIACRITICS = /[̀-ͯ]/g; // combining marks left by NFKD (escaped, never literal)
 
-export function parseInline(text: string): Inline[] {
-  const out: Inline[] = [];
-  let last = 0;
-  for (const m of text.matchAll(STRONG)) {
-    const at = m.index ?? 0;
-    if (at > last) out.push({ kind: 'text', text: text.slice(last, at) });
-    out.push({ kind: 'strong', text: m[1] });
-    last = at + m[0].length;
+// Sticky (`y`) so each is tried exactly at the scan position. An escape pair (`\x`) is consumed
+// as a unit inside every span, so an escaped `*` or `]` never closes one.
+const LINK = /\[((?:\\[\s\S]|[^\\\]])+)\]\(([^\s()]+)\)/y;
+const STRONG = /\*\*((?:\\[\s\S]|[^\\])+?)\*\*(?!\*)/y;
+const EM = /\*((?:\\[\s\S]|\*\*(?:\\[\s\S]|[^\\*])+?\*\*|[^\\*])+)\*/y;
+const ESCAPABLE = '*[]';
+const MAX_DEPTH = 4;
+
+/** `\*`, `\[`, `\]` → the literal character; any other backslash stays as typed. */
+export function unescapeText(text: string): string {
+  return text.replace(/\\([*[\]])/g, '$1');
+}
+
+/** A link target the site renders: `https:` (a new tab), `mailto:`, or one site-relative path
+ *  (`/…`, never the protocol-relative `//host`). Anything else — `http:`, `javascript:`, a bare
+ *  word — is not a link. */
+export function safeHref(raw: string): string | null {
+  if (raw.startsWith('/')) return raw.startsWith('//') ? null : raw;
+  if (/^mailto:[^\s@]+@[^\s@]+$/i.test(raw)) return raw;
+  if (!/^https:\/\//i.test(raw)) return null;
+  try {
+    return new URL(raw).protocol === 'https:' ? raw : null;
+  } catch {
+    return null;
   }
-  if (last < text.length || out.length === 0) out.push({ kind: 'text', text: text.slice(last) });
+}
+
+/** A span's inner text may not start or end with a space (`5 * 3 * 2` is not emphasis). */
+const flanked = (inner: string) => inner.length > 0 && inner.trim() === inner;
+
+function at(re: RegExp, src: string, i: number): RegExpExecArray | null {
+  re.lastIndex = i;
+  return re.exec(src);
+}
+
+export function parseInline(src: string, depth = 0, inLink = false): Inline[] {
+  const out: Inline[] = [];
+  let buf = '';
+  const flush = () => {
+    if (buf) out.push({ kind: 'text', text: buf });
+    buf = '';
+  };
+  let i = 0;
+  while (i < src.length) {
+    const c = src[i];
+    if (c === '\\' && i + 1 < src.length && ESCAPABLE.includes(src[i + 1])) {
+      buf += src[i + 1];
+      i += 2;
+      continue;
+    }
+    if (depth < MAX_DEPTH) {
+      const link = c === '[' && !inLink ? at(LINK, src, i) : null;
+      if (link) {
+        const children = parseInline(link[1], depth + 1, true);
+        const href = safeHref(link[2]);
+        flush();
+        if (href) out.push({ kind: 'link', href, external: /^https:/i.test(href), children });
+        else out.push(...children);
+        i += link[0].length;
+        continue;
+      }
+      const strong = c === '*' && src[i + 1] === '*' ? at(STRONG, src, i) : null;
+      if (strong && flanked(strong[1])) {
+        flush();
+        out.push({ kind: 'strong', children: parseInline(strong[1], depth + 1, inLink) });
+        i += strong[0].length;
+        continue;
+      }
+      const em = c === '*' ? at(EM, src, i) : null;
+      if (em && flanked(em[1])) {
+        flush();
+        out.push({ kind: 'em', children: parseInline(em[1], depth + 1, inLink) });
+        i += em[0].length;
+        continue;
+      }
+    }
+    buf += c;
+    i += 1;
+  }
+  flush();
+  if (out.length === 0) out.push({ kind: 'text', text: '' });
   return out;
 }
+
+/** The visible text of inline nodes, markup dropped. */
+export function inlineText(inlines: readonly Inline[]): string {
+  return inlines.map((n) => (n.kind === 'text' ? n.text : inlineText(n.children))).join('');
+}
+
+/** A heading, a callout title or a lead is plain text: markup inside it is dropped, escapes
+ *  resolved. */
+const plain = (text: string) => inlineText(parseInline(text));
 
 /** Deterministic ASCII heading ids (the TOC anchors): Turkish letters fold to ASCII so both
  *  locales produce the same id shape; a collision — or a reserved page id such as `faq` — gets a
@@ -73,7 +169,7 @@ function parseQuote(lines: readonly string[]): Block {
   if (title && parts[1].every((line) => UL.test(line))) {
     return {
       kind: 'callout',
-      title: title[1],
+      title: plain(title[1]),
       items: parts[1].map((line) => parseInline(line.replace(UL, ''))),
     };
   }
@@ -87,15 +183,24 @@ export function parseMarkdown(md: string, reserved: readonly string[] = []): Blo
   const blocks: Block[] = [];
   const chunks = md
     .replace(/\r\n?/g, '\n')
-    .replace(HEADING_LINE, '\n$1\n') // a heading is always a block of its own
+    .replace(OWN_LINE, '\n$1\n')
     .split(/\n\s*\n/)
     .map((chunk) => chunk.trim())
     .filter((chunk) => chunk.length > 0);
   for (const chunk of chunks) {
     const lines = chunk.split('\n').map((line) => line.trim());
-    if (lines.length === 1 && lines[0].startsWith('## ')) {
-      const text = lines[0].slice(3).trim();
+    const single = lines.length === 1 ? lines[0] : null;
+    const image = single ? IMAGE_LINE.exec(single) : null;
+    if (single?.startsWith('## ')) {
+      const text = plain(single.slice(3).trim());
       blocks.push({ kind: 'h2', id: headingId(text, used), text });
+    } else if (single?.startsWith('### ')) {
+      blocks.push({ kind: 'h3', text: plain(single.slice(4).trim()) });
+    } else if (image) {
+      // An image from anywhere else is dropped, never fetched (the contract: only the module's
+      // own media, docs/CONTENT-MODEL.md).
+      if (isBlogImageSrc(image[2]))
+        blocks.push({ kind: 'image', src: image[2], alt: unescapeText(image[1]) });
     } else if (lines.every((line) => line.startsWith('>'))) {
       blocks.push(parseQuote(lines));
     } else if (lines.every((line) => UL.test(line))) {
@@ -107,7 +212,7 @@ export function parseMarkdown(md: string, reserved: readonly string[] = []): Blo
       const lead = LEAD.exec(joined);
       const previous = blocks[blocks.length - 1];
       if (lead) {
-        const item = { lead: lead[1], body: parseInline(lead[2]) };
+        const item = { lead: plain(lead[1]), body: parseInline(lead[2]) };
         if (previous?.kind === 'leads') previous.items.push(item);
         else blocks.push({ kind: 'leads', items: [item] });
       } else {

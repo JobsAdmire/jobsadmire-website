@@ -212,17 +212,28 @@ for (const locale of ['tr', 'en'] as const) {
   });
 }
 
-test('W4 + parity S15: below the blog threshold (0 Turkish bodies) the related block shows the design’s three sample cards with the örnek tag and no /blog link', async ({
+test('W248 + parity S15: the related block shows the published articles — the design’s sample cards only while a locale has none', async ({
   page,
 }) => {
-  for (const path of Object.values(ROUTES)) {
-    await page.goto(path);
-    await expect(page.getByTestId('wp-hero')).toBeVisible();
-    const related = page.getByTestId('wp-related');
-    await expect(related.locator('[data-sample-tag]')).toBeVisible();
-    await expect(related.getByRole('article')).toHaveCount(3);
-    await expect(related.getByRole('link')).toHaveCount(0);
-  }
+  // TR (no Turkish article on the LOCAL bundle): the three sample cards, each a way into /blog
+  await page.goto(ROUTES.tr);
+  await expect(page.getByTestId('wp-hero')).toBeVisible();
+  let related = page.getByTestId('wp-related');
+  await expect(related.locator('[data-sample-tag]')).toBeVisible();
+  await expect(related.getByTestId('wp-related-sample').getByRole('link')).toHaveCount(3);
+  for (const href of await related
+    .getByTestId('wp-related-sample')
+    .getByRole('link')
+    .evaluateAll((els) => els.map((el) => el.getAttribute('href'))))
+    expect(href).toBe('/blog');
+  // EN: the one written article is the one card — no samples
+  await page.goto(ROUTES.en);
+  related = page.getByTestId('wp-related');
+  await expect(related.locator('[data-sample-tag]')).toHaveCount(0);
+  await expect(related.getByRole('article')).toHaveCount(1);
+  await expect(
+    related.getByRole('article').getByRole('link', { name: /work permit process/i }),
+  ).toHaveAttribute('href', '/en/blog/turkey-work-permit-process-employer-guide');
 });
 
 test('W10: the ≤ 700 px variants are CSS switches on server-rendered markup', async ({ page }) => {

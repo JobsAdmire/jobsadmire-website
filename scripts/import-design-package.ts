@@ -4,7 +4,7 @@ import { runInNewContext } from 'node:vm';
 import { z } from 'zod';
 import { BundleSchema, type Bundle, type NavItem } from '../contract/website-bundle.v1';
 import {
-  BLOG_NAV_THRESHOLD,
+  BLOG_CATEGORY_LABEL_ID,
   CollectionSchemas,
   METRIC_KEYS,
   PAGE_KEYS,
@@ -63,7 +63,7 @@ export type ImportReport = {
   /** W221 house style: TR values whose typographic ’ became the straight '. */
   apostrophe: number;
   placeholders: Array<{ id: string; key: MetricKey; en: string; tr: string }>;
-  blog: { rows: number; trBodies: number; navVisible: boolean };
+  blog: { rows: number; dropped: number; trBodies: number };
 };
 
 const PAGE_FILES = [
@@ -409,12 +409,6 @@ const BLOG_CATEGORY: Record<string, BlogCategory> = {
   'Market News': 'marketNews',
   'Piyasa Haberleri': 'marketNews',
 };
-const BLOG_CATEGORY_LABEL: Record<BlogCategory, string> = {
-  workPermits: 'home.263',
-  recruitment: 'home.265',
-  compliance: 'home.264',
-  marketNews: 'home.262',
-};
 /** TR slug → the EN article it translates (blog-posts.js carries no link between them). */
 const BLOG_TRANSLATIONS: Record<string, string> = {
   'yabanci-isciler-calisma-izni-rehberi': 'turkey-work-permit-process-employer-guide',
@@ -550,11 +544,12 @@ const PAGE_TABLE: Record<
     robots: 'index',
     jsonLd: ['breadcrumb', 'jobPosting'],
   },
-  blog: { titleId: '', descriptionId: '', robots: 'index', jsonLd: ['breadcrumb'] }, // owner 2026-10-05: always in nav, indexable (articles stay noindex)
+  blog: { titleId: '', descriptionId: '', robots: 'index', jsonLd: ['breadcrumb'] }, // owner 2026-10-05: always in nav, indexable
+  // W248: published articles are indexable (the SEO flip); the FAQPage node only where a post has FAQs
   blogArticle: {
     titleId: '',
     descriptionId: '',
-    robots: 'noindex',
+    robots: 'index',
     jsonLd: ['breadcrumb', 'article', 'faq'],
   },
   privacy: { titleId: '', descriptionId: '', robots: 'index', jsonLd: ['breadcrumb'] },
@@ -790,7 +785,7 @@ function buildBlog(
       title: { en: en(p.title), tr: null },
       excerpt: { en: en(p.excerpt), tr: null },
       category,
-      categoryLabelId: BLOG_CATEGORY_LABEL[category],
+      categoryLabelId: BLOG_CATEGORY_LABEL_ID[category],
       author: 'JobsAdmire',
       publishedAt: isoDate(p.date),
       readMinutes: readMinutes(p.read),
@@ -881,7 +876,7 @@ export function buildBundles() {
     turkiyeBlog: 0,
     apostrophe: 0,
     placeholders: [],
-    blog: { rows: 0, trBodies: 0, navVisible: false },
+    blog: { rows: 0, dropped: 0, trBodies: 0 },
   };
 
   // 1. W7 / W51 override table
@@ -983,10 +978,13 @@ export function buildBundles() {
     countryRows.map((c) => ({ code: c.code, name: c[locale], dial: c.dial }));
 
   // 6. collections
-  const blog = buildBlog(strings, report);
+  // W248 (owner 2026-10-06): the blog is real published posts only — the design's index-only
+  // "yakında" rows are dropped; the LOCAL bundle (Phase A, and the fallback behind
+  // BLOG_SOURCE=OPS) keeps the rows that have a body in some locale: the one written article.
+  const allBlog = buildBlog(strings, report);
+  const blog = allBlog.filter((p) => p.hasBody.en || p.hasBody.tr);
   const trBodies = blog.filter((p) => p.hasBody.tr).length;
-  const navVisible = trBodies >= BLOG_NAV_THRESHOLD;
-  report.blog = { rows: blog.length, trBodies, navVisible };
+  report.blog = { rows: blog.length, dropped: allBlog.length - blog.length, trBodies };
   const metrics: Metric[] = [
     ...(Object.entries(METRIC_TABLE) as [MetricKey, Omit<Metric, 'key'>][]).map(([key, m]) => ({
       key,
@@ -1105,7 +1103,7 @@ if (require.main === module) {
   console.log(`metric placeholders — ${report.placeholders.length} replacements:`);
   console.table(report.placeholders);
   console.log(
-    `blog — ${report.blog.rows} articles, ${report.blog.trBodies} Turkish bodies (threshold ${BLOG_NAV_THRESHOLD}) → /blog always in nav (owner 2026-10-05; threshold still gates the home guides + related articles)`,
+    `blog — ${report.blog.rows} written articles kept (${report.blog.trBodies} with a Turkish body), ${report.blog.dropped} index-only rows dropped (W248)`,
   );
   console.log(
     `wrote ${Object.keys(tr.strings).length} strings, ${tr.nav.length} nav items, ${Object.keys(tr.pages).length} page records, ${Object.keys(tr.collections).length} collections per locale`,

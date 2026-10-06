@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { blogSitemapSource } from '@/lib/blog-sitemap';
 import { careersSitemapSource } from '@/lib/careers-sitemap';
 import {
   DETAIL_SITEMAP_SOURCES,
@@ -7,8 +8,8 @@ import {
 } from './sitemap-sources';
 
 describe('DETAIL_SITEMAP_SOURCES (W31)', () => {
-  it('is the frozen one-source literal — the careers openings source the careers page task registered (W31/W70)', () => {
-    expect(DETAIL_SITEMAP_SOURCES).toEqual([careersSitemapSource]);
+  it('is the frozen literal — the careers openings (W31/W70) and the blog articles (W248)', () => {
+    expect(DETAIL_SITEMAP_SOURCES).toEqual([careersSitemapSource, blogSitemapSource]);
     expect(Object.isFrozen(DETAIL_SITEMAP_SOURCES)).toBe(true);
   });
 

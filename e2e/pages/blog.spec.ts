@@ -24,8 +24,8 @@ async function jsonLd(page: Page): Promise<Record<string, unknown>[]> {
   return texts.map((t) => JSON.parse(t) as Record<string, unknown>);
 }
 
-test.describe('/en/blog — the index from every bundle row (owner 2026-10-05)', () => {
-  test('hero with the cadence pill, featured + most read, the grid; indexable (owner 2026-10-05)', async ({
+test.describe('/en/blog — the index of the published articles (W248)', () => {
+  test('hero with the cadence pill, the one article as the featured card alone; indexable', async ({
     page,
   }) => {
     const res = await page.goto('/en/blog');
@@ -38,31 +38,23 @@ test.describe('/en/blog — the index from every bundle row (owner 2026-10-05)',
     await expect(page.getByTestId('page-h1')).toHaveAccessibleName('Insights for employers');
     await expect(page.getByTestId('blog-cadence')).toHaveText('New article every week');
     await expect(page.getByTestId('blog-tools')).toBeVisible();
-    // the featured card (row 1, written in EN): the whole card is its title link
+    // the featured card (the one written EN article): the whole card is its title link
     const featured = page.getByTestId('blog-featured');
     await expect(featured.getByRole('link', { name: /work permit process/i })).toHaveAttribute(
       'href',
       EN_ARTICLE,
     );
     await expect(featured).toContainText('Read article →');
-    // most read: the design's three rows, the written one a link, a sample tag on the panel
-    const most = page.getByTestId('blog-most-read');
-    await expect(most.getByRole('listitem')).toHaveCount(3);
-    await expect(most.getByRole('link')).toHaveCount(1);
-    await expect(most.locator('[data-sample-tag]')).toHaveCount(1);
-    // the grid: rows 2–22, six shown, none a link yet (no body) — each says "coming soon"
-    const rows = page.locator('#blog-grid li[data-post-key]');
-    await expect(rows).toHaveCount(21);
-    await expect(page.locator('#blog-grid li[data-post-key]:visible')).toHaveCount(6);
-    await expect(page.locator('#blog-grid a')).toHaveCount(0);
-    await expect(rows.first().locator('[data-soon-tag]')).toHaveText(/coming soon/i);
-    await page.getByTestId('blog-load-more').click();
-    await expect(page.locator('#blog-grid li[data-post-key]:visible')).toHaveCount(12);
+    // W248: real published posts only — no "yakında" card anywhere, no grid for one post, no
+    // ranking of one (most read is left out), never the empty state
+    await expect(page.locator('[data-soon-tag]')).toHaveCount(0);
+    await expect(page.getByTestId('blog-most-read')).toHaveCount(0);
+    await expect(page.locator('#blog-grid')).toHaveCount(0);
+    await expect(page.getByTestId('blog-load-more')).toHaveCount(0);
     await expect(page.getByTestId('blog-empty')).toHaveCount(0);
     // the newsletter band with its own form (owner, 2026-10-05)
     await expect(page.locator('#newsletter input[type="email"]')).toHaveCount(1);
-    // Owner 2026-10-05: the index is always in the nav, in the sitemap and indexable; only the
-    // articles stay noindex (docs/PRD.md §4, docs/SEO.md)
+    // Owner 2026-10-05: the index is always in the nav, in the sitemap and indexable
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
@@ -80,13 +72,15 @@ test.describe('/en/blog — the index from every bundle row (owner 2026-10-05)',
     expect(nodes.filter((n) => n['@type'] === 'FAQPage')).toHaveLength(0);
   });
 
-  test('the tools filter the grid client-side and announce the count', async ({ page }) => {
+  test('the tools count the listed article and answer a miss with the no-results panel', async ({
+    page,
+  }) => {
     await page.goto('/en/blog');
     const status = page.getByTestId('blog-tools-status');
-    await expect(status).toHaveText('22 articles');
-    await page.getByRole('searchbox', { name: 'Search articles' }).fill('quota');
-    await expect(page.locator('#blog-grid li[data-post-key]:visible')).toHaveCount(1);
-    await expect(status).toHaveText('1 article for “quota”');
+    await expect(status).toHaveText('1 article');
+    await page.getByRole('searchbox', { name: 'Search articles' }).fill('permit');
+    await expect(status).toHaveText('1 article for “permit”');
+    await expect(page.getByTestId('blog-no-results')).toHaveCount(0);
     await page.getByRole('searchbox', { name: 'Search articles' }).fill('zzzz');
     await expect(page.getByTestId('blog-no-results')).toBeVisible();
   });
@@ -99,8 +93,9 @@ test.describe('/en/blog — the index from every bundle row (owner 2026-10-05)',
     const art = page.getByTestId('blog-hero-art');
     await expect(art).toBeVisible();
     await expect(art).toContainText('Most read');
-    await page.getByTestId('blog-tools').getByText('Compliance', { exact: true }).click();
-    await expect(page.getByTestId('blog-tools-status')).toHaveText(/ · Compliance$/);
+    // one topic chip per category the listed articles carry (W248: one article, one topic)
+    await page.getByTestId('blog-tools').getByText('Work Permits', { exact: true }).click();
+    await expect(page.getByTestId('blog-tools-status')).toHaveText(/ · Work Permits$/);
     const pair = page.getByTestId('blog-tools').getByRole('group', { name: 'Language' });
     await expect(pair.getByRole('link', { name: 'EN' })).toHaveAttribute('aria-current', 'page');
     await expect(pair.getByRole('link', { name: 'TR' })).toHaveAttribute('href', '/blog');
@@ -113,13 +108,13 @@ test.describe('/en/blog — the index from every bundle row (owner 2026-10-05)',
     test.skip(testInfo.project.name !== 'mobile', 'the phone faces exist below 701 px');
     await page.goto('/en/blog');
     await expect(page.getByTestId('blog-hero-art')).toBeHidden();
-    await expect(page.getByTestId('blog-phone-strip')).toContainText('22');
-    await expect(page.getByTestId('blog-result-line')).toHaveText('22 articles');
+    await expect(page.getByTestId('blog-phone-strip')).toContainText('1');
+    await expect(page.getByTestId('blog-result-line')).toHaveText('1 article');
     await page.getByTestId('blog-topic-button').click();
     const sheet = page.getByRole('dialog');
-    await sheet.getByText('Market News', { exact: true }).click();
+    await sheet.getByText('Work Permits', { exact: true }).click();
     await expect(sheet).toBeHidden();
-    await expect(page.getByTestId('blog-result-line')).toContainText('Market News');
+    await expect(page.getByTestId('blog-result-line')).toContainText('Work Permits');
     await expect(page.locator('#blog-cta').getByRole('link', { name: 'WhatsApp' })).toBeHidden();
   });
 
@@ -156,8 +151,8 @@ test.describe('/en/blog — the index from every bundle row (owner 2026-10-05)',
   });
 });
 
-test.describe('/blog — the TR index: the four Turkish rows, none written yet', () => {
-  test('featured + most read + three grid cards, every one "yakında" and not a link', async ({
+test.describe('/blog — the TR index: no Turkish article on the LOCAL bundle (W6, W248)', () => {
+  test('the empty state and the way to the English articles — no "yakında" card', async ({
     page,
   }) => {
     const res = await page.goto('/blog');
@@ -168,16 +163,14 @@ test.describe('/blog — the TR index: the four Turkish rows, none written yet',
     await expect(page.getByTestId('hero-word-static')).toHaveText('İşverenler');
     await expect(page.getByTestId('page-h1')).toHaveAccessibleName('İşverenler için içgörüler');
     await expect(page.getByTestId('blog-cadence')).toHaveText('Her hafta yeni yazı');
-    const featured = page.getByTestId('blog-featured');
-    await expect(featured.getByRole('heading', { level: 2 })).toContainText('çalışma izni');
-    await expect(featured.getByRole('link')).toHaveCount(0);
-    await expect(featured.locator('[data-soon-tag]')).toHaveText(/yakında/i);
-    await expect(page.getByTestId('blog-most-read').getByRole('listitem')).toHaveCount(3);
-    await expect(page.locator('#blog-grid li[data-post-key]')).toHaveCount(3);
-    await expect(page.getByTestId('blog-load-more')).toHaveCount(0);
-    await expect(page.getByTestId('blog-empty')).toHaveCount(0);
-    await expect(page.getByTestId('blog-tools-status')).toHaveText('4 yazı');
-    // indexable like the EN index (owner 2026-10-05) — only the articles are noindex
+    await expect(page.getByTestId('blog-featured')).toHaveCount(0);
+    await expect(page.getByTestId('blog-most-read')).toHaveCount(0);
+    await expect(page.locator('#blog-grid')).toHaveCount(0);
+    await expect(page.locator('[data-soon-tag]')).toHaveCount(0);
+    await expect(page.getByTestId('blog-empty')).toBeVisible();
+    await expect(page.getByTestId('blog-empty-cta')).toHaveAttribute('href', '/en/blog');
+    await expect(page.getByTestId('blog-tools-status')).toHaveText('0 yazı');
+    // indexable like the EN index (owner 2026-10-05)
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
   });
 
@@ -200,7 +193,7 @@ test.describe('/blog — the TR index: the four Turkish rows, none written yet',
 });
 
 test.describe(`${EN_ARTICLE} — the one written article`, () => {
-  test('metadata: own title and excerpt, noindex, og:type article, hreflang only for its own locale (B-15)', async ({
+  test('metadata: own title and excerpt, indexable (W248), og:type article, hreflang only for its own locale (B-15)', async ({
     page,
   }) => {
     const res = await page.goto(EN_ARTICLE);
@@ -208,7 +201,7 @@ test.describe(`${EN_ARTICLE} — the one written article`, () => {
     await expectOneCleanH1(page);
     const title = ((await page.getByTestId('page-h1').textContent()) ?? '').trim();
     await expect(page).toHaveTitle(`${title} | JobsAdmire`);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
     await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'article');
     await expect(page.locator('meta[property="article:published_time"]')).toHaveAttribute(
       'content',
@@ -262,7 +255,7 @@ test.describe(`${EN_ARTICLE} — the one written article`, () => {
     expect((of('FAQPage')[0] as { mainEntity: unknown[] }).mainEntity).toHaveLength(4);
   });
 
-  test('the body, the quote CTA, the FAQ with data-driven numbers, the author box; related cards (bodiless = not links, tagged), the newsletter band (B-8, B-10, B-11)', async ({
+  test('the body, the quote CTA, the FAQ with data-driven numbers, the author box; no related band for the only article (W248), the newsletter band (B-8, B-10, B-11)', async ({
     page,
   }) => {
     await page.goto(EN_ARTICLE);
@@ -296,13 +289,11 @@ test.describe(`${EN_ARTICLE} — the one written article`, () => {
       "Can I hire if I don't meet the 5:1 employee ratio?",
     );
     await expect(page.getByTestId('article-author')).toContainText('İŞKUR Licensed · No. 1730');
-    // Owner ruling 2026-10-05: related/next come from the bundle rows; none has a body yet, so
-    // none is a link and each wears the `sys.blog.soon` tag
-    const related = page.getByTestId('article-related-card');
-    await expect(related).toHaveCount(3);
-    await expect(related.locator('a')).toHaveCount(0);
-    await expect(page.getByTestId('article-soon')).toHaveCount(4); // 3 cards + the Next card
-    await expect(page.getByTestId('article-next')).toContainText('Next article');
+    // W248: related and previous/next come from the written articles only — the one article
+    // has no neighbour, so the band is left out (no "yakında" card)
+    await expect(page.getByTestId('article-related')).toHaveCount(0);
+    await expect(page.getByTestId('article-next')).toHaveCount(0);
+    await expect(page.locator('[data-soon-tag], [data-testid="article-soon"]')).toHaveCount(0);
     await expect(page.locator('#newsletter')).toHaveCount(1); // switched on 2026-10-05
     await expect(page.locator('#newsletter-form')).toBeAttached();
     await expect(page.locator(`[data-placeholder="blog-cover-${SLUG}"]`)).toHaveCount(1);
@@ -409,7 +400,7 @@ test('the header renders DEFAULT_CTAS; the hire-form anchor lives on Hire Worker
 test.describe('B-1: a slug without a body in the locale answers 404', () => {
   for (const path of [
     '/blog/yabanci-isciler-calisma-izni-rehberi', // the TR slug of the written EN article
-    '/en/blog/hiring-from-pakistan-turkish-employers', // an index-only EN entry
+    '/en/blog/hiring-from-pakistan-turkish-employers', // a dropped index-only entry (W248)
     '/en/blog/does-not-exist',
     '/blog/does-not-exist',
   ]) {
@@ -423,17 +414,13 @@ test.describe('B-1: a slug without a body in the locale answers 404', () => {
   }
 });
 
-test('robots.txt disallows the blog articles but not the indexes on the production face; the sitemap lists both indexes and no article (owner 2026-10-05; W20/W37, W135)', async ({
+test('robots.txt never disallows the blog; the sitemap lists both indexes and the article (W248, the SEO flip)', async ({
   request,
   baseURL,
 }) => {
   const robots = await (await request.get('/robots.txt')).text();
   if (expectedRobots(baseURL ?? 'http://localhost:3000') === 'production') {
-    // the articles' prefix (trailing slash) is disallowed; the index pages themselves are not
-    expect(robots).toMatch(/^Disallow: \/blog\/$/m);
-    expect(robots).toMatch(/^Disallow: \/en\/blog\/$/m);
-    expect(robots).not.toMatch(/^Disallow: \/blog$/m);
-    expect(robots).not.toMatch(/^Disallow: \/en\/blog$/m);
+    expect(robots).not.toMatch(/^Disallow: (\/en)?\/blog/m);
   } else {
     // W91/W104: a preview face is `Disallow: /` — e2e/seo.spec.ts asserts that body strictly.
     expect(robots).toMatch(/^Disallow: \/$/m);
@@ -441,5 +428,99 @@ test('robots.txt disallows the blog articles but not the indexes on the producti
   const xml = await (await request.get('/sitemap.xml')).text();
   expect(xml).toContain(`<loc>${ORIGIN}/blog</loc>`);
   expect(xml).toContain(`<loc>${ORIGIN}/en/blog</loc>`);
-  expect(xml).not.toMatch(/<loc>[^<]*\/blog\/[^<]/);
+  expect(xml).toContain(`<loc>${ORIGIN}${EN_ARTICLE}</loc>`);
+  // hreflang only for the language it is written in (+ x-default), never a TR 404
+  const entry = xml.slice(xml.indexOf(`<loc>${ORIGIN}${EN_ARTICLE}</loc>`)).split('</url>')[0];
+  expect(entry).toContain('hreflang="en"');
+  expect(entry).not.toContain('hreflang="tr"');
+  expect(entry).toMatch(/<lastmod>2026-06-12/);
+  expect(xml).not.toContain('/blog/preview');
+});
+
+test.describe('/blog/preview — the draft preview (W248)', () => {
+  test('without a preview link: the friendly invalid-link page, never indexed, with the way out', async ({
+    page,
+  }) => {
+    const res = await page.goto('/blog/preview');
+    expect(res?.status()).toBe(200);
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'noindex, nofollow',
+    );
+    await expect(page.locator('h1')).toHaveCount(1);
+    await expect(page.getByTestId('blog-preview-message')).toHaveAttribute(
+      'data-status',
+      'invalid',
+    );
+    await expect(page.getByTestId('page-h1')).toHaveText(
+      'Önizleme bağlantısı geçersiz ya da süresi dolmuş',
+    );
+    await expect(page.getByTestId('blog-preview-bar')).toContainText('Önizleme — yayında değil');
+    expect(await page.locator('body').innerText()).not.toMatch(LEAK);
+  });
+
+  test('the entry door: draft mode on, token in an httpOnly cookie, the EN preview; exit turns it off', async ({
+    page,
+    context,
+  }) => {
+    await page.goto('/api/blog-preview?locale=en&token=e2e-not-a-real-token.0000');
+    await expect(page).toHaveURL(/\/en\/blog\/preview$/);
+    const cookies = await context.cookies();
+    const token = cookies.find((c) => c.name === 'ja_blog_preview');
+    expect(token?.httpOnly).toBe(true);
+    expect(cookies.some((c) => c.name === '__prerender_bypass')).toBe(true);
+    // no door, or a door that does not know the token: never a draft, always a message
+    await expect(page.getByTestId('blog-preview-message')).toHaveAttribute(
+      'data-status',
+      /^(invalid|unavailable)$/,
+    );
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'noindex, nofollow',
+    );
+    await page.getByTestId('blog-preview-exit').click();
+    await expect(page).toHaveURL(/\/en\/blog$/);
+    const after = await context.cookies();
+    expect(after.some((c) => c.name === 'ja_blog_preview')).toBe(false);
+    expect(after.some((c) => c.name === '__prerender_bypass')).toBe(false);
+  });
+
+  test.describe('against the fixture door (E2E_BLOG_MOCK=1)', () => {
+    test.skip(
+      process.env.E2E_BLOG_MOCK !== '1',
+      'needs a server started with OPS_API_URL on e2e/mocks/careers-door.mjs',
+    );
+
+    test('a valid token renders the draft as the article will look, under the preview bar', async ({
+      page,
+    }) => {
+      await page.goto('/api/blog-preview?locale=en&token=e2e-preview-token.0000000000000000');
+      await expect(page).toHaveURL(/\/en\/blog\/preview$/);
+      await expect(page.getByTestId('blog-preview-bar')).toContainText('Preview — not published');
+      await expect(page.getByTestId('page-h1')).toHaveText(
+        'Hiring from Pakistan: a guide for employers',
+      );
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+        'content',
+        'noindex, nofollow',
+      );
+      const body = page.getByTestId('article-body');
+      // attached, not visible: ≤ 700 px every h2 section starts collapsed (M1)
+      await expect(body.locator('h3', { hasText: 'Documents' })).toBeAttached();
+      await expect(body.locator('a', { hasText: 'official rules' })).toHaveAttribute(
+        'rel',
+        'noopener',
+      );
+      await expect(page.getByTestId('article-author')).toContainText('Written by Ayşe Demir');
+      expect((await jsonLd(page)).filter((n) => n['@type'] === 'BlogPosting')).toHaveLength(0);
+    });
+
+    test('an expired token: the invalid-link message', async ({ page }) => {
+      await page.goto('/api/blog-preview?locale=tr&token=expired-token.000000000000');
+      await expect(page.getByTestId('blog-preview-message')).toHaveAttribute(
+        'data-status',
+        'invalid',
+      );
+    });
+  });
 });

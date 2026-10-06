@@ -3,6 +3,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { getBundle, makeTf } from '@/content/adapter';
+import { getBlogBundle } from '@/content/blog';
 import { getRateConfig } from '@/content/collections';
 import { StickyCtaBar, type StickyCta } from '@/design/chrome/StickyCtaBar';
 import { routing } from '@/i18n/routing';
@@ -59,7 +60,8 @@ export default async function WorkPermit({ params }: { params: Promise<{ locale:
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
+  // The related articles read the `blog` rows: the bundle with the blog source applied (W248).
+  const [bundle, sys] = await Promise.all([getBlogBundle(locale), getTranslations('sys')]);
   // D17/W1: every package id goes through makeTf, so wp.030/264/274 render their metrics.
   const tf = makeTf(bundle, locale);
   const s = bundle.settings;

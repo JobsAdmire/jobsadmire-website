@@ -516,7 +516,8 @@
         "copyFailed": "Bağlantı kopyalanamadı; adres çubuğundan kopyalayabilirsiniz.",
         "print": "Bu yazıyı yazdırın",
         "backToTop": "Başa dön",
-        "shareThis": "Bu yazıyı paylaş"
+        "shareThis": "Bu yazıyı paylaş",
+        "writtenBy": "{name} tarafından yazıldı"
       },
       "faq": {
         "a1": "Onay, bakanlık incelemesi dahil ortalama {permitDays} gün sürer; ilk iş gününe kadar tüm süreç genellikle {firstDayWeeks} hafta alır. Lisanslı bir ajans dosyayı önceden kontrol ettiği için eksik bir belge süreyi baştan başlatmaz.",
@@ -527,7 +528,23 @@
         "consult": "ücretsiz danışmanlık almak istiyorum.",
         "permit": "çalışma izinleri konusunda desteğe ihtiyacım var."
       },
-      "soon": "yakında"
+      "preview": {
+        "bar": "Önizleme — yayında değil",
+        "exit": "Önizlemeden çık",
+        "metaTitle": "Önizleme | JobsAdmire",
+        "invalid": {
+          "title": "Önizleme bağlantısı geçersiz ya da süresi dolmuş",
+          "body": "Önizleme bağlantıları 30 dakika geçerlidir. Yazıyı Operations’ta açın ve “Web sitesinde önizle” ile yeni bir bağlantı alın."
+        },
+        "empty": {
+          "title": "Bu dilde henüz metin yok",
+          "body": "Yazının bu dildeki başlığını ve metnini Operations’ta doldurun, sonra yeniden önizleyin."
+        },
+        "unavailable": {
+          "title": "Önizleme şu anda açılamıyor",
+          "body": "Operations’a ulaşılamadı. Birkaç dakika sonra yeniden deneyin."
+        }
+      }
     },
     "form": {
       "labels": {
