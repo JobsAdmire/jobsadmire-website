@@ -69,9 +69,6 @@ export const NETWORK_IDS = {
   ],
 } as const;
 
-/** The logo band's caption (partner.045) beside the design's sample "25+" figure. */
-export const LOGOS_IDS = { caption: 'partner.045' } as const;
-
 export const CHAIN_IDS = {
   heading: 'partner.047',
   introLead: 'partner.048',
@@ -281,7 +278,6 @@ export const PARTNER_PACKAGE_IDS: readonly string[] = [
       [
         HERO_IDS,
         NETWORK_IDS,
-        LOGOS_IDS,
         CHAIN_IDS,
         STICKY_IDS,
         TRACKS_IDS,
@@ -305,5 +301,4 @@ export const PARTNER_SYS_KEYS = [
   'whatsapp.prefill',
   'faq.whatsappText',
   'faq.emailSubject',
-  'logos.slot',
 ] as const;

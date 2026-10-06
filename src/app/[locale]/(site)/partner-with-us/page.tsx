@@ -11,14 +11,12 @@ import { telLink, waLink } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo/metadata';
 import { SEO_IDS, STICKY_IDS } from './_lib/content';
 import { countryOptions } from './_lib/country-options';
-import { PARTNER_LOGOS } from './_lib/logos';
 import { partnerLineOf } from '@/lib/contact/partner-line';
 import type { TrackKey } from './_lib/tracks';
 import { Chain } from './_sections/Chain';
 import { Closing } from './_sections/Closing';
 import { Faq } from './_sections/Faq';
 import { Hero } from './_sections/Hero';
-import { Logos } from './_sections/Logos';
 import {
   HrAgencyForm,
   InstituteForm,
@@ -108,12 +106,6 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
         metrics={getCollection(bundle, 'metrics')}
         whatsappHref={whatsappHref}
       />
-      {/* The logo band always renders (owner 2026-10-05): consented logos once they exist (W6),
-          the design's labelled sample slots until then. A plain import by W216 (1): P2-7's
-          server-side `await import()` moved no client bytes — Turbopack groups the `PausableMarquee`
-          client reference into the route's eager chunk either way (proof at 20ce926) — so it was
-          reverted; a client `next/dynamic` boundary is reserved for a partner route ≥ 192,000 B. */}
-      <Logos tf={tf} logos={PARTNER_LOGOS} />
       <Chain tf={tf} />
       <Tracks tf={tf} panels={panels} />
       <Process bundle={bundle} locale={locale} tf={tf} />

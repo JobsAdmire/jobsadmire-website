@@ -108,12 +108,13 @@ for (const locale of ['tr', 'en'] as const) {
     const placeholders = await page
       .locator('[data-placeholder]')
       .evaluateAll((els) => els.map((el) => el.getAttribute('data-placeholder') ?? '').sort());
-    // the portal's two screenshots + the logo band's labelled sample slots (owner 2026-10-05)
+    // the portal's two screenshots only — no partner logo band (owner 2026-10-06, W247)
     expect(placeholders.filter((p) => !p.startsWith('logo-'))).toEqual([
       'partner-portal-mobile',
       'partner-portal-screen',
     ]);
-    expect(new Set(placeholders.filter((p) => p.startsWith('logo-'))).size).toBe(20);
+    expect(placeholders.filter((p) => p.startsWith('logo-'))).toEqual([]);
+    await expect(page.locator('[data-placeholder^="logo-"]')).toHaveCount(0);
     const body = await page.locator('body').innerText();
     expect(body).not.toMatch(/\{[a-zA-Z]+\}/);
     expect(body).not.toContain('undefined');
@@ -133,7 +134,7 @@ for (const locale of ['tr', 'en'] as const) {
     expect(tels).toEqual([TEL]);
   });
 
-  test(`${locale}: the designed sections in order, #tracks for the header CTA (W17/W152/W158), the sample logo band (owner 2026-10-05)`, async ({
+  test(`${locale}: the designed sections in order, #tracks for the header CTA (W17/W152/W158), no partner logo band (owner 2026-10-06)`, async ({
     page,
   }) => {
     // W163: the CTA target and its default form are server HTML, never lazy (T5 review M7)
@@ -143,7 +144,6 @@ for (const locale of ['tr', 'en'] as const) {
     await page.goto(ROUTES[locale]);
     const ids = [
       'partner-hero',
-      'partner-logos',
       'partner-chain',
       'partner-tracks',
       'partner-track-detail',
@@ -159,8 +159,7 @@ for (const locale of ['tr', 'en'] as const) {
       tops.push((await el.boundingBox())!.y);
     }
     expect(tops).toEqual([...tops].sort((a, b) => a - b));
-    await expect(page.getByTestId('partner-logos')).toContainText('25+');
-    await expect(page.getByTestId('partner-logos').locator('[data-sample-tag]')).toHaveCount(1);
+    await expect(page.getByTestId('partner-logos')).toHaveCount(0);
     await expect(page.locator('[id="tracks"]')).toHaveCount(1);
     await expect(page.locator('[id="closing"]')).toHaveCount(1);
     // CTA_BY_PATHNAME['/partner-with-us'] → this page's #tracks (partner.017/018)

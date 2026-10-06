@@ -1,19 +1,14 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { screen } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { Logo } from '@/design/blocks/LogoMarquee';
+import { describe, expect, it, vi } from 'vitest';
 import type { Locale } from '@/i18n/routing';
 import { renderWithIntl } from '@/test/render';
 import { BundleSchema, type Bundle } from '../../../../../../contract/website-bundle.v1';
 
-// Owner 2026-10-05 / W6 / W216 (1): the logo band always renders — the design's labelled sample
-// slots until consented logos exist, the logos after — a plain import (P2-7's server-side
-// `await import()` moved no client bytes: Turbopack groups the `PausableMarquee` client reference
-// into the route's eager chunk either way, so it was reverted). The page is rendered whole (the
-// verify page test's pattern): the LOCAL bundle from disk (never imported — D23), a request scope
-// stubbed, the server actions out of scope; what varies is the logo list the page reads.
-const state = vi.hoisted(() => ({ logos: [] as readonly Logo[] }));
+// Owner 2026-10-06 (W247): the partner logo band is gone — only client logos are shown (on Hire
+// Workers). The page is rendered whole with the LOCAL bundle from disk (never imported — D23), a
+// request scope stubbed and the server actions out of scope.
 
 vi.mock('next-intl/server', () => ({
   setRequestLocale: () => {},
@@ -23,12 +18,6 @@ vi.mock('../actions', () => ({
   submitHrAgency: vi.fn(),
   submitSourcingPartner: vi.fn(),
   submitInstitute: vi.fn(),
-}));
-vi.mock('../_lib/logos', async (importOriginal) => ({
-  ...(await importOriginal<typeof import('../_lib/logos')>()),
-  get PARTNER_LOGOS() {
-    return state.logos;
-  },
 }));
 vi.mock('@/content/adapter', async (importOriginal) => {
   const real = await importOriginal<typeof import('@/content/adapter')>();
@@ -49,26 +38,15 @@ vi.mock('@/content/adapter', async (importOriginal) => {
 
 import PartnerWithUs from '../page';
 
-beforeEach(() => {
-  state.logos = [];
-});
-
-describe('Partner page — the logo band (owner 2026-10-05, W6, W216 (1))', () => {
-  it('with an empty logo list (Phase A) the band shows the sample slots with the sample tag', async () => {
-    const jsx = await PartnerWithUs({ params: Promise.resolve({ locale: 'tr' }) });
-    const { container } = renderWithIntl(jsx, { locale: 'tr' });
-    const band = screen.getByTestId('partner-logos');
-    expect(band.querySelector('[data-sample-tag]')).not.toBeNull();
-    expect(container.querySelectorAll('[data-placeholder^="logo-"]').length).toBeGreaterThan(0);
-    expect(screen.queryByRole('img', { name: 'Acme Lojistik' })).toBeNull();
-  });
-
-  it('with a consented logo the band renders', async () => {
-    state.logos = [{ src: '/brand/logos/acme.svg', alt: 'Acme Lojistik', width: 160, height: 60 }];
-    const jsx = await PartnerWithUs({ params: Promise.resolve({ locale: 'tr' }) });
-    renderWithIntl(jsx, { locale: 'tr' });
-    expect(screen.getByTestId('partner-logos')).toBeInTheDocument();
-    expect(screen.getAllByRole('img', { name: 'Acme Lojistik' }).length).toBeGreaterThan(0);
-    expect(document.querySelector('[data-placeholder^="logo-"]')).toBeNull();
-  });
+describe('Partner page — no partner logo band (owner 2026-10-06, W247)', () => {
+  it.each(['tr', 'en'] as const)(
+    '%s: no logo band, no logo slots, no "25+" figure',
+    async (locale) => {
+      const jsx = await PartnerWithUs({ params: Promise.resolve({ locale }) });
+      const { container } = renderWithIntl(jsx, { locale });
+      expect(screen.queryByTestId('partner-logos')).toBeNull();
+      expect(container.querySelector('[data-placeholder^="logo-"]')).toBeNull();
+      expect(container).not.toHaveTextContent('25+');
+    },
+  );
 });

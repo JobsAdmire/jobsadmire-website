@@ -7,12 +7,10 @@ import { getCollection } from '@/content/collections';
 import { makeTf } from '@/content/pure';
 import tr from '@/messages/tr.json';
 import { renderWithIntl } from '@/test/render';
-import { PARTNER_LOGO_SLOTS, PARTNER_LOGOS } from '../../_lib/logos';
 import { Chain } from '../Chain';
 import { Closing } from '../Closing';
 import { Faq } from '../Faq';
 import { Hero } from '../Hero';
-import { Logos } from '../Logos';
 import { NetworkCard } from '../NetworkCard';
 import { Portal } from '../Portal';
 import { Process } from '../Process';
@@ -106,34 +104,6 @@ describe('NetworkCard (W1, owner 2026-10-05)', () => {
     const rows = within(screen.getByTestId('partner-network')).getAllByRole('listitem');
     expect(rows).toHaveLength(3);
     expect(screen.getByTestId('partner-network')).not.toHaveTextContent('470');
-  });
-});
-
-describe('Logos (owner 2026-10-05, W6)', () => {
-  it('without consented logos shows the 25+ sample figure, its caption and tag, and the 20 labelled slots', () => {
-    expect(PARTNER_LOGOS).toEqual([]);
-    const { container } = renderWithIntl(<Logos tf={tfTr} logos={PARTNER_LOGOS} />);
-    const band = screen.getByTestId('partner-logos');
-    expect(band).toHaveTextContent('25+');
-    expect(band).toHaveTextContent(tfTr('partner.045'));
-    expect(band.querySelector('[data-sample-tag]')).not.toBeNull();
-    const slots = [...container.querySelectorAll('[data-placeholder^="logo-"]')];
-    // the marquee renders its track twice for the seamless loop; the first lap is the 20 slots
-    expect(slots.length).toBeGreaterThanOrEqual(PARTNER_LOGO_SLOTS.length);
-    expect(slots[0]).toHaveTextContent('İş ortağı logosu 1');
-    expect(slots[9]).toHaveTextContent('İş ortağı logosu 10');
-    expect(slots[10]).toHaveTextContent('İş ortağı logosu 1');
-  });
-
-  it('with consented logos runs the logos instead of the slots', () => {
-    const { container } = renderWithIntl(
-      <Logos
-        tf={tfTr}
-        logos={[{ src: '/brand/logos/acme.svg', alt: 'Acme Lojistik', width: 160, height: 60 }]}
-      />,
-    );
-    expect(container.querySelector('[data-placeholder^="logo-"]')).toBeNull();
-    expect(screen.getAllByRole('img', { name: 'Acme Lojistik' }).length).toBeGreaterThan(0);
   });
 });
 
