@@ -1,4 +1,5 @@
 import 'server-only';
+import { unstable_rethrow } from 'next/navigation';
 import { cache } from 'react';
 import { doorBase } from '@/forms/env';
 import type { Locale } from '@/i18n/routing';
@@ -77,18 +78,28 @@ async function readJson(res: Response, what: string): Promise<unknown> {
   }
 }
 
-export async function fetchBlogFeedUncached(deps: BlogDeps = {}): Promise<BlogFeedRows> {
+/** `fresh` (W250, the sitemap's own read) skips Next's data cache (`no-store`); every other
+ *  reader shares the cached read — 60 s under the `blog` tag. */
+export async function fetchBlogFeedUncached(
+  deps: BlogDeps = {},
+  { fresh = false }: { fresh?: boolean } = {},
+): Promise<BlogFeedRows> {
   const env = deps.env ?? process.env;
   const base = doorBase(env);
   if (!base) throw new BlogFeedUnavailableError('feed: OPS_API_URL is not set');
   const f = deps.fetch ?? fetch;
   let res: Response;
   try {
-    res = await f(`${base}${FEED_PATH}`, {
-      headers: HEADERS,
-      next: { revalidate: BLOG_REVALIDATE_SECONDS, tags: [BLOG_TAG] },
-    });
+    res = await f(
+      `${base}${FEED_PATH}`,
+      fresh
+        ? { headers: HEADERS, cache: 'no-store' }
+        : { headers: HEADERS, next: { revalidate: BLOG_REVALIDATE_SECONDS, tags: [BLOG_TAG] } },
+    );
   } catch (err) {
+    // A `no-store` read inside a prerender throws Next's own bail-out to dynamic rendering —
+    // never an outage to fall back from.
+    unstable_rethrow(err);
     throw new BlogFeedUnavailableError(`feed: ${reason(err)}`);
   }
   if (!res.ok) throw new BlogFeedUnavailableError(`feed: HTTP ${res.status}`);
@@ -135,6 +146,40 @@ export const getBlogBundle = cache(async (locale: Locale): Promise<Bundle> => {
   const [bundle, feed] = await Promise.all([getBundle(locale), getBlogFeed()]);
   return feed.source === 'OPS' ? withBlogRows(bundle, feed.rows) : bundle;
 });
+
+/**
+ * W250 — the sitemap's own read of the feed, `no-store`: `/sitemap.xml` renders per request
+ * (`app/sitemap.ts`), so a publish is listed on its next request. A fresh read that fails falls
+ * back to the cached read (`loadBlogFeed`: the 60 s data cache keeps the last good feed), so an
+ * Operations outage never drops the articles from the sitemap.
+ */
+export async function loadBlogFeedFresh(deps: BlogDeps = {}): Promise<BlogFeedState> {
+  const env = deps.env ?? process.env;
+  if (blogSource(env) !== 'OPS') return LOCAL_STATE;
+  try {
+    return { source: 'OPS', ...(await fetchBlogFeedUncached(deps, { fresh: true })) };
+  } catch (err) {
+    if (!(err instanceof BlogFeedUnavailableError)) throw err;
+    console.error('[blog] fresh feed read failed — the cached feed stands in', err.message);
+    return loadBlogFeed(deps);
+  }
+}
+
+/** One fresh read per sitemap render: the two locales' sources share the read in flight (a
+ *  route handler has no React `cache` scope to dedupe them). */
+let freshInFlight: Promise<BlogFeedState> | null = null;
+export function getBlogFeedFresh(): Promise<BlogFeedState> {
+  freshInFlight ??= loadBlogFeedFresh().finally(() => {
+    freshInFlight = null;
+  });
+  return freshInFlight;
+}
+
+/** `getBlogBundle` over a fresh feed read — the sitemap's bundle (W250). */
+export async function getFreshBlogBundle(locale: Locale): Promise<Bundle> {
+  const [bundle, feed] = await Promise.all([getBundle(locale), getBlogFeedFresh()]);
+  return feed.source === 'OPS' ? withBlogRows(bundle, feed.rows) : bundle;
+}
 
 export type BlogPreviewResult =
   | { status: 'ok'; post: BlogPost }

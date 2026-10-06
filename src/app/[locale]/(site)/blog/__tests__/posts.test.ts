@@ -12,13 +12,10 @@ import {
   findWritten,
   indexPosts,
   isWritten,
-  MOST_READ_MIN,
-  mostReadPosts,
   otherLocale,
   PAGE_SIZE,
   prevNext,
   relatedPosts,
-  splitFeatured,
   writtenPosts,
 } from '../_lib/posts';
 
@@ -70,14 +67,8 @@ describe('the committed bundles (W4, W28, W64)', () => {
     const tr = indexPosts(getCollection(load('tr'), 'blog'), 'tr');
     expect(en.map((p) => p.key)).toEqual(['turkey-work-permit-process-employer-guide']);
     expect(tr).toEqual([]);
-    expect(PAGE_SIZE).toBe(6);
-  });
-
-  it('most read is left out while fewer than two written articles rank (W248)', () => {
-    for (const locale of ['tr', 'en'] as const) {
-      const rows = getCollection(load(locale), 'blog');
-      expect(mostReadPosts(rows, locale)).toEqual([]);
-    }
+    // W250: two rows of four to a page
+    expect(PAGE_SIZE).toBe(8);
   });
 
   it('the written article advertises only its own locale — no TR body, no TR hreflang (B-15)', () => {
@@ -124,13 +115,6 @@ describe('the pure helpers', () => {
   it('writtenPosts: newest first, a same-day tie keeps the collection order', () => {
     expect(writtenPosts([d, c, b, a], 'en').map((p) => p.key)).toEqual(['a', 'c', 'b', 'd']);
     expect(writtenPosts([d, c, b, a], 'tr').map((p) => p.key)).toEqual(['a', 'b']);
-  });
-
-  it('splitFeatured: the newest is featured, the rest is the grid', () => {
-    const { featured, rest } = splitFeatured(writtenPosts([a, b, c], 'en'));
-    expect(featured?.key).toBe('a');
-    expect(rest.map((p) => p.key)).toEqual(['b', 'c']);
-    expect(splitFeatured([])).toEqual({ featured: null, rest: [] });
   });
 
   it('relatedPosts: same category first, never the post itself, capped (B-2)', () => {
@@ -185,27 +169,6 @@ describe('the pure helpers', () => {
     const flagged = { ...b, featured: true };
     expect(indexPosts([d, c, flagged, a], 'en').map((p) => p.key)).toEqual(['b', 'a', 'c', 'd']);
     expect(indexPosts([], 'en')).toEqual([]);
-  });
-
-  it('mostReadPosts: written rows of the design list (by key or EN slug), none below the minimum', () => {
-    const rows = [
-      post({ key: 'turkey-work-permit-process-employer-guide' }),
-      // the same article from Operations: the post id as key, the design key as EN slug
-      post({
-        key: 'cmg-ops-id',
-        slug: { tr: null, en: 'hiring-from-pakistan-turkish-employers' },
-        title: { tr: null, en: 'X' },
-        hasBody: { tr: false, en: true },
-        body: { tr: null, en: 'x' },
-      }),
-    ];
-    expect(MOST_READ_MIN).toBe(2);
-    expect(mostReadPosts(rows, 'en').map((p) => p.key)).toEqual([
-      'turkey-work-permit-process-employer-guide',
-      'cmg-ops-id',
-    ]);
-    // TR: only one of them is written in Turkish — no ranking of one
-    expect(mostReadPosts(rows, 'tr')).toEqual([]);
   });
 
   it("resultLine: the query, else the topic, else the total — the design's three lines", () => {

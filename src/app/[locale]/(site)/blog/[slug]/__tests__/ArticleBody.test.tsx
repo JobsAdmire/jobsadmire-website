@@ -268,7 +268,7 @@ describe('ArticleBody — the video block (W249)', () => {
   const TITLE = 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj';
   const MD_VIDEO = `Intro.\n\n!video[${TITLE}](atv-vizyon-haris-jiva)\n\n## Section\n\nText.`;
 
-  it('a captioned native player in a fixed 16:9 box: poster, MP4 source, Turkish track, no autoplay', () => {
+  it('a captioned native player in a fixed 16:9 box: poster, MP4 source, Turkish + English tracks, no autoplay', () => {
     const { container } = render(<ArticleBody blocks={parseMarkdown(MD_VIDEO)} locale="tr" />);
     const figure = screen.getByTestId('article-video');
     expect(figure.tagName).toBe('FIGURE');
@@ -290,24 +290,39 @@ describe('ArticleBody — the video block (W249)', () => {
     const source = video.querySelector('source')!;
     expect(source).toHaveAttribute('src', '/media/blog/atv-vizyon-haris-jiva.mp4');
     expect(source).toHaveAttribute('type', 'video/mp4');
+    // W250: the Turkish captions and their English translation; the page's language is on
     const tracks = video.querySelectorAll('track');
-    expect(tracks).toHaveLength(1);
-    expect(tracks[0]).toHaveAttribute('kind', 'captions');
+    expect(tracks).toHaveLength(2);
+    expect([...tracks].map((t) => t.getAttribute('kind'))).toEqual(['captions', 'captions']);
     expect(tracks[0]).toHaveAttribute('srclang', 'tr');
     expect(tracks[0]).toHaveAttribute('label', 'Türkçe');
     expect(tracks[0]).toHaveAttribute('src', '/media/blog/atv-vizyon-haris-jiva.tr.vtt');
     expect(tracks[0]).toHaveAttribute('default');
+    expect(tracks[1]).toHaveAttribute('srclang', 'en');
+    expect(tracks[1]).toHaveAttribute('label', 'English');
+    expect(tracks[1]).toHaveAttribute('src', '/media/blog/atv-vizyon-haris-jiva.en.vtt');
+    expect(tracks[1]).not.toHaveAttribute('default');
     expect(within(figure).getByText(TITLE).tagName).toBe('FIGCAPTION');
     // before the first h2: outside every collapsible section, so never folded away on phones
     expect(figure.closest('[data-testid="article-section"]')).toBeNull();
     expect(collisionsInTree(container)).toEqual([]);
   });
 
-  it('the track is on by default only on a page in its own language', () => {
-    render(<ArticleBody blocks={parseMarkdown(MD_VIDEO)} locale="en" />);
-    const track = screen.getByTestId('article-video').querySelector('track')!;
-    expect(track).not.toHaveAttribute('default');
-    expect(track).toHaveAttribute('srclang', 'tr');
+  it('the default track follows the page: English on an English page, Turkish on a Turkish one (W250)', () => {
+    const on = (locale: 'tr' | 'en') => {
+      const { unmount } = render(<ArticleBody blocks={parseMarkdown(MD_VIDEO)} locale={locale} />);
+      const tracks = [...screen.getByTestId('article-video').querySelectorAll('track')];
+      const defaults = tracks.filter((t) => t.hasAttribute('default'));
+      unmount();
+      return defaults.map((t) => t.getAttribute('srclang'));
+    };
+    expect(on('en')).toEqual(['en']);
+    expect(on('tr')).toEqual(['tr']);
+    // no page language: every track offered, none forced on
+    render(<ArticleBody blocks={parseMarkdown(MD_VIDEO)} />);
+    const tracks = screen.getByTestId('article-video').querySelectorAll('track');
+    expect(tracks).toHaveLength(2);
+    expect([...tracks].some((t) => t.hasAttribute('default'))).toBe(false);
   });
 
   it('a key the registry does not know renders nothing (and says so outside production)', () => {

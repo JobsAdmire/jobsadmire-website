@@ -27,7 +27,7 @@ async function jsonLd(page: Page): Promise<Record<string, unknown>[]> {
 }
 
 test.describe('/en/blog — the index of the published articles (W248)', () => {
-  test('hero with the cadence pill, the one article as the featured card alone; indexable', async ({
+  test('hero with the cadence pill, the one article as the only card of the grid, featured; indexable', async ({
     page,
   }) => {
     const res = await page.goto('/en/blog');
@@ -40,18 +40,21 @@ test.describe('/en/blog — the index of the published articles (W248)', () => {
     await expect(page.getByTestId('page-h1')).toHaveAccessibleName('Insights for employers');
     await expect(page.getByTestId('blog-cadence')).toHaveText('New article every week');
     await expect(page.getByTestId('blog-tools')).toBeVisible();
-    // the featured card (the one written EN article): the whole card is its title link
-    const featured = page.getByTestId('blog-featured');
+    // W250: one uniform grid — the one written EN article is its only card, the featured one
+    // (its pill), the whole card its title link
+    const grid = page.locator('#blog-grid');
+    await expect(grid.locator('li[data-post-key]')).toHaveCount(1);
+    const featured = grid.getByTestId('blog-featured');
     await expect(featured.getByRole('link', { name: /work permit process/i })).toHaveAttribute(
       'href',
       EN_ARTICLE,
     );
-    await expect(featured).toContainText('Read article →');
-    // W248: real published posts only — no "yakında" card anywhere, no grid for one post, no
-    // ranking of one (most read is left out), never the empty state
+    await expect(featured).toContainText('FEATURED');
+    await expect(featured).not.toContainText('Read article →');
+    // W248: real published posts only — no "yakında" card anywhere, never the empty state;
+    // W250: no "most read" panel until real read counts exist, no load-more for one card
     await expect(page.locator('[data-soon-tag]')).toHaveCount(0);
     await expect(page.getByTestId('blog-most-read')).toHaveCount(0);
-    await expect(page.locator('#blog-grid')).toHaveCount(0);
     await expect(page.getByTestId('blog-load-more')).toHaveCount(0);
     await expect(page.getByTestId('blog-empty')).toHaveCount(0);
     // the newsletter band with its own form (owner, 2026-10-05)
@@ -531,17 +534,101 @@ test.describe('/blog/preview — the draft preview (W248)', () => {
 // its body and no cover of its own. Run against a server BUILT and started with BLOG_SOURCE=OPS
 // and OPS_API_URL on e2e/mocks/careers-door.mjs (`npm run e2e:blog-ops`, which greps these
 // blocks: everything else in this file assumes the LOCAL bundle).
+/** W250: the visible cards of the index grid, in order, with their rects (zoomed px past 1440 —
+ *  compared with each other only). */
+async function gridCards(page: Page) {
+  return page.locator('#blog-grid > li:not([hidden]) > article').evaluateAll((els) =>
+    els.map((el) => {
+      const r = el.getBoundingClientRect();
+      const cover = el
+        .querySelector('[data-placeholder], [data-cover-photo]')!
+        .getBoundingClientRect();
+      return { x: r.x, y: r.y, w: r.width, h: r.height, coverW: cover.width, coverH: cover.height };
+    }),
+  );
+}
+
+/** The cards grouped into rows by their top edge. */
+function rowsOf(cards: { y: number }[]): number[] {
+  const rows: number[] = [];
+  let last = Number.NaN;
+  for (const c of cards) {
+    if (Number.isNaN(last) || Math.abs(c.y - last) > 2) rows.push(1);
+    else rows[rows.length - 1] += 1;
+    last = c.y;
+  }
+  return rows;
+}
+
+/** The phone layout (≤ 700 px): the design's row cards one under the other — the 104 px cover at
+ *  the left, the text beside it — and no horizontal overflow. */
+async function expectPhoneRows(page: Page, count: number) {
+  const cards = await gridCards(page);
+  expect(cards).toHaveLength(count);
+  expect(rowsOf(cards)).toEqual(Array.from({ length: count }, () => 1));
+  for (const c of cards) {
+    expect(Math.round(c.coverW)).toBe(104);
+    expect(c.coverH).toBeGreaterThanOrEqual(103.5);
+    expect(c.w).toBeGreaterThan(330);
+  }
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(overflow).toBeLessThanOrEqual(0);
+}
+
 test.describe('the ATV interview article, from the fixture door (E2E_BLOG_OPS=1)', () => {
   test.skip(
     process.env.E2E_BLOG_OPS !== '1',
     'needs a server built and started with BLOG_SOURCE=OPS on e2e/mocks/careers-door.mjs',
   );
   const ATV = '/blog/atv-vizyon-jobsadmire-haris-jiva-roportaji';
+  const ATV_EN = '/en/blog/jobsadmire-on-atv-vizyon-founder-haris-jiva-interview';
   const ATV_KEY = 'cmgblog0000000000000000004'; // e2e/mocks/blog-atv-post.json
   const TITLE = 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj';
+  const TITLE_EN = 'ATV Vizyon: interview with JobsAdmire founder Haris Jiva';
   const FILES = '/media/blog/atv-vizyon-haris-jiva';
 
-  test('the interview under the intro: poster, MP4, Turkish captions on; the poster as the cover', async ({
+  /** The default track loads and shows; the other one stays off (W250: it follows the page). */
+  async function expectCaptions(page: Page, on: 'tr' | 'en') {
+    const video = page.getByTestId('article-video').locator('video');
+    const tracks = video.locator('track');
+    await expect(tracks).toHaveCount(2);
+    await expect(tracks.nth(0)).toHaveAttribute('srclang', 'tr');
+    await expect(tracks.nth(0)).toHaveAttribute('src', `${FILES}.tr.vtt`);
+    await expect(tracks.nth(1)).toHaveAttribute('srclang', 'en');
+    await expect(tracks.nth(1)).toHaveAttribute('src', `${FILES}.en.vtt`);
+    await expect(tracks.nth(1)).toHaveAttribute('label', 'English');
+    await expect(video.locator('track[default]')).toHaveAttribute('srclang', on);
+    await expect
+      .poll(() =>
+        video.evaluate((v: HTMLVideoElement) =>
+          [...v.textTracks].map((t) => `${t.kind}/${t.language}/${t.mode}`).join(' '),
+        ),
+      )
+      .toBe(
+        on === 'tr'
+          ? 'captions/tr/showing captions/en/disabled'
+          : 'captions/tr/disabled captions/en/showing',
+      );
+  }
+
+  /** W250: no cover above the article — the poster is the player's, a few lines below. */
+  async function expectNoTopCover(page: Page) {
+    await expect(page.getByTestId('article-cover')).toHaveCount(0);
+    await expect(page.locator(`[data-cover-photo="blog-cover-${ATV_KEY}"]`)).toHaveCount(0);
+    await expect(page.locator(`[data-placeholder="blog-cover-${ATV_KEY}"]`)).toHaveCount(0);
+    // the first picture of the page is the player's poster, in the body
+    const images = await page
+      .locator('main img, main video[poster]')
+      .evaluateAll((els) =>
+        els.map((el) => (el.tagName === 'VIDEO' ? 'video' : (el.getAttribute('src') ?? ''))),
+      );
+    expect(images.filter((src) => src.includes('atv-vizyon-haris-jiva'))).toEqual([]);
+    expect(images.indexOf('video')).toBeGreaterThanOrEqual(0);
+  }
+
+  test('the interview under the intro: poster, MP4, both caption tracks (Turkish on); no duplicate cover at the top', async ({
     page,
   }) => {
     const res = await page.goto(ATV);
@@ -557,35 +644,42 @@ test.describe('the ATV interview article, from the fixture door (E2E_BLOG_OPS=1)
     await expect(video).toHaveAccessibleName(TITLE);
     await expect(video.locator('source')).toHaveAttribute('src', `${FILES}.mp4`);
     await expect(video.locator('source')).toHaveAttribute('type', 'video/mp4');
-    const track = video.locator('track');
-    await expect(track).toHaveCount(1);
-    await expect(track).toHaveAttribute('kind', 'captions');
-    await expect(track).toHaveAttribute('srclang', 'tr');
-    await expect(track).toHaveAttribute('src', `${FILES}.tr.vtt`);
-    await expect(track).toHaveAttribute('default', '');
     await expect(figure.locator('figcaption')).toHaveText(TITLE);
-    // the browser loads the default track (the only network use before play) and shows it
-    await expect
-      .poll(() =>
-        video.evaluate((v: HTMLVideoElement) => {
-          const t = v.textTracks[0];
-          return t ? `${t.kind}/${t.language}/${t.mode}` : 'none';
-        }),
-      )
-      .toBe('captions/tr/showing');
+    await expectCaptions(page, 'tr');
     // the fixed 16:9 box, the poster painted before anything plays
     const box = (await video.boundingBox())!;
     expect(Math.abs(box.width / box.height - 16 / 9)).toBeLessThan(0.02);
-    // no cover of its own: the poster is the cover, through next/image (the post's own slot —
-    // the related card below carries the Pakistan guide's photo)
-    await expect(page.locator(`[data-cover-photo="blog-cover-${ATV_KEY}"] img`)).toHaveAttribute(
-      'src',
-      /media%2Fblog%2Fatv-vizyon-haris-jiva\.jpg/,
-    );
+    await expectNoTopCover(page);
+    // the poster stays the share image
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       'content',
       `${ORIGIN}${FILES}.jpg`,
     );
+  });
+
+  test('the English version (W250): its own page, English captions on, no cover at the top', async ({
+    page,
+  }) => {
+    const res = await page.goto(ATV_EN);
+    expect(res?.status()).toBe(200);
+    await expectOneCleanH1(page);
+    await expect(page.getByTestId('page-h1')).toHaveText(
+      'JobsAdmire on ATV Vizyon: Founder Haris Jiva on Bringing Skilled Workers to Türkiye',
+    );
+    await expect(page).toHaveTitle('JobsAdmire on ATV Vizyon: Haris Jiva Interview');
+    const video = page.getByTestId('article-video').locator('video');
+    await expect(video).toHaveAccessibleName(TITLE_EN);
+    await expect(video).toHaveAttribute('poster', `${FILES}.jpg`);
+    await expectCaptions(page, 'en');
+    await expectNoTopCover(page);
+    await expect(page.locator('link[rel="alternate"][hreflang="tr"]')).toHaveAttribute(
+      'href',
+      `${ORIGIN}${ATV}`,
+    );
+    // its own FAQ (three), one VideoObject in English pages too
+    const nodes = await jsonLd(page);
+    expect(nodes.filter((n) => n['@type'] === 'VideoObject')).toHaveLength(1);
+    await expect(page.locator('#faq-list [data-accordion-trigger]')).toHaveCount(3);
   });
 
   test('one VideoObject beside the BlogPosting; the BlogPosting image is the poster', async ({
@@ -610,19 +704,97 @@ test.describe('the ATV interview article, from the fixture door (E2E_BLOG_OPS=1)
 
   test('no horizontal overflow at 390 px; the player fills the column', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(ATV);
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    );
-    expect(overflow).toBeLessThanOrEqual(0);
-    const box = (await page.getByTestId('article-video').locator('video').boundingBox())!;
-    expect(box.width).toBeGreaterThan(300);
-    expect(box.x).toBeGreaterThanOrEqual(0);
-    expect(box.x + box.width).toBeLessThanOrEqual(390);
+    for (const path of [ATV, ATV_EN]) {
+      await page.goto(path);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
+      const box = (await page.getByTestId('article-video').locator('video').boundingBox())!;
+      expect(box.width).toBeGreaterThan(300);
+      expect(box.x).toBeGreaterThanOrEqual(0);
+      expect(box.x + box.width).toBeLessThanOrEqual(390);
+    }
   });
 
-  test('axe: the article is clean', async ({ page }) => {
-    await page.goto(ATV);
+  test('axe: both articles are clean', async ({ page }) => {
+    for (const path of [ATV, ATV_EN]) {
+      await page.goto(path);
+      await settleMotion(page);
+      const results = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
+        .analyze();
+      expect(
+        results.violations,
+        JSON.stringify(results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length }))),
+      ).toEqual([]);
+    }
+  });
+
+  test('TR index (W250): the one Turkish article is the grid’s one featured card, the poster as its cover', async ({
+    page,
+  }, testInfo) => {
+    await page.goto('/blog');
+    const grid = page.locator('#blog-grid');
+    await expect(grid.locator('li[data-post-key]')).toHaveCount(1);
+    const featured = grid.getByTestId('blog-featured');
+    await expect(featured.getByRole('link', { name: /ATV Vizyon'da JobsAdmire/ })).toHaveAttribute(
+      'href',
+      ATV,
+    );
+    await expect(featured).toContainText('ÖNE ÇIKAN');
+    await expect(featured.locator('img')).toHaveAttribute(
+      'src',
+      /media%2Fblog%2Fatv-vizyon-haris-jiva\.jpg/,
+    );
+    await expect(page.getByTestId('blog-most-read')).toHaveCount(0);
+    await expect(page.getByTestId('blog-load-more')).toHaveCount(0);
+    await expect(page.getByTestId('blog-tools-status')).toHaveText('1 yazı');
+    if (testInfo.project.name === 'desktop') {
+      // 1440: one column of four — a card, never the old full-width banner; the cover 16:10
+      const [card] = await gridCards(page);
+      const box = (await grid.boundingBox())!;
+      expect(card.w).toBeGreaterThan(280);
+      expect(card.w).toBeLessThan(box.width / 3);
+      expect(card.coverW / card.coverH).toBeCloseTo(1.6, 1);
+      expect(card.h / card.w).toBeGreaterThan(0.9); // square-ish, never a wide strip
+    } else {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.reload();
+      await expectPhoneRows(page, 1);
+    }
+  });
+
+  test('EN index (W250): the English interview and the work-permit guide — two cards in one row at 1440', async ({
+    page,
+  }, testInfo) => {
+    await page.goto('/en/blog');
+    const grid = page.locator('#blog-grid');
+    const items = grid.locator('li[data-post-key]');
+    await expect(items).toHaveCount(2);
+    await expect(items.nth(0).getByTestId('blog-featured')).toContainText('FEATURED');
+    await expect(items.nth(0).getByRole('link')).toHaveAttribute('href', ATV_EN);
+    await expect(items.nth(1).getByRole('link')).toHaveAttribute(
+      'href',
+      '/en/blog/turkey-work-permit-process-employer-guide',
+    );
+    await expect(grid.locator('[data-featured]')).toHaveCount(1);
+    await expect(page.getByTestId('blog-most-read')).toHaveCount(0);
+    if (testInfo.project.name === 'desktop') {
+      const cards = await gridCards(page);
+      expect(rowsOf(cards)).toEqual([2]);
+      expect(Math.abs(cards[0].w - cards[1].w)).toBeLessThan(1);
+      expect(cards[0].h).toBeCloseTo(cards[1].h, 0); // a row of equal cards
+      for (const c of cards) expect(c.coverW / c.coverH).toBeCloseTo(1.6, 1);
+    } else {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.reload();
+      await expectPhoneRows(page, 2);
+    }
+  });
+
+  test('axe: the TR index with its one card is clean', async ({ page }) => {
+    await page.goto('/blog');
     await settleMotion(page);
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
@@ -632,17 +804,111 @@ test.describe('the ATV interview article, from the fixture door (E2E_BLOG_OPS=1)
       JSON.stringify(results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length }))),
     ).toEqual([]);
   });
+});
 
-  test('the blog index features it, with the poster as its cover', async ({ page }) => {
-    await page.goto('/blog');
-    const featured = page.getByTestId('blog-featured');
-    await expect(featured.getByRole('link', { name: /ATV Vizyon'da JobsAdmire/ })).toHaveAttribute(
-      'href',
-      ATV,
-    );
-    await expect(featured.locator('img')).toHaveAttribute(
+// W250 — the index grid with more posts than a row: the door's grid feed (OPS_API_URL=
+// http://127.0.0.1:8481/grid — the ATV post, the contract fixture's three and seven grid posts: ten
+// written articles per language). Run against a server BUILT and started on it
+// (`npm run e2e:blog-grid`).
+test.describe('the index grid with ten articles, from the fixture door (E2E_BLOG_GRID=1)', () => {
+  test.skip(
+    process.env.E2E_BLOG_GRID !== '1',
+    'needs a server built and started with BLOG_SOURCE=OPS on the door’s /grid feed',
+  );
+
+  const atWidth = async (page: Page, width: number, height = 900) => {
+    await page.setViewportSize({ width, height });
+    await page.goto('/en/blog');
+    await expect(page.locator('#blog-grid > li[data-post-key]')).toHaveCount(10);
+  };
+
+  for (const [width, height, perRow] of [
+    [1440, 900, 4],
+    [1920, 1080, 4],
+    [1000, 900, 3],
+    [800, 900, 2],
+  ] as const) {
+    test(`${width} px: ${perRow} in a row, eight to a page`, async ({ page }, testInfo) => {
+      test.skip(testInfo.project.name !== 'desktop', 'desktop widths');
+      await atWidth(page, width, height);
+      const cards = await gridCards(page);
+      expect(cards).toHaveLength(8);
+      const rows = rowsOf(cards);
+      expect(rows.every((n) => n === perRow || n === 8 % perRow)).toBe(true);
+      expect(rows[0]).toBe(perRow);
+      // equal columns, each a 16:10 cover over its text — never a full-width card
+      const w = cards[0].w;
+      for (const c of cards) {
+        expect(Math.abs(c.w - w)).toBeLessThan(1);
+        expect(c.coverW / c.coverH).toBeCloseTo(1.6, 1);
+      }
+      const box = (await page.locator('#blog-grid').boundingBox())!;
+      expect(w).toBeLessThan(box.width / (perRow - 0.5));
+      // only the first card wears the pill
+      await expect(page.locator('#blog-grid [data-featured]')).toHaveCount(1);
+      await expect(
+        page.locator('#blog-grid > li').first().getByTestId('blog-featured'),
+      ).toHaveCount(1);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
+    });
+  }
+
+  test('"Load more" shows the last two; the tools count all ten', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'desktop', 'one width is enough');
+    await atWidth(page, 1440);
+    await expect(page.getByTestId('blog-tools-status')).toHaveText('10 articles');
+    await page.getByTestId('blog-load-more').click();
+    await expect(page.locator('#blog-grid > li:not([hidden])')).toHaveCount(10);
+    await expect(page.getByTestId('blog-load-more')).toHaveCount(0);
+    expect(rowsOf(await gridCards(page))).toEqual([4, 4, 2]);
+  });
+
+  test('390 px: the phone row cards, one per row', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'mobile', 'the phone project');
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/en/blog');
+    await expectPhoneRows(page, 8);
+  });
+
+  test('`showCover: false` (W250): the card keeps its photo, the article opens without it', async ({
+    page,
+  }) => {
+    const KEY = 'cmgblog00000000000000grid1';
+    await page.goto('/en/blog');
+    await expect(page.locator(`[data-cover-photo="blog-cover-${KEY}"] img`)).toHaveAttribute(
       'src',
-      /media%2Fblog%2Fatv-vizyon-haris-jiva\.jpg/,
+      /cmgmedia0000000000000grid1/,
     );
+    await page.goto('/en/blog/work-permit-renewal-calendar');
+    await expect(page.getByTestId('article-cover')).toHaveCount(0);
+    await expect(page.locator(`[data-cover-photo="blog-cover-${KEY}"]`)).toHaveCount(0);
+    // the share image is still its own cover
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      'content',
+      /cmgmedia0000000000000grid1\/1200\.webp$/,
+    );
+    // a photo of its own with the switch on (the Pakistan guide) still opens the article
+    await page.goto('/en/blog/hiring-from-pakistan-employer-guide');
+    await expect(page.getByTestId('article-cover').locator('[data-cover-photo] img')).toHaveCount(
+      1,
+    );
+    // a post sent without the field reads it as on — no photo, so the category placeholder
+    await page.goto('/en/blog/hiring-cooks-for-hotel-kitchens');
+    await expect(page.getByTestId('article-cover').locator('[data-placeholder]')).toHaveCount(1);
+  });
+
+  test('axe: the grid of ten is clean', async ({ page }) => {
+    await page.goto('/en/blog');
+    await settleMotion(page);
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
+      .analyze();
+    expect(
+      results.violations,
+      JSON.stringify(results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length }))),
+    ).toEqual([]);
   });
 });

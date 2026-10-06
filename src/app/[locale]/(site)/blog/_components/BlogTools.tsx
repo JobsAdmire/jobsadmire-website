@@ -68,8 +68,8 @@ function SearchGlyph() {
  * the search field, the topic chips and the EN/TR pair from 701 px; on phones the search card
  * with its gradient glyph tile, and a topic button that opens the bottom sheet (831–853: a dot,
  * the label, the count and a tick per topic) — chips and EN/TR hidden. Filtering is client-side
- * over the server-rendered grid (`IndexState` + `LoadMore`); the featured card and "most read"
- * stay put, as in the design. One polite status line announces the result count at every width
+ * over the server-rendered grid (`IndexState` + `LoadMore`), the featured card included (it is
+ * the grid's first since W250). One polite status line announces the result count at every width
  * (the visible count line is the phone-only `ResultLine`).
  */
 export function BlogTools({

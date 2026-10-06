@@ -2,13 +2,13 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { feedToRows, redirectTarget, withBlogRows } from '@/content/blog-feed';
-import { doorFeed } from '@/test/blog-fixtures';
+import { atvFixtureFeed } from '@/test/blog-fixtures';
 import { BundleSchema } from '../../../../../../../contract/website-bundle.v1';
 
 /** The `/blog/[slug]` route under `BLOG_SOURCE=OPS` (W248): the feed's rows over the committed
  *  bundle, its redirects, and Next's navigation signals as throwable markers. The feed is the
  *  fixture door's (W249): the owner's ATV post, then the contract fixture's three. */
-const FEED = feedToRows(doorFeed(), vi.fn());
+const FEED = feedToRows(atvFixtureFeed(), vi.fn());
 const bundleOf = (locale: 'tr' | 'en') =>
   withBlogRows(
     BundleSchema.parse(
@@ -59,6 +59,7 @@ describe('/blog/[slug] from the Operations feed (W248)', () => {
       { locale: 'tr', slug: 'atv-vizyon-jobsadmire-haris-jiva-roportaji' },
       { locale: 'tr', slug: 'pakistandan-isci-istihdami-rehberi' },
       { locale: 'tr', slug: 'sgk-bildirimi-yabanci-isciler' },
+      { locale: 'en', slug: 'jobsadmire-on-atv-vizyon-founder-haris-jiva-interview' },
       { locale: 'en', slug: 'hiring-from-pakistan-employer-guide' },
       { locale: 'en', slug: 'turkey-work-permit-process-employer-guide' },
     ]);
@@ -107,10 +108,17 @@ describe('/blog/[slug] from the Operations feed (W248)', () => {
     expect(og.images[0].url).toBe(
       'https://www.jobsadmire.com/media/blog/atv-vizyon-haris-jiva.jpg',
     );
+    // W250: written in English too — hreflang names both
     expect(m.alternates?.languages).toEqual({
       tr: 'https://www.jobsadmire.com/blog/atv-vizyon-jobsadmire-haris-jiva-roportaji',
+      en: 'https://www.jobsadmire.com/en/blog/jobsadmire-on-atv-vizyon-founder-haris-jiva-interview',
       'x-default': 'https://www.jobsadmire.com/blog/atv-vizyon-jobsadmire-haris-jiva-roportaji',
     });
+    const e = await meta('en', 'jobsadmire-on-atv-vizyon-founder-haris-jiva-interview');
+    expect(e.title).toBe('JobsAdmire on ATV Vizyon: Haris Jiva Interview');
+    expect((e.openGraph as { images: { url: string }[] }).images[0].url).toBe(
+      'https://www.jobsadmire.com/media/blog/atv-vizyon-haris-jiva.jpg',
+    );
   });
 
   it('metadata without overrides: "{title} | JobsAdmire", the excerpt, the index image, the editorial author', async () => {

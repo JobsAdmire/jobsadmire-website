@@ -1,4 +1,4 @@
-import { existsSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { VIDEO_KEY_RE } from '@/app/[locale]/(site)/blog/[slug]/_lib/markdown';
@@ -33,7 +33,7 @@ describe('the blog video registry (W249)', () => {
     }
   });
 
-  it('the ATV interview: 1920 × 1080, 3:25, Turkish, Turkish captions, the press video', () => {
+  it('the ATV interview: 1920 × 1080, 3:25, Turkish, Turkish and English captions, the press video', () => {
     expect(getBlogVideo(ATV)).toEqual<BlogVideo>({
       src: '/media/blog/atv-vizyon-haris-jiva.mp4',
       poster: '/media/blog/atv-vizyon-haris-jiva.jpg',
@@ -41,11 +41,24 @@ describe('the blog video registry (W249)', () => {
       height: 1080,
       durationSec: 205,
       lang: 'tr',
-      captions: [{ lang: 'tr', src: '/media/blog/atv-vizyon-haris-jiva.tr.vtt', label: 'Türkçe' }],
+      captions: [
+        { lang: 'tr', src: '/media/blog/atv-vizyon-haris-jiva.tr.vtt', label: 'Türkçe' },
+        { lang: 'en', src: '/media/blog/atv-vizyon-haris-jiva.en.vtt', label: 'English' },
+      ],
       press: true,
     });
-    // the files as encoded (docs/ARCHITECTURE.md § Assets): a 36 MB MP4, a WebVTT file
+    // the files as encoded (docs/ARCHITECTURE.md § Assets): a 36 MB MP4, two WebVTT files
     expect(statSync(publicFile('/media/blog/atv-vizyon-haris-jiva.mp4')).size).toBe(36_235_882);
+    // W250: the English captions translate the Turkish ones cue for cue — the same 72 timings
+    const cues = (lang: string) =>
+      readFileSync(publicFile(`/media/blog/atv-vizyon-haris-jiva.${lang}.vtt`), 'utf8')
+        .split('\n')
+        .filter((line) => line.includes('-->'));
+    expect(readFileSync(publicFile('/media/blog/atv-vizyon-haris-jiva.en.vtt'), 'utf8')).toMatch(
+      /^WEBVTT\n/,
+    );
+    expect(cues('en')).toHaveLength(72);
+    expect(cues('en')).toEqual(cues('tr'));
   });
 
   it('getBlogVideo knows its own keys only — never an Object.prototype member', () => {

@@ -5,7 +5,7 @@ import {
   articleHref,
   writtenPosts,
 } from '@/app/[locale]/(site)/blog/_lib/posts';
-import { getBlogBundle } from '@/content/blog';
+import { getFreshBlogBundle } from '@/content/blog';
 import { getCollection, type BlogPost } from '@/content/collections';
 import { routing, type Locale } from '@/i18n/routing';
 import { absoluteUrl } from '@/lib/seo/routes';
@@ -47,10 +47,11 @@ export function blogSitemapEntries(
 
 /**
  * W248 — the blog article entries for one locale (the SEO flip): every written article, read
- * through the blog source (`getBlogBundle`: the Operations feed under `BLOG_SOURCE=OPS`, else the
- * LOCAL rows) under its 60 s `blog` tag. A feed failure at runtime throws and the sitemap route
- * keeps its last good version (ISR), like the careers source.
+ * through the blog source (the Operations feed under `BLOG_SOURCE=OPS`, else the LOCAL rows).
+ * W250: read fresh (`getFreshBlogBundle`, `no-store`), so a publish is listed on the sitemap's
+ * next request; a failed fresh read falls back to the cached feed (the last good one), and a
+ * failure of that too throws (the request answers 5xx, a crawler retries).
  */
 export async function blogSitemapSource(locale: Locale): Promise<MetadataRoute.Sitemap> {
-  return blogSitemapEntries(getCollection(await getBlogBundle(locale), 'blog'), locale);
+  return blogSitemapEntries(getCollection(await getFreshBlogBundle(locale), 'blog'), locale);
 }

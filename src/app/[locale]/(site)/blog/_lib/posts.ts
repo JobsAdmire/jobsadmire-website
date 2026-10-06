@@ -3,9 +3,10 @@ import { locales, type Locale } from '@/i18n/routing';
 import type { AlternateTarget } from '@/lib/seo/metadata';
 import type { FilterItem } from './filter';
 
-/** The design's grid page: six cards, "Daha fazla yazı ↓" (blog.090) adds six more
- *  (`visibleCount` 6 / +6, Blog.dc.html ~1050). */
-export const PAGE_SIZE = 6;
+/** The grid's page (owner 2026-10-06, W250): eight cards — two rows of four — and "Daha fazla
+ *  yazı ↓" (blog.090) adds eight more (the design's `visibleCount` was 6 / +6 for three columns,
+ *  Blog.dc.html ~1050). */
+export const PAGE_SIZE = 8;
 
 /** B-2: the design's related grid shows three cards (the third hidden on phones). */
 export const RELATED_MAX = 3;
@@ -37,50 +38,13 @@ export function writtenPosts(rows: readonly BlogPost[], locale: Locale): BlogPos
 
 /** The index (owner 2026-10-06, W248: real published posts only — the design's index-only
  *  "yakında" rows are gone): the written articles of the locale, newest first, with the newest
- *  post flagged `featured` (Operations' switch) moved to the front — row 1 is the featured card,
- *  the rest is the grid. Without a flag the newest post is featured. */
+ *  post flagged `featured` (Operations' switch) moved to the front — the grid's first card, which
+ *  wears the "ÖNE ÇIKAN" pill (W250). Without a flag the newest post is featured. */
 export function indexPosts(rows: readonly BlogPost[], locale: Locale): BlogPost[] {
   const written = writtenPosts(rows, locale);
   const flagged = written.findIndex((p) => p.featured === true);
   if (flagged <= 0) return written;
   return [written[flagged], ...written.slice(0, flagged), ...written.slice(flagged + 1)];
-}
-
-/** The design's "Most read" lists (`mostReadByLang`, Blog.dc.html 931–942) — sample content (no
- *  read counts exist), so the panel wears the `SampleTag`. A key matches a row's `key` (LOCAL) or
- *  its EN slug (the same article from Operations, whose key is the post id); only written
- *  articles count. */
-export const MOST_READ_KEYS: Record<Locale, readonly string[]> = {
-  tr: [
-    'turkey-work-permit-process-employer-guide', // yabanci-isciler-calisma-izni-rehberi
-    'hiring-from-pakistan-turkish-employers', // pakistandan-isci-istihdami
-    'turkey-labor-shortage-factories-hiring-overseas', // turkiye-de-isgucu-acigi
-  ],
-  en: [
-    'turkey-work-permit-process-employer-guide',
-    'hiring-from-pakistan-turkish-employers',
-    'work-permit-costs-timelines-budget',
-  ],
-};
-
-/** A ranking of one is no ranking: below this the panel is left out and the featured card
- *  takes the row (few posts, W248). */
-export const MOST_READ_MIN = 2;
-
-export function mostReadPosts(rows: readonly BlogPost[], locale: Locale): BlogPost[] {
-  const posts = MOST_READ_KEYS[locale]
-    .map((key) => rows.find((p) => p.key === key || p.slug.en === key))
-    .filter((p): p is BlogPost => p !== undefined && isWritten(p, locale));
-  return posts.length >= MOST_READ_MIN ? posts : [];
-}
-
-/** The featured card is the first row; the grid holds the rest. */
-export function splitFeatured(written: readonly BlogPost[]): {
-  featured: BlogPost | null;
-  rest: BlogPost[];
-} {
-  const [featured = null, ...rest] = written;
-  return { featured, rest };
 }
 
 /** B-1: the written article behind `slug` in `locale`, or null — an unknown slug and an

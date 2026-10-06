@@ -9,6 +9,7 @@ import {
   fetchBlogFeedUncached,
   fetchBlogPreview,
   loadBlogFeed,
+  loadBlogFeedFresh,
 } from './blog';
 
 const FIXTURE = JSON.parse(
@@ -74,6 +75,47 @@ describe('fetchBlogFeedUncached', () => {
         BlogFeedUnavailableError,
       );
     }
+  });
+});
+
+describe("the sitemap's fresh read (W250)", () => {
+  it('reads the feed `no-store` — never a data-cache copy', async () => {
+    fetchMock.mockResolvedValue(json(FIXTURE));
+    const state = await loadBlogFeedFresh({ fetch: f(), env: PROD_RUNTIME });
+    expect(state.source).toBe('OPS');
+    expect(state.rows).toHaveLength(3);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [, init] = fetchMock.mock.calls[0];
+    expect(init.cache).toBe('no-store');
+    expect(init.next).toBeUndefined();
+  });
+
+  it('a failed fresh read falls back to the cached read (the last good feed), logged', async () => {
+    fetchMock.mockResolvedValueOnce(json({}, 502)).mockResolvedValueOnce(json(FIXTURE));
+    const state = await loadBlogFeedFresh({ fetch: f(), env: PROD_RUNTIME });
+    expect(state.rows).toHaveLength(3);
+    expect(fetchMock.mock.calls[1][1].next).toEqual({
+      revalidate: BLOG_REVALIDATE_SECONDS,
+      tags: [BLOG_TAG],
+    });
+    expect(console.error).toHaveBeenCalledWith(
+      '[blog] fresh feed read failed — the cached feed stands in',
+      'feed: HTTP 502',
+    );
+  });
+
+  it("LOCAL source: no call; Next's own bail-out to dynamic rendering is never swallowed", async () => {
+    await expect(
+      loadBlogFeedFresh({ fetch: f(), env: { ...OPS, BLOG_SOURCE: '' } as never }),
+    ).resolves.toEqual({ source: 'LOCAL', rows: null, redirects: [] });
+    expect(fetchMock).not.toHaveBeenCalled();
+    const bailout = Object.assign(new Error('Dynamic server usage'), {
+      digest: 'DYNAMIC_SERVER_USAGE',
+    });
+    fetchMock.mockRejectedValue(bailout);
+    await expect(fetchBlogFeedUncached({ fetch: f(), env: OPS }, { fresh: true })).rejects.toBe(
+      bailout,
+    );
   });
 });
 

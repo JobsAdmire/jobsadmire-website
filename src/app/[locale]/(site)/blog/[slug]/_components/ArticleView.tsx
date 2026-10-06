@@ -26,7 +26,7 @@ import {
   relatedPosts,
   writtenPosts,
 } from '../../_lib/posts';
-import { articleOgImage, authorOf } from '../_lib/article';
+import { articleOgImage, articleTopCover, authorOf } from '../_lib/article';
 import { headings, parseMarkdown } from '../_lib/markdown';
 import { remainingText } from '../_lib/sidebar';
 import { ARTICLE_H2_SECTION, ArticleBody } from './ArticleBody';
@@ -53,6 +53,11 @@ const RESERVED_IDS = [FAQ_ID, 'faq-list', BAND_ID, 'main'];
 /** The cover box's rendered widths: the 980 px column (735 px from 1101, D19), the screen below,
  *  growing with the liquid desktop past 1440 (`liquidSizes`, W231). */
 const COVER_SIZES = liquidSizes(735, '(min-width: 1101px) 735px, (min-width: 1029px) 980px, 100vw');
+/** The hero's bottom padding: room for the cover that overlaps it (the design's 118 / 200 px,
+ *  150 from 1101), or — with no top cover (W250) — a close as tight as its top (34 / 52 / 39 px)
+ *  plus a little air under the byline. */
+const HERO_PAD_COVER = 'pb-[118px] md:pb-[200px] xl:pb-[150px]';
+const HERO_PAD_BARE = 'pb-[40px] md:pb-[60px] xl:pb-[45px]';
 
 /**
  * One blog article (B-1…B-16), shared by `/blog/[slug]` and the draft preview (`/blog/preview`,
@@ -87,6 +92,9 @@ export async function ArticleView({
   const excerpt = post.excerpt[locale] ?? '';
   const blocks = parseMarkdown(body, RESERVED_IDS);
   const videos = videosOf(blocks);
+  // W250: the post's own photo, the category placeholder, or nothing (`showCover: false`, or a
+  // cover that is only the poster of the video the body plays).
+  const topCover = articleTopCover(post);
   // W248: the post's own FAQ when the feed sends one (none = no FAQ block and no FAQPage node);
   // the LOCAL article, which carries no `faq`, keeps the four generic Q&As (B-10: A1 and Q3 have
   // no package id; their numbers come from data, D17).
@@ -193,7 +201,7 @@ export async function ArticleView({
         {/* ---- Hero: crumbs (W109, B-9), pills, the h1 (the LCP element, B-7), byline ---- */}
         <Section
           tone="dark"
-          className="relative overflow-hidden pt-[34px] pb-[118px] md:pt-[52px] md:pb-[200px] xl:pt-[39px] xl:pb-[150px]"
+          className={`relative overflow-hidden pt-[34px] md:pt-[52px] xl:pt-[39px] ${topCover ? HERO_PAD_COVER : HERO_PAD_BARE}`}
         >
           <div
             aria-hidden="true"
@@ -257,22 +265,30 @@ export async function ArticleView({
         {/* ---- Cover: overlaps the hero; a named placeholder, never the LCP slot (B-7, W103).
              Final pass C1 (W206/W209, W189 A3): the slot's own cover mode gives the design's fixed
              heights — 190 px ≤ 700, 430 px at 701–1100, 322.5 px from 1101 — independent of the
-             box's width (the ratio box read 154 / 290–377 / 323 px). ---- */}
-        <div className="container-site relative z-[2] -mt-[92px] md:-mt-[150px] xl:-mt-[112.5px]">
-          <div className="mx-auto max-w-[980px] xl:max-w-[735px]">
-            <CategoryCover
-              slot={`blog-cover-${post.key}`}
-              category={post.category}
-              label={categoryLabel}
-              photo={
-                post.cover ? { src: post.cover.url, alt: post.coverAlt?.[locale] ?? '' } : null
-              }
-              sizes={COVER_SIZES}
-              preload
-              className="h-[190px] overflow-hidden rounded-lg shadow-[0_26px_60px_rgba(22,60,90,0.18)] xl:shadow-[0_19.5px_45px_rgba(22,60,90,0.18)] md:h-[430px] xl:h-[322.5px]"
-            />
+             box's width (the ratio box read 154 / 290–377 / 323 px). W250: left out when the
+             post switches it off or its cover is only the video's poster (`articleTopCover`). ---- */}
+        {topCover ? (
+          <div
+            data-testid="article-cover"
+            className="container-site relative z-[2] -mt-[92px] md:-mt-[150px] xl:-mt-[112.5px]"
+          >
+            <div className="mx-auto max-w-[980px] xl:max-w-[735px]">
+              <CategoryCover
+                slot={`blog-cover-${post.key}`}
+                category={post.category}
+                label={categoryLabel}
+                photo={
+                  topCover === 'photo' && post.cover
+                    ? { src: post.cover.url, alt: post.coverAlt?.[locale] ?? '' }
+                    : null
+                }
+                sizes={COVER_SIZES}
+                preload
+                className="h-[190px] overflow-hidden rounded-lg shadow-[0_26px_60px_rgba(22,60,90,0.18)] xl:shadow-[0_19.5px_45px_rgba(22,60,90,0.18)] md:h-[430px] xl:h-[322.5px]"
+              />
+            </div>
           </div>
-        </div>
+        ) : null}
 
         {/* ---- Body + sidebar ---- */}
         <Section tone="light">

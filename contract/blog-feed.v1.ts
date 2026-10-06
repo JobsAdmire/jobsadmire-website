@@ -61,6 +61,10 @@ export const BlogFeedPostSchema = z.object({
       height: z.number().int().positive(),
     })
     .nullable(),
+  /** The post's "show the cover at the top of the article" switch (owner 2026-10-06, W250) —
+   *  additive to `blog.v1`: absent or `null` (a producer from before the switch) reads as `true`.
+   *  `false` keeps `cover` for the cards and the share image only. */
+  showCover: z.boolean().nullish(),
   slug: perLocaleSlug,
   title: perLocaleText,
   excerpt: perLocaleText,

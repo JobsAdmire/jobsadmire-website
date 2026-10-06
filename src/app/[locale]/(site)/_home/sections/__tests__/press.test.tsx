@@ -2,7 +2,7 @@ import { cleanup, screen, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { feedToRows, withBlogRows } from '@/content/blog-feed';
 import type { BlogPost } from '@/content/collections';
-import { ATV_KEY, ATV_SLUG, doorFeed } from '@/test/blog-fixtures';
+import { ATV_EN_SLUG, ATV_KEY, ATV_SLUG, atvFixtureFeed } from '@/test/blog-fixtures';
 import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
 import { homeBundle } from '../../__tests__/fixtures';
@@ -10,9 +10,9 @@ import { pressFeature } from '../../lib/press';
 import { GuidesSection } from '../GuidesSection';
 import { PressStrip } from '../PressStrip';
 
-/** The homepage under `BLOG_SOURCE=OPS` with the fixture door's feed (W249): the owner's ATV post
- *  (TR only, featured, no cover) first, then the contract fixture's three posts. */
-const ROWS = feedToRows(doorFeed(), vi.fn()).rows;
+/** The homepage under `BLOG_SOURCE=OPS` (W249): the owner's ATV post (Turkish and, since W250,
+ *  English; featured, no cover) first, then the contract fixture's three posts. */
+const ROWS = feedToRows(atvFixtureFeed(), vi.fn()).rows;
 const TR = withBlogRows(homeBundle('tr'), ROWS);
 const EN = withBlogRows(homeBundle('en'), ROWS);
 const POSTER = encodeURIComponent('/media/blog/atv-vizyon-haris-jiva.jpg');
@@ -20,13 +20,20 @@ const atv = ROWS.find((r) => r.key === ATV_KEY)!;
 const rowsWith = (row: BlogPost) => [row, ...ROWS.filter((r) => r.key !== ATV_KEY)];
 
 describe('pressFeature (W249: the newest featured article showing the press video)', () => {
-  it('TR: the ATV post; EN: none — no English article carries the interview', () => {
+  it('TR: the ATV post; EN: its English version (W250) — the same interview', () => {
     expect(pressFeature(TR, 'tr')).toMatchObject({
       slug: ATV_SLUG,
       post: { key: ATV_KEY },
       video: { key: 'atv-vizyon-haris-jiva', video: { press: true } },
     });
-    expect(pressFeature(EN, 'en')).toBeNull();
+    expect(pressFeature(EN, 'en')).toMatchObject({
+      slug: ATV_EN_SLUG,
+      post: { key: ATV_KEY },
+      video: {
+        key: 'atv-vizyon-haris-jiva',
+        title: 'ATV Vizyon: interview with JobsAdmire founder Haris Jiva',
+      },
+    });
   });
 
   it('follows the feed: not featured, unpublished or without the video → no strip', () => {
@@ -39,23 +46,26 @@ describe('pressFeature (W249: the newest featured article showing the press vide
     expect(pressFeature(gone, 'tr')).toBeNull();
     const noVideo = withBlogRows(
       homeBundle('tr'),
-      rowsWith({ ...atv, body: { tr: 'Metin.\n\n!video[Yakında](unknown-video)', en: null } }),
+      rowsWith({
+        ...atv,
+        body: { tr: 'Metin.\n\n!video[Yakında](unknown-video)', en: null },
+        hasBody: { tr: true, en: false },
+      }),
     );
     expect(pressFeature(noVideo, 'tr')).toBeNull();
-    expect(pressFeature(homeBundle('tr'), 'tr')).toBeNull(); // the LOCAL bundle
-  });
-
-  it('an English article showing the interview puts the strip on the English home too', () => {
-    const bilingual: BlogPost = {
-      ...atv,
-      slug: { ...atv.slug, en: 'atv-interview' },
-      title: { ...atv.title, en: 'JobsAdmire on ATV' },
-      hasBody: { tr: true, en: true },
-      body: { ...atv.body, en: 'Intro.\n\n!video[The interview](atv-vizyon-haris-jiva)' },
-    };
-    expect(pressFeature(withBlogRows(homeBundle('en'), rowsWith(bilingual)), 'en')?.slug).toBe(
-      'atv-interview',
+    // an English home without the English version: no strip there
+    const trOnly = withBlogRows(
+      homeBundle('en'),
+      rowsWith({
+        ...atv,
+        slug: { ...atv.slug, en: null },
+        title: { ...atv.title, en: null },
+        body: { ...atv.body, en: null },
+        hasBody: { tr: true, en: false },
+      }),
     );
+    expect(pressFeature(trOnly, 'en')).toBeNull();
+    expect(pressFeature(homeBundle('tr'), 'tr')).toBeNull(); // the LOCAL bundle
   });
 });
 
@@ -84,29 +94,18 @@ describe('PressStrip (W249)', () => {
     expect(collisionsInTree(container)).toEqual([]);
   });
 
-  it('EN: nothing — no English article carries the interview yet', () => {
+  it('EN (W250): the English copy, one link to the English article', () => {
     const { container } = renderWithIntl(<PressStrip locale="en" bundle={EN} />, {
       locale: 'en',
     });
-    expect(container).toBeEmptyDOMElement();
-  });
-
-  it('EN, once an English article shows it: the English copy and the English article', () => {
-    const bilingual: BlogPost = {
-      ...atv,
-      slug: { ...atv.slug, en: 'atv-interview' },
-      title: { ...atv.title, en: 'JobsAdmire on ATV' },
-      hasBody: { tr: true, en: true },
-      body: { ...atv.body, en: 'Intro.\n\n!video[The interview](atv-vizyon-haris-jiva)' },
-    };
-    renderWithIntl(
-      <PressStrip locale="en" bundle={withBlogRows(homeBundle('en'), rowsWith(bilingual))} />,
-      { locale: 'en' },
-    );
-    expect(screen.getByRole('link')).toHaveAttribute('href', '/en/blog/atv-interview');
-    expect(screen.getByRole('link')).toHaveAccessibleName(
+    const links = within(screen.getByTestId('home-press')).getAllByRole('link');
+    expect(links).toHaveLength(1);
+    expect(links[0]).toHaveAttribute('href', `/en/blog/${ATV_EN_SLUG}`);
+    expect(links[0]).toHaveAccessibleName(
       'JobsAdmire on ATV Vizyon Interview with founder Haris Jiva Watch the interview →',
     );
+    expect(links[0].querySelector('img')?.getAttribute('src')).toContain(POSTER);
+    expect(collisionsInTree(container)).toEqual([]);
   });
 });
 
@@ -127,11 +126,20 @@ describe('GuidesSection with the fixture door’s feed (W249: the poster as the 
       'cmgblog0000000000000000002',
     ]);
     cleanup();
-    // EN: the Pakistan guide (featured, its own cover) leads; no ATV card in English
+    // EN (W250): the English interview leads — the newest flagged post — with the same poster,
+    // its English video title as the alt; the Pakistan guide and the work-permit guide follow
     renderWithIntl(<GuidesSection locale="en" bundle={EN} />, { locale: 'en' });
-    expect(screen.getByTestId('guide-featured')).toHaveAttribute(
-      'href',
-      '/en/blog/hiring-from-pakistan-employer-guide',
-    );
+    const en = screen.getByTestId('guide-featured');
+    expect(en).toHaveAttribute('href', `/en/blog/${ATV_EN_SLUG}`);
+    expect(
+      within(en)
+        .getByRole('img', { name: 'ATV Vizyon: interview with JobsAdmire founder Haris Jiva' })
+        .getAttribute('src'),
+    ).toContain(POSTER);
+    const enRows = screen.getByTestId('guides-list').querySelectorAll('[data-guide-row]');
+    expect([...enRows].map((r) => r.getAttribute('data-guide-row'))).toEqual([
+      'cmgblog0000000000000000001',
+      'cmgblog0000000000000000003',
+    ]);
   });
 });

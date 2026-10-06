@@ -15,14 +15,30 @@ import { createServer } from 'node:http';
 // GET /api/website/v1/blog/preview/:token (the first fixture post for BLOG_PREVIEW_TOKEN, 410 for
 // any other token). `E2E_BLOG_MOCK=1` in e2e/pages/blog.spec.ts means the server under test was
 // STARTED with OPS_API_URL pointing here (the preview page is dynamic: no rebuild needed).
-// W249: the feed leads with the owner's first real post (`blog-atv-post.json`: Turkish only,
-// featured, no cover, the ATV interview video line in its body); `E2E_BLOG_OPS=1` in the blog and
-// home specs means the server was BUILT and started with BLOG_SOURCE=OPS and OPS_API_URL here.
+// W249/W250: the owner's first real post (`blog-atv-post.json`: Turkish and English, featured, no
+// cover, `showCover: false`, the ATV interview's video line under each intro). Two feeds:
+// - the default one mirrors the live blog once the English interview is published — the ATV post
+//   and the English work-permit guide (the fixture's third post): `/blog` lists 1 card, `/en/blog`
+//   2. `E2E_BLOG_OPS=1` in the blog and home specs means the server was BUILT and started with
+//   BLOG_SOURCE=OPS and OPS_API_URL=http://127.0.0.1:8481 (`npm run e2e:blog-ops`);
+// - `/grid` in front of any path (OPS_API_URL=http://127.0.0.1:8481/grid) serves the grid feed:
+//   the ATV post, the fixture's three and `blog-grid-posts.json`'s seven (one with its own cover
+//   switched off at the top, one without the field at all) — 10 written articles per language, for
+//   the four-in-a-row, paging and cover checks (`E2E_BLOG_GRID=1`, `npm run e2e:blog-grid`).
 const BLOG_FIXTURE = JSON.parse(
   readFileSync(new URL('../../contract/blog-feed.v1.fixture.json', import.meta.url), 'utf8'),
 );
 const ATV_POST = JSON.parse(readFileSync(new URL('./blog-atv-post.json', import.meta.url), 'utf8'));
-const BLOG_FEED = { ...BLOG_FIXTURE, posts: [ATV_POST, ...BLOG_FIXTURE.posts] };
+const GRID_POSTS = JSON.parse(
+  readFileSync(new URL('./blog-grid-posts.json', import.meta.url), 'utf8'),
+);
+const BLOG_FEED = { ...BLOG_FIXTURE, posts: [ATV_POST, BLOG_FIXTURE.posts[2]], redirects: [] };
+const GRID_FEED = {
+  ...BLOG_FIXTURE,
+  posts: [ATV_POST, ...BLOG_FIXTURE.posts, ...GRID_POSTS].sort((a, b) =>
+    b.publishedAt.localeCompare(a.publishedAt),
+  ),
+};
 const BLOG_PREVIEW_POST = BLOG_FIXTURE.posts[0];
 const BLOG_PREVIEW_TOKEN = 'e2e-preview-token.0000000000000000';
 
@@ -163,8 +179,11 @@ const send = (res, status, body) => {
 
 const server = createServer((req, res) => {
   const url = new URL(req.url ?? '/', `http://${HOST}:${PORT}`);
+  // W250: `/grid/…` is the same door with the grid feed (see above)
+  const grid = url.pathname.startsWith('/grid/');
+  if (grid) url.pathname = url.pathname.slice('/grid'.length);
   if (req.method === 'GET' && url.pathname === '/api/website/v1/blog')
-    return send(res, 200, BLOG_FEED);
+    return send(res, 200, grid ? GRID_FEED : BLOG_FEED);
   const preview = url.pathname.match(/^\/api\/website\/v1\/blog\/preview\/([^/]+)$/);
   if (req.method === 'GET' && preview)
     return decodeURIComponent(preview[1]) === BLOG_PREVIEW_TOKEN

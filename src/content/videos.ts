@@ -35,7 +35,8 @@ export type BlogVideo = {
 };
 
 export const BLOG_VIDEOS: Readonly<Record<string, BlogVideo>> = {
-  // ATV "Vizyon" interview with the founder, Haris Jiva (2026; 1920×1080, 3:25, 36 MB).
+  // ATV "Vizyon" interview with the founder, Haris Jiva (2026; 1920×1080, 3:25, 36 MB). Spoken
+  // Turkish; Turkish captions and their English translation (W250, cue for cue).
   'atv-vizyon-haris-jiva': {
     src: '/media/blog/atv-vizyon-haris-jiva.mp4',
     poster: '/media/blog/atv-vizyon-haris-jiva.jpg',
@@ -43,7 +44,10 @@ export const BLOG_VIDEOS: Readonly<Record<string, BlogVideo>> = {
     height: 1080,
     durationSec: 205,
     lang: 'tr',
-    captions: [{ lang: 'tr', src: '/media/blog/atv-vizyon-haris-jiva.tr.vtt', label: 'Türkçe' }],
+    captions: [
+      { lang: 'tr', src: '/media/blog/atv-vizyon-haris-jiva.tr.vtt', label: 'Türkçe' },
+      { lang: 'en', src: '/media/blog/atv-vizyon-haris-jiva.en.vtt', label: 'English' },
+    ],
     press: true,
   },
 };

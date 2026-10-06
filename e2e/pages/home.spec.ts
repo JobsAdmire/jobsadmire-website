@@ -292,8 +292,9 @@ test('the guides block (W248): published articles only — no "yakında" card; T
   await expect(guides.getByTestId('guide-soon')).toHaveCount(0);
 });
 
-// W249 — the TR home with the fixture door's feed: the owner's ATV interview post (featured, no
-// cover) drives the press strip under the hero and the guides' featured card. Run against a
+// W249 — the home with the fixture door's feed: the owner's ATV interview post (featured, no
+// cover; in English too since W250) drives the press strip under the hero and the guides'
+// featured card, on the TR and the EN home. Run against a
 // server BUILT and started with BLOG_SOURCE=OPS and OPS_API_URL on e2e/mocks/careers-door.mjs
 // (`npm run e2e:blog-ops`, which greps these blocks: the rest of this file assumes LOCAL).
 test.describe('the press strip and the guides from the fixture door (E2E_BLOG_OPS=1)', () => {
@@ -302,6 +303,7 @@ test.describe('the press strip and the guides from the fixture door (E2E_BLOG_OP
     'needs a server built and started with BLOG_SOURCE=OPS on e2e/mocks/careers-door.mjs',
   );
   const ATV = '/blog/atv-vizyon-jobsadmire-haris-jiva-roportaji';
+  const ATV_EN = '/en/blog/jobsadmire-on-atv-vizyon-founder-haris-jiva-interview';
   const POSTER = /media%2Fblog%2Fatv-vizyon-haris-jiva\.jpg/;
 
   test('TR: the strip sits between the hero and the case bar, one link to the interview', async ({
@@ -351,10 +353,35 @@ test.describe('the press strip and the guides from the fixture door (E2E_BLOG_OP
     await expect(featured).toContainText('ATV Vizyon');
   });
 
-  test('EN: no strip — no English article carries the interview', async ({ page }) => {
+  test('EN (W250): the strip links to the English interview, in English', async ({ page }) => {
     await page.goto('/en');
-    await expect(page.getByTestId('hero')).toBeVisible();
-    await expect(page.getByTestId('home-press')).toHaveCount(0);
+    const ids = await testIds(page);
+    expect(ids.indexOf('home-press')).toBeGreaterThan(ids.indexOf('hero-proof'));
+    expect(ids.indexOf('home-press')).toBeLessThan(ids.indexOf('live-case-bar'));
+    const link = page.getByTestId('home-press').getByRole('link');
+    await expect(link).toHaveCount(1);
+    await expect(link).toHaveAttribute('href', ATV_EN);
+    await expect(link).toHaveAccessibleName(
+      'JobsAdmire on ATV Vizyon Interview with founder Haris Jiva Watch the interview →',
+    );
+    await expect(link.locator('img')).toHaveAttribute('src', POSTER);
+    await link.click();
+    await expect(page).toHaveURL(new RegExp(`${ATV_EN}$`));
+    await expect(page.getByTestId('article-video')).toBeVisible();
+  });
+
+  test('EN (W250): the guides feature the English interview with its poster', async ({ page }) => {
+    await page.goto('/en');
+    const guides = page.getByTestId('guides');
+    const featured = guides.getByTestId('guide-featured');
+    await expect(featured).toHaveAttribute('href', ATV_EN);
+    await expect(featured.locator('img')).toHaveAttribute('src', POSTER);
+    await expect(featured.locator('img')).toHaveAttribute(
+      'alt',
+      'ATV Vizyon: interview with JobsAdmire founder Haris Jiva',
+    );
+    // the English work-permit guide is the one side row
+    await expect(guides.getByTestId('guides-list').locator('[data-guide-row]')).toHaveCount(1);
   });
 
   test('390 px: thumbnail and text in one compact row, no overflow', async ({ page }) => {
@@ -373,15 +400,17 @@ test.describe('the press strip and the guides from the fixture door (E2E_BLOG_OP
     expect([Math.round(thumb.width), Math.round(thumb.height)]).toEqual([88, 50]);
   });
 
-  test('axe: the TR home with the strip is clean', async ({ page }) => {
-    await page.goto('/');
-    await settleMotion(page);
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
-      .analyze();
-    expect(
-      results.violations,
-      JSON.stringify(results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length }))),
-    ).toEqual([]);
+  test('axe: the TR and the EN home with the strip are clean', async ({ page }) => {
+    for (const path of ['/', '/en']) {
+      await page.goto(path);
+      await settleMotion(page);
+      const results = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
+        .analyze();
+      expect(
+        results.violations,
+        JSON.stringify(results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length }))),
+      ).toEqual([]);
+    }
   });
 });

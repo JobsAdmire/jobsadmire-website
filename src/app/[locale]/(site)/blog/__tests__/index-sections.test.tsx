@@ -4,10 +4,9 @@ import type { BlogPost } from '@/content/collections';
 import { BLOCK_STRINGS, testBundle } from '@/test/bundle';
 import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
-import { BlogPostCard } from '../_components/BlogPostCard';
+import { BlogPostCard, CARD_COVER_SIZES } from '../_components/BlogPostCard';
 import { HeroArt } from '../_components/HeroArt';
-import { MostRead } from '../_components/MostRead';
-import { PostList } from '../_components/PostList';
+import { GRID_COLUMNS, PostList } from '../_components/PostList';
 import { POST_LIST_ID } from '../_lib/filter';
 
 /** A full written row (both locales), per the T0b schema. */
@@ -51,7 +50,6 @@ const bundle = testBundle({
     'blog.034': 'FEATURED',
     'blog.077': "Türkçe'de de var",
     'blog.081': 'Also in English',
-    'blog.084': 'Read article →',
   },
 });
 
@@ -84,36 +82,60 @@ describe('HeroArt (S1.2 — both floating cards from the package ids)', () => {
   });
 });
 
-describe('BlogPostCard (S2.3–S2.6, S3.3, M5, M7)', () => {
-  it('featured + written: the whole card is the title link, "Read article →", month-year meta', () => {
+describe('BlogPostCard (S2.3–S2.6, S3.3, M5, M7; the uniform card, W250)', () => {
+  it('a written card: the whole card is the title link, month-year meta, a 16:10 cover box', () => {
     const { container } = renderWithIntl(
-      <BlogPostCard bundle={bundle} locale="en" post={row('guide')} variant="featured" />,
+      <BlogPostCard bundle={bundle} locale="en" post={row('guide')} />,
       { locale: 'en' },
     );
     const link = screen.getByRole('link', { name: 'Title guide' });
     expect(link).toHaveAttribute('href', '/en/blog/guide');
     expect(link.className).toContain('after:absolute');
-    expect(screen.getByRole('heading', { level: 2, name: 'Title guide' })).toBeInTheDocument();
-    expect(container).toHaveTextContent('FEATURED');
-    expect(container).toHaveTextContent('Read article →');
+    expect(screen.getByRole('heading', { level: 3, name: 'Title guide' })).toBeInTheDocument();
     expect(container).toHaveTextContent('June 2026 · 5 min read');
     expect(container).not.toHaveTextContent('12 June 2026');
+    // not the featured one: no dark pill, no featured marker
+    expect(container).not.toHaveTextContent('FEATURED');
+    expect(container.querySelector('[data-featured]')).toBeNull();
+    expect(screen.queryByTestId('blog-featured')).toBeNull();
     expect(container.querySelector('[data-soon-tag]')).toBeNull();
     const cover = container.querySelector('[data-placeholder="blog-cover-guide"]') as HTMLElement;
     expect(cover).toHaveAttribute('aria-hidden', 'true');
     expect(cover.className).toContain('bg-[linear-gradient(135deg,#1899d5_0%,#0e5f8f_100%)]');
+    // owner W250: the design's square-ish card — a 16:10 cover at the card's width, never the
+    // thin strip of the old full-width featured card; phones keep the 104 px row thumbnail
+    expect(cover.className).toContain('aspect-[16/10]');
+    expect(cover.className).not.toMatch(/(^|\s)h-\[/);
+    expect(cover.className).toContain('max-md:w-[104px]');
     expect(cover).toHaveTextContent('Work Permits');
     expect(collisionsInTree(container)).toEqual([]);
   });
 
+  it('featured: the dark "FEATURED" pill (blog.034) before the category pill — still a grid card', () => {
+    const { container } = renderWithIntl(
+      <BlogPostCard bundle={bundle} locale="en" post={row('guide')} featured />,
+      { locale: 'en' },
+    );
+    const card = screen.getByTestId('blog-featured');
+    expect(card).toHaveAttribute('data-featured', '');
+    const pills = Array.from(card.querySelectorAll('span.rounded-pill')).map((p) => p.textContent);
+    expect(pills.slice(0, 2)).toEqual(['FEATURED', 'Work Permits']);
+    expect(within(card).getByText('FEATURED').className).toContain('bg-ink');
+    // the same card face as every other: an h3 and the 16:10 cover, no "Read article →"
+    expect(screen.getByRole('heading', { level: 3, name: 'Title guide' })).toBeInTheDocument();
+    expect(container).not.toHaveTextContent('Read article →');
+    expect(card.querySelector('[data-placeholder]')?.className).toContain('aspect-[16/10]');
+    expect(collisionsInTree(container)).toEqual([]);
+  });
+
   it('renders nothing for a row with no article in the locale — no "yakında" card (W248)', () => {
-    for (const variant of ['featured', 'card'] as const) {
+    for (const featured of [true, false]) {
       const { container, unmount } = renderWithIntl(
         <BlogPostCard
           bundle={bundle}
           locale="tr"
           post={row('guide', { hasBody: { tr: false, en: true }, body: { tr: null, en: 'x' } })}
-          variant={variant}
+          featured={featured}
         />,
         { locale: 'tr' },
       );
@@ -161,7 +183,7 @@ describe('BlogPostCard (S2.3–S2.6, S3.3, M5, M7)', () => {
     expect(collisionsInTree(container)).toEqual([]);
   });
 
-  it("a post's cover photo replaces the category placeholder (W248)", () => {
+  it("a post's cover photo replaces the category placeholder: 16:10, set above its middle, liquid sizes (W248, W250)", () => {
     const { container } = renderWithIntl(
       <BlogPostCard
         bundle={bundle}
@@ -170,81 +192,50 @@ describe('BlogPostCard (S2.3–S2.6, S3.3, M5, M7)', () => {
           cover: { url: COVER_URL, width: 1600, height: 900 },
           coverAlt: { tr: null, en: 'An interview' },
         })}
-        variant="featured"
+        featured
       />,
       { locale: 'en' },
     );
     expect(container.querySelector('[data-placeholder]')).toBeNull();
     const box = container.querySelector('[data-cover-photo="blog-cover-p"]') as HTMLElement;
-    expect(box.className).toContain('h-[270px]');
+    expect(box.className).toContain('aspect-[16/10]');
     const img = within(box).getByRole('img', { name: 'An interview' });
     expect(img.getAttribute('src')).toContain(encodeURIComponent(COVER_URL));
-    expect(img).toHaveAttribute('sizes');
+    expect(img.className).toContain('object-[50%_40%]');
+    // a quarter of the 1,240 px box past the liquid base (W231): 297 / 1440 of the screen
+    expect(img).toHaveAttribute('sizes', CARD_COVER_SIZES);
+    expect(CARD_COVER_SIZES).toBe(
+      '(min-width: 1441px) 20.63vw, (min-width: 1101px) 297px, (min-width: 901px) 320px, (min-width: 701px) 420px, 200px',
+    );
   });
 });
 
-describe('MostRead (S2.2, M6)', () => {
-  it('ranks the written rows under "Most read" with the sample tag, each a link', () => {
-    const { container } = renderWithIntl(
-      <MostRead
-        bundle={bundle}
-        locale="en"
-        posts={[
-          row('a', { readMinutes: 8 }),
-          enOnly('b', { category: 'recruitment', categoryLabelId: 'home.265' }),
-        ]}
-      />,
-      { locale: 'en' },
-    );
-    const panel = screen.getByTestId('blog-most-read');
-    expect(within(panel).getByRole('heading', { level: 2, name: 'Most read' })).toBeInTheDocument();
-    expect(panel.querySelector('[data-sample-tag]')).not.toBeNull();
-    const items = within(panel).getAllByRole('listitem');
-    expect(items).toHaveLength(2);
-    expect(items[0]).toHaveTextContent('1');
-    expect(within(items[0]).getByRole('link', { name: 'Title a' })).toHaveAttribute(
-      'href',
-      '/en/blog/a',
-    );
-    expect(items[0]).toHaveTextContent('Work Permits · 8 min read');
-    expect(within(items[1]).getByRole('link', { name: 'Title b' })).toHaveAttribute(
-      'href',
-      '/en/blog/b',
-    );
-    expect(container.querySelector('[data-soon-tag]')).toBeNull();
-    expect(collisionsInTree(container)).toEqual([]);
-  });
-
-  it('renders nothing without rows', () => {
-    const { container } = renderWithIntl(<MostRead bundle={bundle} locale="en" posts={[]} />, {
-      locale: 'en',
-    });
-    expect(container).toBeEmptyDOMElement();
-  });
-});
-
-describe('PostList (S3.1 — the grid LoadMore pages)', () => {
+describe('PostList (S3.1 — the one grid LoadMore pages, W250)', () => {
   it('renders nothing for an empty grid', () => {
     const { container } = renderWithIntl(
-      <PostList bundle={bundle} locale="en" posts={[]} heading="Latest articles" pageSize={6} />,
+      <PostList bundle={bundle} locale="en" posts={[]} heading="Latest articles" pageSize={8} />,
       { locale: 'en' },
     );
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('lists every row under a screen-reader h2; rows past the first page start hidden', () => {
-    const posts = Array.from({ length: 8 }, (_, i) => row(`p${i}`));
+  it('every post under a screen-reader h2: 2 / 3 / 4 columns, the first card featured, rows past the page hidden', () => {
+    const posts = Array.from({ length: 10 }, (_, i) => row(`p${i}`));
     const { container } = renderWithIntl(
-      <PostList bundle={bundle} locale="en" posts={posts} heading="Latest articles" pageSize={6} />,
+      <PostList bundle={bundle} locale="en" posts={posts} heading="Latest articles" pageSize={8} />,
       { locale: 'en' },
     );
     expect(screen.getByRole('heading', { level: 2, name: 'Latest articles' })).toBeInTheDocument();
     const list = screen.getByTestId('blog-grid');
     expect(list.id).toBe(POST_LIST_ID);
-    expect(list.className).toContain('lg:grid-cols-3');
+    // at most four in a row (owner W250): 701–900 two, 901–1100 three, from 1101 four; phones one
+    expect(GRID_COLUMNS).toBe('md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4');
+    for (const c of GRID_COLUMNS.split(' ')) expect(list.className).toContain(c);
+    expect(list.className).not.toMatch(/(^|\s)grid-cols-/);
     const rows = Array.from(list.querySelectorAll<HTMLElement>('li[data-post-key]'));
-    expect(rows).toHaveLength(8);
     expect(rows.map((r) => r.hidden)).toEqual([
+      false,
+      false,
       false,
       false,
       false,
@@ -254,6 +245,10 @@ describe('PostList (S3.1 — the grid LoadMore pages)', () => {
       true,
       true,
     ]);
+    // the featured post is simply the first card, with its pill; no other card wears it
+    expect(rows[0].querySelector('[data-featured]')).not.toBeNull();
+    expect(list.querySelectorAll('[data-featured]')).toHaveLength(1);
+    expect(within(list).getAllByText('FEATURED')).toHaveLength(1);
     expect(collisionsInTree(container)).toEqual([]);
   });
 });

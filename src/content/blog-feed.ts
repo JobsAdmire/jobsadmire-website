@@ -100,16 +100,18 @@ export function mapFeedPost(
     perLocale((l) => (written[l] ? v[l] : null));
   const body = only(post.body);
   // W249: a post without a cover of its own shows its first video's poster (a file of the site)
-  // wherever a cover is read — the article, every card, the home guides, the share image and the
-  // BlogPosting image. The poster's alt is the video's title in that language (its line there,
-  // else the line the poster came from): `coverAlt` describes a cover photo, and Operations sends
-  // it only with one.
+  // wherever a cover is read — every card, the home guides, the share image and the BlogPosting
+  // image. The poster's alt is the video's title in that language (its line there, else the line
+  // the poster came from): `coverAlt` describes a cover photo, and Operations sends it only with
+  // one. W250: `coverSource` marks which it is — the article's top never shows a poster, which
+  // its body plays anyway (`articleTopCover`).
   const video = own ? null : (firstVideo(body.tr) ?? firstVideo(body.en));
   const cover =
     own ??
     (video
       ? { url: video.video.poster, width: video.video.width, height: video.video.height }
       : null);
+  const coverSource = own ? 'post' : video ? 'video' : undefined;
   const coverAlt = perLocale((l) => {
     if (!written[l]) return null;
     if (!video) return post.coverAlt[l];
@@ -131,6 +133,10 @@ export function mapFeedPost(
     featured: post.featured,
     authorObj: post.author ? { name: post.author.name, title: post.author.title } : null,
     cover,
+    ...(coverSource ? { coverSource } : {}),
+    // W250: Operations' "show the cover at the top of the article" switch; absent or `null` (a
+    // feed from before the switch) is `true`.
+    showCover: post.showCover !== false,
     coverAlt,
     seo: { title: only(post.seo.title), description: only(post.seo.description) },
     faq: perLocale((l) => (written[l] ? post.faq[l] : [])),

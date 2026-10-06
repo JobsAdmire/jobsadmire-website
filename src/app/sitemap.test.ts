@@ -1,5 +1,13 @@
-import { beforeAll, describe, expect, it } from 'vitest';
-import sitemap from './sitemap';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
+
+// W250: the route renders per request (`connection()`), which needs a Next request scope.
+const connection = vi.hoisted(() => vi.fn(async () => undefined));
+vi.mock('next/server', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('next/server')>()),
+  connection,
+}));
+
+import sitemap, { revalidate } from './sitemap';
 import { pathnames, routing } from '@/i18n/routing';
 import {
   absoluteUrl,
@@ -16,6 +24,11 @@ beforeAll(async () => {
 });
 
 describe('sitemap', () => {
+  it("renders per request with the blog feed's 60 s floor (W250)", () => {
+    expect(connection).toHaveBeenCalled();
+    expect(revalidate).toBe(60);
+  });
+
   it('lists the built, indexable routes in both locales', () => {
     expect(urls).toContain('https://www.jobsadmire.com/');
     expect(urls).toContain('https://www.jobsadmire.com/en');

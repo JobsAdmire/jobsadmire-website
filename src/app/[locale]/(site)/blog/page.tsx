@@ -19,12 +19,10 @@ import { routing, type Locale } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
 import { formatInt } from '@/lib/format/money';
 import { buildMetadata } from '@/lib/seo/metadata';
-import { BlogPostCard } from './_components/BlogPostCard';
 import { BlogTools, type LangLink, type TopicOption } from './_components/BlogTools';
 import { HeroArt } from './_components/HeroArt';
 import { IndexState } from './_components/IndexState';
 import { LoadMore } from './_components/LoadMore';
-import { MostRead } from './_components/MostRead';
 import { PostList } from './_components/PostList';
 import { ResultLine } from './_components/ResultLine';
 import { RotatingWord } from './_components/RotatingWord';
@@ -32,14 +30,7 @@ import { RotationToggle } from './_components/RotationToggle';
 import { ScrollEnhancementsLoader } from './_components/ScrollEnhancementsLoader';
 import { ALL_DOT, CATEGORY_FACE } from './_lib/category';
 import { ALL, POST_LIST_ID, type ResultLineForms } from './_lib/filter';
-import {
-  categoryOptions,
-  filterItems,
-  indexPosts,
-  mostReadPosts,
-  otherLocale,
-  PAGE_SIZE,
-} from './_lib/posts';
+import { categoryOptions, filterItems, indexPosts, otherLocale, PAGE_SIZE } from './_lib/posts';
 
 /** The owner switched the `newsletter` form on (2026-10-05, after the W5/W97 hold): the band
  *  shows its own inline form (`src/forms/newsletter/`, KVKK checkbox, success →
@@ -100,11 +91,10 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
   const t = makeT(bundle);
   const tf = makeTf(bundle, locale);
   const rows = getCollection(bundle, 'blog');
-  // W248: the written articles of this locale only — row 1 featured, the rest the grid; a
-  // locale with none shows the W6 empty state and the other locale's index.
+  // W248: the written articles of this locale only; W250: one uniform grid, the featured post
+  // its first card (no separate full-width card, no "most read" panel); a locale with none shows
+  // the W6 empty state and the other locale's index.
   const listed = indexPosts(rows, locale);
-  const [featured = null, ...grid] = listed;
-  const mostRead = mostReadPosts(rows, locale);
   const words = sys('blog.hero.words').split('|');
   const whatsapp = waLink(
     bundle.settings.whatsappNumber,
@@ -134,12 +124,7 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <IndexState
-        locale={locale}
-        items={filterItems(grid, locale, t)}
-        featured={featured ? filterItems([featured], locale, t)[0] : null}
-        pageSize={PAGE_SIZE}
-      >
+      <IndexState locale={locale} items={filterItems(listed, locale, t)} pageSize={PAGE_SIZE}>
         {/* ---- Hero (Blog.dc.html 495–588): crumbs + the cadence pill, the rotating h1 (B-4, the
                 LCP element) with its pause, sub, ticks, the phone strip, the hero art and the
                 tools card ---- */}
@@ -292,56 +277,27 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
           <ResultLine forms={forms} topics={topics} clearLabel={t('blog.089')} />
         </div>
 
-        {featured ? (
-          <>
-            {/* ---- Featured + most read (599–634): 1.85fr / 1.15fr from 901 px; the featured card
-                    alone takes the row while there is no ranking to show (W248) ---- */}
-            <section className="bg-white pt-11 pb-2 max-md:pt-[22px]">
-              <div
-                className={`container-site grid items-stretch gap-6 max-md:gap-3.5${mostRead.length > 0 ? ' lg:grid-cols-[1.85fr_1.15fr]' : ''}`}
-              >
-                <div data-testid="blog-featured" className="min-w-0">
-                  <BlogPostCard
-                    bundle={bundle}
-                    locale={locale}
-                    post={featured}
-                    variant="featured"
-                  />
-                </div>
-                <MostRead bundle={bundle} locale={locale} posts={mostRead} />
-              </div>
-            </section>
-
-            {/* ---- The grid (636–669): six cards, "Daha fazla yazı ↓" adds six ---- */}
-            {grid.length > 0 ? (
-              <section className="bg-white pt-8 pb-8 max-md:pt-[18px] max-md:pb-[26px]">
-                <div className="container-site">
-                  <PostList
-                    bundle={bundle}
-                    locale={locale}
-                    posts={grid}
-                    pageSize={PAGE_SIZE}
-                    heading={sys('blog.index.latest')}
-                  />
-                  <LoadMore
-                    listId={POST_LIST_ID}
-                    moreLabel={t('blog.090')}
-                    noResultsLabel={t('blog.035')}
-                  />
-                </div>
-              </section>
-            ) : (
-              // One post (W248): no grid, but a search that misses the featured card still
-              // answers with the no-results panel.
-              <div className="container-site">
-                <LoadMore
-                  listId={POST_LIST_ID}
-                  moreLabel={t('blog.090')}
-                  noResultsLabel={t('blog.035')}
-                />
-              </div>
-            )}
-          </>
+        {listed.length > 0 ? (
+          // ---- The grid (Blog.dc.html 636–669; owner 2026-10-06, W250): every article as one
+          //      uniform card, four in a row from 1101 px, the featured post first with its pill;
+          //      eight to a page, "Daha fazla yazı ↓" adds eight. It takes the design's featured
+          //      row's top padding (599: 44 px, 22 on phones), the featured row being gone. ----
+          <section className="bg-white pt-11 pb-8 max-md:pt-[22px] max-md:pb-[26px]">
+            <div className="container-site">
+              <PostList
+                bundle={bundle}
+                locale={locale}
+                posts={listed}
+                pageSize={PAGE_SIZE}
+                heading={sys('blog.index.latest')}
+              />
+              <LoadMore
+                listId={POST_LIST_ID}
+                moreLabel={t('blog.090')}
+                noResultsLabel={t('blog.035')}
+              />
+            </div>
+          </section>
         ) : (
           // W6: a locale with no written article (TR on the LOCAL bundle, W248) shows the empty
           // state and the other locale's index.

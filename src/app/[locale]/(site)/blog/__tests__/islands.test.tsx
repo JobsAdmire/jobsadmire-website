@@ -9,6 +9,7 @@ import { RotatingWord } from '../_components/RotatingWord';
 import { RotationToggle } from '../_components/RotationToggle';
 import { ScrollEnhancements } from '../_components/ScrollEnhancements';
 import { ALL, POST_LIST_ID, type FilterItem } from '../_lib/filter';
+import { PAGE_SIZE } from '../_lib/posts';
 import { rotation } from '../_lib/rotation';
 import { scrollArm } from '../_lib/scroll-arm';
 
@@ -113,8 +114,10 @@ describe('RotatingWord + RotationToggle (B-4 — D20, WCAG 2.2.2; S1.4/S1.5)', (
   });
 });
 
-/** Eight grid rows (two pages of six) and a featured row outside the grid. */
+/** Nine grid rows — the featured post first, as the index lists it since W250 (one grid, no
+ *  separate featured card) — so a page of eight leaves one for "Load more". */
 const ITEMS: FilterItem[] = [
+  { key: 'feat', category: 'workPermits', text: 'the complete permit guide excerpt work permits' },
   { key: 'a', category: 'workPermits', text: 'work permit guide excerpt work permits' },
   { key: 'b', category: 'recruitment', text: 'hiring from pakistan excerpt recruitment' },
   { key: 'c', category: 'workPermits', text: 'permit renewals excerpt work permits' },
@@ -124,11 +127,6 @@ const ITEMS: FilterItem[] = [
   { key: 'g', category: 'marketNews', text: 'tourism season excerpt market news' },
   { key: 'h', category: 'workPermits', text: 'quota system excerpt work permits' },
 ];
-const FEATURED: FilterItem = {
-  key: 'feat',
-  category: 'workPermits',
-  text: 'the complete permit guide excerpt work permits',
-};
 const TOPICS: TopicOption[] = [
   { value: ALL, label: 'All', dot: 'bg-ink' },
   { value: 'workPermits', label: 'Work Permits', dot: 'bg-blue' },
@@ -150,7 +148,7 @@ const LABELS: BlogToolsLabels = {
 
 function renderIndex() {
   return render(
-    <IndexState locale="en" items={ITEMS} featured={FEATURED} pageSize={6}>
+    <IndexState locale="en" items={ITEMS} pageSize={PAGE_SIZE}>
       <BlogTools
         labels={LABELS}
         topics={TOPICS}
@@ -162,7 +160,7 @@ function renderIndex() {
       <ResultLine forms={FORMS} topics={TOPICS} clearLabel="Clear" />
       <ul id={POST_LIST_ID}>
         {ITEMS.map((it, i) => (
-          <li key={it.key} data-post-key={it.key} hidden={i >= 6}>
+          <li key={it.key} data-post-key={it.key} hidden={i >= PAGE_SIZE}>
             {it.key}
           </li>
         ))}
@@ -180,27 +178,28 @@ const visibleKeys = () => ITEMS.map((it) => it.key).filter((key) => !row(key).hi
 const status = () => screen.getByTestId('blog-tools-status');
 
 describe('the index islands (S1.3, S3.2, M3, M4 — IndexState, BlogTools, LoadMore, ResultLine)', () => {
-  it('shows six, then six more on "Load more"; the button goes when nothing waits', () => {
+  it('shows eight (two rows of four, W250), then the rest on "Load more"; the button goes when nothing waits', () => {
     const { container } = renderIndex();
-    expect(visibleKeys()).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
-    expect(status()).toHaveTextContent('9 articles'); // the grid + the featured card
+    expect(PAGE_SIZE).toBe(8);
+    expect(visibleKeys()).toEqual(['feat', 'a', 'b', 'c', 'd', 'e', 'f', 'g']);
+    expect(status()).toHaveTextContent('9 articles'); // every card, the featured one included
     expect(screen.getByTestId('blog-result-line')).toHaveTextContent('9 articles');
     fireEvent.click(screen.getByRole('button', { name: 'Load more articles ↓' }));
-    expect(visibleKeys()).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+    expect(visibleKeys()).toEqual(['feat', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
     expect(screen.queryByTestId('blog-load-more')).toBeNull();
     expect(collisionsInTree(container)).toEqual([]);
   });
 
-  it('filters by query (featured counted, design countFor); Escape clears; the line names the query', () => {
+  it('filters by query (the design countFor); Escape clears; the line names the query', () => {
     renderIndex();
     const box = screen.getByRole('searchbox', { name: 'Search articles' });
     fireEvent.change(box, { target: { value: 'PERMIT' } });
-    expect(visibleKeys()).toEqual(['a', 'c', 'h']);
+    expect(visibleKeys()).toEqual(['feat', 'a', 'c', 'h']);
     expect(status()).toHaveTextContent('4 articles for “PERMIT”');
     expect(screen.getByTestId('blog-result-line')).toHaveTextContent('4 articles for “PERMIT”');
     fireEvent.keyDown(box, { key: 'Escape' });
     expect(box).toHaveValue('');
-    expect(visibleKeys()).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+    expect(visibleKeys()).toEqual(['feat', 'a', 'b', 'c', 'd', 'e', 'f', 'g']);
   });
 
   it('filters by topic chip and resets from the phone line', () => {
@@ -211,7 +210,7 @@ describe('the index islands (S1.3, S3.2, M3, M4 — IndexState, BlogTools, LoadM
     fireEvent.click(
       within(screen.getByTestId('blog-result-line')).getByRole('button', { name: 'Clear' }),
     );
-    expect(visibleKeys()).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+    expect(visibleKeys()).toEqual(['feat', 'a', 'b', 'c', 'd', 'e', 'f', 'g']);
     expect(within(screen.getByTestId('blog-result-line')).queryByRole('button')).toBeNull();
   });
 
@@ -227,12 +226,12 @@ describe('the index islands (S1.3, S3.2, M3, M4 — IndexState, BlogTools, LoadM
     expect(screen.queryByTestId('blog-load-more')).toBeNull();
   });
 
-  it('a match only the featured card has empties the grid without the no-results panel', () => {
+  it('the featured card filters like any other: a match only it has shows it alone (W250)', () => {
     renderIndex();
     fireEvent.change(screen.getByRole('searchbox', { name: 'Search articles' }), {
       target: { value: 'complete' },
     });
-    expect(visibleKeys()).toEqual([]);
+    expect(visibleKeys()).toEqual(['feat']);
     expect(screen.queryByTestId('blog-no-results')).toBeNull();
     expect(status()).toHaveTextContent('1 article for “complete”');
   });

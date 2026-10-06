@@ -12,7 +12,8 @@ import { CATEGORY_FACE } from '../_lib/category';
  * shared `ImageSlot` placeholder has one tint→sky face (Shared request: a `tone`/`label` prop,
  * with the article's `CategoryCover`). `className` carries the box; `rowOnPhone` keeps only the
  * glyph in the 104 px phone row cover. With `photo` (the post's cover from Operations, W248) the
- * box shows the photo instead — `next/image` `fill`, cropped to the box the caller sizes.
+ * box shows the photo instead — `next/image` `fill`, cropped to the box the caller sizes, centred
+ * a little above its middle (W250: a crop keeps a face rather than a chin).
  */
 export function BlogCover({
   slot,
@@ -36,7 +37,13 @@ export function BlogCover({
   if (photo)
     return (
       <div data-cover-photo={slot} className={`relative overflow-hidden bg-tint ${className}`}>
-        <Image src={photo.src} alt={photo.alt} fill sizes={sizes} className="object-cover" />
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          sizes={sizes}
+          className="object-cover object-[50%_40%]"
+        />
       </div>
     );
   const phoneText = rowOnPhone ? ' max-md:hidden' : '';

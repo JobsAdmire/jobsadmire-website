@@ -250,6 +250,13 @@ export const BlogPostSchema = z
       })
       .nullable()
       .optional(),
+    /** W250: where `cover` comes from — the post's own photo (`post`) or its first video's poster
+     *  (`video`, W249). Cards, the home guides and the share image read both; the article's top
+     *  never shows a poster (the body plays that video). Absent = no cover (or a LOCAL row). */
+    coverSource: z.enum(['post', 'video']).optional(),
+    /** W250: Operations' "show the cover at the top of the article" switch — `false` = no top
+     *  cover even for a photo of its own (the cards and the share image keep it). Absent = `true`. */
+    showCover: z.boolean().optional(),
     coverAlt: perLocale.optional(),
     /** Per-locale `<title>` / meta-description overrides; `null` → the title / the excerpt. */
     seo: z.object({ title: perLocale, description: perLocale }).optional(),

@@ -11,16 +11,27 @@ const read = <T>(path: string): T =>
 export const blogFeedFixture = (): FeedJson => read<FeedJson>('contract/blog-feed.v1.fixture.json');
 
 /** W249: the owner's first real post (`e2e/mocks/blog-atv-post.json`, built from the authored
- *  Turkish post): TR only, featured, no cover, the ATV interview video line under its intro. */
+ *  posts) as Operations serves it once the English version is published (W250): Turkish and
+ *  English, featured, no cover, `showCover: false`, the ATV interview's video line under each
+ *  intro. */
 export const atvPost = (): Json => read<Json>('e2e/mocks/blog-atv-post.json');
 
 export const ATV_KEY = 'cmgblog0000000000000000004';
 export const ATV_SLUG = 'atv-vizyon-jobsadmire-haris-jiva-roportaji';
+export const ATV_EN_SLUG = 'jobsadmire-on-atv-vizyon-founder-haris-jiva-interview';
 export const ATV_VIDEO = 'atv-vizyon-haris-jiva';
 
-/** The fixture door's feed (`e2e/mocks/careers-door.mjs`): the ATV post, then the contract
- *  fixture's three posts — newest first, as Operations sends them. */
-export function doorFeed(): FeedJson {
+/** The fixture door's default feed (`e2e/mocks/careers-door.mjs`, W250): the live blog once the
+ *  English interview is published — the ATV post and the English work-permit guide (the contract
+ *  fixture's third post), no redirects: one Turkish article, two English ones. */
+export function liveDoorFeed(): FeedJson {
+  const feed = blogFeedFixture();
+  return { ...feed, posts: [atvPost(), feed.posts[2]], redirects: [] };
+}
+
+/** The ATV post, then the contract fixture's three posts — newest first, as Operations sends
+ *  them (the head of the door's `/grid` feed, which adds `e2e/mocks/blog-grid-posts.json`). */
+export function atvFixtureFeed(): FeedJson {
   const feed = blogFeedFixture();
   return { ...feed, posts: [atvPost(), ...feed.posts] };
 }

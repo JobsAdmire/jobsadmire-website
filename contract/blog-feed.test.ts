@@ -39,6 +39,25 @@ describe('blog feed contract (blog.v1)', () => {
     expect(BlogFeedPostSchema.safeParse(post).success).toBe(false);
   });
 
+  it('`showCover` is additive (W250): a feed with it, without it or with `null` validates; a non-boolean does not', () => {
+    expect(fixture.posts.every((p) => p.showCover === true)).toBe(true); // Operations' shape
+    const without = structuredClone(fixture);
+    for (const post of without.posts) delete post.showCover;
+    expect(() => BlogFeedSchema.parse(without)).not.toThrow();
+    expect(BlogFeedPostSchema.parse(without.posts[0]).showCover).toBeUndefined();
+    expect(BlogFeedPostSchema.parse({ ...fixture.posts[0], showCover: null }).showCover).toBeNull();
+    expect(BlogFeedPostSchema.parse({ ...fixture.posts[0], showCover: false }).showCover).toBe(
+      false,
+    );
+    expect(BlogFeedPostSchema.safeParse({ ...fixture.posts[0], showCover: 'no' }).success).toBe(
+      false,
+    );
+    // the draft preview reads the same field
+    expect(
+      BlogPreviewSchema.parse({ post: { ...fixture.posts[0], showCover: false } }).post.showCover,
+    ).toBe(false);
+  });
+
   it('a preview post may carry no publishedAt (a draft never published)', () => {
     expect(
       BlogPreviewSchema.safeParse({ post: { ...fixture.posts[0], publishedAt: null } }).success,

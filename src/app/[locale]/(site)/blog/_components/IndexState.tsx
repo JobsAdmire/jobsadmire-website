@@ -16,10 +16,10 @@ export type IndexStateValue = {
   loadMore: () => void;
   /** the grid keys that match the query and the topic, in grid order */
   hits: string[];
-  /** cards matching the query under `category` — the grid's plus the featured card's (the
-   *  design's `countFor`, which the topic button and the sheet rows print) */
+  /** cards matching the query under `category` (the design's `countFor`, which the topic
+   *  button and the sheet rows print) */
   countFor: (category: string) => number;
-  /** every listed card: the grid and the featured one */
+  /** every listed card (the featured one is the grid's first since W250) */
   total: number;
   filtered: boolean;
 };
@@ -36,14 +36,12 @@ const Ctx = createContext<IndexStateValue | null>(null);
 export function IndexState({
   locale,
   items,
-  featured,
   pageSize,
   children,
 }: {
   locale: Locale;
-  /** the grid's rows (not the featured card) */
+  /** the grid's rows, in grid order */
   items: FilterItem[];
-  featured: FilterItem | null;
   pageSize: number;
   children: ReactNode;
 }) {
@@ -52,9 +50,7 @@ export function IndexState({
   const [visible, setVisible] = useState(pageSize);
 
   const value = useMemo<IndexStateValue>(() => {
-    const countFor = (cat: string) =>
-      matchKeys(items, query, cat, locale).length +
-      (featured && matchKeys([featured], query, cat, locale).length > 0 ? 1 : 0);
+    const countFor = (cat: string) => matchKeys(items, query, cat, locale).length;
     return {
       locale,
       query,
@@ -76,10 +72,10 @@ export function IndexState({
       loadMore: () => setVisible((v) => v + pageSize),
       hits: matchKeys(items, query, category, locale),
       countFor,
-      total: items.length + (featured ? 1 : 0),
+      total: items.length,
       filtered: query.trim() !== '' || category !== ALL,
     };
-  }, [locale, items, featured, pageSize, query, category, visible]);
+  }, [locale, items, pageSize, query, category, visible]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

@@ -58,3 +58,16 @@ export function articleSeo(
     description: post.seo?.description[locale] ?? post.excerpt[locale] ?? title,
   };
 }
+
+/** What the top of an article shows (owner 2026-10-06, W250): the post's own cover photo; the
+ *  named category placeholder when it has no cover at all (the LOCAL article, a post with neither
+ *  photo nor video); or nothing — when Operations' switch is off (`showCover: false`, even for a
+ *  photo of its own), or when the cover is only its video's poster (`coverSource: 'video'`, W249),
+ *  which the body plays anyway: the same picture never shows twice. The cards, the home guides
+ *  and the share image keep reading `cover` either way. */
+export type ArticleTopCover = 'photo' | 'placeholder' | null;
+
+export function articleTopCover(post: BlogPost): ArticleTopCover {
+  if (post.showCover === false || post.coverSource === 'video') return null;
+  return post.cover ? 'photo' : 'placeholder';
+}

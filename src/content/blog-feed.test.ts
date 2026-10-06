@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
-import { ATV_KEY, atvPost, doorFeed } from '@/test/blog-fixtures';
+import { ATV_KEY, atvPost, atvFixtureFeed } from '@/test/blog-fixtures';
 import { testBundle } from '@/test/bundle';
 import { BlogFeedPostSchema } from '../../contract/blog-feed.v1';
 import {
@@ -252,9 +252,11 @@ describe('the video poster as the cover (W249)', () => {
   it('a post without a cover but with a video shows the poster, its size, the video title as alt', () => {
     const row = map(atv()); // as Operations sends it: no cover, so no coverAlt either
     expect(row?.cover).toEqual({ url: POSTER, width: 1920, height: 1080 });
+    // W250: marked as the poster, so the article's top leaves it out (the body plays the video)
+    expect(row?.coverSource).toBe('video');
     expect(row?.coverAlt).toEqual({
       tr: 'ATV Vizyon: JobsAdmire kurucusu Haris Jiva ile röportaj',
-      en: null, // not written in English
+      en: 'ATV Vizyon: interview with JobsAdmire founder Haris Jiva', // its English line (W250)
     });
     // a file of the site: BlogPostSchema (and so getCollection) takes it
     expect(BlogPostSchema.safeParse(row).success).toBe(true);
@@ -271,10 +273,13 @@ describe('the video poster as the cover (W249)', () => {
     own.cover = structuredClone(FIXTURE.posts[0].cover) as Record<string, unknown>;
     own.coverAlt = { tr: 'Kapak', en: null };
     expect(map(own)?.cover?.url).toMatch(/\/1600\.webp$/);
+    expect(map(own)?.coverSource).toBe('post'); // W250
     expect(map(own)?.coverAlt?.tr).toBe('Kapak');
     const plain = atv();
     plain.body.tr = 'No video here.\n\n!video[Not yet](unknown-video)';
+    plain.body.en = 'No video here either.';
     expect(map(plain)?.cover).toBeNull(); // the category cover shows
+    expect(map(plain)).not.toHaveProperty('coverSource');
     expect(map(plain)?.coverAlt?.tr).toBeNull();
   });
 
@@ -293,7 +298,7 @@ describe('the video poster as the cover (W249)', () => {
   });
 
   it('through the whole feed: the fixture door’s posts all map, the ATV post first', () => {
-    const { rows } = feedToRows(doorFeed(), quiet());
+    const { rows } = feedToRows(atvFixtureFeed(), quiet());
     expect(rows.map((r) => r.key)).toEqual([
       ATV_KEY,
       'cmgblog0000000000000000001',
@@ -301,14 +306,22 @@ describe('the video poster as the cover (W249)', () => {
       'cmgblog0000000000000000003',
     ]);
     expect(rows[0]).toMatchObject({
-      readMinutesByLocale: { tr: 2, en: null },
+      readMinutesByLocale: { tr: 2, en: 3 },
       featured: true,
       publishedAt: '2026-10-06',
-      slug: { tr: 'atv-vizyon-jobsadmire-haris-jiva-roportaji', en: null },
+      // W250: the English version, published from Operations the same day
+      slug: {
+        tr: 'atv-vizyon-jobsadmire-haris-jiva-roportaji',
+        en: 'jobsadmire-on-atv-vizyon-founder-haris-jiva-interview',
+      },
+      hasBody: { tr: true, en: true },
       cover: { url: POSTER },
+      coverSource: 'video',
+      showCover: false, // its top cover switched off in Operations
       authorObj: null,
     });
     expect(rows[0].faq?.tr).toHaveLength(3);
+    expect(rows[0].faq?.en).toHaveLength(3);
     for (const row of rows) expect(BlogPostSchema.safeParse(row).success).toBe(true);
     // the other three are unchanged: their own cover, or none (no video in their bodies)
     expect(rows.slice(1).map((r) => r.cover?.url ?? null)).toEqual([
@@ -316,5 +329,39 @@ describe('the video poster as the cover (W249)', () => {
       null,
       null,
     ]);
+  });
+});
+
+describe('`showCover` (W250, additive to blog.v1)', () => {
+  const post = () => structuredClone(FIXTURE.posts[0]) as Record<string, unknown>;
+  const read = (p: Record<string, unknown>) =>
+    mapFeedPost(BlogFeedPostSchema.parse(p), { log: quiet() });
+
+  it('passes the switch through; absent or null (a producer from before it) reads as true', () => {
+    expect(read({ ...post(), showCover: false })?.showCover).toBe(false);
+    expect(read({ ...post(), showCover: true })?.showCover).toBe(true);
+    expect(read({ ...post(), showCover: null })?.showCover).toBe(true);
+    const absent = post();
+    delete absent.showCover;
+    expect(read(absent)?.showCover).toBe(true);
+    // off keeps the cover itself, for the cards and the share image
+    expect(read({ ...post(), showCover: false })?.cover?.url).toMatch(/\/1600\.webp$/);
+    expect(BlogPostSchema.safeParse(read({ ...post(), showCover: false })).success).toBe(true);
+  });
+
+  it('a feed with and a feed without the field both map whole; a non-boolean leaves that post out', () => {
+    const withIt = clone();
+    const without = clone();
+    for (const p of without.posts as Record<string, unknown>[]) delete p.showCover;
+    expect(feedToRows(withIt, quiet()).rows).toHaveLength(3);
+    expect(feedToRows(without, quiet()).rows.map((r) => r.showCover)).toEqual([true, true, true]);
+    const bad = clone();
+    (bad.posts as Record<string, unknown>[])[1].showCover = 'yes';
+    const log = quiet();
+    expect(feedToRows(bad, log).rows).toHaveLength(2);
+    expect(log).toHaveBeenCalledWith(
+      'a post broke the contract and was left out',
+      expect.objectContaining({ path: 'showCover' }),
+    );
   });
 });

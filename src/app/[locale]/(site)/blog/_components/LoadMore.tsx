@@ -5,11 +5,11 @@ import { useIndexState } from './IndexState';
 /**
  * The grid's client half (Blog.dc.html 650–668): it shows the first `visible` matching cards of
  * the server-rendered list `listId` — toggling each `li[data-post-key]`'s `hidden`, which the
- * server already set past the first page, so the first six are visible before hydration — the
- * no-results panel (blog.035) when no card matches (the featured one included), and "Daha fazla
- * yazı ↓" (blog.090) while more matches wait (+6 a click). The rows are static RSC output React
- * never re-renders on the client, so writing the attribute is safe; the effect only writes the
- * DOM (react-hooks 7).
+ * server already set past the first page, so the first page (`PAGE_SIZE`, two rows of four —
+ * W250) is visible before hydration — the no-results panel (blog.035) when no card matches, and
+ * "Daha fazla yazı ↓" (blog.090) while more matches wait (a page more a click). The rows are
+ * static RSC output React never re-renders on the client, so writing the attribute is safe; the
+ * effect only writes the DOM (react-hooks 7).
  */
 export function LoadMore({
   listId,
@@ -20,7 +20,7 @@ export function LoadMore({
   moreLabel: string;
   noResultsLabel: string;
 }) {
-  const { hits, visible, loadMore, countFor, category } = useIndexState();
+  const { hits, visible, loadMore } = useIndexState();
   const signature = hits.slice(0, visible).join('|');
 
   useEffect(() => {
@@ -34,9 +34,7 @@ export function LoadMore({
 
   return (
     <>
-      {/* nothing matches anywhere — a topic only the featured card has empties the grid but
-          is not "no results" (the count line says 1) */}
-      {countFor(category) === 0 ? (
+      {hits.length === 0 ? (
         <p
           data-testid="blog-no-results"
           className="mx-auto mt-7 mb-0 rounded-sm border border-dashed border-tint-border bg-pale-1 p-7 text-center text-[15px] font-semibold text-text-tertiary xl:text-[11.25px]"
