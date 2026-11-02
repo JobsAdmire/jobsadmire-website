@@ -30,7 +30,7 @@ portal `GET /api/connector/v1/website/candidates` → Operations `CrmClient.list
     "languages": [{ "code": "en" | null, "label": "English", "level": "B1" }],
     "availability": { "status": "NOW" | "FROM_DATE", "from": "ISO|null" },   // the portal sends NOW today
     "location": { "country": "PK", "city": "Karachi" },
-    "skills": ["MIG", "TIG"],         // short tags, max 6
+    "skills": ["MIG", "TIG"],         // short tags: at most 6, each ≤ 40 characters (a longer one is left out on both sides, never truncated — agreed 2026-11-02 after the first live sync)
     "education": "string|null", "age": 28 | null,
     "updatedAt": "ISO"
   }]
