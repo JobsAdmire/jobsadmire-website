@@ -71,8 +71,9 @@ export type PoolState = {
   openForm: () => void;
   /** open the card and bring it into view (closing band, basket bar) */
   goToForm: () => void;
-  /** a hero "popular" chip: filter by its industry and jump to the pool */
-  pickIndustry: (key: string) => void;
+  /** a hero "popular" chip: filter by its industry (or, for real rows without groups, its
+   *  profession) and jump to the pool */
+  pickChip: (field: 'industry' | 'trade', key: string) => void;
   flash: boolean;
   phone: boolean;
   filtered: PoolWorker[];
@@ -168,8 +169,8 @@ export function PoolProvider({
         setFormOpen(true);
         scrollToId('pool-form');
       },
-      pickIndustry: (key) => {
-        setFilters((f) => ({ ...f, industry: key }));
+      pickChip: (field, key) => {
+        setFilters((f) => ({ ...f, [field]: key }));
         setPages(0);
         scrollToId('pool');
       },

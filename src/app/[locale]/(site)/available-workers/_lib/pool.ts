@@ -1,8 +1,9 @@
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 
-// The gates of the REAL pool feed (v1.1 cards task). Until it exists the page renders the
-// design's sample (`./sample-pool.ts`) under the sample tag and reads none of these; they keep
-// D2 (cards off) and D23 (no `pool` rows from LOCAL in production) pinned for the day it lands.
+// The gates of the bundle's `pool` COLLECTION. Real candidates do not come from it: since
+// 2026-11-02 (owner) they come from Operations' candidates feed (`src/content/pool-feed.ts`,
+// POOL_SOURCE=OPS), and the page reads none of these. They keep D23 (no `pool` rows from LOCAL in
+// production) pinned; `POOL_CARDS` stays false — the feed, not this switch, carries real cards.
 
 /** D2: per-profile cards are OFF at launch. Turning them on is the v1.1 cards task (partner
  *  notice + consent + DPIA), never a content edit — hence code, not a bundle setting. */

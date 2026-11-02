@@ -350,6 +350,13 @@
         "filter": "Filter",
         "selected": "selected"
       },
+      "card": {
+        "cvOnRequest": "CV on request",
+        "from": "From {date}",
+        "nationality": "Nationality",
+        "location": "Current location",
+        "browseAll": "{count, plural, one {Browse # live profile →} other {Browse # live profiles →}}"
+      },
       "formCta": {
         "ready": "{count} ready now"
       },

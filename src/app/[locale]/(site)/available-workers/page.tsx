@@ -4,6 +4,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ContactLink } from '@/analytics/ContactLink';
 import { getBundle, makeTf, metricValues } from '@/content/adapter';
+import { getCollection } from '@/content/collections';
+import { getPoolFeed } from '@/content/pool-feed';
 // Blocks, primitives and chrome pieces by module path — never a barrel (W134/W147/W156).
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
 import { ContactCta } from '@/design/blocks/ContactCta';
@@ -36,10 +38,12 @@ import { afterSteps, verifiedSteps, workersFaqItems } from './_lib/content';
 import {
   fillSlots,
   poolStats,
+  popularBy,
   popularIndustries,
   type PoolCopy,
   type PoolWorker,
 } from './_lib/pool-view';
+import { candidateToWorker } from './_lib/real-pool';
 import { SAMPLE_POOL, SAMPLE_TOTAL } from './_lib/sample-pool';
 import { submitWorkers } from './actions';
 
@@ -99,10 +103,13 @@ function PoolStat({
  * Available Workers (`design-package/design/Available Workers.dc.html`). The candidate pool and
  * everything the design derives from it — the hero's "live" pill and popular chips, the stats
  * strip, the filter panel, the 9 cards (6 on phones) whose "Add to request" fills the form's
- * basket, load-more, the phone pool pill and basket bar, FAQ 210/211 — render the design's own
- * sample (`_lib/sample-pool.ts`, a page-local constant) under the "örnek / sample" tag (owner
- * 2026-10-05). The real `pool` collection never reaches this page in production (D23) and real
- * profile cards stay off (D2, `_lib/pool.ts`). `PoolProvider` holds the one client state the
+ * basket, load-more, the phone pool pill and basket bar, FAQ 210/211. Two sources, one switch
+ * (`src/content/pool-feed.ts`): under `POOL_SOURCE=OPS` the real candidates of Operations' feed
+ * (contract `candidates.v1`, owner 2026-11-02 — display name and photo on the card, no sample
+ * tag, the stats from the real rows, ISR 60 s under the `pool` tag); otherwise — and at build time
+ * when the feed is down — the design's own sample (`_lib/sample-pool.ts`, a page-local constant)
+ * under the "örnek / sample" tag (owner 2026-10-05). The bundle's `pool` collection never reaches
+ * this page (D23; the feed is not a fixture). `PoolProvider` holds the one client state the
  * islands share; the sections around them stay server-rendered. No `<main>` — the `(site)` layout
  * owns it (R31).
  */
@@ -114,7 +121,12 @@ export default async function AvailableWorkersPage({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
+  const [bundle, sys, pool] = await Promise.all([
+    getBundle(locale),
+    getTranslations('sys'),
+    getPoolFeed(),
+  ]);
+  const real = pool.source === 'OPS';
   const tf = makeTf(bundle, locale); // W1/D17: re-authored ids carry {metric} tokens
   const metrics = metricValues(bundle, locale);
   const s = bundle.settings;
@@ -124,36 +136,49 @@ export default async function AvailableWorkersPage({
   // seven hard-coded English texts are not ported, and nothing typed ever rides here (W95).
   const waHire = waLink(s.whatsappNumber, tf('availworkers.224'));
 
-  // The design's sample pool, every label resolved here (W9: the islands read no bundle).
-  const rows: PoolWorker[] = SAMPLE_POOL.map((r) => ({
-    ref: r.ref,
-    trade: tf(r.tradeId),
-    tradeKey: r.tradeId,
-    country: tf(r.countryId),
-    countryKey: r.countryId,
-    industry: tf(r.industryId),
-    industryKey: r.industryId,
-    exp: r.exp,
-    langs: tf(r.langsId),
-    lang: r.lang,
-    avail: r.avail,
-    tags: r.tags.map((t) => ('id' in t ? tf(t.id) : t.brand)),
-    added: r.added,
-  }));
+  // Real candidates (POOL_SOURCE=OPS) or the design's sample pool, every label resolved here
+  // (W9: the islands read no bundle).
+  const countries = new Map(getCollection(bundle, 'sourceCountries').map((c) => [c.code, c.name]));
+  const now = new Date();
+  const rows: PoolWorker[] = pool.candidates
+    ? pool.candidates.map((c) =>
+        candidateToWorker(c, locale, { now, countries, fromTemplate: raw('workers.card.from') }),
+      )
+    : SAMPLE_POOL.map((r) => ({
+        ref: r.ref,
+        trade: tf(r.tradeId),
+        tradeKey: r.tradeId,
+        country: tf(r.countryId),
+        countryKey: r.countryId,
+        industry: tf(r.industryId),
+        industryKey: r.industryId,
+        exp: r.exp,
+        langs: tf(r.langsId),
+        lang: r.lang,
+        avail: r.avail,
+        tags: r.tags.map((t) => ('id' in t ? tf(t.id) : t.brand)),
+        added: r.added,
+      }));
   const stats = poolStats(rows);
-  const popular = popularIndustries(rows).map((p) => ({
+  // the design's busiest industries; real rows whose positions carry no group: the professions
+  const byIndustry = popularIndustries(rows);
+  const popularField = byIndustry.length > 0 ? 'industry' : 'trade';
+  const popular = (byIndustry.length > 0 ? byIndustry : popularBy(rows, 'trade')).map((p) => ({
     key: p.key,
     label: `${p.label} · ${p.count}`,
   }));
-  // The design's anonymised avatar is an image spot (photos are shared on request only): a
-  // decorative `ImageSlot` per profile, rendered here because `ImageSlot` reads `sys.blocks`, a
-  // server-only namespace (W148), and blurred under a lock by the card.
+  // One decorative `ImageSlot` per profile, rendered here because `ImageSlot` reads `sys.blocks`,
+  // a server-only namespace (W148). The sample's is an image spot the card blurs under a lock
+  // (photos on request); a real candidate's is the feed's photo in the slot's fixed square (the
+  // name beside it is the text, so alt=""), or the same spot, unlocked, when there is none.
+  const photos = new Map(pool.candidates?.map((c) => [c.ref, c.photo?.url ?? null]) ?? []);
   const avatars = Object.fromEntries(
     rows.map((w) => [
       w.ref,
       <ImageSlot
         key={w.ref}
         slot={`aw-avatar-${w.ref.toLowerCase()}`}
+        src={photos.get(w.ref) ?? null}
         alt=""
         width={52}
         height={52}
@@ -198,7 +223,15 @@ export default async function AvailableWorkersPage({
     langs: { tr: tf('availworkers.244'), en: tf('availworkers.245') },
     availLabels: [tf('availworkers.207'), tf('availworkers.208'), tf('availworkers.209')],
     newLabel: tf('availworkers.247'),
-    cvOnRequest: sys('workers.pool.cvOnRequest'),
+    cvOnRequest: real ? sys('workers.card.cvOnRequest') : sys('workers.pool.cvOnRequest'),
+    ...(real
+      ? {
+          card: {
+            nationality: sys('workers.card.nationality'),
+            location: sys('workers.card.location'),
+          },
+        }
+      : {}),
     yearsExp: tf('availworkers.248'),
     add: tf('availworkers.250'),
     added: tf('availworkers.249'),
@@ -260,7 +293,7 @@ export default async function AvailableWorkersPage({
                 { name: tf('availworkers.022'), href: '/available-workers' },
               ]}
             />
-            {/* the design's live pill (l. 487) over the sample pool — the sample tag says so */}
+            {/* the design's live pill (l. 487) — over the sample pool the sample tag says so */}
             <div className="mb-4 flex flex-wrap items-center gap-2 max-md:mb-3">
               <p
                 data-testid="pool-live"
@@ -269,7 +302,7 @@ export default async function AvailableWorkersPage({
                 <span aria-hidden="true" className="ja-live size-2 rounded-pill bg-success" />
                 {tf('availworkers.023')}
               </p>
-              <SampleTag tone="dark" />
+              {!real && <SampleTag tone="dark" />}
             </div>
             <h1
               data-testid="page-h1"
@@ -295,7 +328,9 @@ export default async function AvailableWorkersPage({
             <p className="text-body-sm m-0 mt-4.5 max-w-[480px] font-semibold text-white/70 max-md:hidden">
               {tf('availworkers.030')}
             </p>
-            <PopularChips label={tf('availworkers.031')} chips={popular} />
+            {popular.length > 0 && (
+              <PopularChips label={tf('availworkers.031')} chips={popular} field={popularField} />
+            )}
           </div>
 
           <RequestCard
@@ -410,7 +445,8 @@ export default async function AvailableWorkersPage({
         />
       ) : null}
 
-      {/* 5–8 — the pool (design 598–772), the design's sample under the sample tag: the head
+      {/* 5–8 — the pool (design 598–772), real candidates or the design's sample under the
+          sample tag: the head
           tools, the stats strip, the collapsed filters, the cards with load-more, the
           "can't see the profession" band. The header CTA and "Browse candidates" land here. */}
       <Section tone="light" id="pool" className="scroll-mt-20 max-md:py-10.5">
@@ -421,7 +457,7 @@ export default async function AvailableWorkersPage({
                 <h2 className="text-h2 m-0 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
                   {tf('availworkers.052')}
                 </h2>
-                <SampleTag />
+                {!real && <SampleTag />}
               </div>
               <p className="text-body m-0 max-w-[560px] text-text-tertiary max-md:text-[14.5px] max-md:leading-[1.5]">
                 {tf('availworkers.053')}
@@ -440,7 +476,11 @@ export default async function AvailableWorkersPage({
             data-testid="pool-stats"
             className="ja-card-in mb-5.5 grid grid-cols-2 items-center gap-x-3 gap-y-3.25 rounded-md border border-edge-soft bg-pale-1 px-4 py-3.75 max-md:mb-3.5 max-md:rounded-base md:px-6 md:py-4.5 lg:grid-cols-[repeat(4,1fr)_auto] lg:gap-5"
           >
-            <PoolStat figure={SAMPLE_TOTAL} label={tf('availworkers.055')} tone="text-blue-safe" />
+            <PoolStat
+              figure={real ? rows.length : SAMPLE_TOTAL}
+              label={tf('availworkers.055')}
+              tone="text-blue-safe"
+            />
             <PoolStat
               figure={stats.ready}
               label={tf('availworkers.056')}

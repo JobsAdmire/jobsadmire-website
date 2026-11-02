@@ -1,0 +1,667 @@
+{
+  "contractVersion": "candidates.v1",
+  "generatedAt": "2026-11-02T09:00:00.000Z",
+  "total": 14,
+  "nextCursor": null,
+  "stale": false,
+  "candidates": [
+    {
+      "ref": "JA-1201",
+      "displayName": "Ali K.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1201/3f9a1c2e.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "welder",
+        "label": {
+          "tr": "Kaynakçı",
+          "en": "Welder"
+        },
+        "group": {
+          "key": "construction",
+          "label": {
+            "tr": "İnşaat",
+            "en": "Construction"
+          }
+        }
+      },
+      "nationality": "PK",
+      "nationalityLabel": null,
+      "yearsExperience": 6,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "B1"
+        },
+        {
+          "code": "tr",
+          "label": "Turkish",
+          "level": "A2"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "PK",
+        "city": "Karachi"
+      },
+      "skills": ["MIG", "TIG", "Pipe welding"],
+      "education": "Technical diploma",
+      "age": 28,
+      "createdAt": "2026-10-30T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1202",
+      "displayName": "Rajesh K.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1202/b71d04aa.webp",
+        "width": null,
+        "height": null,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "cnc-operator",
+        "label": {
+          "tr": "CNC Operatörü",
+          "en": "CNC Operator"
+        },
+        "group": {
+          "key": "factory",
+          "label": {
+            "tr": "Fabrika ve üretim",
+            "en": "Factory & manufacturing"
+          }
+        }
+      },
+      "nationality": "IN",
+      "nationalityLabel": null,
+      "yearsExperience": 9,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "B2"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "IN",
+        "city": "Pune"
+      },
+      "skills": ["Fanuc", "Siemens 840D"],
+      "education": "ITI certificate",
+      "age": 34,
+      "createdAt": "2026-10-28T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1203",
+      "displayName": "Bekzod T.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1203/5c2e9f10.webp",
+        "width": null,
+        "height": null,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "machine-operator",
+        "label": {
+          "tr": "Makine Operatörü",
+          "en": "Machine Operator"
+        },
+        "group": {
+          "key": "factory",
+          "label": {
+            "tr": "Fabrika ve üretim",
+            "en": "Factory & manufacturing"
+          }
+        }
+      },
+      "nationality": "UZ",
+      "nationalityLabel": null,
+      "yearsExperience": 4,
+      "languages": [
+        {
+          "code": "tr",
+          "label": "Turkish",
+          "level": "B1"
+        },
+        {
+          "code": "ru",
+          "label": "Russian",
+          "level": "C1"
+        },
+        {
+          "code": null,
+          "label": "Uzbek",
+          "level": "C2"
+        }
+      ],
+      "availability": {
+        "status": "FROM_DATE",
+        "from": "2026-11-20T00:00:00.000Z"
+      },
+      "location": {
+        "country": "UZ",
+        "city": "Tashkent"
+      },
+      "skills": ["Forklift licence", "Quality checks"],
+      "education": null,
+      "age": null,
+      "createdAt": "2026-10-20T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1204",
+      "displayName": "Suman G.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1204/e04b7d31.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "housekeeping",
+        "label": {
+          "tr": "Kat Görevlisi",
+          "en": "Housekeeping Attendant"
+        },
+        "group": {
+          "key": "hotel",
+          "label": {
+            "tr": "Otel ve turizm",
+            "en": "Hotels & tourism"
+          }
+        }
+      },
+      "nationality": "NP",
+      "nationalityLabel": null,
+      "yearsExperience": 3,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "A2"
+        }
+      ],
+      "availability": {
+        "status": "FROM_DATE",
+        "from": "2027-01-15T00:00:00.000Z"
+      },
+      "location": {
+        "country": "NP",
+        "city": "Kathmandu"
+      },
+      "skills": ["Room service", "Laundry"],
+      "education": "High school",
+      "age": 25,
+      "createdAt": "2026-10-15T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1205",
+      "displayName": "Aibek A.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1205/9a6c11f2.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "cook",
+        "label": {
+          "tr": "Aşçı",
+          "en": "Cook"
+        },
+        "group": {
+          "key": "hotel",
+          "label": {
+            "tr": "Otel ve turizm",
+            "en": "Hotels & tourism"
+          }
+        }
+      },
+      "nationality": "KG",
+      "nationalityLabel": null,
+      "yearsExperience": 5,
+      "languages": [
+        {
+          "code": "tr",
+          "label": "Turkish",
+          "level": "B1"
+        },
+        {
+          "code": "en",
+          "label": "English",
+          "level": "A2"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "KG",
+        "city": "Bishkek"
+      },
+      "skills": ["Turkish cuisine", "HACCP"],
+      "education": "Culinary college",
+      "age": 31,
+      "createdAt": "2026-10-10T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1206",
+      "displayName": "Mark S.",
+      "photo": null,
+      "position": {
+        "key": "waiter",
+        "label": {
+          "tr": "Garson",
+          "en": "Waiter"
+        },
+        "group": {
+          "key": "hotel",
+          "label": {
+            "tr": "Otel ve turizm",
+            "en": "Hotels & tourism"
+          }
+        }
+      },
+      "nationality": "PH",
+      "nationalityLabel": null,
+      "yearsExperience": 2,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "C1"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "PH",
+        "city": "Manila"
+      },
+      "skills": ["Banquet service", "POS systems"],
+      "education": null,
+      "age": 23,
+      "createdAt": "2026-10-05T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1207",
+      "displayName": "Hamid",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1207/27d8e5b0.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "mason",
+        "label": {
+          "tr": "Duvar Ustası",
+          "en": "Mason"
+        },
+        "group": {
+          "key": "construction",
+          "label": {
+            "tr": "İnşaat",
+            "en": "Construction"
+          }
+        }
+      },
+      "nationality": "PK",
+      "nationalityLabel": null,
+      "yearsExperience": 11,
+      "languages": [
+        {
+          "code": "ur",
+          "label": "Urdu",
+          "level": "C2"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "PK",
+        "city": "Lahore"
+      },
+      "skills": ["Brickwork", "Plastering"],
+      "education": null,
+      "age": 39,
+      "createdAt": "2026-09-28T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1208",
+      "displayName": "Prakash T.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1208/c13f6a94.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "farm-worker",
+        "label": {
+          "tr": "Tarım İşçisi",
+          "en": "Farm Worker"
+        },
+        "group": {
+          "key": "agriculture",
+          "label": {
+            "tr": "Tarım",
+            "en": "Agriculture"
+          }
+        }
+      },
+      "nationality": "NP",
+      "nationalityLabel": null,
+      "yearsExperience": 1,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "A1"
+        }
+      ],
+      "availability": {
+        "status": "FROM_DATE",
+        "from": "2026-11-25T00:00:00.000Z"
+      },
+      "location": {
+        "country": "NP",
+        "city": "Pokhara"
+      },
+      "skills": ["Greenhouse", "Harvesting"],
+      "education": null,
+      "age": 22,
+      "createdAt": "2026-09-20T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1209",
+      "displayName": "Dilshod K.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1209/6e0b2d7c.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "electrician",
+        "label": {
+          "tr": "Elektrikçi",
+          "en": "Electrician"
+        },
+        "group": {
+          "key": "construction",
+          "label": {
+            "tr": "İnşaat",
+            "en": "Construction"
+          }
+        }
+      },
+      "nationality": "UZ",
+      "nationalityLabel": null,
+      "yearsExperience": 7,
+      "languages": [
+        {
+          "code": "tr",
+          "label": "Turkish",
+          "level": "A2"
+        },
+        {
+          "code": "ru",
+          "label": "Russian",
+          "level": "B2"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "UZ",
+        "city": "Samarkand"
+      },
+      "skills": ["Industrial wiring", "Panel assembly"],
+      "education": "Vocational college",
+      "age": 30,
+      "createdAt": "2026-09-15T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1210",
+      "displayName": "Imran A.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1210/f4a91e03.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "steel-fixer",
+        "label": {
+          "tr": "İnşaat Demircisi",
+          "en": "Steel Fixer"
+        },
+        "group": {
+          "key": "construction",
+          "label": {
+            "tr": "İnşaat",
+            "en": "Construction"
+          }
+        }
+      },
+      "nationality": "IN",
+      "nationalityLabel": null,
+      "yearsExperience": 8,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "B1"
+        }
+      ],
+      "availability": {
+        "status": "FROM_DATE",
+        "from": "2027-02-01T00:00:00.000Z"
+      },
+      "location": {
+        "country": "IN",
+        "city": "Lucknow"
+      },
+      "skills": ["Rebar", "Blueprint reading"],
+      "education": null,
+      "age": 36,
+      "createdAt": "2026-09-10T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1211",
+      "displayName": "Nurlan A.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1211/1b7c5e88.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "kitchen-assistant",
+        "label": {
+          "tr": "Mutfak Yardımcısı",
+          "en": "Kitchen Assistant"
+        },
+        "group": {
+          "key": "hotel",
+          "label": {
+            "tr": "Otel ve turizm",
+            "en": "Hotels & tourism"
+          }
+        }
+      },
+      "nationality": "KG",
+      "nationalityLabel": null,
+      "yearsExperience": 0,
+      "languages": [
+        {
+          "code": "tr",
+          "label": "Turkish",
+          "level": "A1"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "KG",
+        "city": "Osh"
+      },
+      "skills": ["Food preparation"],
+      "education": null,
+      "age": 20,
+      "createdAt": "2026-09-01T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1212",
+      "displayName": "Joel R.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1212/82e6d0f9.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "lifeguard",
+        "label": {
+          "tr": "Cankurtaran",
+          "en": "Lifeguard"
+        },
+        "group": {
+          "key": "hotel",
+          "label": {
+            "tr": "Otel ve turizm",
+            "en": "Hotels & tourism"
+          }
+        }
+      },
+      "nationality": "PH",
+      "nationalityLabel": null,
+      "yearsExperience": 4,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "B2"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "PH",
+        "city": "Cebu"
+      },
+      "skills": ["First aid", "Lifeguard certificate"],
+      "education": null,
+      "age": 27,
+      "createdAt": "2026-08-20T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "JA-1213",
+      "displayName": "Usman T.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/JA-1213/d5a3b417.webp",
+        "width": 480,
+        "height": 480,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "welder",
+        "label": {
+          "tr": "Kaynakçı",
+          "en": "Welder"
+        },
+        "group": {
+          "key": "factory",
+          "label": {
+            "tr": "Fabrika ve üretim",
+            "en": "Factory & manufacturing"
+          }
+        }
+      },
+      "nationality": "PK",
+      "nationalityLabel": null,
+      "yearsExperience": 5,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "B1"
+        }
+      ],
+      "availability": {
+        "status": "FROM_DATE",
+        "from": "2026-11-10T00:00:00.000Z"
+      },
+      "location": {
+        "country": "PK",
+        "city": "Faisalabad"
+      },
+      "skills": ["MAG", "Grinding"],
+      "education": "Technical diploma",
+      "age": 29,
+      "createdAt": "2026-08-10T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "C7K2M9QX",
+      "displayName": "Rahim U.",
+      "photo": null,
+      "position": {
+        "key": "forklift-driver",
+        "label": {
+          "tr": "Forklift Operatörü",
+          "en": "Forklift Driver"
+        },
+        "group": null
+      },
+      "nationality": null,
+      "nationalityLabel": "Bangladeshi",
+      "yearsExperience": null,
+      "languages": [],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": null,
+      "skills": [],
+      "education": null,
+      "age": null,
+      "createdAt": "2026-08-01T08:00:00.000Z",
+      "updatedAt": "2026-11-01T12:00:00.000Z"
+    }
+  ]
+}

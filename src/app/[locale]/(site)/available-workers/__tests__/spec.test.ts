@@ -78,9 +78,13 @@ describe('workers form spec → Operations catalog `workers`', () => {
   it('folds basket refs into `message` — also when the visitor typed no message', () => {
     expect(
       toWorkersFields(
-        workersSchema.parse({ ...valid, message: 'Two welders.', profileRefs: 'ja-1042, JA-1050' }),
+        workersSchema.parse({
+          ...valid,
+          message: 'Two welders.',
+          profileRefs: 'JA-1042, C7K2M9QX',
+        }),
       ).message,
-    ).toBe(`${PROFILE_REFS_PREFIX}JA-1042, JA-1050\n\nTwo welders.`);
+    ).toBe(`${PROFILE_REFS_PREFIX}JA-1042, C7K2M9QX\n\nTwo welders.`);
     expect(
       toWorkersFields(workersSchema.parse({ ...valid, message: '', profileRefs: 'JA-1042' }))
         .message,

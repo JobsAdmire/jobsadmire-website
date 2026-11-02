@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   composeWorkersMessage,
+  MAX_PROFILE_REFS,
   MESSAGE_MAX,
   parseProfileRefs,
   PROFILE_REFS_PREFIX,
@@ -15,20 +16,25 @@ describe('composeWorkersMessage — basket refs folded into `message` (no catalo
 
   it('returns an empty string when there is neither a message nor a ref (the field is then omitted)', () => {
     expect(composeWorkersMessage(undefined)).toBe('');
-    expect(composeWorkersMessage('   ', 'not-a-ref')).toBe('');
+    expect(composeWorkersMessage('   ', ' , ;; ')).toBe('');
   });
 
-  it('parses refs case-insensitively, de-duplicates, keeps order, drops junk', () => {
-    expect(parseProfileRefs('ja-1042, JA-1050 ja-1042; JA-9; DROP TABLE; JA-1050')).toEqual([
-      'JA-1042',
-      'JA-1050',
-    ]);
+  it('parses opaque refs as sent: de-duplicates, keeps order and case, drops what is not ref-shaped', () => {
+    expect(
+      parseProfileRefs('JA-1042, C7K2M9QX JA-1042; <b>x</b>; -lead; JA-1050, ' + 'x'.repeat(33)),
+    ).toEqual(['JA-1042', 'C7K2M9QX', 'JA-1050']);
+    expect(parseProfileRefs('ja-1042')).toEqual(['ja-1042']); // opaque: case is kept
     expect(parseProfileRefs(undefined)).toEqual([]);
   });
 
+  it(`keeps at most ${MAX_PROFILE_REFS} refs`, () => {
+    const many = Array.from({ length: 80 }, (_, i) => `JA-${1000 + i}`).join(', ');
+    expect(parseProfileRefs(many)).toHaveLength(MAX_PROFILE_REFS);
+  });
+
   it('prepends the refs line and a blank line; the refs alone when the message is empty', () => {
-    expect(composeWorkersMessage('Two welders.', 'ja-1042, JA-1050')).toBe(
-      `${PROFILE_REFS_PREFIX}JA-1042, JA-1050\n\nTwo welders.`,
+    expect(composeWorkersMessage('Two welders.', 'JA-1042, C7K2M9QX')).toBe(
+      `${PROFILE_REFS_PREFIX}JA-1042, C7K2M9QX\n\nTwo welders.`,
     );
     expect(composeWorkersMessage('', 'JA-1042')).toBe(`${PROFILE_REFS_PREFIX}JA-1042`);
   });

@@ -1,21 +1,38 @@
 import type { LangBand, SampleAvail } from './sample-pool';
 
-/** One sample row with every label resolved by the page (W9: the islands read no bundle). The
- *  `*Key`s are the package ids the filters compare, never a translated label. */
+/** One pool row with every label resolved by the page (W9: the islands read no bundle) — a
+ *  design sample row, or a real candidate under `POOL_SOURCE=OPS` (`./real-pool.ts`). The `*Key`s
+ *  are what the filters compare, never a translated label: package ids for the sample, the feed's
+ *  position / group keys and ISO-2 codes for real rows. */
 export type PoolWorker = {
   ref: string;
   trade: string;
   tradeKey: string;
   country: string;
   countryKey: string;
+  /** '' (and `industryKey` '') when a real row's position has no group */
   industry: string;
   industryKey: string;
-  exp: number;
+  /** years of experience; `null` when the feed does not say */
+  exp: number | null;
   langs: string;
   lang: LangBand;
+  /** every band the row counts in (a real candidate can speak Turkish AND good English); absent
+   *  → `[lang]` */
+  langBands?: readonly LangBand[];
   avail: SampleAvail;
+  /** the pill's words when a real start date says more than the band (`sys.workers.card.from`) */
+  availLabel?: string;
   tags: string[];
   added: boolean;
+  /** Real rows only (owner 2026-11-02): the candidate's full name — the card's heading. */
+  name?: string;
+  /** Real rows only: the nationality's ISO-2 code, for the flag. */
+  flag?: string;
+  /** Real rows only: "City, Country" — where the candidate is now. */
+  location?: string;
+  /** Real rows only: when the profile entered the pool — the "recently added" tie-break. */
+  addedAt?: string;
 };
 
 /** The design's experience bands (`expBand`, l. 1262): 0–3, 4–7, 8+ years. */
@@ -58,11 +75,14 @@ export function filterPool(rows: readonly PoolWorker[], f: PoolFilters): PoolWor
       (f.trade === 'all' || w.tradeKey === f.trade) &&
       (f.country === 'all' || w.countryKey === f.country) &&
       (f.industry === 'all' || w.industryKey === f.industry) &&
-      (f.exp === 'all' || expBand(w.exp) === f.exp) &&
-      (f.lang === 'all' || w.lang === f.lang) &&
+      (f.exp === 'all' || (w.exp !== null && expBand(w.exp) === f.exp)) &&
+      (f.lang === 'all' || (w.langBands ?? [w.lang]).includes(f.lang)) &&
       (f.avail === 'all' || (f.avail === 'now' ? w.avail === 0 : w.avail <= 1)),
   );
 }
+
+/** Unknown experience sorts after every known figure. */
+const years = (w: PoolWorker) => w.exp ?? -1;
 
 export function sortPool(
   rows: readonly PoolWorker[],
@@ -70,10 +90,11 @@ export function sortPool(
   locale: string,
 ): PoolWorker[] {
   return rows.slice().sort((a, b) => {
-    if (sort === 'exp') return b.exp - a.exp;
-    if (sort === 'new') return Number(b.added) - Number(a.added);
+    if (sort === 'exp') return years(b) - years(a);
+    if (sort === 'new')
+      return Number(b.added) - Number(a.added) || (b.addedAt ?? '').localeCompare(a.addedAt ?? '');
     if (sort === 'az') return a.trade.localeCompare(b.trade, locale);
-    return a.avail - b.avail || b.exp - a.exp;
+    return a.avail - b.avail || years(b) - years(a);
   });
 }
 
@@ -81,7 +102,8 @@ export function activeFilterCount(f: PoolFilters): number {
   return (Object.keys(f) as FilterKey[]).filter((k) => f[k] !== 'all').length;
 }
 
-/** The distinct values of one field in first-appearance order — the chips and select options. */
+/** The distinct values of one field in first-appearance order — the chips and select options. A
+ *  row without a value (a real row's missing group: key '') adds none. */
 export function distinct(
   rows: readonly PoolWorker[],
   field: 'trade' | 'country' | 'industry',
@@ -89,22 +111,32 @@ export function distinct(
   const seen = new Map<string, string>();
   for (const w of rows) {
     const key = w[`${field}Key`];
-    if (!seen.has(key)) seen.set(key, w[field]);
+    if (key && !seen.has(key)) seen.set(key, w[field]);
   }
   return [...seen].map(([key, label]) => ({ key, label }));
 }
 
-/** "Popular in the pool right now" (`popularChips`, ll. 1369–1380): the four industries with the
- *  most rows, ties in first-appearance order. */
+/** "Popular in the pool right now" (`popularChips`, ll. 1369–1380): the four values of `field`
+ *  with the most rows, ties in first-appearance order — the industries (the design), or the
+ *  professions when no real row carries a group. */
+export function popularBy(
+  rows: readonly PoolWorker[],
+  field: 'industry' | 'trade',
+  n = 4,
+): { key: string; label: string; count: number }[] {
+  const counts = distinct(rows, field).map((d) => ({
+    ...d,
+    count: rows.filter((w) => w[`${field}Key`] === d.key).length,
+  }));
+  return counts.sort((a, b) => b.count - a.count).slice(0, n);
+}
+
+/** The design's popular chips: the four busiest industries. */
 export function popularIndustries(
   rows: readonly PoolWorker[],
   n = 4,
 ): { key: string; label: string; count: number }[] {
-  const counts = distinct(rows, 'industry').map((d) => ({
-    ...d,
-    count: rows.filter((w) => w.industryKey === d.key).length,
-  }));
-  return counts.sort((a, b) => b.count - a.count).slice(0, n);
+  return popularBy(rows, 'industry', n);
 }
 
 /** The stats strip's three derived figures (ll. 1349–1351): ready now, countries, professions. */
@@ -165,8 +197,12 @@ export type PoolCopy = {
   availLabels: readonly [string, string, string];
   /** `247` */
   newLabel: string;
-  /** sys `pool.cvOnRequest` */
+  /** sys `pool.cvOnRequest` (the sample: "CV & photo on request"), `card.cvOnRequest` for real
+   *  cards, whose photo is on the card */
   cvOnRequest: string;
+  /** Real cards only (`sys.workers.card.*`): the screen-reader names of the nationality and
+   *  location lines, which otherwise read as two bare country names. */
+  card?: { nationality: string; location: string };
   /** `248` — after the years */
   yearsExp: string;
   /** `250`, `249` */

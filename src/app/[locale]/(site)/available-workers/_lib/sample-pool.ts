@@ -2,9 +2,11 @@
  * The design's candidate sample (`Available Workers.dc.html` `pool()`, ll. 1225–1240), copied as a
  * PAGE-LOCAL constant (owner 2026-10-05: data-gated sections render the design's sample with the
  * "örnek / sample" tag instead of an empty state). Never `design-package/data/*.sample.json` and
- * never the `pool` collection — neither may reach production (D23); real profiles arrive with the
- * v1.1 cards task (D2) through `_lib/pool.ts`. Every visitor-facing word is a package id
- * (`availworkers.156`–`206`), resolved by the page; the refs, years and flags are the design's.
+ * never the `pool` collection — neither may reach production (D23). Real profiles (owner
+ * 2026-11-02) come from Operations' feed under POOL_SOURCE=OPS (`src/content/pool-feed.ts`,
+ * `./real-pool.ts`); this sample stays the page's face when the source is off. Every
+ * visitor-facing word is a package id (`availworkers.156`–`206`), resolved by the page; the refs,
+ * years and flags are the design's.
  * Client-safe: no bundle, no message files.
  */
 

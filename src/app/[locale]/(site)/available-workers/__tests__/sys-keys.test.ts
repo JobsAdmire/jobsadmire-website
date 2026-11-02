@@ -13,6 +13,12 @@ const WORKERS_SYS_KEYS = [
   'pool.cvOnRequest',
   'pool.filter',
   'pool.selected',
+  // real cards (POOL_SOURCE=OPS, owner 2026-11-02); `card.browseAll` is the home marquee's button
+  'card.cvOnRequest',
+  'card.from',
+  'card.nationality',
+  'card.location',
+  'card.browseAll',
   'formCta.ready',
   'timeline.days1to3',
   'timeline.arrival',
@@ -75,8 +81,9 @@ describe('sys.workers.* and sys.seo.workers.* (W6/W9/W23)', () => {
       const shown = get(sys, 'workers.pool.shown') as string;
       expect(shown).toContain('{shown}');
       expect(shown).toContain('{total}');
-      for (const key of ['pool.loadMore', 'pool.active', 'formCta.ready'])
-        expect(get(sys, `workers.${key}`), key).toContain('{count}');
+      for (const key of ['pool.loadMore', 'pool.active', 'formCta.ready', 'card.browseAll'])
+        expect(get(sys, `workers.${key}`), key).toContain('{count');
+      expect(get(sys, 'workers.card.from')).toContain('{date}');
     }
   });
 });

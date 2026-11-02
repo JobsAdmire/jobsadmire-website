@@ -22,6 +22,7 @@ const HOME_SYS_KEYS = [
   'home.pool.empty.title',
   'home.pool.empty.body',
   'home.pool.empty.cta',
+  'workers.card.browseAll', // the marquee's button over real candidates (POOL_SOURCE=OPS)
   'home.calc.eyebrowUndated',
   'home.calc.grossFloor',
   'home.calc.supportSeparate',

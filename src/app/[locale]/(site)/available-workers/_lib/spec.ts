@@ -32,8 +32,9 @@ export const workersSchema = z.object({
   startWhen: z.enum(START_WHEN_KEYS).or(z.literal('')).optional(),
   message: z.string().max(FIELD_MAX.message).optional(),
   /** Basket references — the request card's hidden input, filled by the cards' "Add to request"
-   *  (sample profiles until v1.1); '' when the basket is empty. */
-  profileRefs: z.string().max(500).optional(),
+   *  (real candidates under POOL_SOURCE=OPS, else the sample); '' when the basket is empty. Room
+   *  for `MAX_PROFILE_REFS` opaque refs of ≤ 32 characters. */
+  profileRefs: z.string().max(2000).optional(),
 });
 export type WorkersInput = z.infer<typeof workersSchema>;
 

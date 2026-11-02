@@ -414,3 +414,65 @@ test.describe('the press strip and the guides from the fixture door (E2E_BLOG_OP
     }
   });
 });
+
+// 2026-11-02 — the pool marquee over the real candidates (contract `candidates.v1`) from the
+// fixture door: the server was BUILT and started with POOL_SOURCE=OPS (`npm run e2e:pool-ops`).
+test.describe('the pool marquee from the fixture door (E2E_POOL_OPS=1)', () => {
+  test.skip(
+    process.env.E2E_POOL_OPS !== '1',
+    'needs a server built and started with POOL_SOURCE=OPS on e2e/mocks/careers-door.mjs',
+  );
+
+  for (const [locale, path, browse] of [
+    ['tr', '/', '14 güncel profile bakın →'],
+    ['en', '/en', 'Browse 14 live profiles →'],
+  ] as const) {
+    test(`${locale}: eight real cards, newest first, photo + name + position + country, no sample tag (E2E_POOL_OPS)`, async ({
+      page,
+    }) => {
+      await page.goto(path);
+      const pool = page.getByTestId('pool');
+      await expect(pool).toHaveAttribute('data-pool-source', 'ops');
+      await expect(pool.locator('[data-sample-tag]')).toHaveCount(0);
+      const first = page.getByTestId('pool-track').locator(':scope > div').first();
+      const cards = first.locator('[data-pool-card]');
+      await expect(cards).toHaveCount(8);
+      await expect(cards.first()).toHaveAttribute('data-pool-card', 'JA-1201');
+      await expect(cards.first()).toContainText('Ali K.');
+      await expect(cards.first()).toContainText(locale === 'tr' ? 'Kaynakçı' : 'Welder');
+      await expect(cards.first()).toContainText('Pakistan');
+      await expect(cards.first().locator('img')).toHaveAttribute(
+        'src',
+        /media%2Fcandidate%2FJA-1201%2F3f9a1c2e\.webp/,
+      );
+      await expect(cards.first()).toHaveAttribute(
+        'href',
+        locale === 'tr' ? '/adaylar' : '/en/available-workers',
+      );
+      await expect(pool.getByRole('link', { name: browse })).toBeVisible();
+    });
+  }
+
+  test('axe clean and no horizontal overflow at 1440 and 390, both locales (E2E_POOL_OPS)', async ({
+    page,
+  }, testInfo) => {
+    test.skip(testInfo.project.name !== 'desktop', 'explicit widths — one project is enough');
+    for (const width of [1440, 390])
+      for (const path of ['/', '/en']) {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        await settleMotion(page);
+        const results = await new AxeBuilder({ page })
+          .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
+          .analyze();
+        expect(
+          results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length })),
+          `${path} ${width}px`,
+        ).toEqual([]);
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        );
+        expect(overflow, `${path} ${width}px`).toBeLessThanOrEqual(0);
+      }
+  });
+});

@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
+import AxeBuilder from '@axe-core/playwright';
 import { test, expect, type Locator, type Page } from '@playwright/test';
 import { expectHeroPhoto } from '../helpers/hero-photo';
+import { settleMotion } from '../helpers/motion';
 
 const ROUTES = { tr: '/adaylar', en: '/en/available-workers' } as const;
 type Loc = keyof typeof ROUTES;
@@ -349,4 +351,121 @@ test('the language links keep the visitor on this page (W17)', async ({ page }) 
   await page.goto(ROUTES.en);
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('a[hreflang="tr"]').first()).toHaveAttribute('href', /\/adaylar$/);
+});
+
+// 2026-11-02 — the real candidates (contract `candidates.v1`) from the fixture door: the server
+// under test was BUILT and started with POOL_SOURCE=OPS and OPS_API_URL on e2e/mocks/careers-door.mjs
+// (`npm run e2e:pool-ops`). Every other run (LOCAL) keeps the sample assertions above.
+test.describe('real candidates from the fixture door (E2E_POOL_OPS=1)', () => {
+  test.skip(
+    process.env.E2E_POOL_OPS !== '1',
+    'needs a server built and started with POOL_SOURCE=OPS on e2e/mocks/careers-door.mjs',
+  );
+  type Feed = {
+    candidates: {
+      ref: string;
+      displayName: string;
+      photo: { url: string } | null;
+      position: { label: { tr: string; en: string } };
+    }[];
+  };
+  const FEED = readJson('contract/candidates-feed.v1.fixture.json') as unknown as Feed;
+  const card = (page: Page, ref: string) => page.locator(`[data-pool-ref="${ref}"]`);
+  const cards = (page: Page) => page.getByTestId('pool-grid').locator(':scope > li');
+
+  for (const locale of ['tr', 'en'] as const) {
+    test(`${locale}: 14 real cards with names and photos, no sample tag, real stats (E2E_POOL_OPS)`, async ({
+      page,
+    }) => {
+      await page.goto(ROUTES[locale]);
+      await expect(page.locator('[data-sample-tag]')).toHaveCount(0);
+      await expect(page.getByTestId('pool-stats')).toContainText('14');
+      await expect(page.getByTestId('pool-stats')).not.toContainText('200+');
+      await expect(cards(page)).toHaveCount(isMobile() ? 6 : 9);
+      const more = page.getByTestId('workers-pool').getByRole('button', {
+        name: new RegExp(
+          `^${escapeRe(sysText(locale, 'workers.pool.loadMore')).replace('\\{count\\}', '\\d+')}$`,
+        ),
+      });
+      while ((await cards(page).count()) < 14) await more.click();
+      await expect(cards(page)).toHaveCount(14);
+      for (const c of FEED.candidates) {
+        const el = card(page, c.ref);
+        await expect(el.getByRole('heading', { level: 3 })).toHaveText(c.displayName);
+        await expect(el).toContainText(c.position.label[locale]);
+        if (c.photo)
+          await expect(el.locator('img')).toHaveAttribute(
+            'src',
+            new RegExp(escapeRe(encodeURIComponent(new URL(c.photo.url).pathname))),
+          );
+        else await expect(el.locator('[data-placeholder]')).toHaveCount(1);
+      }
+      // the sample's copy is gone; nothing names who sourced a candidate (firewall)
+      // textContent: the "CV on request" line is hidden on phones (the design's M-rule)
+      const text = (await page.getByTestId('workers-pool').textContent()) ?? '';
+      expect(text).not.toContain(sysText(locale, 'workers.pool.cvOnRequest'));
+      expect(text).toContain(sysText(locale, 'workers.card.cvOnRequest'));
+      expect(text).not.toMatch(/partner|agency|acente|ajans/i);
+    });
+  }
+
+  test('en: the filters work over the real rows (E2E_POOL_OPS)', async ({ page }) => {
+    await page.goto(ROUTES.en);
+    await page.locator('#pool-filters').getByRole('button', { expanded: false }).click();
+    const panel = page.locator('#pool-filters-body');
+    await panel.getByRole('button', { name: 'Welder', exact: true }).click();
+    await expect(cards(page)).toHaveCount(2);
+    await expect(card(page, 'JA-1201')).toBeVisible();
+    await expect(card(page, 'JA-1213')).toBeVisible();
+    await page
+      .locator('#pool-filters')
+      .getByRole('button', { name: S.en['availworkers.060'] })
+      .click();
+    await panel.getByRole('button', { name: 'Bangladeshi', exact: true }).click();
+    await expect(cards(page)).toHaveCount(1);
+    await expect(card(page, 'C7K2M9QX')).toBeVisible();
+    await page
+      .locator('#pool-filters')
+      .getByRole('button', { name: S.en['availworkers.060'] })
+      .click();
+    await panel.getByLabel(S.en['availworkers.063']).selectOption('agriculture');
+    await expect(cards(page)).toHaveCount(1);
+    await panel.getByLabel(S.en['availworkers.063']).selectOption('all');
+    await panel.getByLabel(S.en['availworkers.017']).selectOption('tr');
+    await expect(cards(page)).toHaveCount(5);
+    await panel.getByLabel(S.en['availworkers.065']).selectOption('now');
+    await expect(cards(page)).toHaveCount(4); // Turkish and available now: 1201, 1205, 1209, 1211
+  });
+
+  test('en: Add to request puts the real refs into the form (E2E_POOL_OPS)', async ({ page }) => {
+    await page.goto(ROUTES.en);
+    for (const ref of ['JA-1201', 'JA-1205'])
+      await card(page, ref).getByRole('button', { name: S.en['availworkers.250'] }).click();
+    await openRequestForm(page);
+    await expect(page.locator('input[name="profileRefs"]')).toHaveValue('JA-1201, JA-1205');
+    await expect(page.getByTestId('workers-basket')).toContainText('JA-1201');
+  });
+
+  test('axe clean and no horizontal overflow at 1440 and 390, both locales (E2E_POOL_OPS)', async ({
+    page,
+  }, testInfo) => {
+    test.skip(testInfo.project.name !== 'desktop', 'explicit widths — one project is enough');
+    for (const width of [1440, 390])
+      for (const locale of ['tr', 'en'] as const) {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(ROUTES[locale]);
+        await settleMotion(page);
+        const results = await new AxeBuilder({ page })
+          .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
+          .analyze();
+        expect(
+          results.violations.map((v) => ({ id: v.id, nodes: v.nodes.length })),
+          `${locale} ${width}px`,
+        ).toEqual([]);
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        );
+        expect(overflow, `${locale} ${width}px`).toBeLessThanOrEqual(0);
+      }
+  });
 });

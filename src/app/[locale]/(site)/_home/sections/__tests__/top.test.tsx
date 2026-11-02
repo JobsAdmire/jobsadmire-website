@@ -1,6 +1,9 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { act, fireEvent, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { renderWithIntl } from '@/test/render';
+import { feedToCandidates } from '@/content/pool-candidates';
 import { homeBundle } from '../../__tests__/fixtures';
 import { ChoiceCards } from '../ChoiceCards';
 import { Hero } from '../Hero';
@@ -204,5 +207,66 @@ describe('PoolSection (owner 2026-10-05: the design sample, page-local — D23)'
     fireEvent.click(screen.getByTestId('pool-toggle'));
     expect(track.style.animationPlayState).toBe('paused');
     expect(screen.getByTestId('pool-toggle')).toHaveTextContent('Play');
+  });
+});
+
+describe('PoolSection over real candidates (POOL_SOURCE=OPS, owner 2026-11-02)', () => {
+  const FEED = JSON.parse(
+    readFileSync(join(process.cwd(), 'contract/candidates-feed.v1.fixture.json'), 'utf8'),
+  ) as unknown;
+  const CANDIDATES = feedToCandidates(FEED, () => {}).candidates;
+
+  it('the eight newest, with photo, display name, position and country; no sample tag', () => {
+    renderWithIntl(<PoolSection locale="en" bundle={EN} candidates={CANDIDATES} />, {
+      locale: 'en',
+    });
+    const pool = screen.getByTestId('pool');
+    expect(pool).toHaveAttribute('data-pool-source', 'ops');
+    expect(pool.querySelector('[data-sample-tag]')).toBeNull();
+    const first = pool.querySelector('[data-testid="pool-track"] > :first-child')!;
+    const cards = Array.from(first.querySelectorAll('[data-pool-card]'));
+    expect(cards.map((c) => c.getAttribute('data-pool-card'))).toEqual([
+      'JA-1201',
+      'JA-1202',
+      'JA-1203',
+      'JA-1204',
+      'JA-1205',
+      'JA-1206',
+      'JA-1207',
+      'JA-1208',
+    ]);
+    const ali = cards[0];
+    expect(ali).toHaveAttribute('href', '/en/available-workers');
+    expect(ali).toHaveTextContent('Ali K.');
+    expect(ali).toHaveTextContent('Welder');
+    expect(ali).toHaveTextContent('Pakistan');
+    expect(ali).toHaveTextContent('6 yrs');
+    expect(ali).toHaveTextContent('MIG');
+    expect(ali.querySelector('img')!.getAttribute('src')).toContain(
+      encodeURIComponent('/media/candidate/JA-1201/3f9a1c2e.webp'),
+    );
+    expect(ali.querySelector('img')).toHaveAttribute('alt', '');
+    // a missing photo: the band's dark ground, no image, no labelled placeholder on a live card
+    const mark = cards[5];
+    expect(mark).toHaveTextContent('Mark S.');
+    expect(mark.querySelector('img')).toBeNull();
+    expect(mark.querySelector('[data-placeholder]')).toBeNull();
+    // the browse button counts the real profiles (D17)
+    expect(within(pool).getByRole('link', { name: 'Browse 14 live profiles →' })).toHaveAttribute(
+      'href',
+      '/en/available-workers',
+    );
+  });
+
+  it('an empty feed keeps the head and the doors, no track, no sample', () => {
+    renderWithIntl(<PoolSection locale="tr" bundle={TR} candidates={[]} />);
+    const pool = screen.getByTestId('pool');
+    expect(pool.querySelector('[data-pool-card]')).toBeNull();
+    expect(screen.queryByTestId('pool-track')).toBeNull();
+    expect(pool.querySelector('[data-sample-tag]')).toBeNull();
+    expect(within(pool).getByRole('link', { name: '0 güncel profile bakın →' })).toHaveAttribute(
+      'href',
+      '/adaylar',
+    );
   });
 });

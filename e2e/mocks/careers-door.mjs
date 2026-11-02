@@ -40,6 +40,31 @@ const GRID_FEED = {
   ),
 };
 const BLOG_PREVIEW_POST = BLOG_FIXTURE.posts[0];
+
+// 2026-11-02: the public candidates feed (contract `candidates.v1`) — GET
+// /api/website/v1/candidates serves the contract fixture's 14 candidates with every date moved
+// by (now − the fixture's generatedAt), so "within 30 days", "next season" and "New" hold on any
+// day. `E2E_POOL_OPS=1` in the workers and home specs means the server was BUILT and started with
+// POOL_SOURCE=OPS and OPS_API_URL=http://127.0.0.1:8481 (`npm run e2e:pool-ops`). The photos stay
+// on the real Operations media host (the one `next/image` allows); the specs check the src, not
+// the bytes.
+const POOL_FIXTURE = JSON.parse(
+  readFileSync(new URL('../../contract/candidates-feed.v1.fixture.json', import.meta.url), 'utf8'),
+);
+function poolFeed() {
+  const shift = Date.now() - Date.parse(POOL_FIXTURE.generatedAt);
+  const move = (iso) => (iso ? new Date(Date.parse(iso) + shift).toISOString() : iso);
+  return {
+    ...POOL_FIXTURE,
+    generatedAt: move(POOL_FIXTURE.generatedAt),
+    candidates: POOL_FIXTURE.candidates.map((c) => ({
+      ...c,
+      availability: c.availability && { ...c.availability, from: move(c.availability.from) },
+      createdAt: move(c.createdAt),
+      updatedAt: move(c.updatedAt),
+    })),
+  };
+}
 const BLOG_PREVIEW_TOKEN = 'e2e-preview-token.0000000000000000';
 
 const PORT = Number(process.env.CAREERS_DOOR_PORT ?? 8481);
@@ -182,6 +207,8 @@ const server = createServer((req, res) => {
   // W250: `/grid/…` is the same door with the grid feed (see above)
   const grid = url.pathname.startsWith('/grid/');
   if (grid) url.pathname = url.pathname.slice('/grid'.length);
+  if (req.method === 'GET' && url.pathname === '/api/website/v1/candidates')
+    return send(res, 200, poolFeed());
   if (req.method === 'GET' && url.pathname === '/api/website/v1/blog')
     return send(res, 200, grid ? GRID_FEED : BLOG_FEED);
   const preview = url.pathname.match(/^\/api\/website\/v1\/blog\/preview\/([^/]+)$/);

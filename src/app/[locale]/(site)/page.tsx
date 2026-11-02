@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { getBundle } from '@/content/adapter';
 import { getBlogBundle } from '@/content/blog';
+import { getPoolFeed } from '@/content/pool-feed';
 import { routing } from '@/i18n/routing';
 import { buildMetadata } from '@/lib/seo/metadata';
 import { submitCallback, submitHire } from './_home/actions';
@@ -53,8 +54,9 @@ export async function generateMetadata({
 
 /** The homepage (design/JobsAdmire Homepage v4), section for section in the design's order. No
  *  <main> here — SiteChrome owns it (R31). Every section renders (owner 2026-10-05): the case bar
- *  and the candidate pool show the design's sample content with the `SampleTag` (page-local
- *  constants, D23), the team its published founder, the guides the `blog` rows; no StickyCtaBar
+ *  shows the design's sample content with the `SampleTag` (page-local constants, D23), the
+ *  candidate pool the real candidates under POOL_SOURCE=OPS (else the sample, tagged), the team
+ *  its published founder, the guides the `blog` rows; no StickyCtaBar
  *  (the sticky header carries this page's #proposal CTA). Between the hero and the case bar the
  *  press strip (W249, not in the design) shows while the feed carries the featured interview. */
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
@@ -63,7 +65,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   setRequestLocale(locale);
   // The guides and the press strip read the `blog` rows: the bundle with the blog source applied
   // (W248, W249).
-  const bundle = await getBlogBundle(locale);
+  // The pool marquee reads the candidates feed under POOL_SOURCE=OPS (owner 2026-11-02), else
+  // the design's sample.
+  const [bundle, pool] = await Promise.all([getBlogBundle(locale), getPoolFeed()]);
   const section = { locale, bundle };
   return (
     <>
@@ -74,7 +78,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <PressStrip {...section} />
       <LiveCaseBar {...section} />
       <ChoiceCards {...section} />
-      <PoolSection {...section} />
+      <PoolSection {...section} candidates={pool.candidates} />
       <CalculatorStrip {...section} />
       <ProcessSection {...section} />
       <SeasonSection {...section} />

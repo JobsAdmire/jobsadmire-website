@@ -1,6 +1,8 @@
 'use client';
 import { useMemo, type ReactNode } from 'react';
 import { ContactLink } from '@/analytics/ContactLink';
+import { isFlagCode } from '@/design/assets/flag-codes';
+import { Flag } from '@/design/Flag';
 import { buttonClassName } from '@/design/primitives/Button';
 import {
   activeFilterCount,
@@ -70,35 +72,50 @@ export function FilterGlyph({ className }: { className?: string }) {
   );
 }
 
-/** One anonymised profile card (design `.ja-wcard`, ll. 701–745). The avatar is the page's
- *  `ImageSlot` under the design's blur and lock: photos are shared on request only (KVKK). */
+/**
+ * One profile card (design `.ja-wcard`, ll. 701–745). A sample row is anonymised: the avatar is
+ * the page's `ImageSlot` placeholder under the design's blur and lock, the profession is the
+ * heading. A real row (`w.name`, POOL_SOURCE=OPS, owner 2026-11-02) shows the candidate's photo
+ * (or the same placeholder, unlocked) and display name as the heading with the position under it,
+ * the nationality's flag, and where the candidate is now. Nothing on a card names who sourced the
+ * candidate (firewall).
+ */
 function WorkerCard({ w, avatar, copy }: { w: PoolWorker; avatar: ReactNode; copy: PoolCopy }) {
   const { inBasket, toggleRef } = usePool();
   const picked = inBasket(w.ref);
+  const real = w.name !== undefined;
+  const expLine = [w.exp !== null ? `${w.exp} ${copy.yearsExp}` : '', w.industry]
+    .filter(Boolean)
+    .join(' · ');
   return (
-    <li className="ja-hover-card ja-hover-card-lg flex min-w-0 flex-col overflow-hidden rounded-md border border-edge-soft bg-white max-md:rounded-base">
+    <li
+      data-pool-ref={w.ref}
+      className="ja-hover-card ja-hover-card-lg flex min-w-0 flex-col overflow-hidden rounded-md border border-edge-soft bg-white max-md:rounded-base"
+    >
       <div className="flex items-center gap-3.25 border-b border-border-3 bg-pale-2 px-5 py-4 max-md:gap-2.75 max-md:px-3.75 max-md:py-3.25">
         <span className="relative block size-13 shrink-0 overflow-hidden rounded-[13px] border border-field-border bg-[#e8eef4] max-md:size-11 max-md:rounded-xs">
           {avatar}
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center bg-[rgba(226,234,241,0.55)] text-[#5b7a94] backdrop-blur-[3px]"
-          >
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-4.25"
+          {!real && (
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 flex items-center justify-center bg-[rgba(226,234,241,0.55)] text-[#5b7a94] backdrop-blur-[3px]"
             >
-              <rect x="3" y="11" width="18" height="11" rx="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-          </span>
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-4.25"
+              >
+                <rect x="3" y="11" width="18" height="11" rx="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </span>
+          )}
         </span>
         <div className="min-w-0 flex-1 leading-[1.3]">
           <div className="flex flex-wrap items-center gap-1.75">
@@ -112,8 +129,13 @@ function WorkerCard({ w, avatar, copy }: { w: PoolWorker; avatar: ReactNode; cop
             )}
           </div>
           <h3 className="m-0 truncate text-[17px] font-extrabold tracking-[-0.2px] text-ink max-md:text-[16px] xl:text-[12.75px]">
-            {w.trade}
+            {real ? w.name : w.trade}
           </h3>
+          {real && (
+            <p className="m-0 truncate text-[13.5px] font-bold text-text-secondary max-md:text-[13px] xl:text-[11px]">
+              {w.trade}
+            </p>
+          )}
         </div>
       </div>
       <div className="flex flex-1 flex-col px-5 pt-4 pb-5 max-md:px-3.75 max-md:pt-3.25 max-md:pb-3.75">
@@ -121,40 +143,63 @@ function WorkerCard({ w, avatar, copy }: { w: PoolWorker; avatar: ReactNode; cop
           <span
             className={`shrink-0 rounded-pill border px-2.75 py-1 text-[11.5px] font-extrabold tracking-[0.5px] whitespace-nowrap uppercase xl:text-[11px] ${AVAIL_PILL[w.avail]}`}
           >
-            {copy.availLabels[w.avail]}
+            {w.availLabel ?? copy.availLabels[w.avail]}
           </span>
           <span className="text-[11.5px] font-bold whitespace-nowrap text-text-tertiary max-md:hidden xl:text-[11px]">
             {copy.cvOnRequest}
           </span>
         </div>
         <ul className="m-0 mb-4 flex list-none flex-col gap-2 p-0 text-[14px] text-text-secondary max-md:mb-3 max-md:gap-1.5 max-md:text-[13.5px] xl:text-[11px]">
-          <li className="flex items-center gap-2.25">
-            <Glyph>
-              <circle cx="12" cy="12" r="10" />
-              <path d="M2 12h20" />
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-            </Glyph>
-            <span>{w.country}</span>
-          </li>
-          <li className="flex items-center gap-2.25">
-            <Glyph>
-              <rect x="2" y="7" width="20" height="14" rx="2" />
-              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-            </Glyph>
-            <span>
-              {w.exp} {copy.yearsExp} · {w.industry}
-            </span>
-          </li>
-          <li className="flex items-center gap-2.25">
-            <Glyph>
-              <path d="M5 8h9" />
-              <path d="M9 4v4" />
-              <path d="M11 20l4-9 4 9" />
-              <path d="M12.5 17h5" />
-              <path d="M5 8c0 4 3 7 7 8" />
-            </Glyph>
-            <span>{w.langs}</span>
-          </li>
+          {w.country && (
+            <li className="flex items-center gap-2.25">
+              {w.flag && isFlagCode(w.flag) ? (
+                <Flag code={w.flag} size={15} />
+              ) : (
+                <Glyph>
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </Glyph>
+              )}
+              <span>
+                {copy.card && <span className="sr-only">{copy.card.nationality}: </span>}
+                {w.country}
+              </span>
+            </li>
+          )}
+          {expLine && (
+            <li className="flex items-center gap-2.25">
+              <Glyph>
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+              </Glyph>
+              <span>{expLine}</span>
+            </li>
+          )}
+          {w.langs && (
+            <li className="flex items-center gap-2.25">
+              <Glyph>
+                <path d="M5 8h9" />
+                <path d="M9 4v4" />
+                <path d="M11 20l4-9 4 9" />
+                <path d="M12.5 17h5" />
+                <path d="M5 8c0 4 3 7 7 8" />
+              </Glyph>
+              <span>{w.langs}</span>
+            </li>
+          )}
+          {w.location && (
+            <li className="flex items-center gap-2.25">
+              <Glyph>
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </Glyph>
+              <span>
+                {copy.card && <span className="sr-only">{copy.card.location}: </span>}
+                {w.location}
+              </span>
+            </li>
+          )}
         </ul>
         <div className="mb-4.5 flex flex-wrap gap-1.5 max-md:mb-3.25">
           {w.tags.map((tag) => (
@@ -191,8 +236,9 @@ function WorkerCard({ w, avatar, copy }: { w: PoolWorker; avatar: ReactNode; cop
 /**
  * The pool body (design ll. 617–760): the collapsed filter panel (profession and country chips,
  * industry / experience / language / availability selects, "Clear all"), the 9-card grid (6 on
- * phones) with "Load more", and the designed no-results card. All client state, no network: the
- * rows are the page's sample (`SAMPLE_POOL`), never the `pool` collection (D23).
+ * phones) with "Load more", and the designed no-results card (also the face of an empty real
+ * feed). All client state, no network: the rows are the page's — real candidates under
+ * POOL_SOURCE=OPS, else the design's sample (`SAMPLE_POOL`) — never the `pool` collection (D23).
  */
 export function PoolExplorer({
   rows,
@@ -311,10 +357,11 @@ export function PoolExplorer({
             {chips('trade', copy.all.trade, trades)}
             {chips('country', copy.all.country, countries)}
             <div className="grid grid-cols-2 gap-3.5 border-t border-border-3 pt-1 max-md:gap-2.75 lg:grid-cols-4">
-              {select('industry', [
-                { value: 'all', label: copy.all.industry },
-                ...industries.map((i) => ({ value: i.key, label: i.label })),
-              ])}
+              {industries.length > 0 &&
+                select('industry', [
+                  { value: 'all', label: copy.all.industry },
+                  ...industries.map((i) => ({ value: i.key, label: i.label })),
+                ])}
               {select('exp', [
                 { value: 'all', label: copy.all.exp },
                 ...EXP_BANDS.map((b) => ({ value: b, label: copy.expBands[b] })),
