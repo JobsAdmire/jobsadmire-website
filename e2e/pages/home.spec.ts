@@ -424,8 +424,8 @@ test.describe('the pool marquee from the fixture door (E2E_POOL_OPS=1)', () => {
   );
 
   for (const [locale, path, browse] of [
-    ['tr', '/', '14 güncel profile bakın →'],
-    ['en', '/en', 'Browse 14 live profiles →'],
+    ['tr', '/', '17 güncel profile bakın →'],
+    ['en', '/en', 'Browse 17 live profiles →'],
   ] as const) {
     test(`${locale}: eight real cards, newest first, photo + name + position + country, no sample tag (E2E_POOL_OPS)`, async ({
       page,
@@ -437,13 +437,14 @@ test.describe('the pool marquee from the fixture door (E2E_POOL_OPS=1)', () => {
       const first = page.getByTestId('pool-track').locator(':scope > div').first();
       const cards = first.locator('[data-pool-card]');
       await expect(cards).toHaveCount(8);
-      await expect(cards.first()).toHaveAttribute('data-pool-card', 'JA-1201');
-      await expect(cards.first()).toContainText('Ali K.');
+      // newest first: the portal's Arslan (updatedAt 2026-11-01, moved to today by the door)
+      await expect(cards.first()).toHaveAttribute('data-pool-card', 'CND-2026-9001');
+      await expect(cards.first()).toContainText('Arslan M.');
       await expect(cards.first()).toContainText(locale === 'tr' ? 'Kaynakçı' : 'Welder');
       await expect(cards.first()).toContainText('Pakistan');
       await expect(cards.first().locator('img')).toHaveAttribute(
         'src',
-        /media%2Fcandidate%2FJA-1201%2F3f9a1c2e\.webp/,
+        /media%2Fcandidate%2FCND-2026-9001%2Fa1b2c3d4\.webp/,
       );
       await expect(cards.first()).toHaveAttribute(
         'href',

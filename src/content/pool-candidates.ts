@@ -30,8 +30,9 @@ export type PoolCandidate = {
   name: string;
   /** Operations' media route only (`isBlogImageSrc`); `null` → the avatar placeholder */
   photo: { url: string; width: number; height: number } | null;
-  /** the position (the page's "profession" filter key and card heading), both languages filled */
-  position: { key: string; label: PerLocale };
+  /** the position (the page's "profession" filter key, the card's position line), both
+   *  languages filled; `null` when the portal has none — no line, no profession / industry value */
+  position: { key: string; label: PerLocale } | null;
   /** the position's group (the page's "industry" filter), when the feed sends one */
   group: { key: string; label: PerLocale } | null;
   /** ISO-2, upper case, when the portal knows it (flag + localized name) … */
@@ -84,11 +85,9 @@ export function mapCandidate(
   const photoOk = item.photo ? isBlogImageSrc(item.photo.url) : false;
   if (item.photo && !photoOk)
     log('a photo is not on the media route and was left out', { ref: item.ref });
-  const group = item.position.group
-    ? {
-        key: item.position.group.key,
-        label: bothLocales(item.position.group.label, item.position.group.key),
-      }
+  const pos = item.position ?? null;
+  const group = pos?.group
+    ? { key: pos.group.key, label: bothLocales(pos.group.label, pos.group.key) }
     : null;
   return {
     ref: item.ref,
@@ -101,10 +100,7 @@ export function mapCandidate(
             height: item.photo.height ?? 480,
           }
         : null,
-    position: {
-      key: item.position.key,
-      label: bothLocales(item.position.label, item.position.key),
-    },
+    position: pos ? { key: pos.key, label: bothLocales(pos.label, pos.key) } : null,
     group,
     nationality: item.nationality,
     nationalityLabel: item.nationality ? null : item.nationalityLabel,

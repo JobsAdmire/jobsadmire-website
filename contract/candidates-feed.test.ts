@@ -14,12 +14,13 @@ const fixture = JSON.parse(
 const item = (i: number) => fixture.candidates[i];
 
 describe('candidates feed contract (candidates.v1)', () => {
-  it('the golden fixture validates strictly: 14 candidates, unique refs the basket accepts', () => {
+  it('the golden fixture validates strictly: 17 candidates (the portal’s three last), unique refs the basket accepts', () => {
     expect(fixture.contractVersion).toBe(CANDIDATES_FEED_CONTRACT_VERSION);
     const feed = CandidatesFeedSchema.parse(fixture);
-    expect(feed.candidates).toHaveLength(14);
+    expect(feed.candidates).toHaveLength(17);
     const refs = feed.candidates.map((c) => c.ref);
-    expect(new Set(refs).size).toBe(14);
+    expect(new Set(refs).size).toBe(17);
+    expect(refs.slice(-3)).toEqual(['CND-2026-9001', 'CND-2026-9002', 'CND-2026-9003']);
     for (const ref of refs) expect(ref).toMatch(CANDIDATE_REF_RE);
   });
 
@@ -36,7 +37,9 @@ describe('candidates feed contract (candidates.v1)', () => {
     expect(feed.candidates.some((c) => c.photo === null || c.photo === undefined)).toBe(true);
     expect(feed.candidates.some((c) => c.nationality === null && c.nationalityLabel)).toBe(true);
     expect(feed.candidates.some((c) => c.languages?.some((l) => l.code === null))).toBe(true);
-    expect(feed.candidates.some((c) => !c.position.group)).toBe(true);
+    expect(feed.candidates.some((c) => c.position && !c.position.group)).toBe(true);
+    expect(feed.candidates.some((c) => c.position === null)).toBe(true);
+    expect(feed.candidates.some((c) => !c.displayName.includes(' '))).toBe(true);
   });
 
   it('every photo is on the Operations media route, under the candidate path', () => {
@@ -73,7 +76,7 @@ describe('candidates feed contract (candidates.v1)', () => {
       updatedAt: '2026-11-01T12:00:00.000Z',
     };
     const parsed = CandidateFeedItemSchema.parse(lean);
-    expect(parsed.position.label.en).toBeNull();
+    expect(parsed.position?.label.en).toBeNull();
     expect(parsed.nationality).toBeNull();
     expect(parsed.nationalityLabel).toBeNull();
     expect(parsed.photo).toBeUndefined();
@@ -88,6 +91,19 @@ describe('candidates feed contract (candidates.v1)', () => {
     expect(sizeless.photo?.width).toBeNull();
     expect(sizeless.languages?.[0].code).toBeNull();
     expect(sizeless.nationality).toBe('PK');
+  });
+
+  it('reads a candidate without a position and with a one-word display name (portal fixture)', () => {
+    const parsed = CandidateFeedItemSchema.parse({
+      ...item(0),
+      displayName: 'Rustam',
+      position: null,
+    });
+    expect(parsed.position).toBeNull();
+    expect(parsed.displayName).toBe('Rustam');
+    expect(
+      CandidateFeedItemSchema.parse({ ...item(0), position: undefined }).position,
+    ).toBeUndefined();
   });
 
   it('strips unknown keys (the portal id, any additive producer field)', () => {

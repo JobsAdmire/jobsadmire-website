@@ -53,7 +53,7 @@ describe('fetchPoolFeedUncached', () => {
   it('reads the public feed with no token, under the pool tag, 60 s floor', async () => {
     fetchMock.mockResolvedValue(json(FIXTURE));
     const rows = await fetchPoolFeedUncached({ fetch: f(), env: OPS });
-    expect(rows).toHaveLength(14);
+    expect(rows).toHaveLength(17);
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const [url, init] = fetchMock.mock.calls[0];
     expect(url).toBe('https://operations.example.com/api/website/v1/candidates');
@@ -69,7 +69,7 @@ describe('fetchPoolFeedUncached', () => {
       .mockResolvedValueOnce(json({ ...FIXTURE, candidates: [a, b], nextCursor: 'p2' }))
       .mockResolvedValueOnce(json({ ...FIXTURE, candidates: [b, ...rest], nextCursor: null }));
     const rows = await fetchPoolFeedUncached({ fetch: f(), env: OPS });
-    expect(rows).toHaveLength(14);
+    expect(rows).toHaveLength(17);
     expect(fetchMock.mock.calls[1][0]).toBe(
       'https://operations.example.com/api/website/v1/candidates?cursor=p2',
     );
@@ -112,7 +112,7 @@ describe('loadPoolFeed (the fallback rules)', () => {
     fetchMock.mockResolvedValueOnce(json(FIXTURE));
     const state = await loadPoolFeed({ fetch: f(), env: PROD_RUNTIME });
     expect(state.source).toBe('OPS');
-    expect(state.candidates).toHaveLength(14);
+    expect(state.candidates).toHaveLength(17);
     fetchMock.mockResolvedValueOnce(json({ ...FIXTURE, candidates: [], total: 0 }));
     expect(await loadPoolFeed({ fetch: f(), env: PROD_RUNTIME })).toEqual({
       source: 'OPS',

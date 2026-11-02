@@ -16,8 +16,8 @@ import { isoDateTime } from './blog-feed.v1';
  * Operations ever forwarded it, never reaches a page), so an additive producer change never
  * breaks this reader; anything else is a new contract version. Strict where the site depends on
  * it: the `ref` is an opaque public reference of at most 32 safe characters (the request basket's
- * `PROFILE_REF_PATTERN` is this same pattern), and the display name and the position key must be
- * there.
+ * `PROFILE_REF_PATTERN` is this same pattern), the display name (one word is fine: "Rustam") must
+ * be there, and a position, when sent, has a key.
  */
 export const CANDIDATES_FEED_CONTRACT_VERSION = 'candidates.v1';
 
@@ -65,13 +65,17 @@ export const CandidateFeedItemSchema = z.object({
    *  name; the card prints exactly this */
   displayName: z.string().trim().min(1).max(80),
   photo: CandidatePhotoSchema.nullish(),
-  position: z.object({
-    key: z.string().trim().min(1),
-    label: perLocaleLabel,
-    /** ASSUMED additive (not in the plan's section 1): the position's group — the page's
-     *  "industry" filter. Absent → the industry filter and line drop out for that profile. */
-    group: z.object({ key: z.string().trim().min(1), label: perLocaleLabel }).nullish(),
-  }),
+  /** `null` when the candidate has no desired position yet (portal fixture 2026-11-02): the card
+   *  then has no position line and the profession / industry filters skip the row */
+  position: z
+    .object({
+      key: z.string().trim().min(1),
+      label: perLocaleLabel,
+      /** ASSUMED additive (not in the plan's section 1): the position's group — the page's
+       *  "industry" filter. Absent → the industry filter and line drop out for that profile. */
+      group: z.object({ key: z.string().trim().min(1), label: perLocaleLabel }).nullish(),
+    })
+    .nullish(),
   /** ISO-2 when the portal knows it (the flag and the localized country name) … */
   nationality: optIso2,
   /** … else the portal's stored label ("Pakistani"), printed as is, no flag */

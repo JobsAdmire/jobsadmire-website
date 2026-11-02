@@ -40,7 +40,7 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
     expect(w).toMatchObject({
       name: 'Ali K.',
       trade: 'Welder',
-      tradeKey: 'welder',
+      tradeKey: 'cfixtureposition00000001',
       country: 'Pakistan',
       countryKey: 'PK',
       flag: 'PK',
@@ -113,18 +113,23 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
   });
 
   it('the stats strip counts the real rows', () => {
-    expect(ROWS).toHaveLength(14);
-    // ready now: NOW, plus none whose date passed; countries: 6 ISO codes + one label
-    expect(poolStats(ROWS)).toEqual({ ready: 9, countries: 7, trades: 13 });
+    expect(ROWS).toHaveLength(17);
+    // ready now: NOW, none whose date passed; countries: 6 ISO codes + two labels; professions:
+    // 14 position keys (Rustam has none)
+    expect(poolStats(ROWS)).toEqual({ ready: 12, countries: 8, trades: 14 });
   });
 
   it('every filter works over real rows', () => {
-    expect(refsOf({ trade: 'welder' })).toEqual(['JA-1201', 'JA-1213']);
-    expect(refsOf({ country: 'PK' })).toEqual(['JA-1201', 'JA-1207', 'JA-1213']);
+    expect(refsOf({ trade: 'cfixtureposition00000001' })).toEqual([
+      'JA-1201',
+      'JA-1213',
+      'CND-2026-9001',
+    ]);
+    expect(refsOf({ country: 'PK' })).toEqual(['JA-1201', 'JA-1207', 'JA-1213', 'CND-2026-9001']);
     expect(refsOf({ country: 'label:bangladeshi' })).toEqual(['C7K2M9QX']);
     expect(refsOf({ industry: 'agriculture' })).toEqual(['JA-1208']);
     expect(refsOf({ exp: '0-3' })).toEqual(['JA-1204', 'JA-1206', 'JA-1208', 'JA-1211']);
-    expect(refsOf({ exp: '8+' })).toEqual(['JA-1202', 'JA-1207', 'JA-1210']);
+    expect(refsOf({ exp: '8+' })).toEqual(['JA-1202', 'JA-1207', 'JA-1210', 'CND-2026-9003']);
     expect(refsOf({ exp: '4-7' })).not.toContain('C7K2M9QX'); // unknown experience: no band
     expect(refsOf({ lang: 'tr' })).toEqual(['JA-1201', 'JA-1203', 'JA-1205', 'JA-1209', 'JA-1211']);
     expect(refsOf({ lang: 'en' })).toEqual([
@@ -134,20 +139,32 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
       'JA-1210',
       'JA-1212',
       'JA-1213',
+      'CND-2026-9001',
     ]);
-    expect(refsOf({ avail: 'now' })).toHaveLength(9);
-    expect(refsOf({ avail: '30' })).toHaveLength(12); // now + within 30 days
-    expect(refsOf({ trade: 'welder', industry: 'factory' })).toEqual(['JA-1213']);
+    expect(refsOf({ avail: 'now' })).toHaveLength(12);
+    expect(refsOf({ avail: '30' })).toHaveLength(15); // now + within 30 days
+    expect(refsOf({ trade: 'cfixtureposition00000001', industry: 'factory' })).toEqual(['JA-1213']);
+    // no position: in "all", never under a profession or an industry
+    expect(refsOf({})).toContain('CND-2026-9003');
+    for (const w of ROWS)
+      if (w.tradeKey) expect(refsOf({ trade: w.tradeKey })).not.toContain('CND-2026-9003');
+    for (const i of ['hotel', 'construction', 'factory', 'agriculture'])
+      expect(refsOf({ industry: i })).not.toContain('CND-2026-9003');
   });
 
   it('sorts: soonest first, experience (unknown last), recently added, A–Z', () => {
-    expect(sortPool(ROWS, 'exp', 'en').at(-1)!.ref).toBe('C7K2M9QX');
-    expect(sortPool(ROWS, 'exp', 'en')[0].ref).toBe('JA-1207');
+    expect(
+      sortPool(ROWS, 'exp', 'en')
+        .slice(-2)
+        .map((w) => w.exp),
+    ).toEqual([null, null]);
+    expect(sortPool(ROWS, 'exp', 'en')[0].ref).toBe('CND-2026-9003');
+    expect(sortPool(ROWS, 'az', 'en').at(-1)!.ref).toBe('CND-2026-9003'); // no position: last
     expect(
       sortPool(ROWS, 'new', 'en')
         .slice(0, 4)
         .map((w) => w.ref),
-    ).toEqual(['JA-1201', 'JA-1202', 'JA-1203', 'JA-1204']);
+    ).toEqual(['JA-1201', 'JA-1202', 'JA-1203', 'CND-2026-9001']); // then updatedAt orders
     expect(sortPool(ROWS, 'avail', 'en').at(-1)!.avail).toBe(2);
   });
 
@@ -160,7 +177,10 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
     ]);
     const ungrouped = ROWS.map((w) => ({ ...w, industry: '', industryKey: '' }));
     expect(popularIndustries(ungrouped)).toEqual([]);
-    expect(popularBy(ungrouped, 'trade')[0]).toMatchObject({ key: 'welder', count: 2 });
+    expect(popularBy(ungrouped, 'trade')[0]).toMatchObject({
+      key: 'cfixtureposition00000001',
+      count: 3,
+    });
   });
 });
 
@@ -188,13 +208,17 @@ describe('PoolExplorer over real rows', () => {
     expect(card).toHaveTextContent('Current location: Karachi, Pakistan');
     expect(card).toHaveTextContent(COPY_REAL.cvOnRequest);
     expect(card).not.toHaveTextContent(/photo on request/i);
-    // the sparse profile (ninth: soonest first, unknown experience last): no empty lines
-    const sparse = document.querySelector('[data-pool-ref="C7K2M9QX"]') as HTMLElement;
-    expect(within(sparse).getByRole('heading', { level: 3, name: 'Rahim U.' })).toBeInTheDocument();
-    expect(sparse).toHaveTextContent('Nationality: Bangladeshi');
-    expect(sparse.querySelector('use')).toBeNull(); // a label, no flag
-    expect(sparse).not.toHaveTextContent('Current location');
-    expect(sparse.querySelectorAll('ul > li')).toHaveLength(1);
+    // the portal's sparse profile (first: soonest, then most experience): one-word name, no
+    // position line, a label nationality (no flag), no empty lines
+    const rustam = document.querySelector('[data-pool-ref="CND-2026-9003"]') as HTMLElement;
+    expect(within(rustam).getByRole('heading', { level: 3, name: 'Rustam' })).toBeInTheDocument();
+    expect(rustam.querySelector('h3 + p')).toBeNull();
+    expect(rustam).toHaveTextContent('Nationality: Karakalpak');
+    expect(rustam).toHaveTextContent('Current location: Tajikistan');
+    expect(rustam).toHaveTextContent('Russian (B2) · Karakalpak (A1)');
+    expect(rustam).toHaveTextContent('12 yrs experience');
+    expect(rustam.querySelector('use')).toBeNull();
+    expect(rustam.querySelectorAll('ul > li')).toHaveLength(4);
   });
 
   it('Add to request posts the real refs in profileRefs', async () => {
@@ -237,5 +261,20 @@ describe('firewall: the real-card copy never names a source (owner rule)', () =>
     for (const messages of [tr, en])
       for (const value of Object.values(messages.sys.workers.card))
         expect(value).not.toMatch(/partner|agenc|acente|ajans|ortak|kaynak|sourc|tedarik/i);
+  });
+});
+
+describe('a real row without a position', () => {
+  it('maps to an empty profession and industry', () => {
+    const w = ROWS.find((r) => r.ref === 'CND-2026-9003')!;
+    expect(w).toMatchObject({
+      name: 'Rustam',
+      trade: '',
+      tradeKey: '',
+      industry: '',
+      industryKey: '',
+    });
+    expect(w.country).toBe('Karakalpak');
+    expect(w.flag).toBeUndefined();
   });
 });

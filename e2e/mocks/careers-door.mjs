@@ -42,7 +42,7 @@ const GRID_FEED = {
 const BLOG_PREVIEW_POST = BLOG_FIXTURE.posts[0];
 
 // 2026-11-02: the public candidates feed (contract `candidates.v1`) — GET
-// /api/website/v1/candidates serves the contract fixture's 14 candidates with every date moved
+// /api/website/v1/candidates serves the contract fixture's 17 candidates with every date moved
 // by (now − the fixture's generatedAt), so "within 30 days", "next season" and "New" hold on any
 // day. `E2E_POOL_OPS=1` in the workers and home specs means the server was BUILT and started with
 // POOL_SOURCE=OPS and OPS_API_URL=http://127.0.0.1:8481 (`npm run e2e:pool-ops`). The photos stay

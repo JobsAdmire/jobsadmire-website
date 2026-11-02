@@ -6,6 +6,7 @@ import type { LangBand, SampleAvail } from './sample-pool';
  *  position / group keys and ISO-2 codes for real rows. */
 export type PoolWorker = {
   ref: string;
+  /** '' (and `tradeKey` '') when a real row has no position */
   trade: string;
   tradeKey: string;
   country: string;
@@ -93,7 +94,9 @@ export function sortPool(
     if (sort === 'exp') return years(b) - years(a);
     if (sort === 'new')
       return Number(b.added) - Number(a.added) || (b.addedAt ?? '').localeCompare(a.addedAt ?? '');
-    if (sort === 'az') return a.trade.localeCompare(b.trade, locale);
+    // A–Z: a row without a position sorts last
+    if (sort === 'az')
+      return Number(!a.trade) - Number(!b.trade) || a.trade.localeCompare(b.trade, locale);
     return a.avail - b.avail || years(b) - years(a);
   });
 }
@@ -103,7 +106,7 @@ export function activeFilterCount(f: PoolFilters): number {
 }
 
 /** The distinct values of one field in first-appearance order — the chips and select options. A
- *  row without a value (a real row's missing group: key '') adds none. */
+ *  row without a value (a real row's missing position or group: key '') adds none. */
 export function distinct(
   rows: readonly PoolWorker[],
   field: 'trade' | 'country' | 'industry',

@@ -131,7 +131,7 @@ function WorkerCard({ w, avatar, copy }: { w: PoolWorker; avatar: ReactNode; cop
           <h3 className="m-0 truncate text-[17px] font-extrabold tracking-[-0.2px] text-ink max-md:text-[16px] xl:text-[12.75px]">
             {real ? w.name : w.trade}
           </h3>
-          {real && (
+          {real && w.trade && (
             <p className="m-0 truncate text-[13.5px] font-bold text-text-secondary max-md:text-[13px] xl:text-[11px]">
               {w.trade}
             </p>

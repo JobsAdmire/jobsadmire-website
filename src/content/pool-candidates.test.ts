@@ -30,7 +30,7 @@ describe('mapCandidate', () => {
         width: 480,
         height: 480,
       },
-      position: { key: 'welder', label: { tr: 'Kaynakçı', en: 'Welder' } },
+      position: { key: 'cfixtureposition00000001', label: { tr: 'Kaynakçı', en: 'Welder' } },
       group: { key: 'construction', label: { tr: 'İnşaat', en: 'Construction' } },
       nationality: 'PK',
       nationalityLabel: null,
@@ -59,6 +59,31 @@ describe('mapCandidate', () => {
     expect(c.skills).toEqual([]);
   });
 
+  it('the portal fixture: no position, one-word name, a label nationality, a code-less language', () => {
+    const rustam = mapCandidate(parse(FIXTURE.candidates[16]), quiet);
+    expect(rustam).toMatchObject({
+      ref: 'CND-2026-9003',
+      name: 'Rustam',
+      position: null,
+      group: null,
+      nationality: null,
+      nationalityLabel: 'Karakalpak',
+      yearsExperience: 12,
+      location: { country: 'TJ', city: null },
+      createdAt: null,
+      addedAt: '2026-10-28T11:15:00.000Z',
+    });
+    expect(rustam.languages).toEqual([
+      { code: 'ru', label: 'Russian', level: 'B2' },
+      { code: null, label: 'Karakalpak', level: 'A1' },
+    ]);
+    expect(rustam.photo?.url).toMatch(/\/media\/candidate\/CND-2026-9003\/[0-9a-f]+\.webp$/);
+    // an ISO code wins over the portal's label
+    const arslan = mapCandidate(parse(FIXTURE.candidates[14]), quiet);
+    expect(arslan.nationality).toBe('PK');
+    expect(arslan.nationalityLabel).toBeNull();
+  });
+
   it('a photo without a size takes the fixed square; a photo off the media route is dropped and logged', () => {
     const sizeless = mapCandidate(parse(FIXTURE.candidates[1]), quiet);
     expect(sizeless.photo).toMatchObject({ width: 480, height: 480 });
@@ -80,13 +105,13 @@ describe('mapCandidate', () => {
       }),
       quiet,
     );
-    expect(c.position.label).toEqual({ tr: 'Rigger', en: 'Rigger' });
+    expect(c.position?.label).toEqual({ tr: 'Rigger', en: 'Rigger' });
     expect(c.skills).toHaveLength(MAX_SKILLS);
     const bare = mapCandidate(
       parse({ ...FIXTURE.candidates[0], position: { key: 'rigger', label: { tr: '', en: '' } } }),
       quiet,
     );
-    expect(bare.position.label).toEqual({ tr: 'rigger', en: 'rigger' });
+    expect(bare.position?.label).toEqual({ tr: 'rigger', en: 'rigger' });
   });
 
   it('drops a language that names nothing; no createdAt → addedAt is updatedAt', () => {
@@ -109,9 +134,9 @@ describe('mapCandidate', () => {
 });
 
 describe('feedToCandidates', () => {
-  it('maps the fixture: 14 rows, no cursor', () => {
+  it('maps the fixture: 17 rows, no cursor', () => {
     const page = feedToCandidates(FIXTURE, quiet);
-    expect(page.candidates).toHaveLength(14);
+    expect(page.candidates).toHaveLength(17);
     expect(page.nextCursor).toBeNull();
   });
 
@@ -171,9 +196,15 @@ describe('labels', () => {
     expect(languagesLine([], 'tr')).toBe('');
   });
 
-  it('newestFirst orders by addedAt', () => {
+  it('newestFirst orders by addedAt (createdAt, else updatedAt), ties by ref', () => {
     const rows = feedToCandidates(FIXTURE, quiet).candidates;
     const sorted = newestFirst([...rows].reverse());
-    expect(sorted.slice(0, 3).map((c) => c.ref)).toEqual(['JA-1201', 'JA-1202', 'JA-1203']);
+    expect(sorted.slice(0, 5).map((c) => c.ref)).toEqual([
+      'CND-2026-9001',
+      'CND-2026-9002',
+      'JA-1201',
+      'CND-2026-9003',
+      'JA-1202',
+    ]);
   });
 });

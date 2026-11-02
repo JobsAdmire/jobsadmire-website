@@ -98,8 +98,9 @@ export function candidateToWorker(
   return {
     ref: c.ref,
     name: c.name,
-    trade: c.position.label[locale],
-    tradeKey: c.position.key,
+    // no position: '' — no position line, and the profession / industry filters skip the row
+    trade: c.position?.label[locale] ?? '',
+    tradeKey: c.position?.key ?? '',
     country: nationalityName(c, locale, countries),
     countryKey: nationalityKey(c),
     ...(c.nationality ? { flag: c.nationality } : {}),

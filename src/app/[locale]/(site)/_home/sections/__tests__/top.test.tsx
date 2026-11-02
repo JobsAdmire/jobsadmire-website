@@ -225,17 +225,18 @@ describe('PoolSection over real candidates (POOL_SOURCE=OPS, owner 2026-11-02)',
     expect(pool.querySelector('[data-sample-tag]')).toBeNull();
     const first = pool.querySelector('[data-testid="pool-track"] > :first-child')!;
     const cards = Array.from(first.querySelectorAll('[data-pool-card]'));
+    // newest first by createdAt, else updatedAt (the portal's three carry no createdAt)
     expect(cards.map((c) => c.getAttribute('data-pool-card'))).toEqual([
+      'CND-2026-9001',
+      'CND-2026-9002',
       'JA-1201',
+      'CND-2026-9003',
       'JA-1202',
       'JA-1203',
       'JA-1204',
       'JA-1205',
-      'JA-1206',
-      'JA-1207',
-      'JA-1208',
     ]);
-    const ali = cards[0];
+    const ali = cards[2];
     expect(ali).toHaveAttribute('href', '/en/available-workers');
     expect(ali).toHaveTextContent('Ali K.');
     expect(ali).toHaveTextContent('Welder');
@@ -247,12 +248,20 @@ describe('PoolSection over real candidates (POOL_SOURCE=OPS, owner 2026-11-02)',
     );
     expect(ali.querySelector('img')).toHaveAttribute('alt', '');
     // a missing photo: the band's dark ground, no image, no labelled placeholder on a live card
-    const mark = cards[5];
-    expect(mark).toHaveTextContent('Mark S.');
-    expect(mark.querySelector('img')).toBeNull();
-    expect(mark.querySelector('[data-placeholder]')).toBeNull();
+    const bikash = cards[1];
+    expect(bikash).toHaveTextContent('Bikash G.');
+    expect(bikash).toHaveTextContent('Construction worker');
+    expect(bikash.querySelector('img')).toBeNull();
+    expect(bikash.querySelector('[data-placeholder]')).toBeNull();
+    // no position: the name alone; a label nationality without a flag
+    const rustam = cards[3];
+    expect(rustam).toHaveTextContent('Rustam');
+    expect(rustam).toHaveTextContent('Karakalpak');
+    expect(rustam).toHaveTextContent('12 yrs');
+    expect(rustam.querySelector('use')).toBeNull();
+    expect(rustam.querySelectorAll('.font-display')).toHaveLength(1);
     // the browse button counts the real profiles (D17)
-    expect(within(pool).getByRole('link', { name: 'Browse 14 live profiles →' })).toHaveAttribute(
+    expect(within(pool).getByRole('link', { name: 'Browse 17 live profiles →' })).toHaveAttribute(
       'href',
       '/en/available-workers',
     );

@@ -366,7 +366,7 @@ test.describe('real candidates from the fixture door (E2E_POOL_OPS=1)', () => {
       ref: string;
       displayName: string;
       photo: { url: string } | null;
-      position: { label: { tr: string; en: string } };
+      position: { label: { tr: string; en: string } } | null;
     }[];
   };
   const FEED = readJson('contract/candidates-feed.v1.fixture.json') as unknown as Feed;
@@ -374,12 +374,14 @@ test.describe('real candidates from the fixture door (E2E_POOL_OPS=1)', () => {
   const cards = (page: Page) => page.getByTestId('pool-grid').locator(':scope > li');
 
   for (const locale of ['tr', 'en'] as const) {
-    test(`${locale}: 14 real cards with names and photos, no sample tag, real stats (E2E_POOL_OPS)`, async ({
+    test(`${locale}: every real card (17, the portal's three included) with names and photos, no sample tag, real stats (E2E_POOL_OPS)`, async ({
       page,
     }) => {
       await page.goto(ROUTES[locale]);
       await expect(page.locator('[data-sample-tag]')).toHaveCount(0);
-      await expect(page.getByTestId('pool-stats')).toContainText('14');
+      const total = FEED.candidates.length;
+      expect(total).toBe(17);
+      await expect(page.getByTestId('pool-stats')).toContainText(String(total));
       await expect(page.getByTestId('pool-stats')).not.toContainText('200+');
       await expect(cards(page)).toHaveCount(isMobile() ? 6 : 9);
       const more = page.getByTestId('workers-pool').getByRole('button', {
@@ -387,12 +389,13 @@ test.describe('real candidates from the fixture door (E2E_POOL_OPS=1)', () => {
           `^${escapeRe(sysText(locale, 'workers.pool.loadMore')).replace('\\{count\\}', '\\d+')}$`,
         ),
       });
-      while ((await cards(page).count()) < 14) await more.click();
-      await expect(cards(page)).toHaveCount(14);
+      while ((await cards(page).count()) < total) await more.click();
+      await expect(cards(page)).toHaveCount(total);
       for (const c of FEED.candidates) {
         const el = card(page, c.ref);
         await expect(el.getByRole('heading', { level: 3 })).toHaveText(c.displayName);
-        await expect(el).toContainText(c.position.label[locale]);
+        if (c.position) await expect(el).toContainText(c.position.label[locale]);
+        else await expect(el.locator('h3 + p')).toHaveCount(0); // no position line
         if (c.photo)
           await expect(el.locator('img')).toHaveAttribute(
             'src',
@@ -414,9 +417,11 @@ test.describe('real candidates from the fixture door (E2E_POOL_OPS=1)', () => {
     await page.locator('#pool-filters').getByRole('button', { expanded: false }).click();
     const panel = page.locator('#pool-filters-body');
     await panel.getByRole('button', { name: 'Welder', exact: true }).click();
-    await expect(cards(page)).toHaveCount(2);
+    await expect(cards(page)).toHaveCount(3); // one position key, three candidates
     await expect(card(page, 'JA-1201')).toBeVisible();
     await expect(card(page, 'JA-1213')).toBeVisible();
+    await expect(card(page, 'CND-2026-9001')).toBeVisible();
+    await expect(card(page, 'CND-2026-9003')).toHaveCount(0); // no position: never under a profession
     await page
       .locator('#pool-filters')
       .getByRole('button', { name: S.en['availworkers.060'] })
@@ -439,10 +444,11 @@ test.describe('real candidates from the fixture door (E2E_POOL_OPS=1)', () => {
 
   test('en: Add to request puts the real refs into the form (E2E_POOL_OPS)', async ({ page }) => {
     await page.goto(ROUTES.en);
-    for (const ref of ['JA-1201', 'JA-1205'])
+    // both among the first six (phones): soonest, then most experience
+    for (const ref of ['JA-1201', 'CND-2026-9003'])
       await card(page, ref).getByRole('button', { name: S.en['availworkers.250'] }).click();
     await openRequestForm(page);
-    await expect(page.locator('input[name="profileRefs"]')).toHaveValue('JA-1201, JA-1205');
+    await expect(page.locator('input[name="profileRefs"]')).toHaveValue('JA-1201, CND-2026-9003');
     await expect(page.getByTestId('workers-basket')).toContainText('JA-1201');
   });
 

@@ -1,7 +1,7 @@
 {
   "contractVersion": "candidates.v1",
   "generatedAt": "2026-11-02T09:00:00.000Z",
-  "total": 14,
+  "total": 17,
   "nextCursor": null,
   "stale": false,
   "candidates": [
@@ -15,7 +15,7 @@
         "expiresAt": null
       },
       "position": {
-        "key": "welder",
+        "key": "cfixtureposition00000001",
         "label": {
           "tr": "Kaynakçı",
           "en": "Welder"
@@ -599,7 +599,7 @@
         "expiresAt": null
       },
       "position": {
-        "key": "welder",
+        "key": "cfixtureposition00000001",
         "label": {
           "tr": "Kaynakçı",
           "en": "Welder"
@@ -662,6 +662,127 @@
       "age": null,
       "createdAt": "2026-08-01T08:00:00.000Z",
       "updatedAt": "2026-11-01T12:00:00.000Z"
+    },
+    {
+      "ref": "CND-2026-9001",
+      "displayName": "Arslan M.",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/CND-2026-9001/a1b2c3d4.webp",
+        "width": null,
+        "height": null,
+        "expiresAt": null
+      },
+      "position": {
+        "key": "cfixtureposition00000001",
+        "label": {
+          "tr": "Kaynakçı",
+          "en": "Welder"
+        }
+      },
+      "nationality": "PK",
+      "nationalityLabel": "Pakistani",
+      "yearsExperience": 6,
+      "languages": [
+        {
+          "code": "en",
+          "label": "English",
+          "level": "B1"
+        },
+        {
+          "code": "ur",
+          "label": "Urdu",
+          "level": "B2"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "PK",
+        "city": "Sialkot"
+      },
+      "skills": ["MIG welding", "TIG welding", "Blueprint reading"],
+      "education": "Secondary",
+      "age": 31,
+      "updatedAt": "2026-11-01T14:30:00.000Z"
+    },
+    {
+      "ref": "CND-2026-9002",
+      "displayName": "Bikash G.",
+      "photo": null,
+      "position": {
+        "key": "cfixtureposition00000002",
+        "label": {
+          "tr": "İnşaat işçisi",
+          "en": "Construction worker"
+        }
+      },
+      "nationality": "NP",
+      "nationalityLabel": "Nepal",
+      "yearsExperience": null,
+      "languages": [
+        {
+          "code": "ne",
+          "label": "Nepali",
+          "level": "A2"
+        },
+        {
+          "code": "hi",
+          "label": "Hindi",
+          "level": "A1"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "NP",
+        "city": "Pokhara"
+      },
+      "skills": ["Shuttering", "Steel fixing"],
+      "education": null,
+      "age": null,
+      "updatedAt": "2026-10-30T08:00:00.000Z"
+    },
+    {
+      "ref": "CND-2026-9003",
+      "displayName": "Rustam",
+      "photo": {
+        "url": "https://operations.jobsadmire.com/api/website/v1/media/candidate/CND-2026-9003/e5f6a7b8.webp",
+        "width": null,
+        "height": null,
+        "expiresAt": null
+      },
+      "position": null,
+      "nationality": null,
+      "nationalityLabel": "Karakalpak",
+      "yearsExperience": 12,
+      "languages": [
+        {
+          "code": "ru",
+          "label": "Russian",
+          "level": "B2"
+        },
+        {
+          "code": null,
+          "label": "Karakalpak",
+          "level": "A1"
+        }
+      ],
+      "availability": {
+        "status": "NOW",
+        "from": null
+      },
+      "location": {
+        "country": "TJ",
+        "city": null
+      },
+      "skills": ["Housekeeping", "Laundry"],
+      "education": "Vocational",
+      "age": 35,
+      "updatedAt": "2026-10-28T11:15:00.000Z"
     }
   ]
 }

@@ -67,7 +67,7 @@ export function PoolSection({
         .map((c) => ({
           ref: c.ref,
           name: c.name,
-          trade: c.position.label[locale],
+          trade: c.position?.label[locale] ?? '',
           flag: c.nationality,
           country: nationalityName(c, locale, countries),
           photo: c.photo?.url ?? null,
@@ -128,15 +128,17 @@ export function PoolSection({
               {w.name}
             </span>
           )}
-          <span
-            className={
-              w.name
-                ? 'truncate text-[13px] font-bold leading-[1.2] text-white/85 xl:text-[11px]'
-                : 'font-display text-[19px] font-extrabold leading-[1.1] tracking-[-0.5px] text-white xl:text-[14.25px]'
-            }
-          >
-            {w.trade}
-          </span>
+          {w.trade && (
+            <span
+              className={
+                w.name
+                  ? 'truncate text-[13px] font-bold leading-[1.2] text-white/85 xl:text-[11px]'
+                  : 'font-display text-[19px] font-extrabold leading-[1.1] tracking-[-0.5px] text-white xl:text-[14.25px]'
+              }
+            >
+              {w.trade}
+            </span>
+          )}
         </span>
       </div>
       <div className="flex flex-1 flex-col gap-3 px-[18px] pb-[18px] pt-4 xl:px-[13.5px] xl:pb-[13.5px]">
