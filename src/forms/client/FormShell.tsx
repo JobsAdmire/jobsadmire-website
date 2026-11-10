@@ -30,6 +30,11 @@ import {
   useRegisterField,
 } from './FormErrorsContext';
 import { guardAction } from './guardAction';
+import {
+  hasWhatsAppConsentBox,
+  WHATSAPP_CONSENT_FIELD,
+  WHATSAPP_CONSENT_SHOWN_FIELD,
+} from '../whatsapp-consent';
 import { Turnstile, useTurnstileReset } from './Turnstile';
 
 export type FormShellProps = {
@@ -236,6 +241,32 @@ function ConsentRow({
   );
 }
 
+/** The optional WhatsApp box (evidence only, `site-wa-v1`): unticked by default, never required,
+ *  never validated. The hidden marker tells the action the box was on the form, so an unticked
+ *  box still sends `whatsappConsent: false` (both keys or neither). */
+function WhatsAppConsentRow({ id, look = 'line' }: { id: string; look?: 'line' | 'box' }) {
+  const sys = useTranslations('sys');
+  const ticked = useFieldValue(WHATSAPP_CONSENT_FIELD) === 'on';
+  const shell =
+    look === 'box' ? 'rounded-xs border border-edge-soft bg-pale-1 px-3.5 py-3' : undefined;
+  const copy = 'text-[12.5px] leading-[1.55] text-text-tertiary xl:text-[11px]';
+  return (
+    <div className={shell}>
+      <input type="hidden" name={WHATSAPP_CONSENT_SHOWN_FIELD} value="1" />
+      <label htmlFor={id} className={`flex cursor-pointer items-start gap-2.5 ${copy}`}>
+        <input
+          id={id}
+          name={WHATSAPP_CONSENT_FIELD}
+          type="checkbox"
+          defaultChecked={ticked}
+          className="mt-px h-[17px] w-[17px] shrink-0 accent-blue-safe"
+        />
+        <span>{sys('form.whatsappConsent.label')}</span>
+      </label>
+    </div>
+  );
+}
+
 /**
  * The one form wrapper every page form uses (D11/D13): `useActionState` around the page's
  * server action, the children `Field`s, the honeypot, the Turnstile widget when a site key is
@@ -329,12 +360,17 @@ export function FormShell({
     </div>
   );
   const consentRow = (
-    <ConsentRow
-      mode={consent}
-      href={consentLinkHref}
-      id={`f-${scope}-${CONSENT_FIELD}`}
-      look={consentStyle}
-    />
+    <>
+      <ConsentRow
+        mode={consent}
+        href={consentLinkHref}
+        id={`f-${scope}-${CONSENT_FIELD}`}
+        look={consentStyle}
+      />
+      {hasWhatsAppConsentBox(formKey) ? (
+        <WhatsAppConsentRow id={`f-${scope}-${WHATSAPP_CONSENT_FIELD}`} look={consentStyle} />
+      ) : null}
+    </>
   );
   return (
     <FormErrorsContext.Provider value={ctx}>

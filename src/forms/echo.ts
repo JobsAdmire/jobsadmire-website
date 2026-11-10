@@ -1,8 +1,12 @@
 import { CAPTCHA_FIELD, HONEYPOT_FIELD } from './types';
+import { WHATSAPP_CONSENT_SHOWN_FIELD } from './whatsapp-consent';
 
 /** Keys the shell adds, and React's progressive-enhancement fields — never form data. */
 export const isInternalKey = (key: string) =>
-  key === HONEYPOT_FIELD || key === CAPTCHA_FIELD || key.startsWith('$ACTION');
+  key === HONEYPOT_FIELD ||
+  key === CAPTCHA_FIELD ||
+  key === WHATSAPP_CONSENT_SHOWN_FIELD ||
+  key.startsWith('$ACTION');
 
 const MAX_ECHO = 5000;
 

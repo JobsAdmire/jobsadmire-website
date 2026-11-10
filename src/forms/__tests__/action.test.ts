@@ -123,6 +123,61 @@ describe('createFormAction', () => {
     });
   });
 
+  it('sends the WhatsApp pair when the box was shown: true when ticked, false when left unticked, and the box never reaches the schema or `fields`', async () => {
+    const seen: string[][] = [];
+    const strict = createFormAction({
+      key: 'hire',
+      schema: schema.catchall(z.string()),
+      toFields: (p) => {
+        seen.push(Object.keys(p));
+        return { name: p.name, email: p.email, phone: p.phone };
+      },
+    });
+    postForm.mockResolvedValue(ok);
+    const ticked = { ...valid, whatsappConsentShown: '1', whatsappConsent: 'on' };
+    await expect(strict(IDLE_FORM_STATE, formData(ticked))).rejects.toMatchObject({
+      digest: 'NEXT_REDIRECT',
+    });
+    expect(postForm.mock.calls[0][1]).toMatchObject({
+      consentVersion: CONSENT_VERSION,
+      whatsappConsent: true,
+      whatsappConsentVersion: 'site-wa-v1',
+    });
+    expect(Object.keys(postForm.mock.calls[0][1].fields)).toEqual(['name', 'email', 'phone']);
+    expect(seen[0].join()).not.toContain('whatsapp');
+    const unticked: Record<string, string> = { ...ticked };
+    delete unticked.whatsappConsent;
+    await expect(strict(IDLE_FORM_STATE, formData(unticked))).rejects.toMatchObject({
+      digest: 'NEXT_REDIRECT',
+    });
+    expect(postForm.mock.calls[1][1]).toMatchObject({
+      whatsappConsent: false,
+      whatsappConsentVersion: 'site-wa-v1',
+    });
+  });
+
+  it('sends neither WhatsApp key without the marker, or on a form that carries no box (careers)', async () => {
+    postForm.mockResolvedValue(ok);
+    await expect(
+      action(IDLE_FORM_STATE, formData({ ...valid, whatsappConsent: 'on' })),
+    ).rejects.toMatchObject({ digest: 'NEXT_REDIRECT' });
+    const careers = createFormAction({
+      key: 'careers',
+      schema,
+      toFields: (p) => ({ name: p.name }),
+    });
+    await expect(
+      careers(
+        IDLE_FORM_STATE,
+        formData({ ...valid, whatsappConsentShown: '1', whatsappConsent: 'on' }),
+      ),
+    ).rejects.toMatchObject({ digest: 'NEXT_REDIRECT' });
+    for (const call of postForm.mock.calls) {
+      expect(call[1]).not.toHaveProperty('whatsappConsent');
+      expect(call[1]).not.toHaveProperty('whatsappConsentVersion');
+    }
+  });
+
   it('redirects for SPAM and replayed answers too (a bot sees success; the same submission already landed)', async () => {
     postForm.mockResolvedValueOnce({ ...ok, status: 'SPAM' });
     await expect(

@@ -1,5 +1,6 @@
 import type { Locale } from '@/i18n/routing';
 import { CONSENT_VERSION } from './consent';
+import { WHATSAPP_CONSENT_VERSION } from './whatsapp-consent';
 
 /** The `fields` object of the door envelope. Unknown keys inside it are silently DROPPED by
  *  the Operations catalog (never an error), so a mis-spelled key loses data with a 200 — page
@@ -7,11 +8,14 @@ import { CONSENT_VERSION } from './consent';
 export type WireFields = Record<string, string | string[]>;
 
 /** `POST /api/website/v1/forms/:formKey` body. Top-level keys are whitelisted with
- *  `forbidNonWhitelisted` on the Ops side — anything beyond these six is a 400, so this type
+ *  `forbidNonWhitelisted` on the Ops side — anything beyond these (the two `whatsappConsent*` keys since 2026-11-10) is a 400, so this type
  *  is closed on purpose. */
 export type WireEnvelope = {
   locale: Locale;
   consentVersion: string;
+  /** The optional WhatsApp box (Ops PRD §5.12): both keys or neither, never inside `fields`. */
+  whatsappConsent?: boolean;
+  whatsappConsentVersion?: string;
   captchaToken?: string;
   honeypot?: string;
   sourcePath?: string;
@@ -32,6 +36,9 @@ export function buildEnvelope(input: {
   captchaToken?: string | null;
   honeypot?: string | null;
   sourcePath?: string | null;
+  /** `true` / `false` = the box was shown (ticked / not); undefined = no box on this form,
+   *  neither key is sent. */
+  whatsappConsent?: boolean;
 }): WireEnvelope {
   const fields: WireFields = {};
   for (const [key, value] of Object.entries(input.fields)) {
@@ -44,6 +51,10 @@ export function buildEnvelope(input: {
     // undefined / anything else: not a wire value, not sent
   }
   const envelope: WireEnvelope = { locale: input.locale, consentVersion: CONSENT_VERSION, fields };
+  if (typeof input.whatsappConsent === 'boolean') {
+    envelope.whatsappConsent = input.whatsappConsent;
+    envelope.whatsappConsentVersion = WHATSAPP_CONSENT_VERSION;
+  }
   const captchaToken = optional(input.captchaToken, MAX.captchaToken);
   if (captchaToken) envelope.captchaToken = captchaToken;
   // A filled honeypot is the bot signal; an empty one is simply absent.

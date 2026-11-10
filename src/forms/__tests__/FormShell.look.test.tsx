@@ -25,7 +25,7 @@ describe('FormShell — the design look', () => {
     const submit = screen.getByRole('button', { name: 'Teklif al' });
     expect(submit).toHaveClass('w-full', 'rounded-pill');
     expect(submit.querySelector('svg')).not.toBeNull();
-    const consent = screen.getByRole('checkbox');
+    const consent = screen.getByRole('checkbox', { name: /aydınlatma|privacy/i });
     expect(consent.compareDocumentPosition(submit) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(consent).toHaveClass('h-[17px]', 'w-[17px]');
   });
@@ -50,7 +50,7 @@ describe('FormShell — the design look', () => {
     expect(submit).toHaveClass('bg-success-text', 'rounded-[11px]');
     expect(submit.querySelectorAll('svg')).toHaveLength(1);
     expect(screen.getByTestId('wa')).toBeInTheDocument();
-    const consent = screen.getByRole('checkbox');
+    const consent = screen.getByRole('checkbox', { name: /aydınlatma|privacy/i });
     expect(submit.compareDocumentPosition(consent) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(consent.closest('div')).toHaveClass('bg-pale-1', 'border-edge-soft');
   });

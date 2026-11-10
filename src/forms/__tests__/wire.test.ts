@@ -59,6 +59,16 @@ describe('buildEnvelope', () => {
     expect(env.sourcePath).toHaveLength(300);
   });
 
+  it('carries the WhatsApp pair together (true or false) or not at all', () => {
+    const on = buildEnvelope({ locale: 'tr', fields: {}, whatsappConsent: true });
+    expect(on).toMatchObject({ whatsappConsent: true, whatsappConsentVersion: 'site-wa-v1' });
+    const off = buildEnvelope({ locale: 'en', fields: {}, whatsappConsent: false });
+    expect(off).toMatchObject({ whatsappConsent: false, whatsappConsentVersion: 'site-wa-v1' });
+    const none = buildEnvelope({ locale: 'en', fields: {} });
+    expect(none).not.toHaveProperty('whatsappConsent');
+    expect(none).not.toHaveProperty('whatsappConsentVersion');
+  });
+
   it('never carries a key the door would reject at the top level', () => {
     const env = buildEnvelope({ locale: 'tr', fields: { a: 'b' }, sourcePath: '/isci-talebi' });
     expect(Object.keys(env).sort()).toEqual(['consentVersion', 'fields', 'locale', 'sourcePath']);

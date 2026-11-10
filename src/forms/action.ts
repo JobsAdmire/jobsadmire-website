@@ -20,6 +20,11 @@ import {
   type FormActionState,
   type PostFormVisitor,
 } from './types';
+import {
+  hasWhatsAppConsentBox,
+  WHATSAPP_CONSENT_FIELD,
+  WHATSAPP_CONSENT_SHOWN_FIELD,
+} from './whatsapp-consent';
 import { buildEnvelope, type WireFields } from './wire';
 
 export type { FormActionState, FormErrorResult, FormFallbackKind } from './types';
@@ -68,7 +73,7 @@ const trimmed = (v: FormDataEntryValue): FormDataEntryValue =>
 function toObject(data: FormData): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const key of new Set(data.keys())) {
-    if (isInternalKey(key)) continue;
+    if (isInternalKey(key) || key === WHATSAPP_CONSENT_FIELD) continue;
     const all = data.getAll(key).map(trimmed);
     out[key] = all.length > 1 ? all : all[0];
   }
@@ -154,6 +159,12 @@ export function createFormAction<S extends z.ZodTypeAny>(spec: FormSpec<S>) {
       captchaToken: str(data.get(CAPTCHA_FIELD)),
       honeypot: str(data.get(HONEYPOT_FIELD)),
       sourcePath: sourcePathOf(h.get('referer')),
+      // The optional WhatsApp box: the pair travels only when the shell showed it on a form that
+      // carries it (the hidden marker) — a form without the box sends neither key.
+      whatsappConsent:
+        hasWhatsAppConsentBox(spec.key) && data.get(WHATSAPP_CONSENT_SHOWN_FIELD) === '1'
+          ? data.get(WHATSAPP_CONSENT_FIELD) === 'on'
+          : undefined,
     });
     const result = await postForm(spec.key, envelope, visitor);
 

@@ -65,7 +65,10 @@ describe('CallbackWidget', () => {
       'type',
       'tel',
     );
-    expect(within(form).getByRole('checkbox')).toHaveAttribute('id', 'f-contact-callback-consent');
+    expect(within(form).getByRole('checkbox', { name: /aydınlatma|privacy/i })).toHaveAttribute(
+      'id',
+      'f-contact-callback-consent',
+    );
     expect(within(form).getByRole('button', { name: 'Request call' })).toHaveAttribute(
       'type',
       'submit',
