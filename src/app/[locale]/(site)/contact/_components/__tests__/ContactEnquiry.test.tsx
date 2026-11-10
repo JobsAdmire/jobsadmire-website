@@ -114,7 +114,10 @@ describe('ContactEnquiry', () => {
     expect(reply.map((r) => r.value)).toEqual(['whatsapp', 'email', 'call']);
     expect(reply[0].checked).toBe(true);
     // W79: one consent checkbox, scoped id.
-    expect(within(form).getByRole('checkbox')).toHaveAttribute('id', 'f-contact-enquiry-consent');
+    expect(within(form).getByRole('checkbox', { name: /aydınlatma|privacy/i })).toHaveAttribute(
+      'id',
+      'f-contact-enquiry-consent',
+    );
     expect(within(form).getByRole('button', { name: 'Send my hiring request' })).toHaveAttribute(
       'type',
       'submit',

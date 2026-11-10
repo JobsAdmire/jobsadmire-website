@@ -61,7 +61,16 @@ describe('HeroLeadForm', () => {
     const form = screen.getByTestId('hire-form');
     const order = [...form.querySelectorAll('input[name], select[name]')]
       .map((el) => el.getAttribute('name'))
-      .filter((name) => !['honeypot', 'consent', 'cf-turnstile-response'].includes(name ?? ''));
+      .filter(
+        (name) =>
+          ![
+            'honeypot',
+            'consent',
+            'whatsappConsent',
+            'whatsappConsentShown',
+            'cf-turnstile-response',
+          ].includes(name ?? ''),
+      );
     expect(order).toEqual([
       'company',
       'name',

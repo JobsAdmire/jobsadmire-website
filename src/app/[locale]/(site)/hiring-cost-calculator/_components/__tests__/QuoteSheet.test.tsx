@@ -88,7 +88,10 @@ describe('the quote sheet (W3)', () => {
       form.querySelector<HTMLInputElement>(`input[name="${name}"]`)?.value;
     expect(hidden(ESTIMATE_FIELDS.role)).toBe('cook');
     expect(hidden(ESTIMATE_FIELDS.headcount)).toBe('5');
-    expect(within(form).getByRole('checkbox')).toHaveAttribute('name', 'consent'); // W79
+    expect(within(form).getByRole('checkbox', { name: /aydınlatma|privacy/i })).toHaveAttribute(
+      'name',
+      'consent',
+    ); // W79
     expect(within(form).getByRole('combobox')).toHaveAttribute('name', 'country');
   });
 
@@ -115,7 +118,7 @@ describe('the quote sheet (W3)', () => {
     await userEvent.click(screen.getByTestId('open'));
     const dialog = await screen.findByRole('dialog');
     await userEvent.type(within(dialog).getByLabelText(`${tr.sys.form.labels.name} *`), 'Ayşe');
-    await userEvent.click(within(dialog).getByRole('checkbox'));
+    await userEvent.click(within(dialog).getByRole('checkbox', { name: /aydınlatma|privacy/i }));
     await userEvent.click(within(dialog).getByRole('button', { name: 'calc.105' }));
     const panel = await within(dialog).findByTestId('form-fallback');
     expect(panel).toHaveAttribute('data-kind', 'unauthorized');

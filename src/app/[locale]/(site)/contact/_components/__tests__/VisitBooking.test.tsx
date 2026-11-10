@@ -58,7 +58,10 @@ describe('VisitBooking', () => {
     ).toEqual(['09:30', '11:00', '13:30', '15:00', '16:30']);
     for (const name of ['name', 'email', 'phone'])
       expect(form.querySelector(`#f-contact-visit-${name}`)).toHaveAttribute('name', name);
-    expect(within(form).getByRole('checkbox')).toHaveAttribute('id', 'f-contact-visit-consent');
+    expect(within(form).getByRole('checkbox', { name: /aydınlatma|privacy/i })).toHaveAttribute(
+      'id',
+      'f-contact-visit-consent',
+    );
     expect(within(form).getByRole('button', { name: 'Ziyaret saati talep edin' })).toHaveAttribute(
       'type',
       'submit',

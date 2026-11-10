@@ -44,6 +44,29 @@ afterEach(() => {
 });
 
 describe('FormShell', () => {
+  it('renders the optional, unticked WhatsApp box on a lead form (with the shown marker) and none on careers', () => {
+    const { unmount } = renderWithIntl(
+      <FormShell {...base} action={idle}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    const form = screen.getByTestId('hire-form');
+    const box = within(form).getByLabelText(copy.whatsappConsent.label) as HTMLInputElement;
+    expect(box.type).toBe('checkbox');
+    expect(box.name).toBe('whatsappConsent');
+    expect(box.checked).toBe(false);
+    expect(box).not.toBeRequired();
+    expect(form.querySelector('input[name="whatsappConsentShown"]')).toHaveValue('1');
+    unmount();
+    renderWithIntl(
+      <FormShell {...base} formKey="careers" action={idle}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(screen.queryByLabelText(copy.whatsappConsent.label)).toBeNull();
+    expect(document.querySelector('input[name="whatsappConsentShown"]')).toBeNull();
+  });
+
   it('renders the fields, the hidden honeypot, the consent checkbox with the privacy link and the submit button', () => {
     renderWithIntl(
       <FormShell {...base} action={idle}>
@@ -65,7 +88,7 @@ describe('FormShell', () => {
     expect(honeypot).toHaveAttribute('tabindex', '-1');
     expect(honeypot).toHaveAttribute('autocomplete', 'off');
     expect(honeypot.closest('[aria-hidden="true"]')).not.toBeNull();
-    const consent = within(form).getByRole('checkbox');
+    const consent = within(form).getByRole('checkbox', { name: /aydınlatma|privacy/i });
     expect(consent).toHaveAttribute('name', 'consent');
     expect(consent).toBeRequired();
     expect(within(form).getByRole('link', { name: 'aydınlatma metni' })).toHaveAttribute(
@@ -106,7 +129,7 @@ describe('FormShell', () => {
     expect(alerts).toEqual([copy.errors.required, copy.errors.email]);
     expect(screen.getByLabelText(`${copy.labels.email} *`)).toHaveValue('nope');
     expect(screen.getByLabelText(`${copy.labels.email} *`)).toHaveAttribute('aria-invalid', 'true');
-    expect(screen.getByRole('checkbox')).toBeChecked();
+    expect(screen.getByRole('checkbox', { name: /aydınlatma|privacy/i })).toBeChecked();
   });
 
   it('renders the consent error under the checkbox', () => {
@@ -120,7 +143,10 @@ describe('FormShell', () => {
       </FormShell>,
     );
     expect(screen.getByRole('alert')).toHaveTextContent(copy.errors.consent);
-    expect(screen.getByRole('checkbox')).toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByRole('checkbox', { name: /aydınlatma|privacy/i })).toHaveAttribute(
+      'aria-invalid',
+      'true',
+    );
   });
 
   it('renders a _form error (object-level refine, strict extra key) as a form-level alert', () => {
@@ -222,7 +248,7 @@ describe('FormShell', () => {
       </FormShell>,
     );
     await userEvent.type(screen.getByLabelText(copy.labels.name), 'Ayşe');
-    await userEvent.click(screen.getByRole('checkbox'));
+    await userEvent.click(screen.getByRole('checkbox', { name: /aydınlatma|privacy/i }));
     await userEvent.click(screen.getByRole('button', { name: copy.submit.default }));
     await waitFor(() => expect(screen.getByRole('alert')).toBeInTheDocument());
     expect(action).toHaveBeenCalledTimes(1);
@@ -337,16 +363,23 @@ describe('FormShell', () => {
       'id',
       'f-contact-bottom-name',
     );
-    expect(within(b).getByRole('checkbox')).toHaveAttribute('id', 'f-contact-bottom-consent');
+    expect(within(b).getByRole('checkbox', { name: /aydınlatma|privacy/i })).toHaveAttribute(
+      'id',
+      'f-contact-bottom-consent',
+    );
     expect(b.querySelector('input[name="honeypot"]')).toHaveAttribute(
       'id',
       'f-contact-bottom-honeypot',
     );
     expect(within(b).getByTestId('turnstile')).toHaveAttribute('id', 'f-contact-bottom-turnstile');
     // A label click toggles its own form's checkbox, not the first one on the page.
-    await userEvent.click(within(b).getByRole('checkbox').closest('label')!);
-    expect(within(b).getByRole('checkbox')).toBeChecked();
-    expect(within(a).getByRole('checkbox')).not.toBeChecked();
+    await userEvent.click(
+      within(b)
+        .getByRole('checkbox', { name: /aydınlatma|privacy/i })
+        .closest('label')!,
+    );
+    expect(within(b).getByRole('checkbox', { name: /aydınlatma|privacy/i })).toBeChecked();
+    expect(within(a).getByRole('checkbox', { name: /aydınlatma|privacy/i })).not.toBeChecked();
   });
 
   it('scopes ids by formKey when no idScope is given', () => {
@@ -356,7 +389,10 @@ describe('FormShell', () => {
       </FormShell>,
     );
     expect(screen.getByLabelText(copy.labels.name)).toHaveAttribute('id', 'f-hire-name');
-    expect(screen.getByRole('checkbox')).toHaveAttribute('id', 'f-hire-consent');
+    expect(screen.getByRole('checkbox', { name: /aydınlatma|privacy/i })).toHaveAttribute(
+      'id',
+      'f-hire-consent',
+    );
   });
 
   it('keeps the submit button focusable while pending (aria-disabled + aria-busy, never disabled) and ignores a second submit', async () => {
@@ -514,7 +550,7 @@ describe('FormShell', () => {
         <Field name="name" />
       </FormShell>,
     );
-    expect(screen.queryByRole('checkbox')).toBeNull();
+    expect(screen.queryByRole('checkbox', { name: /aydınlatma|privacy/i })).toBeNull();
     expect(screen.getByTestId('hire-form')).toHaveTextContent('aydınlatma metni');
     expect(screen.getByRole('heading', { name: 'Hızlı teklif' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Teklif al' })).toBeInTheDocument();
