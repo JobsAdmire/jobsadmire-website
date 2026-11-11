@@ -20,7 +20,7 @@ const quiet = () => {};
 const parse = (raw: Record<string, unknown>) => CandidateFeedItemSchema.parse(raw);
 
 describe('mapCandidate', () => {
-  it('maps a full candidate: display name as sent, photo, labels per locale, group', () => {
+  it('maps a full candidate: display name as sent, photo, labels per locale, the industry in Turkish', () => {
     const c = mapCandidate(parse(FIXTURE.candidates[0]), quiet);
     expect(c).toMatchObject({
       ref: 'JA-1201',
@@ -31,7 +31,8 @@ describe('mapCandidate', () => {
         height: 480,
       },
       position: { key: 'cfixtureposition00000001', label: { tr: 'Kaynakçı', en: 'Welder' } },
-      group: { key: 'construction', label: { tr: 'İnşaat', en: 'Construction' } },
+      // the feed sends the portal industry's English name only (tr: null): the site names it
+      group: { key: 'cfixtureindustry00000002', label: { tr: 'İnşaat', en: 'Construction' } },
       nationality: 'PK',
       nationalityLabel: null,
       yearsExperience: 6,
@@ -39,9 +40,40 @@ describe('mapCandidate', () => {
       location: { country: 'PK', city: 'Karachi' },
       education: 'Technical diploma',
       age: 28,
-      createdAt: '2026-10-30T08:00:00.000Z',
-      addedAt: '2026-10-30T08:00:00.000Z',
+      createdAt: '2026-10-30T00:00:00.000Z',
+      addedAt: '2026-10-30T00:00:00.000Z',
     });
+  });
+
+  it('the industry (position.group): the feed’s Turkish label wins, else the site’s list, else the English name', () => {
+    const withGroup = (group: unknown) =>
+      mapCandidate(
+        parse({
+          ...FIXTURE.candidates[0],
+          position: { key: 'welder', label: { tr: 'Kaynakçı', en: 'Welder' }, group },
+        }),
+        quiet,
+      ).group;
+    expect(withGroup({ key: 'ind1', label: { tr: null, en: 'Metal & Machinery' } })).toEqual({
+      key: 'ind1',
+      label: { tr: 'Metal ve Makine', en: 'Metal & Machinery' },
+    });
+    // matched by the English name, trimmed and case-insensitive — never by the id
+    expect(withGroup({ key: 'Construction', label: { tr: null, en: ' it & software ' } })).toEqual({
+      key: 'Construction',
+      label: { tr: 'Bilişim ve Yazılım', en: 'it & software' },
+    });
+    expect(
+      withGroup({ key: 'ind1', label: { tr: 'Gemicilik', en: 'Maritime & Fishing' } }),
+    ).toEqual({ key: 'ind1', label: { tr: 'Gemicilik', en: 'Maritime & Fishing' } });
+    // an industry the list does not know: its English name on both pages
+    expect(withGroup({ key: 'ind9', label: { tr: null, en: 'Space Exploration' } })).toEqual({
+      key: 'ind9',
+      label: { tr: 'Space Exploration', en: 'Space Exploration' },
+    });
+    // a group that names nothing: left out — its key is a portal id, never a label
+    expect(withGroup({ key: 'ind9', label: { tr: null, en: '' } })).toBeNull();
+    expect(withGroup(null)).toBeNull();
   });
 
   it('a missing photo, age, education, experience, group, location and nationality code read as absent', () => {
@@ -70,8 +102,9 @@ describe('mapCandidate', () => {
       nationalityLabel: 'Karakalpak',
       yearsExperience: 12,
       location: { country: 'TJ', city: null },
-      createdAt: null,
-      addedAt: '2026-10-28T11:15:00.000Z',
+      // the portal's added day (midnight UTC), not the last change
+      createdAt: '2026-09-14T00:00:00.000Z',
+      addedAt: '2026-09-14T00:00:00.000Z',
     });
     expect(rustam.languages).toEqual([
       { code: 'ru', label: 'Russian', level: 'B2' },
@@ -200,11 +233,17 @@ describe('labels', () => {
     const rows = feedToCandidates(FIXTURE, quiet).candidates;
     const sorted = newestFirst([...rows].reverse());
     expect(sorted.slice(0, 5).map((c) => c.ref)).toEqual([
-      'CND-2026-9001',
-      'CND-2026-9002',
       'JA-1201',
-      'CND-2026-9003',
+      'CND-2026-9001',
       'JA-1202',
+      'CND-2026-9002',
+      'JA-1203',
     ]);
+    const noDays = feedToCandidates(
+      { ...FIXTURE, candidates: FIXTURE.candidates.map((c) => ({ ...c, createdAt: null })) },
+      quiet,
+    ).candidates;
+    // without the added day (an older snapshot), the last change orders
+    expect(newestFirst(noDays)[0].ref).toBe('CND-2026-9001');
   });
 });

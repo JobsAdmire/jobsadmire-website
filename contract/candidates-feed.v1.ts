@@ -11,8 +11,8 @@ import { isoDateTime } from './blog-feed.v1';
  * fixture of the same shape, diffed against `candidates-feed.v1.fixture.json` here.
  *
  * Reading is deliberately LENIENT on everything a card can live without: a missing or `null`
- * photo (or its size), experience, group, nationality, location, languages, skills, education or
- * age reads as absent (an empty string as `null`). Zod strips unknown keys (the portal's `id`, if
+ * photo (or its size), experience, group, nationality, location, languages, skills, education,
+ * age or added day reads as absent (an empty string as `null`). Zod strips unknown keys (the portal's `id`, if
  * Operations ever forwarded it, never reaches a page), so an additive producer change never
  * breaks this reader; anything else is a new contract version. Strict where the site depends on
  * it: the `ref` is an opaque public reference of at most 32 safe characters (the request basket's
@@ -71,8 +71,12 @@ export const CandidateFeedItemSchema = z.object({
     .object({
       key: z.string().trim().min(1),
       label: perLocaleLabel,
-      /** ASSUMED additive (not in the plan's section 1): the position's group — the page's
-       *  "industry" filter. Absent → the industry filter and line drop out for that profile. */
+      /** The position's group = the portal's INDUSTRY (owner 2026-11-11, "Make them work";
+       *  additive, still `candidates.v1`): `key` is the portal's industry id, `label.en` its one
+       *  English name, `label.tr` `null` — the portal has no Turkish industry names, so the site
+       *  names it itself (`src/content/pool-industries.ts`). The page's "industry" filter and
+       *  line. Absent or `null` (no industry, or an Operations snapshot from before the portal
+       *  sent it) → the industry filter and line drop out for that profile. */
       group: z.object({ key: z.string().trim().min(1), label: perLocaleLabel }).nullish(),
     })
     .nullish(),
@@ -101,8 +105,10 @@ export const CandidateFeedItemSchema = z.object({
   skills: z.array(z.string().trim().min(1)).nullish(),
   education: optText,
   age: z.number().int().positive().nullish(),
-  /** ASSUMED additive: when the profile entered the published pool — the "New" pill and the
-   *  "recently added" order. Absent → `updatedAt` orders, and no pill shows. */
+  /** The DAY the candidate was added in the portal, as midnight UTC (`2026-11-03T00:00:00.000Z`
+   *  — never the time; owner 2026-11-11, additive, still `candidates.v1`): the "New" pill and the
+   *  "recently added" order. Absent or `null` (Operations has not received it yet) →
+   *  `updatedAt` orders, and no pill shows. */
   createdAt: optDate.optional(),
   updatedAt: isoDateTime,
 });

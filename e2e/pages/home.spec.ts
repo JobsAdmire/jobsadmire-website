@@ -437,16 +437,19 @@ test.describe('the pool marquee from the fixture door (E2E_POOL_OPS=1)', () => {
       const first = page.getByTestId('pool-track').locator(':scope > div').first();
       const cards = first.locator('[data-pool-card]');
       await expect(cards).toHaveCount(8);
-      // newest first: the portal's Arslan (updatedAt 2026-11-01, moved to today by the door)
-      await expect(cards.first()).toHaveAttribute('data-pool-card', 'CND-2026-9001');
-      await expect(cards.first()).toContainText('Arslan M.');
-      await expect(cards.first()).toContainText(locale === 'tr' ? 'Kaynakçı' : 'Welder');
-      await expect(cards.first()).toContainText('Pakistan');
-      await expect(cards.first().locator('img')).toHaveAttribute(
+      // newest first by the added day (createdAt, the dates moved by the door): Ali (2026-10-30),
+      // then the portal's Arslan (2026-10-29)
+      await expect(cards.first()).toHaveAttribute('data-pool-card', 'JA-1201');
+      const arslan = cards.nth(1);
+      await expect(arslan).toHaveAttribute('data-pool-card', 'CND-2026-9001');
+      await expect(arslan).toContainText('Arslan M.');
+      await expect(arslan).toContainText(locale === 'tr' ? 'Kaynakçı' : 'Welder');
+      await expect(arslan).toContainText('Pakistan');
+      await expect(arslan.locator('img')).toHaveAttribute(
         'src',
         /media%2Fcandidate%2FCND-2026-9001%2Fa1b2c3d4\.webp/,
       );
-      await expect(cards.first()).toHaveAttribute(
+      await expect(arslan).toHaveAttribute(
         'href',
         locale === 'tr' ? '/adaylar' : '/en/available-workers',
       );

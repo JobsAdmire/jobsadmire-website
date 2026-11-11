@@ -433,7 +433,8 @@ test.describe('real candidates from the fixture door (E2E_POOL_OPS=1)', () => {
       .locator('#pool-filters')
       .getByRole('button', { name: S.en['availworkers.060'] })
       .click();
-    await panel.getByLabel(S.en['availworkers.063']).selectOption('agriculture');
+    // the industry is the portal's (its id is the option value); its English name is the label
+    await panel.getByLabel(S.en['availworkers.063']).selectOption({ label: 'Agriculture' });
     await expect(cards(page)).toHaveCount(1);
     await panel.getByLabel(S.en['availworkers.063']).selectOption('all');
     await panel.getByLabel(S.en['availworkers.017']).selectOption('tr');

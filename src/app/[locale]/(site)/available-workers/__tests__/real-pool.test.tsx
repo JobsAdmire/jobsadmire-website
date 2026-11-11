@@ -33,6 +33,12 @@ const rowsIn = (locale: 'tr' | 'en') =>
 const ROWS = rowsIn('en');
 const refsOf = (f: Partial<PoolFilters>) =>
   filterPool(ROWS, { ...NO_FILTERS, ...f }).map((w) => w.ref);
+/** The fixture's industries: the portal's ids (the filter key), one per English name. */
+const CONSTRUCTION = 'cfixtureindustry00000002';
+const METAL = 'cfixtureindustry00000001';
+const MANUFACTURING = 'clportalindustry000000001';
+const HOSPITALITY = 'clportalindustry000000002';
+const AGRICULTURE = 'clportalindustry000000004';
 
 describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
   it('maps one candidate with every label in the locale', () => {
@@ -45,7 +51,7 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
       countryKey: 'PK',
       flag: 'PK',
       industry: 'Construction',
-      industryKey: 'construction',
+      industryKey: 'cfixtureindustry00000002',
       exp: 6,
       langs: 'English (B1) · Turkish (A2)',
       langBands: ['tr', 'en'],
@@ -105,11 +111,43 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
   });
 
   it('"New" for 14 days after the profile entered the pool', () => {
+    // the added DAY the portal sends (midnight UTC) — the portal's own two included (owner 2026-11-11)
     expect(ROWS.filter((r) => r.added).map((r) => r.ref)).toEqual([
       'JA-1201',
       'JA-1202',
       'JA-1203',
+      'CND-2026-9001',
+      'CND-2026-9002',
     ]);
+    // the edge: 14 days to the millisecond is still new, a millisecond more is not
+    const day = by('JA-1203').createdAt!;
+    const at = (ms: number) =>
+      candidateToWorker(by('JA-1203'), 'en', {
+        now: new Date(Date.parse(day) + ms),
+        fromTemplate: FROM.en,
+      }).added;
+    expect(at(14 * 86_400_000)).toBe(true);
+    expect(at(14 * 86_400_000 + 1)).toBe(false);
+    // no added day (an older Operations snapshot): never "New"
+    expect(
+      candidateToWorker({ ...by('JA-1201'), createdAt: null }, 'en', {
+        now: NOW,
+        fromTemplate: FROM.en,
+      }).added,
+    ).toBe(false);
+  });
+
+  it('the industry in Turkish on the Turkish page, from the site’s list (the portal sends English only)', () => {
+    const trRows = rowsIn('tr');
+    const industryOf = (ref: string) => trRows.find((r) => r.ref === ref)!.industry;
+    expect(industryOf('JA-1204')).toBe('Turizm ve Otelcilik');
+    expect(industryOf('JA-1202')).toBe('Üretim');
+    expect(industryOf('JA-1208')).toBe('Tarım');
+    expect(industryOf('JA-1213')).toBe('Metal ve Makine');
+    expect(industryOf('CND-2026-9002')).toBe('İnşaat');
+    expect(ROWS.find((r) => r.ref === 'JA-1204')!.industry).toBe('Hospitality');
+    // same key in both languages: the filter compares the portal's id, never a label
+    expect(trRows.map((r) => r.industryKey)).toEqual(ROWS.map((r) => r.industryKey));
   });
 
   it('the stats strip counts the real rows', () => {
@@ -127,7 +165,7 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
     ]);
     expect(refsOf({ country: 'PK' })).toEqual(['JA-1201', 'JA-1207', 'JA-1213', 'CND-2026-9001']);
     expect(refsOf({ country: 'label:bangladeshi' })).toEqual(['C7K2M9QX']);
-    expect(refsOf({ industry: 'agriculture' })).toEqual(['JA-1208']);
+    expect(refsOf({ industry: AGRICULTURE })).toEqual(['JA-1208']);
     expect(refsOf({ exp: '0-3' })).toEqual(['JA-1204', 'JA-1206', 'JA-1208', 'JA-1211']);
     expect(refsOf({ exp: '8+' })).toEqual(['JA-1202', 'JA-1207', 'JA-1210', 'CND-2026-9003']);
     expect(refsOf({ exp: '4-7' })).not.toContain('C7K2M9QX'); // unknown experience: no band
@@ -143,12 +181,18 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
     ]);
     expect(refsOf({ avail: 'now' })).toHaveLength(12);
     expect(refsOf({ avail: '30' })).toHaveLength(15); // now + within 30 days
-    expect(refsOf({ trade: 'cfixtureposition00000001', industry: 'factory' })).toEqual(['JA-1213']);
+    expect(refsOf({ trade: 'cfixtureposition00000001', industry: METAL })).toEqual([
+      'JA-1213',
+      'CND-2026-9001',
+    ]);
+    expect(refsOf({ trade: 'cfixtureposition00000001', industry: CONSTRUCTION })).toEqual([
+      'JA-1201',
+    ]);
     // no position: in "all", never under a profession or an industry
     expect(refsOf({})).toContain('CND-2026-9003');
     for (const w of ROWS)
       if (w.tradeKey) expect(refsOf({ trade: w.tradeKey })).not.toContain('CND-2026-9003');
-    for (const i of ['hotel', 'construction', 'factory', 'agriculture'])
+    for (const i of [HOSPITALITY, CONSTRUCTION, MANUFACTURING, METAL, AGRICULTURE])
       expect(refsOf({ industry: i })).not.toContain('CND-2026-9003');
   });
 
@@ -164,16 +208,23 @@ describe('real candidates → pool rows (POOL_SOURCE=OPS)', () => {
       sortPool(ROWS, 'new', 'en')
         .slice(0, 4)
         .map((w) => w.ref),
-    ).toEqual(['JA-1201', 'JA-1202', 'JA-1203', 'CND-2026-9001']); // then updatedAt orders
+    ).toEqual(['JA-1201', 'CND-2026-9001', 'JA-1202', 'CND-2026-9002']); // by the added day
     expect(sortPool(ROWS, 'avail', 'en').at(-1)!.avail).toBe(2);
   });
 
   it('popular chips: the industries; the professions when no row carries a group', () => {
-    expect(popularIndustries(ROWS).map((p) => p.key)).toEqual([
-      'hotel',
-      'construction',
-      'factory',
-      'agriculture',
+    // Construction 5, Hospitality 5, Manufacturing 2, Metal & Machinery 2 (ties: first seen)
+    expect(popularIndustries(ROWS).map((p) => [p.key, p.count])).toEqual([
+      [CONSTRUCTION, 5],
+      [HOSPITALITY, 5],
+      [MANUFACTURING, 2],
+      [METAL, 2],
+    ]);
+    expect(popularIndustries(rowsIn('tr')).map((p) => p.label)).toEqual([
+      'İnşaat',
+      'Turizm ve Otelcilik',
+      'Üretim',
+      'Metal ve Makine',
     ]);
     const ungrouped = ROWS.map((w) => ({ ...w, industry: '', industryKey: '' }));
     expect(popularIndustries(ungrouped)).toEqual([]);

@@ -42,6 +42,33 @@ describe('candidates feed contract (candidates.v1)', () => {
     expect(feed.candidates.some((c) => !c.displayName.includes(' '))).toBe(true);
   });
 
+  it('the industry and the added day as Operations sends them (owner 2026-11-11): the portal industry’s English name with `tr` null, the day at midnight UTC', () => {
+    const feed = CandidatesFeedSchema.parse(fixture);
+    const groups = feed.candidates.flatMap((c) => (c.position?.group ? [c.position.group] : []));
+    expect(groups.length).toBeGreaterThan(0);
+    for (const g of groups) {
+      expect(g.label.tr).toBeNull();
+      expect(g.label.en).toBeTruthy();
+    }
+    // one industry name, one key — as in the portal (Industry.name is unique)
+    const keyOf = new Map<string, string>();
+    for (const g of groups) {
+      expect(keyOf.get(g.label.en!) ?? g.key, g.label.en!).toBe(g.key);
+      keyOf.set(g.label.en!, g.key);
+    }
+    for (const c of feed.candidates)
+      if (c.createdAt) expect(c.createdAt, c.ref).toMatch(/^\d{4}-\d{2}-\d{2}T00:00:00\.000Z$/);
+    expect(item(14).createdAt).toBe('2026-10-29T00:00:00.000Z');
+    // an Operations snapshot from before the portal sent them: null reads as absent
+    const old = CandidateFeedItemSchema.parse({
+      ...item(14),
+      createdAt: null,
+      position: { ...(item(14).position as object), group: null },
+    });
+    expect(old.createdAt).toBeNull();
+    expect(old.position?.group).toBeNull();
+  });
+
   it('every photo is on the Operations media route, under the candidate path', () => {
     for (const c of CandidatesFeedSchema.parse(fixture).candidates)
       if (c.photo)

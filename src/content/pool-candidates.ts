@@ -10,6 +10,7 @@ import {
   type CandidateFeedItem,
 } from '../../contract/candidates-feed.v1';
 import { isBlogImageSrc } from '@/lib/blog-media';
+import { industryNameTr } from './pool-industries';
 
 export type PoolLocale = 'tr' | 'en';
 export type PerLocale = { tr: string; en: string };
@@ -33,7 +34,8 @@ export type PoolCandidate = {
   /** the position (the page's "profession" filter key, the card's position line), both
    *  languages filled; `null` when the portal has none — no line, no profession / industry value */
   position: { key: string; label: PerLocale } | null;
-  /** the position's group (the page's "industry" filter), when the feed sends one */
+  /** the position's group — the portal's industry (the page's "industry" filter), when the feed
+   *  sends one; its Turkish name from `./pool-industries.ts` when the feed has none */
   group: { key: string; label: PerLocale } | null;
   /** ISO-2, upper case, when the portal knows it (flag + localized name) … */
   nationality: string | null;
@@ -86,9 +88,15 @@ export function mapCandidate(
   if (item.photo && !photoOk)
     log('a photo is not on the media route and was left out', { ref: item.ref });
   const pos = item.position ?? null;
-  const group = pos?.group
-    ? { key: pos.group.key, label: bothLocales(pos.group.label, pos.group.key) }
-    : null;
+  // The portal's industry: its English name only (`label.tr` null, owner 2026-11-11) — the
+  // Turkish name comes from the site's own list, else the English name stands in. A group that
+  // names nothing in either language is left out: its key is a portal id, never a label.
+  const g = pos?.group ?? null;
+  const groupTr = g ? (g.label.tr ?? industryNameTr(g.label.en)) : null;
+  const group =
+    g && (groupTr ?? g.label.en)
+      ? { key: g.key, label: bothLocales({ tr: groupTr, en: g.label.en }, g.key) }
+      : null;
   return {
     ref: item.ref,
     name: item.displayName,

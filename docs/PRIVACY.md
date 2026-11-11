@@ -60,7 +60,7 @@ _Full runbook is a WP5-gate deliverable, commissioned from counsel per plan §10
 
 The four legal pages are content (`sys.legal.*` in `src/messages/{tr,en}.json`), not this doc; this list is what counsel must know about how they were seeded (D14).
 
-1. **Source.** `origin/main-backup` — `public/locales/{en,tr}/privacy.json` (`privacy.page`, "Last Updated 27 September 2025") and `public/locales/en/terms.json` (`tr/terms.json` is byte-identical — the old site never translated the Terms).
+1. **Source.** Tag `old-website-final` (the old site; its branch `main-backup` was deleted on 2026-11-11) — `public/locales/{en,tr}/privacy.json` (`privacy.page`, "Last Updated 27 September 2025") and `public/locales/en/terms.json` (`tr/terms.json` is byte-identical — the old site never translated the Terms).
 2. **Voice.** Every "we / our / us" and "biz / -iz / -ımız" form is rewritten with "JobsAdmire" as the subject (`docs/PRD.md` §3; `src/messages/voice.test.ts` covers every `sys.*` string, W154); the Terms' own definition of "we", "our", "us" is dropped.
 3. **Hosts and names.** `crm.jobsadmire.com` → the Partner Portal at `portal.jobsadmire.com`; "CRM" → "Partner Portal"; "Cookie Settings (site footer)" → the footer's "Cookie preferences" button (shown only when the site asks for consent).
 4. **Turkish terminology.** "VERİ KONTROLÖRÜ" → "Veri sorumlusu"; "KURABİYELER" → "Çerezler"; "Analitik" → "Ölçüm" (the voice test reads the "-tik" ending as a first-person-plural past tense).
