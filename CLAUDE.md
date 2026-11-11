@@ -1,126 +1,96 @@
-# JobsAdmire Website — repo rulebook
+# JobsAdmire Website — the public site (jobsadmire.com)
 
-This is `jobsadmire-website`, part of the JobsAdmire ecosystem (workspace root `../CLAUDE.md` — read it first; task routing, cross-app boundaries, VPS/ports, deploy-on-push are covered there, not repeated here). It rebuilds jobsadmire.com on Next.js 16 from the 14-page Claude Design package: Turkish visitors at the root, English under `/en`. It talks to Operations only — never the CRM, never the VPS directly, never from the browser. It is **not** a Turborepo monorepo (single `package.json`, no `apps/*`), has **no database of its own**, and does not deploy through the VPS — production is Vercel.
+The public marketing site: Turkish at the root, English under `/en`. It sells to Turkish employers who need foreign workers, recruits partners abroad, and lets anyone check whether a person really represents JobsAdmire. Next.js on Vercel, a single `package.json` (not a monorepo), no database, no Docker.
 
-Decisions below are cited as **D\<n\>**, rationale in `docs/superpowers/specs/2026-09-18-website-programme-design.md`. WP1 implementation rulings are cited as **R\<n\>**, in `docs/superpowers/plans/2026-09-18-wp1-foundation-rulings.md`. Don't re-derive either — read the source.
+Three boundaries: it talks **only to Operations**, never the CRM portal; **only from the server**, never from the browser; and nothing on the VPS depends on it being up.
+
+The workspace-root `../CLAUDE.md` holds the routing between the apps and the links to Operations and the portal — read it first. What is live right now: `../WORKSPACE-STATE.md`. Open work and what the owner still owes: `docs/pending/README.md`.
+
+**Decision ids.** The code and docs cite decisions by id: `D<n>` is the programme spec (`docs/superpowers/specs/2026-09-18-website-programme-design.md`), `R<n>` the WP1 ruling log (`docs/superpowers/plans/2026-09-18-wp1-foundation-rulings.md`), `W<n>` the WP2 ruling log (`docs/superpowers/plans/2026-09-20-wp2-rulings.md`, closed at W251). Look an id up there with grep; never re-derive it. A new owner ruling is written into `docs/PRD.md` with its date.
 
 ## Where to look
 
-| Task / question                                                  | Doc & section                                                                                                                                       |
-| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pages, routes, slugs, forms per page, i18n rules                 | `docs/PRD.md` §2–3                                                                                                                                  |
-| SEO/GEO/AEO requirements                                         | `docs/PRD.md` §4; `docs/SEO.md`                                                                                                                     |
-| Accessibility requirements                                       | `docs/PRD.md` §5                                                                                                                                    |
-| Performance budget                                               | `docs/PRD.md` §6; `docs/ARCHITECTURE.md` § Quality gate (D27)                                                                                       |
-| Analytics / consent requirements                                 | `docs/PRD.md` §7; `docs/ANALYTICS.md`                                                                                                               |
-| Legal pages                                                      | `docs/PRD.md` §8                                                                                                                                    |
-| Out of scope, owner-decided items, what WP1 shipped              | `docs/PRD.md` §9–11                                                                                                                                 |
-| Stack, dependencies, repo layout, entry points                   | `docs/ARCHITECTURE.md` § Stack / § Repository layout / § Entry points and key modules                                                               |
-| Environment variables (full reference)                           | `docs/ARCHITECTURE.md` § Environment variables; `docs/DEPLOYMENT.md` § Environment variables                                                        |
-| Run locally; exact test/quality-gate commands                    | `docs/ARCHITECTURE.md` § Run locally / § Test / quality gates                                                                                       |
-| Routing, redirects, `src/proxy.ts` middleware                    | `docs/ARCHITECTURE.md` § Routing                                                                                                                    |
-| Content adapter (`LOCAL` vs `OPS`, fixture rule)                 | `docs/ARCHITECTURE.md` § Content adapter (D7, D23)                                                                                                  |
-| ISR tags and freshness time floors                               | `docs/ARCHITECTURE.md` § Freshness (D8)                                                                                                             |
-| Forms flow                                                       | `docs/ARCHITECTURE.md` § Forms flow (D11)                                                                                                           |
-| Desktop-scale token port checklist (0.75 normalisation)          | `docs/ARCHITECTURE.md` § D19                                                                                                                        |
-| Quality gate composition and budgets                             | `docs/ARCHITECTURE.md` § Quality gate (D27)                                                                                                         |
-| Design system, calculator engine, Operations surface             | `docs/ARCHITECTURE.md` §§ Design system / Calculator engine / Operations surface                                                                    |
-| Environments (local / preview / production)                      | `docs/ARCHITECTURE.md` § Environments; `docs/DEPLOYMENT.md` §§ Vercel project / Phase A cutover                                                     |
-| Integration catalogue (I1–I21), token threat model               | `docs/INTEGRATIONS.md` §§ Catalogue … Token threat model                                                                                            |
-| String catalogue, `sys.*`, bundle shape, blog model              | `docs/CONTENT-MODEL.md`                                                                                                                             |
-| Redirect rules (D21), disposition table                          | `docs/redirects.md`                                                                                                                                 |
-| Retention, DSAR/erasure, KVKK runbook, consent                   | `docs/PRIVACY.md`                                                                                                                                   |
-| Site-health, synthetic lead, kill switches, owner checks         | `docs/OPERATING.md`                                                                                                                                 |
-| Retired secrets log; deploy discipline                           | `docs/DEPLOYMENT.md` §§ Retired secrets log / Deploy discipline                                                                                     |
-| Unbuilt / pending features                                       | `docs/pending/README.md`                                                                                                                            |
-| Decision rationale (D\<n\>) and WP1 rulings (R\<n\>)             | `docs/superpowers/specs/2026-09-18-website-programme-design.md`; `docs/superpowers/plans/2026-09-18-wp1-foundation-rulings.md`                      |
-| D27 pixel harness: two-iteration cap, delta taxonomy, ledger row | `docs/superpowers/plans/2026-09-20-wp2-pixel-harness.md` (`npm run pixel`)                                                                          |
-| Design source reference: pages, tokens, copy, CRM feed contracts | `design-package/README.md`, `design-package/docs/project-brief.md`, `design-package/docs/crm-feed.md`, `design-package/docs/translation-process.md` |
-| Programme status, branch, next steps                             | `docs/WEBSITE-HANDOFF.md` (living copy on branch `wp2/foundation`)                                                                                  |
+- Pages, routes, slugs, the forms on each page, i18n and copy rules, SEO, accessibility, performance budget, analytics, legal pages, scope, calculator rules → `docs/PRD.md`
+- Stack, repo layout, environment variables, running locally, routing and `src/proxy.ts`, the content adapter, freshness (ISR), the forms flow, the design system and the desktop scale (D19), the quality gate (D27) → `docs/ARCHITECTURE.md` (list its sections with `grep -n '^## '`)
+- Every integration (I1–I21), the form envelope, tokens and how they rotate → `docs/INTEGRATIONS.md`
+- The wire contracts with Operations: schemas, fixtures, tests → `contract/` (start at `contract/CONTRACT.md`)
+- String catalogue, `sys.*` keys, the chrome's canonical ids, bundle shape, blog model → `docs/CONTENT-MODEL.md`
+- Metadata, sitemap, structured data → `docs/SEO.md`
+- Consent, GTM, events and their parameter allowlist → `docs/ANALYTICS.md`
+- Redirect rules and the built redirect files → `docs/redirects.md`; `redirects/`
+- Retention, erasure requests, KVKK, consent evidence → `docs/PRIVACY.md`
+- Site health, the daily synthetic lead, kill switches, owner checks → `docs/OPERATING.md`
+- The Vercel project, env scopes, the retired secrets log, deploy discipline → `docs/DEPLOYMENT.md`
+- The pixel harness (`npm run pixel`) → `docs/superpowers/plans/2026-09-20-wp2-pixel-harness.md`
+- Design notes of the blog and candidates feeds → `docs/superpowers/plans/2026-10-06-blog-module.md`, `docs/superpowers/plans/2026-11-02-available-workers-feed.md`
+- The design source: pages, tokens, copy → `design-package/README.md`, `design-package/docs/`
+
+Never rename or move `docs/superpowers/`: code comments, the contract files and an Operations migration cite its files by path.
 
 ## Stack
 
-Next.js 16 App Router, React 19, TypeScript (strict), Tailwind CSS 4, next-intl, Zod, Node 22 required. Vitest + Testing Library for unit tests, Playwright + axe-core for e2e/a11y, Lighthouse CI for performance — wired into `npm run gate`. No ORM, no Docker: content is served by a `LOCAL` JSON adapter (Phase A) or fetched from the Operations CMS (Phase B), never its own database. Everything technical: `docs/ARCHITECTURE.md`.
+Next.js 16 App Router, React 19, TypeScript strict, Tailwind CSS 4, next-intl, Zod; Node 22 (`.nvmrc`). Vitest + Testing Library for unit tests, Playwright + axe for end-to-end and accessibility, Lighthouse CI for performance. Content is the committed `LOCAL` bundle (`src/content/local/`), plus live server-side reads from Operations for the blog (`BLOG_SOURCE=OPS`), the available workers (`POOL_SOURCE=OPS`) and the careers openings. The `OPS` bundle adapter has no producer in Operations yet.
 
 ## Run and test
 
 ```bash
-nvm use && npm ci          # Node 22 (.nvmrc); wrong Node breaks Vitest's localStorage stub
+nvm use && npm ci           # Node 22; a wrong Node breaks Vitest's localStorage stub
 npm run dev                 # http://localhost:3000
-npm run typecheck           # tsc --noEmit
-npm run lint                # eslint .
-npm run format               # prettier --check . (npm run format:write to fix)
-npm run test                 # vitest run (npm run test:watch for watch mode)
-npm run verify                # typecheck && lint && format && test — the exact Vercel build gate
-npm run e2e                   # playwright test (no axe/Lighthouse)
-npm run gate                   # bash scripts/gate.sh — Playwright + axe + Lighthouse against a URL
+npm run verify              # typecheck, lint, Prettier check, unit tests: the exact gate the Vercel build runs
+npm run format:write        # Prettier fix (the check also covers CLAUDE.md, README.md and docs/)
+npm run e2e                 # Playwright with axe (no Lighthouse); one-off setup: npx playwright install chromium
+npm run gate                # Playwright + axe + Lighthouse against a URL (E2E_BASE_URL); `gate:launch` adds the launch checks
+npm run js-size             # the per-route JS table after a gate run
+npm run careers:door        # the mock Operations door for e2e:careers, e2e:blog-ops, e2e:blog-grid, e2e:pool-ops
+npm run door:smoke          # one real call through the intake door, test token only
+npm run sweep:legacy        # checks the legacy redirects against production
 ```
 
-No migrations (no database). One-off setup: `npx playwright install chromium`. Default `.env.example` (`CONTENT_SOURCE=LOCAL`) needs nothing else running; forms and the `OPS` adapter need `jobsadmire-operations` on port 4001. Generation scripts run by hand when their sources change, output committed, none in the build: `npm run content:import` (design-package strings → `src/content/local/*.json`), `npm run redirects:build` (`redirects/rules.json` → `legacy.json`/`gone.json`), `npm run assets:map` (sourcing map → `src/design/assets/source-map.generated.tsx`), `npm run assets:flags` (`flag-icons` → `public/brand/flags.svg`); `npm run assets:brand` is the one-time fetch of `public/brand/logo.png`/`iskur.png` (`docs/ARCHITECTURE.md` § Assets).
+`.env.example` (`CONTENT_SOURCE=LOCAL`) needs nothing else running, and it points `OPS_API_URL` at production Operations; for a local Operations stack set `OPS_API_URL=http://localhost:4001`. Generators run by hand when their source changes, and their output is committed: `content:import`, `redirects:build`, `assets:map`, `assets:flags`. One heavy build or test job at a time on this machine.
 
 ## Conventions
 
-- **Strings by package id.** Use the design package's stable `<page>.<nnn>` ids as message keys; don't invent new ids for existing copy.
-- **New copy goes in the reserved `sys.*` range** (form labels/errors, consent banner, language hint, `/tesekkurler` chrome) — never repurpose a package id for different copy.
-- **`sys.*` goes through next-intl only** (`getTranslations('sys')` / `useTranslations('sys')`), never `t()`/`makeT`, which knows package ids only. Full key list: `docs/CONTENT-MODEL.md`.
-- **Shared chrome reads one canonical package id per string** (R15), not a per-page one — e.g. the verify-nav label is `home.011`, not a new `sys.nav.verify`. Full table: `docs/CONTENT-MODEL.md` § Chrome canonical ids.
-- **Seven ids ship with a deliberately empty Turkish value** (`hire.141`, `calc.041`, `calc.154`, `calc.157`, `calc.367`, `jt.107`, `availworkers.026`) — render them empty, never fall back to English.
-- **Numbers are data (D17).** A headline number is never typed into a page: read it with `getMetric` / `metricValues` (`src/content/collections.ts`, `src/content/pure.ts`).
-- **Every page lives in a route group (W19)** — `app/[locale]/(site)/` (default chrome), `(minimal)/` (no social rail/FAB: thank-you, legal, newsletter) (the `(bare)/` group went with the retired portal page); the group layout mounts the chrome, the locale layout keeps html/body/fonts/providers/`ClientIslands`. `docs/ARCHITECTURE.md` § Routing.
-- **Every page form goes through the forms kernel** (`src/forms/`, WP2a): a `'use server'` wrapper around `createFormAction(spec)`, rendered by `FormShell` with `Field`s — never a hand-rolled `fetch`.
-- **`formatTRY(n, locale)` is a contract, not a formatter of convenience** — every computed figure on the page goes through it (D18); see `docs/ARCHITECTURE.md`.
-- **Accessibility wins over pixel fidelity where they conflict** (D20) — named deltas (contrast-safe blue, the header's desktop row from 901px with 12px links — W11, R46 closed — and the fixed-sheet language hint) are accepted by the gate; don't "fix" them back toward the design.
-- **Every form's success path navigates to `/tesekkurler?form=<key>`** (D13) — never an inline success state.
-- **No candidate identifiers in analytics** — every GTM/GA4 event has a parameter allowlist (D13).
-- **The content-route JS budget is 200 KB gzipped per gate route** (Ruling W13 amended, `docs/superpowers/plans/2026-09-20-wp2-rulings.md`; R49's 180 KB predated the form island and left ~11.8 KB over the WP1 shell — the framework floor alone is ~121 KB on this stack). Asserted by the gate as `resource-summary:script:size ≤ 204800`; a route above 194,560 B gets a `next/dynamic` lazy-loading pass before the next page starts; `npm run js-size` prints the per-route table after a gate run. Full breakdown: `docs/ARCHITECTURE.md` § Quality gate.
-- **`.superpowers/` (repo root) is git-ignored scratch**; `docs/superpowers/` is the tracked plans/specs path.
+- **Strings by package id.** Message keys are the design package's stable `<page>.<nnn>` ids; never invent a new id for existing copy. New copy goes in the reserved `sys.*` range, read through next-intl only (`getTranslations('sys')`), in both languages. Shared chrome reads one canonical id per string (`docs/CONTENT-MODEL.md`).
+- **Seven ids have a deliberately empty Turkish value** (`hire.141`, `calc.041`, `calc.154`, `calc.157`, `calc.367`, `jt.107`, `availworkers.026`): render them empty, never fall back to English.
+- **Copy is frozen**: the live catalogue wins over the design package's text. The company is "JobsAdmire", never "we"; the country is "Türkiye".
+- **Numbers are data (D17).** A headline number is never typed into a page: read it with `getMetric` / `metricValues` (`src/content/collections.ts`, `src/content/pure.ts`). Every computed money figure goes through `formatTRY(n, locale)` (D18).
+- **Every page lives in a route group**: `src/app/[locale]/(site)/` (full chrome) or `(minimal)/` (legal, thank-you, newsletter). A new page adds its two locale paths to `e2e/routes.ts`, the one route list of the gate.
+- **Every form goes through the forms kernel** (`src/forms/`): a `'use server'` wrapper around `createFormAction(spec)`, rendered by `FormShell` with `Field`s, never a hand-rolled `fetch`. Success always navigates to `/tesekkurler?form=<key>` (D13).
+- **The WhatsApp consent box** on the seven lead forms is optional and is evidence only (`src/forms/whatsapp-consent.ts`). Bump `WHATSAPP_CONSENT_VERSION` whenever its label changes in either language.
+- **Accessibility wins over pixel fidelity** (D20). The named deltas (the contrast-safe blue, the header's desktop row from 901 px, the fixed-sheet language hint) are accepted by the gate: do not "fix" them back toward the design.
+- **JS budget: 200 KB gzipped per gate route** (`resource-summary:script:size ≤ 204800`); a route above 194,560 B gets a `next/dynamic` pass before the next page starts.
+- **No candidate or visitor identifiers in analytics**: every event has a parameter allowlist (D13). GA4 only through GTM.
 
-## Hard rules and gotchas
+## Hard rules
 
-- **Never call Operations from the browser** — server-only, Bearer tokens (D6). `docs/ARCHITECTURE.md` § Content adapter.
-- **Never serve pool, stories, or representatives fixtures in production** (D23) — enforced by `assertServableInProduction` and an ESLint `no-restricted-imports` rule. `docs/ARCHITECTURE.md` § Content adapter (D7, D23).
-- **Never commit env files.** The old site leaked `.env` (Resend key, DB password), preserved on `main-backup` — don't read secrets from that branch. `docs/DEPLOYMENT.md` § Retired secrets log.
-- **Never ship the design's `html { zoom: .75 }`** — normalise design tokens at 0.75 at the source instead (D19). The only root zoom is the liquid desktop's, ≥ 1, only above 1440 px and only behind its standard-zoom `@supports` gate (W231): under it `vh`/`vw` sizes grow with the zoom (use a percentage of a fixed box, else divide by `var(--zoom)`), `getBoundingClientRect`/`scrollY` are zoomed while `offset*` and CSS px are not (compare through `rootZoom()`), and a fixed-width image needs `liquidSizes()`. `docs/ARCHITECTURE.md` § D19, § The liquid desktop.
-- **The Vercel build runs `npm run verify`**; a build that fails it must not reach preview or production. `docs/DEPLOYMENT.md` § Deploy discipline.
-- **`npm run gate` runs outside the Vercel build**, once per work package against a preview URL — no Chrome in the build environment. `docs/ARCHITECTURE.md` § Quality gate (D27).
-- **Fixtures (`design-package/data/*.sample.json`) are dev-only** — never wired to a production code path. `docs/ARCHITECTURE.md` § Content adapter.
-- **`npm run dev` appends an `nextjs-agent-rules` block to this file** — revert before committing, never commit that block. `docs/DEPLOYMENT.md` § Deploy discipline.
-- **Do not run WP3b/CRM work in parallel with WP3c** (D24). `docs/superpowers/specs/2026-09-18-website-programme-design.md`.
-- **Redirects are single-hop 308s resolved in `next.config.ts` before middleware**; `src/proxy.ts` then handles `410`s and locale resolution. `docs/ARCHITECTURE.md` § Routing.
-- **Operations tokens are three classes (read/write/preview), current + previous each, timing-safe, fail closed.** `docs/INTEGRATIONS.md` § Token threat model + rotation runbook.
-- **Regenerated content/redirect output is committed, never left stale against its source.** `docs/CONTENT-MODEL.md`; `docs/redirects.md`.
-
-Hard rules live in this file and in `docs/OPERATING.md` (site-health, kill switches, owner checks); there is no separate `GOTCHAS.md` in this repo.
+- **Never call Operations from the browser, and never call the CRM at all** (D6). Server-only, Bearer tokens. Tokens: write, test (`wst_`, dry run) and the previous write value for 24 hours after a rotation; timing-safe, fail closed (`docs/INTEGRATIONS.md`).
+- **The wire contracts change only together with Operations.** `contract/website-bundle.v1.ts` is hash-pinned (`CONTRACT_FILE_SHA256` in `contract/contract.test.ts`); `contract/blog-feed.v1.ts` and `contract/candidates-feed.v1.ts` each have a fixture and a test. Change the schema, the fixture, Operations' copy and both repos' docs in one task (`contract/CONTRACT.md`, `../CLAUDE.md`).
+- **Never serve pool, stories or representatives fixtures in production** (D23): `assertServableInProduction` and an ESLint rule enforce it. Sections that wait for real data show page-local samples under the "örnek" tag (`SampleTag`), nothing else.
+- **Never commit env files, and never open the old site's secrets.** Its `.env` files are in this repo's history (branch `main-backup`, tag `old-website-final`). `docs/DEPLOYMENT.md`, retired secrets log.
+- **Never ship the design's `html { zoom: .75 }`**: tokens are normalised at 0.75 at the source (D19). The only root zoom is the liquid desktop's (W231); its pitfalls are in `docs/ARCHITECTURE.md`, section D19.
+- **Redirects are single-hop 308s** built from `redirects/rules.json` (`npm run redirects:build`) and resolved in `next.config.ts` before the middleware; `src/proxy.ts` answers the 410s and resolves the locale. Generated redirect and content files are committed, never left stale against their source.
+- **Markdown is Prettier-checked in the build.** Run `npx prettier --write` on every doc you touch, this file included, or the production build fails.
+- **`next dev` may append an `nextjs-agent-rules` block to this file or write an `AGENTS.md`** (Next's own agent-files writer). Never commit either.
+- **`public/docs/` is site content** (licence PDFs the About page links to), not documentation.
+- **Vercel Hobby limits:** crons run daily at most; functions default to 10 seconds; Instant Rollback reaches only the previous production deployment.
 
 ## Keep the docs current
 
-A task is not done until the docs match the code, in the same change set.
-
-- Business-logic change (pages, forms, i18n, SEO, a11y, legal, scope) → `docs/PRD.md`.
-- Code structure, integrations, environment, setup change → `docs/ARCHITECTURE.md`.
-- Deploy pipeline or Vercel/server change → `docs/DEPLOYMENT.md`.
-- New hard-won rule → its topic doc, plus a one-liner here only if it's top-15 risk.
-- Shipped pending feature → move its spec out of `docs/pending/README.md`, fold the rules into `docs/PRD.md`.
+A task is not done until the docs match the code, in the same change set: pages, forms, i18n, SEO, accessibility, legal, scope → `docs/PRD.md`; structure, integrations, environment, setup → `docs/ARCHITECTURE.md`; Vercel and deploy → `docs/DEPLOYMENT.md`; a new hard-won rule → its topic doc, and one line here only if it is top-risk (this repo has no `GOTCHAS.md`). A pending item that ships leaves `docs/pending/README.md` and its rule goes into the PRD. Never a date, a work-package name or a status in this file.
 
 ## Before declaring a task done
 
-1. `npm run verify` green (typecheck, lint, format, unit tests).
-2. `npm run gate` run against a preview URL for that work package — not skipped for "just copy" changes; the only place responsive/a11y regressions get caught before a human does.
-3. Docs updated in the same change set — this file's doc map, `docs/PRD.md`, `docs/ARCHITECTURE.md`, or whichever doc governs the area touched.
-4. Operations-contract change (forms, bundle shape, tokens): `docs/INTEGRATIONS.md` updated, `jobsadmire-operations/docs/PRD.md` §5.12/§7.10 checked for drift.
-5. Redirects change: `docs/redirects.md` and the Vitest no-chain test updated.
+1. `npm run verify` green.
+2. For UI or page work: push the branch, then run `npm run gate` against its preview URL before merging. It is the only place responsive and accessibility regressions are caught.
+3. Docs updated in the same change set, Prettier-formatted.
+4. A change to the Operations contract (a form field, a feed shape, a token): `docs/INTEGRATIONS.md` and `contract/` here, and Operations' code and `docs/PRD.md` §5.12 / §7.10 / §7.11 there, in the same task.
+5. A redirects change: `docs/redirects.md` and the no-chain test `redirects/redirects.test.ts`.
 
-**A push to `main` is a production deploy of jobsadmire.com** (since the Phase A cutover, 2026-10-03, W224): Vercel builds every `main` commit and promotes it onto `www.jobsadmire.com` + the apex within minutes, with no guard left in between. Push to `main` only verify-green work the task was asked to ship; everything else goes on a branch (an authentication-protected preview). Rollback is Vercel Instant Rollback (`docs/DEPLOYMENT.md` § Phase A cutover); the live state is recorded in the workspace `WORKSPACE-STATE.md`.
+**A push to `main` is a production deploy of jobsadmire.com**: Vercel builds every `main` commit (`npm run verify && next build`) and promotes it within minutes. Push to `main` only verify-green work that the task was asked to ship; everything else goes on a branch, which builds a sign-in-protected preview. Rollback: Vercel Instant Rollback to the previous production deployment, or revert and push.
 
-## Token discipline
+## Reading the docs
 
-- Never load a doc whole — `grep -n '^##'` or a keyword search first, then read ≤400 lines; a hook enforces this.
-- Use subagents for open-ended exploration across `docs/` or `src/`.
-- Don't read `docs/pending/` or `docs/superpowers/` unless the task is about unbuilt features or plan history.
-- Never read `node_modules/`, `.next/`, or build output — generated/vendored, never load-bearing for a task.
-- Open only the specific `design-package/` file a task needs (a strings JSON, a token file, one of its docs); never browse the package or load its images.
-- Credentials live only in the workspace-root `ACCESS.md`; never read them into this repo.
-
-## Environments and deploy
-
-Local dev talks to `LOCAL` content by default, or `jobsadmire-operations` on port 4001 for the `OPS` adapter and forms. Production is `www.jobsadmire.com` (the apex redirects to it) on Vercel — one project, `jobsadmirewebsite`, serving this repo's `main` since the Phase A cutover of 2026-10-03 (W224; the two `main` deploy guards are gone, no domain moved; every other branch builds an authentication-protected preview); pushing here never touches the VPS. Full detail: `docs/DEPLOYMENT.md`.
+- Never load a doc whole: `grep -n '^## '` or a keyword first, then read the part you need. The ruling logs, `docs/CONTENT-MODEL.md`, `docs/SEO.md` and `docs/INTEGRATIONS.md` are large.
+- Use subagents for open-ended exploration across `docs/` or `src/`. Never read `node_modules/`, `.next/` or build output.
+- Open only the one `design-package/` file a task needs; never browse the package or load its images.
+- Secrets: never open, grep or print `.env` files (`.env.example` is fine), `../ACCESS.md` or `../.secrets/`. After a gate run against a protected preview, `.lighthouseci/`, `lighthouse-report/` and `test-results/` contain the Vercel bypass secret.

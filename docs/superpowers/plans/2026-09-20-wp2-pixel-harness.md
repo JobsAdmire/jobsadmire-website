@@ -29,6 +29,10 @@ it reloads once if not and exits 2 if it still does not. The design page is neve
 
 ## The rule (a ledger rule, not code)
 
+The ledger this rule names was the per-task table in the WP2b build plan. That plan is no longer in
+the repo (the last commit that holds it is `77243e4`), so there is no ledger file now; the row
+format in step 4 is still how a run's result is stated.
+
 1. A page task runs the harness **at most twice**: once when the port is first complete, once
    after the fixes that run prompted. The second run's numbers are the ones the ledger records.
    The cap counts from the first **like-for-like** run (W138): captures from before the Task 7
@@ -36,7 +40,7 @@ it reloads once if not and exits 2 if it still does not. The design page is neve
    blank) are not like for like, never reach the ledger and use up no iteration.
 2. There is **no numeric pass mark**. The reviewer reads the three diff images and lists every
    visible delta as one of: (a) a named D20 accessibility delta (CTA face `blue-safe`, WhatsApp
-   `success-text`, footer hours `white/55`, primary hover `bg-ink`, language hint as a bottom
+   `success-text`, footer hours `white/55`, primary hover `bg-blue-deep`, language hint as a bottom
    sheet, the `/tesekkurler` navigation), (b) a design delta ruled in WP2 (W3 form fields, W6
    empty states, W7 copy, W8 portal chooser, W10 breakpoint classes, W14 local assets in place of
    hot-linked ones, W17 per-page header CTAs), (c) inherent capture noise (rotating hero word,

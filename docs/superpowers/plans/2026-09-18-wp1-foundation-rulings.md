@@ -1,5 +1,7 @@
 # WP1 foundation — ruling log (R1–R60)
 
+**Note (2026-11-11).** The WP1 build plan this log points at (`docs/superpowers/plans/2026-09-18-wp1-foundation.md`) was removed on 2026-11-11. The last commit that holds it is `77243e4`.
+
 Durable record of every ruling the controller made while executing `docs/superpowers/plans/2026-09-18-wp1-foundation.md`. The execution ledger this is copied from (`.superpowers/sdd/2026-09-18-wp1-foundation/progress.md`) is git-ignored scratch and disappears with the worktree; this file is the part of it worth keeping. Written by Task 15 per Ruling R52.
 
 A ruling is a decision the controller made **during** implementation that changed or filled a gap in the plan — not a design decision from the approved spec (those are `D<n>`, cited in `CLAUDE.md`/`docs/PRD.md`). Where a later ruling supersedes an earlier one, or the shipped code moved past what a ruling originally fixed, that is noted in the "Landed" column — the code is always the current source of truth, not this table.

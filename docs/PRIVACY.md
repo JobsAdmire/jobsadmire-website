@@ -4,7 +4,12 @@ Full rationale: plan D2, D14, WP5-gate, plan §10 item 6 (counsel engagement). T
 
 ## Retention
 
-**Form payloads are purged 90 days after being marked `HANDLED`.** This is `WebsiteFormSubmission.purgeAfter`, set at handling time, enforced by a purge cron (04:30 daily, Operations side — deliberately not 03:00, to avoid a collision with other Operations nightly jobs). `isTest`-class submissions (synthetic-lead cron, staging Turnstile tests) are excluded from real-lead retention counts but still purged on the same schedule.
+**Form payloads are purged 90 days after being marked `HANDLED`.** This is `WebsiteFormSubmission.purgeAfter`, set at handling time, enforced by a purge cron (04:30 daily, Operations side — deliberately not 03:00, to avoid a collision with other Operations nightly jobs). `isTest`-class submissions (the synthetic-lead cron, `npm run door:smoke`) are excluded from real-lead retention counts but still purged on the same schedule.
+
+## WhatsApp consent box
+
+The seven lead forms carry an optional WhatsApp box (`docs/PRD.md` §2). The site stores nothing: it sends the answer (ticked or not) and the text version (`site-wa-v1`) to Operations, which keeps them on the form submission and on the lead, with the time and the form key.
+The answer is evidence only: it is not the WhatsApp opt-in and changes nothing about how the lead is handled.
 
 ## DSAR / erasure runbook
 
@@ -12,7 +17,7 @@ A data-subject access or erasure request touches every place a visitor's data ca
 
 1. **`WebsiteFormSubmission`** (Operations) — the submitted form payload, keyed by `(formKey, requestHash, hourBucket)`.
 2. **`WebsiteSubscriber`** (Operations) — newsletter subscription record, including double-opt-in state.
-3. **Candidate snapshot** — only relevant if the request concerns the aggregate pool data (`WebsiteCandidateSnapshot`); this is aggregate/derived data from the CRM, not a per-person record, at launch (D2) — a DSAR naming a specific candidate routes to the **CRM's** process, not this site's, until v1.1 per-profile cards exist with their own consent trail.
+3. **Candidate snapshot** (`WebsiteCandidateSnapshot`, Operations) — the display-only copy of the candidates the site shows (W251, below). A request that names a candidate is handled in the portal, the system of record: once the candidate is hidden there, Operations' next sync drops the copy and the card leaves the site (§ Candidate-pool staging and consent).
 4. **Public bucket** (`website-public`) — any uploaded asset tied to the request (e.g. a fraud-report attachment).
 5. **Edge/ISR caches** — a request satisfied from cache after an erasure must not continue serving the erased data; erasure triggers a targeted revalidation of any tag that could carry the affected record.
 
@@ -23,7 +28,7 @@ _Runbook steps (locate → confirm identity → export or delete across all five
 Turkey's KVKK (data protection law) sets breach-notification expectations. Outline, to be completed as counsel-drafted content per plan §10 item 6:
 
 1. **Detect** — via `/api/site-health`, Sentry, or a direct report.
-2. **Contain** — kill switch the affected surface (`publicReadEnabled`, per-form disable, `pool.publish`, `stories.proofImages` — see `docs/OPERATING.md`) within the measured time-to-dark.
+2. **Contain** — use the kill switch for the affected surface: the per-form switch, `WEBSITE_MODULE_ENABLED`, `BLOG_SOURCE` / `POOL_SOURCE`, or the portal's `hideFromWebsite` (`docs/OPERATING.md` § Kill switches). `publicReadEnabled`, `pool.publish` and `stories.proofImages` are designed for the CMS phase, not built. Time-to-dark is not measured.
 3. **Assess** — scope of affected records, across the same five surfaces as the DSAR runbook above.
 4. **Notify** — within the 72-hour KVKK window where the assessment confirms a reportable breach; counsel-led.
 5. **Record** — incident log entry, root cause, remediation, whether a candidate/partner notice is owed (relevant once v1.1's pool/consent features exist).

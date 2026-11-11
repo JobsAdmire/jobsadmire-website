@@ -33,7 +33,7 @@ These are public identifiers (they ship in the page source by nature of how GTM/
 
 ### How Phase A turns analytics on (R54)
 
-The bundle's nulls are overlaid from the environment by `applyPublicSettings` (`src/content/pure.ts`), which `loadLocal` applies right after `BundleSchema.parse` — and `loadOps` never applies, because under `OPS` the CMS is the source of truth (D12). Set the four analytics ids (GTM, GA4, Ads id, conversion label) on the Vercel project's **Production** environment only, or in `.env.local` — W146: Preview, the face the quality gate measures (`staging.jobsadmire.com` included), stays dark, because `resource-summary:script:size` counts GTM and `gtag/js` (≈ 80–100 KB) against the 200 KB first-party ceiling. The Turnstile site key goes on Preview as well as Production: `staging` needs it before any write-class form test (`docs/DEPLOYMENT.md`).
+The bundle's nulls are overlaid from the environment by `applyPublicSettings` (`src/content/pure.ts`), which `loadLocal` applies right after `BundleSchema.parse` — and `loadOps` never applies, because under `OPS` the CMS is the source of truth (D12). Set the four analytics ids (GTM, GA4, Ads id, conversion label) on the Vercel project's **Production** environment only, or in `.env.local` — W146: Preview, the face the quality gate measures, stays dark, because `resource-summary:script:size` counts GTM and `gtag/js` (≈ 80–100 KB) against the 200 KB first-party ceiling. The Turnstile site key is set on Production; it must be set wherever real visitors submit forms (`docs/DEPLOYMENT.md` § Environment variables).
 
 | Variable                           | Fills                                   |
 | ---------------------------------- | --------------------------------------- |
@@ -100,13 +100,15 @@ Fires on `/tesekkurler?form=<key>` — the single navigation target every form's
 
 ## Vercel Web Analytics as the consent-independent truth
 
-GA4 numbers are consent-gated and will always undercount. **Vercel Web Analytics** (and Speed Insights) run independent of the consent banner and are the number used for the 12-week post-launch traffic watch (`docs/SEO.md`) and any GA4-vs-reality sanity check. **GA4 is never compared across the launch boundary** — old-site GA4 and new-site GA4 are different properties/configurations and a raw before/after comparison is not meaningful; use GSC clicks and Vercel Web Analytics for that comparison instead.
+**Not installed.** The repo has no `@vercel/analytics` or `@vercel/speed-insights` dependency, so this number does not exist yet; it is on the unbuilt list in `docs/pending/README.md`.
+
+GA4 numbers are consent-gated and will always undercount. The design: **Vercel Web Analytics** (and Speed Insights) run independent of the consent banner and are the number used for the 12-week post-launch traffic watch (`docs/SEO.md`) and any GA4-vs-reality sanity check. **GA4 is never compared across the launch boundary** — old-site GA4 and new-site GA4 are different properties/configurations and a raw before/after comparison is not meaningful; use GSC clicks (and Vercel Web Analytics, once installed) for that comparison instead.
 
 ## Weekly three-way reconciliation
 
 Form submissions (Operations `WebsiteFormSubmission` count) vs. `generate_lead` events (GA4) vs. Ads conversions — run weekly during the 12-week watch. A mismatch in either direction is the fastest signal that either the conversion page isn't being reached (forms work, no `generate_lead`) or forms are silently failing while WhatsApp absorbs the traffic (`generate_lead` low, WhatsApp clicks high).
 
-Two known, accepted skews, exercised by T14's staging protocol: (1) `generate_lead` is deduped per browser session per form key (R37), so a visitor who sends two _different_ requests through the same form in one session is one lead event and two submissions; (2) the door dedupes _identical_ bodies within a clock hour (`replayed: true`), which the site treats as success, so a visitor who double-submits the same body is one submission and — in a fresh session — could be two lead events. Both are visitor-rare; neither is a wiring fault. T14's staging run exercises both (the replay test and the same-session repeat — `docs/INTEGRATIONS.md` I4 § Verification record; outcome in the plan's T14 ledger row).
+Two known, accepted skews: (1) `generate_lead` is deduped per browser session per form key (R37), so a visitor who sends two _different_ requests through the same form in one session is one lead event and two submissions; (2) the door dedupes _identical_ bodies within a clock hour (`replayed: true`), which the site treats as success, so a visitor who double-submits the same body is one submission and — in a fresh session — could be two lead events. Both are visitor-rare; neither is a wiring fault. A live check of both (the replay test and the same-session repeat) was planned for the staging run, which was not run: the owner dropped the staging proofs at the launch (W224; `docs/INTEGRATIONS.md` I4).
 
 ## GTM container inventory (export in WP0)
 
