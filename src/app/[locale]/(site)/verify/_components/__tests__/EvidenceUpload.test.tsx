@@ -134,8 +134,12 @@ describe('EvidenceUpload — one file per server-action call (W73/W101/W116)', (
     pending.resolve({ ok: true, key: 'website-fraud/a.png' });
     await waitFor(() => expect(keys()).toEqual(['website-fraud/a.png']));
     expect(screen.queryByRole('alert')).toBeNull();
-    const released = createEvent.submit(form);
-    fireEvent(form, released);
-    expect(released.defaultPrevented).toBe(false);
+    // The hold listener leaves in an effect CLEANUP, which a slow machine (the Vercel builder) can run after the
+    // state checks above have already passed — so the release is probed until the listener is truly gone.
+    await waitFor(() => {
+      const released = createEvent.submit(form);
+      fireEvent(form, released);
+      expect(released.defaultPrevented).toBe(false);
+    });
   });
 });
