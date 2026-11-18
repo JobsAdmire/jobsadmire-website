@@ -101,6 +101,10 @@
       "blog": {
         "title": "Blog ve Rehberler — Türkiye'de Çalışma İzni ve İşe Alım | JobsAdmire",
         "description": "Türkiye'deki işverenler için işe alım rehberleri, çalışma izni güncellemeleri ve iş gücü haberleri; JobsAdmire izin ve işe alım ekibi tarafından hazırlanır."
+      },
+      "staffAppPrivacy": {
+        "title": "JA Operations uygulaması gizlilik | JobsAdmire",
+        "description": "JobsAdmire'ın JA Operations personel uygulamasının, kendi ekibinin (çalışanlar, serbest çalışanlar ve yönetim) verilerini nasıl ele aldığı."
       }
     },
     "consent": {
@@ -936,6 +940,37 @@
           "manage": {
             "title": "Tercihlerinizi yönetme",
             "body": "Site izninizi istediğinde, seçiminizi istediğiniz zaman alt bilgideki Çerez tercihleri düğmesiyle değiştirebilirsiniz. Çerezleri tarayıcı ayarlarınızdan da silebilirsiniz."
+          }
+        }
+      },
+      "staffAppPrivacy": {
+        "title": "JA Operations uygulaması gizlilik",
+        "intro": "JA Operations, JobsAdmire'ın (JobsAdmire İnsan Kaynakları, lisanslı özel istihdam bürosu) dahili iş uygulamasıdır. Yalnızca JobsAdmire'ın kendi ekibi tarafından kullanılır: çalışanlar, serbest çalışanlar ve şirket yönetimi. Hesapları şirket oluşturur; uygulamada herkese açık bir üyelik yoktur.",
+        "updatedAt": "2026-11-18",
+        "sections": {
+          "collects": {
+            "title": "Uygulamanın topladığı veriler ve nedenleri",
+            "body": "Uygulama, oturum açan ekip üyesinin (çalışan, serbest çalışan veya yönetici) işini JobsAdmire'ın kendi sunucularında gösterir ve saklar:\n\n- Adınız ve iş e-posta adresiniz: hesabınız.\n- Uygulamada yazdığınız veya yüklediğiniz iş içeriği: müşterilere yazılan mesajlar, notlar, kayıtlar, fotoğraflar ve dosyalar.\n- Konumunuz, **yalnızca bir kez**, saha ziyaretini onayladığınız anda, ziyaretin nerede yapıldığını kaydetmek için. Uygulama konumu arka planda asla izlemez ve telefonu takip etmez.\n- Sunucunun telefonunuza iş bildirimleri gönderebilmesi için bir anlık bildirim jetonu ve telefonunuzda çalışan uygulama sürümü.\n- Kaydettiğiniz çalışma saatleriniz (giriş ve çıkış); bunlar kendi ücretinizin hesabına esas olur."
+          },
+          "notCollected": {
+            "title": "Uygulamanın toplamadığı veriler",
+            "body": "Reklam tanımlayıcıları yoktur, üçüncü taraf analiz veya izleme yoktur, kişi rehberinize erişim yoktur, gezinme geçmişi yoktur, arka planda konum yoktur."
+          },
+          "sharing": {
+            "title": "Verilerin gittiği yer",
+            "body": "Yalnızca JobsAdmire'ın kendi sunucularına. Veriler satılmaz ve üçüncü taraflarla paylaşılmaz; JobsAdmire'ın kendi sistemlerini işletmek için kullandığı hizmet sağlayıcılar (barındırma ve müşteri mesajları için WhatsApp Business platformu) bunun dışındadır. Müşteri yazışmaları JobsAdmire'ın ticari kayıtlarına aittir."
+          },
+          "retention": {
+            "title": "Saklama süresi",
+            "body": "İş kayıtları, iş hukuku ve JobsAdmire'ın kayıt tutma kurallarının gerektirdiği süre boyunca saklanır."
+          },
+          "account": {
+            "title": "Hesabınız",
+            "body": "Hesaplar şirkete aittir. Bir ekip üyesi JobsAdmire'dan ayrıldığında hesabı devre dışı bırakılır ve oturumu tüm cihazlarda sona erer. Verilerinizle ilgili sorularınız için JobsAdmire İnsan Kaynakları ile görüşün veya jobsadmire.com'un iletişim sayfası üzerinden şirkete yazın."
+          },
+          "scope": {
+            "title": "Kapsam",
+            "body": "Bu sayfa yalnızca JA Operations personel uygulamasını açıklar. JobsAdmire web sitesinin ve JobsAdmire Partners uygulamasının kendi gizlilik sayfaları vardır."
           }
         }
       }

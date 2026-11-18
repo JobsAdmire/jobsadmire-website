@@ -23,6 +23,7 @@ export const pathnames = {
   '/terms': { tr: '/kullanim-kosullari', en: '/terms' },
   '/kvkk': '/kvkk',
   '/cookie-policy': { tr: '/cerez-politikasi', en: '/cookie-policy' },
+  '/staff-app-privacy': '/staff-app-privacy', // the JA Operations phone app's store privacy URL, same in both locales
   '/thank-you': { tr: '/tesekkurler', en: '/thank-you' },
   '/newsletter/confirm': { tr: '/abone-onay', en: '/newsletter/confirm' },
   '/newsletter/unsubscribe': { tr: '/abonelikten-cik', en: '/newsletter/unsubscribe' },

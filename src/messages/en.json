@@ -101,6 +101,10 @@
       "blog": {
         "title": "Blog & Guides — Work Permits and Hiring in Türkiye | JobsAdmire",
         "description": "Hiring guides, work permit updates and workforce news for employers in Türkiye, written by the JobsAdmire permit and recruitment team."
+      },
+      "staffAppPrivacy": {
+        "title": "JA Operations app privacy | JobsAdmire",
+        "description": "How the JA Operations staff app of JobsAdmire handles the data of its own team: employees, freelancers and management."
       }
     },
     "consent": {
@@ -936,6 +940,37 @@
           "manage": {
             "title": "Managing your preferences",
             "body": "When the website asks for your consent, you can change your choice at any time with the Cookie preferences button in the footer. You can also delete cookies in your browser settings."
+          }
+        }
+      },
+      "staffAppPrivacy": {
+        "title": "JA Operations app privacy",
+        "intro": "JA Operations is the internal work app of JobsAdmire (JobsAdmire İnsan Kaynakları, a licensed private employment agency). It is used only by JobsAdmire's own team: employees, freelancers and the company's management. Accounts are created by the company; the app has no public sign-up.",
+        "updatedAt": "2026-11-18",
+        "sections": {
+          "collects": {
+            "title": "What the app collects, and why",
+            "body": "The app shows and stores the work of the signed-in team member (an employee, a freelancer or a manager) on JobsAdmire's own servers:\n\n- Your name and work e-mail: your account.\n- The work content you write or upload in the app: messages to customers, notes, records, photos and files.\n- Your location, **once**, only at the moment you confirm a field visit, to record where the visit happened. The app never tracks location in the background and never follows the phone.\n- A push token, so the server can send work notices to your phone, and the app version your phone runs.\n- Your working hours as you record them (check-in and check-out), which feed your own pay."
+          },
+          "notCollected": {
+            "title": "What the app does not collect",
+            "body": "No advertising identifiers, no third-party analytics or tracking, no access to your contacts book, no browsing history, no background location."
+          },
+          "sharing": {
+            "title": "Where the data goes",
+            "body": "To JobsAdmire's own servers only. It is not sold and not shared with third parties, except the service providers JobsAdmire uses to run its own systems (hosting, the WhatsApp Business platform for customer messages). Customer conversations belong to JobsAdmire's business records."
+          },
+          "retention": {
+            "title": "How long",
+            "body": "Work records are kept as long as employment law and JobsAdmire's record-keeping rules require."
+          },
+          "account": {
+            "title": "Your account",
+            "body": "Accounts belong to the company. When a team member leaves JobsAdmire, their account is deactivated and their sign-in ends on every device. Questions about your data: speak to JobsAdmire HR, or write to the company through the contact page of jobsadmire.com."
+          },
+          "scope": {
+            "title": "Scope",
+            "body": "This page describes the JA Operations staff app only. The JobsAdmire website and the JobsAdmire Partners app have their own privacy pages."
           }
         }
       }
