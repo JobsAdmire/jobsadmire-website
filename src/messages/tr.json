@@ -103,8 +103,8 @@
         "description": "Türkiye'deki işverenler için işe alım rehberleri, çalışma izni güncellemeleri ve iş gücü haberleri; JobsAdmire izin ve işe alım ekibi tarafından hazırlanır."
       },
       "staffAppPrivacy": {
-        "title": "JA Operations uygulaması gizlilik | JobsAdmire",
-        "description": "JobsAdmire'ın JA Operations personel uygulamasının, kendi ekibinin (çalışanlar, serbest çalışanlar ve yönetim) verilerini nasıl ele aldığı."
+        "title": "JobsAdmire Operations uygulaması gizlilik | JobsAdmire",
+        "description": "JobsAdmire'ın JobsAdmire Operations personel uygulamasının, kendi ekibinin (çalışanlar, serbest çalışanlar ve yönetim) verilerini nasıl ele aldığı."
       }
     },
     "consent": {
@@ -944,8 +944,8 @@
         }
       },
       "staffAppPrivacy": {
-        "title": "JA Operations uygulaması gizlilik",
-        "intro": "JA Operations, JobsAdmire'ın (JobsAdmire İnsan Kaynakları, lisanslı özel istihdam bürosu) dahili iş uygulamasıdır. Yalnızca JobsAdmire'ın kendi ekibi tarafından kullanılır: çalışanlar, serbest çalışanlar ve şirket yönetimi. Hesapları şirket oluşturur; uygulamada herkese açık bir üyelik yoktur.",
+        "title": "JobsAdmire Operations uygulaması gizlilik",
+        "intro": "JobsAdmire Operations, JobsAdmire'ın (JobsAdmire İnsan Kaynakları, lisanslı özel istihdam bürosu) dahili iş uygulamasıdır. Yalnızca JobsAdmire'ın kendi ekibi tarafından kullanılır: çalışanlar, serbest çalışanlar ve şirket yönetimi. Hesapları şirket oluşturur; uygulamada herkese açık bir üyelik yoktur.",
         "updatedAt": "2026-11-18",
         "sections": {
           "collects": {
@@ -970,7 +970,7 @@
           },
           "scope": {
             "title": "Kapsam",
-            "body": "Bu sayfa yalnızca JA Operations personel uygulamasını açıklar. JobsAdmire web sitesinin ve JobsAdmire Partners uygulamasının kendi gizlilik sayfaları vardır."
+            "body": "Bu sayfa yalnızca JobsAdmire Operations personel uygulamasını açıklar. JobsAdmire web sitesinin ve JobsAdmire Partners uygulamasının kendi gizlilik sayfaları vardır."
           }
         }
       }

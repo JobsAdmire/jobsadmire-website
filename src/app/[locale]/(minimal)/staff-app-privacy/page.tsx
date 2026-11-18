@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: LegalParams }): Pro
   });
 }
 
-/** /staff-app-privacy · /en/staff-app-privacy — the privacy policy of the JA Operations staff
+/** /staff-app-privacy · /en/staff-app-privacy — the privacy policy of the JobsAdmire Operations staff
  *  phone app, linked from the App Store and Google Play listings. No page record in the bundle:
  *  its copy is `sys.legal.staffAppPrivacy.*` and its metadata the `sys.seo` fallback. */
 export default async function StaffAppPrivacyPage({ params }: { params: LegalParams }) {
