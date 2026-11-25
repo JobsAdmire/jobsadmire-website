@@ -50,7 +50,7 @@ describe('blogSource (the one switch)', () => {
 });
 
 describe('fetchBlogFeedUncached', () => {
-  it('reads the public feed with no token, under the blog tag, 60 s floor', async () => {
+  it('reads the public feed with no token, under the blog tag, one-hour floor', async () => {
     fetchMock.mockResolvedValue(json(FIXTURE));
     const { rows, redirects } = await fetchBlogFeedUncached({ fetch: f(), env: OPS });
     expect(rows).toHaveLength(3);
@@ -58,7 +58,7 @@ describe('fetchBlogFeedUncached', () => {
     const [url, init] = fetchMock.mock.calls[0];
     expect(url).toBe('https://operations.example.com/api/website/v1/blog');
     expect(init.next).toEqual({ revalidate: BLOG_REVALIDATE_SECONDS, tags: [BLOG_TAG] });
-    expect(BLOG_REVALIDATE_SECONDS).toBe(60);
+    expect(BLOG_REVALIDATE_SECONDS).toBe(3600);
     expect(JSON.stringify(init.headers)).not.toMatch(/authorization/i);
   });
 

@@ -50,7 +50,7 @@ describe('poolSource (the one switch)', () => {
 });
 
 describe('fetchPoolFeedUncached', () => {
-  it('reads the public feed with no token, under the pool tag, 60 s floor', async () => {
+  it('reads the public feed with no token, under the pool tag, one-hour floor', async () => {
     fetchMock.mockResolvedValue(json(FIXTURE));
     const rows = await fetchPoolFeedUncached({ fetch: f(), env: OPS });
     expect(rows).toHaveLength(17);
@@ -58,7 +58,7 @@ describe('fetchPoolFeedUncached', () => {
     const [url, init] = fetchMock.mock.calls[0];
     expect(url).toBe('https://operations.example.com/api/website/v1/candidates');
     expect(init.next).toEqual({ revalidate: POOL_REVALIDATE_SECONDS, tags: [POOL_TAG] });
-    expect(POOL_REVALIDATE_SECONDS).toBe(60);
+    expect(POOL_REVALIDATE_SECONDS).toBe(3600);
     expect(POOL_TAG).toBe('pool');
     expect(JSON.stringify(init.headers)).not.toMatch(/authorization/i);
   });

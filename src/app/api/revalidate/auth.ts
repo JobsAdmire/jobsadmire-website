@@ -9,17 +9,32 @@ const BEARER = /^Bearer[ ]+(.+)$/i; // the HTTP auth scheme is case-insensitive 
 export type AuthOutcome = 'ok' | 'unauthorized' | 'disabled';
 
 /** Pure so the status matrix is unit-testable without a request. Never returns, logs or
- *  echoes the secret — the caller only learns which of the three doors it hit. */
-export function authorize(header: string | null, secret: string | undefined): AuthOutcome {
-  if (!secret || secret.length < MIN_SECRET_LENGTH) return 'disabled';
+ *  echoes a secret — the caller only learns which of the three doors it hit.
+ *
+ *  `secrets` are the values the route accepts: `REVALIDATE_SECRET` and the website write
+ *  token `OPS_WEBSITE_WRITE_TOKEN`, which Operations already holds and presents when no
+ *  revalidate secret is set (its refresh push, 2026-11-25). Unset or short ones are ignored;
+ *  with none usable the route stays closed. */
+export function authorize(
+  header: string | null,
+  secrets: string | undefined | readonly (string | undefined)[],
+): AuthOutcome {
+  const usable = (Array.isArray(secrets) ? secrets : [secrets]).filter(
+    (s): s is string => typeof s === 'string' && s.length >= MIN_SECRET_LENGTH,
+  );
+  if (usable.length === 0) return 'disabled';
   const token = BEARER.exec(header ?? '')?.[1];
   if (token === undefined) return 'unauthorized';
   const given = Buffer.from(token, 'utf8');
-  const expected = Buffer.from(secret, 'utf8');
-  // `timingSafeEqual` throws on unequal lengths, and a length mismatch already rules the
-  // token out — comparing is pointless, so it is a plain 401 without calling it.
-  if (given.length !== expected.length) return 'unauthorized';
-  return timingSafeEqual(given, expected) ? 'ok' : 'unauthorized';
+  // Every usable secret is compared (no early exit), so the answer time does not say which
+  // one matched. `timingSafeEqual` throws on unequal lengths, and a length mismatch already
+  // rules that secret out, so it is skipped without calling it.
+  let ok = false;
+  for (const secret of usable) {
+    const expected = Buffer.from(secret, 'utf8');
+    if (given.length === expected.length && timingSafeEqual(given, expected)) ok = true;
+  }
+  return ok ? 'ok' : 'unauthorized';
 }
 
 /** `{ tags: string[] }`, 1–50 entries, each `/^[a-z0-9:_-]+$/`. All-or-nothing: one bad tag

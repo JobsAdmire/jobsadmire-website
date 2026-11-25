@@ -106,7 +106,7 @@ function PoolStat({
  * basket, load-more, the phone pool pill and basket bar, FAQ 210/211. Two sources, one switch
  * (`src/content/pool-feed.ts`): under `POOL_SOURCE=OPS` the real candidates of Operations' feed
  * (contract `candidates.v1`, owner 2026-11-02 — display name and photo on the card, no sample
- * tag, the stats from the real rows, ISR 60 s under the `pool` tag); otherwise — and at build time
+ * tag, the stats from the real rows, ISR under the `pool` tag, one-hour floor plus Operations' refresh push); otherwise — and at build time
  * when the feed is down — the design's own sample (`_lib/sample-pool.ts`, a page-local constant)
  * under the "örnek / sample" tag (owner 2026-10-05). The bundle's `pool` collection never reaches
  * this page (D23; the feed is not a fixture). `PoolProvider` holds the one client state the

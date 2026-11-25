@@ -24,9 +24,9 @@ beforeAll(async () => {
 });
 
 describe('sitemap', () => {
-  it("renders per request with the blog feed's 60 s floor (W250)", () => {
+  it("renders per request with the blog feed's one-hour floor (W250)", () => {
     expect(connection).toHaveBeenCalled();
-    expect(revalidate).toBe(60);
+    expect(revalidate).toBe(3600);
   });
 
   it('lists the built, indexable routes in both locales', () => {

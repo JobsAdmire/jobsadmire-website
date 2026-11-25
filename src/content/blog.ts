@@ -31,10 +31,12 @@ export {
  * public content); every other collection stays on the bundle `getBundle` serves. Anything else
  * — unset, `LOCAL`, no `OPS_API_URL` — is the LOCAL bundle's rows.
  *
- * Freshness: the feed is read with `revalidate: 60` under the `blog` tag, so a publish,
- * an unpublish or an edit in Operations is live within a minute with no webhook and no shared
- * secret (W248). The pages that read the blog (index, articles, home guides, work-permit related
- * articles, the sitemap) take that 60 s floor; nothing else does.
+ * Freshness: the feed is read under the `blog` tag with a one-hour floor. Operations pushes a
+ * refresh of the tag (`POST /api/revalidate`, I2) within a minute of a publish, an unpublish or
+ * an edit, so the change is live about as fast as under the old 60 s floor (W248, amended
+ * 2026-11-25: a rebuild every minute ran the site over Vercel's free-plan limits). The pages
+ * that read the blog (index, articles, home guides, work-permit related articles) take that
+ * floor; the sitemap reads the feed fresh per request (W250).
  *
  * Failure (`BlogFeedUnavailableError`: network, HTTP error, a body that is not JSON or not
  * `blog.v1`): always logged. At BUILD time and outside production the LOCAL rows stand in, so a
@@ -50,7 +52,7 @@ export class BlogFeedUnavailableError extends Error {
 }
 
 export const BLOG_TAG = 'blog';
-export const BLOG_REVALIDATE_SECONDS = 60;
+export const BLOG_REVALIDATE_SECONDS = 3600;
 const FEED_PATH = '/api/website/v1/blog';
 const PREVIEW_PATH = '/api/website/v1/blog/preview/';
 const HEADERS = { accept: 'application/json' };
@@ -79,7 +81,7 @@ async function readJson(res: Response, what: string): Promise<unknown> {
 }
 
 /** `fresh` (W250, the sitemap's own read) skips Next's data cache (`no-store`); every other
- *  reader shares the cached read — 60 s under the `blog` tag. */
+ *  reader shares the cached read — one hour under the `blog` tag, refreshed by Operations' push. */
 export async function fetchBlogFeedUncached(
   deps: BlogDeps = {},
   { fresh = false }: { fresh?: boolean } = {},
@@ -136,7 +138,7 @@ export async function loadBlogFeed(deps: BlogDeps = {}): Promise<BlogFeedState> 
 }
 
 /** One feed read per request (React `cache`); across requests Next's data cache answers under
- *  the `blog` tag for 60 s. */
+ *  the `blog` tag for up to an hour (refreshed by Operations' push). */
 export const getBlogFeed = cache((): Promise<BlogFeedState> => loadBlogFeed());
 
 /** The bundle every blog reader takes: `getBundle(locale)` with the `blog` collection from the
@@ -150,7 +152,7 @@ export const getBlogBundle = cache(async (locale: Locale): Promise<Bundle> => {
 /**
  * W250 — the sitemap's own read of the feed, `no-store`: `/sitemap.xml` renders per request
  * (`app/sitemap.ts`), so a publish is listed on its next request. A fresh read that fails falls
- * back to the cached read (`loadBlogFeed`: the 60 s data cache keeps the last good feed), so an
+ * back to the cached read (`loadBlogFeed`: the data cache keeps the last good feed), so an
  * Operations outage never drops the articles from the sitemap.
  */
 export async function loadBlogFeedFresh(deps: BlogDeps = {}): Promise<BlogFeedState> {

@@ -3,14 +3,17 @@ import { NextResponse } from 'next/server';
 import { authorize, parseTags } from './auth';
 import { recordRevalidate } from './state';
 
-// Operations calls this after a publish (docs/INTEGRATIONS.md I2). It sits outside the proxy
+// Operations' refresh push calls this when its blog or candidates feed changes (docs/INTEGRATIONS.md I2). It sits outside the proxy
 // matcher on purpose: this target must never be redirected or locale-rewritten.
 export const dynamic = 'force-dynamic';
 
 const NO_STORE = { 'Cache-Control': 'no-store' };
 
 export async function POST(request: Request) {
-  const outcome = authorize(request.headers.get('authorization'), process.env.REVALIDATE_SECRET);
+  const outcome = authorize(request.headers.get('authorization'), [
+    process.env.REVALIDATE_SECRET,
+    process.env.OPS_WEBSITE_WRITE_TOKEN,
+  ]);
   // Never open: no configured secret means the door is closed, not unlocked (D6).
   if (outcome === 'disabled')
     return NextResponse.json({ error: 'revalidate disabled' }, { status: 503, headers: NO_STORE });

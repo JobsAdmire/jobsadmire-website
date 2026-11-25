@@ -25,6 +25,15 @@ describe('authorize', () => {
     expect(authorize(`Bearer ${SECRET}`, SECRET)).toBe('ok');
     expect(authorize(`bearer ${SECRET}`, SECRET)).toBe('ok');
   });
+  it('accepts either configured secret — the revalidate secret or the website write token', () => {
+    const WRITE = 'wst-write-token-0123456789abcdef';
+    expect(authorize(`Bearer ${SECRET}`, [SECRET, WRITE])).toBe('ok');
+    expect(authorize(`Bearer ${WRITE}`, [SECRET, WRITE])).toBe('ok');
+    expect(authorize(`Bearer ${WRITE}`, [undefined, WRITE])).toBe('ok');
+    expect(authorize(`Bearer ${SECRET}`, [undefined, WRITE])).toBe('unauthorized');
+    expect(authorize(`Bearer ${WRITE}`, [undefined, ''])).toBe('disabled');
+    expect(authorize('Bearer shortsecret123', ['shortsecret123', undefined])).toBe('disabled');
+  });
 });
 
 describe('parseTags', () => {

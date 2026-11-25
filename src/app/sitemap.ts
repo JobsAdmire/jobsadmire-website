@@ -10,9 +10,9 @@ import {
 } from '@/lib/seo/routes';
 import { detailSitemapEntries } from '@/lib/seo/sitemap-sources';
 
-/** W250: the blog's 60 s floor — moot while `sitemap()` renders per request (below), kept as the
- *  floor should it ever be prerendered again. */
-export const revalidate = 60;
+/** W250: moot while `sitemap()` renders per request (below); kept as the blog's floor should it
+ *  ever be prerendered again. */
+export const revalidate = 3600;
 
 /** Listed nowhere: the never-indexed set `robots.ts` disallows (`NOINDEX_PATHNAMES`, M-3) plus
  *  the routes that have no page yet (`UNBUILT_PATHNAMES`, W20) — both from `routes.ts`, never a

@@ -15,9 +15,12 @@ export type { PoolCandidate } from './pool-candidates';
  * `OPS_API_URL` — is the design's sample under the sample tag. The feed is not a fixture:
  * `FIXTURE_ONLY_COLLECTIONS` / D23 are untouched and the bundle's `pool` collection stays unused.
  *
- * Freshness: the feed is read with `revalidate: 60` under the `pool` tag, so a candidate who
- * takes a job, or whom the portal hides from the website, leaves the site within Operations'
- * 5-minute sync plus a minute. The two pages that read it take that 60 s floor.
+ * Freshness: the feed is read under the `pool` tag with a one-hour floor. Operations pushes a
+ * refresh of the tag (`POST /api/revalidate`, I2) as soon as its 5-minute sync changes the
+ * feed, so a candidate who takes a job, or whom the portal hides from the website, still
+ * leaves the site within about six minutes; the floor is only the fallback when a push does
+ * not arrive. The two pages that read it take that floor. (It was 60 s until 2026-11-25: a
+ * rebuild of both pages every minute ran the site over Vercel's free-plan limits.)
  *
  * Failure (`PoolFeedUnavailableError`: network, HTTP error, a body that is not JSON or not
  * `candidates.v1`): always logged. At BUILD time and outside production the sample stands in,
@@ -33,7 +36,7 @@ export class PoolFeedUnavailableError extends Error {
 }
 
 export const POOL_TAG = 'pool';
-export const POOL_REVALIDATE_SECONDS = 60;
+export const POOL_REVALIDATE_SECONDS = 3600;
 const FEED_PATH = '/api/website/v1/candidates';
 const HEADERS = { accept: 'application/json' };
 /** A producer that pages is followed through `nextCursor`, never further than this. */
@@ -125,5 +128,5 @@ export async function loadPoolFeed(deps: PoolDeps = {}): Promise<PoolFeedState> 
 }
 
 /** One feed read per request (React `cache`); across requests Next's data cache answers under
- *  the `pool` tag for 60 s. */
+ *  the `pool` tag for up to an hour (refreshed by Operations' push). */
 export const getPoolFeed = cache((): Promise<PoolFeedState> => loadPoolFeed());
